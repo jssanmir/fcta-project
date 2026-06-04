@@ -88,32 +88,39 @@
     }
   };
 
+  function rerender() {
+    if (typeof renderCirc === 'function')      renderCirc('all');
+    if (typeof renderComp === 'function')      renderComp('all');
+    if (typeof renderNews === 'function')      renderNews();
+    if (typeof renderForm === 'function')      renderForm();
+    if (typeof renderTirades === 'function')   renderTirades('all');
+    if (typeof renderCalendari === 'function') renderCalendari();
+    if (typeof renderHeroPanel === 'function') renderHeroPanel();
+    if (typeof updatePendDot === 'function')   updatePendDot();
+  }
+
   // ── Carrega les dades en iniciar ──────────────────────────
   function dbLoad() {
     fetch(API_BASE + '/api/data')
       .then(function (res) { return res.json(); })
       .then(function (saved) {
         if (saved) {
+          // El servidor té dades → aplica-les i actualitza localStorage
           applySnapshot(saved);
-          // Sincronitza localStorage com a còpia local
           try { localStorage.setItem(LS_KEY, JSON.stringify(saved)); } catch (e) {}
+          rerender();
         } else {
-          // Servidor sense dades → intenta localStorage com a fallback
-          lsLoad();
+          // Servidor buit (null) → esborra localStorage per evitar dades obsoletes
+          // i usa els valors per defecte de db.js (no cal re-renderitzar: init.js ja ho fa)
+          localStorage.removeItem(LS_KEY);
         }
-        // Re-renderitza tot amb les dades carregades
-        if (typeof renderCirc === 'function')        renderCirc('all');
-        if (typeof renderComp === 'function')        renderComp('all');
-        if (typeof renderNews === 'function')        renderNews();
-        if (typeof renderForm === 'function')        renderForm();
-        if (typeof renderTirades === 'function')     renderTirades('all');
-        if (typeof renderCalendari === 'function')   renderCalendari();
-        if (typeof renderHeroPanel === 'function')   renderHeroPanel();
-        if (typeof updatePendDot === 'function')     updatePendDot();
       })
       .catch(function () {
-        // Servidor no disponible → usa localStorage
-        lsLoad();
+        // Servidor no disponible → usa localStorage com a últim recurs
+        var raw = localStorage.getItem(LS_KEY);
+        if (raw) {
+          try { applySnapshot(JSON.parse(raw)); rerender(); } catch (e) { localStorage.removeItem(LS_KEY); }
+        }
       });
   }
 

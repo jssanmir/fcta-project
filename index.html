@@ -2781,7 +2781,7 @@
 </div>
 
 <!-- ADMIN PANEL -->
-<div id="admOverlay" style="display:none" onclick="closeAdmOut(event)">
+<div id="admOverlay" class="adm-overlay" style="display:none" onclick="closeAdmOut(event)">
   <div class="adm-panel" id="admPanel">
     <div class="adm-head">
       <div class="adm-title">
@@ -2794,17 +2794,19 @@
         <button class="adm-close" onclick="closeAdm()">&#xd7;</button>
       </div>
     </div>
-    <div class="adm-nav" id="admNav">
-      <button class="adm-tab act" onclick="setATab('circ',this)">&#128196; Circulars</button>
-      <button class="adm-tab" onclick="setATab('news',this)">&#128240; Notícies</button>
-      <button class="adm-tab" onclick="setATab('comp',this)">&#127942; Competicions</button>
-      <button class="adm-tab" onclick="setATab('form',this)">&#127891; Formació</button>
-      <button class="adm-tab" onclick="setATab('tirades',this)">&#127919; Tirades<span class="pend-dot" id="pendDot">0</span></button>
-      <button class="adm-tab" onclick="setATab('records',this)">🏆 Rècords<span class="pend-dot" id="pendDotRecords">0</span></button>
-      <button class="adm-tab" onclick="setATab('docs',this)">📂 Documents</button>
-      <button class="adm-tab" onclick="setATab('gen',this)">✍️ Generador</button>
+    <div class="adm-inner">
+      <nav class="adm-nav" id="admNav">
+        <button class="adm-tab act" onclick="setATab('circ',this)">&#128196; Circulars</button>
+        <button class="adm-tab" onclick="setATab('news',this)">&#128240; Notícies</button>
+        <button class="adm-tab" onclick="setATab('comp',this)">&#127942; Competicions</button>
+        <button class="adm-tab" onclick="setATab('form',this)">&#127891; Formació</button>
+        <button class="adm-tab" onclick="setATab('tirades',this)">&#127919; Tirades<span class="pend-dot" id="pendDot">0</span></button>
+        <button class="adm-tab" onclick="setATab('records',this)">&#127942; Rècords<span class="pend-dot" id="pendDotRecords">0</span></button>
+        <button class="adm-tab" onclick="setATab('docs',this)">&#128194; Documents</button>
+        <button class="adm-tab" onclick="setATab('gen',this)">&#9997;&#65039; Generador</button>
+      </nav>
+      <div class="adm-body" id="admBody"></div>
     </div>
-    <div class="adm-body" id="admBody"></div>
   </div>
 </div>
 <!-- INSCRIPTION MODAL -->

@@ -21,6 +21,84 @@ function setATab(tab,btn){
   renderATab(tab);
 }
 
+// ── UPLOAD HELPER ──────────────────────────────────────────
+// Genera el widget d'upload (botó + preview + camp ocult amb la URL resultant)
+// type: 'pdf' | 'image'
+function mkUploadField(label, idUrl, currentUrl, type) {
+  var isPdf   = (type === 'pdf');
+  var accept  = isPdf ? '.pdf,application/pdf' : '.jpg,.jpeg,.png,.webp,.gif,image/*';
+  var preview = '';
+  if (currentUrl && !isPdf) {
+    preview = '<img id="prev_'+idUrl+'" src="'+escHtml(currentUrl)+'" '
+            + 'style="max-width:80px;max-height:60px;border-radius:4px;margin-top:4px;display:block" onerror="this.style.display=\'none\'">';
+  } else if (currentUrl && isPdf) {
+    preview = '<a id="prev_'+idUrl+'" href="'+escHtml(currentUrl)+'" target="_blank" '
+            + 'style="font-size:.78rem;color:var(--navy-light);display:block;margin-top:4px">📄 '
+            + escHtml(currentUrl.split('/').pop())+'</a>';
+  } else {
+    preview = '<span id="prev_'+idUrl+'" style="font-size:.78rem;color:var(--gray);display:block;margin-top:4px">Cap fitxer seleccionat</span>';
+  }
+
+  return '<div class="af-g"><label>'+label+'</label>'
+    + '<input type="hidden" id="'+idUrl+'" value="'+escHtml(currentUrl||'')+'">'
+    + '<div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">'
+    + '<label class="upload-btn" style="cursor:pointer;background:var(--navy);color:white;border-radius:var(--r-md);'
+    +   'padding:.4rem .9rem;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:.4rem">'
+    + (isPdf ? '📄 Pujar PDF' : '🖼️ Pujar imatge')
+    + '<input type="file" accept="'+accept+'" style="display:none" onchange="handleUpload(this,\''+idUrl+'\',\''+type+'\')">'
+    + '</label>'
+    + '<span id="ustat_'+idUrl+'" style="font-size:.78rem;color:var(--gray)"></span>'
+    + '</div>'
+    + preview
+    + '</div>';
+}
+
+// Puja el fitxer al servidor i actualitza el camp ocult + preview
+function handleUpload(input, idUrl, type) {
+  var file = input.files[0];
+  if (!file) return;
+  var stat = document.getElementById('ustat_'+idUrl);
+  if (stat) stat.textContent = 'Pujant…';
+
+  var token = window.dbGetToken ? window.dbGetToken() : '';
+  var endpoint = type === 'pdf' ? '/api/upload/pdf' : '/api/upload/image';
+  var fd = new FormData();
+  fd.append('file', file);
+
+  fetch(endpoint, {
+    method: 'POST',
+    headers: token ? { 'Authorization': 'Bearer '+token } : {},
+    body: fd
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (d.url) {
+      // Desa la URL al camp ocult
+      var hiddenInput = document.getElementById(idUrl);
+      if (hiddenInput) hiddenInput.value = d.url;
+      // Actualitza la preview
+      var prev = document.getElementById('prev_'+idUrl);
+      if (prev) {
+        if (type === 'image') {
+          prev.outerHTML = '<img id="prev_'+idUrl+'" src="'+d.url+'" '
+            + 'style="max-width:80px;max-height:60px;border-radius:4px;margin-top:4px;display:block">';
+        } else {
+          prev.outerHTML = '<a id="prev_'+idUrl+'" href="'+d.url+'" target="_blank" '
+            + 'style="font-size:.78rem;color:var(--navy-light);display:block;margin-top:4px">📄 '+escHtml(d.nom)+'</a>';
+        }
+      }
+      if (stat) stat.textContent = '✓ '+escHtml(d.nom);
+    } else {
+      if (stat) stat.textContent = '⚠ '+(d.error||'Error');
+      toast(d.error||'Error en pujar el fitxer','⚠️');
+    }
+  })
+  .catch(function(){
+    if (stat) stat.textContent = '⚠ Error de connexió';
+    toast('Error de connexió en pujar el fitxer','⚠️');
+  });
+}
+
 // ── CRUD HELPERS ───────────────────────────────────────────
 function mkField(label,id,type,val,placeholder,options){
   var inp='';
@@ -76,7 +154,7 @@ function renderAdmCirculars(b){
     +'</div>'
     +'<div class="af-row">'
     +mkField('Data','ac_dt','date','','')
-    +mkField('URL del PDF','ac_u','url','','https://...')
+    +mkUploadField('PDF de la circular','ac_u','','pdf')
     +'</div>'
     +mkField('Descripci\u00f3 breu','ac_d','textarea','','Resum del contingut de la circular')
     +'<button class="a-sub success" onclick="crudAddCirc()">&#10010; Publicar Circular</button>'
@@ -140,7 +218,7 @@ function crudEditCirc(id){
     +mkField('Dia','ec_day_'+id,'number',c.day,'')
     +mkField('Any','ec_yr_'+id,'number',c.year,'')
     +'</div>'
-    +mkField('URL PDF','ec_u_'+id,'url',c.url&&c.url.startsWith('http')?c.url:'','https://...')
+    +mkUploadField('PDF de la circular','ec_u_'+id,c.url&&c.url!=='#'?c.url:'','pdf')
     +mkField('Descripci\u00f3','ec_d_'+id,'textarea',c.desc,'')
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
     +'<button class="a-sub success" onclick="crudSaveCirc('+id+')">&#10003; Desar</button>'
@@ -194,7 +272,7 @@ function renderAdmNews(b){
     +'</div>'
     +mkField('Resum *','an_d','textarea','','Primer par\u00e0graf de la not\u00edcia')
     +'<div class="af-row">'
-    +mkField('URL Imatge','an_img','url','','https://...')
+    +mkUploadField('Imatge de la not\u00edcia','an_img','','image')
     +mkField('URL Not\u00edcia completa','an_url','url','','https://...')
     +'</div>'
     +'<button class="a-sub success" onclick="crudAddNews()">&#10010; Publicar Not\u00edcia</button>'
@@ -246,7 +324,7 @@ function crudEditNews(id){
     +'</div>'
     +mkField('Resum','en_d_'+id,'textarea',n.desc,'')
     +'<div class="af-row">'
-    +mkField('URL Imatge','en_img_'+id,'url',n.img||'','https://...')
+    +mkUploadField('Imatge de la not\u00edcia','en_img_'+id,n.img||'','image')
     +mkField('URL Not\u00edcia','en_url_'+id,'url',n.url&&n.url!=='#'?n.url:'','https://...')
     +'</div>'
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
@@ -584,7 +662,7 @@ function renderAdmDocs(b){
     +mkField('Disciplina *','adoc_disc','select','al','',discOpts)
     +mkField('Icona','adoc_icon','select','📄','',iconOpts)
     +'</div>'
-    +mkField('URL del document *','adoc_url','url','','https://... o docs/fitxer.pdf')
+    +mkUploadField('PDF del document *','adoc_url','','pdf')
     +'<button class="a-sub success" onclick="crudAddDoc()">&#10010; Publicar Document</button>'
     +'</div>'
     +'<div class="adm-st" style="display:flex;align-items:center;gap:.75rem">'
@@ -666,7 +744,7 @@ function crudEditDoc(id){
     +mkField('Disciplina','edoc_disc_'+id,'select',doc.disc,'',discOpts)
     +mkField('Icona','edoc_icon_'+id,'select',doc.icon||'📄','',iconOpts)
     +'</div>'
-    +mkField('URL','edoc_url_'+id,'url',doc.url&&doc.url!=='#'?doc.url:'','https://... o docs/fitxer.pdf')
+    +mkUploadField('PDF del document','edoc_url_'+id,doc.url&&doc.url!=='#'?doc.url:'','pdf')
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
     +'<button class="a-sub success" onclick="crudSaveDoc('+id+')">&#10003; Desar</button>'
     +'<button class="a-sub" style="background:#64748b" onclick="crudCancelDoc('+id+')">Cancel·lar</button>'

@@ -10,18 +10,21 @@ var express  = require('express');
 var Database = require('better-sqlite3');
 var bcrypt   = require('bcryptjs');
 var jwt      = require('jsonwebtoken');
+var multer   = require('multer');
 var path     = require('path');
 var fs       = require('fs');
 
 // ── Configuració ───────────────────────────────────────────
-var PORT       = process.env.PORT       || 3000;
-var JWT_SECRET = process.env.JWT_SECRET || 'fcta-dev-secret-CHANGE-IN-PRODUCTION';
-var JWT_EXPIRY = process.env.JWT_EXPIRY || '8h';
-var DATA_DIR   = path.join(__dirname, 'data');
+var PORT        = process.env.PORT       || 3000;
+var JWT_SECRET  = process.env.JWT_SECRET || 'fcta-dev-secret-CHANGE-IN-PRODUCTION';
+var JWT_EXPIRY  = process.env.JWT_EXPIRY || '8h';
+var DATA_DIR    = path.join(__dirname, 'data');
+var UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
 var DB_PATH    = path.join(DATA_DIR, 'fcta.db');
 
-// ── Assegura que existeix el directori de dades ────────────
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+// ── Assegura que existeixen els directoris ─────────────────
+if (!fs.existsSync(DATA_DIR))    fs.mkdirSync(DATA_DIR,    { recursive: true });
+if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
 // ── Base de dades SQLite ───────────────────────────────────
 var db = new Database(DB_PATH);
@@ -86,6 +89,39 @@ function verifyToken(req, res, next) {
   }
 }
 
+// ── Multer: gestió de fitxers pujats ──────────────────────
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, UPLOADS_DIR);
+  },
+  filename: function (req, file, cb) {
+    // timestamp + nom net sense espais ni accents
+    var ext  = path.extname(file.originalname).toLowerCase();
+    var base = path.basename(file.originalname, ext)
+                   .replace(/[^a-zA-Z0-9_\-]/g, '_')
+                   .substring(0, 60);
+    cb(null, Date.now() + '_' + base + ext);
+  }
+});
+
+function fileFilter(mimeTypes) {
+  return function (req, file, cb) {
+    cb(null, mimeTypes.includes(file.mimetype));
+  };
+}
+
+var uploadPdf = multer({
+  storage: storage,
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20 MB
+  fileFilter: fileFilter(['application/pdf'])
+});
+
+var uploadImg = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
+  fileFilter: fileFilter(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
+});
+
 // ── Express ────────────────────────────────────────────────
 var app = express();
 app.use(express.json({ limit: '5mb' }));
@@ -95,6 +131,36 @@ app.use(express.static(path.join(__dirname), {
   index: 'index.html',
   dotfiles: 'ignore'
 }));
+
+// Serveix els fitxers pujats des de /uploads/
+app.use('/uploads', express.static(UPLOADS_DIR));
+
+// ── API: Pujar PDF (circulars, documents) ──────────────────
+app.post('/api/upload/pdf', verifyToken, function (req, res) {
+  uploadPdf.single('file')(req, res, function (err) {
+    if (err) return res.status(400).json({ error: err.message || 'Error en pujar el PDF' });
+    if (!req.file) return res.status(400).json({ error: 'Fitxer PDF no rebut o format invàlid (màx. 20 MB)' });
+    res.json({ url: '/uploads/' + req.file.filename, nom: req.file.originalname });
+  });
+});
+
+// ── API: Pujar imatge (notícies) ───────────────────────────
+app.post('/api/upload/image', verifyToken, function (req, res) {
+  uploadImg.single('file')(req, res, function (err) {
+    if (err) return res.status(400).json({ error: err.message || 'Error en pujar la imatge' });
+    if (!req.file) return res.status(400).json({ error: 'Imatge no rebuda o format invàlid (jpg, png, webp, gif · màx. 5 MB)' });
+    res.json({ url: '/uploads/' + req.file.filename, nom: req.file.originalname });
+  });
+});
+
+// ── API: Eliminar fitxer pujat ─────────────────────────────
+app.delete('/api/upload/:filename', verifyToken, function (req, res) {
+  var name = path.basename(req.params.filename); // evita path traversal
+  var filepath = path.join(UPLOADS_DIR, name);
+  if (!fs.existsSync(filepath)) return res.status(404).json({ error: 'Fitxer no trobat' });
+  fs.unlinkSync(filepath);
+  res.json({ ok: true });
+});
 
 // ── API: Login ─────────────────────────────────────────────
 app.post('/api/login', function (req, res) {
