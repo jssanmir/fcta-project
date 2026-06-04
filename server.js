@@ -241,17 +241,24 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc:  ["'self'"],
-      scriptSrc:   ["'self'", "'unsafe-inline'"],   // inline scripts necessaris per la SPA
-      styleSrc:    ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      // 'unsafe-inline' necessari: SPA amb onclick/inline CSS
+      scriptSrc:   ["'self'", "'unsafe-inline'"],
+      styleSrc:    ["'self'", "'unsafe-inline'",
+                    'https://fonts.googleapis.com'],
       fontSrc:     ["'self'", 'https://fonts.gstatic.com'],
-      imgSrc:      ["'self'", 'data:', 'https:'],
+      imgSrc:      ["'self'", 'data:', 'https:', 'blob:'],
       connectSrc:  ["'self'"],
-      frameSrc:    ["'none'"],
+      // 'self' permet iframes del mateix origen (visor PDF, generador)
+      frameSrc:    ["'self'", 'blob:'],
       objectSrc:   ["'none'"],
-      upgradeInsecureRequests: IS_PROD ? [] : null
+      // upgradeInsecureRequests només en producció i sense valor null
+      ...(IS_PROD ? { upgradeInsecureRequests: [] } : {})
     }
   },
-  crossOriginEmbedderPolicy: false // permet carregar PDFs en iframe
+  // Desactiva COEP: incompatible amb PDFs en iframe blob:
+  crossOriginEmbedderPolicy: false,
+  // Permet iframes del mateix origen (visor PDF)
+  frameguard: { action: 'sameorigin' }
 }));
 
 // ── CORS ───────────────────────────────────────────────────
