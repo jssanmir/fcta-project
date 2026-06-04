@@ -41,6 +41,24 @@ if (!JWT_SECRET) {
 if (!fs.existsSync(DATA_DIR))    fs.mkdirSync(DATA_DIR,    { recursive: true });
 if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
+// ── Advertència: volum persistent no configurat ────────────
+// A Railway, sense un volum muntat a /app/data, la BD es perd en cada deploy.
+// Detectem si sembla un filesystem efímer (mida 0 o fitxer acabat de crear).
+if (IS_PROD) {
+  var dbExists = fs.existsSync(DB_PATH);
+  if (!dbExists) {
+    console.warn([
+      '╔══════════════════════════════════════════════════════╗',
+      '║  ATENCIO: Base de dades no trobada a data/fcta.db    ║',
+      '║  Per evitar perdre dades en cada deploy a Railway:   ║',
+      '║  1. Railway → Servei → Storage → Add Volume          ║',
+      '║  2. Mount Path: /app/data                            ║',
+      '║  Sense el volum, les dades es perdran en cada deploy ║',
+      '╚══════════════════════════════════════════════════════╝'
+    ].join('\n'));
+  }
+}
+
 // ── Base de dades SQLite ───────────────────────────────────
 var db = new Database(DB_PATH);
 
@@ -83,6 +101,38 @@ if (countRow.n === 0) {
   insert.run('secretaria', bcrypt.hashSync(secPass,   12), 'editor',     'Secretaria FCTA',   IS_PROD ? 1 : 0);
   console.log('[FCTA] Usuaris inicials creats.');
 }
+
+// ── Backup automàtic en arrencada ─────────────────────────
+// Desa una còpia JSON de les dades de producció a data/backups/
+// Protegeix contra pèrdues accidentals per deploys o errors.
+(function autoBackup() {
+  try {
+    var row = db.prepare('SELECT data, updated_at FROM portal_state WHERE id = 1').get();
+    if (!row) return; // BD buida, res a fer
+
+    var backupDir = path.join(DATA_DIR, 'backups');
+    if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir, { recursive: true });
+
+    // Manté els últims 10 backups, esborra els més antics
+    var files = fs.readdirSync(backupDir)
+      .filter(function(f){ return f.endsWith('.json'); })
+      .sort();
+    while (files.length >= 10) {
+      fs.unlinkSync(path.join(backupDir, files.shift()));
+    }
+
+    var ts = new Date().toISOString().replace(/[:.]/g, '-');
+    var backupPath = path.join(backupDir, 'backup_' + ts + '.json');
+    fs.writeFileSync(backupPath, JSON.stringify({
+      backup_ts:  new Date().toISOString(),
+      updated_at: row.updated_at,
+      data:       JSON.parse(row.data)
+    }, null, 2));
+    console.log('[FCTA] Backup creat: ' + path.basename(backupPath));
+  } catch (e) {
+    console.warn('[FCTA] No s\'ha pogut crear el backup:', e.message);
+  }
+})();
 
 // ── Audit helper ───────────────────────────────────────────
 function audit(username, action, detail) {
@@ -370,6 +420,68 @@ app.post('/api/change-password', verifyToken, function (req, res) {
     .run(bcrypt.hashSync(newPass, 12), req.user.sub);
   audit(req.user.sub, 'CHANGE_PASS', null);
   res.json({ ok: true });
+});
+
+// ── API: Llistat de backups disponibles ───────────────────
+app.get('/api/backups', verifyToken, requireRole('superadmin'), function (req, res) {
+  var backupDir = path.join(DATA_DIR, 'backups');
+  if (!fs.existsSync(backupDir)) return res.json([]);
+  var files = fs.readdirSync(backupDir)
+    .filter(function(f){ return f.endsWith('.json'); })
+    .sort().reverse()
+    .map(function(f) {
+      var stat = fs.statSync(path.join(backupDir, f));
+      return { name: f, size: stat.size, date: stat.mtime };
+    });
+  res.json(files);
+});
+
+// ── API: Descarregar un backup ─────────────────────────────
+app.get('/api/backups/:name', verifyToken, requireRole('superadmin'), function (req, res) {
+  var name = path.basename(req.params.name);
+  if (!name.endsWith('.json')) return res.status(400).json({ error: 'Fitxer invàlid' });
+  var filePath = path.join(DATA_DIR, 'backups', name);
+  if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'Backup no trobat' });
+  res.download(filePath);
+});
+
+// ── API: Restaurar des d'un backup ────────────────────────
+app.post('/api/backups/:name/restore', verifyToken, requireRole('superadmin'), function (req, res) {
+  var name = path.basename(req.params.name);
+  if (!name.endsWith('.json')) return res.status(400).json({ error: 'Fitxer invàlid' });
+  var filePath = path.join(DATA_DIR, 'backups', name);
+  if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'Backup no trobat' });
+  try {
+    var backup = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    var data   = backup.data || backup; // suporta format antic i nou
+    var now    = new Date().toISOString();
+    db.prepare('INSERT INTO portal_state (id,data,updated_at) VALUES (1,?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data, updated_at=excluded.updated_at')
+      .run(JSON.stringify(data), now);
+    audit(req.user.sub, 'RESTORE_BACKUP', name);
+    res.json({ ok: true, restored_from: name });
+  } catch (e) {
+    res.status(500).json({ error: 'Error restaurant el backup: ' + e.message });
+  }
+});
+
+// ── API: Forçar backup manual ──────────────────────────────
+app.post('/api/backups', verifyToken, requireRole('superadmin'), function (req, res) {
+  try {
+    var row = db.prepare('SELECT data, updated_at FROM portal_state WHERE id = 1').get();
+    if (!row) return res.status(404).json({ error: 'No hi ha dades a fer backup' });
+    var backupDir = path.join(DATA_DIR, 'backups');
+    if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir, { recursive: true });
+    var ts       = new Date().toISOString().replace(/[:.]/g, '-');
+    var filename = 'manual_' + req.user.sub + '_' + ts + '.json';
+    fs.writeFileSync(path.join(backupDir, filename), JSON.stringify({
+      backup_ts: new Date().toISOString(), updated_at: row.updated_at,
+      data: JSON.parse(row.data)
+    }, null, 2));
+    audit(req.user.sub, 'MANUAL_BACKUP', filename);
+    res.json({ ok: true, name: filename });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 // ── API: Salut (sense info de versió) ─────────────────────

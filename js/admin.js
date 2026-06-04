@@ -1,6 +1,22 @@
 // admin.js – Admin panel: CRUD for circulars, news, competitions, formations, tirades
 // ──────────────────────────────────────────────────────────
 
+// ── Backup manual des de la capçalera del panell ───────────
+function admDoBackup() {
+  var token = window.dbGetToken ? window.dbGetToken() : '';
+  if (!token) { toast('Sessió no iniciada', '⚠️'); return; }
+  fetch('/api/backups', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + token }
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (d.ok) toast('Backup creat: ' + d.name, '💾');
+    else toast(d.error || 'Error al backup', '⚠️');
+  })
+  .catch(function(){ toast('Error de connexió al backup', '⚠️'); });
+}
+
 // ── ADMIN PANEL ────────────────────────────────────────────
 function openAdm(){
   if(!admSession){ openAdmin(); return; }
