@@ -1,0 +1,312 @@
+{
+  "club-darquers-catalunya": {
+    "nom": "A.E.E.F",
+    "logo": "img/clubs/club-darquers-catalunya.jpg",
+    "url": "img/clubs/club-darquers-catalunya.jpg"
+  },
+  "ager-esportiu-montsec": {
+    "nom": "AGER ESPORTIU MONTSEC",
+    "logo": "img/clubs/ager-esportiu-montsec.jpg",
+    "url": "img/clubs/ager-esportiu-montsec.jpg"
+  },
+  "arc-sant-celoni-2": {
+    "nom": "ARC SANT CELONI",
+    "logo": "img/clubs/arc-sant-celoni-2.jpg",
+    "url": "img/clubs/arc-sant-celoni-2.jpg"
+  },
+  "arquers-club-castelldefels": {
+    "nom": "ARQUERS CLUB CASTELLDEFELS (ACC)",
+    "logo": "img/clubs/arquers-club-castelldefels.jpg",
+    "url": "img/clubs/arquers-club-castelldefels.jpg"
+  },
+  "arquers-de-vallromanes": {
+    "nom": "ARQUERS DE VALLROMANES",
+    "logo": "img/clubs/arquers-de-vallromanes.jpg",
+    "url": "img/clubs/arquers-de-vallromanes.jpg"
+  },
+  "associacio-de-tir-amb-arc-la-conxorxa-darenys-de-mar": {
+    "nom": "ASSOCIACIÓ DE TIR AMB ARC LA CONXORXA D&#8217;ARENYS DE MAR",
+    "logo": "img/clubs/associacio-de-tir-amb-arc-la-conxorxa-darenys-de-mar.jpg",
+    "url": "img/clubs/associacio-de-tir-amb-arc-la-conxorxa-darenys-de-mar.jpg"
+  },
+  "associacio-esportiva-cultural-puigverd-de-lleida": {
+    "nom": "ASSOCIACIÓ ESPORTIVA CULTURAL PUIGVERD DE LLEIDA",
+    "logo": "img/clubs/associacio-esportiva-cultural-puigverd-de-lleida.jpg",
+    "url": "img/clubs/associacio-esportiva-cultural-puigverd-de-lleida.jpg"
+  },
+  "associacio-esportiva-matxacuca": {
+    "nom": "ASSOCIACIÓ ESPORTIVA MATXACUCA",
+    "logo": "img/clubs/associacio-esportiva-matxacuca.jpg",
+    "url": "img/clubs/associacio-esportiva-matxacuca.jpg"
+  },
+  "club-tir-amb-arc-cem": {
+    "nom": "CENTRE EXCURSIONISTA MOLINS DE REI",
+    "logo": "img/clubs/club-tir-amb-arc-cem.jpg",
+    "url": "img/clubs/club-tir-amb-arc-cem.jpg"
+  },
+  "club-arc-montjuic-2": {
+    "nom": "CLUB ARC MONTJUÏC",
+    "logo": "img/clubs/club-arc-montjuic-2.png",
+    "url": "img/clubs/club-arc-montjuic-2.png"
+  },
+  "club-arquers-anoia": {
+    "nom": "CLUB ARQUERS ANOIA",
+    "logo": "img/clubs/club-arquers-anoia.png",
+    "url": "img/clubs/club-arquers-anoia.png"
+  },
+  "club-arquers-badalona": {
+    "nom": "CLUB ARQUERS BADALONA",
+    "logo": "img/clubs/club-arquers-badalona.jpg",
+    "url": "img/clubs/club-arquers-badalona.jpg"
+  },
+  "club-arquers-cambrils": {
+    "nom": "CLUB ARQUERS CAMBRILS",
+    "logo": "img/clubs/club-arquers-cambrils.png",
+    "url": "img/clubs/club-arquers-cambrils.png"
+  },
+  "club-arquers-can-cuguls": {
+    "nom": "CLUB ARQUERS CAN CÚGULS",
+    "logo": "img/clubs/club-arquers-can-cuguls.jpeg",
+    "url": "img/clubs/club-arquers-can-cuguls.jpeg"
+  },
+  "club-arquers-can-mussol": {
+    "nom": "CLUB ARQUERS CAN MUSSOL",
+    "logo": "img/clubs/club-arquers-can-mussol.jpg",
+    "url": "img/clubs/club-arquers-can-mussol.jpg"
+  },
+  "club-arquers-cerdanyola-del-valles": {
+    "nom": "CLUB ARQUERS CERDANYOLA DEL VALLÈS",
+    "logo": "img/clubs/club-arquers-cerdanyola-del-valles.jpg",
+    "url": "img/clubs/club-arquers-cerdanyola-del-valles.jpg"
+  },
+  "club-arquers-dosrius": {
+    "nom": "CLUB ARQUERS DOSRIUS",
+    "logo": "img/clubs/club-arquers-dosrius.gif",
+    "url": "img/clubs/club-arquers-dosrius.gif"
+  },
+  "club-arquers-esclanya": {
+    "nom": "CLUB ARQUERS ESCLANYA",
+    "logo": "img/clubs/club-arquers-esclanya.jpg",
+    "url": "img/clubs/club-arquers-esclanya.jpg"
+  },
+  "club-arquers-montsant": {
+    "nom": "CLUB ARQUERS MONTSANT",
+    "logo": "img/clubs/club-arquers-montsant.png",
+    "url": "img/clubs/club-arquers-montsant.png"
+  },
+  "club-arquers-montsec": {
+    "nom": "CLUB ARQUERS MONTSEC",
+    "logo": "img/clubs/club-arquers-montsec.jpg",
+    "url": "img/clubs/club-arquers-montsec.jpg"
+  },
+  "club-arquers-olivella": {
+    "nom": "CLUB ARQUERS OLIVELLA",
+    "logo": "img/clubs/club-arquers-olivella.png",
+    "url": "img/clubs/club-arquers-olivella.png"
+  },
+  "club-arquers-poblenou": {
+    "nom": "CLUB ARQUERS POBLENOU",
+    "logo": "img/clubs/club-arquers-poblenou.jpg",
+    "url": "img/clubs/club-arquers-poblenou.jpg"
+  },
+  "club-arquers-priorat": {
+    "nom": "CLUB ARQUERS PRIORAT",
+    "logo": "img/clubs/club-arquers-priorat.jpg",
+    "url": "img/clubs/club-arquers-priorat.jpg"
+  },
+  "club-arquers-salt": {
+    "nom": "CLUB ARQUERS SALT",
+    "logo": "img/clubs/club-arquers-salt.png",
+    "url": "img/clubs/club-arquers-salt.png"
+  },
+  "club-arquers-sant-cugat-del-valles": {
+    "nom": "CLUB ARQUERS SANT CUGAT DEL VALLÈS",
+    "logo": "img/clubs/club-arquers-sant-cugat-del-valles.png",
+    "url": "img/clubs/club-arquers-sant-cugat-del-valles.png"
+  },
+  "club-arquers-terrassa": {
+    "nom": "CLUB ARQUERS TERRASSA",
+    "logo": "img/clubs/club-arquers-terrassa.jpg",
+    "url": "img/clubs/club-arquers-terrassa.jpg"
+  },
+  "club-arquers-montsec-2": {
+    "nom": "CLUB ARQUERS TORREFARRERA",
+    "logo": "img/clubs/club-arquers-montsec-2.jpg",
+    "url": "img/clubs/club-arquers-montsec-2.jpg"
+  },
+  "club-arquers-vallfosca": {
+    "nom": "CLUB ARQUERS VALLFOSCA",
+    "logo": "img/clubs/club-arquers-vallfosca.png",
+    "url": "img/clubs/club-arquers-vallfosca.png"
+  },
+  "club-catala-de-tir-amb-arc-2": {
+    "nom": "CLUB CATALÀ DE TIR AMB ARC",
+    "logo": "img/clubs/club-catala-de-tir-amb-arc-2.jpg",
+    "url": "img/clubs/club-catala-de-tir-amb-arc-2.jpg"
+  },
+  "club-arquers-catalunya": {
+    "nom": "CLUB D&#8217;ARQUERS CATALUNYA",
+    "logo": "img/clubs/club-arquers-catalunya.jpg",
+    "url": "img/clubs/club-arquers-catalunya.jpg"
+  },
+  "club-de-tir-amb-arc-arboc": {
+    "nom": "CLUB DE TIR AMB ARC ARBOÇ",
+    "logo": "img/clubs/club-de-tir-amb-arc-arboc.jpeg",
+    "url": "img/clubs/club-de-tir-amb-arc-arboc.jpeg"
+  },
+  "club-de-tir-amb-arc-arquers-del-moianes": {
+    "nom": "CLUB DE TIR AMB ARC ARQUERS DEL MOIANES",
+    "logo": "img/clubs/club-de-tir-amb-arc-arquers-del-moianes.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-arquers-del-moianes.jpg"
+  },
+  "club-de-tir-amb-arc-constanti": {
+    "nom": "CLUB DE TIR AMB ARC CONSTANTÍ",
+    "logo": "img/clubs/club-de-tir-amb-arc-constanti.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-constanti.jpg"
+  },
+  "club-de-tir-amb-arc-costa-brava-3d": {
+    "nom": "CLUB DE TIR AMB ARC COSTA BRAVA 3D",
+    "logo": "img/clubs/club-de-tir-amb-arc-costa-brava-3d.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-costa-brava-3d.jpg"
+  },
+  "club-de-tir-amb-arc-les-franqueses": {
+    "nom": "CLUB DE TIR AMB ARC LES FRANQUESES",
+    "logo": "img/clubs/club-de-tir-amb-arc-les-franqueses.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-les-franqueses.jpg"
+  },
+  "club-de-tir-amb-arc-urgell": {
+    "nom": "CLUB DE TIR AMB ARC URGELL",
+    "logo": "img/clubs/club-de-tir-amb-arc-urgell.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-urgell.jpg"
+  },
+  "club-de-tir-amb-arc-vallgorguina": {
+    "nom": "CLUB DE TIR AMB ARC VALLGORGUINA",
+    "logo": "img/clubs/club-de-tir-amb-arc-vallgorguina.jpeg",
+    "url": "img/clubs/club-de-tir-amb-arc-vallgorguina.jpeg"
+  },
+  "club-de-tir-amb-arc-vilanova-i-la-geltru": {
+    "nom": "CLUB DE TIR AMB ARC VILANOVA I LA GELTRÚ",
+    "logo": "img/clubs/club-de-tir-amb-arc-vilanova-i-la-geltru.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-vilanova-i-la-geltru.jpg"
+  },
+  "club-de-tir-amb-arc-zen-del-bages": {
+    "nom": "CLUB DE TIR AMB ARC ZEN DEL BAGES",
+    "logo": "img/clubs/club-de-tir-amb-arc-zen-del-bages.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-zen-del-bages.jpg"
+  },
+  "club-escola-arquers-barcelona": {
+    "nom": "CLUB ESCOLA ARQUERS BARCELONA",
+    "logo": "img/clubs/club-escola-arquers-barcelona.jpg",
+    "url": "img/clubs/club-escola-arquers-barcelona.jpg"
+  },
+  "club-esportiu-arc-set": {
+    "nom": "CLUB ESPORTIU ARC SET",
+    "logo": "img/clubs/club-esportiu-arc-set.jpg",
+    "url": "img/clubs/club-esportiu-arc-set.jpg"
+  },
+  "club-esportiu-tir-arc-figueres": {
+    "nom": "CLUB ESPORTIU TIR ARC FIGUERES",
+    "logo": "img/clubs/club-esportiu-tir-arc-figueres.png",
+    "url": "img/clubs/club-esportiu-tir-arc-figueres.png"
+  },
+  "2215": {
+    "nom": "CLUB I ESCOLA DE TIR AMB ARC FIGARÓ",
+    "logo": "img/clubs/2215.png",
+    "url": "img/clubs/2215.png"
+  },
+  "club-de-tir-amb-arc-tau": {
+    "nom": "CLUB TAU DE TIR AMB ARC",
+    "logo": "img/clubs/club-de-tir-amb-arc-tau.jpg",
+    "url": "img/clubs/club-de-tir-amb-arc-tau.jpg"
+  },
+  "club-tir-amb-arc-arquers-del-montmell": {
+    "nom": "CLUB TIR AMB ARC ARQUERS DEL MONTMELL",
+    "logo": "img/clubs/club-tir-amb-arc-arquers-del-montmell.jpg",
+    "url": "img/clubs/club-tir-amb-arc-arquers-del-montmell.jpg"
+  },
+  "club-tir-amb-arc-despi": {
+    "nom": "CLUB TIR AMB ARC DESPÍ",
+    "logo": "img/clubs/club-tir-amb-arc-despi.jpg",
+    "url": "img/clubs/club-tir-amb-arc-despi.jpg"
+  },
+  "club-arquers-alforja": {
+    "nom": "CLUB TIR AMB ARC L&#8217;ALFORJA",
+    "logo": "img/clubs/club-arquers-alforja.jpg",
+    "url": "img/clubs/club-arquers-alforja.jpg"
+  },
+  "club-tir-amb-arc-lleida-2": {
+    "nom": "CLUB TIR AMB ARC LLEIDA",
+    "logo": "img/clubs/club-tir-amb-arc-lleida-2.jpg",
+    "url": "img/clubs/club-tir-amb-arc-lleida-2.jpg"
+  },
+  "club-tir-amb-arc-manresa": {
+    "nom": "CLUB TIR AMB ARC MANRESA",
+    "logo": "img/clubs/club-tir-amb-arc-manresa.jpg",
+    "url": "img/clubs/club-tir-amb-arc-manresa.jpg"
+  },
+  "club-tir-amb-arc-palauarc": {
+    "nom": "CLUB TIR AMB ARC PALAUARC",
+    "logo": "img/clubs/club-tir-amb-arc-palauarc.jpg",
+    "url": "img/clubs/club-tir-amb-arc-palauarc.jpg"
+  },
+  "club-tir-amb-arc-pardinyes": {
+    "nom": "CLUB TIR AMB ARC PARDINYES",
+    "logo": "img/clubs/club-tir-amb-arc-pardinyes.png",
+    "url": "img/clubs/club-tir-amb-arc-pardinyes.png"
+  },
+  "club-tir-amb-arc-sant-andreu-de-la-barca": {
+    "nom": "CLUB TIR AMB ARC SANT ANDREU DE LA BARCA",
+    "logo": "img/clubs/club-tir-amb-arc-sant-andreu-de-la-barca.jpg",
+    "url": "img/clubs/club-tir-amb-arc-sant-andreu-de-la-barca.jpg"
+  },
+  "club-tir-arc-caldes-de-montbui": {
+    "nom": "CLUB TIR ARC CALDES DE MONTBUI",
+    "logo": "img/clubs/club-tir-arc-caldes-de-montbui.jpg",
+    "url": "img/clubs/club-tir-arc-caldes-de-montbui.jpg"
+  },
+  "club-tiro-con-arco-rubi": {
+    "nom": "CLUB TIRO CON ARCO RUBÍ",
+    "logo": "img/clubs/club-tiro-con-arco-rubi.jpg",
+    "url": "img/clubs/club-tiro-con-arco-rubi.jpg"
+  },
+  "club-draco-sagittariis": {
+    "nom": "DRACO SAGITTARIIS",
+    "logo": "img/clubs/club-draco-sagittariis.jpg",
+    "url": "img/clubs/club-draco-sagittariis.jpg"
+  },
+  "fundacio-pere-tarres": {
+    "nom": "FUNDACIÓ PERE TARRÉS",
+    "logo": "img/clubs/fundacio-pere-tarres.png",
+    "url": "img/clubs/fundacio-pere-tarres.png"
+  },
+  "grup-arquers-tarragona": {
+    "nom": "GRUP ARQUERS TARRAGONA",
+    "logo": "img/clubs/grup-arquers-tarragona.jpg",
+    "url": "img/clubs/grup-arquers-tarragona.jpg"
+  },
+  "poligaris-arc-club": {
+    "nom": "POLIGARIS ARC CLUB",
+    "logo": "img/clubs/poligaris-arc-club.jpg",
+    "url": "img/clubs/poligaris-arc-club.jpg"
+  },
+  "tir-amb-arc-encamp": {
+    "nom": "TIR AMB ARC ENCAMP",
+    "logo": "img/clubs/tir-amb-arc-encamp.jpg",
+    "url": "img/clubs/tir-amb-arc-encamp.jpg"
+  },
+  "tir-arc-olesa": {
+    "nom": "TIR ARC OLESA",
+    "logo": "img/clubs/tir-arc-olesa.png",
+    "url": "img/clubs/tir-arc-olesa.png"
+  },
+  "tir-esportiu-mataro": {
+    "nom": "TIR ESPORTIU MATARÓ",
+    "logo": "img/clubs/tir-esportiu-mataro.jpg",
+    "url": "img/clubs/tir-esportiu-mataro.jpg"
+  },
+  "zen-kyudo-club-barcelona": {
+    "nom": "ZEN KYUDO CLUB BARCELONA",
+    "logo": "img/clubs/zen-kyudo-club-barcelona.jpg",
+    "url": "img/clubs/zen-kyudo-club-barcelona.jpg"
+  }
+}

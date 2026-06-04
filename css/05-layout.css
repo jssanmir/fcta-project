@@ -1,0 +1,44 @@
+/* SECTION TRANSITIONS
+   ─────────────────────────────────────────────────────────
+   Each section sits in the flow; JS adds/removes these classes.
+   .s-enter  → new section: starts invisible, animates in
+   .s-exit   → old section: animates out, then display:none
+   ──────────────────────────────────────────────────────── */
+@keyframes sEnter{
+  from { opacity:0; transform:translateY(22px) scale(.985); }
+  to   { opacity:1; transform:translateY(0)    scale(1);    }
+}
+@keyframes sExit{
+  from { opacity:1; transform:translateY(0)     scale(1);    }
+  to   { opacity:0; transform:translateY(-18px) scale(.99);  }
+}
+.s-enter { animation: sEnter .38s cubic-bezier(.22,1,.36,1) both; }
+.s-exit  { animation: sExit  .22s cubic-bezier(.55,0,1,.45) both; pointer-events:none; }
+
+/* QUICK */
+.quick{background:var(--navy)}
+.quick-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+@media(max-width:900px){.quick-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.quick-grid{grid-template-columns:1fr 1fr}}
+.qc{background:transparent;border:none;border-right:1px solid rgba(255,255,255,.08);padding:1.6rem 1.1rem;text-align:left;cursor:pointer;transition:background .25s;position:relative;font-family:'Barlow',sans-serif;width:100%}
+.qc:last-child{border-right:none}
+.qc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--tr)}
+.qc:hover{background:rgba(255,255,255,.06)}
+.qc:hover::after{transform:scaleX(1)}
+.qc-icon{font-size:1.5rem;margin-bottom:.65rem;display:block}
+.qc-title{font-family:'Barlow Condensed',sans-serif;font-size:.97rem;font-weight:800;color:white;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.2rem}
+.qc-sub{font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.4}
+.qc--highlight .qc-title{color:var(--gold)}
+
+/* GENERIC SECTION */
+.section{padding:4rem 0}
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.sec-label{font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy-light);margin-bottom:.6rem}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--navy-dark);line-height:1.05;text-transform:uppercase;margin-bottom:.5rem}
+.sec-title em{color:var(--red-cat);font-style:normal}
+.sec-intro{font-size:.97rem;color:var(--gray);max-width:540px;line-height:1.7;margin-bottom:2.5rem}
+
+/* FILTER BUTTONS */
+.filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.75rem}
+.fb{background:none;border:1.5px solid #c5cee0;color:var(--gray);font-family:'Barlow',sans-serif;font-size:.82rem;font-weight:600;padding:.35rem .9rem;border-radius:20px;cursor:pointer;transition:all .2s}
+.fb:hover,.fb.act{background:var(--navy);border-color:var(--navy);color:white}

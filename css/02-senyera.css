@@ -1,0 +1,7 @@
+/* SENYERA HORITZONTAL (9 franges: 5 grogues + 4 vermelles) */
+.senyera-h{width:100%;display:flex;flex-direction:column;flex-shrink:0}
+.senyera-h.thick{height:27px} /* 9 x 3px */
+.senyera-h.thin{height:9px}   /* 9 x 1px */
+.senyera-h .sh{flex:1;width:100%}
+.senyera-h .sh.g{background:#F5B800}
+.senyera-h .sh.r{background:#CC0001}

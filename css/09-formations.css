@@ -1,0 +1,12 @@
+/* FORMATION */
+.form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem}
+.form-card{background:white;border-radius:8px;padding:1.5rem;transition:all .3s;cursor:pointer;border-left:4px solid var(--navy)}
+.form-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(27,58,107,.12)}
+.form-card-icon{font-size:2rem;margin-bottom:.65rem}
+.form-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.08rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.35rem}
+.form-card p{font-size:.84rem;color:var(--gray);line-height:1.6;margin-bottom:.7rem}
+.form-meta{display:flex;gap:.7rem;font-size:.75rem;color:var(--gray);margin-bottom:.9rem;flex-wrap:wrap}
+.form-meta strong{color:var(--dark)}
+.form-links{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.form-link{font-size:.78rem;color:var(--navy-light);text-decoration:none;transition:color .2s}
+.form-link:hover{color:var(--navy-dark);text-decoration:underline}

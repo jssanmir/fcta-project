@@ -1,0 +1,72 @@
+/* CALENDARI ESPORTIU */
+.cal-hero{background:linear-gradient(135deg,var(--navy-dark) 0%,#1a3a6b 60%,#2a4f8a 100%);padding:3rem 0 2.5rem;color:white}
+.cal-hero .lic-hero-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:20px;margin-bottom:1rem}
+.cal-hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;line-height:1;margin-bottom:.75rem}
+.cal-hero h1 em{color:var(--gold);font-style:normal}
+.cal-hero p{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:600px;line-height:1.6;margin-bottom:1.5rem}
+
+.cal-hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1.5rem}
+.cal-btn-pdf{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:.5px;text-transform:uppercase;padding:.6rem 1.25rem;border-radius:6px;text-decoration:none;transition:background .2s}
+.cal-btn-pdf:hover{background:var(--gold-dark)}
+.cal-btn-web{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.5px;text-transform:uppercase;padding:.6rem 1.25rem;border-radius:6px;border:1.5px solid rgba(255,255,255,.3);text-decoration:none;transition:all .2s}
+.cal-btn-web:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.6)}
+
+.cal-export-bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding:.9rem 1.25rem;background:rgba(255,255,255,.07);border-radius:8px;border:1px solid rgba(255,255,255,.12)}
+.cal-export-label{font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-right:.25rem}
+.cal-exp-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.5px;text-transform:uppercase;padding:.38rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:all .2s;text-decoration:none}
+.cal-exp-ics{background:rgba(255,255,255,.15);color:white}
+.cal-exp-ics:hover{background:rgba(255,255,255,.28)}
+.cal-exp-gcal{background:#4285F4;color:white}
+.cal-exp-gcal:hover{background:#3367d6}
+.cal-exp-apple{background:rgba(255,255,255,.15);color:white}
+.cal-exp-apple:hover{background:rgba(255,255,255,.28)}
+.cal-exp-outlook{background:#0078d4;color:white}
+.cal-exp-outlook:hover{background:#006bb3}
+
+/* List view */
+.cal-list-wrap{max-width:860px;margin:0 auto}
+
+.cal-month-block{margin-bottom:2.5rem}
+.cal-month-block.cal-month-past .cal-month-header{opacity:.55}
+.cal-month-header{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid var(--lightgray)}
+.cal-month-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;color:var(--navy-dark)}
+.cal-month-year{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1rem;color:var(--gray)}
+
+.cal-events-list{display:flex;flex-direction:column;gap:.6rem}
+
+.cal-event{display:flex;align-items:center;gap:0;background:white;border-radius:var(--r-md);box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow .2s,transform .2s}
+.cal-event:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.cal-event.cal-past{opacity:.55}
+.cal-event.cal-past:hover{opacity:.75}
+
+.cal-event-bar{width:5px;align-self:stretch;flex-shrink:0}
+.cal-event-bar.al{background:var(--navy-light)}
+.cal-event-bar.trd{background:#7c3aed}
+.cal-event-bar.camp{background:#059669}
+.cal-event-bar.sala{background:#db2777}
+.cal-event-bar.kyudo{background:#b45309}
+.cal-event-bar.fed{background:var(--navy-dark)}
+
+.cal-event-day{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:52px;padding:.65rem .5rem;background:var(--offwhite);flex-shrink:0;border-right:1px solid var(--lightgray)}
+.cal-event-day{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.55rem;line-height:1;color:var(--navy-dark)}
+.cal-event-day span{font-size:.65rem;font-weight:700;text-transform:uppercase;color:var(--gray);letter-spacing:.5px;margin-top:.1rem}
+
+.cal-event-body{flex:1;padding:.65rem .9rem;min-width:0}
+.cal-event-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;color:var(--navy-dark);line-height:1.2;margin-bottom:.3rem}
+.cal-event-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+.cal-loc{font-size:.78rem;color:var(--gray)}
+
+.cal-event-acts{padding:.5rem .75rem;flex-shrink:0}
+.cal-gcal-btn{display:inline-flex;align-items:center;gap:.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.5px;text-transform:uppercase;padding:.32rem .7rem;border-radius:4px;background:#4285F4;color:white;text-decoration:none;white-space:nowrap;transition:background .2s}
+.cal-gcal-btn:hover{background:#3367d6}
+
+@media(max-width:700px){
+  .cal-hero-actions{flex-direction:column;align-items:flex-start}
+  .cal-export-bar{flex-direction:column;align-items:flex-start}
+  .cal-event-acts{display:none}
+  .cal-event-day{min-width:44px;font-size:1.3rem}
+}
+@media(max-width:480px){
+  .cal-event-body{padding:.5rem .65rem}
+  .cal-event-title{font-size:.9rem}
+}

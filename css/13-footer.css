@@ -1,0 +1,17 @@
+/* FOOTER */
+footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:3.5rem 0 1.5rem}
+.foot-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+@media(max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.foot-grid{grid-template-columns:1fr}}
+.foot-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:900;color:white;margin-bottom:.75rem}
+.foot-logo span{color:var(--gold)}
+.foot-brand p{font-size:.84rem;line-height:1.7;margin-bottom:.4rem;color:rgba(255,255,255,.6)}
+.foot-h{font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:white;margin-bottom:.85rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.foot-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.84rem;transition:color .2s}
+.foot-links a:hover{color:var(--gold)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.foot-bottom p{font-size:.78rem;color:rgba(255,255,255,.4)}
+.soc-icons{display:flex;gap:.55rem}
+.soc-icon{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.82rem;text-decoration:none;transition:all .2s;font-weight:700}
+.soc-icon:hover{background:var(--gold);color:var(--navy-dark)}

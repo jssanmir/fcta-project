@@ -1,0 +1,14 @@
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:var(--navy-dark);border-bottom:3px solid var(--gold)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:1.5rem;height:64px}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;flex-shrink:0}
+.nav-logo img{width:48px;height:48px;border-radius:50%;background:white;object-fit:contain;padding:2px}
+.nav-logo-text{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;color:white;line-height:1.15}
+.nav-logo-text span{display:block;font-size:.62rem;font-weight:400;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;margin-left:auto}
+.nav-links a,.nav-links button{background:none;border:none;color:rgba(255,255,255,.8);font-family:'Barlow',sans-serif;font-size:.875rem;font-weight:500;padding:.45rem .85rem;cursor:pointer;text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links button:hover,.nav-links a.act{color:var(--gold)}
+.nav-admin{background:var(--gold)!important;color:var(--navy-dark)!important;font-weight:700!important;border-radius:5px;padding:.4rem .9rem!important;margin-left:.4rem}
+.nav-admin:hover{background:white!important;color:var(--navy-dark)!important}
+.hamburger{display:none;background:none;border:none;color:white;font-size:1.6rem;cursor:pointer;margin-left:auto;line-height:1}
+@media(max-width:780px){.nav-links{display:none}.hamburger{display:block}}

@@ -1,0 +1,100 @@
+/* ── Secció genèrica de disciplina ─────────────────────── */
+:root { --disc-color: #1a6fb5; }
+
+/* Hero */
+.disc-hero{background:var(--navy-dark);position:relative;overflow:hidden;padding:4rem 0 3rem;border-bottom:4px solid var(--disc-color)}
+.disc-hero-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.disc-hero-icon{font-size:3.5rem;line-height:1;flex-shrink:0}
+.disc-hero-text h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:white;text-transform:uppercase;line-height:1;margin-bottom:.3rem}
+.disc-hero-sub{font-size:.9rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px}
+.disc-hero-back{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.45);background:none;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.45rem .9rem;cursor:pointer;transition:all .2s}
+.disc-hero-back:hover{color:white;border-color:rgba(255,255,255,.4)}
+
+/* Tabs */
+.disc-tabs-bar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:100}
+.disc-tabs-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;gap:0;overflow-x:auto}
+.disc-tab{background:none;border:none;border-bottom:3px solid transparent;font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.45);padding:.85rem 1.25rem;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-1px}
+.disc-tab:hover{color:rgba(255,255,255,.8)}
+.disc-tab.act{color:white;border-bottom-color:var(--disc-color)}
+
+/* Contingut */
+.disc-body{max-width:1200px;margin:0 auto;padding:2.5rem 2rem}
+
+/* Info grid */
+.disc-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.disc-card{background:white;border-radius:10px;padding:1.5rem;box-shadow:0 2px 8px rgba(27,58,107,.07)}
+.disc-card--wide{grid-column:1/-1}
+.disc-card-icon{font-size:2.2rem;margin-bottom:.75rem}
+.disc-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--navy-dark);text-transform:uppercase;margin-bottom:.75rem}
+.disc-dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem}
+.disc-dl dt{font-weight:700;font-size:.82rem;color:var(--navy-dark);white-space:nowrap}
+.disc-dl dd{font-size:.82rem;color:var(--gray);margin:0}
+.disc-tags{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.disc-tags li{background:var(--offwhite);border:1px solid var(--lightgray);border-radius:20px;font-size:.78rem;font-weight:600;color:var(--navy-dark);padding:.2rem .7rem}
+
+/* Lliga */
+.disc-lliga-block{background:white;border-radius:10px;box-shadow:0 2px 8px rgba(27,58,107,.07);margin-bottom:1.5rem;overflow:hidden}
+.disc-lliga-head{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--lightgray);flex-wrap:wrap}
+.disc-lliga-badge{background:var(--disc-color);color:white;font-family:'Barlow Condensed',sans-serif;font-size:.78rem;font-weight:900;padding:.2rem .65rem;border-radius:4px;flex-shrink:0}
+.disc-lliga-head strong{flex:1;font-size:.95rem;color:var(--navy-dark)}
+.disc-pendent{font-size:.78rem;color:var(--gray);font-style:italic}
+.disc-tirades-grid{display:flex;flex-direction:column;gap:0}
+.disc-tirada{display:flex;align-items:flex-start;gap:1rem;padding:.85rem 1.25rem;border-bottom:1px solid var(--lightgray)}
+.disc-tirada:last-child{border-bottom:none}
+.disc-tirada-num{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;color:var(--navy-dark);width:32px;flex-shrink:0;text-align:center}
+.disc-tirada-info{flex:1}
+.disc-tirada-lloc{font-size:.88rem;font-weight:600;color:var(--navy-dark)}
+.disc-tirada-data{font-size:.78rem;color:var(--gray);margin-top:.15rem}
+.disc-tirada-badge{font-size:.75rem;font-weight:700;flex-shrink:0}
+.disc-tirada--open{background:rgba(76,175,80,.04)}
+.disc-tirada--soon{background:rgba(255,193,7,.04)}
+.disc-tirada--closed{opacity:.75}
+.disc-tirada-circ{font-size:.75rem;color:var(--gray);margin-top:.15rem}
+.disc-tirada-acts{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+
+/* Campionats */
+.disc-section-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;text-transform:uppercase;color:var(--navy-dark);margin-bottom:1rem}
+.disc-camp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:1.5rem}
+.disc-camp-card{background:white;border-radius:8px;padding:1.1rem 1.25rem;box-shadow:0 2px 6px rgba(27,58,107,.07)}
+.disc-camp-nom{font-weight:700;font-size:.9rem;color:var(--navy-dark);margin-bottom:.4rem}
+.disc-camp-meta{font-size:.78rem;color:var(--gray);margin-bottom:.6rem}
+.disc-ext-link{display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;background:var(--offwhite);border-radius:8px;font-size:.85rem;color:var(--gray)}
+.disc-ext-link a{color:var(--navy-light);font-weight:700;text-decoration:none}
+.disc-ext-link a:hover{color:var(--gold)}
+
+/* Rècords */
+.disc-records-table{width:100%;border-collapse:collapse;background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(27,58,107,.07)}
+.disc-records-table th{background:var(--navy-dark);color:white;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:800;text-transform:uppercase;padding:.7rem 1rem;text-align:left}
+.disc-records-table td{padding:.7rem 1rem;font-size:.88rem;border-bottom:1px solid var(--lightgray)}
+.disc-records-table tr:last-child td{border-bottom:none}
+.disc-records-table tr:hover td{background:var(--offwhite)}
+.disc-records-note{font-size:.78rem;color:var(--gray);margin-top:1rem;padding:.75rem 1rem;background:var(--offwhite);border-radius:6px}
+
+/* Documents */
+.disc-docs-list{display:flex;flex-direction:column;gap:.65rem}
+.disc-docs-title{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:800;text-transform:uppercase;color:var(--gray);letter-spacing:1px;margin-top:1.5rem;margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:2px solid var(--lightgray)}
+.disc-doc-item{display:flex;align-items:center;gap:1rem;padding:.9rem 1.25rem;background:white;border-radius:8px;box-shadow:0 1px 4px rgba(27,58,107,.07);text-decoration:none;border-left:4px solid var(--disc-color);transition:all .2s}
+.disc-doc-item:hover{transform:translateX(4px);box-shadow:0 4px 14px rgba(27,58,107,.12)}
+.disc-doc-icon{font-size:1.4rem;flex-shrink:0}
+.disc-doc-nom{flex:1;font-size:.88rem;font-weight:600;color:var(--navy-dark)}
+.disc-doc-arrow{color:var(--navy-light);opacity:.5}
+.disc-doc-item:hover .disc-doc-arrow{opacity:1}
+
+/* Nota reglaments */
+.disc-reglament-nota{grid-column:1/-1;background:#fffbe6;border:1px solid #f0d060;border-left:4px solid var(--gold);border-radius:8px;padding:.9rem 1.25rem;font-size:.84rem;color:#5a4500;line-height:1.6;margin-top:.5rem}
+.disc-reglament-nota strong{color:#3a2e00}
+
+/* Utilitats */
+.disc-btn-sm{display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:700;color:var(--disc-color);background:none;border:1px solid var(--disc-color);border-radius:5px;padding:.3rem .7rem;cursor:pointer;text-decoration:none;transition:all .2s;font-family:inherit;white-space:nowrap}
+.disc-btn-sm:hover{background:var(--disc-color);color:white}
+.disc-empty{padding:2rem;text-align:center;color:var(--gray);font-size:.9rem;background:var(--offwhite);border-radius:8px}
+
+/* Mòbil */
+@media(max-width:600px){
+  .disc-hero-inner{flex-wrap:wrap}
+  .disc-hero-back{width:100%;order:-1}
+  .disc-info-grid{grid-template-columns:1fr}
+  .disc-card--wide{grid-column:1}
+  .disc-camp-grid{grid-template-columns:1fr}
+  .disc-lliga-head{flex-direction:column;align-items:flex-start}
+}

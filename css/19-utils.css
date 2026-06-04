@@ -1,0 +1,2 @@
+/* Collapse adjacent senyera separators */
+.senyera-h + .senyera-h { display: none; }

@@ -1,0 +1,21 @@
+{
+  "projectName": "FCTA – Portal Web",
+  "description": "Portal web estàtic (SPA) de la Federació Catalana de Tir amb Arc",
+
+  "permissions": {
+    "allow": [
+      "Bash(python3*)",
+      "Bash(cp *)",
+      "Bash(ls *)",
+      "Bash(npx serve*)",
+      "Read(*)",
+      "Write(C:/Projects/fcta-project/*)",
+      "Edit(C:/Projects/fcta-project/*)"
+    ]
+  },
+
+  "env": {
+    "PROJECT_ROOT": "C:/Projects/fcta-project",
+    "DEV_PORT": "5173"
+  }
+}

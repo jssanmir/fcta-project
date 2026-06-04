@@ -1,0 +1,2849 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FCTA – Federació Catalana de Tir amb Arc</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- CSS Modules -->
+  <link rel="stylesheet" href="css/01-variables.css">
+  <link rel="stylesheet" href="css/02-senyera.css">
+  <link rel="stylesheet" href="css/03-nav.css">
+  <link rel="stylesheet" href="css/04-hero.css">
+  <link rel="stylesheet" href="css/05-layout.css">
+  <link rel="stylesheet" href="css/06-circulars.css">
+  <link rel="stylesheet" href="css/07-competitions.css">
+  <link rel="stylesheet" href="css/08-news.css">
+  <link rel="stylesheet" href="css/09-formations.css">
+  <link rel="stylesheet" href="css/10-social.css">
+  <link rel="stylesheet" href="css/11-admin.css">
+  <link rel="stylesheet" href="css/12-modal.css">
+  <link rel="stylesheet" href="css/13-footer.css">
+  <link rel="stylesheet" href="css/14-toast.css">
+  <link rel="stylesheet" href="css/15-pdf-viewer.css">
+  <link rel="stylesheet" href="css/16-news-modal.css">
+  <link rel="stylesheet" href="css/17-tirades.css">
+  <link rel="stylesheet" href="css/18-llicencies.css">
+  <link rel="stylesheet" href="css/19-utils.css">
+  <link rel="stylesheet" href="css/20-login.css">
+  <link rel="stylesheet" href="css/21-admin-panel.css">
+  <link rel="stylesheet" href="css/22-documentacio.css">
+  <link rel="stylesheet" href="css/23-inici.css">
+  <link rel="stylesheet" href="css/24-disciplines.css">
+  <link rel="stylesheet" href="css/25-transparencia.css">
+  <link rel="stylesheet" href="css/26-assegurances.css">
+  <link rel="stylesheet" href="css/27-junta.css">
+  <link rel="stylesheet" href="css/28-arcadaptat.css">
+  <link rel="stylesheet" href="css/29-comitejutges.css">
+  <link rel="stylesheet" href="css/30-pat.css">
+  <link rel="stylesheet" href="css/31-calendari.css">
+</head>
+<body>
+
+</head>
+<body>
+<h2 class="sr-only">Federació Catalana de Tir amb Arc – Portal oficial</h2>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" onclick="setS('home');return false">
+      <img src="data:image/png;base64,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" alt="Logo FCTA" onerror="this.style.display='none'">
+      <div class="nav-logo-text">Federació Catalana<span>de Tir amb Arc</span></div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#" onclick="setS('inici');return false" id="nl-inici">🏹 Comença</a>
+      <a href="#" onclick="setS('circulars');return false" id="nl-circulars">Circulars</a>
+      <a href="#" onclick="setS('competitions');return false" id="nl-competitions">Competicions</a>
+      <a href="#" onclick="setS('news');return false" id="nl-news">Notícies</a>
+      <a href="#" onclick="setS('formation');return false" id="nl-formation">Formació</a>
+      <a href="#" onclick="setS('calendari');return false" id="nl-calendari">Calendari</a>
+      <button class="nav-admin" onclick="openAdm()">⚙ Admin</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="sHome">
+  <div class="hero-bg-img" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">🏹 Des de 1965 · Catalunya</div>
+      <h1>Federació<em>Catalana de<br>Tir amb Arc</em></h1>
+      <p class="hero-sub">L'organisme rector del tir amb arc a Catalunya. Promovent l'esport, la competició i la formació de tots els arquers i arqueres del país.</p>
+      <div class="hero-ctas">
+        <button class="btn-gold" onclick="setS('circulars')">🏹 Circulars i Competicions</button>
+        <button class="btn-w" onclick="setS('inici')">🏹 Vols començar?</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-num">4.200+</div><div class="hs-label">Llicències actives</div></div>
+        <div><div class="hs-num">120+</div><div class="hs-label">Clubs federats</div></div>
+        <div><div class="hs-num">60+</div><div class="hs-label">Anys d'història</div></div>
+        <div><div class="hs-num">6</div><div class="hs-label">Disciplines</div></div>
+      </div>
+    </div>
+    <div class="hero-disciplines">
+      <div class="hero-disc-label">Disciplines</div>
+      <div class="hero-disc-grid">
+        <button class="hero-disc-card" onclick="setDisciplina('al')">
+          <span class="hero-disc-icon">🎯</span>
+          <span class="hero-disc-name">Aire Lliure<br>i Sala</span>
+        </button>
+        <button class="hero-disc-card" onclick="setDisciplina('3d')">
+          <span class="hero-disc-icon">🌲</span>
+          <span class="hero-disc-name">3D</span>
+        </button>
+        <button class="hero-disc-card" onclick="setDisciplina('camp')">
+          <span class="hero-disc-icon">🏔️</span>
+          <span class="hero-disc-name">Tir de<br>Camp</span>
+        </button>
+        <button class="hero-disc-card" onclick="setDisciplina('kyudo')">
+          <span class="hero-disc-icon">🎌</span>
+          <span class="hero-disc-name">Kyudo</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+  <!-- QUICK ACCESS -->
+  <div class="quick">
+    <div class="quick-grid">
+      <button class="qc qc--highlight" onclick="setS('inici')"><span class="qc-icon">🏹</span><div class="qc-title">Comença ara</div><div class="qc-sub">Clubs i primers passos</div></button>
+      <button class="qc" onclick="setS('circulars')"><span class="qc-icon">📄</span><div class="qc-title">Circulars</div><div class="qc-sub">Documents oficials federals</div></button>
+      <button class="qc" onclick="setS('competitions')"><span class="qc-icon">🏆</span><div class="qc-title">Inscripcions</div><div class="qc-sub">Competicions i campionats</div></button>
+      <button class="qc" onclick="setS('news')"><span class="qc-icon">📰</span><div class="qc-title">Notícies</div><div class="qc-sub">Resultats i novetats</div></button>
+      <button class="qc" onclick="setS('formation')"><span class="qc-icon">🎓</span><div class="qc-title">Formació</div><div class="qc-sub">Cursos i seminaris</div></button>
+    </div>
+  </div>
+
+  <!-- CANALS DE COMUNICACIÓ -->
+  <div style="background:var(--offwhite);border-top:1px solid var(--lightgray);padding:var(--sp-4)">
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;justify-content:center">
+      <a href="https://whatsapp.com/channel/0029Vb6QpS472WTwq3g1IX1Z" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:white;border-radius:var(--r-lg);padding:.55rem 1.1rem;font-weight:700;font-size:.9rem;text-decoration:none;box-shadow:var(--shadow-sm)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Canal oficial de WhatsApp
+      </a>
+      <span style="display:inline-flex;align-items:center;gap:.5rem;background:white;border:1.5px solid var(--lightgray);color:var(--navy);border-radius:var(--r-lg);padding:.55rem 1.1rem;font-size:.88rem">
+        📧 <span><strong>Aviat:</strong> sistema de notificacions per correu electrònic</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+</section>
+
+<!-- CIRCULARS -->
+<div id="sCirculars" style="display:none">
+<section class="section" style="background:white">
+  <div class="container">
+    <div class="sec-label">Documents Oficials</div>
+    <h2 class="sec-title">Circulars <em>Federals</em></h2>
+    <p class="sec-intro">Accedeix a totes les circulars de la FCTA, filtrades per disciplina. Descarrega-les directament en PDF.</p>
+    <div class="filters" id="circFilters">
+      <button class="fb act" onclick="filtCirc('all',this)">Totes</button>
+      <button class="fb" onclick="filtCirc('fed',this)">Federació</button>
+      <button class="fb" onclick="filtCirc('al',this)">Aire Lliure / Sala</button>
+      <button class="fb" onclick="filtCirc('camp',this)">Camp</button>
+      <button class="fb" onclick="filtCirc('3d',this)">3D</button>
+      <button class="fb" onclick="filtCirc('jut',this)">Jutges</button>
+      <button class="fb" onclick="filtCirc('form',this)">Formació</button>
+      <button class="fb" onclick="filtCirc('kyudo',this)">Kyudo</button>
+    </div>
+    <div style="font-size:.76rem;color:var(--gray);margin-bottom:.85rem;display:flex;gap:1.25rem;flex-wrap:wrap;align-items:center">
+      <span style="display:flex;align-items:center;gap:.4rem"><span style="background:var(--navy);color:white;border-radius:3px;padding:.15rem .45rem;font-size:.8rem">&#128065;</span> Visor integrat</span>
+      <span style="display:flex;align-items:center;gap:.4rem"><span style="background:var(--navy);color:white;border-radius:3px;padding:.15rem .45rem;font-size:.8rem">&#11015;</span> Descarrega directa</span>
+      <span style="display:flex;align-items:center;gap:.4rem"><span style="background:var(--gold);color:var(--navy-dark);border-radius:3px;padding:.15rem .45rem;font-size:.8rem">&#8599;</span> Obre document</span>
+    </div>
+    <div class="circ-grid" id="circGrid"></div>
+  </div>
+</section>
+</div>
+
+<!-- COMPETITIONS -->
+<div id="sCompetitions" style="display:none">
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+    <div class="sec-label">Calendari Esportiu</div>
+    <h2 class="sec-title">Competicions i <em>Campionats</em></h2>
+    <p class="sec-intro">Totes les competicions de la temporada 2025/2026. Consulta la informació i inscriu-te directament.</p>
+    <div class="filters" id="compFilters">
+      <button class="fb act" onclick="filtComp('all',this)">Totes</button>
+      <button class="fb" onclick="filtComp('al',this)">Aire Lliure</button>
+      <button class="fb" onclick="filtComp('sala',this)">Sala</button>
+      <button class="fb" onclick="filtComp('camp',this)">Camp</button>
+      <button class="fb" onclick="filtComp('trd',this)">3D</button>
+    </div>
+    <div class="comp-grid" id="compGrid"></div>
+  </div>
+</section>
+</div>
+
+<!-- NEWS -->
+<div id="sNews" style="display:none">
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+    <div class="sec-label">Actualitat</div>
+    <h2 class="sec-title">Darreres <em>Notícies</em></h2>
+    <p class="sec-intro">Segueix tota l'actualitat del tir amb arc català: resultats, campionats i novetats federals.</p>
+    <div class="news-grid" id="newsGrid"></div>
+    <div id="newsPagination" style="text-align:center;margin-top:2rem;display:flex;align-items:center;justify-content:center;gap:1rem">
+      <button id="newsBtnPrev" onclick="newsPage(-1)" class="news-page-btn">← Anteriors</button>
+      <span id="newsPageInfo" style="font-size:.85rem;color:var(--gray)"></span>
+      <button id="newsBtnNext" onclick="newsPage(1)"  class="news-page-btn">Següents →</button>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- FORMATION -->
+<div id="sFormation" style="display:none">
+<section class="section" style="background:var(--lightgray)">
+  <div class="container">
+    <div class="sec-label">Aprenentatge</div>
+    <h2 class="sec-title">Formació <em>Contínua</em></h2>
+    <p class="sec-intro">Formació continuada de la FCTA, un projecte evolutiu que pretén donar més coneixements i facilitats a l'hora de competir en tir amb arc.</p>
+    <div class="form-grid" id="formGrid"></div>
+  </div>
+</section>
+</div>
+
+<!-- SOCIAL -->
+<div id="sSocial" style="display:none">
+<section class="social-section section">
+  <div class="container">
+    <div class="sec-label" style="color:var(--gold)">Espai Clubs</div>
+    <h2 class="sec-title" style="color:white">Tirades <em style="color:var(--gold)">Socials</em></h2>
+    <p class="sec-intro" style="color:rgba(255,255,255,.65)">Tirades amistoses organitzades pels clubs fora del calendari oficial de la FCTA. Qualsevol club federat pot publicar la seva tirada. Les tirades han de ser validades per un administrador abans de ser visibles.</p>
+
+    <div class="stabs">
+      <button class="stab act" onclick="setSTab('tauler',this)">🎯 Tauler de Tirades</button>
+      <button class="stab" onclick="setSTab('nova',this)">➕ Publicar Tirada</button>
+    </div>
+
+    <!-- TAULER -->
+    <div id="sSocialTauler">
+      <div class="social-filters-row">
+        <div class="sf-inline-filters" id="socialTypeFilters">
+          <button class="fb act" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)" onclick="filtSocial('all',this)">Totes</button>
+          <button class="fb" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)" onclick="filtSocial('al',this)">Aire Lliure</button>
+          <button class="fb" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)" onclick="filtSocial('camp',this)">Camp</button>
+          <button class="fb" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)" onclick="filtSocial('3d',this)">3D</button>
+          <button class="fb" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)" onclick="filtSocial('sala',this)">Sala</button>
+          <button class="fb" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)" onclick="filtSocial('mixt',this)">Mixt / Altres</button>
+        </div>
+      </div>
+      <div class="tirades-grid" id="tiradesGrid"></div>
+    </div>
+
+    <!-- NOVA TIRADA -->
+    <div id="sSocialNova" style="display:none">
+      <div class="social-form">
+        <div class="sf-title">📋 Publicar Nova Tirada Social</div>
+        <p style="color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:1.5rem;line-height:1.6">Omple el formulari amb la informació de la tirada amistosa del vostre club. Un administrador la revisarà i la publicarà en un màxim de 48h.</p>
+
+        <div class="sf-row">
+          <div class="sf-g"><label>Nom de la tirada *</label><input type="text" id="nt_nom" placeholder="Ex: 1ª Tirada Social Club Arc Sabadell"></div>
+          <div class="sf-g"><label>Club organitzador *</label><select id="nt_club"><option value="">-- Selecciona club --</option></select></div>
+        </div>
+        <div class="sf-row">
+          <div class="sf-g"><label>Tipus de tirada *</label><select id="nt_tipus">
+            <option value="">-- Selecciona --</option>
+            <option value="al">Aire Lliure</option>
+            <option value="camp">Tir de Camp</option>
+            <option value="3d">3D</option>
+            <option value="sala">Sala</option>
+            <option value="mixt">Mixt / Altres</option>
+          </select></div>
+          <div class="sf-g"><label>Data de la tirada *</label><input type="date" id="nt_data"></div>
+        </div>
+        <div class="sf-row">
+          <div class="sf-g"><label>Hora d'inici</label><input type="time" id="nt_hora" placeholder="09:00"></div>
+          <div class="sf-g"><label>Lloc / Seu</label><input type="text" id="nt_lloc" placeholder="Ex: Camp de tir del club, carrer..."></div>
+        </div>
+        <div class="sf-row full">
+          <div class="sf-g"><label>Descripció i regles *</label><textarea id="nt_desc" rows="4" placeholder="Descriu la tirada: categories, distàncies, format de competició, regles especials, preu d'inscripció, aforament màxim..."></textarea></div>
+        </div>
+        <div class="sf-row">
+          <div class="sf-g"><label>Correu de contacte *</label><input type="email" id="nt_email" placeholder="contacte@clubarc.cat"></div>
+          <div class="sf-g"><label>Telèfon de contacte</label><input type="tel" id="nt_tel" placeholder="6XX XXX XXX"></div>
+        </div>
+        <div class="sf-row full">
+          <div class="sf-g">
+            <label>Cartell de la tirada (URL de la imatge)</label>
+            <input type="url" id="nt_img" placeholder="https://... (enllaç a la imatge del cartell)">
+            <span style="font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.25rem">Puja la imatge a Drive, Dropbox o similar i enganxa l'enllaç públic. Format recomanat: JPG o PNG.</span>
+          </div>
+        </div>
+        <div class="sf-row full">
+          <div class="sf-g"><label>Inscripcions (URL o info)</label><input type="text" id="nt_inscripcio" placeholder="https://... o 'Presentació el dia de la tirada'"></div>
+        </div>
+
+        <button class="btn-gold" style="margin-top:1rem" onclick="submitTirada()">📤 Enviar per Validació</button>
+        <p class="sf-hint">⚠ La tirada serà visible al tauler un cop validada per un administrador de la FCTA. Temps màxim de revisió: 48h.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- LLICÈNCIES PAGE -->
+<div id="sLlicencies" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="lic-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#127939; Llicències 2025&#8211;2026</div>
+    <h1>Federa't amb<br>la FCTA</h1>
+    <p>Les llicències federatives permeten practicar el tir amb arc dins del marc legal i amb la cobertura necessària. La gestió es fa exclusivament a través dels clubs inscrits a la Federació.</p>
+    <div class="lic-validity">&#9989; Vigència: 1 d'octubre 2025 &#8211; 30 de setembre 2026</div>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- NOVETAT 2025-2026 -->
+    <div class="lic-novelty">
+      <h3>&#9733; Novetat 2025&#8211;2026: Tria la teva llicència</h3>
+      <p style="color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:1.25rem">A partir del <strong style="color:white">18 de setembre</strong> podeu escollir entre dos tipus de llicència:</p>
+      <div class="lic-types">
+        <div class="lic-type-card">
+          <h4>&#127988; Llicència Nacional</h4>
+          <p>Vàlida a tot l'Estat espanyol. Renovació directa des del portal RFETA. Accedeix a competicions estatals i autonòmiques.</p>
+        </div>
+        <div class="lic-type-card">
+          <h4>&#128154; Llicència Autonòmica</h4>
+          <p>Vàlida només a Catalunya. Es tramita com a llicència nova cada temporada. Tarifa més econòmica.</p>
+        </div>
+      </div>
+      <div class="lic-change-note">
+        <strong>Canvi d'autonòmica a nacional durant la temporada:</strong>
+        Majors de 14 anys: <strong>+17 €</strong> &nbsp;|&nbsp; Menors de 14 anys: <strong>+8 €</strong>
+      </div>
+    </div>
+
+    <!-- 3 TIPUS DE LLICÈNCIA -->
+    <div class="lic-grid">
+
+      <!-- ARQUER/A -->
+      <div class="lic-card">
+        <div class="lic-card-head">
+          <span class="lic-card-icon">&#127939;</span>
+          <div>
+            <h3>Llicència d'Arquer/a</h3>
+            <p>Esportistes federats</p>
+          </div>
+        </div>
+        <div class="lic-card-body">
+          <div class="lic-how"><strong>Què et permet?</strong>
+            Tenir, transportar i practicar el tir amb arc en instal·lacions homologades. Participar en competicions oficials autonòmiques i/o estatals (segons tipus). Cobertura obligatòria d'accident esportiu (AE).
+          </div>
+          <ul>
+            <li><strong>Tramitació:</strong> Només a través del teu club federat</li>
+            <li><strong>Portal:</strong> <a href="https://federados.rfeta.es/es/login" target="_blank" style="color:var(--navy-light)">Portal del Federat RFETA</a></li>
+            <li><strong>Carnet:</strong> Virtual, consultable i descarregable</li>
+            <li><strong>Renovació:</strong> Nacional: des del portal &nbsp;|&nbsp; Autonòmica: com a nova</li>
+          </ul>
+          <div class="lic-payment">&#128179; <span><strong>Formes de pagament:</strong> Transferència, targeta o Bizum</span></div>
+          <div style="margin-top:1rem">
+            <a href="https://aquest portal" target="_blank" class="btn-gold" style="font-size:.82rem;padding:.55rem 1.2rem">&#128196; Preus 2025&#8211;2026</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÈCNICS -->
+      <div class="lic-card">
+        <div class="lic-card-head" style="background:var(--navy-mid,#244d8a)">
+          <span class="lic-card-icon">&#127979;</span>
+          <div>
+            <h3>Llicència de Tècnic</h3>
+            <p>Professionals de l'ensenyament</p>
+          </div>
+        </div>
+        <div class="lic-card-body">
+          <div class="lic-how"><strong>Requisits legals (Llei 3/2008)</strong>
+            Estar inscrit al ROPE com a tècnic. Disposar de titulació reconeguda (oficial o federativa anterior a 1999 amb validació CCE). Certificat d'exempció de delictes sexuals.
+          </div>
+          <ul>
+            <li><strong>Tècnic català:</strong> Vàlida per a l'ensenyament dins de Catalunya</li>
+            <li><strong>Tècnic nacional:</strong> Vàlida a tot l'Estat espanyol</li>
+            <li><strong>Atenció:</strong> Les titulacions de monitor/animador federatius no permeten exercici professional</li>
+          </ul>
+          <div class="lic-how" style="margin-top:.75rem"><strong>Documents per a nova alta</strong>
+            Full ROPE, certificat de formació, certificat d'exempció de delictes sexuals i altres documents específics.
+          </div>
+        </div>
+      </div>
+
+      <!-- JUTGES -->
+      <div class="lic-card">
+        <div class="lic-card-head" style="background:#2d5a1b">
+          <span class="lic-card-icon">&#9878;&#65039;</span>
+          <div>
+            <h3>Llicència de Jutge</h3>
+            <p>Àmbit català o estatal</p>
+          </div>
+        </div>
+        <div class="lic-card-body">
+          <div class="lic-how"><strong>Requisits</strong>
+            Vàlida per a jutges titulats. Requereix certificat d'exempció de delictes sexuals. Disponible en àmbit català o estatal.
+          </div>
+          <ul>
+            <li><strong>Jutge autonòmic:</strong> Competicions a Catalunya</li>
+            <li><strong>Jutge nacional:</strong> Competicions a tot l'Estat</li>
+            <li><strong>Cert. delictes sexuals:</strong> Obligatori en tots els casos</li>
+          </ul>
+          <div style="margin-top:1rem">
+            <a href="https://aquest portal" target="_blank" class="btn-gold" style="font-size:.82rem;padding:.55rem 1.2rem;background:var(--navy)">&#128196; Actualització de preus</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="lic-docs">
+      <h3>&#128196; Documents per a noves tramitacions</h3>
+      <div class="lic-docs-grid">
+        <a href="https://aquest portal" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128203;</span>
+          <div class="lic-doc-text"><div class="lic-doc-name">Formulari Llicència Nova</div><div class="lic-doc-desc">Temporada 2025&#8211;2026</div></div>
+        </a>
+        <a href="https://aquest portal" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128203;</span>
+          <div class="lic-doc-text"><div class="lic-doc-name">Formulari Cursetista</div><div class="lic-doc-desc">Per a cursetistes de nova incorporació</div></div>
+        </a>
+        <a href="https://aquest portal" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128203;</span>
+          <div class="lic-doc-text"><div class="lic-doc-name">Formulari Alta de Club</div><div class="lic-doc-desc">FCTA + RFETA</div></div>
+        </a>
+        <a href="https://aquest portal" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128196;</span>
+          <div class="lic-doc-text"><div class="lic-doc-name">Circular Preus 2025&#8211;2026</div><div class="lic-doc-desc">CIRC 2553 &ndash; Totes les tarifes</div></div>
+        </a>
+        <a href="https://aquest portal" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128221;</span>
+          <div class="lic-doc-text"><div class="lic-doc-name">Tinença, ús i transport</div><div class="lic-doc-desc">Nota informativa arc</div></div>
+        </a>
+        <a href="https://aquest portal" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128196;</span>
+          <div class="lic-doc-text"><div class="lic-doc-name">Actualització de Preus</div><div class="lic-doc-desc">Nota informativa tarifes</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CONTACTE / LINKS RÀPIDS -->
+    <div class="lic-contact-grid">
+      <a href="https://federados.rfeta.es/es/login" target="_blank" class="lic-contact-card">
+        <div class="lcc-icon">&#128179;</div>
+        <h4>Portal del Federat</h4>
+        <p>Consulta i descarrega el teu carnet virtual des del portal RFETA</p>
+      </a>
+      <button onclick="setS('circulars')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#128196;</div>
+        <h4>Circulars</h4>
+        <p>Consulta totes les circulars federals de llicències i novetats</p>
+      </button>
+      <button onclick="toast('Contacteu-nos per email a info@fcta.cat o telèfon 93 308 02 65','&#128222;')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#128222;</div>
+        <h4>Tens dubtes? Truca'ns</h4>
+        <p>info@fcta.cat &nbsp;|&nbsp; 93 308 02 65<br>Dl&ndash;Dv: 8:00&ndash;14:00h</p>
+      </button>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- DOCUMENTACIÓ -->
+<div 
+<!-- DOCUMENTACIÓ -->
+<div id="sDocumentacio" style="display:none">
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="doc-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="doc-badge">&#128196; Documents i Actes Oficials</div>
+    <h1>Documentació<br>FCTA</h1>
+    <p>Accés a tota la documentació oficial de la Federació Catalana de Tir amb Arc: actes, eleccions, assemblees, professionals de l'esport i formació.</p>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- TABS -->
+    <div class="doc-tabs" id="docTabs">
+      <button class="doc-tab act" onclick="setDocTab('eleccions',this)"><span class="doc-tab-icon">&#9745;&#65039;</span> Eleccions</button>
+      <button class="doc-tab" onclick="setDocTab('assemblees',this)"><span class="doc-tab-icon">&#128101;</span> Assemblees</button>
+      <button class="doc-tab" onclick="setDocTab('actes',this)"><span class="doc-tab-icon">&#128203;</span> Actes</button>
+      <button class="doc-tab" onclick="setDocTab('professionals',this)"><span class="doc-tab-icon">&#127979;</span> Professionals de l'Esport</button>
+      <button class="doc-tab" onclick="setDocTab('cursos',this)"><span class="doc-tab-icon">&#127891;</span> Cursos Formatius</button>
+    </div>
+
+    <!-- ── ELECCIONS ──────────────────────────────────────── -->
+    <div class="doc-panel act" id="dpEleccions">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#9745;&#65039;</div>
+        <div class="doc-info-body">
+          <h4>Eleccions a la Junta Directiva FCTA</h4>
+          <p>Documentació dels processos electorals de la FCTA. Per a la documentació completa (censos, candidatures, actes d'escrutini) accedeix a la secció Eleccions a aquest portal.</p>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128337;</span> Eleccions FCTA 2020</div>
+        <div class="doc-list">
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Comunicat Eleccions FCTA 2020</div>
+              <div class="doc-item-meta"><span>&#128197; 14 des. 2020</span><span>Candidatures, votació i instruccions</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">&#128279;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Cens, Candidatures i Acta d'Escrutini 2020</div>
+              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; pestaña Eleccions</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128337;</span> Eleccions FCTA 2016 i anteriors</div>
+        <div class="doc-list">
+          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">&#128279;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Documentació Eleccions 2016 i històric</div>
+              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; pestaña Eleccions</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ASSEMBLEES ─────────────────────────────────────── -->
+    <div class="doc-panel" id="dpAssemblees">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#128101;</div>
+        <div class="doc-info-body">
+          <h4>Assemblees Generals FCTA</h4>
+          <p>Convocatories, ordres del dia i actes de les assemblees generals de la FCTA. La documentació completa estarà disponible en aquest portal.</p>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128197;</span> Assemblees Generals (totes les edicions)</div>
+        <div class="doc-list">
+          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">&#128279;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Convocatories i Actes d'Assemblea General</div>
+              <div class="doc-item-meta"><span>En construcció</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">&#128279;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Documentació Assemblees a Documentació FCTA</div>
+              <div class="doc-item-meta"><span>aquest portal &rarr; pestaña Assemblees</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+          <a href="#" class="doc-item" style="border-left-color:var(--navy-light)">
+            <span class="doc-item-icon">&#128220;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Estatuts Vigents de la FCTA</div>
+              <div class="doc-item-meta"><span>Secció Estatuts a aquest portal</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ACTES ──────────────────────────────────────────── -->
+    <div class="doc-panel" id="dpActes">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#128203;</div>
+        <div class="doc-info-body">
+          <h4>Actes Oficials</h4>
+          <p>Actes de la Junta Directiva i d'altres òrgans de la FCTA. Publicades d'acord amb les obligacions de transparència de les federacions esportives catalanes. Disponibles a aquest portal.</p>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128337;</span> Actes Junta Directiva i Assemblees</div>
+        <div class="doc-list">
+          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">&#128279;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Actes de la Junta Directiva (històric)</div>
+              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; Actes</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">&#128279;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Actes Assemblees Generals (històric)</div>
+              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; pestaña Actes</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROFESSIONALS ──────────────────────────────────── -->
+    <div class="doc-panel" id="dpProfessionals">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#127979;</div>
+        <div class="doc-info-body">
+          <h4>Professionals de l'Esport &ndash; ROPE</h4>
+          <p>Informació sobre el Registre Oficial de Professionals de l'Esport (ROPE) de Catalunya. Els tècnics de tir amb arc han d'estar inscrits al ROPE per exercir professionalment.</p>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128221;</span> Documents disponibles directament</div>
+        <div class="doc-list">
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128221;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Nota Informativa: Tinença, ús i Transport de l'Arc</div>
+              <div class="doc-item-meta"><span>&#128197; Oct. 2021</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Programa de Tecnificació Base (PATD)</div>
+              <div class="doc-item-meta"><span>&#128197; 2026</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://esport.gencat.cat/ca/arees_dactuacio/professionals_i_titulacions/rope/" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#127760;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Portal ROPE &ndash; Consell Català de l'Esport</div>
+              <div class="doc-item-meta"><span>Registre Oficial de Professionals de l'Esport</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128196;</span> Resta de documentació de Professionals</div>
+        <div class="doc-list">
+          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">&#128279;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Clàusules Consentiment Competicions, Targetes Esportives i més</div>
+              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; Professionals de l'Esport</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CURSOS FORMATIUS ───────────────────────────────── -->
+    <div class="doc-panel" id="dpCursos">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#127891;</div>
+        <div class="doc-info-body">
+          <h4>Cursos Formatius</h4>
+          <p>Documentació de cursos i accions formatives organitzades per la FCTA. Per a la formació activa de la temporada vigent, consulta la <button onclick="setS('formation')" style="background:none;border:none;padding:0;color:var(--navy-light);font-weight:600;cursor:pointer;font-family:inherit;font-size:inherit">secció de Formació</button>.</p>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#127891;</span> Curs Tècnic Esportiu Nivell 1 &ndash; 2026/2027</div>
+        <div class="doc-list">
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Circular Curs Tècnic Nivell 1 &ndash; CIRC-2504</div><div class="doc-item-meta"><span>&#128197; Gen. 2026</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128203;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Formulari d'Inscripció &ndash; Curs N1 2026</div><div class="doc-item-meta"><span>&#128197; 2026</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128203;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Full Resum de Tràmits &ndash; Curs N1</div><div class="doc-item-meta"><span>&#128197; 2026</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128101;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Llistat Definitiu d'Alumnes Admesos &ndash; Curs N1 2026</div><div class="doc-item-meta"><span>&#128197; Feb. 2026</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128101;</span> Formació per a Clubs</div>
+        <div class="doc-list">
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#9878;&#65039;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Taller Jurídic per a Clubs &ndash; CIRC-2511</div><div class="doc-item-meta"><span>&#128197; Feb. 2025</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128202;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Taller de Comptabilitat per a Clubs &ndash; CIRC-2410</div><div class="doc-item-meta"><span>&#128197; Feb. 2024</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Fiscalitat dels Clubs Esportius &ndash; CIRC-2435</div><div class="doc-item-meta"><span>&#128197; Jul. 2024</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#129309;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Laboral i Voluntariat Esportiu &ndash; CIRC-2447</div><div class="doc-item-meta"><span>&#128197; Oct. 2024</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://aquest portal" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#129504;</span>
+            <div class="doc-item-body"><div class="doc-item-title">Seminari de Psicologia Aplicada &ndash; CIRC-2607</div><div class="doc-item-meta"><span>&#128197; Gen. 2026</span><span>&#128196; Descarrega PDF</span></div></div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- PAT – PROGRAMA AUTONÒMIC DE TECNIFICACIÓ -->
+<div id="sPAT" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="pat-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#127919; Alt Rendiment Juvenil &middot; Arc Recorbat</div>
+    <h1>Programa Autonòmic<br><em>de Tecnificació (PAT)</em></h1>
+    <p>El PAT de la FCTA és l'esllaó entre la formació de base als clubs i els programes de tecnificació d'àmbit nacional. Adreçat a arquers d'<strong>arc recorbat</strong> de les categories <strong>Infantil, Cadet i Júnior</strong> amb projecció competitiva.</p>
+    <a href="docs/PAT_FCTA_v4.pdf" target="_blank" class="btn-gold" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.88rem;padding:.65rem 1.4rem;margin-top:.5rem">&#128196; Descarrega el document PAT v4</a>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- PRESENTACIÓ -->
+    <div class="pat-intro">
+      <div class="pat-intro-text">
+        <div class="sec-label">Federació Catalana de Tir amb Arc</div>
+        <h2 class="sec-title">Sobre el <em>PAT</em></h2>
+        <p>La FCTA posa en marxa el Programa Autonòmic de Tecnificació (PAT) orientat a la <strong>detecció, l'acompanyament i la formació avançada</strong> de joves esportistes amb projecció competitiva.</p>
+        <p>El PAT es concep com un <strong>esllaó intermedi</strong> entre la formació de base que es desenvolupa als clubs i els programes de tecnificació i alt rendiment d'àmbit nacional. L'objectiu principal és orientar l'acció federativa cap a aquells esportistes que han destacat pel seu rendiment, actitud, compromís i motivació, i que mostren una clara predisposició a progressar cap a la competició nacional.</p>
+        <p>El programa es fonamenta en un <strong>model de desenvolupament integral de l'esportista</strong>, en què l'entrenament tècnic i tàctic es complementa amb l'entrenament físic i mental, així com amb el seguiment acadèmic i personal de l'arquer.</p>
+      </div>
+      <div class="pat-intro-stats">
+        <div class="pat-stat"><span class="pat-stat-n">10–11</span><span class="pat-stat-l">Concentracions<br>mínimes per any</span></div>
+        <div class="pat-stat"><span class="pat-stat-n">5<small>h</small></span><span class="pat-stat-l">Durada<br>per concentració</span></div>
+        <div class="pat-stat"><span class="pat-stat-n">8<small>h</small></span><span class="pat-stat-l">Entrenament<br>setmanal mínim</span></div>
+        <div class="pat-stat"><span class="pat-stat-n">3</span><span class="pat-stat-l">Classes:<br>Inf · Cad · Jún</span></div>
+      </div>
+    </div>
+
+    <!-- OBJECTIUS GENERALS -->
+    <div class="pat-section-title">&#127945; Objectius generals</div>
+    <div class="pat-obj-grid">
+      <div class="pat-obj"><div class="pat-obj-n">1</div><div><strong>Identificar i acompanyar</strong> els esportistes amb més potencial, atenent resultats, actitud, compromís i capacitat de progressió.</div></div>
+      <div class="pat-obj"><div class="pat-obj-n">2</div><div><strong>Optimitzar l'acció federativa</strong> concentrant recursos tècnics en un programa estructurat que complementi el treball als clubs.</div></div>
+      <div class="pat-obj"><div class="pat-obj-n">3</div><div><strong>Preparar per a la competició nacional</strong>, dotant els esportistes dels recursos tècnics, físics, tàctics i mentals necessaris.</div></div>
+      <div class="pat-obj"><div class="pat-obj-n">4</div><div><strong>Establir una estructura estable</strong> de tecnificació autonòmica alineada amb els criteris de la RFETA.</div></div>
+      <div class="pat-obj"><div class="pat-obj-n">5</div><div><strong>Fomentar el desenvolupament integral</strong> de l'esportista, equilibrant rendiment, formació acadèmica i creixement personal.</div></div>
+      <div class="pat-obj"><div class="pat-obj-n">6</div><div><strong>Contribuir al nivell competitiu</strong> del tir amb arc català, enfortint la base d'esportistes tecnificats i la coordinació federació-clubs.</div></div>
+    </div>
+
+    <!-- PRINCIPIS METODOLÒGICS -->
+    <div class="pat-section-title" style="margin-top:2.5rem">&#128218; Principis metodològics</div>
+    <div class="pat-principis-grid">
+      <div class="pat-principi">
+        <div class="pat-principi-icon">&#127981;</div>
+        <h5>Centralitat del club</h5>
+        <p>El club és l'eix principal de formació. Les concentracions del PAT complementen i orienten el treball del club, no el substitueixen.</p>
+      </div>
+      <div class="pat-principi">
+        <div class="pat-principi-icon">&#129504;</div>
+        <h5>Desenvolupament integral</h5>
+        <p>Planificació equilibrada de tècnica, tàctica, preparació física, preparació mental i àmbit personal i acadèmic.</p>
+      </div>
+      <div class="pat-principi">
+        <div class="pat-principi-icon">&#128200;</div>
+        <h5>Progressió i adequació</h5>
+        <p>Adaptació de continguts i càrregues a l'edat, nivell i maduresa. Es respecten els ritmes individuals, evitant l'especialització prematura.</p>
+      </div>
+      <div class="pat-principi">
+        <div class="pat-principi-icon">&#129489;</div>
+        <h5>Individualització</h5>
+        <p>Cada esportista disposa d'una planificació orientativa individual. L'avaluació contínua permet ajustar continguts i càrregues.</p>
+      </div>
+      <div class="pat-principi">
+        <div class="pat-principi-icon">&#128101;</div>
+        <h5>Treball col·laboratiu</h5>
+        <p>Model col·laboratiu entre tècnics FCTA i tècnics de club. Criteris comuns, intercanvi de coneixements i comunicació contínua.</p>
+      </div>
+      <div class="pat-principi">
+        <div class="pat-principi-icon">&#127919;</div>
+        <h5>Orientació al rendiment</h5>
+        <p>Simulació de situacions competitives, rutines pre-competitives i estratègies de gestió de l'estrès. Foment de l'autonomia de l'esportista.</p>
+      </div>
+    </div>
+
+    <!-- ESTRUCTURA I CONCENTRACIONS -->
+    <div class="pat-section-title" style="margin-top:2.5rem">&#128197; Estructura del programa i concentracions</div>
+    <div class="pat-estructura-grid">
+      <div class="pat-estructura-card">
+        <h5>&#128197; Periodicitat</h5>
+        <ul>
+          <li>Concentració <strong>mínima mensual</strong></li>
+          <li>Preferentment en <strong>cap de setmana</strong></li>
+          <li>Durada aproximada de <strong>5 hores</strong></li>
+          <li>Mínim <strong>10–11 concentracions</strong> per temporada</li>
+        </ul>
+      </div>
+      <div class="pat-estructura-card">
+        <h5>&#127981; Seus i territori</h5>
+        <ul>
+          <li>Instal·lacions de <strong>clubs col·laboradors</strong></li>
+          <li>Distribució <strong>territorial equilibrada</strong></li>
+          <li>Rotació de seus per reduir desplaçaments</li>
+          <li>1–2 concentracions anuals amb la <strong>RFETA</strong></li>
+        </ul>
+      </div>
+      <div class="pat-estructura-card">
+        <h5>&#127939; Continguts per concentració</h5>
+        <ul>
+          <li><strong>Tècnica</strong>: gest, estabilitat, alineació</li>
+          <li><strong>Tàctica</strong>: gestió de competició, simulació</li>
+          <li><strong>Física</strong>: força, mobilitat, prevenció (entrenador qualificat)</li>
+          <li><strong>Mental</strong>: rutines, gestió emocional (psicòleg qualificat)</li>
+        </ul>
+      </div>
+      <div class="pat-estructura-card">
+        <h5>&#128203; Entre concentracions</h5>
+        <ul>
+          <li>Proposta d'entrenament orientativa per club</li>
+          <li>Objectius tècnics, físics i mentals</li>
+          <li>Treball sota responsabilitat del <strong>tècnic del club</strong></li>
+          <li>Seguiment i comunicació contínua</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CRITERIS DE SELECCIÓ -->
+    <div class="pat-section-title" style="margin-top:2.5rem">&#9989; Criteris de selecció i accés</div>
+    <div class="pat-seccio-intro">L'accés al PAT és regulat per criteris objectius i subjectius. La selecció es fa de forma coordinada entre l'equip tècnic del PAT i els tècnics dels clubs.</div>
+
+    <div class="pat-seleccio-grid">
+      <div class="pat-seleccio-perfil">
+        <h5>&#127939; Perfil de l'esportista</h5>
+        <ul>
+          <li>Arc <strong>recorbat</strong></li>
+          <li>Classes <strong>Infantil, Cadet i Júnior</strong></li>
+          <li>Llicència federativa FCTA en vigor</li>
+          <li>Actitud i motivació d'acord amb les exigències del programa</li>
+        </ul>
+      </div>
+      <div class="pat-seleccio-criteris">
+        <h5>&#128203; Criteris de valoració</h5>
+        <div class="pat-criteri"><span class="pat-criteri-n">1</span><div><strong>Resultats esportius</strong> — puntuacions, lliga autonòmica, campionats d'Espanya, Grans Premis</div></div>
+        <div class="pat-criteri"><span class="pat-criteri-n">2</span><div><strong>Disponibilitat</strong> — compromís d'entrenar un mínim de 8 h/setmana (tècnic + físic + mental)</div></div>
+        <div class="pat-criteri"><span class="pat-criteri-n">3</span><div><strong>Seguiment tècnic</strong> — disposar d'un tècnic responsable que planifiqui, segueixi i acompanyi l'esportista</div></div>
+        <div class="pat-criteri"><span class="pat-criteri-n">4</span><div><strong>Compromís</strong> — disponibilitat per a totes les concentracions i acceptació de les normes del PAT</div></div>
+        <div class="pat-criteri"><span class="pat-criteri-n">5</span><div><strong>Formació acadèmica</strong> — bon expedient escolar, valorat individualment</div></div>
+        <div class="pat-criteri"><span class="pat-criteri-n">6</span><div><strong>Valoració tècnica</strong> — superar una valoració mínima tècnica, física i mental</div></div>
+      </div>
+    </div>
+
+    <div class="pat-acces-vies">
+      <h5>&#128279; Vies d'accés</h5>
+      <div class="pat-vies-grid">
+        <div class="pat-via"><strong>Proposta directa del PAT</strong><p>A partir de les puntuacions i l'observació directa pels tècnics del PAT. Es realitza a través dels pares o tutors legals.</p></div>
+        <div class="pat-via"><strong>Proposta del tècnic del club</strong><p>Els tècnics poden proposar esportistes amb justificació tècnica. Especialment clubs amb escoles de formació base.</p></div>
+        <div class="pat-via"><strong>Sol·licitud directa de la família</strong><p>Els pares o tutors legals poden presentar sol·licitud directa. Queda subjecta a la valoració tècnica del PAT.</p></div>
+      </div>
+    </div>
+
+    <!-- CALENDARI -->
+    <div class="pat-section-title" style="margin-top:2.5rem">&#128337; Calendari anual orientatiu</div>
+    <div class="pat-calendari">
+      <div class="pat-cal-item pat-cal-sep">
+        <div class="pat-cal-mes">Set.</div>
+        <div class="pat-cal-body"><strong>Inici de temporada i selecció</strong><p>Obertura inscripcions · Avaluació inicial · Definició de grups · 1a concentració</p></div>
+      </div>
+      <div class="pat-cal-item pat-cal-sala">
+        <div class="pat-cal-mes">Oct–Des</div>
+        <div class="pat-cal-body"><strong>Temporada de sala</strong><p>Concentracions mensuals · Tècnica bàsica · Preparació física general · Introducció entrenament mental · Lliga autonòmica de sala</p></div>
+      </div>
+      <div class="pat-cal-item pat-cal-gen">
+        <div class="pat-cal-mes">Gen.</div>
+        <div class="pat-cal-body"><strong>Seguiment i ajust</strong><p>Anàlisi primer bloc competitiu · Revisió objectius · Preparació Campionats d'Espanya de sala · Possible concentració RFETA</p></div>
+      </div>
+      <div class="pat-cal-item pat-cal-feb">
+        <div class="pat-cal-mes">Feb.</div>
+        <div class="pat-cal-body"><strong>2n període d'inscripció</strong><p>Obertura condicionada a places disponibles · Incorporació excepcional d'esportistes</p></div>
+      </div>
+      <div class="pat-cal-item pat-cal-al">
+        <div class="pat-cal-mes">Mar–Jun</div>
+        <div class="pat-cal-body"><strong>Temporada d'aire lliure</strong><p>Concentracions mensuals · Ajustos tècnics AL · Tàctica · Preparació física específica · Lliga AL · Grans Premis d'Espanya · Possible concentració RFETA</p></div>
+      </div>
+      <div class="pat-cal-item pat-cal-jul">
+        <div class="pat-cal-mes">Jul.</div>
+        <div class="pat-cal-body"><strong>Avaluació final i tancament</strong><p>Última concentració · Avaluació final (tèc/fís/men/comp/actitud) · Informe individual · Proposta continuïtat/reorientació</p></div>
+      </div>
+    </div>
+
+    <!-- AVALUACIÓ -->
+    <div class="pat-section-title" style="margin-top:2.5rem">&#128202; Avaluació i permanència</div>
+    <div class="pat-aval-grid">
+      <div class="pat-aval-card">
+        <h5>&#128203; Àmbits d'avaluació contínua</h5>
+        <ul>
+          <li><strong>Tècnic</strong>: qualitat i estabilitat del gest, consistència</li>
+          <li><strong>Tàctic i competitiu</strong>: gestió de sèries, presa de decisions</li>
+          <li><strong>Físic</strong>: capacitats específiques, control postural, prevenció</li>
+          <li><strong>Mental</strong>: concentració, gestió emocional, rutines</li>
+          <li><strong>Compromís i actitud</strong>: assistència, implicació, respecte</li>
+          <li><strong>Acadèmic</strong> (edat escolar): expedient, compatibilització</li>
+        </ul>
+      </div>
+      <div class="pat-aval-card">
+        <h5>&#9989; Criteris de permanència</h5>
+        <ul>
+          <li>Evolució positiva d'acord amb els objectius</li>
+          <li>Compliment mínims d'assistència, compromís i actitud</li>
+          <li>Participació regular en competicions previstes</li>
+          <li>Conducta d'acord amb les normes del programa</li>
+          <li>Seguiment continuat per part del tècnic responsable</li>
+          <li>Rendiment acadèmic adequat (en la mesura del possible)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS I ANNEXES -->
+    <div class="lic-docs" style="margin-top:2.5rem">
+      <h3>&#128196; Documents del PAT</h3>
+      <div class="lic-docs-grid">
+        <a href="docs/PAT_FCTA_v4.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#127919;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Programa Autonòmic de Tecnificació v4</div>
+            <div class="lic-doc-desc">Document complet PAT · FCTA · 27 pàgines</div>
+          </div>
+        </a>
+        <div class="lic-doc-btn" style="cursor:default;opacity:.7">
+          <span class="lic-doc-icon">&#128203;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Fitxa d'Inscripció (Annex I)</div>
+            <div class="lic-doc-desc">Inclosa al document PAT (pàg. 24)</div>
+          </div>
+        </div>
+        <div class="lic-doc-btn" style="cursor:default;opacity:.7">
+          <span class="lic-doc-icon">&#128101;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Informe del Tècnic del Club (Annex II)</div>
+            <div class="lic-doc-desc">Inclosa al document PAT (pàg. 25)</div>
+          </div>
+        </div>
+        <div class="lic-doc-btn" style="cursor:default;opacity:.7">
+          <span class="lic-doc-icon">&#9997;&#65039;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Document de Compromís Esportista/Família (Annex III)</div>
+            <div class="lic-doc-desc">Inclosa al document PAT (pàg. 26)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACTE -->
+    <div class="lic-contact-grid" style="margin-top:2rem">
+      <button onclick="setS('formation')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#127891;</div>
+        <h4>Formació FCTA</h4>
+        <p>Cursos tècnics, seminaris i programa de formació de la federació</p>
+      </button>
+      <a href="docs/PAT_FCTA_v4.pdf" target="_blank" class="lic-contact-card">
+        <div class="lcc-icon">&#128196;</div>
+        <h4>Descarrega el PAT</h4>
+        <p>Document complet del Programa Autonòmic de Tecnificació v4</p>
+      </a>
+      <button onclick="toast('Consultes sobre el PAT: info@fcta.cat · 93 308 02 65 · Dl–Dv 8:00–14:00h','&#127919;')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#128222;</div>
+        <h4>Contacte</h4>
+        <p>info@fcta.cat &nbsp;·&nbsp; 93 308 02 65<br>Dl&ndash;Dv: 8:00&ndash;14:00h</p>
+      </button>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- COMITÈ DE JUTGES -->
+<div id="sComiteJutges" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="cj-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#9878;&#65039; Jutges de Tir amb Arc</div>
+    <h1>Comitè Català<br><em>de Jutges</em></h1>
+    <p>El Comitè Català de Jutges és el grup de treball autònom de la FCTA encarregat de garantir l'aplicació homogènia del reglament en totes les competicions federades de Catalunya.</p>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- MISSIÓ I OBJECTIUS -->
+    <div class="cj-mission-grid">
+      <div class="cj-mission-text">
+        <div class="sec-label">Comitè Català de Jutges · FCTA</div>
+        <h2 class="sec-title">Missió i <em>objectius</em></h2>
+        <p>El Comitè Català de Jutges és un grup de treball autònom dins la Federació Catalana de Tir amb Arc. Les seves tasques fonamentals inclouen la <strong>interpretació de la normativa vigent</strong>, l'organització de l'activitat col·lectiva dels jutges i assegurar que l'aplicació del reglament sigui la més homogènia possible per a tots els seus membres.</p>
+      </div>
+      <div class="cj-objectives">
+        <div class="cj-obj-item">
+          <div class="cj-obj-num">01</div>
+          <div class="cj-obj-body">
+            <strong>Gestió de competicions</strong>
+            <p>Supervisar el correcte desenvolupament de les competicions federades al territori, analitzant-ne les incidències i garantint el compliment del reglament.</p>
+          </div>
+        </div>
+        <div class="cj-obj-item">
+          <div class="cj-obj-num">02</div>
+          <div class="cj-obj-body">
+            <strong>Resolució de problemes reglamentaris</strong>
+            <p>Resoldre els problemes reglamentaris derivats de les competicions i proposar les modificacions i millores necessàries al reglament.</p>
+          </div>
+        </div>
+        <div class="cj-obj-item">
+          <div class="cj-obj-num">03</div>
+          <div class="cj-obj-body">
+            <strong>Formació dels membres</strong>
+            <p>Vetllar per la millor formació dels membres del comitè, garantint la seva actualització i el coneixement de les darreres modificacions reglamentàries.</p>
+          </div>
+        </div>
+        <div class="cj-obj-item">
+          <div class="cj-obj-num">04</div>
+          <div class="cj-obj-body">
+            <strong>Formació de nous jutges</strong>
+            <p>Formar nous jutges per garantir la continuïtat del tir amb arc a Catalunya, assegurant el relleu generacional en el cos arbitral.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORIES DE JUTGE -->
+    <div class="cj-section-title">&#9878;&#65039; Classes de jutge</div>
+    <p class="cj-section-desc">El sistema de certificació de jutges de la RFETA consta de tres nivells. Cada categoria habilita per arbitrar en un àmbit territorial diferent i requereix requisits progressius.</p>
+
+    <div class="cj-levels-grid">
+
+      <div class="cj-level-card cj-level-1">
+        <div class="cj-level-header">
+          <div class="cj-level-badge">Nivell 1</div>
+          <h4>Jutge Autonòmic</h4>
+          <p class="cj-level-scope">&#127988; Competicions a Catalunya</p>
+        </div>
+        <div class="cj-level-body">
+          <div class="cj-level-section-lbl">Requisits d'accés</div>
+          <ul class="cj-level-list">
+            <li>Llicència federativa vigent (qualsevol categoria)</li>
+            <li>Certificat d'exempció de delictes sexuals</li>
+            <li>Superar el curs de jutges Nivell 1 de la RFETA</li>
+          </ul>
+          <div class="cj-level-section-lbl">Curs i examen</div>
+          <ul class="cj-level-list">
+            <li>Part teòrica: proves escrites de reglamentació WA i RFETA</li>
+            <li>Part pràctica: exercicis d'arbitratge supervisat en competició</li>
+            <li>La FCTA convoca periòdicament cursos per a nous jutges</li>
+          </ul>
+          <div class="cj-level-section-lbl">Manteniment</div>
+          <ul class="cj-level-list">
+            <li>Cal oficiar un mínim de <strong>2 competicions RFETA o WA per temporada</strong></li>
+            <li>Dos anys consecutius sense activitat → situació d'excedència</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cj-level-card cj-level-2">
+        <div class="cj-level-header">
+          <div class="cj-level-badge">Nivell 2</div>
+          <h4>Jutge Nacional</h4>
+          <p class="cj-level-scope">&#127988; Competicions estatals RFETA</p>
+        </div>
+        <div class="cj-level-body">
+          <div class="cj-level-section-lbl">Requisits d'accés</div>
+          <ul class="cj-level-list">
+            <li>Titulació de Jutge RFETA Nivell 1 amb un mínim de <strong>3 anys d'antiguitat</strong></li>
+            <li>Superar el curs de jutges Nivell 2 de la RFETA</li>
+            <li>Certificat d'exempció de delictes sexuals vigent</li>
+          </ul>
+          <div class="cj-level-section-lbl">Examen pràctic</div>
+          <ul class="cj-level-list">
+            <li>Les proves pràctiques es poden realitzar en qualsevol campionat autonòmic o nacional</li>
+            <li>Supervisat per un jutge Nivell 2 o de rang superior</li>
+          </ul>
+          <div class="cj-level-section-lbl">Manteniment</div>
+          <ul class="cj-level-list">
+            <li>Igual que Nivell 1: mínim 2 competicions RFETA/WA per temporada</li>
+            <li>Recomanat participar en seminaris de reciclatge</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cj-level-card cj-level-int">
+        <div class="cj-level-header">
+          <div class="cj-level-badge">Internacional</div>
+          <h4>Jutge Internacional WA</h4>
+          <p class="cj-level-scope">&#127760; Competicions internacionals WA</p>
+        </div>
+        <div class="cj-level-body">
+          <div class="cj-level-section-lbl">Requisits d'accés</div>
+          <ul class="cj-level-list">
+            <li>Titulació RFETA Nivell 2 consolidada</li>
+            <li>Proposta i aval de la federació nacional (RFETA)</li>
+            <li>Superació del curs i examen de la <strong>World Archery</strong></li>
+          </ul>
+          <div class="cj-level-section-lbl">Acreditació</div>
+          <ul class="cj-level-list">
+            <li>Acreditació exclusiva de la World Archery</li>
+            <li>Fase de candidat prèvia a la certificació definitiva</li>
+            <li>Participació en seminaris internacionals i avaluació contínua</li>
+          </ul>
+          <div class="cj-level-section-lbl">Manteniment</div>
+          <ul class="cj-level-list">
+            <li>Oficiar en competicions WA de forma regular</li>
+            <li>Revalidació periòdica per la World Archery</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FUNCIONS EN COMPETICIÓ -->
+    <div class="cj-section-title" style="margin-top:2.5rem">&#127942; Funcions del jutge en competició</div>
+    <p class="cj-section-desc">Durant una competició oficial, els jutges exerceixen funcions específiques assignades pel President del Jurat d'acord amb el reglament de la World Archery.</p>
+
+    <div class="cj-roles-grid">
+      <div class="cj-role-card">
+        <div class="cj-role-icon">&#9878;&#65039;</div>
+        <h5>President del Jurat</h5>
+        <p>Gestiona els oficials tècnics, assigna les funcions de cada jutge, vetlla pel compliment del reglament i resol les apel·lacions dels equips.</p>
+      </div>
+      <div class="cj-role-card">
+        <div class="cj-role-icon">&#128338;</div>
+        <h5>Director de Tir</h5>
+        <p>Controla el ritme i la temporalització de la competició, gestiona les senyals d'inici i fi de la sèrie i supervisa la seguretat de la línia de tir.</p>
+      </div>
+      <div class="cj-role-card">
+        <div class="cj-role-icon">&#128270;</div>
+        <h5>Jutge de Línia</h5>
+        <p>Confirma l'ordre de tir en eliminatòries, supervisa el compliment dels temps i la rotació dels atletes i garanteix la seguretat del camp.</p>
+      </div>
+      <div class="cj-role-card">
+        <div class="cj-role-icon">&#127919;</div>
+        <h5>Jutge de Diana</h5>
+        <p>Confirma les puntuacions, determina el valor de les fletxes en cas de dubte, resol empats i garanteix la integritat del marcador.</p>
+      </div>
+      <div class="cj-role-card">
+        <div class="cj-role-icon">&#128202;</div>
+        <h5>Jurat d'Apel·lació</h5>
+        <p>Avalua les apel·lacions presentades pels oficials dels equips. La seva decisió sobre la interpretació del reglament és definitiva i inapel·lable.</p>
+      </div>
+      <div class="cj-role-card">
+        <div class="cj-role-icon">&#9881;&#65039;</div>
+        <h5>Inspecció d'Equipament</h5>
+        <p>Verifica que l'equipament dels atletes compleix les especificacions reglamentàries: arc, fletxes, estabilitzadors, visor i accessoris.</p>
+      </div>
+    </div>
+
+    <!-- COM FER-SE JUTGE -->
+    <div class="cj-become">
+      <h3>&#128214; Com convertir-se en jutge de tir amb arc</h3>
+      <p>La FCTA organitza periòdicament cursos de formació per a nous jutges. El procés per obtenir la titulació de Jutge Autonòmic (Nivell 1 RFETA) consta de les fases següents:</p>
+      <div class="cj-become-steps">
+        <div class="cj-become-step">
+          <div class="cj-become-num">1</div>
+          <div>
+            <strong>Inscripció al curs</strong>
+            <p>Consulta les circulars de la FCTA per a les convocatòries actives. Cal disposar de llicència federativa vigent.</p>
+          </div>
+        </div>
+        <div class="cj-become-step">
+          <div class="cj-become-num">2</div>
+          <div>
+            <strong>Formació teòrica</strong>
+            <p>Sessions formatives sobre el reglament de la World Archery, els procediments de la RFETA i les normes de la FCTA.</p>
+          </div>
+        </div>
+        <div class="cj-become-step">
+          <div class="cj-become-num">3</div>
+          <div>
+            <strong>Examen teòric</strong>
+            <p>Proves escrites sobre reglamentació. Cal superar la puntuació mínima establerta per la RFETA.</p>
+          </div>
+        </div>
+        <div class="cj-become-step">
+          <div class="cj-become-num">4</div>
+          <div>
+            <strong>Pràctiques en competició</strong>
+            <p>Actuació supervisada per un jutge de rang superior en competicions oficials autonòmiques o nacionals.</p>
+          </div>
+        </div>
+        <div class="cj-become-step">
+          <div class="cj-become-num">5</div>
+          <div>
+            <strong>Obtenció de la llicència</strong>
+            <p>Superats el curs i les pràctiques, la RFETA expedeix la llicència de Jutge Autonòmic Nivell 1, tramitada a través de la FCTA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="lic-docs" style="margin-top:2.5rem">
+      <h3>&#128196; Documents del Comitè de Jutges</h3>
+      <div class="lic-docs-grid">
+        <a href="docs/REGLAMENT_CNJ_Jutges.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#9878;&#65039;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Reglament del CNJ</div>
+            <div class="lic-doc-desc">Comitè Nacional de Jutges RFETA — Set. 2021</div>
+          </div>
+        </a>
+        <a href="docs/REGLAMENT_COMPETICIONS_v1.6.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128203;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Reglament de Competicions FCTA</div>
+            <div class="lic-doc-desc">Versió 1.6 — Mar. 2026</div>
+          </div>
+        </a>
+        <a href="https://www.worldarchery.sport/rulebook" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#127760;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Rulebook World Archery</div>
+            <div class="lic-doc-desc">Normativa internacional — worldarchery.sport</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CIRCULARS DE JUTGES -->
+    <div class="cj-circulars-box">
+      <div class="cj-circ-icon">&#128196;</div>
+      <div class="cj-circ-body">
+        <strong>Cursos i convocatòries de jutges</strong>
+        <p>La FCTA publica periòdicament circulars amb la convocatòria de cursos de jutges, actualitzacions reglamentàries i altres comunicats del Comitè. Consulta la secció de Circulars filtrant per la categoria <strong>Jutges</strong>.</p>
+        <div class="cj-circ-pills">
+          <div class="cj-circ-pill"><span class="cbadge cb-jut">Jutges</span> CIRC-2611 &nbsp;&mdash;&nbsp; Curs de Jutges de Tir amb Arc 2026</div>
+          <div class="cj-circ-pill"><span class="cbadge cb-jut">Jutges</span> CIRC-2606 &nbsp;&mdash;&nbsp; Actualització Reglament Tècnic 2026</div>
+        </div>
+        <button onclick="filtCirc('jut', document.querySelector('#circFilters .fb:nth-child(7)')); setS('circulars');" class="bsm bsm-n" style="margin-top:.75rem">&#128196; Veure totes les circulars de Jutges &rarr;</button>
+      </div>
+    </div>
+
+    <!-- CONTACTE -->
+    <div class="lic-contact-grid" style="margin-top:2rem">
+      <button onclick="setS('llicencies')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#127939;</div>
+        <h4>Llicència de Jutge</h4>
+        <p>Informació sobre llicències autonòmiques i nacionals de jutge</p>
+      </button>
+      <button onclick="setS('reglaments')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#128203;</div>
+        <h4>Reglaments</h4>
+        <p>Accedeix a tots els reglaments i normatives de tir amb arc</p>
+      </button>
+      <button onclick="toast('Contacta amb la FCTA per a consultes sobre el Comitè de Jutges: info@fcta.cat · 93 308 02 65','&#9878;&#65039;')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#9878;&#65039;</div>
+        <h4>Contacte</h4>
+        <p>info@fcta.cat &nbsp;·&nbsp; 93 308 02 65<br>Dl&ndash;Dv: 8:00&ndash;14:00h</p>
+      </button>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ARC ADAPTAT -->
+<div id="sArcAdaptat" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="aa-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#9855;&#65039; Esport Inclusiu &amp; Paralímpic</div>
+    <h1>Arc Adaptat<br><em>FCTA</em></h1>
+    <p>El Comitè Català d'Arc Adaptat promou la pràctica del tir amb arc entre persones amb discapacitat física a Catalunya, des de la iniciació fins a l'alta competició paralímpica.</p>
+    <div class="aa-hero-contact">
+      <span>&#9993;&#65039; <a href="mailto:arcadaptat@fcta.cat">arcadaptat@fcta.cat</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- QUÈ ÉS L'ARC ADAPTAT -->
+    <div class="aa-intro-grid">
+      <div class="aa-intro-text">
+        <div class="sec-label">Comitè Català d'Arc Adaptat</div>
+        <h2 class="sec-title">Tir amb arc per a <em>tothom</em></h2>
+        <p>L'arc adaptat és la modalitat paralímpica del tir amb arc. Va néixer com a <strong>eina de rehabilitació per a persones amb discapacitat física</strong> i aviat es va convertir en esport de competició. Els atletes disparen fletxes amb l'objectiu de fer-les arribar al centre d'una diana de <strong>122 cm de diàmetre</strong> des d'una distància de <strong>70 metres</strong>. Encertar la zona central —de tan sols <strong>12,2 cm d'amplada</strong>— suma <strong>10 punts</strong>.</p>
+        <p>El tir amb arc va debutar als Jocs de Stoke Mandeville el <strong>1948</strong> i va ser inclòs en la primera edició dels Jocs Paralímpics el <strong>1960</strong> a Roma. A Catalunya hi ha clubs actius en la disciplina i una lliga catalana que es disputa cada temporada.</p>
+      </div>
+      <div class="aa-intro-stats">
+        <div class="aa-stat"><span class="aa-stat-num">70<small>m</small></span><span class="aa-stat-lbl">Distància de competició</span></div>
+        <div class="aa-stat"><span class="aa-stat-num">122<small>cm</small></span><span class="aa-stat-lbl">Diàmetre de diana</span></div>
+        <div class="aa-stat"><span class="aa-stat-num">10<small>pts</small></span><span class="aa-stat-lbl">Puntuació màxima per diana</span></div>
+        <div class="aa-stat"><span class="aa-stat-num">1960</span><span class="aa-stat-lbl">1rs Jocs Paralímpics</span></div>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="aa-section-title">&#127937; Classes de competició</div>
+    <p style="font-size:.88rem;color:var(--gray);margin-bottom:1.25rem">Les categories estan definides per la World Archery en funció del grau i tipus de discapacitat de l'atleta. La classificació és realitzada per classificadors mèdics i tècnics acreditats.</p>
+
+    <div class="aa-cat-grid">
+
+      <div class="aa-cat-card aa-cat-open">
+        <div class="aa-cat-badge">Open</div>
+        <h4>Open Recorbat &amp; Open Compost</h4>
+        <p>Atletes que poden tirar drets, en cadira de rodes o amb suports d'equilibri, <strong>sense necessitar cap modificació a l'arc</strong>. Inclou atletes amb amputacions, paràlisi parcial i altres discapacitats físiques.</p>
+        <ul class="aa-cat-list">
+          <li>Posició: dret, cadira de rodes o suport d'equilibri</li>
+          <li>Arc: recorbat o compost estàndard</li>
+          <li>Distàncies: 70 m (recorbat) · 50 m (compost)</li>
+        </ul>
+      </div>
+
+      <div class="aa-cat-card aa-cat-w1">
+        <div class="aa-cat-badge">W1</div>
+        <h4>W1 — Cadira de Rodes amb Modificació</h4>
+        <p>Atletes en cadira de rodes amb <strong>afectació significativa als membres superiors</strong> que necessiten modificacions a l'arc per poder practicar la disciplina (disparadors, suports mecànics, etc.).</p>
+        <ul class="aa-cat-list">
+          <li>Posició: cadira de rodes obligatòria</li>
+          <li>Arc: recorbat o compost amb modificacions</li>
+          <li>Inclou tetraplègia i lesions medul·lars cervicals</li>
+        </ul>
+      </div>
+
+      <div class="aa-cat-card aa-cat-st">
+        <div class="aa-cat-badge">ST</div>
+        <h4>ST — Standing (Dempeus)</h4>
+        <p>Atletes amb <strong>discapacitat als membres inferiors</strong> que competeixen en posició dempeus. Inclou amputats de cama, paralítics cerebrals amb afectació als membres inferiors i altres condicions similars.</p>
+        <ul class="aa-cat-list">
+          <li>Posició: dempeus (pot usar pròtesis)</li>
+          <li>Arc: recorbat o compost</li>
+          <li>Pot requerir suports de peu específics</li>
+        </ul>
+      </div>
+
+      <div class="aa-cat-card aa-cat-arw">
+        <div class="aa-cat-badge">ARW1/ARW2</div>
+        <h4>ARW — Cadira de Rodes</h4>
+        <p>Atletes en cadira de rodes <strong>sense modificació necessària a l'arc</strong>. La subcategoria ARW1 inclou tetraplègia i afectació als quatre membres; ARW2 comprèn paraplegies i afectació als membres inferiors.</p>
+        <ul class="aa-cat-list">
+          <li>ARW1: tetraplègia, quatre membres afectats</li>
+          <li>ARW2: paraplegia, membres inferiors afectats</li>
+          <li>Arc: recorbat o compost sense modificar</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- FORMAT DE COMPETICIÓ -->
+    <div class="aa-section-title" style="margin-top:2.5rem">&#127919; Format de competició</div>
+
+    <div class="aa-format-grid">
+      <div class="aa-format-card">
+        <div class="aa-format-icon">&#129332;</div>
+        <h4>Individual</h4>
+        <p>Cada atleta dispara <strong>5 sèries de 3 fletxes</strong>. Guanya l'atleta amb la puntuació total més alta. Les eliminatòries segueixen el sistema de matches de la World Archery.</p>
+        <div class="aa-format-detail"><span>5 sèries</span><span>&times;</span><span>3 fletxes</span><span>=</span><span>15 fletxes</span></div>
+      </div>
+      <div class="aa-format-card">
+        <div class="aa-format-icon">&#128101;</div>
+        <h4>Per equips</h4>
+        <p>Tres atletes per equip disposen de <strong>24 tirs en total</strong> per aconseguir la millor puntuació combinada. Cada membre de l'equip tira un nombre igual de fletxes.</p>
+        <div class="aa-format-detail"><span>3 atletes</span><span>&times;</span><span>8 fletxes</span><span>=</span><span>24 tirs</span></div>
+      </div>
+      <div class="aa-format-card">
+        <div class="aa-format-icon">&#127881;</div>
+        <h4>Modalitats</h4>
+        <p>Les competicions es disputen en <strong>aire lliure</strong> (70 m, diana de 122 cm) i <strong>sala</strong> (18 m, diana de 40 cm). La lliga catalana inclou proves de totes dues modalitats.</p>
+        <div class="aa-format-detail"><span>Aire Lliure 70m</span><span>·</span><span>Sala 18m</span></div>
+      </div>
+    </div>
+
+    <!-- NOTÍCIA DESTACADA -->
+    <div class="aa-news-highlight">
+      <div class="aa-news-icon">&#128240;</div>
+      <div class="aa-news-body">
+        <div class="aa-news-label">Notícia destacada · Abril 2026</div>
+        <strong>El Tir amb Arc Inclusiu pren vol a Olesa amb la primera tirada d'Arc Adaptat</strong>
+        <p>El club Tir Arc Olesa va acollir la inauguració de la primera tirada d'arc adaptat, inclusiu i salut, posant en valor el tir amb arc com a eina de salut i benestar per a persones de totes les capacitats.</p>
+        <button class="bsm bsm-o" onclick="openNews(4)">&#128240; Llegir la notícia</button>
+      </div>
+    </div>
+
+    <!-- HISTÒRIA -->
+    <div class="aa-section-title" style="margin-top:2.5rem">&#8987; Fites històriques</div>
+    <div class="aa-timeline">
+      <div class="aa-tl-item">
+        <div class="aa-tl-year">1948</div>
+        <div class="aa-tl-body">
+          <strong>Jocs de Stoke Mandeville</strong>
+          <p>El tir amb arc debuta als Jocs Internacionals de Stoke Mandeville (Regne Unit), el primer torneig esportiu internacional per a persones en cadira de rodes, precursor dels Jocs Paralímpics.</p>
+        </div>
+      </div>
+      <div class="aa-tl-item">
+        <div class="aa-tl-year">1960</div>
+        <div class="aa-tl-body">
+          <strong>Primers Jocs Paralímpics — Roma</strong>
+          <p>L'arc adaptat forma part del programa de la primera edició dels Jocs Paralímpics a Roma, consolidant-se com un dels esports paralímpics fundacionals.</p>
+        </div>
+      </div>
+      <div class="aa-tl-item">
+        <div class="aa-tl-year">1992</div>
+        <div class="aa-tl-body">
+          <strong>Jocs Paralímpics de Barcelona</strong>
+          <p>L'atleta Antonio Rebollo encén el peveter olímpic i paralímpic de Barcelona amb una fletxa encesa, en un dels moments més icònics de la història de l'esport paralímpic mondial.</p>
+        </div>
+      </div>
+      <div class="aa-tl-item">
+        <div class="aa-tl-year">2026</div>
+        <div class="aa-tl-body">
+          <strong>Creixement a Catalunya</strong>
+          <p>La FCTA i el Comitè Català d'Arc Adaptat segueixen treballant per ampliar la pràctica de l'arc adaptat a més clubs i municipis catalans, amb la primera tirada d'arc adaptat, inclusiu i salut.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLUBS ACTIUS -->
+    <div class="aa-section-title" style="margin-top:2.5rem">&#127981; Clubs amb secció d'arc adaptat</div>
+    <div class="aa-clubs-grid">
+      <div class="aa-club-pill">&#127919; Tir Arc Olesa</div>
+      <div class="aa-club-pill">&#127919; Club Escola Arquers de Badalona</div>
+      <div class="aa-club-pill">&#127919; Club Esportiu Cristinenc</div>
+      <div class="aa-club-pill">&#127919; Club Arquers de Cambrils</div>
+    </div>
+    <p style="font-size:.8rem;color:var(--gray);margin-top:.75rem">&#8505;&#65039; Llista orientativa. Contacta amb la FCTA o el comitè per obtenir la llista actualitzada de clubs amb programa d'arc adaptat.</p>
+
+    <!-- CONTACTE -->
+    <div class="lic-contact-grid" style="margin-top:2.5rem">
+      <a href="mailto:arcadaptat@fcta.cat" class="lic-contact-card">
+        <div class="lcc-icon">&#9993;&#65039;</div>
+        <h4>Comitè d'Arc Adaptat</h4>
+        <p>arcadaptat@fcta.cat</p>
+      </a>
+      <a href="https://www.worldarchery.sport/para-archery" target="_blank" class="lic-contact-card">
+        <div class="lcc-icon">&#127760;</div>
+        <h4>World Archery Para</h4>
+        <p>Reglamentació internacional i classificació oficial</p>
+      </a>
+      <button onclick="setS('circulars')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#128196;</div>
+        <h4>Circulars</h4>
+        <p>Convocatòries i informació de competicions d'arc adaptat</p>
+      </button>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- JUNTA DIRECTIVA -->
+<div id="sJuntaDirectiva" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="jd-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#127963;&#65039; Òrgan de Govern</div>
+    <h1>Junta Directiva<br><em>FCTA</em></h1>
+    <p>Composició de la Junta Directiva de la Federació Catalana de Tir amb Arc, elegida democràticament pels clubs federats el desembre de 2024 per al mandat <strong>2024–2028</strong>.</p>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- PRESIDENT -->
+    <div class="jd-president-wrap">
+      <div class="jd-president-card">
+        <div class="jd-president-avatar">&#127939;</div>
+        <div class="jd-president-body">
+          <div class="jd-president-rol">President</div>
+          <h2 class="jd-president-nom">Juan Carlos Ahumada Méndez</h2>
+          <a href="mailto:presidencia@fcta.cat" class="jd-member-email">&#9993;&#65039; presidencia@fcta.cat</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CÀRRECS EXECUTIUS -->
+    <div class="jd-section-title">&#9670; Càrrecs executius</div>
+    <div class="jd-exec-grid">
+
+      <div class="jd-exec-card">
+        <div class="jd-exec-rol">1r Vicepresident</div>
+        <div class="jd-exec-nom">Juan Carlos Sánchez Mirabal</div>
+        <a href="mailto:jcsanchez@fcta.cat" class="jd-member-email">jcsanchez@fcta.cat</a>
+      </div>
+
+      <div class="jd-exec-card">
+        <div class="jd-exec-rol">2n Vicepresident</div>
+        <div class="jd-exec-nom">Josep Vivó Marce</div>
+        <a href="mailto:jvivo@fcta.cat" class="jd-member-email">jvivo@fcta.cat</a>
+      </div>
+
+      <div class="jd-exec-card">
+        <div class="jd-exec-rol">3r Vicepresident</div>
+        <div class="jd-exec-nom">Luis Francisco Fernández Berga</div>
+        <a href="mailto:lfernandez@fcta.cat" class="jd-member-email">lfernandez@fcta.cat</a>
+      </div>
+
+      <div class="jd-exec-card">
+        <div class="jd-exec-rol">Tresorer</div>
+        <div class="jd-exec-nom">Gregorio José García Orera</div>
+        <a href="mailto:gjgarcia@fcta.cat" class="jd-member-email">gjgarcia@fcta.cat</a>
+      </div>
+
+      <div class="jd-exec-card">
+        <div class="jd-exec-rol">Secretària</div>
+        <div class="jd-exec-nom">Joana Ballarin Giralt</div>
+        <a href="mailto:jballarin@fcta.cat" class="jd-member-email">jballarin@fcta.cat</a>
+      </div>
+
+    </div>
+
+    <!-- VOCALS -->
+    <div class="jd-section-title" style="margin-top:2rem">&#9670; Vocals</div>
+    <div class="jd-vocals-grid">
+
+      <div class="jd-vocal-card">
+        <div class="jd-vocal-avatar">&#127939;</div>
+        <div class="jd-vocal-body">
+          <div class="jd-vocal-nom">Margarita Bach Martínez</div>
+          <div class="jd-vocal-rol">Vocal</div>
+          <a href="mailto:mbach@fcta.cat" class="jd-member-email">mbach@fcta.cat</a>
+        </div>
+      </div>
+
+      <div class="jd-vocal-card">
+        <div class="jd-vocal-avatar">&#127939;</div>
+        <div class="jd-vocal-body">
+          <div class="jd-vocal-nom">José Pérez Pérez</div>
+          <div class="jd-vocal-rol">Vocal</div>
+          <a href="mailto:jperez@fcta.cat" class="jd-member-email">jperez@fcta.cat</a>
+        </div>
+      </div>
+
+      <div class="jd-vocal-card">
+        <div class="jd-vocal-avatar">&#127939;</div>
+        <div class="jd-vocal-body">
+          <div class="jd-vocal-nom">Susana Cuadrado Fernández</div>
+          <div class="jd-vocal-rol">Vocal</div>
+          <a href="mailto:scuadrado@fcta.cat" class="jd-member-email">scuadrado@fcta.cat</a>
+        </div>
+      </div>
+
+      <div class="jd-vocal-card">
+        <div class="jd-vocal-avatar">&#127939;</div>
+        <div class="jd-vocal-body">
+          <div class="jd-vocal-nom">Mª Montserrat Safont Mas</div>
+          <div class="jd-vocal-rol">Vocal</div>
+          <a href="mailto:msafont@fcta.cat" class="jd-member-email">msafont@fcta.cat</a>
+        </div>
+      </div>
+
+      <div class="jd-vocal-card">
+        <div class="jd-vocal-avatar">&#127939;</div>
+        <div class="jd-vocal-body">
+          <div class="jd-vocal-nom">Joan Manel Asensio Fernández</div>
+          <div class="jd-vocal-rol">Vocal</div>
+          <a href="mailto:jmasensio@fcta.cat" class="jd-member-email">jmasensio@fcta.cat</a>
+        </div>
+      </div>
+
+      <div class="jd-vocal-card">
+        <div class="jd-vocal-avatar">&#127939;</div>
+        <div class="jd-vocal-body">
+          <div class="jd-vocal-nom">Santiago Cornellana Casany</div>
+          <div class="jd-vocal-rol">Vocal</div>
+          <a href="mailto:scornellana@fcta.cat" class="jd-member-email">scornellana@fcta.cat</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MANDAT I DOCUMENTACIÓ -->
+    <div class="jd-info-row">
+      <div class="jd-info-card">
+        <div class="jd-info-icon">&#128197;</div>
+        <div class="jd-info-body">
+          <strong>Mandat vigent</strong>
+          <span>Desembre 2024 – Novembre 2028</span>
+        </div>
+      </div>
+      <div class="jd-info-card">
+        <div class="jd-info-icon">&#127963;&#65039;</div>
+        <div class="jd-info-body">
+          <strong>Composició</strong>
+          <span>1 President &middot; 3 Vicepresidents &middot; 1 Secretària &middot; 1 Tresorer &middot; 6 Vocals</span>
+        </div>
+      </div>
+      <div class="jd-info-card">
+        <div class="jd-info-icon">&#9878;&#65039;</div>
+        <div class="jd-info-body">
+          <strong>Eleccions</strong>
+          <span>Desembre 2024 · Proclamació oficial el 5 de desembre de 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="lic-docs" style="margin-top:2rem">
+      <h3>&#128196; Documentació electoral</h3>
+      <div class="lic-docs-grid">
+        <a href="docs/Proclamacio_Resultats_Eleccions_2024.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128196;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Proclamació de Resultats</div>
+            <div class="lic-doc-desc">Eleccions Junta Directiva FCTA — 5 desembre 2024</div>
+          </div>
+        </a>
+        <a href="docs/Candidats_Prov_Junta_Directiva_2024.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128101;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Llista de Candidats 2024</div>
+            <div class="lic-doc-desc">Candidats provisionals — 20 novembre 2024</div>
+          </div>
+        </a>
+        <a href="docs/ACTA_Constitucio_Junta_Electoral_2024.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128203;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Acta Constitució Junta Electoral</div>
+            <div class="lic-doc-desc">31 d'octubre de 2024</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CONTACTE -->
+    <div class="lic-contact-grid" style="margin-top:2rem">
+      <a href="mailto:presidencia@fcta.cat" class="lic-contact-card">
+        <div class="lcc-icon">&#9993;&#65039;</div>
+        <h4>Contacte Presidència</h4>
+        <p>presidencia@fcta.cat</p>
+      </a>
+      <button onclick="setS('transparencia')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#128269;</div>
+        <h4>Transparència</h4>
+        <p>Estatuts, assemblees, eleccions i documentació oficial de la FCTA</p>
+      </button>
+      <button onclick="toast('info@fcta.cat · 93 308 02 65 · Dl–Dv 8:00–14:00h','&#128222;')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#128222;</div>
+        <h4>Secretaria FCTA</h4>
+        <p>info@fcta.cat &nbsp;·&nbsp; 93 308 02 65<br>Dl&ndash;Dv: 8:00–14:00h</p>
+      </button>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ASSEGURANCES -->
+<div id="sAssegurances" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="lic-hero" style="background:linear-gradient(135deg,#1a3a5c 0%,#0f2240 100%)">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#128737;&#65039; Assegurança Esportiva Federativa</div>
+    <h1>Assegurances<br><em>FCTA</em></h1>
+    <p>Tots els esportistes federats a la FCTA disposen d'una assegurança d'accidents esportius obligatòria inclosa en la llicència federativa, gestionada per <strong>MGS Seguros</strong>.</p>
+    <div class="lic-validity">&#9989; Pòlissa n.º <strong>51326604</strong> &nbsp;&middot;&nbsp; Cobreix tota la temporada federativa vigent</div>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- QUÈ COBREIX -->
+    <div class="ass-intro">
+      <div class="ass-intro-text">
+        <h2 class="sec-title" style="margin-bottom:.75rem">Cobertura <em>inclosa</em> a la llicència</h2>
+        <p class="sec-intro" style="margin-bottom:0">La llicència federativa de la FCTA inclou obligatòriament una assegurança d'accidents esportius (AE) i de responsabilitat civil. Aquesta cobertura és vàlida durant la pràctica del tir amb arc en entrenaments, competicions oficials i activitats federatives.</p>
+      </div>
+    </div>
+
+    <!-- COBERTURES -->
+    <div class="ass-grid">
+      <div class="ass-card">
+        <div class="ass-card-icon">&#128137;</div>
+        <h4>Accidents esportius</h4>
+        <p>Cobertura en cas d'accident durant la pràctica del tir amb arc: entrenaments, competicions oficials i activitats federades. Inclou mort i invalidesa permanent.</p>
+      </div>
+      <div class="ass-card">
+        <div class="ass-card-icon">&#127973;</div>
+        <h4>Despeses mèdiques</h4>
+        <p>Atenció mèdica en centres concertats amb MGS. Per autoritzar qualsevol acte mèdic posterior a la primera assistència cal contactar prèviament amb la companyia.</p>
+      </div>
+      <div class="ass-card">
+        <div class="ass-card-icon">&#9878;&#65039;</div>
+        <h4>Responsabilitat civil</h4>
+        <p>Cobertura de responsabilitat civil de l'esportista federat durant la pràctica del tir amb arc en activitats organitzades o autoritzades per la FCTA o els clubs federats.</p>
+      </div>
+      <div class="ass-card">
+        <div class="ass-card-icon">&#128203;</div>
+        <h4>Pòlissa col·lectiva</h4>
+        <p>Assegurança col·lectiva gestionada per la FCTA. Pòlissa n.º <strong>51326604</strong> amb <strong>MGS Seguros</strong>. Tots els federats queden automàticament coberts en tramitar la llicència.</p>
+      </div>
+    </div>
+
+    <!-- PROTOCOL D'ACTUACIÓ EN CAS D'ACCIDENT -->
+    <div class="ass-protocol">
+      <h3>&#128680; Protocol d'actuació en cas d'accident</h3>
+      <p style="color:rgba(255,255,255,.75);font-size:.9rem;margin-bottom:1.5rem">Segueix aquests passos en cas de patir un accident durant la pràctica del tir amb arc.</p>
+
+      <div class="ass-steps">
+        <!-- STEP 1 -->
+        <div class="ass-step">
+          <div class="ass-step-num">1</div>
+          <div class="ass-step-body">
+            <h4>Primera assistència</h4>
+            <p>Truca immediatament a MGS per autoritzar l'assistència d'urgència. Indica el <strong>número de pòlissa 51326604</strong> o identifica't com a federat/ada de la Federació Catalana de Tir amb Arc. MGS et dirigirà al centre mèdic concertat més proper.</p>
+            <div class="ass-step-phones">
+              <a href="tel:902120863" class="ass-phone-btn">&#128222; 902 120 863</a>
+              <a href="tel:917572404" class="ass-phone-btn">&#128222; 91 757 24 04</a>
+            </div>
+            <p class="ass-step-note">&#8505;&#65039; Disponible les 24 hores, tots els dies de l'any.</p>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="ass-step">
+          <div class="ass-step-num">2</div>
+          <div class="ass-step-body">
+            <h4>Assistència successiva</h4>
+            <p>Per a qualsevol acte mèdic posterior a la primera assistència (proves diagnòstiques, rehabilitació, cirurgia…) cal sol·licitar autorització prèvia a MGS:</p>
+            <ul class="ass-step-list">
+              <li>Truca als mateixos números per sol·licitar l'autorització.</li>
+              <li>Envia la <strong>declaració d'accident segellada per la FCTA</strong> per fax o correu electrònic.</li>
+            </ul>
+            <div class="ass-contact-row">
+              <span>&#128242; Fax: <strong>95 454 24 35</strong></span>
+              <span>&#9993;&#65039; <a href="mailto:sucbarcelonacorredores@mgs.es">sucbarcelonacorredores@mgs.es</a></span>
+            </div>
+            <p class="ass-step-note">&#9888;&#65039; Les despeses no autoritzades prèviament per MGS podrien no ser reemborsades.</p>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="ass-step">
+          <div class="ass-step-num">3</div>
+          <div class="ass-step-body">
+            <h4>Comunicació a la FCTA</h4>
+            <p>Comunica l'accident a la Federació per tal que puguem segellar la declaració d'accident i tramitar el seguiment del sinistre amb MGS.</p>
+            <div class="ass-contact-row">
+              <span>&#9993;&#65039; <a href="mailto:info@fcta.cat">info@fcta.cat</a></span>
+              <span>&#128222; 93 308 02 65</span>
+              <span>&#8987; Dl&ndash;Dv 8:00&ndash;14:00h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="lic-docs" style="margin-top:2.5rem">
+      <h3>&#128196; Documents d'assegurança</h3>
+      <div class="lic-docs-grid">
+        <a href="docs/PARTE-DE-ACCIDENTES-MGS.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128203;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Declaració d'Accident</div>
+            <div class="lic-doc-desc">Part d'accidents MGS (a emplenar en cas d'accident)</div>
+          </div>
+        </a>
+        <a href="docs/MGS-POLIZA51326604-accidentes-federados.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128196;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Pòlissa d'Accident Esportiu</div>
+            <div class="lic-doc-desc">Pòlissa MGS n.º 51326604 — federats FCTA</div>
+          </div>
+        </a>
+        <a href="docs/PROTOCOL-actuacio-FEDERATS-FCTA.pdf" target="_blank" class="lic-doc-btn">
+          <span class="lic-doc-icon">&#128680;</span>
+          <div class="lic-doc-text">
+            <div class="lic-doc-name">Protocol d'Actuació</div>
+            <div class="lic-doc-desc">Instruccions per a federats en cas d'accident esportiu</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- PREGUNTES FREQÜENTS -->
+    <div class="ass-faqs">
+      <h3>&#10067; Preguntes freqüents</h3>
+      <div class="ass-faq-list">
+        <details class="ass-faq">
+          <summary>Estic cobert/a durant els entrenaments al club?</summary>
+          <p>Sí. La pòlissa cobreix la pràctica del tir amb arc durant entrenaments en instal·lacions federades, competicions oficials i activitats organitzades pels clubs federats a la FCTA.</p>
+        </details>
+        <details class="ass-faq">
+          <summary>Puc anar a qualsevol metge o hospital?</summary>
+          <p>Per gaudir de la cobertura de la pòlissa cal anar als centres concertats amb MGS o, en urgències, al centre més proper prèvia autorització telefònica. Les despeses en centres no concertats i no autoritzats prèviament podrien no ser cobertes.</p>
+        </details>
+        <details class="ass-faq">
+          <summary>Quin és el número de pòlissa que he de donar?</summary>
+          <p>El número de pòlissa és el <strong>51326604</strong>. Pots identificar-te també com a federat/ada de la <strong>Federació Catalana de Tir amb Arc (FCTA)</strong>.</p>
+        </details>
+        <details class="ass-faq">
+          <summary>Tinc llicència autonòmica. Estic igualment cobert/a?</summary>
+          <p>Sí. Tant la llicència nacional com l'autonòmica inclouen la cobertura d'accident esportiu obligatòria. Ambdues estan incloses a la pòlissa col·lectiva de la FCTA.</p>
+        </details>
+        <details class="ass-faq">
+          <summary>Com tramito un sinistre si l'accident va passar fa uns dies?</summary>
+          <p>Contacta amb la FCTA (<a href="mailto:info@fcta.cat">info@fcta.cat</a>) per obtenir i segellar la declaració d'accident. Després envia-la a MGS per fax (95 454 24 35) o per correu a <a href="mailto:sucbarcelonacorredores@mgs.es">sucbarcelonacorredores@mgs.es</a>. Contacta també amb MGS al 902 120 863 per iniciar la tramitació.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- LINKS RÀPIDS -->
+    <div class="lic-contact-grid" style="margin-top:2rem">
+      <a href="docs/PARTE-DE-ACCIDENTES-MGS.pdf" target="_blank" class="lic-contact-card">
+        <div class="lcc-icon">&#128203;</div>
+        <h4>Declaració d'Accident</h4>
+        <p>Descarrega el formulari de declaració d'accident MGS</p>
+      </a>
+      <a href="tel:902120863" class="lic-contact-card">
+        <div class="lcc-icon">&#128222;</div>
+        <h4>MGS Assistència 24h</h4>
+        <p>902 120 863 &nbsp;·&nbsp; 91 757 24 04<br>Primera assistència i autoritzacions</p>
+      </a>
+      <button onclick="setS('llicencies')" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer">
+        <div class="lcc-icon">&#127939;</div>
+        <h4>Llicències FCTA</h4>
+        <p>Gestiona o renova la teva llicència federativa</p>
+      </button>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- TRANSPARÈNCIA -->
+<div id="sTransparencia" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="doc-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="doc-badge">&#128269; Portal de Transparència</div>
+    <h1>Transparència<br><em>FCTA</em></h1>
+    <p>Accés a la documentació oficial de la Federació Catalana de Tir amb Arc d'acord amb les obligacions de transparència de les federacions esportives de Catalunya establertes pel Consell Català de l'Esport.</p>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- NOTA LEGAL -->
+    <div class="transp-legal-nota">
+      <span>&#9432;</span>
+      <div>Publicació d'acord amb la <strong>Llei 19/2014, del 29 de desembre, de transparència, accés a la informació pública i bon govern</strong> i amb les obligacions específiques per a federacions esportives catalanes del <strong>Decret 58/2010</strong> i la normativa del Consell Català de l'Esport.
+      <a href="https://esport.gencat.cat/ca/arees_dactuacio/clubs_i_federacions/federacions_esportives_catalanes/" target="_blank" class="transp-ext-link">Consell Català de l'Esport &#8599;</a></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="doc-tabs" id="transpTabs">
+      <button class="transp-tab doc-tab act" onclick="setTranspTab('estatuts',this)"><span class="doc-tab-icon">&#128220;</span> Estatuts i Normatives</button>
+      <button class="transp-tab doc-tab"     onclick="setTranspTab('assemblees',this)"><span class="doc-tab-icon">&#128101;</span> Assemblees</button>
+      <button class="transp-tab doc-tab"     onclick="setTranspTab('eleccions',this)"><span class="doc-tab-icon">&#9745;&#65039;</span> Eleccions</button>
+      <button class="transp-tab doc-tab"     onclick="setTranspTab('junta',this)"><span class="doc-tab-icon">&#128203;</span> Junta Directiva</button>
+    </div>
+
+    <!-- ── ESTATUTS I NORMATIVES ──────────────────────────── -->
+    <div class="transp-panel doc-panel act" id="tpEstatuts">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#128220;</div>
+        <div class="doc-info-body">
+          <h4>Estatuts i Normatives de la FCTA</h4>
+          <p>Estatuts vigents de la Federació Catalana de Tir amb Arc i normatives de funcionament intern aprovades pels òrgans de govern. Publicats d'acord amb les obligacions de transparència de les federacions esportives catalanes.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128220;</span> Estatuts</div>
+        <div class="doc-list">
+          <a href="docs/ESTATUTS_FCTA_2019.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Estatuts de la Federació Catalana de Tir amb Arc (vigents)</div>
+              <div class="doc-item-meta"><span>&#128197; Aprovats el 30 de maig de 2019</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128203;</span> Reglaments interns</div>
+        <div class="doc-list">
+          <a href="docs/REGLAMENT_COMPETICIONS_v1.6.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Reglament de Competicions FCTA (v1.6)</div>
+              <div class="doc-item-meta"><span>&#128197; Mar. 2026</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="docs/PATD_v4_catala.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Programa d'Activitats de Tecnificació i Detecció (PATD) v4</div>
+              <div class="doc-item-meta"><span>&#128197; Gen. 2026</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#127760;</span> Normativa externa aplicable</div>
+        <div class="doc-list">
+          <a href="https://esport.gencat.cat/ca/arees_dactuacio/clubs_i_federacions/federacions_esportives_catalanes/" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#127760;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Federacions Esportives Catalanes &ndash; Consell Català de l'Esport</div>
+              <div class="doc-item-meta"><span>Decret 58/2010, de 4 de maig, de les entitats esportives de Catalunya</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="https://www.worldarchery.sport/rules" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#127760;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Llibres de Regles de la World Archery (WA)</div>
+              <div class="doc-item-meta"><span>Normativa internacional aplicable a les competicions oficials</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ASSEMBLEES ─────────────────────────────────────── -->
+    <div class="transp-panel doc-panel" id="tpAssemblees">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#128101;</div>
+        <div class="doc-info-body">
+          <h4>Assemblees Generals de la FCTA</h4>
+          <p>Convocatòries, ordres del dia i actes de les assemblees generals ordinàries i extraordinàries de la Federació Catalana de Tir amb Arc. Publicades d'acord amb la normativa de transparència.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128197;</span> Assemblea General Ordinària 2024</div>
+        <div class="doc-list">
+          <a href="docs/ACTA_Assemblea_2024.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Acta de l'Assemblea General Ordinària FCTA 2024</div>
+              <div class="doc-item-meta"><span>&#128197; 22 de juny de 2024</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128197;</span> Assemblees anteriors</div>
+        <div class="doc-list">
+          <div class="doc-item transp-pendent">
+            <span class="doc-item-icon">&#128337;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Assemblees Generals 2019–2023</div>
+              <div class="doc-item-meta"><span>Documentació en procés de digitalització. Disponible properament.</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gray)">&#8230;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ELECCIONS ──────────────────────────────────────── -->
+    <div class="transp-panel doc-panel" id="tpEleccions">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#9745;&#65039;</div>
+        <div class="doc-info-body">
+          <h4>Processos Electorals FCTA</h4>
+          <p>Documentació dels processos d'elecció de la Junta Directiva de la FCTA: convocatòries, censos, candidatures, constitució de junta electoral i proclamació de resultats.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128197;</span> Eleccions Junta Directiva 2024</div>
+        <div class="doc-list">
+          <a href="docs/ACTA_Constitucio_Junta_Electoral_2024.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Acta de Constitució de la Junta Electoral</div>
+              <div class="doc-item-meta"><span>&#128197; 31 d'octubre de 2024</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="docs/Candidats_Prov_Junta_Directiva_2024.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Llista Provisional de Candidats a la Junta Directiva 2024</div>
+              <div class="doc-item-meta"><span>&#128197; 20 de novembre de 2024</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="docs/Proclamacio_Resultats_Eleccions_2024.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Proclamació Oficial dels Resultats de les Eleccions 2024</div>
+              <div class="doc-item-meta"><span>&#128197; 5 de desembre de 2024</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128197;</span> Eleccions Junta Directiva 2020</div>
+        <div class="doc-list">
+          <a href="docs/Avis_Inici_Eleccions_2020.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Avís d'Inici del Procés Electoral 2020</div>
+              <div class="doc-item-meta"><span>&#128197; 30 de novembre de 2020</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+          <a href="docs/Comunicat_Eleccions_2020.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">&#128196;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Comunicat Eleccions FCTA 2020</div>
+              <div class="doc-item-meta"><span>&#128197; 14 de desembre de 2020</span><span>&#128196; Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">&#8594;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── JUNTA DIRECTIVA ────────────────────────────────── -->
+    <div class="transp-panel doc-panel" id="tpJunta">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">&#128203;</div>
+        <div class="doc-info-body">
+          <h4>Junta Directiva</h4>
+          <p>Composició de la Junta Directiva vigent de la FCTA i actes de les reunions. Publicades d'acord amb les obligacions de transparència de les federacions esportives catalanes.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128101;</span> Junta Directiva 2024–2028 (vigent)</div>
+        <div class="doc-list">
+          <div class="transp-junta-card">
+            <div class="transp-junta-grid">
+              <div class="transp-junta-item"><span class="transp-junta-rol">President</span><span class="transp-junta-nom">Juan Carlos Ahumada Méndez</span></div>
+              <div class="transp-junta-item"><span class="transp-junta-rol">1r Vicepresident</span><span class="transp-junta-nom">Juan Carlos Sánchez Mirabal</span></div>
+              <div class="transp-junta-item"><span class="transp-junta-rol">2n Vicepresident</span><span class="transp-junta-nom">Josep Vivó Marce</span></div>
+              <div class="transp-junta-item"><span class="transp-junta-rol">3r Vicepresident</span><span class="transp-junta-nom">Luis Francisco Fernández Berga</span></div>
+              <div class="transp-junta-item"><span class="transp-junta-rol">Tresorer</span><span class="transp-junta-nom">Gregorio José García Orera</span></div>
+              <div class="transp-junta-item"><span class="transp-junta-rol">Secretària</span><span class="transp-junta-nom">Joana Ballarin Giralt</span></div>
+            </div>
+            <a href="docs/Proclamacio_Resultats_Eleccions_2024.pdf" target="_blank" class="transp-junta-link">&#128196; Acta de proclamació de resultats electorals (des. 2024)</a>
+            <button onclick="setS('juntadirectiva')" class="transp-junta-link" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:inherit;color:var(--navy-light);padding:0;display:block;margin-top:.4rem">&#128101; Veure la Junta Directiva completa &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#128203;</span> Actes de la Junta Directiva</div>
+        <div class="doc-list">
+          <div class="doc-item transp-pendent">
+            <span class="doc-item-icon">&#128337;</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Actes de les reunions de la Junta Directiva</div>
+              <div class="doc-item-meta"><span>Publicació periòdica d'acord amb la normativa. Properament disponibles.</span></div>
+            </div>
+            <span class="doc-item-arrow" style="color:var(--gray)">&#8230;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>&#127968;</span> Dades identificatives</div>
+        <div class="transp-dades-grid">
+          <div class="transp-dades-item"><strong>Denominació</strong><span>Federació Catalana de Tir amb Arc (FCTA)</span></div>
+          <div class="transp-dades-item"><strong>CIF</strong><span>Q5855009F</span></div>
+          <div class="transp-dades-item"><strong>Domicili social</strong><span>Rambla de Guipúscoa, 23-25, 2on E · 08018 Barcelona</span></div>
+          <div class="transp-dades-item"><strong>Telèfon</strong><span><a href="tel:+34933080265">93 308 02 65</a></span></div>
+          <div class="transp-dades-item"><strong>Correu electrònic</strong><span><a href="mailto:info@fcta.cat">info@fcta.cat</a></span></div>
+          <div class="transp-dades-item"><strong>Horari d'atenció</strong><span>Dilluns a divendres, 8:00h a 14:00h</span></div>
+          <div class="transp-dades-item"><strong>Fundació</strong><span>1965</span></div>
+          <div class="transp-dades-item"><strong>Adscripció</strong><span>World Archery · Europ. Archery Federation (WAE) · RFETA · UFEC</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- DISCIPLINA (secció genèrica reutilitzable) -->
+<div id="sDisciplina" style="display:none">
+
+  <div class="disc-hero" id="discHero">
+    <div class="disc-hero-inner">
+      <div class="disc-hero-icon" id="discIcon">🎯</div>
+      <div class="disc-hero-text">
+        <h1 id="discNom">Disciplina</h1>
+        <div class="disc-hero-sub" id="discSub">Comitè Català</div>
+      </div>
+      <button class="disc-hero-back" onclick="setS('home')">← Enrere</button>
+    </div>
+  </div>
+
+  <div class="disc-tabs-bar">
+    <div class="disc-tabs-inner" id="discTabs">
+      <button class="disc-tab act" data-tab="info"      onclick="setDiscTab('info',this)">ℹ️ Informació</button>
+      <button class="disc-tab"     data-tab="lliga"     onclick="setDiscTab('lliga',this)">🏅 Lliga</button>
+      <button class="disc-tab"     data-tab="resultats" onclick="setDiscTab('resultats',this)">📊 Resultats</button>
+      <button class="disc-tab"     data-tab="records"   onclick="setDiscTab('records',this)">🏆 Rècords</button>
+      <button class="disc-tab"     data-tab="docs"      onclick="setDiscTab('docs',this)">📄 Documents</button>
+    </div>
+  </div>
+
+  <div class="disc-body" id="discContent"></div>
+
+</div>
+
+<!-- INICI AL TIR AMB ARC -->
+<div id="sInici" style="display:none">
+
+<div class="inici-hero">
+  <div class="container">
+    <div class="lic-hero-badge" style="margin-bottom:1rem">🏹 Per a nous arquers</div>
+    <h1>Comença a tirar<em>amb arc</em></h1>
+    <p>El tir amb arc és un esport accessible per a tothom, des dels 8 anys. Descobreix com unir-te a un dels més de 120 clubs federats a Catalunya.</p>
+    <div class="inici-steps">
+      <div class="inici-step">
+        <div class="inici-step-num">1</div>
+        <h3>Troba un club a prop teu</h3>
+        <p>Cerca el club federat més proper i contacta'l. La majoria ofereixen una primera sessió de prova sense cost.</p>
+      </div>
+      <div class="inici-step">
+        <div class="inici-step-num">2</div>
+        <h3>Fes-te soci</h3>
+        <p>Apunta't al club i obté la llicència federativa a través d'ell. La llicència t'inclou assegurança esportiva.</p>
+      </div>
+      <div class="inici-step">
+        <div class="inici-step-num">3</div>
+        <h3>Comença a competir</h3>
+        <p>Amb la llicència pots participar en tirades socials, lligues catalanes i campionats autonòmics.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<!-- INFO PRÀCTICA -->
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+    <div class="sec-label">Tot el que necessites saber</div>
+    <h2 class="sec-title">Informació <em>per a principiants</em></h2>
+
+    <div class="inici-info-grid">
+
+      <div class="inici-card">
+        <div class="inici-card-icon">🏹</div>
+        <h3>Equipament inicial</h3>
+        <p>No cal comprar res per començar. Els clubs disposen de material de pràctica. Quan progressis, el teu primer equipament bàsic serà:</p>
+        <ul>
+          <li><strong>Arc d'iniciació</strong>: des de ~100 €</li>
+          <li><strong>Fletxes</strong> (set de 6): des de ~60 €</li>
+          <li><strong>Braçalet i dactilera</strong>: ~20–40 €</li>
+        </ul>
+        <p style="margin-top:.6rem">Els clubs orienten sobre quin material s'adapta millor al teu nivell i tipus d'arc. Recordem que la pràctica ha de ser supervisada fins que es completi la formació
+</p>
+      </div>
+
+      <div class="inici-card">
+        <div class="inici-card-icon">📋</div>
+        <h3>Llicència federativa</h3>
+        <p>La llicència es tramita a través del teu club. Per a la temporada <strong>2025–2026</strong>:</p>
+        <ul>
+          <li><strong>Llicència Nacional:</strong> vàlida a tot l'Estat. Accés a competicions estatals.</li>
+          <li><strong>Llicència Autonòmica:</strong> vàlida a Catalunya. Tarifa reduïda.</li>
+        </ul>
+        <p style="margin-top:.6rem">Inclou assegurança d'accidents i responsabilitat civil.</p>
+        <button class="inici-card-cta" onclick="setS('llicencies')">📄 Veure preus i formularis →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLUBS -->
+<section class="section" style="background:white">
+  <div class="container">
+    <div class="sec-label">+120 clubs federats</div>
+    <h2 class="sec-title">Troba el teu <em>club</em></h2>
+    <p class="sec-intro">Cerca per nom, municipi o comarca, o utilitza la geolocalització per trobar els clubs més propers a tu.</p>
+
+    <div class="clubs-toolbar">
+      <div class="clubs-search">
+        <input type="text" placeholder="Cerca per nom, municipi o comarca…" oninput="filterClubs(this.value)" id="clubSearchInput">
+      </div>
+      <button id="btnNearMe" onclick="sortClubsDist()">📍 A prop meu</button>
+      <span class="clubs-count" id="clubsCount"></span>
+    </div>
+
+    <div class="clubs-grid" id="clubsGrid"></div>
+    <div class="clubs-no-result" id="clubsNoResult" style="display:none">
+      Cap club trobat per a la cerca "<span id="clubsNoResultQ"></span>".
+    </div>
+
+    <div style="margin-top:2rem;padding:1.25rem 1.5rem;background:var(--offwhite);border-radius:10px;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <span style="font-size:1.5rem">📞</span>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;color:var(--navy-dark)">No trobes el teu club o vols més informació?</div>
+        <div style="font-size:.83rem;color:var(--gray)">Contacta la FCTA: <strong>info@fcta.cat</strong> · 93 308 02 65 · Dl–Dv 8:00–14:00h</div>
+      </div>
+      <a href="mailto:info@fcta.cat" class="btn-gold" style="margin-left:auto;font-size:.85rem;padding:.6rem 1.25rem">Contactar →</a>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<!-- REGLAMENTS -->
+<div id="sReglaments" style="display:none">
+<div class="lic-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#128218; Normativa Oficial</div>
+    <h1>Reglaments<br><span style="font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:var(--gold)">de la FCTA</span></h1>
+    <p>Tots els reglaments, estatuts i normatives que regeixen la pràctica del tir amb arc a Catalunya, organitzats per comitès i disciplines.</p>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+
+    <!-- Pestanyes de navegació -->
+    <div class="doc-tabs" id="regTabs">
+      <button class="doc-tab act" onclick="setRegTab('federacio',this)">🏛️ Federació</button>
+      <button class="doc-tab" onclick="setRegTab('wa',this)">🌍 World Archery</button>
+      <button class="doc-tab" onclick="setRegTab('comites',this)">🏹 Comitès</button>
+      <button class="doc-tab" onclick="setRegTab('jutges',this)">⚖️ Jutges</button>
+    </div>
+
+    <!-- ── FEDERACIÓ ───────────────────────────────────────── -->
+    <div class="doc-panel" id="rpFederacio" style="display:block">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">🏛️</div>
+        <div class="doc-info-body">
+          <h4>Reglaments de la Federació</h4>
+          <p>Documents bàsics que regulen l'organització i les competicions de la Federació Catalana de Tir amb Arc.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>📜</span> Estatuts i Normativa Interna</div>
+        <div class="doc-list">
+          <a href="docs/ESTATUTS_FCTA.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">📜</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Estatuts de la FCTA</div>
+              <div class="doc-item-meta"><span>📅 2019</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🏆</span> Reglament de Competicions</div>
+        <div class="doc-list">
+          <a href="docs/REGLAMENT_COMPETICIONS_v1.6.pdf" target="_blank" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">🏆</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Reglament de Competicions de la FCTA <span style="background:var(--gold);color:var(--navy-dark);font-size:.68rem;font-weight:800;padding:.1rem .45rem;border-radius:3px;margin-left:.4rem">v1.6</span></div>
+              <div class="doc-item-meta"><span>📅 Juliol 2022</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+          <a href="docs/REGLAMENT_COMPETICIONS_v1.5.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">📋</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Reglament de Competicions de la FCTA <span style="font-size:.75rem;color:var(--gray);margin-left:.3rem">versió anterior</span></div>
+              <div class="doc-item-meta"><span>📅 Novembre 2021</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🏗️</span> Instal·lacions i Infraestructura</div>
+        <div class="doc-list">
+          <a href="docs/GUIA_INSTAL_LACIONS.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">🏗️</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Guia d'Instal·lacions de Camps de Tir amb Arc</div>
+              <div class="doc-item-meta"><span>📅 2020</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WORLD ARCHERY ───────────────────────────────────── -->
+    <div class="doc-panel" id="rpWa" style="display:none">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">🌍</div>
+        <div class="doc-info-body">
+          <h4>Reglaments World Archery</h4>
+          <p>Llibres de regles oficials de la World Archery (WA) traduïts al català. Regeixen les competicions internacionals i nacionals de totes les disciplines olímpiques i no olímpiques.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🎯</span> Llibre 3 · Tir sobre Diana – Aire Lliure i Sala</div>
+        <div class="doc-list">
+          <a href="docs/WA_Llibre3_Aire_Lliure_Sala.pdf" target="_blank" class="doc-item" style="border-left-color:#1a6fb5">
+            <span class="doc-item-icon">🎯</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">WA Llibre 3 – Tir sobre diana: Aire Lliure i Sala</div>
+              <div class="doc-item-meta"><span>📅 Rev. 31/03/2019</span><span>🌍 World Archery</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🌲</span> Llibre 4 · Tir de Camp i 3D</div>
+        <div class="doc-list">
+          <a href="docs/WA_Llibre4_Camp_3D.pdf" target="_blank" class="doc-item" style="border-left-color:#2e7d32">
+            <span class="doc-item-icon">🌲</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">WA Llibre 4 – Tir de Camp i 3D</div>
+              <div class="doc-item-meta"><span>📅 Rev. 31/03/2019</span><span>🌍 World Archery</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🏹</span> Llibre 5 · Diferents Sèries de Tir amb Arc</div>
+        <div class="doc-list">
+          <a href="docs/WA_Llibre5_Diferents_Series.pdf" target="_blank" class="doc-item" style="border-left-color:#6a1b9a">
+            <span class="doc-item-icon">🏹</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">WA Llibre 5 – Diferents Sèries de Tir amb Arc <small style="color:var(--gray)">(arc nu, arc de polses, longbow...)</small></div>
+              <div class="doc-item-meta"><span>📅 Rev. 31/03/2019</span><span>🌍 World Archery</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-info-card" style="margin-top:1.5rem;background:rgba(26,111,181,.06);border-color:rgba(26,111,181,.2)">
+        <div class="doc-info-icon" style="font-size:1.4rem">🔗</div>
+        <div class="doc-info-body">
+          <h4 style="color:#1a6fb5">Reglaments World Archery en anglès</h4>
+          <p>Accedeix al Rulebook complet i actualitzat directament a la web oficial de World Archery.</p>
+          <a href="https://www.worldarchery.sport/rulebook" target="_blank" class="bsm bsm-n" style="margin-top:.6rem;display:inline-flex">🌐 Rulebook oficial WA →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COMITÈS ─────────────────────────────────────────── -->
+    <div class="doc-panel" id="rpComites" style="display:none">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">🏹</div>
+        <div class="doc-info-body">
+          <h4>Reglaments dels Comitès Tècnics</h4>
+          <p>Normatives específiques elaborades pels comitès tècnics de la FCTA per a cada disciplina.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🎯</span> Comitè Català d'Aire Lliure i Sala</div>
+        <div class="doc-list">
+          <div class="doc-item" style="cursor:default;opacity:.7">
+            <span class="doc-item-icon">📋</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Normativa específica d'Aire Lliure i Sala</div>
+              <div class="doc-item-meta"><span>ℹ️ Consulta el Reglament de Competicions FCTA i WA Llibre 3</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🌲</span> Comitè Català de Tir de 3D</div>
+        <div class="doc-list">
+          <div class="doc-item" style="cursor:default;opacity:.7">
+            <span class="doc-item-icon">📋</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Normativa específica de 3D</div>
+              <div class="doc-item-meta"><span>ℹ️ Consulta el Reglament de Competicions FCTA i WA Llibre 4</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🧩</span> Comitè Català de Tecnificació Base</div>
+        <div class="doc-list">
+          <a href="docs/PATD_Tecnificacio_Base_v4.pdf" target="_blank" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">🧩</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Pla d'Alt Rendiment i Tecnificació Base (PATD) <span style="background:var(--gold);color:var(--navy-dark);font-size:.68rem;font-weight:800;padding:.1rem .45rem;border-radius:3px;margin-left:.4rem">v4</span></div>
+              <div class="doc-item-meta"><span>📅 Gener 2026</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>♿</span> Comitè Català d'Arc Adaptat</div>
+        <div class="doc-list">
+          <div class="doc-item" style="cursor:default;opacity:.7">
+            <span class="doc-item-icon">📋</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Normativa específica d'Arc Adaptat</div>
+              <div class="doc-item-meta"><span>ℹ️ Document en preparació</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>🎌</span> Comitè Català de Kyudo</div>
+        <div class="doc-list">
+          <a href="https://www.ankf.or.jp/en/" target="_blank" class="doc-item">
+            <span class="doc-item-icon">🎌</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Reglaments Kyudo – All Nippon Kyudo Federation (ANKF)</div>
+              <div class="doc-item-meta"><span>🌐 Normativa internacional de referència</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── JUTGES ──────────────────────────────────────────── -->
+    <div class="doc-panel" id="rpJutges" style="display:none">
+      <div class="doc-info-card">
+        <div class="doc-info-icon">⚖️</div>
+        <div class="doc-info-body">
+          <h4>Comitè Català de Jutges</h4>
+          <p>Normativa que regeix les funcions, drets i deures dels jutges de tir amb arc a Catalunya, en coordinació amb el Comitè Nacional de Jutges de la RFETA.</p>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>⚖️</span> Reglament de Jutges</div>
+        <div class="doc-list">
+          <a href="docs/REGLAMENT_CNJ_Jutges.pdf" target="_blank" class="doc-item" style="border-left-color:var(--gold)">
+            <span class="doc-item-icon">⚖️</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Reglament del Comitè Nacional de Jutges (CNJ)</div>
+              <div class="doc-item-meta"><span>📅 Setembre 2021</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-sub">
+        <div class="doc-sub-title"><span>📚</span> Manuals de Formació per a Jutges</div>
+        <div class="doc-list">
+          <a href="docs/Manual_Entrenador_FITA_NivellI.pdf" target="_blank" class="doc-item">
+            <span class="doc-item-icon">📚</span>
+            <div class="doc-item-body">
+              <div class="doc-item-title">Manual de l'Entrenador FITA – Nivell I</div>
+              <div class="doc-item-meta"><span>📅 2020</span><span>📄 Descarrega PDF</span></div>
+            </div>
+            <span class="doc-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-info-card" style="margin-top:1.5rem;background:rgba(26,111,181,.06);border-color:rgba(26,111,181,.2)">
+        <div class="doc-info-icon" style="font-size:1.4rem">📋</div>
+        <div class="doc-info-body">
+          <h4 style="color:#1a6fb5">Curs de Jutges FCTA</h4>
+          <p>Consulta les convocatòries actives de cursos de jutges a la secció de Circulars (categoria Jutges).</p>
+          <button onclick="setS('circulars')" class="bsm bsm-n" style="margin-top:.6rem">📄 Veure circulars de Jutges →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- CALENDARI ESPORTIU -->
+<div id="sCalendari" style="display:none">
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+<div class="cal-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#128197; Temporada 2025 / 2026</div>
+    <h1>Calendari<br><em>Esportiu FCTA</em></h1>
+    <p>Totes les competicions i campionats de la temporada. Exporta el calendari al teu dispositiu o afegeix les dates directament a Google Calendar.</p>
+    <div class="cal-hero-actions">
+      <a href="https://fcta.cat/wp-content/uploads/2026/05/Calendaria_general_fcta_210526.pdf" target="_blank" rel="noopener" class="cal-btn-pdf">&#11015;&#65039; Descarregar PDF oficial</a>
+    </div>
+    <div class="cal-export-bar">
+      <span class="cal-export-label">&#128260; Exportar:</span>
+      <button onclick="exportCalendariICS()" class="cal-exp-btn cal-exp-ics">&#128197; iCal / .ics</button>
+      <span style="font-size:.75rem;color:rgba(255,255,255,.45)">Compatible amb:</span>
+      <span style="font-size:.78rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:.35rem">&#9989; Google Calendar &nbsp;&#9989; Apple Calendar &nbsp;&#9989; Outlook</span>
+    </div>
+  </div>
+</div>
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+    <div class="sec-label">Temporada 2025/2026</div>
+    <h2 class="sec-title">Totes les <em>Competicions</em></h2>
+    <p class="sec-intro">Llista cronològica de totes les competicions federades. Utilitza el bot&#243; <strong>Google</strong> per afegir qualsevol data directament al teu Google Calendar.</p>
+    <div class="cal-list-wrap">
+      <div id="calListView"></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-logo">FC<span>TA</span></div>
+        <p>Federació Catalana de Tir amb Arc. Organisme rector del tir amb arc a Catalunya des de 1965. Membre de la World Archery i la RFETA.</p>
+        <p>📍 Rambla Guipúscoa, 23-25, 2on E · 08018 Barcelona<br>📞 93 308 02 65 · <a href="mailto:info@fcta.cat" style="color:rgba(255,255,255,.5)">info@fcta.cat</a><br>⏰ Dl–Dv: 8:00–14:00h</p>
+      </div>
+      <div>
+        <div class="foot-h">La Federació</div>
+        <ul class="foot-links">
+          <li><a href="#" onclick="setS('llicencies');return false">Llicències</a></li>
+          <li><a href="#" onclick="setS('documentacio');return false">Documentació</a></li>
+          <li><a href="#" onclick="setS('reglaments');return false">Reglaments</a></li>
+          <li><a href="#" onclick="setS('assegurances');return false">Assegurances</a></li>
+          <li><a href="#" onclick="setS('transparencia');return false">Transparència</a></li>
+          <li><a href="#" onclick="setS('juntadirectiva');return false">Junta Directiva</a></li>
+          <li><a href="#" onclick="setS('pat');return false">PAT – Tecnificació</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-h">Espais</div>
+        <ul class="foot-links">
+          <li><a href="#" onclick="setS('arcadaptat');return false">Arc Adaptat</a></li>
+          <li><a href="#" onclick="setS('comitejutges');return false">Comitè de Jutges</a></li>
+          <li><a href="#" onclick="setS('inici');return false">Clubs</a></li>
+          <li><a href="#" onclick="setS('social');return false">Tirades Socials</a></li>
+          <li><a href="#" onclick="setS('calendari');return false">Calendari Esportiu</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-h">Legal</div>
+        <ul class="foot-links">
+          <li><a href="docs/condicions-us.pdf" target="_blank">Condicions d'ús</a></li>
+          <li><a href="docs/politica-privacitat.pdf" target="_blank">Política de privacitat</a></li>
+          <li><a href="docs/condicions-contractacio.pdf" target="_blank">Condicions de contractació</a></li>
+          <li><a href="docs/politica-privadesa-xarxes.pdf" target="_blank">Política de privadesa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Federació Catalana de Tir amb Arc · CIF Q5855009F</p>
+      <div class="soc-icons">
+        <a href="https://www.facebook.com/TirArcCat/" target="_blank" class="soc-icon" title="Facebook">f</a>
+        <a href="https://www.instagram.com/tirambarc_cat/" target="_blank" class="soc-icon" title="Instagram">📷</a>
+        <a href="https://twitter.com/FCTirArc" target="_blank" class="soc-icon" title="Twitter">𝕏</a>
+        <a href="https://whatsapp.com/channel/0029Vb6QpS472WTwq3g1IX1Z" target="_blank" class="soc-icon" title="WhatsApp">W</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL SOL·LICITUD RÈCORD -->
+<div id="recordFormOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9000;align-items:center;justify-content:center;padding:1rem" onclick="if(event.target===this)closeRecordForm()">
+  <div style="background:white;border-radius:14px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+    <div style="background:var(--navy-dark);padding:1.25rem 1.5rem;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;color:white;text-transform:uppercase">🏆 Sol·licitud d'homologació de rècord</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.15rem">La sol·licitud serà revisada per l'administrador de la FCTA</div>
+      </div>
+      <button onclick="closeRecordForm()" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:1.4rem;cursor:pointer;line-height:1">✕</button>
+    </div>
+    <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Disciplina *</label>
+          <select id="rf_disciplina" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem">
+            <option value="">-- Selecciona --</option>
+            <option>Aire Lliure</option><option>Sala</option><option>3D</option><option>Tir de Camp</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Divisió d'arc *</label>
+          <select id="rf_estil" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem">
+            <option value="">-- Selecciona --</option>
+            <option>Arc Recorbat</option><option>Arc Compost</option><option>Arc Nu</option><option>Longbow</option><option>Tradicional</option><option>Instintiu</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Classe *</label>
+          <select id="rf_categoria" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem">
+            <option value="">-- Selecciona --</option>
+            <option>Prebenjamí (U10)</option><option>Benjamí (U12)</option><option>Aleví (U14)</option>
+            <option>Sub-15</option><option>Sub-18</option><option>Sub-21</option>
+            <option>Sènior</option><option>+50</option><option>+60</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Sexe *</label>
+          <select id="rf_sexe" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem">
+            <option value="">-- Selecciona --</option>
+            <option>Home</option><option>Dona</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Marca obtinguda * <span style="font-weight:400;color:var(--gray)">(ex: 685 pts)</span></label>
+          <input id="rf_marca" type="text" placeholder="p.ex. 685 pts" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;box-sizing:border-box">
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Data de la competició *</label>
+          <input id="rf_data" type="date" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;box-sizing:border-box">
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Nom de l'atleta *</label>
+        <input id="rf_atleta" type="text" placeholder="Nom i cognoms" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;box-sizing:border-box">
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Club</label>
+          <input id="rf_club" type="text" placeholder="Nom del club federat" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;box-sizing:border-box">
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Nom de la competició</label>
+          <input id="rf_competicio" type="text" placeholder="p.ex. 3ª Lliga Catalana AL" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;box-sizing:border-box">
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Correu de contacte * <span style="font-weight:400;color:var(--gray)">(per a verificació)</span></label>
+        <input id="rf_email" type="email" placeholder="atleta@exemple.cat" style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;box-sizing:border-box">
+      </div>
+
+      <div>
+        <label style="font-size:.78rem;font-weight:700;color:var(--navy-dark);display:block;margin-bottom:.3rem">Observacions <span style="font-weight:400;color:var(--gray)">(opcional – adjunta proves, classificadors...)</span></label>
+        <textarea id="rf_obs" rows="3" placeholder="Afegeix qualsevol informació addicional rellevant per a la validació..." style="width:100%;padding:.55rem .75rem;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;box-sizing:border-box;resize:vertical"></textarea>
+      </div>
+
+      <div style="background:#fffbe6;border:1px solid #f0d060;border-radius:6px;padding:.75rem 1rem;font-size:.78rem;color:#5a4500">
+        ⚠️ La sol·licitud serà revisada pel Comitè Tècnic de la FCTA. Per a l'homologació oficial cal adjuntar el full de puntuació original i el certificat del jutge responsable de la competició.
+      </div>
+
+      <div style="display:flex;gap:.75rem;justify-content:flex-end;padding-top:.25rem">
+        <button onclick="closeRecordForm()" style="padding:.65rem 1.25rem;background:none;border:1.5px solid var(--lightgray);border-radius:6px;font-family:inherit;font-size:.88rem;cursor:pointer;color:var(--gray)">Cancel·lar</button>
+        <button onclick="submitRecordForm()" class="btn-gold" style="font-size:.9rem;padding:.65rem 1.5rem">🏆 Enviar sol·licitud</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- NEWS ARTICLE MODAL -->
+<div id="newsOverlay" style="display:none" class="pdf-overlay" onclick="closeNewsOut(event)">
+  <div class="pdf-modal">
+    <div class="pdf-modal-head">
+      <div class="pdf-modal-title" id="newsModalTitle">Notícia</div>
+      <div class="pdf-modal-acts">
+        <button class="pdf-btn-close" onclick="closeNews()">✕ Tancar</button>
+      </div>
+    </div>
+    <div class="pdf-content">
+      <div class="news-article-body" id="newsModalBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF VIEWER MODAL -->
+<div id="pdfOverlay" style="display:none" class="pdf-overlay" onclick="closePDFOut(event)">
+  <div class="pdf-modal">
+    <div class="pdf-modal-head">
+      <div class="pdf-modal-title" id="pdfTitle">Document</div>
+      <div class="pdf-modal-acts">
+        <a id="pdfDownloadBtn" href="#" target="_blank" class="pdf-btn">⬇ Descarregar PDF</a>
+        <button class="pdf-btn-close" onclick="closePDF()">✕ Tancar</button>
+      </div>
+    </div>
+    <div class="pdf-content">
+      <div class="pdf-text-body" id="pdfBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginOverlay" style="display:none" class="login-overlay">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="ll-icon">&#9881;&#65039;</div>
+      <h2>Accés Administració</h2>
+      <p>Federació Catalana de Tir amb Arc</p>
+    </div>
+    <div class="login-field">
+      <label>Usuari</label>
+      <input type="text" id="loginUser" placeholder="admin" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="login-field">
+      <label>Contrasenya</label>
+      <input type="password" id="loginPass" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-submit" onclick="doLogin()">Entrar</button>
+    <div class="login-error" id="loginError">Usuari o contrasenya incorrectes.</div>
+    <button class="login-cancel" onclick="cancelLogin()">Cancel&middot;lar</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admOverlay" style="display:none" onclick="closeAdmOut(event)">
+  <div class="adm-panel" id="admPanel">
+    <div class="adm-head">
+      <div class="adm-title">
+        &#9881;&#65039; Administració
+        <span class="adm-user-badge" id="admUserBadge"></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <button class="adm-logout" onclick="dbReset()" title="Restablir totes les dades als valors originals" style="background:#dc2626">&#8635; Restablir dades</button>
+        <button class="adm-logout" onclick="doLogout()">&#128682; Tancar sessió</button>
+        <button class="adm-close" onclick="closeAdm()">&#xd7;</button>
+      </div>
+    </div>
+    <div class="adm-nav" id="admNav">
+      <button class="adm-tab act" onclick="setATab('circ',this)">&#128196; Circulars</button>
+      <button class="adm-tab" onclick="setATab('news',this)">&#128240; Notícies</button>
+      <button class="adm-tab" onclick="setATab('comp',this)">&#127942; Competicions</button>
+      <button class="adm-tab" onclick="setATab('form',this)">&#127891; Formació</button>
+      <button class="adm-tab" onclick="setATab('tirades',this)">&#127919; Tirades<span class="pend-dot" id="pendDot">0</span></button>
+      <button class="adm-tab" onclick="setATab('records',this)">🏆 Rècords<span class="pend-dot" id="pendDotRecords">0</span></button>
+      <button class="adm-tab" onclick="setATab('docs',this)">📂 Documents</button>
+      <button class="adm-tab" onclick="setATab('gen',this)">✍️ Generador</button>
+    </div>
+    <div class="adm-body" id="admBody"></div>
+  </div>
+</div>
+<!-- INSCRIPTION MODAL -->
+<div id="mWrap" style="display:none" class="modal-wrap" onclick="closeMOut(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="mTitle">Inscripció</div>
+      <button class="modal-close" onclick="closeM()">×</button>
+    </div>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" style="display:none"><span id="tIcon">✅</span>&nbsp;<span id="tMsg"></span></div>
+
+<!-- JS Modules (load order matters) -->
+  <script src="js/config.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/persist.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/circulars.js"></script>
+  <script src="js/competitions.js"></script>
+  <script src="js/news.js"></script>
+  <script src="js/formations.js"></script>
+  <script src="js/tirades.js"></script>
+  <script src="js/pdf_viewer.js"></script>
+  <script src="js/news_viewer.js"></script>
+  <script src="js/inscription.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/documentacio.js"></script>
+  <script src="js/reglaments.js"></script>
+  <script src="js/transparencia.js"></script>
+  <script src="js/inici.js"></script>
+  <script src="js/disciplines.js"></script>
+  <script src="js/records_form.js"></script>
+  <script src="js/calendari.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+/* ── LOGIN MODAL ────────────────────────────────────────── */
+.login-overlay{position:fixed;inset:0;background:rgba(11,22,47,.92);z-index:3500;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.login-box{background:white;border-radius:12px;padding:2.5rem;width:min(400px,92vw);box-shadow:0 20px 60px rgba(0,0,0,.4);animation:mIn .3s var(--tr)}
+.login-logo{text-align:center;margin-bottom:1.75rem}
+.login-logo .ll-icon{width:64px;height:64px;background:var(--navy-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;font-size:1.8rem}
+.login-logo h2{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;text-transform:uppercase;color:var(--navy-dark)}
+.login-logo p{font-size:.82rem;color:var(--gray);margin-top:.2rem}
+.login-field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.login-field label{font-size:.75rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px}
+.login-field input{border:1.5px solid #ddd;border-radius:6px;padding:.7rem 1rem;font-family:'Barlow',sans-serif;font-size:.95rem;color:var(--dark);outline:none;transition:border-color .2s;background:white}
+.login-field input:focus{border-color:var(--navy)}
+.login-submit{background:var(--navy);color:white;border:none;border-radius:6px;padding:.85rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.8px;cursor:pointer;width:100%;margin-top:.5rem;transition:background .2s}
+.login-submit:hover{background:var(--navy-dark)}
+.login-error{background:#fee2e2;border:1px solid #fca5a5;border-radius:6px;padding:.65rem 1rem;font-size:.84rem;color:#991b1b;margin-top:.75rem;display:none}
+.login-cancel{background:none;border:none;color:var(--gray);font-size:.84rem;cursor:pointer;width:100%;margin-top:.5rem;padding:.4rem;transition:color .2s}
+.login-cancel:hover{color:var(--navy)}

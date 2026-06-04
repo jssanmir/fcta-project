@@ -1,0 +1,15 @@
+/* MODAL */
+.modal-wrap{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:3000;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(3px)}
+.modal{background:white;border-radius:10px;padding:2rem;max-width:500px;width:100%;max-height:88vh;overflow-y:auto;animation:mIn .28s var(--tr)}
+@keyframes mIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.85rem;border-bottom:2px solid var(--lightgray)}
+.modal-title{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark)}
+.modal-close{background:none;border:none;color:var(--gray);font-size:1.7rem;cursor:pointer;line-height:1}
+.modal-close:hover{color:var(--navy)}
+.mfg{display:flex;flex-direction:column;gap:.32rem;margin-bottom:.85rem}
+.mfg label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.4px}
+.mfg input,.mfg select{border:1.5px solid #ddd;border-radius:4px;padding:.58rem .85rem;font-family:'Barlow',sans-serif;font-size:.9rem;color:var(--dark);outline:none;transition:border-color .2s;background:white}
+.mfg input:focus,.mfg select:focus{border-color:var(--navy)}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.m-sub{background:var(--navy);color:white;border:none;border-radius:4px;padding:.72rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.92rem;text-transform:uppercase;letter-spacing:.8px;cursor:pointer;width:100%;margin-top:.5rem;transition:background .2s}
+.m-sub:hover{background:var(--navy-dark)}

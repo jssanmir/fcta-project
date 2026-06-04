@@ -1,0 +1,22 @@
+{
+  "name": "fcta-portal",
+  "version": "1.0.0",
+  "description": "Portal web de la Federació Catalana de Tir amb Arc",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "generate-secret": "node -e \"console.log('JWT_SECRET=' + require('crypto').randomBytes(48).toString('hex'))\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.10.0",
+    "docx": "^9.7.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
+  }
+}

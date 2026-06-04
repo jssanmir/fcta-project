@@ -1,0 +1,32 @@
+/* TIRADES SOCIALS */
+.social-filters-row{margin-bottom:1.75rem}
+.sf-inline-filters{display:flex;gap:.4rem;flex-wrap:wrap}
+.sf-inline-filters .fb:hover,.sf-inline-filters .fb.act{background:var(--gold)!important;border-color:var(--gold)!important;color:var(--navy-dark)!important}
+
+.tirades-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.tirada-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;transition:all .3s;cursor:pointer}
+.tirada-card:hover{background:rgba(255,255,255,.1);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.tirada-card.pendent{opacity:.65;border-style:dashed}
+.tirada-img{height:180px;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.tirada-img img{width:100%;height:100%;object-fit:cover}
+.tirada-img-placeholder{font-size:3.5rem;opacity:.25}
+.tirada-tipus-tag{position:absolute;top:.6rem;left:.6rem;font-size:.67rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px}
+.tirada-pend-tag{position:absolute;top:.6rem;right:.6rem;background:rgba(255,190,0,.2);color:#f0b800;font-size:.67rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;border:1px solid rgba(255,190,0,.3)}
+.tirada-body{padding:1.1rem 1.25rem}
+.tirada-club{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.35rem}
+.tirada-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:800;color:white;text-transform:uppercase;line-height:1.2;margin-bottom:.65rem}
+.tirada-meta{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.85rem}
+.tirada-mi{display:flex;align-items:flex-start;gap:.45rem;font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.4}
+.tirada-mi span:first-child{flex-shrink:0;margin-top:.05rem}
+.tirada-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.tirada-empty{text-align:center;padding:3rem 1rem;color:rgba(255,255,255,.35)}
+.tirada-empty .te-icon{font-size:3rem;margin-bottom:1rem;display:block;opacity:.4}
+.tirada-empty p{font-size:.9rem;line-height:1.7}
+
+/* TIRADA DETAIL MODAL */
+.tirada-detail-img{width:100%;border-radius:6px;margin-bottom:1.25rem;object-fit:contain;max-height:300px;background:var(--lightgray)}
+.tirada-detail-meta{background:#f0f4ff;border-radius:6px;padding:.85rem 1rem;margin-bottom:1.25rem;display:flex;flex-direction:column;gap:.45rem}
+.tirada-detail-mi{display:flex;align-items:flex-start;gap:.5rem;font-size:.87rem;color:var(--navy-dark)}
+.tirada-detail-mi strong{min-width:80px;color:var(--gray);font-weight:600}
+.tirada-desc-block{background:#f8faff;border-radius:6px;padding:.9rem 1rem;font-size:.88rem;line-height:1.75;color:var(--gray);margin-bottom:1.25rem;white-space:pre-wrap}
+.tirada-contact{font-size:.83rem;color:var(--gray);display:flex;flex-direction:column;gap:.3rem}

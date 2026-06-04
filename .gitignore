@@ -1,0 +1,17 @@
+# Dependències
+node_modules/
+
+# Base de dades (conté dades reals)
+data/*.db
+data/*.db-shm
+data/*.db-wal
+
+# Secrets
+.env
+
+# Fitxers temporals de generació
+manual_admin.js
+
+# Logs
+*.log
+npm-debug.log*

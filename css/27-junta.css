@@ -1,0 +1,200 @@
+/* JUNTA DIRECTIVA */
+
+/* Hero */
+.jd-hero {
+  background: linear-gradient(135deg, #0f2240 0%, #1a3a5c 60%, #1a4a2e 100%);
+  padding: 3.5rem 0 3rem;
+  color: white;
+}
+.jd-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: .75rem;
+}
+.jd-hero h1 em {
+  color: var(--gold, #f5c518);
+  font-style: normal;
+  display: block;
+}
+.jd-hero p { color: rgba(255,255,255,.8); max-width: 600px; font-size: .95rem; line-height: 1.6; }
+
+/* Section title */
+.jd-section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--navy-dark);
+  margin-bottom: 1.25rem;
+  padding-bottom: .4rem;
+  border-bottom: 2px solid var(--gold, #f5c518);
+  display: inline-block;
+}
+
+/* President card */
+.jd-president-wrap { margin-bottom: 2.5rem; }
+.jd-president-card {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  background: var(--navy-dark, #0f2240);
+  color: white;
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  max-width: 680px;
+}
+.jd-president-avatar {
+  width: 80px;
+  height: 80px;
+  background: rgba(245,197,24,.15);
+  border: 3px solid var(--gold, #f5c518);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+.jd-president-rol {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold, #f5c518);
+  margin-bottom: .3rem;
+}
+.jd-president-nom {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: .5rem;
+  color: white;
+}
+
+/* Executive grid */
+.jd-exec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: .85rem;
+  margin-bottom: 1rem;
+}
+.jd-exec-card {
+  background: white;
+  border: 1px solid var(--lightgray);
+  border-top: 4px solid var(--navy-dark, #0f2240);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  transition: box-shadow .2s, transform .15s;
+}
+.jd-exec-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.09); transform: translateY(-2px); }
+.jd-exec-rol {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: var(--navy-light, #1a6fb5);
+  margin-bottom: .3rem;
+}
+.jd-exec-nom {
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  line-height: 1.3;
+  margin-bottom: .4rem;
+}
+
+/* Vocals grid */
+.jd-vocals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: .85rem;
+  margin-bottom: 2rem;
+}
+.jd-vocal-card {
+  background: white;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+  transition: box-shadow .2s, transform .15s;
+}
+.jd-vocal-card:hover { box-shadow: 0 3px 10px rgba(0,0,0,.07); transform: translateY(-1px); }
+.jd-vocal-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--offwhite, #f4f4f4);
+  border: 2px solid var(--lightgray);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.jd-vocal-body { flex: 1; min-width: 0; }
+.jd-vocal-nom { font-size: .88rem; font-weight: 700; color: var(--navy-dark); line-height: 1.3; margin-bottom: .2rem; }
+.jd-vocal-rol {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--gray);
+  margin-bottom: .2rem;
+}
+
+/* Email shared */
+.jd-member-email {
+  font-size: .75rem;
+  color: var(--navy-light, #1a6fb5);
+  text-decoration: none;
+  word-break: break-all;
+  display: block;
+}
+.jd-member-email:hover { text-decoration: underline; }
+.jd-president-card .jd-member-email { color: rgba(255,255,255,.6); }
+.jd-president-card .jd-member-email:hover { color: white; }
+
+/* Info row */
+.jd-info-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  background: white;
+  border: 1px solid var(--lightgray);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+.jd-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+}
+.jd-info-icon { font-size: 1.5rem; flex-shrink: 0; }
+.jd-info-body { display: flex; flex-direction: column; gap: .15rem; }
+.jd-info-body strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--gray);
+}
+.jd-info-body span { font-size: .86rem; color: var(--navy-dark); line-height: 1.4; }
+
+@media (max-width: 600px) {
+  .jd-president-card { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem; }
+  .jd-exec-grid, .jd-vocals-grid { grid-template-columns: 1fr 1fr; }
+  .jd-info-row { grid-template-columns: 1fr; }
+}

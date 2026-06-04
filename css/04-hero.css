@@ -1,0 +1,44 @@
+/* ── HERO ────────────────────────────────────────────────── */
+.hero{background:var(--navy-dark);position:relative;overflow:hidden;padding:5rem 0 4rem}
+.hero-bg-img{position:absolute;inset:0;background:url('../img/hero.jpg') center/cover no-repeat;opacity:.18;pointer-events:none}
+
+/* Layout: text esquerra + disciplines dreta */
+.hero-content{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:center}
+
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,184,0,.12);border:1px solid rgba(245,184,0,.3);color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.25rem}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,6.5vw,5rem);font-weight:900;color:white;line-height:.92;text-transform:uppercase;margin-bottom:.8rem}
+.hero h1 em{color:var(--gold);font-style:normal;display:block}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.65);max-width:480px;line-height:1.7;margin-bottom:2rem}
+.hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.8px;text-transform:uppercase;padding:.75rem 1.75rem;border:none;border-radius:5px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.btn-gold:hover{background:white;transform:translateY(-2px)}
+.btn-w{background:transparent;color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.8px;text-transform:uppercase;padding:.73rem 1.75rem;border:2px solid rgba(255,255,255,.3);border-radius:5px;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-w:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+.hs-num{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1}
+.hs-label{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1.5px;margin-top:.2rem}
+
+/* ── Disciplines panel ────────────────────────────────────── */
+.hero-disciplines{display:flex;flex-direction:column;gap:.85rem}
+.hero-disc-label{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.4)}
+.hero-disc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.hero-disc-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem .75rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;cursor:pointer;transition:all .2s;text-align:center;font-family:inherit}
+.hero-disc-card:hover{background:rgba(255,255,255,.14);border-color:rgba(245,184,0,.4);transform:translateY(-2px)}
+.hero-disc-icon{font-size:2rem;line-height:1}
+.hero-disc-name{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:white;line-height:1.2}
+.hero-disc-cta{background:none;border:1px solid rgba(245,184,0,.35);border-radius:8px;padding:.6rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold);cursor:pointer;transition:all .2s;text-align:center}
+.hero-disc-cta:hover{background:rgba(245,184,0,.1);border-color:var(--gold)}
+
+/* ── Mòbil: disciplines sota el text ─────────────────────── */
+@media(max-width:760px){
+  .hero-content{grid-template-columns:1fr;gap:2rem;padding-bottom:0}
+  .hero-disciplines{order:2} /* sota el text */
+  .hero-disc-grid{grid-template-columns:repeat(4,1fr);gap:.5rem} /* 1 fila de 4 */
+  .hero-disc-card{padding:.9rem .4rem;gap:.35rem;border-radius:10px}
+  .hero-disc-icon{font-size:1.6rem}
+  .hero-disc-name{font-size:.78rem;letter-spacing:0}
+  .hero-disc-cta{display:none} /* prou espai amb el botó ja existent */
+}
+@media(max-width:380px){
+  .hero-disc-grid{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+}
