@@ -102,6 +102,28 @@ if (countRow.n === 0) {
   console.log('[FCTA] Usuaris inicials creats.');
 }
 
+// ── Restauració des de backup en arrancar amb BD buida ─────
+// Si la BD és buida (deploy nou, filesystem efímer) però existeix
+// un fitxer SEED_JSON a l'entorn o un backup anterior, el restaura.
+(function seedFromEnv() {
+  var row = db.prepare('SELECT COUNT(*) AS n FROM portal_state').get();
+  if (row.n > 0) return; // BD ja té dades, no fer res
+
+  // Intenta restaurar des de variable d'entorn DB_SEED (base64 JSON)
+  var seed = process.env.DB_SEED;
+  if (seed) {
+    try {
+      var data = JSON.parse(Buffer.from(seed, 'base64').toString('utf8'));
+      var now  = new Date().toISOString();
+      db.prepare('INSERT INTO portal_state (id,data,updated_at) VALUES (1,?,?)')
+        .run(JSON.stringify(data), now);
+      console.log('[FCTA] Dades restaurades des de DB_SEED.');
+    } catch (e) {
+      console.warn('[FCTA] Error restaurant DB_SEED:', e.message);
+    }
+  }
+})();
+
 // ── Backup automàtic en arrencada ─────────────────────────
 // Desa una còpia JSON de les dades de producció a data/backups/
 // Protegeix contra pèrdues accidentals per deploys o errors.
@@ -462,6 +484,24 @@ app.post('/api/backups/:name/restore', verifyToken, requireRole('superadmin'), f
   } catch (e) {
     res.status(500).json({ error: 'Error restaurant el backup: ' + e.message });
   }
+});
+
+// ── API: Exportar DB_SEED per a Railway env vars ──────────
+// Genera el valor base64 que cal posar a DB_SEED a Railway.
+// Quan el servidor arrenca amb BD buida, restaura automàticament.
+app.get('/api/export-seed', verifyToken, requireRole('superadmin'), function (req, res) {
+  var row = db.prepare('SELECT data FROM portal_state WHERE id = 1').get();
+  if (!row) return res.status(404).json({ error: 'No hi ha dades a exportar' });
+  var seed = Buffer.from(row.data).toString('base64');
+  res.json({
+    seed: seed,
+    instructions: [
+      '1. Copia el valor del camp "seed"',
+      '2. Railway → el teu servei → Variables',
+      '3. Afegeix: DB_SEED = <valor copiat>',
+      '4. El servidor restaurarà automàticament les dades si la BD és buida'
+    ]
+  });
 });
 
 // ── API: Forçar backup manual ──────────────────────────────
