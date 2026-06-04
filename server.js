@@ -246,17 +246,22 @@ app.get('/{*splat}', function (req, res) {
 });
 
 // ── Arrencada ──────────────────────────────────────────────
-app.listen(PORT, function () {
-  console.log('');
-  console.log('┌─────────────────────────────────────────────┐');
-  console.log('│  FCTA Portal  –  http://localhost:' + PORT + '       │');
-  console.log('├─────────────────────────────────────────────┤');
-  console.log('│  BD SQLite:  data/fcta.db                   │');
-  console.log('│  Mode:       ' + (process.env.NODE_ENV || 'development') + '                        │');
-  console.log('└─────────────────────────────────────────────┘');
-  console.log('');
+var server = app.listen(PORT, '0.0.0.0', function () {
+  console.log('FCTA Portal escoltant a 0.0.0.0:' + PORT);
+  console.log('Mode: ' + (process.env.NODE_ENV || 'development'));
   if (!process.env.JWT_SECRET) {
-    console.warn('⚠  JWT_SECRET no definit. Usa un secret aleatori en producció!');
-    console.warn('   Afegeix JWT_SECRET=<secret_llarg> al fitxer .env\n');
+    console.warn('AVIS: JWT_SECRET no definit!');
   }
+});
+
+// Tancament net per a SIGTERM (Railway, Docker, etc.)
+process.on('SIGTERM', function () {
+  console.log('SIGTERM rebut – tancant servidor...');
+  server.close(function () {
+    db.close();
+    console.log('Servidor tancat correctament.');
+    process.exit(0);
+  });
+  // Força el tancament si tarda més de 10s
+  setTimeout(function () { process.exit(0); }, 10000);
 });
