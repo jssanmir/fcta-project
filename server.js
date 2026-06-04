@@ -237,28 +237,13 @@ function isSafeUrl(url) {
 var app = express();
 
 // ── Security headers (helmet) ──────────────────────────────
+// CSP desactivada: el portal és una SPA amb onclick/styles inline a tot arreu.
+// Migrar a event listeners externs és un refactor major (futur).
+// La resta de headers de seguretat es mantenen actius.
 app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc:  ["'self'"],
-      // 'unsafe-inline' necessari: SPA amb onclick/inline CSS
-      scriptSrc:   ["'self'", "'unsafe-inline'"],
-      styleSrc:    ["'self'", "'unsafe-inline'",
-                    'https://fonts.googleapis.com'],
-      fontSrc:     ["'self'", 'https://fonts.gstatic.com'],
-      imgSrc:      ["'self'", 'data:', 'https:', 'blob:'],
-      connectSrc:  ["'self'"],
-      // 'self' permet iframes del mateix origen (visor PDF, generador)
-      frameSrc:    ["'self'", 'blob:'],
-      objectSrc:   ["'none'"],
-      // upgradeInsecureRequests només en producció i sense valor null
-      ...(IS_PROD ? { upgradeInsecureRequests: [] } : {})
-    }
-  },
-  // Desactiva COEP: incompatible amb PDFs en iframe blob:
-  crossOriginEmbedderPolicy: false,
-  // Permet iframes del mateix origen (visor PDF)
-  frameguard: { action: 'sameorigin' }
+  contentSecurityPolicy:    false,   // desactivada fins a refactor inline → extern
+  crossOriginEmbedderPolicy: false,  // necessari per PDFs en iframe
+  frameguard: { action: 'sameorigin' }  // anti-clickjacking: permet iframes same-origin
 }));
 
 // ── CORS ───────────────────────────────────────────────────
