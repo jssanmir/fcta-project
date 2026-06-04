@@ -31,40 +31,114 @@ function renderTirades(filter){
     grid.innerHTML='<div class="tirada-empty" style="grid-column:1/-1"><span class="te-icon">\u{1F3AF}</span><p>No hi ha tirades d\'aquest tipus planificades.<br>Publiqueu la vostra tirada!</p></div>';
     return;
   }
-  grid.innerHTML=data.map(function(t){
-    var ti=tipusLabels[t.tipus]||{lbl:t.tipus,cls:'cb-fed'};
-    var img=t.img?('<img src="'+t.img+'" alt="'+t.nom+'" onerror="this.parentNode.innerHTML=\'<span class=\\\'tirada-img-placeholder\\\'>\u{1F3AF}</span>\'">'):'<span class="tirada-img-placeholder">\u{1F3AF}</span>';
-    return '<div class="tirada-card" onclick="openTirada('+t.id+')">'
-      +'<div class="tirada-img">'+img+'<span class="tirada-tipus-tag '+ti.cls+'">'+ti.lbl+'</span></div>'
-      +'<div class="tirada-body"><div class="tirada-club">'+t.club+'</div>'
-      +'<h3>'+t.nom+'</h3>'
-      +'<div class="tirada-meta"><div class="tirada-mi"><span>\u{1F4C5}</span><span>'+t.dataStr+(t.hora?' &middot; '+t.hora+'h':'')+'</span></div>'
-      +'<div class="tirada-mi"><span>\u{1F4CD}</span><span>'+t.lloc+'</span></div></div>'
-      +'<div class="tirada-actions"><button class="bsm bsm-n" onclick="event.stopPropagation();openTirada('+t.id+')">\u2139\uFE0F Veure detalls</button></div>'
-      +'</div></div>';
-  }).join('');
+  grid.innerHTML = '';
+  data.forEach(function(t){
+    var ti = tipusLabels[t.tipus]||{lbl:t.tipus,cls:'cb-fed'};
+    var card = document.createElement('div');
+    card.className = 'tirada-card';
+    card.onclick = function(){ openTirada(t.id); };
+
+    var imgDiv = document.createElement('div');
+    imgDiv.className = 'tirada-img';
+    if (t.img && /^(https?:\/\/|\/|img\/)/.test(t.img)) {
+      var img = document.createElement('img');
+      img.onerror = function(){ this.parentNode.innerHTML='<span class="tirada-img-placeholder">\uD83C\uDFAF</span>'; };
+      img.src = t.img;
+      imgDiv.appendChild(img);
+    } else {
+      imgDiv.innerHTML = '<span class="tirada-img-placeholder">\uD83C\uDFAF</span>';
+    }
+    var tag = document.createElement('span');
+    tag.className = 'tirada-tipus-tag ' + ti.cls;
+    tag.textContent = ti.lbl;
+    imgDiv.appendChild(tag);
+
+    var body = document.createElement('div');
+    body.className = 'tirada-body';
+    var clubDiv = document.createElement('div');
+    clubDiv.className = 'tirada-club';
+    clubDiv.textContent = t.club || '';
+    var h3 = document.createElement('h3');
+    h3.textContent = t.nom || '';
+    body.appendChild(clubDiv);
+    body.appendChild(h3);
+    body.insertAdjacentHTML('beforeend',
+      '<div class="tirada-meta">'
+      +'<div class="tirada-mi"><span>\uD83D\uDCC5</span><span></span></div>'
+      +'<div class="tirada-mi"><span>\uD83D\uDCCD</span><span></span></div>'
+      +'</div>'
+      +'<div class="tirada-actions"><button class="bsm bsm-n">\u2139\uFE0F Veure detalls</button></div>'
+    );
+    body.querySelectorAll('.tirada-mi span:last-child')[0].textContent = t.dataStr + (t.hora ? ' \u00B7 ' + t.hora + 'h' : '');
+    body.querySelectorAll('.tirada-mi span:last-child')[1].textContent = t.lloc || '';
+    body.querySelector('.tirada-actions button').onclick = function(e){ e.stopPropagation(); openTirada(t.id); };
+
+    card.appendChild(imgDiv);
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
 }
 function openTirada(id){
   var t=(DB.tirades||[]).find(function(x){return x.id===id;});
   if(!t)return;
   var ti=tipusLabels[t.tipus]||{lbl:t.tipus,cls:'cb-fed'};
-  var imgHtml=t.img?('<img src="'+t.img+'" class="tirada-detail-img" alt="Cartell" onerror="this.style.display=\'none\'">'):'';
-  var inscHtml=t.inscripcio&&t.inscripcio.startsWith('http')
-    ?('<a href="'+t.inscripcio+'" target="_blank" class="btn-gold" style="font-size:.85rem;padding:.55rem 1.2rem;display:inline-flex;margin-top:.25rem">\u{1F517} Inscriu-te</a>')
-    :'<span style="font-size:.85rem;color:var(--gray)">'+(t.inscripcio||'Consulta amb el club')+'</span>';
-  document.getElementById('mTitle').textContent=t.nom;
-  document.getElementById('mBody').innerHTML=imgHtml
-    +'<div class="tirada-detail-meta">'
-    +'<div class="tirada-detail-mi"><strong>Tipus</strong><span><span class="cbadge '+ti.cls+'">'+ti.lbl+'</span></span></div>'
-    +'<div class="tirada-detail-mi"><strong>Club</strong><span>'+t.club+'</span></div>'
-    +'<div class="tirada-detail-mi"><strong>Data</strong><span>'+t.dataStr+(t.hora?' a les '+t.hora+'h':'')+'</span></div>'
-    +'<div class="tirada-detail-mi"><strong>Lloc</strong><span>'+t.lloc+'</span></div>'
-    +(t.email?'<div class="tirada-detail-mi"><strong>Contacte</strong><span><a href="mailto:'+t.email+'" style="color:var(--navy-light)">'+t.email+'</a>'+(t.tel?' &middot; '+t.tel:'')+'</span></div>':'')
-    +'</div>'
-    +'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.5rem">Descripci\u00f3 i Regles</div>'
-    +'<div class="tirada-desc-block">'+(t.desc||'').replace(/\n/g,'<br>')+'</div>'
-    +'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.4rem">Inscripcions</div>'
-    +inscHtml;
+  var mBody = document.getElementById('mBody');
+  document.getElementById('mTitle').textContent = t.nom || '';
+  mBody.innerHTML = '';
+
+  if (t.img && /^(https?:\/\/|\/|img\/)/.test(t.img)) {
+    var detImg = document.createElement('img');
+    detImg.className = 'tirada-detail-img'; detImg.alt = 'Cartell';
+    detImg.onerror = function(){ this.style.display='none'; };
+    detImg.src = t.img; mBody.appendChild(detImg);
+  }
+
+  var meta = document.createElement('div'); meta.className = 'tirada-detail-meta';
+  meta.innerHTML = '<div class="tirada-detail-mi"><strong>Tipus</strong><span><span class="cbadge"></span></span></div>'
+    +'<div class="tirada-detail-mi"><strong>Club</strong><span></span></div>'
+    +'<div class="tirada-detail-mi"><strong>Data</strong><span></span></div>'
+    +'<div class="tirada-detail-mi"><strong>Lloc</strong><span></span></div>';
+  meta.querySelector('.cbadge').className += ' ' + ti.cls;
+  meta.querySelector('.cbadge').textContent = ti.lbl;
+  meta.querySelectorAll('.tirada-detail-mi span:last-child')[1].textContent = t.club || '';
+  meta.querySelectorAll('.tirada-detail-mi span:last-child')[2].textContent = t.dataStr + (t.hora ? ' a les ' + t.hora + 'h' : '');
+  meta.querySelectorAll('.tirada-detail-mi span:last-child')[3].textContent = t.lloc || '';
+  if (t.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(t.email)) {
+    var cRow = document.createElement('div'); cRow.className = 'tirada-detail-mi';
+    cRow.innerHTML = '<strong>Contacte</strong><span></span>';
+    var mailto = document.createElement('a');
+    mailto.href = 'mailto:' + t.email; mailto.style.color = 'var(--navy-light)';
+    mailto.textContent = t.email;
+    cRow.querySelector('span').appendChild(mailto);
+    if (t.tel) cRow.querySelector('span').appendChild(document.createTextNode(' \u00b7 ' + t.tel));
+    meta.appendChild(cRow);
+  }
+  mBody.appendChild(meta);
+
+  var dLabel = document.createElement('div');
+  dLabel.style.cssText = "font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin:.75rem 0 .4rem";
+  dLabel.textContent = 'Descripci\u00f3 i Regles';
+  var dBlock = document.createElement('div'); dBlock.className = 'tirada-desc-block';
+  dBlock.textContent = t.desc || '';
+  mBody.appendChild(dLabel); mBody.appendChild(dBlock);
+
+  var iLabel = document.createElement('div');
+  iLabel.style.cssText = "font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin:.75rem 0 .4rem";
+  iLabel.textContent = 'Inscripcions';
+  mBody.appendChild(iLabel);
+  if (t.inscripcio && /^https?:\/\//.test(t.inscripcio)) {
+    var inscA = document.createElement('a');
+    inscA.href = t.inscripcio; inscA.target = '_blank'; inscA.rel = 'noopener';
+    inscA.className = 'btn-gold';
+    inscA.style.cssText = 'font-size:.85rem;padding:.55rem 1.2rem;display:inline-flex;margin-top:.25rem';
+    inscA.textContent = '\ud83d\udd17 Inscriu-te';
+    mBody.appendChild(inscA);
+  } else {
+    var inscS = document.createElement('span');
+    inscS.style.cssText = 'font-size:.85rem;color:var(--gray)';
+    inscS.textContent = t.inscripcio || 'Consulta amb el club';
+    mBody.appendChild(inscS);
+  }
   document.getElementById('mWrap').style.display='flex';
 }
 function populateClubs(){

@@ -9,11 +9,15 @@
                    'tirades', 'documents', 'recordsSolicituds'];
 
   // ── Token JWT de la sessió admin ──────────────────────────
+  // Token NOMÉS a sessionStorage (s'esborra en tancar la pestanya)
+  // mai a localStorage per evitar robatori per XSS
   window.dbGetToken = function () {
-    return sessionStorage.getItem(LS_TOKEN) || localStorage.getItem(LS_TOKEN);
+    return sessionStorage.getItem(LS_TOKEN);
   };
   window.dbSetToken = function (token) {
     sessionStorage.setItem(LS_TOKEN, token);
+    // Neteja qualsevol token antic de localStorage
+    localStorage.removeItem(LS_TOKEN);
   };
   window.dbClearToken = function () {
     sessionStorage.removeItem(LS_TOKEN);
