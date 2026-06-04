@@ -161,9 +161,9 @@ var DB = {
 // --- CIRCULARS ---
 circulars: [
   // FEDERACIÓ
-  {id:1,type:'fed',num:'CIRC-2622',title:'3ª Tirada Lliga Catalana Aire Lliure 2026',desc:'Informació completa i inscripcions per a la 3ª tirada de la lliga catalana d\'aire lliure 2026',day:27,mon:'ABR',year:2026,url:'#'},
+  {id:1,type:'fed',num:'CIRC-2622',title:'3ª Tirada Lliga Catalana Aire Lliure 2026',desc:'Informació completa i inscripcions per a la 3ª tirada de la lliga catalana d\'aire lliure 2026',day:27,mon:'ABR',year:2026,url:'docs/2026042714461573-CIRC_2622_3a_tirada_Lliga_Catalana_AireLliure_2026.pdf'},
   {id:2,type:'fed',num:'CIRC-2619',title:'Assemblea General Ordinària FCTA 2026',desc:'Convocatòria, ordre del dia i documentació de l\'assemblea',day:15,mon:'MAR',year:2026,url:'#'},
-  {id:25,type:'fed',num:'CIRC-2509',title:'Sol·licitud d\'Informació Auditoria Interna FCTA',desc:'Procés d\'auditoria interna encarregat per la FCTA a FACSS Auditors. Sol·licitud d\'informació comptable als clubs',day:31,mon:'GEN',year:2025,url:'#'},
+  {id:25,type:'fed',num:'CIRC-2509',title:'Sol·licitud d\'Informació Auditoria Interna FCTA',desc:'Procés d\'auditoria interna encarregat per la FCTA a FACSS Auditors. Sol·licitud d\'informació comptable als clubs',day:31,mon:'GEN',year:2025,url:'docs/2025013117490089-CIRC_2509_SOL.LICITUD_INFORMACIO_AUDITORIA_FCTA.pdf'},
   {id:3,type:'fed',num:'CIRC-2613',title:'Preus Llicències Temporada 2025/2026',desc:'Actualització de tarifes de llicències aprovades per l\'assemblea',day:5,mon:'GEN',year:2026,url:'#'},
   // AIRE LLIURE / SALA
   {id:4,type:'al',num:'CIRC-2621',title:'Lliga Catalana Aire Lliure 2026 – Calendari general',desc:'Calendari complet de la Lliga Catalana d\'aire lliure temporada 2026',day:10,mon:'GEN',year:2026,url:'#'},
@@ -184,12 +184,12 @@ circulars: [
   {id:16,type:'jut',num:'CIRC-2611',title:'Curs de Jutges de Tir amb Arc 2026',desc:'Convocatòria i inscripció al curs de jutges de la FCTA',day:1,mon:'FEB',year:2026,url:'#'},
   {id:17,type:'jut',num:'CIRC-2606',title:'Actualització Reglament Tècnic 2026',desc:'Noves modificacions del reglament tècnic aprovades per la junta directiva',day:15,mon:'FEB',year:2026,url:'#'},
   // FORMACIÓ
-  {id:18,type:'form',num:'CIRC-2607',title:'Seminari de Psicologia Aplicada al Tir amb Arc',desc:'Inscripcions obertes. Formació general per a tècnics i esportistes',day:29,mon:'GEN',year:2026,url:'#'},
-  {id:19,type:'form',num:'CIRC-2504',title:'Curs Tècnic Esportiu Nivell 1 – Convocatòria 2026/2027',desc:'La FCTA i el CCE convoquen el curs de tècnic esportiu de Nivell 1 en tir amb arc',day:15,mon:'GEN',year:2026,url:'#'},
-  {id:20,type:'form',num:'CIRC-2511',title:'Taller Jurídic per a Clubs',desc:'Formació sobre aspectes legals de la gestió de clubs esportius',day:13,mon:'FEB',year:2025,url:'#'},
-  {id:21,type:'form',num:'CIRC-2447',title:'Taller de Laboral i Voluntariat per a Clubs',desc:'Regularització de voluntaris, relacions laborals i contractació',day:24,mon:'OCT',year:2024,url:'#'},
-  {id:22,type:'form',num:'CIRC-2435',title:'Taller de Fiscalitat per a Clubs',desc:'Obligacions fiscals, declaracions i exempcions per a clubs i federacions',day:4,mon:'JUL',year:2024,url:'#'},
-  {id:23,type:'form',num:'CIRC-2410',title:'Taller de Comptabilitat per a Clubs',desc:'Gestió econòmica i comptable d\'entitats esportives sense ànim de lucre',day:29,mon:'FEB',year:2024,url:'#'},
+  {id:18,type:'form',num:'CIRC-2607',title:'Seminari de Psicologia Aplicada al Tir amb Arc',desc:'Inscripcions obertes. Formació general per a tècnics i esportistes',day:29,mon:'GEN',year:2026,url:'docs/2026012915470845-CIRC_2607_Seminari_psicologia_aplicada_tir_amb_arc.pdf'},
+  {id:19,type:'form',num:'CIRC-2504',title:'Curs Tècnic Esportiu Nivell 1 – Convocatòria 2026/2027',desc:'La FCTA i el CCE convoquen el curs de tècnic esportiu de Nivell 1 en tir amb arc',day:15,mon:'GEN',year:2026,url:'docs/2026011516220845-CIRC_2504_Curs_Tecnic_Nivell1_2025_26.pdf'},
+  {id:20,type:'form',num:'CIRC-2511',title:'Taller Jurídic per a Clubs',desc:'Formació sobre aspectes legals de la gestió de clubs esportius',day:13,mon:'FEB',year:2025,url:'docs/2025021311182735-CIRC_2511_Taller_formacio_clubs_juridic.pdf'},
+  {id:21,type:'form',num:'CIRC-2447',title:'Taller de Laboral i Voluntariat per a Clubs',desc:'Regularització de voluntaris, relacions laborals i contractació',day:24,mon:'OCT',year:2024,url:'docs/2024102413581925-CIRC_2447_Taller_formacio_clubs_voluntariat.pdf'},
+  {id:22,type:'form',num:'CIRC-2435',title:'Taller de Fiscalitat per a Clubs',desc:'Obligacions fiscals, declaracions i exempcions per a clubs i federacions',day:4,mon:'JUL',year:2024,url:'docs/202407041752453-CIRC_2435_Taller_formacio_clubs_fiscal.pdf'},
+  {id:23,type:'form',num:'CIRC-2410',title:'Taller de Comptabilitat per a Clubs',desc:'Gestió econòmica i comptable d\'entitats esportives sense ànim de lucre',day:29,mon:'FEB',year:2024,url:'docs/2024022916412124-CIRC_2410_Taller_formacio_clubs_comptabilitat.pdf'},
   // KYUDO
   {id:24,type:'kyudo',num:'CIRC-2603',title:'Campionat de Catalunya de Kyudo 2026',desc:'Convocatòria i informació del campionat català de kyudo',day:10,mon:'MAR',year:2026,url:'#'},
 ],
