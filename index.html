@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="css/28-arcadaptat.css">
   <link rel="stylesheet" href="css/29-comitejutges.css">
   <link rel="stylesheet" href="css/30-pat.css">
+  <link rel="stylesheet" href="css/31-comp-stats.css">
   <link rel="stylesheet" href="css/31-calendari.css">
 </head>
 <body>
@@ -142,7 +143,7 @@
 <section class="section" style="background:white">
   <div class="container">
     <div class="sec-label">Documents Oficials</div>
-    <h2 class="sec-title">Circulars <em>Federals</em></h2>
+    <h2 class="sec-title">Circulars <em>Federació</em></h2>
     <p class="sec-intro">Accedeix a totes les circulars de la FCTA, filtrades per disciplina. Descarrega-les directament en PDF.</p>
     <div class="filters" id="circFilters">
       <button class="fb act" onclick="filtCirc('all',this)">Totes</button>
@@ -171,14 +172,27 @@
     <div class="sec-label">Calendari Esportiu</div>
     <h2 class="sec-title">Competicions i <em>Campionats</em></h2>
     <p class="sec-intro">Totes les competicions de la temporada 2025/2026. Consulta la informació i inscriu-te directament.</p>
-    <div class="filters" id="compFilters">
-      <button class="fb act" onclick="filtComp('all',this)">Totes</button>
-      <button class="fb" onclick="filtComp('al',this)">Aire Lliure</button>
-      <button class="fb" onclick="filtComp('sala',this)">Sala</button>
-      <button class="fb" onclick="filtComp('camp',this)">Camp</button>
-      <button class="fb" onclick="filtComp('trd',this)">3D</button>
+
+    <!-- Sub-tabs -->
+    <div class="comp-stabs">
+      <button class="comp-stab act" onclick="setCompTab('calendari',this)">📅 Calendari</button>
+      <button class="comp-stab"     onclick="setCompTab('stats',this)">📊 Estadístiques</button>
     </div>
-    <div class="comp-grid" id="compGrid"></div>
+
+    <!-- Calendari -->
+    <div id="compCalendari">
+      <div class="filters" id="compFilters">
+        <button class="fb act" onclick="filtComp('all',this)">Totes</button>
+        <button class="fb" onclick="filtComp('al',this)">Aire Lliure</button>
+        <button class="fb" onclick="filtComp('sala',this)">Sala</button>
+        <button class="fb" onclick="filtComp('camp',this)">Camp</button>
+        <button class="fb" onclick="filtComp('trd',this)">3D</button>
+      </div>
+      <div class="comp-grid" id="compGrid"></div>
+    </div>
+
+    <!-- Estadístiques -->
+    <div id="compStatsPanel" style="display:none"></div>
   </div>
 </section>
 </div>
@@ -2830,6 +2844,7 @@
   <script src="js/nav.js"></script>
   <script src="js/circulars.js"></script>
   <script src="js/competitions.js"></script>
+  <script src="js/comp_stats.js"></script>
   <script src="js/news.js"></script>
   <script src="js/formations.js"></script>
   <script src="js/tirades.js"></script>

@@ -1,6 +1,10 @@
 // circulars.js – Circular list render & filter
 // ──────────────────────────────────────────────────────────
 
+// Ordre de mesos catalans per ordenar per data
+var _CIRC_MON = {GEN:1,FEB:2,MAR:3,ABR:4,MAI:5,JUN:6,JUL:7,AGO:8,SET:9,OCT:10,NOV:11,DES:12};
+function _circVal(c){ return (c.year||0)*10000 + (_CIRC_MON[c.mon]||0)*100 + (c.day||0); }
+
 // CIRCULARS
 // ============================================================
 function filtCirc(type,btn){
@@ -9,7 +13,8 @@ function filtCirc(type,btn){
   renderCirc(type);
 }
 function renderCirc(f){
-  var data = f==='all' ? DB.circulars : DB.circulars.filter(function(c){return c.type===f});
+  var data = (f==='all' ? DB.circulars : DB.circulars.filter(function(c){return c.type===f}))
+    .slice().sort(function(a,b){ return _circVal(b) - _circVal(a); });
   document.getElementById('circGrid').innerHTML = data.map(function(c){
     var hasPdfContent = PDF_CONTENT[c.num] !== undefined;
     var hasExtUrl = c.url && c.url !== '#';

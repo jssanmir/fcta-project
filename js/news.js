@@ -1,11 +1,24 @@
 // news.js – News grid render with pagination
 // ──────────────────────────────────────────────────────────
 
+// Ordre de mesos catalans (en minúscules, tal com apareixen a n.date)
+var _NEWS_MON = {gen:1,feb:2,mar:3,abr:4,mai:5,jun:6,jul:7,ago:8,set:9,oct:10,nov:11,des:12};
+function _newsDateVal(n) {
+  // Format esperat: "24 mai 2026" → any*10000 + mes*100 + dia
+  var parts = (n.date||'').toLowerCase().split(' ');
+  if (parts.length < 3) return 0;
+  return (parseInt(parts[2])||0)*10000 + (_NEWS_MON[parts[1]]||0)*100 + (parseInt(parts[0])||0);
+}
+
 var _newsPage = 0;
 var NEWS_PER_PAGE = 3;
 
+// Llista ordenada de notícies per data descendent (més recent primer)
+var _newsSorted = [];
+
 function renderNews() {
   _newsPage = 0;
+  _newsSorted = DB.news.slice().sort(function(a,b){ return _newsDateVal(b) - _newsDateVal(a); });
   _renderNewsPage();
 }
 
@@ -20,9 +33,10 @@ function newsPage(dir) {
 }
 
 function _renderNewsPage() {
-  var total  = DB.news.length;
+  if (!_newsSorted.length) _newsSorted = DB.news.slice().sort(function(a,b){ return _newsDateVal(b) - _newsDateVal(a); });
+  var total  = _newsSorted.length;
   var start  = _newsPage * NEWS_PER_PAGE;
-  var slice  = DB.news.slice(start, start + NEWS_PER_PAGE);
+  var slice  = _newsSorted.slice(start, start + NEWS_PER_PAGE);
   var maxPage = Math.ceil(total / NEWS_PER_PAGE) - 1;
 
   var grid = document.getElementById('newsGrid');

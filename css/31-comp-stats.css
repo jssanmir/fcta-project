@@ -1,0 +1,270 @@
+/* ══════════════════════════════════════════════════════
+   31-comp-stats.css – Estadístiques de competicions
+   ══════════════════════════════════════════════════════ */
+
+/* ── Tabs de la secció de competicions ── */
+.comp-stabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: var(--sp-6);
+  border-bottom: 2px solid var(--lightgray);
+}
+.comp-stab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  padding: var(--sp-3) var(--sp-6);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  cursor: pointer;
+  color: var(--gray);
+  transition: color var(--dur-base) var(--tr), border-color var(--dur-base) var(--tr);
+}
+.comp-stab:hover { color: var(--navy); }
+.comp-stab.act   { color: var(--navy); border-bottom-color: var(--gold); }
+
+/* ── Loading / error ── */
+.cs-loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--gray);
+  font-style: italic;
+}
+.cs-error { color: #b00; }
+.cs-empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* ── Toolbar de filtres ── */
+.cs-toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-8);
+  padding: var(--sp-4) var(--sp-5);
+  background: white;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--lightgray);
+  box-shadow: var(--shadow-sm);
+}
+.cs-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+.cs-filter-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--gray);
+}
+.cs-select {
+  padding: var(--sp-2) var(--sp-3);
+  border: 1.5px solid var(--lightgray);
+  border-radius: var(--r-md);
+  font-family: 'Barlow', sans-serif;
+  font-size: .9rem;
+  color: var(--navy);
+  background: white;
+  min-width: 180px;
+  max-width: 340px;
+  cursor: pointer;
+  transition: border-color var(--dur-base) var(--tr);
+}
+.cs-select:focus { outline: none; border-color: var(--navy-light); }
+
+/* ── Seccions ── */
+.cs-section { margin-bottom: var(--sp-12); }
+.cs-h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  letter-spacing: .04em;
+  color: var(--navy-dark);
+  margin: 0 0 var(--sp-5);
+}
+.cs-h3-sub {
+  font-size: .8rem;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--gray);
+}
+
+/* ── Cards per modalitat ── */
+.cs-disc-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-4);
+}
+@media (max-width: 900px) { .cs-disc-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .cs-disc-cards { grid-template-columns: 1fr 1fr; } }
+
+.cs-disc-card {
+  background: white;
+  border-radius: var(--r-xl);
+  padding: var(--sp-6) var(--sp-4) var(--sp-5);
+  text-align: center;
+  border-top: 5px solid;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur-base) var(--tr);
+}
+.cs-disc-card:hover { box-shadow: var(--shadow-md); }
+
+.cs-disc-al   { border-color: var(--navy);      }
+.cs-disc-sala { border-color: var(--navy-light); }
+.cs-disc-camp { border-color: #b87a00;           }
+.cs-disc-trd  { border-color: #2a7d3f;           }
+
+.cs-disc-icon  { font-size: 2.2rem; margin-bottom: var(--sp-2); }
+.cs-disc-name  {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--gray);
+  margin-bottom: var(--sp-1);
+}
+.cs-disc-total {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--navy-dark);
+  line-height: 1;
+  margin-bottom: var(--sp-1);
+}
+.cs-disc-meta  { font-size: .72rem; color: var(--gray); }
+.cs-disc-sub   { font-size: .72rem; color: var(--gray); margin-top: var(--sp-1); border-top: 1px solid var(--lightgray); padding-top: var(--sp-1); }
+
+/* ── Barres de participació ── */
+.cs-bars {
+  background: white;
+  border-radius: var(--r-xl);
+  padding: var(--sp-4) var(--sp-5);
+  border: 1px solid var(--lightgray);
+  box-shadow: var(--shadow-sm);
+}
+.cs-bar-row {
+  display: grid;
+  grid-template-columns: minmax(200px, 380px) 1fr;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid var(--lightgray);
+}
+.cs-bar-row:last-child { border-bottom: none; }
+@media (max-width: 700px) { .cs-bar-row { grid-template-columns: 1fr; gap: var(--sp-1); } }
+
+.cs-bar-label {
+  font-size: .8rem;
+  color: var(--navy-dark);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.cs-bar-date {
+  font-size: .68rem;
+  color: var(--gray);
+  white-space: nowrap;
+  min-width: 50px;
+}
+.cs-bar-disc {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  white-space: nowrap;
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: white;
+}
+.cs-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.cs-bar-fill {
+  height: 22px;
+  border-radius: 3px;
+  min-width: 3px;
+  transition: width .5s ease;
+}
+.cs-bar-val {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+/* ── Colors de disciplina (backgrounds) ── */
+.cs-bc-al   { background: var(--navy);      }
+.cs-bc-sala { background: var(--navy-light);}
+.cs-bc-camp { background: #b87a00;          }
+.cs-bc-trd  { background: #2a7d3f;          }
+
+/* ── Taula de divisions ── */
+.cs-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+}
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: .87rem;
+}
+.cs-table thead tr { background: var(--navy); color: white; }
+.cs-table thead th {
+  padding: var(--sp-3) var(--sp-4);
+  text-align: left;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: .78rem;
+  white-space: nowrap;
+}
+.cs-table thead th:not(:first-child) { text-align: right; }
+.cs-table tbody tr:nth-child(even) { background: var(--offwhite); }
+.cs-table tbody tr:hover { background: #dde5f5; }
+.cs-table td {
+  padding: var(--sp-2) var(--sp-4);
+  border-bottom: 1px solid var(--lightgray);
+  vertical-align: middle;
+}
+.cs-table tbody tr:last-child td { border-bottom: none; }
+
+.cs-div-name    { font-weight: 600; color: var(--navy-dark); }
+.cs-num         { text-align: right; font-variant-numeric: tabular-nums; color: var(--navy); }
+.cs-score-avg   { color: var(--navy-light); font-weight: 600; }
+.cs-score-max   { color: var(--gold-dark);  font-weight: 700; }
+
+.cs-td-dot {
+  display: inline-block;
+  width: .55em;
+  height: .55em;
+  border-radius: 50%;
+  font-size: .6rem;
+  line-height: 1;
+  vertical-align: middle;
+  margin-left: .2em;
+  color: transparent;
+}
+.cs-td-dot::before { content: '●'; }
+.cs-bc-al   .cs-td-dot,  .cs-td-dot.cs-bc-al   { color: var(--navy);       }
+.cs-td-dot.cs-bc-sala { color: var(--navy-light); }
+.cs-td-dot.cs-bc-camp { color: #b87a00;           }
+.cs-td-dot.cs-bc-trd  { color: #2a7d3f;           }
