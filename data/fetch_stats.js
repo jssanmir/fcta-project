@@ -15,16 +15,22 @@ const http = require('http');
 // Les que tenen ianseo com a string alphanumèric → privades a Ianseo, s'afegeixen
 // sense dades individuals (accessible: false).
 const COMPETITIONS = [
+  // ── Setembre 2025 ──────────────────────────────────────────
   { id:40, title:"XXI Campionat de Catalunya de Round 900 – XII Memorial Jordi Adell", dateISO:"2025-09-06", type:"al",   disc:"Aire Lliure", ianseo:24295 },
-  { id:38, title:"XXXII Trofeu Ciutat de Lleida – III Copa Pirineus – IV Memorial Alfred Piñol", dateISO:"2025-09-27", type:"al",   disc:"Aire Lliure", ianseo:23781 },
-  // ── Lliga Catalana Sala 2025-2026 (privades a Ianseo) ──────────────────
-  { id:37, title:"1ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-10-04", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS1',  privateIanseo:true },
-  { id:35, title:"2ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-10-18", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS2a', privateIanseo:true },
-  { id:32, title:"3ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-11-15", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS3a', privateIanseo:true },
-  { id:30, title:"4ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-12-06", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS4a', privateIanseo:true },
+  // ── Lliga Catalana Sala 2025-2026 (IDs numèrics reals) ────
+  // 1ª Jornada (4-5 oct): 1 seu (Constantí)
+  { id:37,  title:"1ª Tirada Lliga Catalana de Sala 2025/2026 – Constantí",   dateISO:"2025-10-04", type:"sala", disc:"Sala – 18m", ianseo:24680 },
+  // 2ª Jornada (18-19 oct): 2 seus
+  { id:351, title:"2ª Tirada Lliga Catalana de Sala 2025/2026 – Constantí",   dateISO:"2025-10-18", type:"sala", disc:"Sala – 18m", ianseo:24861 },
+  { id:352, title:"2ª Tirada Lliga Catalana de Sala 2025/2026 – Torrefarrera",dateISO:"2025-10-19", type:"sala", disc:"Sala – 18m", ianseo:24860 },
+  // 3ª Jornada (15-16 nov): 2 seus
+  { id:321, title:"3ª Tirada Lliga Catalana de Sala 2025/2026 – Manresa",     dateISO:"2025-11-15", type:"sala", disc:"Sala – 18m", ianseo:25272 },
+  { id:322, title:"3ª Tirada Lliga Catalana de Sala 2025/2026 – Torrefarrera",dateISO:"2025-11-16", type:"sala", disc:"Sala – 18m", ianseo:25273 },
+  // 4ª Jornada (6-7 des): 1 seu (Constantí)
+  { id:30,  title:"4ª Tirada Lliga Catalana de Sala 2025/2026 – Constantí",   dateISO:"2025-12-06", type:"sala", disc:"Sala – 18m", ianseo:25582 },
+  // ── Gener 2026 ────────────────────────────────────────────
   { id:6,  title:"1ª Tirada Lliga Catalana Camp 2025/26",       dateISO:"2026-01-11", type:"camp", disc:"Tir de Camp",  ianseo:26209 },
   { id:20, title:"1r Campionat Catalunya 3D en Línia 2026",     dateISO:"2026-01-18", type:"trd",  disc:"3D / Bosc",    ianseo:26307 },
-  { id:19, title:"I Trofeu Vila de Cambrils",                   dateISO:"2026-01-24", type:"al",   disc:"Aire Lliure", ianseo:26423 },
   { id:8,  title:"58è Campionat de Catalunya de Sala",          dateISO:"2026-01-31", type:"sala", disc:"Sala – 18m",   ianseo:26399 },
   { id:3,  title:"3ª Tirada Lliga Catalana 3D 2025/2026",       dateISO:"2026-02-22", type:"trd",  disc:"3D / Bosc",    ianseo:26790 },
   { id:12, title:"2ª Tirada Lliga Catalana Camp 2026",          dateISO:"2026-03-08", type:"camp", disc:"Tir de Camp",  ianseo:26987 },
