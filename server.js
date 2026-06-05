@@ -236,6 +236,9 @@ function isSafeUrl(url) {
 // ── Express ────────────────────────────────────────────────
 var app = express();
 
+// Railway (i altres reverse proxies) passen el client IP via X-Forwarded-For
+app.set('trust proxy', 1);
+
 // ── Security headers (helmet) ──────────────────────────────
 // CSP desactivada: el portal és una SPA amb onclick/styles inline a tot arreu.
 // Migrar a event listeners externs és un refactor major (futur).
