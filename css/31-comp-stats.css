@@ -271,6 +271,36 @@
   color: white;
 }
 
+/* ── Botons de classe (filtre) ── */
+.cs-cls-tabs {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--offwhite);
+  border-radius: var(--r-md);
+  border: 1px solid var(--lightgray);
+}
+.cs-cls-btn {
+  background: white;
+  border: 1.5px solid var(--lightgray);
+  border-radius: var(--r-sm);
+  padding: 2px var(--sp-3);
+  font-family: 'Barlow', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all var(--dur-base) var(--tr);
+}
+.cs-cls-btn:hover { border-color: var(--navy-light); color: var(--navy); }
+.cs-cls-btn.act   {
+  background: var(--navy-light);
+  border-color: var(--navy-light);
+  color: white;
+}
+
 /* ── SVG chart ── */
 .cs-chart-wrap {
   overflow-x: auto;

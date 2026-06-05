@@ -327,6 +327,8 @@ var _CS_COLORS = [
 
 // Estat actiu de la categoria per cada tipus de competició
 var _csActiveCat = {};
+// Estat actiu de les classes per "type:cat" → null=totes, o array de noms actius
+var _csActiveCls = {};
 
 function _csCatOf(divName) {
   for (var i = 0; i < _CS_CATS.length; i++) {
@@ -356,7 +358,52 @@ function _csClassVariant(divName) {
 /** Canvi de categoria → reconstrueix el contingut */
 function _csCatSet(type, cat) {
   _csActiveCat[type] = cat;
+  delete _csActiveCls[type + ':' + cat]; // reset classe filtre
   _csContent();
+}
+
+/** Toggle d'una classe individual */
+function _csClsToggle(type, cat, cls) {
+  var key = type + ':' + cat;
+  // Obté la llista actual (null = totes actives)
+  var cur = _csActiveCls[key] || null;
+  // Recull totes les classes disponibles per reset
+  var allCls = _csAllClsFor(type, cat);
+
+  if (!cur) {
+    // Totes actives → activa només la clicada
+    _csActiveCls[key] = [cls];
+  } else {
+    var idx = cur.indexOf(cls);
+    if (idx >= 0) {
+      // Desactiva
+      var next = cur.filter(function(c){ return c !== cls; });
+      _csActiveCls[key] = next.length ? next : null; // si 0 → totes
+    } else {
+      // Activa
+      var added = cur.concat([cls]);
+      _csActiveCls[key] = (added.length === allCls.length) ? null : added; // totes → null
+    }
+  }
+  _csContent();
+}
+
+/** Retorna totes les classes disponibles per un type+cat (del dataset raw) */
+function _csAllClsFor(type, cat) {
+  var all = (_csData || []).filter(function(c){ return c.type === type; });
+  var set = {};
+  all.forEach(function(c) {
+    // Usa divisions raw (amb archers) o fDivisions si disponible
+    var divs = c.fDivisions || c.divisions || [];
+    divs.forEach(function(d) {
+      if (!_csCatOf(d.name)) return;
+      if (_csCatOf(d.name) !== cat) return;
+      // Comprova si hi ha puntuació (scoreMax en fDivisions o archers en divisions)
+      var hasData = d.scoreMax || (d.archers && d.archers.some(function(a){ return a.score > 0; }));
+      if (hasData) set[d.name] = true;
+    });
+  });
+  return Object.keys(set).sort(function(a,b){ return a.length - b.length || a.localeCompare(b,'ca'); });
 }
 
 // ── Gràfic principal ────────────────────────────────────────
@@ -392,12 +439,26 @@ function _csDivChart(data) {
         escHtml(_csCatLabel(cat)) + '</button>';
     }).join('');
 
+    // Botons de classe per la categoria activa
+    var clsKey   = t + ':' + activeCat;
+    var allCls   = _csAllClsFor(t, activeCat);
+    var activeCls = _csActiveCls[clsKey] || null; // null = totes
+
+    var clsBtns = allCls.map(function(cls) {
+      var variant  = _csClassVariant(cls);
+      var isActive = !activeCls || activeCls.indexOf(cls) >= 0;
+      return '<button class="cs-cls-btn' + (isActive ? ' act' : '') +
+        '" onclick="_csClsToggle(\'' + t + '\',\'' + activeCat + '\',\'' + cls.replace(/'/g,"\\'") + '\')">' +
+        escHtml(variant) + '</button>';
+    }).join('');
+
     return '<div class="cs-chart-block">' +
       '<div class="cs-chart-header">' +
         '<span class="cs-chart-type-badge cs-bc-' + t + '">' + (_CS_TYPE_ICONS[t]||'') + ' ' + escHtml(_CS_TYPE_LABELS[t]) + '</span>' +
       '</div>' +
       '<div class="cs-cat-tabs">' + catBtns + '</div>' +
-      _csBuildSvg(comps, activeCat) +
+      (clsBtns ? '<div class="cs-cls-tabs">' + clsBtns + '</div>' : '') +
+      _csBuildSvg(comps, activeCat, activeCls) +
     '</div>';
   }).filter(Boolean).join('');
 
@@ -411,7 +472,7 @@ function _csDivChart(data) {
 }
 
 // ── Construcció del SVG ─────────────────────────────────────
-function _csBuildSvg(comps, cat) {
+function _csBuildSvg(comps, cat, activeCls) {
   // Recull totes les classes de la categoria que tinguin scoreMax
   var classSet = {};
   comps.forEach(function(c) {
@@ -419,11 +480,15 @@ function _csBuildSvg(comps, cat) {
       if (_csCatOf(d.name) === cat && d.scoreMax) classSet[d.name] = true;
     });
   });
-  var classes = Object.keys(classSet);
-  if (!classes.length) return '<div class="cs-chart-empty">Sense dades de puntuació per a aquesta categoria.</div>';
+  var allClasses = Object.keys(classSet);
+  allClasses.sort(function(a,b){ return a.length - b.length || a.localeCompare(b,'ca'); });
 
-  // Ordena: primer els noms més curts (Home, Dona avans que Sub18, Plus50)
-  classes.sort(function(a,b){ return a.length - b.length || a.localeCompare(b,'ca'); });
+  // Aplica filtre de classes (activeCls=null → totes)
+  var classes = activeCls
+    ? allClasses.filter(function(c){ return activeCls.indexOf(c) >= 0; })
+    : allClasses;
+
+  if (!classes.length) return '<div class="cs-chart-empty">Sense dades de puntuació per a aquesta categoria.</div>';
 
   // Matriu [classe][comp] = scoreMax | null
   var maxY = 0;
@@ -489,16 +554,13 @@ function _csBuildSvg(comps, cat) {
     var color = _CS_COLORS[ci % _CS_COLORS.length];
     var vals  = matrix[cls];
 
-    // Segments (separa per nulls)
-    var seg = [];
-    for (var i2 = 0; i2 <= comps.length; i2++) {
-      var v2 = (i2 < comps.length) ? vals[i2] : null;
-      if (v2 !== null) {
-        seg.push(xPos(i2)+','+yPos(v2));
-      } else {
-        if (seg.length >= 2) out.push('<polyline points="'+seg.join(' ')+'" fill="none" stroke="'+color+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>');
-        seg = [];
-      }
+    // Línia contínua connectant tots els punts amb dada (salta els nulls)
+    var pts = [];
+    vals.forEach(function(v2, i2) {
+      if (v2 !== null) pts.push(xPos(i2)+','+yPos(v2));
+    });
+    if (pts.length >= 2) {
+      out.push('<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+color+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>');
     }
 
     // Punts amb tooltip
