@@ -81,6 +81,15 @@ var _CS_NAMES = {
   'CTAU':  'T.A. Urgell'
 };
 
+/** Normalitza el gènere en noms de divisió (Men→Home, Women→Dona, etc.) */
+function _csNormDivName(name) {
+  return name
+    .replace(/\bWomen\b/g, 'Dona')
+    .replace(/\bMujer\b/g, 'Dona')
+    .replace(/\bMen\b/g, 'Home')
+    .replace(/\bHombre\b/g, 'Home');
+}
+
 /** Retorna el codi canònic d'un club (unifica numèrics i alfabètics) */
 function _csNormCode(rawCode) {
   var c = (rawCode || '').trim();
@@ -114,6 +123,11 @@ function _csInit() {
   fetch('data/competition_stats_full.json')
     .then(function(r) { return r.json(); })
     .then(function(d) {
+      d.forEach(function(c) {
+        (c.divisions || []).forEach(function(div) {
+          div.name = _csNormDivName(div.name);
+        });
+      });
       _csData    = d;
       _csLoading = false;
       _csRender();
