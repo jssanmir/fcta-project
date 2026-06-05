@@ -167,15 +167,6 @@ function _csFilter(club, type) {
     // Competicions amb tipus diferent al filtre → excloure
     if (type !== 'all' && comp.type !== type) return null;
 
-    // Competicions sense dades individuals (sala liga = privades)
-    if (comp.accessible === false) {
-      return Object.assign({}, comp, {
-        fTotal: 0,
-        fDivisions: [],
-        noData: true
-      });
-    }
-
     var fDivisions = (comp.divisions || []).map(function(d) {
       var archers = (club === 'all')
         ? (d.archers || [])
@@ -235,30 +226,27 @@ function _csOnType(val) { _csType = val; _csContent(); }
 
 // ── Contingut (recalculat en cada canvi de filtre) ──────────
 function _csContent() {
-  var data       = _csFilter(_csClub, _csType);
-  var accessible = data.filter(function(c){ return !c.noData; });
-  var content    = document.getElementById('csContent');
+  var data    = _csFilter(_csClub, _csType);
+  var content = document.getElementById('csContent');
   if (!data.length) {
     content.innerHTML = '<div class="cs-empty">Cap dada disponible per a la selecció actual.</div>';
     return;
   }
 
   content.innerHTML =
-    _csCards(data)       +  // totes: compta privades per als totals
-    _csBars(data)        +  // totes: mostra barra rayada per les privades
-    _csDivTable(accessible); // sols les accessibles (divisions + archers)
+    _csCards(data) +
+    _csBars(data)  +
+    _csDivTable(data);
 }
 
 // ── Cards de resum per modalitat ─────────────────────────────
 function _csCards(data) {
   var types = ['al','sala','camp','trd'];
   var cards = types.map(function(t) {
-    var comps     = data.filter(function(c){ return c.type === t; });
+    var comps      = data.filter(function(c){ return c.type === t; });
     if (!comps.length) return '';
-    var withData  = comps.filter(function(c){ return !c.noData; });
-    var total     = withData.reduce(function(s,c){ return s + c.fTotal; }, 0);
-    var noDataN   = comps.length - withData.length;
-    var avgPerComp = withData.length ? Math.round(total / withData.length) : 0;
+    var total      = comps.reduce(function(s,c){ return s + c.fTotal; }, 0);
+    var avgPerComp = comps.length ? Math.round(total / comps.length) : 0;
 
     // 3D línia vs bosc (subdivisió interna del type 'trd')
     var linia = comps.filter(function(c){ return /l[íi]nia/i.test(c.title); });
@@ -276,9 +264,7 @@ function _csCards(data) {
       '<div class="cs-disc-icon">' + (_CS_TYPE_ICONS[t]||'') + '</div>' +
       '<div class="cs-disc-name">' + _CS_TYPE_LABELS[t] + '</div>' +
       '<div class="cs-disc-total">' + total + '</div>' +
-      '<div class="cs-disc-meta">' + comps.length + ' tirades · ~' + avgPerComp + '/tirada' +
-        (noDataN ? ' <span class="cs-disc-nodata">(' + noDataN + ' sense dades públiques)</span>' : '') +
-      '</div>' +
+      '<div class="cs-disc-meta">' + comps.length + ' tirades · ~' + avgPerComp + '/tirada</div>' +
       extra +
     '</div>';
   }).filter(Boolean).join('');
@@ -301,14 +287,8 @@ function _csBars(data) {
     var short = c.title.length > 52 ? c.title.substring(0,50) + '…' : c.title;
     var ym    = c.dateISO.substring(0,7);
     var disc  = _CS_TYPE_LABELS[c.type] || c.type;
-    var barContent, valContent;
-    if (c.noData) {
-      barContent = '<div class="cs-bar-fill cs-bar-nodata" style="width:30%;background:var(--lightgray)"></div>';
-      valContent = '<span class="cs-bar-val cs-bar-private" title="Resultats privats a Ianseo">–</span>';
-    } else {
-      barContent = '<div class="cs-bar-fill" style="width:' + Math.max(pct,1) + '%;background:' + color + '"></div>';
-      valContent = '<span class="cs-bar-val">' + c.fTotal + '</span>';
-    }
+    var barContent = '<div class="cs-bar-fill" style="width:' + Math.max(pct,1) + '%;background:' + color + '"></div>';
+    var valContent = '<span class="cs-bar-val">' + c.fTotal + '</span>';
     return '<div class="cs-bar-row">' +
       '<div class="cs-bar-label" title="' + escHtml(c.title) + '">' +
         '<span class="cs-bar-date">' + ym + '</span>' +

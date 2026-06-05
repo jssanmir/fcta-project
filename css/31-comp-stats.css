@@ -269,7 +269,3 @@
 .cs-td-dot.cs-bc-camp { color: #b87a00;           }
 .cs-td-dot.cs-bc-trd  { color: #2a7d3f;           }
 
-/* Competicions sense dades públiques */
-.cs-bar-nodata { opacity: .35; background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,.1) 4px, rgba(0,0,0,.1) 8px) !important; }
-.cs-bar-private { color: var(--gray); font-style: italic; }
-.cs-disc-nodata { font-style: italic; color: var(--gray); opacity: .8; }
