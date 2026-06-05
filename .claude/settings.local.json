@@ -50,7 +50,26 @@
       "Bash(curl -s -X POST http://localhost:3000/api/login -H \"Content-Type: application/json\" -d '{\"username\":\"admin\",\"password\":\"fcta2026\"}')",
       "Bash(curl -s -X POST http://localhost:3000/api/login -H 'Content-Type: application/json' -d '{\"username\":\"admin\",\"password\":\"fcta2026\"}')",
       "Bash(curl -s -X POST http://localhost:3000/api/login -H 'Content-Type: application/json' -d '{\"username\":\"admin\",\"password\":\"wrong\"}')",
-      "Bash(curl -s -X POST http://localhost:3000/api/data -H 'Content-Type: application/json' -d '{\"test\":true}')"
+      "Bash(curl -s -X POST http://localhost:3000/api/data -H 'Content-Type: application/json' -d '{\"test\":true}')",
+      "Bash(node -e *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Add nixpacks.toml for Railway native module compilation *)",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(npm run *)",
+      "Bash(git commit -m 'Simplify railway.json to minimal config *)",
+      "Bash(git commit --allow-empty -m 'Trigger Railway redeploy *)",
+      "WebFetch(domain:fcta-project-production.up.railway.app)",
+      "Bash(curl -s -I https://fcta-project-production.up.railway.app/)",
+      "Bash(curl -v -s -o /dev/null https://fcta-project-production.up.railway.app/)",
+      "WebFetch(domain:can.service.ianseo.net)",
+      "WebFetch(domain:ianseo.net)",
+      "WebFetch(domain:arcpardinyes.com)",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Projects\\\\fcta-project\\\\data\\\\competitions\")",
+      "Bash(Out-Null)",
+      "Bash(mkdir -p /mnt/c/Projects/fcta-project/data/competitions && echo \"OK\")",
+      "Bash(node data/fetch_stats.js)"
     ]
   }
 }
