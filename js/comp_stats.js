@@ -12,6 +12,86 @@ var _CS_TYPE_ICONS   = { al:'🏹', sala:'🏟️', camp:'🌲', trd:'🌄' };
 var _CS_TYPE_COLORS  = { al:'var(--navy)', sala:'var(--navy-light)', camp:'#b87a00', trd:'#2a7d3f' };
 var _CS_TYPE_BORDER  = { al:'#1B3A6B', sala:'#2E5FA3', camp:'#b87a00', trd:'#2a7d3f' };
 
+// ── Normalització de clubs ──────────────────────────────────
+// Ianseo usa IDs numèrics (1020) o alfabètics (CAM) per al mateix club.
+// ALIAS_MAP: ID numèric → codi alfabètic canònic
+var _CS_ALIAS = {
+  '1020':'CAM',  '1049':'CTTA', '1110':'CATER','1116':'CTAP', '1118':'CAD',
+  '1123':'TEM',  '2048':'CACV', '2056':'ASCEL','2132':'CAFF', '2158':'ACC',
+  '2166':'CCTA', '2170':'CTACM','2182':'CTAD', '2210':'CEAB', '2220':'CEAS',
+  '2300':'ATALC','2308':'TAE',  '2341':'CARB', '2415':'CTAU', '2428':'CAESC',
+  '2504':'ADMAT','2505':'CAPUIG','2524':'CTASA','2529':'CASCV','2563':'CTAR',
+  '2566':'CTALL','2619':'CPIN', '2662':'CTAZB','2677':'CAESC2','2680':'CTAMO',
+  '2683':'MAN',  '2684':'MAESTRAT','2692':'CETADS','2711':'ALCAL','2747':'CIERZO',
+  '2753':'CAUTD','2783':'CAVIL','9996':'CALM2', '9999':'CTABG',
+  // Altres variants del mateix club
+  '1038':'DIARC','1058':'ALFAJ','1081':'GEZI', '1126':'ZUGA',
+  '2029':'MERC', '2088':'ARCOS','2107':'TERUL','2143':'VALDE',
+  '2282':'JAURT','2368':'MALP', '2391':'SABIN','2404':'ARCOM',
+  '2407':'VALDE2','2414':'GETXO','2465':'ARFIN','2677':'MERCD'
+};
+
+// Noms canònics per mostrar (codi → nom complet)
+var _CS_NAMES = {
+  'CAM':   'Club Arc Montjuïc',
+  'CCTA':  'Club Català de Tir amb Arc',
+  'CTAF':  'Club Tir amb Arc Les Franqueses',
+  'CTACM': 'Club Tir amb Arc Caldes de Montbui',
+  'CACV':  'Club Arquers Cerdanyola del Vallès',
+  'CATER': 'Club Arquers Terrassa',
+  'TAO':   'Club Tir Arc Olesa de Montserrat',
+  'CTTA':  'Club Tau de Tir amb Arc',
+  'CETADS':'Club Esportiu Tir Arc Draco Sagitaris',
+  'CEAB':  'Club Escola Arquers Barcelona',
+  'CASCV': 'Club Arquers Sant Cugat del Vallès',
+  'CTAR':  'Club Tiro con Arco Rubí',
+  'CTASA': 'Club Tir amb Arc Sant Andreu de la Barca',
+  'CAOLI': 'Club Arquers Olivella',
+  'ASCEL': 'Arc Sant Celoni',
+  'CAVF':  'Club Arquers Vallfosca',
+  'ACC':   'Arquers Club Castelldefels',
+  'CTAP':  'Tir amb Arc Pardinyes',
+  'CTAA':  "Club Tir amb Arc l'Arboç",
+  'CTAD':  'Club Tir amb Arc El Prat de Llobregat',
+  'MAN':   'Club Tir amb Arc Manresa',
+  'CTALL': 'Club Tir amb Arc Lleida',
+  'CEAS':  'Club Escola Arc Set',
+  'ATALC': 'T.A. La Conxorxa',
+  'TAE':   'C.T. Arc Encamp',
+  'CTAU':  'T.A. Urgell',
+  'CAOLI': 'Club Arquers Olivella',
+  'CACAT': 'Club Arquers de Catalunya',
+  'CACAM': 'Club Arquers Cambrils',
+  'CAD':   'Club Arquers Dosrius',
+  'TEM':   'Club Tir Esportiu Mataró',
+  'CTAM':  'Club Tir amb Arc Montblanc',
+  'CAMO':  'Club Arquers Montblanc',
+  'TAFIG': 'Tir amb Arc Figueres',
+  'CTAZB': 'Club Tir amb Arc Zen del Bages',
+  'CAESC': 'Club Arquers Esclanyà',
+  'CAFF':  'Club Arquers Torrefarrera',
+  'CTAVG': 'Club Tir amb Arc Vila-seca',
+  'CTAP2': 'Club Tir amb Arc Pau',
+  'PAC':   'Club Arc Parc',
+  'CTACD': 'Club Tir amb Arc Cardedeu',
+  'CTALL': 'Club Tir amb Arc Lleida',
+  'CCAR':  'Club Tir amb Arc Castellnou de Bages',
+  'CAAC':  'Club Arquers Alt Camp',
+  'CTACB': 'Club Tir amb Arc Costa Brava',
+  'CTAU':  'T.A. Urgell'
+};
+
+/** Retorna el codi canònic d'un club (unifica numèrics i alfabètics) */
+function _csNormCode(rawCode) {
+  var c = (rawCode || '').trim();
+  return _CS_ALIAS[c] || c;
+}
+
+/** Retorna el nom de display d'un codi canònic */
+function _csClubLabel(code) {
+  return _CS_NAMES[code] || code;
+}
+
 // ── Tab switch ──────────────────────────────────────────────
 function setCompTab(tab, btn) {
   document.querySelectorAll('.comp-stab').forEach(function(b) { b.classList.remove('act'); });
@@ -45,32 +125,64 @@ function _csInit() {
     });
 }
 
-// ── Llista de clubs (union de tots els tiradors) ────────────
-function _csClubs() {
-  var clubs = {};
+// ── Llista de clubs (normalitzats, sense duplicats) ─────────
+// Retorna mapa { canonicCode → displayName }
+var _csClubMap = null;
+function _csGetClubMap() {
+  if (_csClubMap) return _csClubMap;
+  _csClubMap = {};
   (_csData || []).forEach(function(c) {
     (c.divisions || []).forEach(function(d) {
       (d.archers || []).forEach(function(a) {
-        if (a.club && a.club.trim()) clubs[a.club.trim()] = true;
+        var code = _csNormCode(a.club);
+        if (!code) return;
+        // Prefereix: nom hardcoded > clubName del JSON > codi
+        if (!_csClubMap[code]) {
+          _csClubMap[code] = _CS_NAMES[code] || a.clubName || code;
+        } else if (!_CS_NAMES[code] && a.clubName && _csClubMap[code] === code) {
+          _csClubMap[code] = a.clubName; // actualitza si tenim nom real
+        }
       });
     });
   });
-  return Object.keys(clubs).sort(function(a,b){ return a.localeCompare(b,'ca'); });
+  return _csClubMap;
+}
+
+function _csClubs() {
+  var map = _csGetClubMap();
+  return Object.keys(map).sort(function(a,b){
+    return (map[a]||a).localeCompare(map[b]||b, 'ca');
+  });
+}
+
+// Override _csClubLabel to also use runtime map
+function _csClubLabel(code) {
+  var map = _csClubMap || {};
+  return _CS_NAMES[code] || map[code] || code;
 }
 
 // ── Filtrat per club (retorna còpia amb comptadors recalculats) ──
 function _csFilter(club, type) {
   return (_csData || []).map(function(comp) {
-    if (comp.accessible === false) {
-      return Object.assign({}, comp, { fTotal: 0, fDivisions: [] });
-    }
+    // Competicions amb tipus diferent al filtre → excloure
     if (type !== 'all' && comp.type !== type) return null;
+
+    // Competicions sense dades individuals (sala liga = privades)
+    if (comp.accessible === false) {
+      return Object.assign({}, comp, {
+        fTotal: 0,
+        fDivisions: [],
+        noData: true
+      });
+    }
 
     var fDivisions = (comp.divisions || []).map(function(d) {
       var archers = (club === 'all')
         ? (d.archers || [])
-        : (d.archers || []).filter(function(a) { return a.club === club; });
-      var scores  = archers.filter(function(a){ return a.score > 0; }).map(function(a){ return a.score; });
+        : (d.archers || []).filter(function(a) {
+            return _csNormCode(a.club) === club;
+          });
+      var scores = archers.filter(function(a){ return a.score > 0; }).map(function(a){ return a.score; });
       return {
         name: d.name,
         count: archers.length,
@@ -91,8 +203,9 @@ function _csRender() {
 
   var clubOpts = '<option value="all">Tots els clubs</option>' +
     clubs.map(function(c) {
+      var label = _csClubLabel(c);
       return '<option value="' + escHtml(c) + '"' +
-        (_csClub === c ? ' selected' : '') + '>' + escHtml(c) + '</option>';
+        (_csClub === c ? ' selected' : '') + '>' + escHtml(label || c) + '</option>';
     }).join('');
 
   var typeOpts = ['all','al','sala','camp','trd'].map(function(t) {
@@ -122,18 +235,18 @@ function _csOnType(val) { _csType = val; _csContent(); }
 
 // ── Contingut (recalculat en cada canvi de filtre) ──────────
 function _csContent() {
-  var data = _csFilter(_csClub, _csType);
-  var accessible = data.filter(function(c){ return c.accessible !== false; });
-  var content = document.getElementById('csContent');
-  if (!accessible.length) {
+  var data       = _csFilter(_csClub, _csType);
+  var accessible = data.filter(function(c){ return !c.noData; });
+  var content    = document.getElementById('csContent');
+  if (!data.length) {
     content.innerHTML = '<div class="cs-empty">Cap dada disponible per a la selecció actual.</div>';
     return;
   }
 
   content.innerHTML =
-    _csCards(accessible) +
-    _csBars(accessible)  +
-    _csDivTable(accessible);
+    _csCards(data)       +  // totes: compta privades per als totals
+    _csBars(data)        +  // totes: mostra barra rayada per les privades
+    _csDivTable(accessible); // sols les accessibles (divisions + archers)
 }
 
 // ── Cards de resum per modalitat ─────────────────────────────
@@ -142,8 +255,10 @@ function _csCards(data) {
   var cards = types.map(function(t) {
     var comps     = data.filter(function(c){ return c.type === t; });
     if (!comps.length) return '';
-    var total     = comps.reduce(function(s,c){ return s + c.fTotal; }, 0);
-    var avgPerComp = comps.length ? Math.round(total / comps.length) : 0;
+    var withData  = comps.filter(function(c){ return !c.noData; });
+    var total     = withData.reduce(function(s,c){ return s + c.fTotal; }, 0);
+    var noDataN   = comps.length - withData.length;
+    var avgPerComp = withData.length ? Math.round(total / withData.length) : 0;
 
     // 3D línia vs bosc (subdivisió interna del type 'trd')
     var linia = comps.filter(function(c){ return /l[íi]nia/i.test(c.title); });
@@ -161,7 +276,9 @@ function _csCards(data) {
       '<div class="cs-disc-icon">' + (_CS_TYPE_ICONS[t]||'') + '</div>' +
       '<div class="cs-disc-name">' + _CS_TYPE_LABELS[t] + '</div>' +
       '<div class="cs-disc-total">' + total + '</div>' +
-      '<div class="cs-disc-meta">' + comps.length + ' tirades · ~' + avgPerComp + '/tirada</div>' +
+      '<div class="cs-disc-meta">' + comps.length + ' tirades · ~' + avgPerComp + '/tirada' +
+        (noDataN ? ' <span class="cs-disc-nodata">(' + noDataN + ' sense dades públiques)</span>' : '') +
+      '</div>' +
       extra +
     '</div>';
   }).filter(Boolean).join('');
@@ -179,24 +296,28 @@ function _csBars(data) {
   var maxPart = Math.max.apply(null, sorted.map(function(c){ return c.fTotal; }).concat([1]));
 
   var rows = sorted.map(function(c) {
-    if (!c.fTotal) return '';
-    var pct   = Math.round((c.fTotal / maxPart) * 100);
+    var pct   = c.fTotal ? Math.round((c.fTotal / maxPart) * 100) : 0;
     var color = _CS_TYPE_COLORS[c.type] || 'var(--navy)';
     var short = c.title.length > 52 ? c.title.substring(0,50) + '…' : c.title;
     var ym    = c.dateISO.substring(0,7);
     var disc  = _CS_TYPE_LABELS[c.type] || c.type;
+    var barContent, valContent;
+    if (c.noData) {
+      barContent = '<div class="cs-bar-fill cs-bar-nodata" style="width:30%;background:var(--lightgray)"></div>';
+      valContent = '<span class="cs-bar-val cs-bar-private" title="Resultats privats a Ianseo">–</span>';
+    } else {
+      barContent = '<div class="cs-bar-fill" style="width:' + Math.max(pct,1) + '%;background:' + color + '"></div>';
+      valContent = '<span class="cs-bar-val">' + c.fTotal + '</span>';
+    }
     return '<div class="cs-bar-row">' +
       '<div class="cs-bar-label" title="' + escHtml(c.title) + '">' +
         '<span class="cs-bar-date">' + ym + '</span>' +
         '<span class="cs-bar-disc cs-bc-' + c.type + '">' + disc + '</span>' +
         escHtml(short) +
       '</div>' +
-      '<div class="cs-bar-wrap">' +
-        '<div class="cs-bar-fill" style="width:' + Math.max(pct,1) + '%;background:' + color + '"></div>' +
-        '<span class="cs-bar-val">' + c.fTotal + '</span>' +
-      '</div>' +
+      '<div class="cs-bar-wrap">' + barContent + valContent + '</div>' +
     '</div>';
-  }).filter(Boolean).join('');
+  }).join('');
 
   if (!rows) return '';
   return '<div class="cs-section">' +

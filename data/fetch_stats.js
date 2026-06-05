@@ -12,9 +12,16 @@ const https = require('https');
 const http = require('http');
 
 // ── Competicions FCTA amb ID numèric d'Ianseo ──────────────────────────────
+// Les que tenen ianseo com a string alphanumèric → privades a Ianseo, s'afegeixen
+// sense dades individuals (accessible: false).
 const COMPETITIONS = [
   { id:40, title:"XXI Campionat de Catalunya de Round 900 – XII Memorial Jordi Adell", dateISO:"2025-09-06", type:"al",   disc:"Aire Lliure", ianseo:24295 },
   { id:38, title:"XXXII Trofeu Ciutat de Lleida – III Copa Pirineus – IV Memorial Alfred Piñol", dateISO:"2025-09-27", type:"al",   disc:"Aire Lliure", ianseo:23781 },
+  // ── Lliga Catalana Sala 2025-2026 (privades a Ianseo) ──────────────────
+  { id:37, title:"1ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-10-04", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS1',  privateIanseo:true },
+  { id:35, title:"2ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-10-18", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS2a', privateIanseo:true },
+  { id:32, title:"3ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-11-15", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS3a', privateIanseo:true },
+  { id:30, title:"4ª Tirada Lliga Catalana de Sala 2025/2026",  dateISO:"2025-12-06", type:"sala", disc:"Sala – 18m", ianseo:'FCTALS4a', privateIanseo:true },
   { id:6,  title:"1ª Tirada Lliga Catalana Camp 2025/26",       dateISO:"2026-01-11", type:"camp", disc:"Tir de Camp",  ianseo:26209 },
   { id:20, title:"1r Campionat Catalunya 3D en Línia 2026",     dateISO:"2026-01-18", type:"trd",  disc:"3D / Bosc",    ianseo:26307 },
   { id:19, title:"I Trofeu Vila de Cambrils",                   dateISO:"2026-01-24", type:"al",   disc:"Aire Lliure", ianseo:26423 },
@@ -77,15 +84,38 @@ function decodeHtml(str) {
 }
 
 /**
+ * Normalitza el camp club del HTML d'Ianseo.
+ * Ianseo mostra "COD - Nom Club" o "COD" o "Nom Club".
+ * Retorna { code, name } on code és la clau canònica.
+ */
+function normalizeClub(raw) {
+  var s = raw.trim();
+  var dashIdx = s.indexOf(' - ');
+  if (dashIdx > 0) {
+    // Format "COD - Nom Club"
+    var code = s.substring(0, dashIdx).trim();
+    var name = s.substring(dashIdx + 3).trim();
+    return { code: code, name: name };
+  }
+  // Sense guió: pot ser un codi curt (CACV) o un nom llarg
+  var isCode = /^[A-Z0-9]{2,6}$/.test(s);
+  return { code: s, name: isCode ? '' : s };
+}
+
+/**
  * Parse IC.php HTML to extract divisions and individual archers.
- * Structure: table with class-header rows and data rows.
+ *
+ * Columnes Ianseo IC (qualificació):
+ *   pos | nom | club | [puntuació1] … [puntuació_total] | 10+X | X
+ *
+ * Bug corregit: agafem el MÀXIM dels valors numèrics a partir de la
+ * columna 3 (índex 3+), perquè el total sempre és > que X i 10+X.
  */
 function parseIC(html) {
   const divisions = [];
   let currentDivision = null;
   let posCounter = 1;
 
-  // Split by table rows
   const rowRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
   let rowMatch;
 
@@ -100,11 +130,17 @@ function parseIC(html) {
 
     if (cells.length === 0) continue;
 
-    // Detect division header: typically 1 cell spanning the table, no score
-    // or a row with colspan containing division name
+    // ── Capçalera de divisió (colspan) ────────────────────────
     if (rowHtml.toLowerCase().includes('colspan') && cells.length <= 2) {
-      const divName = cells[0].replace(/\s+/g, ' ').trim();
-      if (divName && divName.length > 2) {
+      // Netejar el nom: eliminar notes entre [brackets] i (parèntesis) al final
+      // ex: "Recorbat - Home [Després de 60 Fletxes]" → "Recorbat - Home"
+      let divName = cells[0]
+        .replace(/\[.*?\]/g, '')    // eliminar [...]
+        .replace(/\(.*?\)/g, '')    // eliminar (...)
+        .replace(/\s+/g, ' ')
+        .trim();
+      // Saltar si és el títol de la pàgina o molt llarg
+      if (divName && divName.length > 2 && divName.length < 80) {
         currentDivision = { name: divName, archers: [] };
         divisions.push(currentDivision);
         posCounter = 1;
@@ -112,38 +148,57 @@ function parseIC(html) {
       continue;
     }
 
-    // Detect header rows (th) - skip
+    // Saltar files de capçalera (<th>)
     if (rowHtml.includes('<th')) continue;
 
-    // Archer data rows: expect at least 3 cells (rank/name, club, score)
-    if (!currentDivision || cells.length < 3) continue;
+    if (!currentDivision || cells.length < 4) continue;
 
-    // Try to extract: pos, name, club, score
-    // Common IC.php format: pos | name | club | score(s)
-    let pos = null, name = null, club = null, score = null;
+    // ── Extreure pos, nom, club ────────────────────────────────
+    let pos = null, name = null, clubRaw = null, score = null;
 
-    // Check if first cell is a number (position)
     const firstNum = parseInt(cells[0]);
-    if (!isNaN(firstNum) && String(firstNum) === cells[0].trim()) {
-      pos = firstNum;
-      name = cells[1];
-      club = cells[2];
-      score = cells.length >= 4 ? parseInt(cells[cells.length - 1]) : null;
-    } else if (cells.length >= 3) {
-      // No explicit position
-      pos = posCounter;
-      name = cells[0];
-      club = cells[1];
-      score = parseInt(cells[cells.length - 1]);
+    const hasExplicitPos = !isNaN(firstNum) && String(firstNum) === cells[0].trim();
+
+    if (hasExplicitPos) {
+      // Format: pos | nom | club | [puntuacions per distància "NNN/ R"] | total | 10+X | X
+      pos      = firstNum;
+      name     = cells[1];
+      clubRaw  = cells[2];
+    } else {
+      // Format sense columna de posició: nom | club | puntuació | …
+      pos      = posCounter;
+      name     = cells[0];
+      clubRaw  = cells[1];
     }
 
-    if (name && name.length > 2) {
+    // Netejar llicències RFETA del nom: "Nom, Lic 30003" → "Nom"
+    if (name) name = name.replace(/,?\s*Lic\.?\s+\d+/gi, '').trim();
+
+    // ── Puntuació total: màxim dels valors enters a partir de la 4a col ──
+    // Ianseo pot mostrar puntuació per distàncies ("350/ 1", "317/ 1"…)
+    // seguit del total i dels comptadors X. El total és sempre el major.
+    // parseInt("350/ 1") = 350 (s'ignora la part posterior al '/').
+    const scoreStart = hasExplicitPos ? 3 : 2;
+    let maxScore = null;
+    for (let si = scoreStart; si < cells.length; si++) {
+      const v = parseInt(cells[si]);
+      if (!isNaN(v) && v > 0) {
+        maxScore = (maxScore === null) ? v : Math.max(maxScore, v);
+      }
+    }
+    score = maxScore;
+
+    // ── Club normalitzat ──────────────────────────────────────
+    const clubParsed = normalizeClub(clubRaw || '');
+
+    if (name && name.trim().length > 2) {
       posCounter++;
       currentDivision.archers.push({
-        pos: pos || posCounter - 1,
-        name: name.trim(),
-        club: (club || '').trim(),
-        score: isNaN(score) ? null : score
+        pos:   pos || posCounter - 1,
+        name:  name.trim(),
+        club:  clubParsed.code,          // codi canònic per filtrar
+        clubName: clubParsed.name || '', // nom llarg per mostrar
+        score: score
       });
     }
   }
@@ -163,6 +218,13 @@ async function main() {
     process.stdout.write(`Fetching [${comp.ianseo}] ${comp.title.substring(0, 50)}... `);
 
     try {
+      // Competicions privades → no intentar fetch
+      if (comp.privateIanseo) {
+        console.log('PRIVATE (results not public on Ianseo)');
+        results.push({ ...comp, icUrl: url, accessible: false, totalParticipants: null, divisions: [] });
+        continue;
+      }
+
       const res = await getUrl(url);
 
       if (res.notFound || res.redirected || res.status !== 200) {
