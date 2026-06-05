@@ -209,63 +209,103 @@
 }
 
 /* ── Colors de disciplina (backgrounds) ── */
-.cs-bc-al   { background: var(--navy);      }
-.cs-bc-sala { background: var(--navy-light);}
-.cs-bc-camp { background: #b87a00;          }
-.cs-bc-trd  { background: #2a7d3f;          }
+.cs-bc-al   { background: var(--navy);       color: white; }
+.cs-bc-sala { background: var(--navy-light); color: white; }
+.cs-bc-camp { background: #b87a00;           color: white; }
+.cs-bc-trd  { background: #2a7d3f;           color: white; }
 
-/* ── Taula de divisions ── */
-.cs-table-wrap {
-  overflow-x: auto;
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-sm);
-}
-.cs-table {
-  width: 100%;
-  border-collapse: collapse;
+/* ══════════════════════════════════════════════════════════
+   Gràfics cronològics de puntuació màxima
+   ══════════════════════════════════════════════════════════ */
+
+.cs-chart-block {
   background: white;
-  font-size: .87rem;
+  border-radius: var(--r-xl);
+  padding: var(--sp-5) var(--sp-5) var(--sp-4);
+  margin-bottom: var(--sp-8);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--lightgray);
 }
-.cs-table thead tr { background: var(--navy); color: white; }
-.cs-table thead th {
-  padding: var(--sp-3) var(--sp-4);
-  text-align: left;
+
+.cs-chart-header {
+  margin-bottom: var(--sp-4);
+}
+
+.cs-chart-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: var(--sp-1) var(--sp-4);
+  border-radius: var(--r-lg);
   font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
+  font-weight: 900;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: .05em;
-  font-size: .78rem;
+  letter-spacing: .06em;
+}
+
+/* ── Botons de categoria ── */
+.cs-cat-tabs {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+}
+
+.cs-cat-btn {
+  background: var(--offwhite);
+  border: 1.5px solid var(--lightgray);
+  border-radius: var(--r-md);
+  padding: var(--sp-1) var(--sp-3);
+  font-family: 'Barlow', sans-serif;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all var(--dur-base) var(--tr);
+}
+.cs-cat-btn:hover { border-color: var(--navy-light); color: var(--navy); }
+.cs-cat-btn.act   {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+
+/* ── SVG chart ── */
+.cs-chart-wrap {
+  overflow-x: auto;
+}
+.cs-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-width: 420px;
+}
+
+.cs-chart-empty {
+  text-align: center;
+  padding: var(--sp-8) var(--sp-4);
+  color: var(--gray);
+  font-style: italic;
+  font-size: .9rem;
+}
+
+/* ── Llegenda ── */
+.cs-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--lightgray);
+}
+
+.cs-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: .82rem;
+  color: var(--navy-dark);
   white-space: nowrap;
 }
-.cs-table thead th:not(:first-child) { text-align: right; }
-.cs-table tbody tr:nth-child(even) { background: var(--offwhite); }
-.cs-table tbody tr:hover { background: #dde5f5; }
-.cs-table td {
-  padding: var(--sp-2) var(--sp-4);
-  border-bottom: 1px solid var(--lightgray);
-  vertical-align: middle;
-}
-.cs-table tbody tr:last-child td { border-bottom: none; }
-
-.cs-div-name    { font-weight: 600; color: var(--navy-dark); }
-.cs-num         { text-align: right; font-variant-numeric: tabular-nums; color: var(--navy); }
-.cs-score-avg   { color: var(--navy-light); font-weight: 600; }
-.cs-score-max   { color: var(--gold-dark);  font-weight: 700; }
-
-.cs-td-dot {
-  display: inline-block;
-  width: .55em;
-  height: .55em;
-  border-radius: 50%;
-  font-size: .6rem;
-  line-height: 1;
-  vertical-align: middle;
-  margin-left: .2em;
-  color: transparent;
-}
-.cs-td-dot::before { content: '●'; }
-.cs-bc-al   .cs-td-dot,  .cs-td-dot.cs-bc-al   { color: var(--navy);       }
-.cs-td-dot.cs-bc-sala { color: var(--navy-light); }
-.cs-td-dot.cs-bc-camp { color: #b87a00;           }
-.cs-td-dot.cs-bc-trd  { color: #2a7d3f;           }
 

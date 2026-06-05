@@ -234,9 +234,9 @@ function _csContent() {
   }
 
   content.innerHTML =
-    _csCards(data) +
-    _csBars(data)  +
-    _csDivTable(data);
+    _csCards(data)    +
+    _csBars(data)     +
+    _csDivChart(data);
 }
 
 // ── Cards de resum per modalitat ─────────────────────────────
@@ -306,54 +306,229 @@ function _csBars(data) {
   '</div>';
 }
 
-// ── Taula de tendències per divisió ─────────────────────────
-function _csDivTable(data) {
-  // Agrupa per nom de divisió
-  var divMap = {};
-  data.forEach(function(comp) {
-    var compLabel = comp.dateISO.substring(0,7) + ' ' + (comp.title||'').substring(0,30);
-    (comp.fDivisions || []).forEach(function(d) {
-      if (!divMap[d.name]) divMap[d.name] = { name: d.name, count:0, appearances:0, scoreMax:0, scoreSum:0, scoreWt:0, types:{} };
-      var e = divMap[d.name];
-      e.count       += d.count;
-      e.appearances++;
-      e.types[comp.type] = (e.types[comp.type]||0) + 1;
-      if (d.scoreMax) e.scoreMax = Math.max(e.scoreMax, d.scoreMax);
-      if (d.scoreAvg && d.count > 0) { e.scoreSum += d.scoreAvg * d.count; e.scoreWt += d.count; }
+// ══════════════════════════════════════════════════════════
+// ── Gràfics cronològics de puntuació màxima per categoria ──
+// ══════════════════════════════════════════════════════════
+
+// Grups de categories (per normalitzar noms en múltiples idiomes)
+var _CS_CATS = [
+  { key:'recorbat',    label:'Recorbat / Recurve',  re:/recorb|recurv/i },
+  { key:'compost',     label:'Compost / Compound',  re:/compost|compuest|compound/i },
+  { key:'nu',          label:'Nu / Barebow',         re:/\bnu\s*[-–]|\bbarebow\b|\bdesnudo\b/i },
+  { key:'tradicional', label:'Tradicional',          re:/tradicional|traditional/i },
+  { key:'longbow',     label:'Long Bow',             re:/longbow|long[\s.]?bow/i },
+];
+
+// Colors per a les classes dins cada categoria
+var _CS_COLORS = [
+  '#1B3A6B','#C0392B','#E67E22','#27AE60','#8E44AD',
+  '#2980B9','#16A085','#F39C12','#7F8C8D','#D35400','#C0392B',
+];
+
+// Estat actiu de la categoria per cada tipus de competició
+var _csActiveCat = {};
+
+function _csCatOf(divName) {
+  for (var i = 0; i < _CS_CATS.length; i++) {
+    if (_CS_CATS[i].re.test(divName)) return _CS_CATS[i].key;
+  }
+  return null;
+}
+
+function _csCatLabel(key) {
+  for (var i = 0; i < _CS_CATS.length; i++) {
+    if (_CS_CATS[i].key === key) return _CS_CATS[i].label;
+  }
+  return key;
+}
+
+/** Extreu la variant de classe eliminant el prefix de categoria */
+function _csClassVariant(divName) {
+  var idx = divName.search(/\s[-–]\s/);
+  if (idx >= 0) return divName.substring(idx + 3).trim();
+  for (var i = 0; i < _CS_CATS.length; i++) {
+    var s = divName.replace(_CS_CATS[i].re, '').replace(/^\s*[-–]?\s*/, '').trim();
+    if (s !== divName && s) return s;
+  }
+  return divName;
+}
+
+/** Canvi de categoria → reconstrueix el contingut */
+function _csCatSet(type, cat) {
+  _csActiveCat[type] = cat;
+  _csContent();
+}
+
+// ── Gràfic principal ────────────────────────────────────────
+function _csDivChart(data) {
+  var types = (_csType === 'all') ? ['al','sala','camp','trd'] : [_csType];
+
+  var blocks = types.map(function(t) {
+    // Competicions d'aquest tipus amb dades, ordenades cronològicament
+    var comps = data
+      .filter(function(c){ return c.type === t && c.fDivisions && c.fDivisions.length; })
+      .slice().sort(function(a,b){ return a.dateISO.localeCompare(b.dateISO); });
+    if (!comps.length) return '';
+
+    // Categories presents
+    var catSet = {};
+    comps.forEach(function(c) {
+      (c.fDivisions||[]).forEach(function(d) {
+        var cat = _csCatOf(d.name);
+        if (cat && d.scoreMax) catSet[cat] = true;
+      });
+    });
+    var cats = Object.keys(catSet);
+    if (!cats.length) return '';
+
+    // Categoria activa (fallback al primer disponible)
+    if (!_csActiveCat[t] || !catSet[_csActiveCat[t]]) _csActiveCat[t] = cats[0];
+    var activeCat = _csActiveCat[t];
+
+    // Botons de categoria
+    var catBtns = cats.map(function(cat) {
+      return '<button class="cs-cat-btn' + (cat === activeCat ? ' act' : '') +
+        '" onclick="_csCatSet(\'' + t + '\',\'' + cat + '\')">' +
+        escHtml(_csCatLabel(cat)) + '</button>';
+    }).join('');
+
+    return '<div class="cs-chart-block">' +
+      '<div class="cs-chart-header">' +
+        '<span class="cs-chart-type-badge cs-bc-' + t + '">' + (_CS_TYPE_ICONS[t]||'') + ' ' + escHtml(_CS_TYPE_LABELS[t]) + '</span>' +
+      '</div>' +
+      '<div class="cs-cat-tabs">' + catBtns + '</div>' +
+      _csBuildSvg(comps, activeCat) +
+    '</div>';
+  }).filter(Boolean).join('');
+
+  if (!blocks) return '';
+  return '<div class="cs-section">' +
+    '<h3 class="cs-h3">Evolució de puntuació màxima ' +
+      '<span class="cs-h3-sub">(per categoria · ordre cronològic)</span>' +
+    '</h3>' +
+    blocks +
+  '</div>';
+}
+
+// ── Construcció del SVG ─────────────────────────────────────
+function _csBuildSvg(comps, cat) {
+  // Recull totes les classes de la categoria que tinguin scoreMax
+  var classSet = {};
+  comps.forEach(function(c) {
+    (c.fDivisions||[]).forEach(function(d) {
+      if (_csCatOf(d.name) === cat && d.scoreMax) classSet[d.name] = true;
+    });
+  });
+  var classes = Object.keys(classSet);
+  if (!classes.length) return '<div class="cs-chart-empty">Sense dades de puntuació per a aquesta categoria.</div>';
+
+  // Ordena: primer els noms més curts (Home, Dona avans que Sub18, Plus50)
+  classes.sort(function(a,b){ return a.length - b.length || a.localeCompare(b,'ca'); });
+
+  // Matriu [classe][comp] = scoreMax | null
+  var maxY = 0;
+  var matrix = {};
+  classes.forEach(function(cls) {
+    matrix[cls] = comps.map(function(c) {
+      var div = null;
+      for (var i = 0; i < (c.fDivisions||[]).length; i++) {
+        if (c.fDivisions[i].name === cls) { div = c.fDivisions[i]; break; }
+      }
+      var v = (div && div.scoreMax) ? div.scoreMax : null;
+      if (v && v > maxY) maxY = v;
+      return v;
+    });
+  });
+  if (!maxY) return '<div class="cs-chart-empty">Sense puntuacions disponibles.</div>';
+
+  // Dimensions SVG
+  var W = 880, H = 300;
+  var PAD = { top:24, right:20, bottom:72, left:58 };
+  var PW = W - PAD.left - PAD.right;
+  var PH = H - PAD.top - PAD.bottom;
+  var n  = comps.length;
+
+  function xPos(i) { return PAD.left + (n < 2 ? PW/2 : i * PW / (n-1)); }
+  function yPos(v) { return PAD.top + PH - Math.round(v / maxY * PH); }
+
+  var out = [];
+
+  // Grid horitzontal
+  var YTICKS = 5;
+  for (var yi = 0; yi <= YTICKS; yi++) {
+    var yv = Math.round(maxY * yi / YTICKS);
+    var yp = yPos(yv);
+    out.push('<line x1="'+PAD.left+'" y1="'+yp+'" x2="'+(W-PAD.right)+'" y2="'+yp+'" stroke="#E8ECF3" stroke-width="1"/>');
+    out.push('<text x="'+(PAD.left-6)+'" y="'+(yp+4)+'" text-anchor="end" font-family="Barlow,sans-serif" font-size="11" fill="#5a6475">'+yv+'</text>');
+  }
+
+  // Etiquetes eix X (data i seu curta)
+  comps.forEach(function(c, i) {
+    var x  = xPos(i);
+    var ym = c.dateISO.substring(2,7).replace('-','.');  // "25.10"
+    // Extrau nom curt de seu (part darrera " – " si existeix)
+    var seuIdx = c.title.lastIndexOf(' – ');
+    var seu = seuIdx >= 0 ? c.title.substring(seuIdx+3,seuIdx+7) : '';
+    var lbl = ym + (seu ? ' ' + seu : '');
+    var baseY = PAD.top + PH + 14;
+    out.push(
+      '<text transform="rotate(-45,'+x+','+baseY+')" x="'+x+'" y="'+baseY+'" '+
+      'text-anchor="end" font-family="Barlow,sans-serif" font-size="10" fill="#5a6475">'+
+      escHtml(lbl)+'</text>'
+    );
+    // Línia vertical lleugera
+    out.push('<line x1="'+x+'" y1="'+PAD.top+'" x2="'+x+'" y2="'+(PAD.top+PH)+'" stroke="#E8ECF3" stroke-width="1" stroke-dasharray="3,3"/>');
+  });
+
+  // Eixos
+  out.push('<line x1="'+PAD.left+'" y1="'+PAD.top+'" x2="'+PAD.left+'" y2="'+(PAD.top+PH)+'" stroke="#aab" stroke-width="1.5"/>');
+  out.push('<line x1="'+PAD.left+'" y1="'+(PAD.top+PH)+'" x2="'+(W-PAD.right)+'" y2="'+(PAD.top+PH)+'" stroke="#aab" stroke-width="1.5"/>');
+
+  // Línies i punts per classe
+  classes.forEach(function(cls, ci) {
+    var color = _CS_COLORS[ci % _CS_COLORS.length];
+    var vals  = matrix[cls];
+
+    // Segments (separa per nulls)
+    var seg = [];
+    for (var i2 = 0; i2 <= comps.length; i2++) {
+      var v2 = (i2 < comps.length) ? vals[i2] : null;
+      if (v2 !== null) {
+        seg.push(xPos(i2)+','+yPos(v2));
+      } else {
+        if (seg.length >= 2) out.push('<polyline points="'+seg.join(' ')+'" fill="none" stroke="'+color+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>');
+        seg = [];
+      }
+    }
+
+    // Punts amb tooltip
+    vals.forEach(function(v3, i3) {
+      if (v3 === null) return;
+      var cx = xPos(i3), cy = yPos(v3);
+      var tip = escHtml(comps[i3].title.replace(/\s*–\s*/g,' – ').substring(0,50)) + ': ' + v3 + ' pts';
+      out.push('<circle cx="'+cx+'" cy="'+cy+'" r="5" fill="'+color+'" stroke="white" stroke-width="2"><title>'+tip+'</title></circle>');
+      // Etiqueta de valor sobre el punt
+      out.push('<text x="'+cx+'" y="'+(cy-9)+'" text-anchor="middle" font-family="Barlow,sans-serif" font-size="10" fill="'+color+'" font-weight="700">'+v3+'</text>');
     });
   });
 
-  var rows = Object.values(divMap).sort(function(a,b){ return b.count - a.count; });
-  var total = rows.reduce(function(s,r){ return s + r.count; }, 0);
-
-  var trs = rows.map(function(d) {
-    var avg    = d.appearances ? Math.round(d.count / d.appearances) : 0;
-    var scAvg  = d.scoreWt ? Math.round(d.scoreSum / d.scoreWt) : '–';
-    var scMax  = d.scoreMax || '–';
-    var typeDots = Object.keys(d.types).map(function(t){
-      return '<span class="cs-td-dot cs-bc-' + t + '" title="' + _CS_TYPE_LABELS[t] + '">●</span>';
-    }).join('');
-    return '<tr>' +
-      '<td class="cs-div-name">' + escHtml(d.name) + ' ' + typeDots + '</td>' +
-      '<td class="cs-num">' + d.appearances + '</td>' +
-      '<td class="cs-num">' + d.count + '</td>' +
-      '<td class="cs-num">' + avg + '</td>' +
-      '<td class="cs-num cs-score-avg">' + scAvg + '</td>' +
-      '<td class="cs-num cs-score-max">' + scMax + '</td>' +
-    '</tr>';
+  // Llegenda
+  var legend = classes.map(function(cls, ci) {
+    var color   = _CS_COLORS[ci % _CS_COLORS.length];
+    var variant = _csClassVariant(cls);
+    return '<span class="cs-legend-item">'+
+      '<svg width="22" height="10" style="vertical-align:middle;margin-right:4px">'+
+        '<line x1="0" y1="5" x2="22" y2="5" stroke="'+color+'" stroke-width="2.5" stroke-linecap="round"/>'+
+        '<circle cx="11" cy="5" r="3.5" fill="'+color+'" stroke="white" stroke-width="1.5"/>'+
+      '</svg>'+
+      escHtml(variant)+
+    '</span>';
   }).join('');
 
-  return '<div class="cs-section">' +
-    '<h3 class="cs-h3">Tendències per divisió ' +
-      '<span class="cs-h3-sub">(' + rows.length + ' divisions · ' + total + ' participacions totals)</span>' +
-    '</h3>' +
-    '<div class="cs-table-wrap">' +
-      '<table class="cs-table">' +
-        '<thead><tr>' +
-          '<th>Divisió</th><th>Tirades</th><th>Part. total</th><th>Mitj./tirada</th><th>Puntuació mitjana</th><th>Puntuació màx.</th>' +
-        '</tr></thead>' +
-        '<tbody>' + trs + '</tbody>' +
-      '</table>' +
-    '</div>' +
+  return '<div class="cs-chart-wrap">'+
+    '<svg class="cs-svg" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" role="img">'+
+      out.join('')+
+    '</svg>'+
+    '<div class="cs-legend">'+legend+'</div>'+
   '</div>';
 }
