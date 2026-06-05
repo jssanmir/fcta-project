@@ -248,8 +248,9 @@ function _csContent() {
   }
 
   content.innerHTML =
-    _csCards(data)    +
-    _csBars(data)     +
+    _csCards(data)      +
+    _csClubPies(data)   +
+    _csBars(data)       +
     _csDivChart(data);
 }
 
@@ -287,6 +288,127 @@ function _csCards(data) {
   return '<div class="cs-section">' +
     '<h3 class="cs-h3">Participació per modalitat</h3>' +
     '<div class="cs-disc-cards">' + cards + '</div>' +
+  '</div>';
+}
+
+// ── Pie charts de participació per club ──────────────────────
+var _CS_PIE_COLORS = [
+  '#1B3A6B','#2E5FA3','#C0392B','#E67E22','#27AE60',
+  '#8E44AD','#16A085','#F39C12','#D35400','#2980B9',
+  '#7F8C8D','#C0392B','#1ABC9C','#E74C3C','#3498DB',
+];
+
+function _csPieClubMap(comps) {
+  var map = {};
+  comps.forEach(function(c) {
+    (c.fDivisions || c.divisions || []).forEach(function(d) {
+      var archers = d.archers || [];
+      // fDivisions no té archers; cal accedir a les dades originals
+      var count = d.count !== undefined ? d.count : archers.length;
+      if (!count) return;
+      // Si tenim archers originals, comptem per club
+      if (archers.length) {
+        archers.forEach(function(a) {
+          var code = _csNormCode(a.club);
+          map[code] = (map[code] || 0) + 1;
+        });
+      }
+    });
+  });
+  return map;
+}
+
+function _csPieSvg(clubMap, label, color) {
+  var entries = Object.keys(clubMap).map(function(k) {
+    return { code: k, val: clubMap[k] };
+  }).sort(function(a, b) { return b.val - a.val; });
+
+  var total = entries.reduce(function(s, e) { return s + e.val; }, 0);
+  if (!total) return '';
+
+  // Agrupa els que no entren al top 12 com "Altres"
+  var TOP = 12;
+  var top   = entries.slice(0, TOP);
+  var resta = entries.slice(TOP).reduce(function(s, e) { return s + e.val; }, 0);
+  if (resta > 0) top.push({ code: 'altres', val: resta });
+
+  var R = 80, CX = 100, CY = 90;
+  var angle = -Math.PI / 2;
+  var paths = top.map(function(e, i) {
+    var sweep = (e.val / total) * 2 * Math.PI;
+    var x1 = CX + R * Math.cos(angle);
+    var y1 = CY + R * Math.sin(angle);
+    angle += sweep;
+    var x2 = CX + R * Math.cos(angle);
+    var y2 = CY + R * Math.sin(angle);
+    var large = sweep > Math.PI ? 1 : 0;
+    var col = e.code === 'altres' ? '#bdc3c7' : (_CS_PIE_COLORS[i % _CS_PIE_COLORS.length]);
+    var pct = Math.round((e.val / total) * 100);
+    var lbl = e.code === 'altres' ? 'Altres' : (_csClubLabel(e.code) || e.code);
+    return '<path d="M' + CX + ',' + CY +
+      ' L' + x1.toFixed(2) + ',' + y1.toFixed(2) +
+      ' A' + R + ',' + R + ' 0 ' + large + ',1 ' + x2.toFixed(2) + ',' + y2.toFixed(2) +
+      ' Z" fill="' + col + '" stroke="#fff" stroke-width="1.5">' +
+      '<title>' + escHtml(lbl) + ': ' + e.val + ' (' + pct + '%)</title>' +
+      '</path>';
+  }).join('');
+
+  // Llegenda (màx 8 files, 2 columnes)
+  var legendItems = top.map(function(e, i) {
+    var col = e.code === 'altres' ? '#bdc3c7' : (_CS_PIE_COLORS[i % _CS_PIE_COLORS.length]);
+    var lbl = e.code === 'altres' ? 'Altres' : (_csClubLabel(e.code) || e.code);
+    var pct = Math.round((e.val / total) * 100);
+    return '<div class="cs-pie-leg-item">' +
+      '<span class="cs-pie-leg-dot" style="background:' + col + '"></span>' +
+      '<span class="cs-pie-leg-lbl" title="' + escHtml(lbl) + '">' + escHtml(lbl) + '</span>' +
+      '<span class="cs-pie-leg-val">' + pct + '%</span>' +
+    '</div>';
+  }).join('');
+
+  return '<div class="cs-pie-wrap">' +
+    '<div class="cs-pie-title" style="border-color:' + color + '">' + escHtml(label) + '</div>' +
+    '<div class="cs-pie-total">' + total + ' participacions</div>' +
+    '<svg viewBox="0 0 200 180" class="cs-pie-svg" role="img" aria-label="' + escHtml(label) + '">' +
+      paths +
+      '<text x="' + CX + '" y="' + (CY+5) + '" text-anchor="middle" class="cs-pie-center">' + total + '</text>' +
+    '</svg>' +
+    '<div class="cs-pie-legend">' + legendItems + '</div>' +
+  '</div>';
+}
+
+function _csClubPies(data) {
+  // Per als pie charts necessitem les dades RAW (amb archers), no les fDivisions filtrades
+  // Reconstruïm a partir de _csData filtrat per tipus
+  var types = _csType === 'all'
+    ? ['all', 'al', 'sala', 'camp', 'trd']
+    : [_csType];
+
+  var pies = types.map(function(t) {
+    var comps = t === 'all' ? _csData : (_csData || []).filter(function(c) { return c.type === t; });
+    if (_csClub !== 'all') {
+      comps = comps.map(function(c) {
+        return Object.assign({}, c, {
+          divisions: (c.divisions || []).map(function(d) {
+            return Object.assign({}, d, {
+              archers: (d.archers || []).filter(function(a) {
+                return _csNormCode(a.club) === _csClub;
+              })
+            });
+          })
+        });
+      });
+    }
+    var map = _csPieClubMap(comps);
+    if (!Object.keys(map).length) return '';
+    var label = t === 'all' ? 'Total' : _CS_TYPE_LABELS[t];
+    var color = t === 'all' ? 'var(--navy-dark)' : (_CS_TYPE_COLORS[t] || 'var(--navy)');
+    return _csPieSvg(map, label, color);
+  }).filter(Boolean).join('');
+
+  if (!pies) return '';
+  return '<div class="cs-section">' +
+    '<h3 class="cs-h3">Participació per club</h3>' +
+    '<div class="cs-pies">' + pies + '</div>' +
   '</div>';
 }
 

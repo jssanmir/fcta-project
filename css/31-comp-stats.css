@@ -339,3 +339,104 @@
   white-space: nowrap;
 }
 
+
+/* ── Pie charts de participació per club ── */
+.cs-pies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-6);
+}
+
+.cs-pie-wrap {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--sp-4) var(--sp-4) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cs-pie-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--navy-dark);
+  border-left: 4px solid var(--navy);
+  padding-left: var(--sp-2);
+  align-self: stretch;
+  margin-bottom: var(--sp-1);
+}
+
+.cs-pie-total {
+  font-size: .78rem;
+  color: var(--gray);
+  align-self: stretch;
+  padding-left: calc(var(--sp-2) + 4px);
+  margin-bottom: var(--sp-3);
+}
+
+.cs-pie-svg {
+  width: 100%;
+  max-width: 200px;
+}
+
+.cs-pie-center {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  fill: #fff;
+  paint-order: stroke;
+  stroke: rgba(0,0,0,.4);
+  stroke-width: 3px;
+}
+
+.cs-pie-legend {
+  width: 100%;
+  margin-top: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cs-pie-leg-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: .75rem;
+  color: var(--navy-dark);
+}
+
+.cs-pie-leg-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cs-pie-leg-lbl {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs-pie-leg-val {
+  font-weight: 700;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .cs-pies {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-pies {
+    grid-template-columns: 1fr;
+  }
+}
