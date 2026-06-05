@@ -69,7 +69,20 @@
       "Bash(New-Item -ItemType Directory -Force \"C:\\\\Projects\\\\fcta-project\\\\data\\\\competitions\")",
       "Bash(Out-Null)",
       "Bash(mkdir -p /mnt/c/Projects/fcta-project/data/competitions && echo \"OK\")",
-      "Bash(node data/fetch_stats.js)"
+      "Bash(node data/fetch_stats.js)",
+      "Bash(ls -la railway.json railway.toml Dockerfile .railway)",
+      "Bash(cat railway.json)",
+      "Bash(cat railway.toml)",
+      "Bash(ls package.json)",
+      "Bash(railway status *)",
+      "Bash(which railway *)",
+      "Bash(node server.js)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(kill %1)",
+      "Bash(NODE_ENV=production JWT_SECRET=test node server.js)",
+      "Bash(cat nixpacks.toml)",
+      "Bash(cat Procfile)",
+      "Bash(npm ls *)"
     ]
   }
 }
