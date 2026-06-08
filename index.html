@@ -54,15 +54,11 @@
       <div class="nav-logo-text">Federació Catalana<span>de Tir amb Arc</span></div>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#" onclick="setS('inici');return false" id="nl-inici">🏹 Comença</a>
-      <a href="#" onclick="setS('circulars');return false" id="nl-circulars">Circulars</a>
-      <a href="#" onclick="setS('competitions');return false" id="nl-competitions">Competicions</a>
-      <a href="#" onclick="setS('news');return false" id="nl-news">Notícies</a>
-      <a href="#" onclick="setS('formation');return false" id="nl-formation">Formació</a>
-      <a href="#" onclick="setS('calendari');return false" id="nl-calendari">Calendari</a>
+      <a href="#" onclick="scrollToHub('hub-activitat');return false">🏆 Activitat</a>
+      <a href="#" onclick="scrollToHub('hub-federacio');return false">🏛️ La Federació</a>
+      <a href="#" onclick="scrollToHub('hub-espais');return false">🎯 Espais</a>
       <button class="nav-admin" onclick="openAdm()">⚙ Admin</button>
     </div>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">☰</button>
   </div>
 </nav>
 
@@ -142,7 +138,7 @@
     <div class="container">
       <div class="home-hub-title">Tot el portal <em>FCTA</em></div>
 
-      <div class="home-hub-group">
+      <div class="home-hub-group" id="hub-activitat">
         <div class="home-hub-group-label">Competició i activitat</div>
         <div class="home-hub-grid">
           <button class="hub-card" onclick="setS('competitions')"><span class="hub-card-icon">🏆</span><span class="hub-card-text"><span class="hub-card-name">Competicions</span><span class="hub-card-sub">Calendari i inscripcions</span></span></button>
@@ -154,7 +150,7 @@
         </div>
       </div>
 
-      <div class="home-hub-group">
+      <div class="home-hub-group" id="hub-federacio">
         <div class="home-hub-group-label">La Federació</div>
         <div class="home-hub-grid">
           <button class="hub-card" onclick="setS('llicencies')"><span class="hub-card-icon">🪪</span><span class="hub-card-text"><span class="hub-card-name">Llicències</span><span class="hub-card-sub">Federació i clubs</span></span></button>
@@ -167,7 +163,7 @@
         </div>
       </div>
 
-      <div class="home-hub-group">
+      <div class="home-hub-group" id="hub-espais">
         <div class="home-hub-group-label">Espais específics</div>
         <div class="home-hub-grid">
           <button class="hub-card" onclick="setS('arcadaptat')"><span class="hub-card-icon">♿</span><span class="hub-card-text"><span class="hub-card-name">Arc Adaptat</span><span class="hub-card-sub">Esport inclusiu</span></span></button>
@@ -3063,6 +3059,18 @@
 </div>
 
 <script>
+function scrollToHub(id) {
+  var isHome = document.getElementById('sHome').style.display !== 'none';
+  if (isHome) {
+    document.getElementById(id).scrollIntoView({behavior: 'smooth', block: 'start'});
+  } else {
+    setS('home');
+    setTimeout(function() {
+      document.getElementById(id).scrollIntoView({behavior: 'smooth', block: 'start'});
+    }, 420);
+  }
+}
+
 function bNavToggleDrawer() {
   var drawer = document.getElementById('bNavDrawer');
   var overlay = document.getElementById('bNavOverlay');
