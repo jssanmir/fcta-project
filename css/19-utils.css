@@ -1,2 +1,14 @@
 /* Collapse adjacent senyera separators */
 .senyera-h + .senyera-h { display: none; }
+
+/* ── L·L geminada en fonts condensades ─────────────────── */
+/* Barlow Condensed 900 uppercase comprimeix el punt volat;
+   usem la variant normal per al punt i afegim espai lateral */
+.punt-volat {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: .78em;
+  vertical-align: .06em;
+  letter-spacing: 0;
+  padding: 0 .12em;
+}

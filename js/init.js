@@ -13,8 +13,37 @@ document.addEventListener('DOMContentLoaded',function(){
   renderClubs();
   renderCalendari();
   renderHeroPanel();
+  fixPuntVolat();
   setS('home');
 });
+
+// ── Fix l·l geminada en títols i etiquetes ────────────────
+// Embolcalla el punt volat (·) en un <span class="punt-volat">
+// perquè en fonts condensades pesades el punt queda massa comprimit.
+function fixPuntVolat() {
+  var selectors = 'h1, h2, h3, h4, h5, h6, .sec-title, .hub-card-name, .home-hub-title, .bnav-item-label, .nav-links a';
+  var elements = document.querySelectorAll(selectors);
+  elements.forEach(function(el) {
+    // Recorrem només nodes de text per no trencar event listeners
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    nodes.forEach(function(node) {
+      if (node.nodeType === 3 && node.nodeValue.indexOf('·') !== -1) {
+        var frag = document.createDocumentFragment();
+        var parts = node.nodeValue.split('·');
+        parts.forEach(function(part, i) {
+          frag.appendChild(document.createTextNode(part));
+          if (i < parts.length - 1) {
+            var span = document.createElement('span');
+            span.className = 'punt-volat';
+            span.textContent = '·';
+            frag.appendChild(span);
+          }
+        });
+        el.replaceChild(frag, node);
+      }
+    });
+  });
+}
 
 // ── Hero panel: inscripcions obertes + notícies ────────────
 function renderHeroPanel() {
