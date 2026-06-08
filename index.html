@@ -54,7 +54,7 @@
       <div class="nav-logo-text">Federació Catalana<span>de Tir amb Arc</span></div>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#" onclick="scrollToHub('hub-activitat');return false">🏆 Activitat</a>
+      <a href="#" onclick="scrollToHub('hub-activitat');return false">🏆 Competició</a>
       <a href="#" onclick="scrollToHub('hub-federacio');return false">🏛️ La Federació</a>
       <a href="#" onclick="scrollToHub('hub-espais');return false">🎯 Espais</a>
       <button class="nav-admin" onclick="openAdm()">⚙ Admin</button>
@@ -3008,55 +3008,24 @@
       <span class="bnav-item-icon">🏠</span>
       <span class="bnav-item-label">Inici</span>
     </button>
-    <button class="bnav-item" onclick="setS('circulars');bNavClose()" id="bn-circulars">
-      <span class="bnav-item-icon">📄</span>
-      <span class="bnav-item-label">Circulars</span>
-    </button>
-    <button class="bnav-item" onclick="setS('competitions');bNavClose()" id="bn-competitions">
+    <button class="bnav-item" onclick="scrollToHub('hub-activitat');bNavClose()" id="bn-competicio">
       <span class="bnav-item-icon">🏆</span>
-      <span class="bnav-item-label">Competicions</span>
+      <span class="bnav-item-label">Competició</span>
     </button>
-    <button class="bnav-item" onclick="setS('formation');bNavClose()" id="bn-formation">
-      <span class="bnav-item-icon">🎓</span>
-      <span class="bnav-item-label">Formació</span>
+    <button class="bnav-item" onclick="scrollToHub('hub-federacio');bNavClose()" id="bn-federacio">
+      <span class="bnav-item-icon">🏛️</span>
+      <span class="bnav-item-label">La Federació</span>
     </button>
-    <button class="bnav-item" id="bn-more" onclick="bNavToggleDrawer()">
-      <span class="bnav-item-icon">☰</span>
-      <span class="bnav-item-label">Més</span>
+    <button class="bnav-item" onclick="scrollToHub('hub-espais');bNavClose()" id="bn-espais">
+      <span class="bnav-item-icon">🎯</span>
+      <span class="bnav-item-label">Espais</span>
     </button>
   </div>
 </nav>
 
-<!-- BOTTOM NAV DRAWER -->
-<div class="bnav-drawer-overlay" id="bNavOverlay" onclick="bNavClose()"></div>
-<div class="bnav-drawer" id="bNavDrawer">
-  <div class="bnav-drawer-handle"></div>
-
-  <div class="bnav-drawer-section">
-    <div class="bnav-drawer-section-label">Activitat</div>
-    <div class="bnav-drawer-links">
-      <button class="bnav-drawer-link" onclick="setS('calendari');bNavClose()"><span class="bnav-drawer-link-icon">📅</span>Calendari</button>
-      <button class="bnav-drawer-link" onclick="setS('social');bNavClose()"><span class="bnav-drawer-link-icon">🎯</span>Tirades Socials</button>
-      <button class="bnav-drawer-link" onclick="setS('news');bNavClose()"><span class="bnav-drawer-link-icon">📰</span>Notícies</button>
-      <button class="bnav-drawer-link" onclick="setS('inici');bNavClose()"><span class="bnav-drawer-link-icon">🏹</span>Comença</button>
-    </div>
-  </div>
-
-  <div class="bnav-drawer-section">
-    <div class="bnav-drawer-section-label">La Federació</div>
-    <div class="bnav-drawer-links">
-      <button class="bnav-drawer-link" onclick="setS('llicencies');bNavClose()"><span class="bnav-drawer-link-icon">🪪</span>Llicències</button>
-      <button class="bnav-drawer-link" onclick="setS('documentacio');bNavClose()"><span class="bnav-drawer-link-icon">📁</span>Documentació</button>
-      <button class="bnav-drawer-link" onclick="setS('reglaments');bNavClose()"><span class="bnav-drawer-link-icon">⚖️</span>Reglaments</button>
-      <button class="bnav-drawer-link" onclick="setS('assegurances');bNavClose()"><span class="bnav-drawer-link-icon">🛡️</span>Assegurances</button>
-      <button class="bnav-drawer-link" onclick="setS('transparencia');bNavClose()"><span class="bnav-drawer-link-icon">📊</span>Transparència</button>
-      <button class="bnav-drawer-link" onclick="setS('juntadirectiva');bNavClose()"><span class="bnav-drawer-link-icon">👥</span>Junta Directiva</button>
-      <button class="bnav-drawer-link" onclick="setS('pat');bNavClose()"><span class="bnav-drawer-link-icon">🥇</span>PAT</button>
-      <button class="bnav-drawer-link" onclick="setS('arcadaptat');bNavClose()"><span class="bnav-drawer-link-icon">♿</span>Arc Adaptat</button>
-      <button class="bnav-drawer-link" onclick="setS('comitejutges');bNavClose()"><span class="bnav-drawer-link-icon">🏅</span>Comitè de Jutges</button>
-    </div>
-  </div>
-</div>
+<!-- BOTTOM NAV DRAWER (unused, kept for reference) -->
+<div class="bnav-drawer-overlay" id="bNavOverlay" onclick="bNavClose()" style="display:none"></div>
+<div class="bnav-drawer" id="bNavDrawer"></div>
 
 <script>
 function scrollToHub(id) {
@@ -3071,33 +3040,19 @@ function scrollToHub(id) {
   }
 }
 
-function bNavToggleDrawer() {
-  var drawer = document.getElementById('bNavDrawer');
-  var overlay = document.getElementById('bNavOverlay');
-  var isOpen = drawer.classList.contains('open');
-  if (isOpen) {
-    bNavClose();
-  } else {
-    drawer.classList.add('open');
-    overlay.classList.add('open');
-    document.getElementById('bn-more').classList.add('bnav-act');
-  }
-}
 function bNavClose() {
   document.getElementById('bNavDrawer').classList.remove('open');
   document.getElementById('bNavOverlay').classList.remove('open');
-  document.getElementById('bn-more').classList.remove('bnav-act');
 }
-// Highlight active bottom nav item when section changes
+// Highlight Inici when navigating home
 (function() {
   var origSetS = window.setS;
   if (typeof origSetS === 'function') {
     window.setS = function(key) {
       origSetS(key);
-      var map = { home:'bn-home', circulars:'bn-circulars', competitions:'bn-competitions', formation:'bn-formation' };
       var items = document.querySelectorAll('.bnav-item');
       items.forEach(function(el) { el.classList.remove('bnav-act'); });
-      if (map[key]) document.getElementById(map[key]).classList.add('bnav-act');
+      if (key === 'home') document.getElementById('bn-home').classList.add('bnav-act');
     };
   }
 })();
