@@ -54,6 +54,7 @@
       <div class="nav-logo-text">Federació Catalana<span>de Tir amb Arc</span></div>
     </a>
     <div class="nav-links" id="navLinks">
+      <a href="#home" onclick="setS('home');return false">🏠 Inici</a>
       <a href="#" onclick="scrollToHub('hub-activitat');return false">🏆 Competició</a>
       <a href="#" onclick="scrollToHub('hub-federacio');return false">🏛️ La Federació</a>
       <a href="#" onclick="scrollToHub('hub-espais');return false">🎯 Espais</a>
@@ -3044,17 +3045,35 @@ function bNavClose() {
   document.getElementById('bNavDrawer').classList.remove('open');
   document.getElementById('bNavOverlay').classList.remove('open');
 }
-// Highlight Inici when navigating home
+
+// ── Hash routing ──────────────────────────────────────────
+// Wraps setS() to keep the URL hash in sync with the active section.
+// This allows sharing direct links: fcta.cat/#circulars, #competitions…
 (function() {
   var origSetS = window.setS;
-  if (typeof origSetS === 'function') {
-    window.setS = function(key) {
-      origSetS(key);
-      var items = document.querySelectorAll('.bnav-item');
-      items.forEach(function(el) { el.classList.remove('bnav-act'); });
-      if (key === 'home') document.getElementById('bn-home').classList.add('bnav-act');
-    };
-  }
+  if (typeof origSetS !== 'function') return;
+
+  window.setS = function(key) {
+    origSetS(key);
+    // Update URL hash without triggering a scroll
+    if (history.replaceState) {
+      history.replaceState(null, '', key === 'home' ? window.location.pathname : '#' + key);
+    }
+    // Highlight bottom nav
+    var items = document.querySelectorAll('.bnav-item');
+    items.forEach(function(el) { el.classList.remove('bnav-act'); });
+    var bnMap = { home:'bn-home', hub_activitat:'bn-competicio', hub_federacio:'bn-federacio', hub_espais:'bn-espais' };
+    if (bnMap[key]) document.getElementById(bnMap[key]).classList.add('bnav-act');
+    else if (key === 'home') document.getElementById('bn-home').classList.add('bnav-act');
+  };
+
+  // On load: navigate to the section in the hash, if any
+  window.addEventListener('DOMContentLoaded', function() {
+    var hash = window.location.hash.replace('#', '');
+    if (hash && FCTA.sectionMap[hash]) {
+      setS(hash);
+    }
+  });
 })();
 </script>
 
