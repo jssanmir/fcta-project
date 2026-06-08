@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded',function(){
 // Embolcalla el punt volat (·) en un <span class="punt-volat">
 // perquè en fonts condensades pesades el punt queda massa comprimit.
 function fixPuntVolat() {
-  var selectors = 'h1, h2, h3, h4, h5, h6, .sec-title, .hub-card-name, .home-hub-title, .bnav-item-label, .nav-links a';
+  // Només elements que usen Barlow Condensed 900 uppercase
+  // (h4/h5/h6 i paràgrafs usen Barlow normal i no necessiten el fix)
+  var selectors = 'h1, h2, h3, .sec-title, .hub-card-name, .home-hub-title, .bnav-item-label, .nav-links a, .hero-disc-name, .pat-hero h1, .cbadge';
   var elements = document.querySelectorAll(selectors);
   elements.forEach(function(el) {
     // Recorrem només nodes de text per no trencar event listeners
