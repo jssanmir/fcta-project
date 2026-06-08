@@ -3,7 +3,7 @@
 .hero-bg-img{position:absolute;inset:0;background:url('../img/hero.jpg') center/cover no-repeat;opacity:.18;pointer-events:none}
 
 /* Layout: text esquerra + disciplines dreta */
-.hero-content{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:center}
+.hero-content{max-width:1200px;margin:0 auto;padding:0 2rem 3.5rem;position:relative;z-index:2;display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:center}
 
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,184,0,.12);border:1px solid rgba(245,184,0,.3);color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.25rem}
 .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,6.5vw,5rem);font-weight:900;color:white;line-height:.92;text-transform:uppercase;margin-bottom:.8rem}
