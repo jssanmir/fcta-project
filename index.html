@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="css/30-pat.css">
   <link rel="stylesheet" href="css/31-comp-stats.css">
   <link rel="stylesheet" href="css/31-calendari.css">
+  <link rel="stylesheet" href="css/32-nav-hub.css">
 </head>
 <body>
 
@@ -135,6 +136,47 @@
   </div>
 
   <div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+  <!-- ALL SECTIONS HUB -->
+  <div class="home-hub">
+    <div class="container">
+      <div class="home-hub-title">Tot el portal <em>FCTA</em></div>
+
+      <div class="home-hub-group">
+        <div class="home-hub-group-label">Competició i activitat</div>
+        <div class="home-hub-grid">
+          <button class="hub-card" onclick="setS('competitions')"><span class="hub-card-icon">🏆</span><span class="hub-card-text"><span class="hub-card-name">Competicions</span><span class="hub-card-sub">Calendari i inscripcions</span></span></button>
+          <button class="hub-card" onclick="setS('calendari')"><span class="hub-card-icon">📅</span><span class="hub-card-text"><span class="hub-card-name">Calendari</span><span class="hub-card-sub">Temporada 2025/26</span></span></button>
+          <button class="hub-card" onclick="setS('circulars')"><span class="hub-card-icon">📄</span><span class="hub-card-text"><span class="hub-card-name">Circulars</span><span class="hub-card-sub">Documents oficials</span></span></button>
+          <button class="hub-card" onclick="setS('social')"><span class="hub-card-icon">🎯</span><span class="hub-card-text"><span class="hub-card-name">Tirades Socials</span><span class="hub-card-sub">Activitat al club</span></span></button>
+          <button class="hub-card" onclick="setS('news')"><span class="hub-card-icon">📰</span><span class="hub-card-text"><span class="hub-card-name">Notícies</span><span class="hub-card-sub">Resultats i novetats</span></span></button>
+          <button class="hub-card" onclick="setS('formation')"><span class="hub-card-icon">🎓</span><span class="hub-card-text"><span class="hub-card-name">Formació</span><span class="hub-card-sub">Cursos i seminaris</span></span></button>
+        </div>
+      </div>
+
+      <div class="home-hub-group">
+        <div class="home-hub-group-label">La Federació</div>
+        <div class="home-hub-grid">
+          <button class="hub-card" onclick="setS('llicencies')"><span class="hub-card-icon">🪪</span><span class="hub-card-text"><span class="hub-card-name">Llicències</span><span class="hub-card-sub">Federació i clubs</span></span></button>
+          <button class="hub-card" onclick="setS('documentacio')"><span class="hub-card-icon">📁</span><span class="hub-card-text"><span class="hub-card-name">Documentació</span><span class="hub-card-sub">PDFs per disciplina</span></span></button>
+          <button class="hub-card" onclick="setS('reglaments')"><span class="hub-card-icon">⚖️</span><span class="hub-card-text"><span class="hub-card-name">Reglaments</span><span class="hub-card-sub">Normativa esportiva</span></span></button>
+          <button class="hub-card" onclick="setS('assegurances')"><span class="hub-card-icon">🛡️</span><span class="hub-card-text"><span class="hub-card-name">Assegurances</span><span class="hub-card-sub">Cobertura federativa</span></span></button>
+          <button class="hub-card" onclick="setS('transparencia')"><span class="hub-card-icon">📊</span><span class="hub-card-text"><span class="hub-card-name">Transparència</span><span class="hub-card-sub">Govern i comptes</span></span></button>
+          <button class="hub-card" onclick="setS('juntadirectiva')"><span class="hub-card-icon">👥</span><span class="hub-card-text"><span class="hub-card-name">Junta Directiva</span><span class="hub-card-sub">Qui som</span></span></button>
+          <button class="hub-card" onclick="setS('pat')"><span class="hub-card-icon">🥇</span><span class="hub-card-text"><span class="hub-card-name">PAT</span><span class="hub-card-sub">Programa de Tecnificació</span></span></button>
+        </div>
+      </div>
+
+      <div class="home-hub-group">
+        <div class="home-hub-group-label">Espais específics</div>
+        <div class="home-hub-grid">
+          <button class="hub-card" onclick="setS('arcadaptat')"><span class="hub-card-icon">♿</span><span class="hub-card-text"><span class="hub-card-name">Arc Adaptat</span><span class="hub-card-sub">Esport inclusiu</span></span></button>
+          <button class="hub-card" onclick="setS('comitejutges')"><span class="hub-card-icon">🏅</span><span class="hub-card-text"><span class="hub-card-name">Comitè de Jutges</span><span class="hub-card-sub">Formació i recursos</span></span></button>
+          <button class="hub-card" onclick="setS('inici')"><span class="hub-card-icon">🏹</span><span class="hub-card-text"><span class="hub-card-name">Comença</span><span class="hub-card-sub">Clubs i primers passos</span></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </section>
 
@@ -2962,6 +3004,96 @@
   <script src="js/calendari.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/init.js"></script>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bnav" id="bNav" aria-label="Navegació ràpida">
+  <div class="bnav-items">
+    <button class="bnav-item" onclick="setS('home');bNavClose()" id="bn-home">
+      <span class="bnav-item-icon">🏠</span>
+      <span class="bnav-item-label">Inici</span>
+    </button>
+    <button class="bnav-item" onclick="setS('circulars');bNavClose()" id="bn-circulars">
+      <span class="bnav-item-icon">📄</span>
+      <span class="bnav-item-label">Circulars</span>
+    </button>
+    <button class="bnav-item" onclick="setS('competitions');bNavClose()" id="bn-competitions">
+      <span class="bnav-item-icon">🏆</span>
+      <span class="bnav-item-label">Competicions</span>
+    </button>
+    <button class="bnav-item" onclick="setS('formation');bNavClose()" id="bn-formation">
+      <span class="bnav-item-icon">🎓</span>
+      <span class="bnav-item-label">Formació</span>
+    </button>
+    <button class="bnav-item" id="bn-more" onclick="bNavToggleDrawer()">
+      <span class="bnav-item-icon">☰</span>
+      <span class="bnav-item-label">Més</span>
+    </button>
+  </div>
+</nav>
+
+<!-- BOTTOM NAV DRAWER -->
+<div class="bnav-drawer-overlay" id="bNavOverlay" onclick="bNavClose()"></div>
+<div class="bnav-drawer" id="bNavDrawer">
+  <div class="bnav-drawer-handle"></div>
+
+  <div class="bnav-drawer-section">
+    <div class="bnav-drawer-section-label">Activitat</div>
+    <div class="bnav-drawer-links">
+      <button class="bnav-drawer-link" onclick="setS('calendari');bNavClose()"><span class="bnav-drawer-link-icon">📅</span>Calendari</button>
+      <button class="bnav-drawer-link" onclick="setS('social');bNavClose()"><span class="bnav-drawer-link-icon">🎯</span>Tirades Socials</button>
+      <button class="bnav-drawer-link" onclick="setS('news');bNavClose()"><span class="bnav-drawer-link-icon">📰</span>Notícies</button>
+      <button class="bnav-drawer-link" onclick="setS('inici');bNavClose()"><span class="bnav-drawer-link-icon">🏹</span>Comença</button>
+    </div>
+  </div>
+
+  <div class="bnav-drawer-section">
+    <div class="bnav-drawer-section-label">La Federació</div>
+    <div class="bnav-drawer-links">
+      <button class="bnav-drawer-link" onclick="setS('llicencies');bNavClose()"><span class="bnav-drawer-link-icon">🪪</span>Llicències</button>
+      <button class="bnav-drawer-link" onclick="setS('documentacio');bNavClose()"><span class="bnav-drawer-link-icon">📁</span>Documentació</button>
+      <button class="bnav-drawer-link" onclick="setS('reglaments');bNavClose()"><span class="bnav-drawer-link-icon">⚖️</span>Reglaments</button>
+      <button class="bnav-drawer-link" onclick="setS('assegurances');bNavClose()"><span class="bnav-drawer-link-icon">🛡️</span>Assegurances</button>
+      <button class="bnav-drawer-link" onclick="setS('transparencia');bNavClose()"><span class="bnav-drawer-link-icon">📊</span>Transparència</button>
+      <button class="bnav-drawer-link" onclick="setS('juntadirectiva');bNavClose()"><span class="bnav-drawer-link-icon">👥</span>Junta Directiva</button>
+      <button class="bnav-drawer-link" onclick="setS('pat');bNavClose()"><span class="bnav-drawer-link-icon">🥇</span>PAT</button>
+      <button class="bnav-drawer-link" onclick="setS('arcadaptat');bNavClose()"><span class="bnav-drawer-link-icon">♿</span>Arc Adaptat</button>
+      <button class="bnav-drawer-link" onclick="setS('comitejutges');bNavClose()"><span class="bnav-drawer-link-icon">🏅</span>Comitè de Jutges</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function bNavToggleDrawer() {
+  var drawer = document.getElementById('bNavDrawer');
+  var overlay = document.getElementById('bNavOverlay');
+  var isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    bNavClose();
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    document.getElementById('bn-more').classList.add('bnav-act');
+  }
+}
+function bNavClose() {
+  document.getElementById('bNavDrawer').classList.remove('open');
+  document.getElementById('bNavOverlay').classList.remove('open');
+  document.getElementById('bn-more').classList.remove('bnav-act');
+}
+// Highlight active bottom nav item when section changes
+(function() {
+  var origSetS = window.setS;
+  if (typeof origSetS === 'function') {
+    window.setS = function(key) {
+      origSetS(key);
+      var map = { home:'bn-home', circulars:'bn-circulars', competitions:'bn-competitions', formation:'bn-formation' };
+      var items = document.querySelectorAll('.bnav-item');
+      items.forEach(function(el) { el.classList.remove('bnav-act'); });
+      if (map[key]) document.getElementById(map[key]).classList.add('bnav-act');
+    };
+  }
+})();
+</script>
 
 </body>
 </html>
