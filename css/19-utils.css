@@ -5,10 +5,9 @@
 /* Barlow Condensed 900 uppercase comprimeix el punt volat;
    usem la variant normal per al punt i afegim espai lateral */
 .punt-volat {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-weight: 400;
-  font-size: .78em;
-  vertical-align: .06em;
-  letter-spacing: 0;
+  font-size: 1em;
+  vertical-align: baseline;
   padding: 0 .12em;
 }
