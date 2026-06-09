@@ -89,6 +89,40 @@
 .disc-btn-sm:hover{background:var(--disc-color);color:white}
 .disc-empty{padding:2rem;text-align:center;color:var(--gray);font-size:.9rem;background:var(--offwhite);border-radius:8px}
 
+/* Sub-nav resultats */
+.disc-res-nav{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:2px solid var(--lightgray);padding-bottom:.75rem}
+.disc-rnav-btn{background:none;border:none;padding:.45rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--gray);cursor:pointer;border-radius:6px 6px 0 0;transition:all .2s}
+.disc-rnav-btn:hover{color:var(--navy);background:var(--offwhite)}
+.disc-rnav-btn.act{color:var(--disc-color,var(--navy-light));border-bottom:3px solid var(--disc-color,var(--navy-light));margin-bottom:-2px;background:none}
+
+/* Medaller – fonts campionat */
+.med-sources{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.25rem}
+.med-source-chip{font-size:.75rem;color:var(--gray);background:var(--offwhite);border:1px solid var(--lightgray);border-radius:20px;padding:.25rem .75rem}
+
+/* Medaller – taula */
+.med-table-wrap{overflow-x:auto;margin-top:.5rem}
+.med-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.med-table thead th{background:var(--navy-dark);color:white;padding:.5rem .75rem;text-align:left;font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase;font-size:.78rem;letter-spacing:.5px;white-space:nowrap}
+.med-th-rank,.med-td-rank{width:36px;text-align:center}
+.med-th-medal,.med-td-medal{width:48px;text-align:center;font-weight:700}
+.med-th-total,.med-td-total{width:56px;text-align:center;font-weight:700}
+.med-or{color:#c8960c}
+.med-ar{color:#7a8c9a}
+.med-br{color:#9c6430}
+.med-table thead .med-or{color:#f5d060}
+.med-table thead .med-ar{color:#d0dde5}
+.med-table thead .med-br{color:#ddb080}
+.med-table tbody tr{border-bottom:1px solid var(--lightgray)}
+.med-table tbody tr:nth-child(even){background:var(--offwhite)}
+.med-row-top td{font-weight:600}
+.med-td-rank{font-weight:700;color:var(--navy)}
+.med-td-nom{padding:.45rem .75rem;color:var(--navy-dark)}
+.med-td-medal{padding:.45rem .5rem;font-size:.9rem}
+.med-td-total{padding:.45rem .5rem;color:var(--navy)}
+
+/* Medaller global (sMedaller) */
+.medaller-section{max-width:1000px;margin:0 auto;padding:2.5rem 2rem}
+
 /* Mòbil */
 @media(max-width:600px){
   .disc-hero-inner{flex-wrap:wrap}
@@ -97,4 +131,5 @@
   .disc-card--wide{grid-column:1}
   .disc-camp-grid{grid-template-columns:1fr}
   .disc-lliga-head{flex-direction:column;align-items:flex-start}
+  .med-td-nom{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 }

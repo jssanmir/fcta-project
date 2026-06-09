@@ -37,6 +37,7 @@ var FCTA = {
     { key: 'comitejutges',  id: 'ComiteJutges',  label: 'Comitè de Jutges' },
     { key: 'pat',           id: 'PAT',           label: 'PAT' },
     { key: 'calendari',    id: 'Calendari',     label: 'Calendari' },
+    { key: 'medaller',     id: 'Medaller',      label: 'Medaller' },
   ],
 
   // ── Discipline keys (used in DISC_DATA and DB.documents) ─────
