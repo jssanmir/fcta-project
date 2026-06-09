@@ -237,14 +237,14 @@ var MEDALS_2526 = {
       { cat:'50+',    div:'Recorbat',    sex:'D', or:['Laura M. Suarez Garrote','Club Tau T.A.'],                       argent:['Begoña Perez Gomez','Club Tau T.A.'],                bronze:['Montserrat Gustems Martínez','Arc Montjuïc'] },
       { cat:'50+',    div:'Recorbat',    sex:'H', or:['David Catalan Ramon','Club Tau T.A.'],                           argent:['Miguel Marti Val','T.A. L\'Hospitalet'],             bronze:['Fernando Cañada Romero','Arquers Cambrils'] },
       { cat:'50+',    div:'Compost',     sex:'H', or:['Jordi Tarragó Martí','T.A. Pardinyes'],                          argent:['Francesc Castillo Torres','Tir Arc Olesa'],          bronze:['Raul Alcocer Bernardino','C.A. Cerdanyola del Vallès'] },
-      // Arc Nu / Arc Llarg / Tradicional (26400)
+      // Arc Nu / Longbow / Tradicional (26400)
       { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'],           argent:['Victor Lopez Rodriguez','T.A. Les Franqueses'],      bronze:['Carles Peña Costa','Arquers Castelldefels'] },
       { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Maria Eugenia Palomar Gutierrez','Arquers Terrassa'],            argent:['Ginevra Marina Lazzerini','T.A. Manresa'],           bronze:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'] },
       { cat:'50+',    div:'Arc Nu',      sex:'H', or:['Miguel Ramirez Moreno','T.A. Les Franqueses'],                   argent:['Ricardo Dominguez Escrihuela','C.A. Cerdanyola del Vallès'], bronze:['Paco Sierra Jimenez','T.A. Les Franqueses'] },
       { cat:'50+',    div:'Arc Nu',      sex:'D', or:['Laura Dorado Escalera','T.A. Les Franqueses'],                   argent:['Montse Vila Fortuny','T.A. Les Franqueses'],         bronze:['Rosa Maria Abad Pérez','Arquers Terrassa'] },
-      { cat:'Sènior', div:'Arc Llarg',   sex:'H', or:['Adria Pla Casellas','Arc Montjuïc'],                             argent:['Juan Jose Ruiz Cabeza','Club Català T.A.'],           bronze:['Antonio Garcia Martin','T.A. Manresa'] },
-      { cat:'Sènior', div:'Arc Llarg',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],                       argent:['Rosa Martinez Ochoa','T.A. Les Franqueses'],         bronze:['Tania Martinez Bazan','Club Català T.A.'] },
-      { cat:'50+',    div:'Arc Llarg',   sex:'H', or:['Isidro Moyano García','T.A. Zen del Bages'],                     argent:['Felip Diaz Sanchez','Arquers del Moianès'],          bronze:['Toni Barnils Sola','T.A. Les Franqueses'] },
+      { cat:'Sènior', div:'Longbow',   sex:'H', or:['Adria Pla Casellas','Arc Montjuïc'],                             argent:['Juan Jose Ruiz Cabeza','Club Català T.A.'],           bronze:['Antonio Garcia Martin','T.A. Manresa'] },
+      { cat:'Sènior', div:'Longbow',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],                       argent:['Rosa Martinez Ochoa','T.A. Les Franqueses'],         bronze:['Tania Martinez Bazan','Club Català T.A.'] },
+      { cat:'50+',    div:'Longbow',   sex:'H', or:['Isidro Moyano García','T.A. Zen del Bages'],                     argent:['Felip Diaz Sanchez','Arquers del Moianès'],          bronze:['Toni Barnils Sola','T.A. Les Franqueses'] },
       { cat:'Sènior', div:'Tradicional', sex:'H', or:['Juanjo Querol Guardiola','T.A. Sant Andreu de la Barca'],        argent:['Edgar Lorenzo Barriendos','T.A. Sant Andreu de la Barca'], bronze:['Albert Borràs Andújar','Arquers Terrassa'] },
       { cat:'Sènior', div:'Tradicional', sex:'D', or:['Ana Lorente Molero','T.A. Les Franqueses'],                      argent:['Mªisabel Mompeán Gimenez','T.A. Caldes de Montbui'], bronze:['Carmen Sarceda Rodriguez','Arc Montjuïc'] },
       { cat:'50+',    div:'Tradicional', sex:'H', or:['Enric Diaz Soler','T.A. Les Franqueses'],                        argent:['David López Abad','Tir Arc Olesa'],                  bronze:['Jorge Rueda Castro','Arquers Terrassa'] },
@@ -261,8 +261,8 @@ var MEDALS_2526 = {
       resultats: [
         { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Vivo Ballarin','Club Català T.A.'],        argent:['Juan Pedro Serrano Manzano','T.A. L\'Hospitalet'],  bronze:['Carles Sabates Torres','T.A. Rubí'] },
         { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],     argent:['Casandra Campo Tellez','T.A. Rubí'],                bronze:['Olga Moya Bonilla','Club Català T.A.'] },
-        { cat:'Sènior', div:'Arc Llarg',   sex:'H', or:['David Alejo Miñarro','T.A. Rubí'],               argent:['Jose Manuel Martí Martínez','Club Català T.A.'],    bronze:['Antoni Mercadal Oliver','T.A. Zen del Bages'] },
-        { cat:'Sènior', div:'Arc Llarg',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'],     argent:['Tania Martinez Bazan','Club Català T.A.'],          bronze:['Mireia Comas Franch','Draco Sagittariis'] },
+        { cat:'Sènior', div:'Longbow',   sex:'H', or:['David Alejo Miñarro','T.A. Rubí'],               argent:['Jose Manuel Martí Martínez','Club Català T.A.'],    bronze:['Antoni Mercadal Oliver','T.A. Zen del Bages'] },
+        { cat:'Sènior', div:'Longbow',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'],     argent:['Tania Martinez Bazan','Club Català T.A.'],          bronze:['Mireia Comas Franch','Draco Sagittariis'] },
         { cat:'Sènior', div:'Tradicional', sex:'H', or:['Victor Lopez Rodriguez','T.A. Les Franqueses'],  argent:['Albert Torres Martínez','T.A. Caldes de Montbui'],  bronze:['Carlos Carcamo Canuto','T.A. Les Franqueses'] },
         { cat:'Sènior', div:'Tradicional', sex:'D', or:['Mªisabel Mompeán Gimenez','T.A. Caldes de Montbui'], argent:['Maite Suarez González','T.A. Rubí'],            bronze:['Eva Mª Piquer Schkot','Club Català T.A.'] },
         { cat:'Sènior', div:'Compost',     sex:'H', or:['Javier Menchon Martinez','T.A. Caldes de Montbui'], argent:['André Sousa','T.A. Rubí'],                       bronze:['Françesc Josep Marquez Parareda','T.A. Mollet'] },
@@ -280,8 +280,8 @@ var MEDALS_2526 = {
         { cat:'Sènior', div:'Compost',     sex:'H', or:['Javier Menchon Martinez','T.A. Caldes de Montbui'],    argent:['Miguel Angel Perez Diaz','T.A. Figueres'],          bronze:['Bartolome Jimenez Mejias','T.A. Caldes de Montbui'] },
         { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Vivo Ballarin','T.A. Caldes de Montbui'],        argent:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'], bronze:['Sergio Ortega González','T.A. Figueres'] },
         { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],           argent:['Irma Mercedes Galeano Valeriano','Club Català T.A.'], bronze:['Ana Elvira Serrano Garcia','Tir Arc Olesa'] },
-        { cat:'Sènior', div:'Arc Llarg',   sex:'H', or:['Isidro Moyano García','T.A. Zen del Bages'],           argent:['Jose Manuel Martí Martínez','Club Català T.A.'],    bronze:['Enrique Flores Delgado','T.A. Rubí'] },
-        { cat:'Sènior', div:'Arc Llarg',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'],           argent:['Mireia Comas Franch','Draco Sagittariis'],          bronze:['Maria José Delgado Falcón','T.A. Les Franqueses'] },
+        { cat:'Sènior', div:'Longbow',   sex:'H', or:['Isidro Moyano García','T.A. Zen del Bages'],           argent:['Jose Manuel Martí Martínez','Club Català T.A.'],    bronze:['Enrique Flores Delgado','T.A. Rubí'] },
+        { cat:'Sènior', div:'Longbow',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'],           argent:['Mireia Comas Franch','Draco Sagittariis'],          bronze:['Maria José Delgado Falcón','T.A. Les Franqueses'] },
         { cat:'Sènior', div:'Tradicional', sex:'H', or:['Juanjo Querol Guardiola','T.A. Sant Andreu de la Barca'], argent:['Jordi Gomez Rigat','C.A. Cerdanyola del Vallès'], bronze:['Antonio Hita Campillo','T.A. Sant Andreu de la Barca'] },
         { cat:'Sènior', div:'Tradicional', sex:'D', or:['Ana Lorente Molero','T.A. Les Franqueses'],            argent:['Mªisabel Mompeán Gimenez','T.A. Caldes de Montbui'], bronze:['Marta Zamorano Medina','Club Català T.A.'] },
         { cat:'Sub-15', div:'Tradicional', sex:'D', or:['Anna Tàcies Gallardo','T.A. Les Franqueses'],          argent:['Carla Ruiz Lorente','T.A. Les Franqueses'],         bronze:null },
@@ -301,8 +301,8 @@ var MEDALS_2526 = {
       { cat:'Sènior', div:'Compost',     sex:'D', or:['Alexandra Moura Ribeiro','Draco Sagittariis'],      argent:null, bronze:null },
       { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Vivo Ballarin','Club Català T.A.'],           argent:['Oscar Jimenez Muriano','T.A. Sant Andreu de la Barca'], bronze:['Juan Pedro Serrano Manzano','T.A. L\'Hospitalet'] },
       { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],       argent:null, bronze:null },
-      { cat:'Sènior', div:'Arc Llarg',   sex:'H', or:['David Alejo Miñarro','T.A. Rubí'],                  argent:['Marc Coll Bosch','Club Català T.A.'],                  bronze:['Jose Manuel Martí Martínez','Club Català T.A.'] },
-      { cat:'Sènior', div:'Arc Llarg',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],          argent:['Marta Gelpi Camallonga','Club Català T.A.'],           bronze:['Carmen del Rosario Mejía Carrión','T.A. Manresa'] },
+      { cat:'Sènior', div:'Longbow',   sex:'H', or:['David Alejo Miñarro','T.A. Rubí'],                  argent:['Marc Coll Bosch','Club Català T.A.'],                  bronze:['Jose Manuel Martí Martínez','Club Català T.A.'] },
+      { cat:'Sènior', div:'Longbow',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],          argent:['Marta Gelpi Camallonga','Club Català T.A.'],           bronze:['Carmen del Rosario Mejía Carrión','T.A. Manresa'] },
       { cat:'Sènior', div:'Tradicional', sex:'H', or:['Victor Lopez Rodriguez','T.A. Les Franqueses'],     argent:['Pablo Beceiro Sanmateo','Arquers Sant Cugat'],         bronze:['Sergio Moral Quintana','Club Català T.A.'] },
       { cat:'Sènior', div:'Tradicional', sex:'D', or:['Mªisabel Mompeán Gimenez','T.A. Caldes de Montbui'], argent:null, bronze:null },
     ]
@@ -390,7 +390,7 @@ function _renderMedallerTable(items, nomLabel) {
 }
 
 function _renderArquersPerCategoria(campionats) {
-  var DIV_ORDER = ['Recorbat','Compost','Arc Nu','Arc Llarg','Tradicional'];
+  var DIV_ORDER = ['Recorbat','Compost','Arc Nu','Longbow','Tradicional'];
   var CAT_ORDER = ['Sènior','Sub-21','Sub-18','Sub-15','50+','60+'];
   var SEX_LABEL = { H: 'Home', D: 'Dones' };
 
@@ -475,7 +475,7 @@ function renderMedallerView(discKey) {
   return html;
 }
 
-var _medallerTab = 'divisio';
+var _medallerTab = 'competicio';
 
 function setMedallerTab(tab) {
   _medallerTab = tab;
@@ -486,7 +486,7 @@ function setMedallerTab(tab) {
 }
 
 function _renderClubsPerDivisio() {
-  var DIV_ORDER = ['Recorbat','Compost','Arc Nu','Arc Llarg','Tradicional'];
+  var DIV_ORDER = ['Recorbat','Compost','Arc Nu','Longbow','Tradicional'];
   var all = _allMedals2526Resultats();
   var html = '';
 
@@ -513,8 +513,59 @@ function _renderClubsPerDivisio() {
   return html;
 }
 
+function _renderClubsPerCompeticio() {
+  var COMPS = [
+    {
+      key: 'sala',
+      label: '🏟️ Sala',
+      nom: '58è Campionat de Catalunya de Sala',
+      resultats: MEDALS_2526.sala.resultats
+    },
+    {
+      key: '3d',
+      label: '🌲 3D',
+      nom: '30è CdC 3D + 1r CdC 3D en Línia',
+      resultats: (function() {
+        var r = [];
+        MEDALS_2526['3d'].forEach(function(c) { r = r.concat(c.resultats); });
+        return r;
+      })()
+    },
+    {
+      key: 'camp',
+      label: '🏔️ Camp',
+      nom: '56è Campionat de Catalunya de Camp',
+      resultats: MEDALS_2526.camp.resultats
+    },
+    {
+      key: 'al',
+      label: '☀️ Aire Lliure',
+      nom: '73è Campionat de Catalunya Aire Lliure',
+      resultats: null  // pendent (jul 2026)
+    }
+  ];
+
+  var html = '';
+  COMPS.forEach(function(comp) {
+    html += '<div class="med-div-bloc" style="margin-bottom:2rem">';
+    html += '<div class="med-div-label" style="font-size:.88rem;padding:.3rem .9rem;margin-bottom:.75rem">'
+      + comp.label + ' <span style="font-weight:400;opacity:.8;font-size:.8rem">· ' + escHtml(comp.nom) + '</span></div>';
+
+    if (!comp.resultats) {
+      html += '<div class="disc-empty" style="font-size:.82rem;padding:1rem">Pendent · ' + escHtml(comp.nom) + ' (jul 2026)</div>';
+    } else {
+      var agr = _agregaMedaller(comp.resultats);
+      html += _renderMedallerTable(agr.clubs, 'Club');
+    }
+    html += '</div>';
+  });
+  return html;
+}
+
 function renderMedallerGlobal() {
   var html = '<div class="med-global-nav">'
+    + '<button class="disc-rnav-btn' + (_medallerTab === 'competicio' ? ' act' : '') + '" '
+    + 'onclick="setMedallerTab(\'competicio\')">🏅 Per Competició</button>'
     + '<button class="disc-rnav-btn' + (_medallerTab === 'divisio' ? ' act' : '') + '" '
     + 'onclick="setMedallerTab(\'divisio\')">🏹 Per Divisió</button>'
     + '<button class="disc-rnav-btn' + (_medallerTab === 'general' ? ' act' : '') + '" '
@@ -525,15 +576,22 @@ function renderMedallerGlobal() {
     var agr = _agregaMedaller(_allMedals2526Resultats());
     html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏛️ Medaller General de Clubs 2025-26</h3>';
     html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1rem">'
-      + 'Classificació olímpica de tots els clubs: Campionat de Sala · Campionat 3D · '
-      + 'Campionat 3D en Línia · Campionat de Camp. Totes les categories i estils.</p>';
+      + 'Suma de totes les competicions: Sala · 3D · 3D en Línia · Camp. Totes les categories i estils.</p>';
     html += _renderMedallerTable(agr.clubs, 'Club');
     html += '<p class="disc-records-note" style="margin-top:1.5rem">Dades definitives temporada 2025-26.</p>';
-  } else {
+
+  } else if (_medallerTab === 'divisio') {
     html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏹 Medaller de Clubs per Divisió 2025-26</h3>';
     html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1.25rem">'
-      + 'Medalles per estil d\'arc. Suma de totes les disciplines (Sala · 3D · 3D en Línia · Camp) i categories.</p>';
+      + 'Medalles per estil d\'arc. Suma de totes les competicions i categories.</p>';
     html += _renderClubsPerDivisio();
+    html += '<p class="disc-records-note">Dades definitives temporada 2025-26.</p>';
+
+  } else {
+    html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏅 Medaller de Clubs per Competició 2025-26</h3>';
+    html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1.25rem">'
+      + 'Medalles de clubs per modalitat de competició. Totes les categories i estils.</p>';
+    html += _renderClubsPerCompeticio();
     html += '<p class="disc-records-note">Dades definitives temporada 2025-26.</p>';
   }
 
