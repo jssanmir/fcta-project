@@ -105,11 +105,17 @@ function _csClubLabel(code) {
 function setCompTab(tab, btn) {
   document.querySelectorAll('.comp-stab').forEach(function(b) { b.classList.remove('act'); });
   btn.classList.add('act');
-  var cal   = document.getElementById('compCalendari');
-  var panel = document.getElementById('compStatsPanel');
-  if (cal)   cal.style.display   = (tab === 'calendari') ? '' : 'none';
-  if (panel) panel.style.display = (tab === 'stats')     ? '' : 'none';
+  var cal      = document.getElementById('compCalendari');
+  var panel    = document.getElementById('compStatsPanel');
+  var medPanel = document.getElementById('compMedallerPanel');
+  if (cal)      cal.style.display      = (tab === 'calendari') ? '' : 'none';
+  if (panel)    panel.style.display    = (tab === 'stats')     ? '' : 'none';
+  if (medPanel) medPanel.style.display = (tab === 'medaller')  ? '' : 'none';
   if (tab === 'stats') _csInit();
+  if (tab === 'medaller') {
+    _medallerTab = 'competicio';
+    medPanel.innerHTML = renderMedallerGlobal();
+  }
 }
 
 // ── Càrrega de dades ────────────────────────────────────────
