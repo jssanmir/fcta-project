@@ -479,10 +479,13 @@ var _medallerTab = 'competicio';
 
 function setMedallerTab(tab) {
   _medallerTab = tab;
-  var el = document.getElementById('medallerContent');
-  if (el) {
-    el.innerHTML = renderMedallerGlobal();
-  }
+  // Actualitza hash URL
+  try { history.replaceState(null, '', '#competitions/medaller/' + tab); } catch(e) {}
+  // Actualitza tots els contenidors visibles
+  var mc = document.getElementById('medallerContent');
+  var cp = document.getElementById('compMedallerPanel');
+  if (mc) mc.innerHTML = renderMedallerGlobal();
+  if (cp && cp.style.display !== 'none') cp.innerHTML = renderMedallerGlobal();
 }
 
 function _renderClubsPerDivisio() {
@@ -563,13 +566,19 @@ function _renderClubsPerCompeticio() {
 }
 
 function renderMedallerGlobal() {
-  var html = '<div class="med-global-nav">'
-    + '<button class="disc-rnav-btn' + (_medallerTab === 'competicio' ? ' act' : '') + '" '
-    + 'onclick="setMedallerTab(\'competicio\')">🏅 Per Competició</button>'
-    + '<button class="disc-rnav-btn' + (_medallerTab === 'divisio' ? ' act' : '') + '" '
-    + 'onclick="setMedallerTab(\'divisio\')">🏹 Per Divisió</button>'
-    + '<button class="disc-rnav-btn' + (_medallerTab === 'general' ? ' act' : '') + '" '
-    + 'onclick="setMedallerTab(\'general\')">🏆 General</button>'
+  var HASH_BASE = '#competitions/medaller/';
+  var html = '<div class="med-global-header">'
+    + '<div class="med-global-badge">Temporada 2025-26</div>'
+    + '<h2 class="med-global-title">🏛️ Medaller de Clubs <em>Catalunya</em></h2>'
+    + '<p class="med-global-sub">Classificació olímpica oficial · Campionats de Sala, 3D, Camp i Aire Lliure</p>'
+    + '</div>'
+    + '<div class="med-global-nav">'
+    + '<a class="disc-rnav-btn' + (_medallerTab === 'competicio' ? ' act' : '') + '" '
+    + 'href="' + HASH_BASE + 'competicio" onclick="setMedallerTab(\'competicio\');return false">🏅 Per Competició</a>'
+    + '<a class="disc-rnav-btn' + (_medallerTab === 'divisio' ? ' act' : '') + '" '
+    + 'href="' + HASH_BASE + 'divisio" onclick="setMedallerTab(\'divisio\');return false">🏹 Per Divisió</a>'
+    + '<a class="disc-rnav-btn' + (_medallerTab === 'general' ? ' act' : '') + '" '
+    + 'href="' + HASH_BASE + 'general" onclick="setMedallerTab(\'general\');return false">🏆 General</a>'
     + '</div>';
 
   if (_medallerTab === 'general') {

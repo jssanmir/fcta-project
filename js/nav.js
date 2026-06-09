@@ -11,10 +11,15 @@ var NAV_ENTER_MS = 380;
 var _navTimer   = null;  // pending cleanup timer
 var _navCurrent = null;  // element currently shown
 
-function setS(sec) {
+function setS(sec, _noHash) {
   var nextId = 's' + (FCTA.sectionMap[sec] || '');
   var nextEl = document.getElementById(nextId);
   if (!nextEl) return;
+
+  // Update URL hash
+  if (!_noHash) {
+    try { history.replaceState(null, '', '#' + sec); } catch(e) {}
+  }
 
   // Update nav highlight immediately
   document.querySelectorAll('.nav-links a').forEach(function(a) {
@@ -50,3 +55,30 @@ function setS(sec) {
 
   _navCurrent = nextEl;
 }
+
+// ── URL hash routing ──────────────────────────────────────
+function _navFromHash() {
+  var hash = (window.location.hash || '').replace('#', '');
+  if (!hash) return;
+  var parts = hash.split('/');
+  var sec   = parts[0];   // e.g. 'competitions'
+  var sub   = parts[1];   // e.g. 'medaller'
+  var tab   = parts[2];   // e.g. 'divisio'
+
+  if (!FCTA.sectionMap[sec]) return;
+  setS(sec, true);
+
+  // Handle medaller deep link inside competitions
+  if (sec === 'competitions' && sub === 'medaller') {
+    setTimeout(function() {
+      var btn = document.querySelector('.comp-stab:last-child');
+      if (btn) {
+        if (tab) _medallerTab = tab;
+        setCompTab('medaller', btn);
+      }
+    }, 50);
+  }
+}
+
+window.addEventListener('hashchange', _navFromHash);
+document.addEventListener('DOMContentLoaded', _navFromHash);

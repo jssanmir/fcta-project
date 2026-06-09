@@ -111,10 +111,14 @@ function setCompTab(tab, btn) {
   if (cal)      cal.style.display      = (tab === 'calendari') ? '' : 'none';
   if (panel)    panel.style.display    = (tab === 'stats')     ? '' : 'none';
   if (medPanel) medPanel.style.display = (tab === 'medaller')  ? '' : 'none';
+  try { history.replaceState(null, '', tab === 'medaller' ? '#competitions/medaller/' + _medallerTab : '#competitions'); } catch(e) {}
   if (tab === 'stats') _csInit();
   if (tab === 'medaller') {
-    _medallerTab = 'competicio';
+    if (!medPanel.getAttribute('data-loaded') || medPanel.innerHTML === '') {
+      _medallerTab = 'competicio';
+    }
     medPanel.innerHTML = renderMedallerGlobal();
+    medPanel.setAttribute('data-loaded', '1');
   }
 }
 
