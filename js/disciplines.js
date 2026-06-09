@@ -475,18 +475,68 @@ function renderMedallerView(discKey) {
   return html;
 }
 
+var _medallerTab = 'divisio';
+
+function setMedallerTab(tab) {
+  _medallerTab = tab;
+  var el = document.getElementById('medallerContent');
+  if (el) {
+    el.innerHTML = renderMedallerGlobal();
+  }
+}
+
+function _renderClubsPerDivisio() {
+  var DIV_ORDER = ['Recorbat','Compost','Arc Nu','Arc Llarg','Tradicional'];
+  var all = _allMedals2526Resultats();
+  var html = '';
+
+  // Agrupa tots els resultats per divisió
+  var byDiv = {};
+  all.forEach(function(r) {
+    if (!byDiv[r.div]) byDiv[r.div] = [];
+    byDiv[r.div].push(r);
+  });
+
+  var divs = DIV_ORDER.filter(function(d) { return byDiv[d]; });
+  Object.keys(byDiv).forEach(function(d) { if (divs.indexOf(d) === -1) divs.push(d); });
+
+  divs.forEach(function(div) {
+    var agr = _agregaMedaller(byDiv[div]);
+    if (!agr.clubs.length) return;
+
+    html += '<div class="med-div-bloc" style="margin-bottom:2rem">';
+    html += '<div class="med-div-label" style="font-size:.88rem;padding:.3rem .9rem;margin-bottom:.75rem">' + escHtml(div) + '</div>';
+    html += _renderMedallerTable(agr.clubs, 'Club');
+    html += '</div>';
+  });
+
+  return html;
+}
+
 function renderMedallerGlobal() {
-  var agr = _agregaMedaller(_allMedals2526Resultats());
+  var html = '<div class="med-global-nav">'
+    + '<button class="disc-rnav-btn' + (_medallerTab === 'divisio' ? ' act' : '') + '" '
+    + 'onclick="setMedallerTab(\'divisio\')">🏹 Per Divisió</button>'
+    + '<button class="disc-rnav-btn' + (_medallerTab === 'general' ? ' act' : '') + '" '
+    + 'onclick="setMedallerTab(\'general\')">🏆 General</button>'
+    + '</div>';
 
-  var html = '<h3 class="disc-section-title">🏛️ Medaller General de Clubs 2025-26</h3>';
-  html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1rem">'
-    + 'Classificació olímpica de tots els clubs de Catalunya a les competicions oficials 2025-26: '
-    + 'Campionat de Sala · Campionat 3D · Campionat 3D en Línia · Campionat de Camp. '
-    + 'Totes les categories i estils inclosos.</p>';
-  html += _renderMedallerTable(agr.clubs, 'Club');
+  if (_medallerTab === 'general') {
+    var agr = _agregaMedaller(_allMedals2526Resultats());
+    html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏛️ Medaller General de Clubs 2025-26</h3>';
+    html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1rem">'
+      + 'Classificació olímpica de tots els clubs: Campionat de Sala · Campionat 3D · '
+      + 'Campionat 3D en Línia · Campionat de Camp. Totes les categories i estils.</p>';
+    html += _renderMedallerTable(agr.clubs, 'Club');
+    html += '<p class="disc-records-note" style="margin-top:1.5rem">Dades definitives temporada 2025-26.</p>';
+  } else {
+    html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏹 Medaller de Clubs per Divisió 2025-26</h3>';
+    html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1.25rem">'
+      + 'Medalles per estil d\'arc. Suma de totes les disciplines (Sala · 3D · 3D en Línia · Camp) i categories.</p>';
+    html += _renderClubsPerDivisio();
+    html += '<p class="disc-records-note">Dades definitives temporada 2025-26.</p>';
+  }
 
-  html += '<p class="disc-records-note" style="margin-top:1.5rem">Dades definitives temporada 2025-26. '
-    + 'Pel detall per campionat i categoria consulta la pestanya Resultats de cada disciplina.</p>';
   return html;
 }
 
