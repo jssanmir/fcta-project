@@ -389,13 +389,70 @@ function _renderMedallerTable(items, nomLabel) {
   return html;
 }
 
+function _renderArquersPerCategoria(campionats) {
+  var DIV_ORDER = ['Recorbat','Compost','Arc Nu','Arc Llarg','Tradicional'];
+  var CAT_ORDER = ['Sènior','Sub-21','Sub-18','Sub-15','50+','60+'];
+  var SEX_LABEL = { H: 'Home', D: 'Dones' };
+
+  var html = '';
+  campionats.forEach(function(camp) {
+    // Agrupa per divisió
+    var byDiv = {};
+    camp.resultats.forEach(function(r) {
+      if (!byDiv[r.div]) byDiv[r.div] = [];
+      byDiv[r.div].push(r);
+    });
+
+    html += '<div class="med-camp-bloc">';
+    html += '<div class="med-camp-title">📍 ' + escHtml(camp.nom)
+      + ' <span class="med-camp-meta">· ' + escHtml(camp.lloc) + ' · ' + escHtml(camp.data) + '</span></div>';
+
+    // Ordena divisions
+    var divs = DIV_ORDER.filter(function(d) { return byDiv[d]; });
+    // Afegeix divisions no estàndard al final
+    Object.keys(byDiv).forEach(function(d) { if (divs.indexOf(d) === -1) divs.push(d); });
+
+    divs.forEach(function(div) {
+      var rows = byDiv[div];
+      // Ordena per categoria i sexe
+      rows.sort(function(a, b) {
+        var ci = CAT_ORDER.indexOf(a.cat) - CAT_ORDER.indexOf(b.cat);
+        if (ci !== 0) return ci;
+        return (a.sex === 'H' ? 0 : 1) - (b.sex === 'H' ? 0 : 1);
+      });
+
+      html += '<div class="med-div-bloc">';
+      html += '<div class="med-div-label">' + escHtml(div) + '</div>';
+      html += '<div class="med-cat-table-wrap"><table class="med-cat-table">'
+        + '<thead><tr>'
+        + '<th class="mct-cat">Categoria</th>'
+        + '<th class="mct-or">🥇</th>'
+        + '<th class="mct-ar">🥈</th>'
+        + '<th class="mct-br">🥉</th>'
+        + '</tr></thead><tbody>';
+
+      rows.forEach(function(r) {
+        var catLabel = r.cat + ' ' + (SEX_LABEL[r.sex] || r.sex);
+        html += '<tr>'
+          + '<td class="mct-cat"><strong>' + escHtml(catLabel) + '</strong></td>'
+          + '<td class="mct-or">' + (r.or     ? '<span class="med-nom-gold">'   + escHtml(r.or[0])     + '</span><span class="med-club-small">' + escHtml(r.or[1])     + '</span>' : '—') + '</td>'
+          + '<td class="mct-ar">' + (r.argent  ? '<span class="med-nom">'        + escHtml(r.argent[0]) + '</span><span class="med-club-small">' + escHtml(r.argent[1]) + '</span>' : '—') + '</td>'
+          + '<td class="mct-br">' + (r.bronze  ? '<span class="med-nom">'        + escHtml(r.bronze[0]) + '</span><span class="med-club-small">' + escHtml(r.bronze[1]) + '</span>' : '—') + '</td>'
+          + '</tr>';
+      });
+
+      html += '</tbody></table></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  return html;
+}
+
 function renderMedallerView(discKey) {
   var campionats = _getMedals2526(discKey);
   if (!campionats) return '<div class="disc-empty">Medaller no disponible per a aquesta disciplina.</div>';
 
-  var allDisc = [];
-  campionats.forEach(function(c) { allDisc = allDisc.concat(c.resultats); });
-  var agrDisc  = _agregaMedaller(allDisc);
   var agrClubs = _agregaMedaller(_allMedals2526Resultats());
 
   var html = '<div class="med-sources">';
@@ -404,8 +461,8 @@ function renderMedallerView(discKey) {
   });
   html += '</div>';
 
-  html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏹 Medaller d\'Arquers</h3>';
-  html += _renderMedallerTable(agrDisc.arquers, 'Arquer/a');
+  html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏹 Resultats per Categoria</h3>';
+  html += _renderArquersPerCategoria(campionats);
 
   html += '<h3 class="disc-section-title" style="margin-top:2rem">🏛️ Medaller de Clubs · Totes les disciplines</h3>';
   html += '<p style="font-size:.82rem;color:var(--gray);margin-bottom:.75rem">Inclou: Campionat de Sala · Campionat 3D · Campionat 3D en Línia · Campionat de Camp.</p>';
@@ -428,12 +485,8 @@ function renderMedallerGlobal() {
     + 'Totes les categories i estils inclosos.</p>';
   html += _renderMedallerTable(agr.clubs, 'Club');
 
-  html += '<h3 class="disc-section-title" style="margin-top:2.5rem">🏹 Medaller General d\'Arquers 2025-26</h3>';
-  html += '<p style="font-size:.85rem;color:var(--gray);margin-bottom:1rem">Suma de totes les medalles individuals a totes les disciplines i categories.</p>';
-  html += _renderMedallerTable(agr.arquers, 'Arquer/a');
-
   html += '<p class="disc-records-note" style="margin-top:1.5rem">Dades definitives temporada 2025-26. '
-    + 'Pel detall per campionat consulta la pestanya Resultats de cada disciplina.</p>';
+    + 'Pel detall per campionat i categoria consulta la pestanya Resultats de cada disciplina.</p>';
   return html;
 }
 

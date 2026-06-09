@@ -120,6 +120,24 @@
 .med-td-medal{padding:.45rem .5rem;font-size:.9rem}
 .med-td-total{padding:.45rem .5rem;color:var(--navy)}
 
+/* Medaller – taula per categoria */
+.med-camp-bloc{margin-bottom:2rem}
+.med-camp-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.75rem}
+.med-camp-meta{font-weight:400;color:var(--gray);font-size:.85rem;text-transform:none}
+.med-div-bloc{margin-bottom:1.25rem}
+.med-div-label{display:inline-block;background:var(--disc-color,var(--navy-light));color:white;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;padding:.2rem .7rem;border-radius:4px;margin-bottom:.5rem}
+.med-cat-table-wrap{overflow-x:auto}
+.med-cat-table{width:100%;border-collapse:collapse;font-size:.83rem}
+.med-cat-table thead th{background:var(--offwhite);color:var(--navy-dark);padding:.4rem .75rem;text-align:left;font-weight:700;font-size:.78rem;border-bottom:2px solid var(--lightgray);white-space:nowrap}
+.mct-cat{min-width:110px}
+.mct-or,.mct-ar,.mct-br{min-width:180px;vertical-align:top}
+.med-cat-table tbody tr{border-bottom:1px solid var(--lightgray)}
+.med-cat-table tbody tr:nth-child(even){background:var(--offwhite)}
+.med-cat-table td{padding:.5rem .75rem;vertical-align:middle}
+.med-nom-gold{display:block;font-weight:700;color:var(--navy-dark)}
+.med-nom{display:block;color:var(--navy-dark)}
+.med-club-small{display:block;font-size:.72rem;color:var(--gray);margin-top:.1rem}
+
 /* Medaller global (sMedaller) */
 .medaller-section{max-width:1000px;margin:0 auto;padding:2.5rem 2rem}
 
