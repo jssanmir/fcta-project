@@ -61,14 +61,32 @@ function _navFromHash() {
   var hash = (window.location.hash || '').replace('#', '');
   if (!hash) return;
   var parts = hash.split('/');
-  var sec   = parts[0];   // e.g. 'competitions'
-  var sub   = parts[1];   // e.g. 'medaller'
-  var tab   = parts[2];   // e.g. 'divisio'
+  var sec   = parts[0];   // 'competitions' | 'disciplina' | ...
+  var sub   = parts[1];   // clau disciplina o 'medaller'
+  var tab   = parts[2];   // tab o subtab medaller
+  var view  = parts[3];   // sub-vista resultats o subtab medaller
 
   if (!FCTA.sectionMap[sec]) return;
+
+  // ── Disciplines ──────────────────────────────────────────
+  if (sec === 'disciplina' && sub) {
+    setTimeout(function() {
+      setDisciplina(sub, true);
+      if (tab) {
+        var tabBtn = document.querySelector('#discTabs [data-tab="' + tab + '"]');
+        setDiscTab(tab, tabBtn, true);
+        if (tab === 'resultats' && view) {
+          _discResView = view;
+          renderDiscTab('resultats');
+        }
+      }
+    }, 80);
+    return;
+  }
+
   setS(sec, true);
 
-  // Handle medaller deep link inside competitions
+  // ── Competicions > Medaller ──────────────────────────────
   if (sec === 'competitions' && sub === 'medaller') {
     setTimeout(function() {
       var btn = document.querySelector('.comp-stab:last-child');

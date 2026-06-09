@@ -613,12 +613,19 @@ var _discTab = 'info';
 var _discResView = 'camps';
 
 // ── Accés des de fora ─────────────────────────────────────
-function setDisciplina(key) {
+function setDisciplina(key, _noHash) {
   _discActiva = key;
   _discTab = 'info';
   _discResView = 'camps';
-  setS('disciplina');
+  setS('disciplina', _noHash);
+  if (!_noHash) _discUpdateHash();
   renderDisciplina();
+}
+
+function _discUpdateHash() {
+  var h = 'disciplina/' + _discActiva + '/' + _discTab;
+  if (_discTab === 'resultats') h += '/' + _discResView;
+  try { history.replaceState(null, '', '#' + h); } catch(e) {}
 }
 
 // ── Render principal ──────────────────────────────────────
@@ -650,11 +657,19 @@ function renderDisciplina() {
   renderDiscTab(_discTab);
 }
 
-function setDiscTab(tab, btn) {
+function setDiscTab(tab, btn, _noHash) {
   _discTab = tab;
+  _discResView = 'camps';
   document.querySelectorAll('#discTabs .disc-tab').forEach(function(b){ b.classList.remove('act'); });
   if (btn) btn.classList.add('act');
+  if (!_noHash) _discUpdateHash();
   renderDiscTab(tab);
+}
+
+function _setDiscResView(view) {
+  _discResView = view;
+  _discUpdateHash();
+  renderDiscTab('resultats');
 }
 
 function renderDiscTab(tab) {
@@ -803,12 +818,13 @@ function renderDiscResultats(d) {
   var hasMedals = !!_getMedals2526(d.circularsCategoria);
 
   // Sub-nav
+  var baseHash = '#disciplina/' + (_discActiva || '') + '/resultats/';
   var html = '<div class="disc-res-nav">'
-    + '<button class="disc-rnav-btn' + (_discResView === 'camps' ? ' act' : '') + '" '
-    + 'onclick="_discResView=\'camps\';renderDiscTab(\'resultats\')">🏆 Campionats</button>';
+    + '<a class="disc-rnav-btn' + (_discResView === 'camps' ? ' act' : '') + '" '
+    + 'href="' + baseHash + 'camps" onclick="_setDiscResView(\'camps\');return false">🏆 Campionats</a>';
   if (hasMedals) {
-    html += '<button class="disc-rnav-btn' + (_discResView === 'medaller' ? ' act' : '') + '" '
-      + 'onclick="_discResView=\'medaller\';renderDiscTab(\'resultats\')">📊 Medaller 2025-26</button>';
+    html += '<a class="disc-rnav-btn' + (_discResView === 'medaller' ? ' act' : '') + '" '
+      + 'href="' + baseHash + 'medaller" onclick="_setDiscResView(\'medaller\');return false">📊 Medaller 2025-26</a>';
   }
   html += '</div>';
 
