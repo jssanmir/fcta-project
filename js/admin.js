@@ -150,6 +150,7 @@ function renderATab(tab){
   else if(tab==='records') { b.innerHTML='<div class="adm-records-section"></div>'; renderAdmRecords(b.querySelector('.adm-records-section')); }
   else if(tab==='docs')    renderAdmDocs(b);
   else if(tab==='gen')     renderAdmGenerator(b);
+  else if(tab==='backup')  renderAdmBackup(b);
 }
 
 // ── CIRCULARS CRUD ─────────────────────────────────────────
@@ -1312,6 +1313,217 @@ function genPublicarCircular(){
   dbSave();
   renderCirc('all');
   toast('Circular "'+num+'" publicada a la llista!','✅');
+}
+
+// ── BACKUP / RESTORE ───────────────────────────────────────
+var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds'];
+var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
+  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords'};
+var _BK_PREFIX = 'fcta_ckpt_';
+var _BK_MAX    = 3;
+
+function _bkSnapshot() {
+  var snap = { _ts: Date.now(), _v: 1 };
+  _BK_FIELDS.forEach(function(k){ if(DB[k]!==undefined) snap[k]=DB[k]; });
+  return snap;
+}
+
+function _bkApply(snap) {
+  _BK_FIELDS.forEach(function(k){ if(snap[k]!==undefined) DB[k]=snap[k]; });
+  dbSave();
+  if(typeof renderCirc==='function')    renderCirc('all');
+  if(typeof renderComp==='function')    renderComp('all');
+  if(typeof renderNews==='function')    renderNews();
+  if(typeof renderForm==='function')    renderForm();
+  if(typeof renderTirades==='function') renderTirades('all');
+  if(typeof updatePendDot==='function') updatePendDot();
+}
+
+function _bkFmtDate(ts) {
+  var d = new Date(ts);
+  var pad = function(n){ return n<10?'0'+n:n; };
+  return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())
+    +' '+pad(d.getHours())+':'+pad(d.getMinutes());
+}
+
+function _bkSummary(snap) {
+  return _BK_FIELDS.map(function(k){
+    var arr = snap[k]; if(!Array.isArray(arr)) return null;
+    return '<span style="margin-right:.75rem"><strong>'+arr.length+'</strong> '+_BK_LABELS[k]+'</span>';
+  }).filter(Boolean).join('');
+}
+
+// ── Export ──────────────────────────────────────────────────
+function bkExport() {
+  var snap = _bkSnapshot();
+  var json = JSON.stringify(snap, null, 2);
+  var blob = new Blob([json], {type:'application/json'});
+  var url  = URL.createObjectURL(blob);
+  var d    = new Date(snap._ts);
+  var pad  = function(n){ return n<10?'0'+n:n; };
+  var name = 'fcta-backup-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())
+             +'-'+pad(d.getHours())+pad(d.getMinutes())+'.json';
+  var a    = document.createElement('a');
+  a.href=url; a.download=name; a.click();
+  URL.revokeObjectURL(url);
+  toast('Backup descarregat: '+name,'💾');
+}
+
+// ── Import ──────────────────────────────────────────────────
+function bkImportStart() {
+  var inp = document.getElementById('bkFileInput');
+  if(inp) inp.click();
+}
+
+function bkImportRead(input) {
+  var file = input.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var preview = document.getElementById('bkImportPreview');
+    try {
+      var snap = JSON.parse(e.target.result);
+      if(!snap._v){ toast('Fitxer de backup no vàlid','⚠️'); return; }
+      var ts = snap._ts ? _bkFmtDate(snap._ts) : 'desconeguda';
+      preview.innerHTML =
+        '<div class="bk-preview-box">'
+        +'<div class="bk-preview-title">📋 Contingut del fitxer</div>'
+        +'<div class="bk-preview-meta">Data del backup: <strong>'+ts+'</strong></div>'
+        +'<div class="bk-preview-counts">'+_bkSummary(snap)+'</div>'
+        +'<div class="bk-preview-warn">⚠️ Aquesta acció substituirà les dades actuals. No es pot desfer.</div>'
+        +'<button class="a-sub" style="background:#dc2626;margin-top:.75rem" onclick="bkImportConfirm('+JSON.stringify(JSON.stringify(snap))+')">'
+        +'&#8635; Aplicar aquest backup</button>'
+        +'</div>';
+    } catch(err) {
+      preview.innerHTML='<div class="bk-preview-box" style="border-color:#dc2626;color:#dc2626">Error llegint el fitxer: '+escHtml(err.message)+'</div>';
+    }
+    input.value='';
+  };
+  reader.readAsText(file);
+}
+
+function bkImportConfirm(jsonStr) {
+  if(!confirm('Aplicar el backup?\n\nAixò sobreescriurà TOTES les dades actuals.\nAssegura\'t que tens un backup de l\'estat actual.')) return;
+  try {
+    var snap = JSON.parse(jsonStr);
+    _bkApply(snap);
+    toast('Backup aplicat correctament','✅');
+    renderAdmBackup(document.getElementById('admBody'));
+  } catch(err) {
+    toast('Error al restaurar: '+err.message,'⚠️');
+  }
+}
+
+// ── Checkpoints ─────────────────────────────────────────────
+function bkSaveCheckpoint() {
+  var snap = _bkSnapshot();
+  var all  = bkGetCheckpoints();
+  all.unshift(snap);
+  if(all.length > _BK_MAX) all = all.slice(0, _BK_MAX);
+  for(var i=0;i<all.length;i++){
+    try { localStorage.setItem(_BK_PREFIX+i, JSON.stringify(all[i])); } catch(e) {}
+  }
+  // Esborra slots sobrants
+  for(var j=all.length;j<_BK_MAX;j++){
+    localStorage.removeItem(_BK_PREFIX+j);
+  }
+  toast('Punt de control desat','💾');
+  renderAdmBackup(document.getElementById('admBody'));
+}
+
+function bkGetCheckpoints() {
+  var result = [];
+  for(var i=0;i<_BK_MAX;i++){
+    try {
+      var raw = localStorage.getItem(_BK_PREFIX+i);
+      if(raw) result.push(JSON.parse(raw));
+    } catch(e) {}
+  }
+  return result;
+}
+
+function bkRestoreCheckpoint(idx) {
+  var all = bkGetCheckpoints();
+  if(!all[idx]){ toast('Punt de control no trobat','⚠️'); return; }
+  var snap = all[idx];
+  if(!confirm('Restaurar el punt de control del '+_bkFmtDate(snap._ts)+'?\n\nLes dades actuals seran sobreescrites.')) return;
+  _bkApply(snap);
+  toast('Punt de control restaurat','✅');
+  renderAdmBackup(document.getElementById('admBody'));
+}
+
+function bkDeleteCheckpoint(idx) {
+  var all = bkGetCheckpoints();
+  all.splice(idx, 1);
+  for(var i=0;i<_BK_MAX;i++) localStorage.removeItem(_BK_PREFIX+i);
+  for(var j=0;j<all.length;j++){
+    try { localStorage.setItem(_BK_PREFIX+j, JSON.stringify(all[j])); } catch(e) {}
+  }
+  toast('Punt de control eliminat','🗑️');
+  renderAdmBackup(document.getElementById('admBody'));
+}
+
+// ── Renderitzador de la pestanya ─────────────────────────────
+function renderAdmBackup(b) {
+  var snap = _bkSnapshot();
+  var ckpts = bkGetCheckpoints();
+
+  var ckptsHTML = '';
+  if(ckpts.length) {
+    ckptsHTML = ckpts.map(function(c, i){
+      return '<div class="bk-ckpt-row">'
+        +'<div class="bk-ckpt-info">'
+        +'<div class="bk-ckpt-ts">'+_bkFmtDate(c._ts)+'</div>'
+        +'<div class="bk-ckpt-counts">'+_bkSummary(c)+'</div>'
+        +'</div>'
+        +'<div class="crud-item-acts">'
+        +'<button class="btn-edit-crud" onclick="bkRestoreCheckpoint('+i+')" title="Restaurar">&#8635; Restaurar</button>'
+        +'<button class="btn-del-crud" onclick="bkDeleteCheckpoint('+i+')" title="Eliminar">&#128465;</button>'
+        +'</div>'
+        +'</div>';
+    }).join('');
+  } else {
+    ckptsHTML = '<p style="font-size:.85rem;color:var(--gray);padding:.5rem 0">Cap punt de control desat.</p>';
+  }
+
+  b.innerHTML =
+    '<div class="bk-wrap">'
+
+    // ── Estat actual ──────────────────────────────────────────
+    +'<div class="bk-section">'
+    +'<div class="adm-st">Estat actual de la base de dades</div>'
+    +'<div class="bk-state-counts">'+_bkSummary(snap)+'</div>'
+    +'</div>'
+
+    // ── Export ────────────────────────────────────────────────
+    +'<div class="bk-section">'
+    +'<div class="adm-st">Exportar backup (fitxer JSON)</div>'
+    +'<p class="bk-desc">Descàrrega un fitxer JSON amb totes les dades actuals. Guarda\'l al teu ordinador per poder restaurar-les en qualsevol moment.</p>'
+    +'<button class="a-sub success" onclick="bkExport()">&#8681; Descarregar backup ara</button>'
+    +'</div>'
+
+    // ── Import ────────────────────────────────────────────────
+    +'<div class="bk-section">'
+    +'<div class="adm-st">Importar backup (des de fitxer)</div>'
+    +'<p class="bk-desc">Selecciona un fitxer JSON exportat anteriorment per restaurar les dades.</p>'
+    +'<input type="file" id="bkFileInput" accept=".json,application/json" style="display:none" onchange="bkImportRead(this)">'
+    +'<button class="a-sub" style="background:var(--navy)" onclick="bkImportStart()">&#8679; Seleccionar fitxer de backup…</button>'
+    +'<div id="bkImportPreview" style="margin-top:1rem"></div>'
+    +'</div>'
+
+    // ── Checkpoints ────────────────────────────────────────────
+    +'<div class="bk-section">'
+    +'<div class="adm-st" style="display:flex;align-items:center;gap:.75rem">'
+    +'Punts de control ràpids <span class="crud-count-badge">'+ckpts.length+'/'+_BK_MAX+'</span>'
+    +(ckpts.length < _BK_MAX
+      ? '<button class="a-sub success" style="padding:.25rem .75rem;font-size:.8rem;margin-left:auto" onclick="bkSaveCheckpoint()">+ Desar punt de control ara</button>'
+      : '<span style="font-size:.78rem;color:var(--gray);margin-left:auto">Màxim '+_BK_MAX+' punts. Elimina\'n un per afegir-ne un altre.</span>')
+    +'</div>'
+    +'<p class="bk-desc">Els punts de control es guarden al navegador (localStorage). Ideals per a un desament ràpid abans de fer canvis importants.</p>'
+    +'<div class="bk-ckpt-list">'+ckptsHTML+'</div>'
+    +'</div>'
+
+    +'</div>'; // bk-wrap
 }
 
 // Legacy shims (kept for compatibility)

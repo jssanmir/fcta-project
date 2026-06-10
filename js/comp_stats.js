@@ -90,10 +90,80 @@ function _csNormDivName(name) {
     .replace(/\bHombre\b/g, 'Home');
 }
 
-/** Retorna el codi canònic d'un club (unifica numèrics i alfabètics) */
+// Variantes de noms de text → codi canònic
+// Cobreix noms que Ianseo pot enviar com a string en lloc de codi
+var _CS_NAME_VARIANTS = (function() {
+  var m = {};
+  // Per cada entrada de _CS_NAMES, genera la clau normalitzada
+  function _k(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, ''); }
+  Object.keys(_CS_NAMES).forEach(function(code) { m[_k(_CS_NAMES[code])] = code; });
+  // Variants addicionals (abreviatures, noms antics, errors ortogràfics comuns)
+  var extra = {
+    // Olesa
+    'tirarolesa':'TAO', 'tirambarcoles':'TAO', 'taolesa':'TAO',
+    'olesademontserrat':'TAO', 'arcolesa':'TAO',
+    // Rubí
+    'tirconarcorubi':'CTAR', 'clubtirconarcorubi':'CTAR', 'rubi':'CTAR',
+    'tirambarcruberrubi':'CTAR',
+    // Sant Celoni
+    'arcsantceloni':'ASCEL', 'ascel':'ASCEL',
+    // Manresa
+    'manresa':'MAN', 'tirambarcmanresa':'MAN',
+    // Lleida
+    'tirambarclleid':'CTALL', 'lleida':'CTALL',
+    // Montjuïc
+    'arcmontjuic':'CAM', 'clubarcmontjuic':'CAM',
+    // Cerdanyola
+    'arquerscerdanyola':'CACV', 'cerdanyola':'CACV',
+    // Terrassa
+    'arquersterrassa':'CATER', 'terrassa':'CATER',
+    // Mataró
+    'tiresportiumataro':'TEM', 'eltem':'TEM', 'mataro':'TEM',
+    // Club Català
+    'clubcatala':'CCTA', 'ccta':'CCTA', 'clubcataladetirambarc':'CCTA',
+    // Les Franqueses
+    'ctaf':'CTAF', 'lesfranqueses':'CTAF',
+    // Castelldefels
+    'arquersclubcastelldefels':'ACC', 'castelldefels':'ACC',
+    // Sant Cugat
+    'arquersdesantcugat':'CASCV', 'santcugat':'CASCV',
+    // Pardinyes
+    'pardinyes':'CTAP',
+    // Sant Andreu de la Barca
+    'santandreudelabarca':'CTASA',
+    // Tau / CTTA
+    'taudeti':'CTTA', 'clubtautirambarcola':'CTTA',
+    // Draco Sagitaris
+    'dracosagitaris':'CETADS',
+    // Caldes de Montbui
+    'caldesdmontbui':'CTACM', 'caldesmontbui':'CTACM',
+    // Dosrius
+    'arquersdosrius':'CAD', 'dosrius':'CAD',
+    // Olivella
+    'arquerosolivella':'CAOLI', 'olivella':'CAOLI',
+    // Cambrils
+    'arquerscambrils':'CACAM',
+    // Escola Arquers Barcelona
+    'escolaarquersbarcelona':'CEAB', 'ceab':'CEAB'
+  };
+  Object.keys(extra).forEach(function(k) { m[k] = extra[k]; });
+  return m;
+}());
+
+/** Retorna el codi canònic d'un club (unifica numèrics, alfabètics i noms de text) */
 function _csNormCode(rawCode) {
   var c = (rawCode || '').trim();
-  return _CS_ALIAS[c] || c;
+  // 1. Alias numèric/alfabètic directe
+  if (_CS_ALIAS[c]) return _CS_ALIAS[c];
+  // 2. Ja és un codi canònic conegut
+  if (_CS_NAMES[c]) return c;
+  // 3. Cerca per nom normalitzat (elimina accents, espais, majúscules)
+  var key = c.toLowerCase()
+    .replace(/[àáâãäå]/g,'a').replace(/[èéêë]/g,'e')
+    .replace(/[ìíîï]/g,'i').replace(/[òóôõö]/g,'o')
+    .replace(/[ùúûü]/g,'u').replace(/ñ/g,'n').replace(/ç/g,'c')
+    .replace(/[^a-z0-9]/g,'');
+  return _CS_NAME_VARIANTS[key] || c;
 }
 
 /** Retorna el nom de display d'un codi canònic */
