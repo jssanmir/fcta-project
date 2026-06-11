@@ -2734,11 +2734,15 @@
 <div class="cal-hero">
   <div class="container">
     <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
-    <div class="lic-hero-badge">&#128197; Temporada 2025 / 2026</div>
+    <div class="lic-hero-badge">&#128197; Calendari Esportiu FCTA</div>
     <h1>Calendari<br><em>Esportiu FCTA</em></h1>
-    <p>Totes les competicions i campionats de la temporada. Exporta el calendari al teu dispositiu o afegeix les dates directament a Google Calendar.</p>
+    <p>Totes les competicions i campionats. Selecciona la temporada i exporta el calendari al teu dispositiu.</p>
+    <div class="cal-season-tabs">
+      <button id="calTab2526" class="cal-stab act" onclick="setCalSeason('2025-26',this)">Temporada 2025/26</button>
+      <button id="calTab2627" class="cal-stab" onclick="setCalSeason('2026-27',this)">Temporada 2026/27</button>
+    </div>
     <div class="cal-hero-actions">
-      <a href="https://fcta.cat/wp-content/uploads/2026/05/Calendaria_general_fcta_210526.pdf" target="_blank" rel="noopener" class="cal-btn-pdf">&#11015;&#65039; Descarregar PDF oficial</a>
+      <a id="calPdfBtn" href="docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf" target="_blank" rel="noopener" class="cal-btn-pdf">&#11015;&#65039; Descarregar PDF calendari</a>
     </div>
     <div class="cal-export-bar">
       <span class="cal-export-label">&#128260; Exportar:</span>
@@ -2751,7 +2755,7 @@
 <div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 <section class="section" style="background:var(--offwhite)">
   <div class="container">
-    <div class="sec-label">Temporada 2025/2026</div>
+    <div id="calSeasonLabel" class="sec-label">Temporada 2025/2026</div>
     <h2 class="sec-title">Totes les <em>Competicions</em></h2>
     <p class="sec-intro">Llista cronològica de totes les competicions federades. Utilitza el bot&#243; <strong>Google</strong> per afegir qualsevol data directament al teu Google Calendar.</p>
     <div class="cal-list-wrap">

@@ -5,6 +5,11 @@
 .cal-hero h1 em{color:var(--gold);font-style:normal}
 .cal-hero p{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:600px;line-height:1.6;margin-bottom:1.5rem}
 
+.cal-season-tabs{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.cal-stab{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:20px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s}
+.cal-stab:hover{background:rgba(255,255,255,.12);color:white;border-color:rgba(255,255,255,.6)}
+.cal-stab.act{background:var(--gold);color:var(--navy-dark);border-color:var(--gold);font-weight:900}
+
 .cal-hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1.5rem}
 .cal-btn-pdf{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:.5px;text-transform:uppercase;padding:.6rem 1.25rem;border-radius:6px;text-decoration:none;transition:background .2s}
 .cal-btn-pdf:hover{background:var(--gold-dark)}

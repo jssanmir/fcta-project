@@ -219,7 +219,6 @@ competitions: [
   // dateISO: YYYY-MM-DD — si la data ha passat, el sistema automàticament mostra 'closed'
   // ── Pròximes / Obertes ──────────────────────────────────
   {id:1, type:'al',   title:'3ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'30 mai 2026',     dateISO:'2026-05-30', loc:'Barcelona / Esclanyà (Girona)',    status:'open',   circ:'CIRC-2622', url:'docs/REGLAMENT_COMPETICIONS_v1.6.pdf', ianseo:28416},
-  {id:4, type:'sala', title:'Campionat de Catalunya de Sala 2026–27',       disc:'Sala – 18m',   date:'oct 2026',        dateISO:'2026-10-31', loc:'Per determinar',                   status:'soon',   circ:'CIRC-2618', url:'#'},
   // ── Tancades 2026 (ordre cronològic invers) ─────────────
   {id:15,type:'al',   title:'3ª Tirada Lliga Catalana AL 2026 (Esclanyà)',disc:'Aire Lliure',  date:'31 mai 2026',     dateISO:'2026-05-31', loc:'Esclanyà (Girona)',                status:'open',   circ:'CIRC-2622', url:'#',                                        ianseo:28417},
   {id:7, type:'trd',  title:'30è Campionat de Catalunya 3D',               disc:'3D',    date:'17 mai 2026',     dateISO:'2026-05-17', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2616', url:'#',                                        ianseo:28099},
@@ -254,6 +253,40 @@ competitions: [
   {id:38,type:'al',   title:'XXXII Trofeu Ciutat de Lleida – III Copa Pirineus – IV Memorial Alfred Piñol', disc:'Aire Lliure', date:'27-28 set 2025', dateISO:'2025-09-27', loc:'Lleida (Pardinyes)',   status:'closed', circ:'#', url:'#', ianseo:23781},
   {id:39,type:'al',   title:'XXII Copa Barcelona Femenina – XXXV Trofeu Mercè Esportiva', disc:'Aire Lliure', date:'28 set 2025', dateISO:'2025-09-28', loc:'Barcelona (Montjuïc)',       status:'closed', circ:'#', url:'#', ianseo:'CamCF25'},
   {id:40,type:'al',   title:'XXI Campionat de Catalunya de Round 900 – XII Memorial Jordi Adell', disc:'Aire Lliure', date:'6-7 set 2025', dateISO:'2025-09-06', loc:'Barcelona (Montjuïc)', status:'closed', circ:'#', url:'#', ianseo:24295},
+  // ── Temporada 2026-27 ────────────────────────────────────
+  // 3D en Línia
+  {id:101,type:'trd', title:'1ª Tirada Lliga Catalana 3D en Línia 2026/27', disc:'3D', date:'18 oct 2026',    dateISO:'2026-10-18', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
+  {id:102,type:'trd', title:'2ª Tirada Lliga Catalana 3D en Línia 2026/27', disc:'3D', date:'15 nov 2026',    dateISO:'2026-11-15', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
+  {id:103,type:'trd', title:'3ª Tirada Lliga Catalana 3D en Línia 2026/27', disc:'3D', date:'13 des 2026',    dateISO:'2026-12-13', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
+  {id:104,type:'trd', title:'Campionat de Catalunya de 3D en Línia 2026/27', disc:'3D', date:'10 gen 2027',   dateISO:'2027-01-10', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
+  {id:105,type:'trd', title:'Campionat d\'Espanya 3D Sala',                  disc:'3D', date:'22-24 gen 2027', dateISO:'2027-01-22', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
+  // Sala
+  {id:106,type:'sala',title:'1ª Tirada Lliga Catalana de Sala 2026/27',     disc:'Sala – 18m', date:'24-25 oct 2026',  dateISO:'2026-10-24', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
+  {id:107,type:'sala',title:'2ª Tirada Lliga Catalana de Sala 2026/27',     disc:'Sala – 18m', date:'21-22 nov 2026',  dateISO:'2026-11-21', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
+  {id:108,type:'sala',title:'3ª Tirada Lliga Catalana de Sala 2026/27',     disc:'Sala – 18m', date:'19-20 des 2026',  dateISO:'2026-12-19', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
+  {id:109,type:'sala',title:'Campionat de Catalunya de Sala + Clubs 2026/27',disc:'Sala – 18m', date:'16-17 gen 2027',  dateISO:'2027-01-16', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
+  {id:110,type:'sala',title:'Campionat d\'Espanya TNL Sala',                 disc:'Sala – 18m', date:'22-24 gen 2027',  dateISO:'2027-01-22', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
+  {id:111,type:'sala',title:'Campionat d\'Espanya RC Sala',                  disc:'Sala – 18m', date:'4-7 feb 2027',    dateISO:'2027-02-04', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
+  // Camp
+  {id:112,type:'camp',title:'1ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Tir de Camp', date:'31 gen 2027',    dateISO:'2027-01-31', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:113,type:'camp',title:'2ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Tir de Camp', date:'28 feb 2027',    dateISO:'2027-02-28', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:114,type:'camp',title:'3ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Tir de Camp', date:'18 abr 2027',    dateISO:'2027-04-18', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:115,type:'camp',title:'Campionat de Catalunya de Camp 2026/27',       disc:'Tir de Camp', date:'16 mai 2027',    dateISO:'2027-05-16', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:116,type:'camp',title:'Campionat d\'Espanya de Camp',                  disc:'Tir de Camp', date:'4-6 jun 2027',   dateISO:'2027-06-04', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
+  // 3D
+  {id:117,type:'3d',  title:'1ª Tirada Lliga Catalana de 3D 2026/27',       disc:'3D', date:'14 feb 2027',    dateISO:'2027-02-14', loc:'Per determinar', status:'soon', circ:'CIRC-2635', url:'#'},
+  {id:118,type:'3d',  title:'2ª Tirada Lliga Catalana de 3D 2026/27',       disc:'3D', date:'14 mar 2027',    dateISO:'2027-03-14', loc:'Per determinar', status:'soon', circ:'CIRC-2635', url:'#'},
+  {id:119,type:'3d',  title:'3ª Tirada Lliga Catalana de 3D 2026/27',       disc:'3D', date:'11 abr 2027',    dateISO:'2027-04-11', loc:'Per determinar', status:'soon', circ:'CIRC-2635', url:'#'},
+  {id:120,type:'3d',  title:'Campionat de Catalunya de 3D 2026/27',         disc:'3D', date:'9 mai 2027',     dateISO:'2027-05-09', loc:'Per determinar', status:'soon', circ:'CIRC-2635', url:'#'},
+  {id:121,type:'3d',  title:'Campionat d\'Espanya de 3D',                    disc:'3D', date:'21-23 mai 2027', dateISO:'2027-05-21', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
+  // Aire Lliure
+  {id:122,type:'al',  title:'1ª Tirada Lliga Catalana d\'Aire Lliure 2026/27', disc:'Aire Lliure', date:'20-21 mar 2027', dateISO:'2027-03-20', loc:'Per determinar', status:'soon', circ:'CIRC-2633', url:'#'},
+  {id:123,type:'al',  title:'2ª Tirada Lliga Catalana d\'Aire Lliure 2026/27', disc:'Aire Lliure', date:'24-25 abr 2027', dateISO:'2027-04-24', loc:'Per determinar', status:'soon', circ:'CIRC-2633', url:'#'},
+  {id:124,type:'al',  title:'3ª Tirada Lliga Catalana d\'Aire Lliure 2026/27', disc:'Aire Lliure', date:'29-30 mai 2027', dateISO:'2027-05-29', loc:'Per determinar', status:'soon', circ:'CIRC-2633', url:'#'},
+  {id:125,type:'al',  title:'Campionat de Catalunya d\'Aire Lliure + Clubs 2026/27', disc:'Aire Lliure', date:'3-4 jul 2027', dateISO:'2027-07-03', loc:'Per determinar', status:'soon', circ:'CIRC-2637', url:'#'},
+  {id:126,type:'al',  title:'Campionat d\'Espanya TDL',                      disc:'Aire Lliure', date:'17-18 jul 2027', dateISO:'2027-07-17', loc:'Per determinar', status:'soon', circ:'#', url:'#'},
+  {id:127,type:'al',  title:'Campionat d\'Espanya de Menors',                 disc:'Aire Lliure', date:'21-23 jul 2027', dateISO:'2027-07-21', loc:'Per determinar', status:'soon', circ:'#', url:'#'},
+  {id:128,type:'al',  title:'Campionat d\'Espanya RC',                        disc:'Aire Lliure', date:'23-25 jul 2027', dateISO:'2027-07-23', loc:'Per determinar', status:'soon', circ:'#', url:'#'},
   // ── Temporada 2024-25 (desembre 2024) ────────────────────
   {id:27,type:'sala', title:'57è Campionat de Catalunya de Sala 2024-25',  disc:'Sala – 18m',   date:'14-15 des 2024',  dateISO:'2024-12-14', loc:'Constantí (Tarragona)',            status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=CATSA25X', ianseo:'CATSA25X'},
   {id:28,type:'sala', title:'4ª Lliga Catalana Sala (2024-25) – R.A.U.S.', disc:'Sala – 18m',   date:'7-8 des 2024',    dateISO:'2024-12-07', loc:'Terrassa (Barcelona)',             status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=CATSA25D', ianseo:'CATSA25D'},

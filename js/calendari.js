@@ -3,11 +3,34 @@
 var CAL_MONTH_NAMES = ['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','Agost','Setembre','Octubre','Novembre','Desembre'];
 var CAL_MONTH_SHORT = ['gen','feb','mar','abr','mai','jun','jul','ago','set','oct','nov','des'];
 
+var calActiveSeason = '2025-26';
+
+var CAL_SEASONS = {
+  '2025-26': { label: 'Temporada 2025/2026', from: '2024-09-01', to: '2026-09-30', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' },
+  '2026-27': { label: 'Temporada 2026/2027', from: '2026-10-01', to: '2027-09-30', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' }
+};
+
+function setCalSeason(season, btn) {
+  calActiveSeason = season;
+  var tabs = document.querySelectorAll('.cal-stab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('act');
+  if (btn) btn.classList.add('act');
+  var s = CAL_SEASONS[season];
+  var lbl = document.getElementById('calSeasonLabel');
+  if (lbl) lbl.textContent = s.label;
+  var pdfBtn = document.getElementById('calPdfBtn');
+  if (pdfBtn) pdfBtn.href = s.pdf;
+  renderCalendari();
+}
+
 function renderCalendari() {
   var today = new Date();
   today.setHours(0,0,0,0);
 
-  var comps = DB.competitions.slice().sort(function(a, b) {
+  var s = CAL_SEASONS[calActiveSeason];
+  var comps = DB.competitions.filter(function(c) {
+    return c.dateISO && c.dateISO >= s.from && c.dateISO <= s.to;
+  }).slice().sort(function(a, b) {
     return a.dateISO < b.dateISO ? -1 : 1;
   });
 
