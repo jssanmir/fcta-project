@@ -453,7 +453,9 @@ function renderMedallerView(discKey) {
   var campionats = _getMedals2526(discKey);
   if (!campionats) return '<div class="disc-empty">Medaller no disponible per a aquesta disciplina.</div>';
 
-  var agrClubs = _agregaMedaller(_allMedals2526Resultats());
+  var discResultats = [];
+  campionats.forEach(function(c) { discResultats = discResultats.concat(c.resultats); });
+  var agrClubs = _agregaMedaller(discResultats);
 
   var html = '<div class="med-sources">';
   campionats.forEach(function(c) {
@@ -464,8 +466,8 @@ function renderMedallerView(discKey) {
   html += '<h3 class="disc-section-title" style="margin-top:1.5rem">🏹 Resultats per Categoria</h3>';
   html += _renderArquersPerCategoria(campionats);
 
-  html += '<h3 class="disc-section-title" style="margin-top:2rem">🏛️ Medaller de Clubs · Totes les disciplines</h3>';
-  html += '<p style="font-size:.82rem;color:var(--gray);margin-bottom:.75rem">Inclou: Campionat de Sala · Campionat 3D · Campionat 3D en Línia · Campionat de Camp.</p>';
+  html += '<h3 class="disc-section-title" style="margin-top:2rem">🏛️ Rànquing de Clubs · Aquesta disciplina</h3>';
+  html += '<p style="font-size:.82rem;color:var(--gray);margin-bottom:.75rem">Medalles dels campionats d\'aquesta disciplina únicament.</p>';
   html += _renderMedallerTable(agrClubs.clubs, 'Club');
 
   html += '<div style="text-align:right;margin-top:1rem">'
