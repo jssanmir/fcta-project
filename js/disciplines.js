@@ -10,14 +10,9 @@ var DISC_DATA = {
     icon: '🎯',
     color: '#1a6fb5',
     descripcio: 'El tir d\'aire lliure i sala són les dues cares d\'una mateixa disciplina que s\'organitza en dues temporades complementàries. A l\'aire lliure (primavera-estiu) es dispara a dianes exteriors; a sala (tardor-hivern), en pavelló cobert. És la disciplina olímpica del tir amb arc i la més practicada a Catalunya.\n\nLa distància i la mida de diana depenen de l\'estil de l\'arc i de la categoria d\'edat. El recorbat sènior tira a 70 m amb una diana de 122 cm; el compost sènior, a 50 m amb diana de 80 cm retallada; categories menors i estils de bosc tiren a distàncies reduïdes. A sala, tothom tira a 18 m, però les dianes varien: 40 cm per a recorbat i compost, 60 cm per a la resta. La competició consta d\'una fase de classificació (Round 720: 72 fletxes en dues rondes) seguida d\'eliminatòries individuals i per equips.',
-    format: [
-      { label: 'Temporades',     valor: 'Aire Lliure: primavera–estiu · Sala: tardor–hivern' },
-      { label: 'Classificació',  valor: 'Round 720: 72 fletxes (2 × 36) en fase de classificació' },
-      { label: 'Distàncies AL',  valor: 'Varien per estil i edat: 18 m (menors petits) fins a 70 m (recorbat sènior) o 50 m (compost sènior)' },
-      { label: 'Distàncies Sala',valor: '18 m per a totes les categories' },
-      { label: 'Diana AL',       valor: '122 cm (recorbat) · 80 cm retallada (compost) · 60 cm (nu/longbow) – 10 zones de puntuació' },
-      { label: 'Diana Sala',     valor: '40 cm (recorbat/compost) · 60 cm (nu/longbow/tradicional) – triple vertical o única' },
-      { label: 'Eliminatòries',  valor: 'Sistema WA: matches de 5 sets (recorbat) o de puntuació acumulada (compost)' },
+    normativa: [
+      { label: 'Format Competicions Aire Lliure 2026/27', url: 'docs/2026060812190382-CIRC_2633_Format_competicions_Aire_Lliure_2026_27.pdf' },
+      { label: 'Format Competicions Sala 2026/27',        url: 'docs/2026060812193414-CIRC_2634_Format_competicions_Sala_2026_27.pdf' },
     ],
     categories: ['Benjamí (U10)', 'Aleví (U12)', 'Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+', '60+'],
     estils: ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
@@ -121,11 +116,8 @@ var DISC_DATA = {
     icon: '🌲',
     color: '#2e7d32',
     descripcio: 'El tir 3D és la modalitat més immersiva del tir amb arc: es practica en circuits forestals o en modalitat en linea, on les figures volumètriques estan situades en entorns naturals amb vegetació, irregularitats del terreny i jocs de llum. La clau d\'aquesta disciplina és l\'estimació de la distància —mai no es diu d\'on es tira fins que ets a la balisa— combinada amb la tècnica de tir.\n\nEs dispara a figures sintètics en 3D. Cada diana té zones de puntuació: 11, 10, 8 i 5. El circuit sol tenir 24 dianes; l\'arquer fa tot el recorregut en grup. Les distàncies màximes varien per divisió de l\'arc i classe, però mai superen els 45 m (compost).',
-    format: [
-      { label: 'Circuit',       valor: '24 dianes en recorregut natural de bosc' },
-      { label: 'Distàncies',    valor: 'Desconegudes fins arribar a la balisa; ~45 m (compost) · menys per a menors i estils nu/tradicional/longbow' },
-      { label: 'Dianes',        valor: 'Figures 3D sintètiques' },
-      { label: 'Puntuació',     valor: 'Zona vital (11-10 pts), cos (8 pts), extrem (5 pts) – 2 fletxa per diana en competició oficial' },
+    normativa: [
+      { label: 'Format Competicions 3D 2026/27', url: 'docs/2026060812201377-CIRC_2635_Format_competicions_3D_2026_27.pdf' },
     ],
     categories: ['Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+'],
     estils: ['Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
@@ -162,12 +154,8 @@ var DISC_DATA = {
     icon: '🏔️',
     color: '#5d4037',
     descripcio: 'El tir de camp (WA Field) és una disciplina que combina la natura amb la tècnica: els arquers recorren un circuit de 24 dianes de paper situades en terreny accidentat, amunt i avall de pendents, entre arbres i amb angles de tir variats. Les propostes de tir poden ser desconegudes (distància no informada) i conegudes (distàncies marcades).\n\nLes dianes de camp utilitzen el sistema de puntuació WA: cara de diana circular amb zones de 6-5-4-3-2-1 punts. La distància màxima depèn de la divisió i la classe: el recorbat i compost sènior tira fins a 60 m en marc conegut (50 m en desconegut); els longbow senior fins a 40 m (veure reglamentació per més detalls).',
-    format: [
-      { label: 'Circuit',         valor: '24 dianes' },
-      { label: 'Distàncies conegudes',    valor: 'Distàncies marcades; recorbat i compost sènior fins a 60 m, tradicional i nu fins a 50 m i longbow fins a 40 m (veure reglamentació per més detalls)' },
-      { label: 'Distàncies desconegudes', valor: 'Distàncies sense marcar; recorbat i compost sènior fins a 55 m, tradicional i nu fins a 45 m i longbow fins a 35 m (veure reglamentació per més detalls)' },
-      { label: 'Diana',           valor: 'Cara circular WA de camp: zones 6-5-4-3-2-1 (3 mides: 20/40/60 cm)' },
-      { label: 'Fletxes',         valor: '3 fletxes per diana en marc desconegut · 2 fletxes en marc conegut (WA oficial)' },
+    normativa: [
+      { label: 'Format Competicions Camp 2026/27', url: 'docs/2026060812213726-CIRC_2636_Format_competicions_Camp_2026_27.pdf' },
     ],
     categories: ['Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+'],
     estils: ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
@@ -202,14 +190,7 @@ var DISC_DATA = {
     icon: '🎌',
     color: '#880e4f',
     descripcio: 'El Kyudo (弓道, "camí de l\'arc") és l\'art marcial japonès del tir amb arc, una pràctica que va molt més enllà de la precisió tècnica: és un camí de perfeccionament personal que integra cos, ment i esperit. El kyudoka (practicant) utilitza el yumi, un arc asimètric de bambú d\'uns 2,2 m d\'alçada, i les ya, fletxes tradicionals de bambú.\n\nA diferència del tir esportiu occidental, al Kyudo no s\'utilitzen assistències mecàniques. El tir es realitza en dues modalitats: sha-teki (28 m sobre una diana de paper de 36 cm, el mato) i enteki (60 m sobre una diana de 79 cm). La forma (kata) és tan important com l\'impacte: la seqüència dels huit moviments (hassetsu) ha de ser executada amb control, concentració i serenitat. Al Japó el Kyudo és una de les arts marcials més practicades.',
-    format: [
-      { label: 'Modalitats',    valor: 'Sha-teki (tir proper) · Enteki (tir llarg)' },
-      { label: 'Distàncies',    valor: '28 m (sha-teki) · 60 m (enteki)' },
-      { label: 'Diana',         valor: 'Sha-teki: mato de 36 cm Ø · Enteki: diana de 79 cm Ø' },
-      { label: 'Arc',           valor: 'Yumi: arc asimètric de bambú, ~2,2 m; sense mirilla ni llançador mecànic' },
-      { label: 'Tècnica',       valor: 'Hassetsu: 8 moviments codificats; la forma és tan valorada com la precisió' },
-      { label: 'Vestimenta',    valor: 'Kimono tradicional i hakama obligatoris en competicions oficials' },
-    ],
+    normativa: [],
     categories: ['Totes les categories'],
     estils: ['Kyudo'],
     lligues: [],
@@ -708,13 +689,15 @@ function renderDiscInfo(d) {
     + '<h3>Sobre la disciplina</h3>'
     + descHtml + '</div>';
 
-  // Format
-  if (d.format && d.format.length) {
-    html += '<div class="disc-card"><h3>📐 Format de competició</h3><dl class="disc-dl">';
-    d.format.forEach(function(f) {
-      html += '<dt>' + f.label + '</dt><dd>' + f.valor + '</dd>';
+  // Normativa
+  if (d.normativa && d.normativa.length) {
+    html += '<div class="disc-card"><h3>📐 Normativa de competició</h3>'
+      + '<p style="font-size:.85rem;color:var(--gray);margin-bottom:.9rem">Consulteu la circular oficial per al format, categories, distàncies i procediments de sol·licitud d\'organització.</p>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:.5rem">';
+    d.normativa.forEach(function(n) {
+      html += '<a href="' + escHtml(n.url) + '" target="_blank" rel="noopener" class="bsm bsm-n">⬇ ' + escHtml(n.label) + '</a>';
     });
-    html += '</dl></div>';
+    html += '</div></div>';
   }
 
   // Categories
