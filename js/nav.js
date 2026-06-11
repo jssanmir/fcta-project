@@ -11,10 +11,35 @@ var NAV_ENTER_MS = 380;
 var _navTimer   = null;  // pending cleanup timer
 var _navCurrent = null;  // element currently shown
 
+var _SEO_TITLES = {
+  home:          'FCTA – Federació Catalana de Tir amb Arc',
+  circulars:     'Circulars | FCTA',
+  competitions:  'Competicions | FCTA',
+  news:          'Notícies | FCTA',
+  formation:     'Formació | FCTA',
+  social:        'Tirades Socials | FCTA',
+  llicencies:    'Llicències | FCTA',
+  documentacio:  'Documentació | FCTA',
+  reglaments:    'Reglaments | FCTA',
+  inici:         'Comença al Tir amb Arc | FCTA',
+  disciplina:    'Disciplines | FCTA',
+  transparencia: 'Transparència | FCTA',
+  assegurances:  'Assegurances | FCTA',
+  juntadirectiva:'Junta Directiva | FCTA',
+  arcadaptat:    'Arc Adaptat | FCTA',
+  comitejutges:  'Comitè de Jutges | FCTA',
+  pat:           'PAT – Programa Autonòmic de Tecnificació | FCTA',
+  calendari:     'Calendari Esportiu | FCTA',
+  medaller:      'Medaller | FCTA'
+};
+
 function setS(sec, _noHash) {
   var nextId = 's' + (FCTA.sectionMap[sec] || '');
   var nextEl = document.getElementById(nextId);
   if (!nextEl) return;
+
+  // Update page title
+  document.title = _SEO_TITLES[sec] || 'FCTA – Federació Catalana de Tir amb Arc';
 
   // Update URL hash
   if (!_noHash) {
