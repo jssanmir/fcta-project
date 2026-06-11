@@ -113,30 +113,69 @@ var DISC_DATA = {
         {
           titol: 'Lliga Catalana d\'Aire Lliure',
           icon: '☀️',
+          chart: [
+            { any: '2022/23', val: 219, nota: '4 tirades · R720' },
+            { any: '2023/24', val: 247, nota: '3 tirades · millors 2', destacat: true },
+            { any: '2024/25', val: 231, nota: '3 tirades · millors 2' },
+            { any: '2025/26', val: 203, nota: '3 tirades · meitat+1' },
+          ],
           temporades: [
-            { any: '2025/26', resum: 'Estabilització competitiva molt alta en les categories reines. Al Recorbat Sènior Masculí, la competència sumà una densitat de puntuacions molt ajustada als primers llocs (liderats per Sergi Cebrián, Erfan Ribas i Raül Quiles), demostrant que la lliga atrau tant volum com alt nivell de rendiment consolidat any rere any.', doc: 'docs/Ranquing_Lliga_AL_2025-26.pdf' },
-            { any: '2024/25', resum: 'El format de comptabilitzar les "2 millors de 3 puntuacions" va incentivar que el volum d\'atletes inscrits al rànquing final es mantingués elevat, ja que no calia assistència perfecta. Van créixer les subdivisions d\'edat Sub-18 i Sub-21 en arc recorbat.', doc: 'docs/Ranquing_Lliga_AL_2025.pdf' },
-            { any: '2023/24', resum: 'Consolidació de la descentralització de les tirades amb alta participació repartida entre seus clau com Lleida, Cerdanyola del Vallès i Esclanyà. Repunt notable en les categories d\'Arc Nu (Nu Aleví, Nu Sub-15 i Nu Sènior) impulsat per clubs com Tir Arc Olesa i Club Tir Arc Les Franqueses.', doc: 'docs/Ranquing_Lliga_AL_2024.pdf' },
-            { any: '2022/23', resum: 'Increment significatiu en categories específiques com Recorbat Benjamí (amb noms com Nora Caballero i Glòria Moreton) i en les modalitats Tradicional/Longbow veterans (liderades per arquers recurrents com Miguel Serrahima).', doc: 'docs/Ranquing_Lliga_AL_2023.pdf' },
-            { any: '2021/22', resum: 'Temporada de consolidació de categories base, amb fort presència en categories escolars (Benjamí, Aleví) i veterans. Va servir de base estable per als anys posteriors.', doc: null },
+            { any: '2025/26',
+              stats: { participants: 203, categories: 39, tirades: '3 (meitat+1)', seus: 3 },
+              resum: '~203 participants en ~39 categories. Format de 3 tirades amb classificació meitat+1. Seus: Olesa/Olivella/Barcelona (15 mar), Sant Celoni/Figueres (19 abr) i Esclanyà (31 mai). Representació de clubs de les 4 demarcacions: Draco Sagittariis, Arc Montjuïc, Castelldefels, Cerdanyola, Lleida-Pardinyes, Cambrils, Franqueses, Tau.',
+              doc: 'docs/Ranquing_Lliga_AL_2025-26.pdf' },
+            { any: '2024/25',
+              stats: { participants: 231, categories: 40, tirades: '3 (millors 2)', seus: 3 },
+              resum: '~231 participants en 40 categories. Seus: Pardinyes (Lleida), Esclanyà (Girona) i Olesa de Montserrat (Baix Llobregat). Millors 2 de 3 tirades. Consolidació de Sub-18 i Sub-21 en Arc Recorbat. Clubs actius de les 4 demarcacions provincials.',
+              doc: 'docs/Ranquing_Lliga_AL_2025.pdf' },
+            { any: '2023/24',
+              stats: { participants: 247, categories: 43, tirades: '3 (millors 2)', seus: 3 },
+              resum: '~247 participants en 43 categories: màxim del període analitzat. 1a tirada amb 2 seus simultànies (Lleida i Cerdanyola del Vallès); 2a i 3a a Esclanyà (Girona). 43 categories cobreixen des de Prebenjamí fins +50 en 5 disciplines. Fort creixement en Arc Nu i categories de base.',
+              doc: 'docs/Ranquing_Lliga_AL_2024.pdf' },
+            { any: '2022/23',
+              stats: { participants: 219, categories: 30, tirades: '4 (R720, totes)', seus: 4 },
+              resum: '~219 participants en ~30 categories. Format R720 clàssic: 4 tirades (5 mar, 2 abr, 30 abr, 28 mai) totes puntuables. Base competitiva molt àmplia, especialment en Recorbat Benjamí, Nu en totes les franges d\'edat i Longbow veterà. Clubs majoritàriament de l\'àrea metropolitana de Barcelona.',
+              doc: 'docs/Ranquing_Lliga_AL_2023.pdf' },
+            { any: '2021/22',
+              resum: 'Temporada de consolidació sense rànquing final digitalitzat disponible. Format base estable amb presència en categories escolars (Benjamí, Aleví) i veterà. Participació concentrada en clubs metropolitans.',
+              doc: null },
           ]
         },
         {
           titol: 'Lliga Catalana de Tir en Sala',
           icon: '🏟️',
+          chart: [
+            { any: '2023/24', val: 284, nota: '4 tirades' },
+            { any: '2024/25', val: 377, nota: '4 tirades · millors 3', destacat: true },
+            { any: '2025/26', val: 277, nota: '4 tirades · meitat+1' },
+          ],
           temporades: [
-            { any: '2025/26', resum: 'Descentralització massiva de la participació cap a clubs fora de Barcelona. Categories minoritàries com el Longbow i l\'Arc Compost +50 van experimentar un creixement sòlid en clubs com Arquers Cambrils, Tir Arc Pardinyes, CA Cerdanyola del Vallès i Tir Arc Manresa.', doc: 'docs/Ranquing_Lliga_Sala_2025-26.pdf' },
-            { any: '2024/25', resum: 'Consolidació total del format de 4 seus regionals fixes (Caldes de Montbui, Constantí, Torrefarrera i Terrassa). Una de les taxes de participació històrica més altes en la categoria Recorbat Sènior Masculí, superant àmpliament la dotzena d\'arquers actius que van completar la totalitat de les rondes.', doc: 'docs/Ranquing_Lliga_Sala_2024-25.pdf' },
-            { any: '2023/24', resum: 'Temporada de referència per a la modalitat de sala, amb rànquing final complet disponible.', doc: 'docs/Ranquing_Lliga_Sala_2023-24.pdf' },
-            { any: '2022/23', resum: 'Ampliació del calendari competitiu a 4 tirades obligatòries. Increment en la diversificació de categories infantils actives en totes les jornades, amb auge en les categories benjamines femenines.', doc: null },
-            { any: '2021/22', resum: 'Format de 3 tirades puntuables. Participació concentrada en clubs de l\'àrea metropolitana (Arc Montjuïc i Talleda principalment).', doc: null },
+            { any: '2025/26',
+              stats: { participants: 277, categories: 39, tirades: '4 (meitat+1)', seus: 3 },
+              resum: '~277 participants en ~39 categories. 4 tirades (oct-des 2025) amb nova fórmula meitat+1. Seus: Constantí/Torrefarrera (x2), Manresa i Constantí. Descentralització cap a clubs de Camp de Tarragona i Bages. Categories noves: Longbow Sub-15 Dona i Tradicional Wheelchair 2.',
+              doc: 'docs/Ranquing_Lliga_Sala_2025-26.pdf' },
+            { any: '2024/25',
+              stats: { participants: 377, categories: 40, tirades: '4 (millors 3)', seus: 4 },
+              resum: '~377 participants en ~40 categories: màxim del període. 4 tirades (Caldes de Montbui, Constantí/Torrefarrera x2, Terrassa), millors 3 de 4. Any amb el major volum d\'arquers completant les 3 tirades mínimes. Creixement sòlid en Arc Compost i categories juvenils Recorbat.',
+              doc: 'docs/Ranquing_Lliga_Sala_2024-25.pdf' },
+            { any: '2023/24',
+              stats: { participants: 284, categories: 41, tirades: '4 (totes)', seus: 2 },
+              resum: '~284 participants en 41 categories. 4 tirades (oct-des 2023): les 3 primeres a Constantí/Torrefarrera i la 4a a Caldes de Montbui. Bon creixement en Longbow i Tradicional respecte a temporades anteriors. 41 categories actives des de Prebenjamí fins +50.',
+              doc: 'docs/Ranquing_Lliga_Sala_2023-24.pdf' },
+            { any: '2022/23',
+              resum: 'Ampliació del calendari competitiu a 4 tirades. Increment en la diversificació de categories infantils en totes les jornades, especialment en categories benjamines femenines. Sense rànquing final digitalitzat disponible.',
+              doc: null },
+            { any: '2021/22',
+              resum: 'Format de 3 tirades puntuables. Participació concentrada en clubs de l\'àrea metropolitana. Temporada base de referència.',
+              doc: null },
           ]
         }
       ],
       conclusions: [
-        { titol: 'Fidelització del competidor', icon: '🏆', text: 'Existeix un nucli dur d\'esportistes d\'alt nivell (com Sergi Cebrián, Raül Quiles o Miguel Serrahima) que apareixen constantment liderant els pòdiums de les dues lligues des de 2022 fins a 2026, denotant una bona estructura de retenció de llicències competitives.' },
-        { titol: 'Creixement en modalitats tradicionals', icon: '🏹', text: 'Mentre l\'arc recorbat olímpic manté xifres massives i estables, les modalitats d\'Arc Nu, Longbow i Tradicional han passat d\'una presència modesta el 2022 a registrar graelles de sortida molt concorregudes als rànquings finals de 2025 i 2026, tant a sala com a l\'aire lliure.' },
-        { titol: 'Èxit de la descentralització', icon: '📍', text: 'La distribució de les jornades oficials per tot el territori català (Lleida, Girona, Tarragona i comarques de Barcelona) ha funcionat com a motor de participació local. Els clubs comarcals han incrementat progressivament el seu volum d\'atletes inscrits en comparació amb els anys inicials, on la concentració a clubs de la capital era superior.' },
+        { titol: 'Lligues de gran volum', icon: '🏆', text: 'Les lligues d\'Aire Lliure i Sala superen àmpliament els 200 i 270 participants respectivament per temporada, amb un màxim excepcional de ~377 a Sala 2024/25. El volum és 2-3 vegades superior al de la Lliga 3D, reflectint la major accessibilitat d\'aquests formats per a totes les franges d\'edat.' },
+        { titol: 'Creixement en modalitats alternatives', icon: '🏹', text: 'Mentre l\'arc recorbat olímpic manté xifres massives i estables, les modalitats d\'Arc Nu, Longbow i Tradicional han crescut de forma sostinguda des de 2022, registrant graelles concorregudes als rànquings finals de 2024-2026, tant a sala com a l\'aire lliure.' },
+        { titol: 'Descentralització territorial consolidada', icon: '📍', text: 'La distribució de jornades per tot el territori català (Lleida, Girona, Tarragona i comarques de Barcelona) ha funcionat com a motor de participació local. Els clubs comarcals han incrementat progressivament el seu volum d\'atletes respecte als anys inicials, quan la concentració en clubs metropolitans era superior.' },
+        { titol: 'Evolució dels formats', icon: '🔄', text: 'El pas del format R720 clàssic (4 tirades, totes puntuables) al sistema de millors 2/3 i finalment meitat+1 reflecteix una adaptació progressiva per maximitzar la participació i reduir la penalització per absència en una tirada, protegint els rànquings finals.' },
       ]
     },
   },
@@ -178,45 +217,82 @@ var DISC_DATA = {
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: '3d',
     evolucio: {
+      chart: [
+        { any: '2021',        val: 107, nota: '3 tirades · millors 2' },
+        { any: '2022',        val: 152, nota: '4 tirades · pts posició', destacat: true },
+        { any: '2022/23',     val: 140, nota: '4 tirades · millors 3' },
+        { any: '2023/24',     val: 145, nota: '4 tirades · millors 3' },
+        { any: '2024/25',     val: 148, nota: '4 tirades · millors 3' },
+        { any: '2025/26',     val: 131, nota: '4 tirades · millors 3' },
+        { any: '2025/26\nEn Línia', val: 182, nota: 'Pilot online', pilot: true },
+      ],
       seccions: [
         {
           titol: 'Bloc inicial i consolidació pre-pandèmia (2018–2020)',
           icon: '🌲',
           temporades: [
-            { any: '2018/19', resum: 'Circuit de 5 competicions puntuables (millors 4). Alta concentració de clubs pioners, especialment el Club de Tir amb Arc Caldes de Montbui, copant pòdiums en categories massives com Arc Compost Sènior.', doc: 'docs/Ranquing_Lliga_3D_2018-19.pdf' },
-            { any: '2019/20', resum: 'Temporada truncada per les restriccions sanitàries. Les llistes provisionals ja mostraven una base competitiva fidel i creixement emergent en divisions tradicionals com el Longbow (Albert Barrull, Xavier Fernández).', doc: 'docs/Ranquing_Lliga_3D_2019-20_prov.pdf' },
+            { any: '2018/19',
+              stats: { tirades: '4 de 5 puntuables', seus: 5 },
+              resum: 'Circuit de 5 competicions puntuables (millors 4 comptades). Alta concentració de clubs pioners —especialment Caldes de Montbui— copant pòdiums en categories massives com Arc Compost Sènior.',
+              doc: 'docs/Ranquing_Lliga_3D_2018-19.pdf' },
+            { any: '2019/20',
+              stats: { tirades: '3 de 5 disputades', seus: 3, nota: 'Temporada interrompuda' },
+              resum: 'Temporada interrompuda per la COVID-19 quan s\'havien disputat 3 de les 5 tirades previstes. Les llistes provisionals (Arc Zen, Castellnou, La Llacuna) reflectien una base competitiva fidel i creixement emergent en divisions de Longbow.',
+              doc: 'docs/Ranquing_Lliga_3D_2019-20_prov.pdf' },
           ]
         },
         {
-          titol: 'Recuperació i format reduït (2021–2022)',
+          titol: 'Recuperació post-pandèmia (2021–2022)',
           icon: '🔄',
           temporades: [
-            { any: '2021', resum: 'Format adaptat de 3 tirades (Caldes de Montbui, Costa Brava, Rupit i Pruit), comptant les 2 millors puntuacions. Resposta molt positiva amb densa participació femenina en Arc Nu Sènior.', doc: 'docs/Ranquing_Lliga_3D_2021.pdf' },
-            { any: '2022', resum: 'Recuperació de l\'estructura de 4 tirades completes. Auge en categories d\'edat avançada: Tradicional Plus 50, amb clubs com Tir Arc Rubí i Club d\'Arquers Catalunya aportant arquers que disputaven la lliga sencera.', doc: 'docs/Ranquing_Lliga_3D_2022.pdf' },
+            { any: '2021',
+              stats: { participants: 107, categories: 20, tirades: '3 (millors 2)', seus: 3 },
+              resum: 'Primera lliga completa post-COVID amb format adaptat de 3 tirades (millors 2 puntuables). ~107 participants en 20 categories. Seus: Caldes de Montbui, Costa Brava i Rupit i Pruit. Bona resposta femenina en Arc Nu i Instintiu Sènior.',
+              doc: 'docs/Ranquing_Lliga_3D_2021.pdf' },
+            { any: '2022',
+              stats: { participants: 152, categories: 25, tirades: '4 (totes puntuables)', seus: 4 },
+              resum: 'Pic de participació post-pandèmia: ~152 inscrits en 25 categories. Recuperació de les 4 tirades completes amb un sistema de punts per posició. Fort creixement en categories Plus 50 Tradicional i Arc Nu Sènior. Representació de clubs de Caldes, Rubí, Català de Tir i Costa Brava 3D.',
+              doc: 'docs/Ranquing_Lliga_3D_2022.pdf' },
           ]
         },
         {
-          titol: 'Expansió i reajust de categories juvenils (2022–2025)',
+          titol: 'Expansió de categories i consolidació (2022/23–2024/25)',
           icon: '📈',
           temporades: [
-            { any: '2022/23', resum: 'Criteri "millor puntuació en 3 de 4 tirades". Increment orgànic de la cantera amb rankings oberts en categories molt joves com Longbow Sub-18 i Sub-21 masculí (clubs L\'Arboç i Costa Brava 3D).', doc: 'docs/Ranquing_Lliga_3D_2022-23.pdf' },
-            { any: '2023/24', resum: 'Diversificació geogràfica cap a escenaris tècnics com Romanyà de la Selva, Castellnou del Bages i Montcada i Reixac. Participació molt regular a Arc Compost Sènior Masculí, amb promedis superant els 420–450 punts (Javier Menchón i Jordi Soler).', doc: 'docs/Ranquing_Lliga_3D_2023-24.pdf' },
-            { any: '2024/25', resum: 'Hegemonia organitzativa a seus compartides per Montcada, Caldes de Montbui i Rubí. El nombre d\'atletes que completaven el mínim de 3 tirades per a la classificació final va créixer un pas més.', doc: 'docs/Ranquing_Lliga_3D_2024-25.pdf' },
+            { any: '2022/23',
+              stats: { participants: 140, categories: 20, tirades: '4 (millors 3)', seus: 4 },
+              resum: '~140 participants en 20 categories. Adopció del criteri "millors 3 de 4 tirades". Incorporació de noves categories juvenils Longbow Sub-18 i Sub-21. Seus: Costa Brava, Caldes de Montbui, Barcelona i Rubí. Creixement de la cantera amb clubs de L\'Arboç i Costa Brava 3D.',
+              doc: 'docs/Ranquing_Lliga_3D_2022-23.pdf' },
+            { any: '2023/24',
+              stats: { participants: 145, categories: 19, tirades: '4 (millors 3)', seus: 4 },
+              resum: '~145 participants en 19 categories. Diversificació geogràfica amb seus tècnicament exigents: Romanyà de la Selva, Caldes de Montbui, Castellnou del Bages i Montcada i Reixac. Incorporació de Sub-15 en múltiples disciplines. Regularitat alta a Arc Compost Sènior masculí.',
+              doc: 'docs/Ranquing_Lliga_3D_2023-24.pdf' },
+            { any: '2024/25',
+              stats: { participants: 148, categories: 19, tirades: '4 (millors 3)', seus: 4 },
+              resum: '~148 participants en 19 categories. Seus concentrats a Montcada i Reixac, Caldes de Montbui i Rubí. Any de consolidació: elevat percentatge d\'arquers que completen el mínim de 3 tirades per classificar-se, indicant un fort compromís de participació.',
+              doc: 'docs/Ranquing_Lliga_3D_2024-25.pdf' },
           ]
         },
         {
           titol: 'Innovació i estat actual (2025–2026)',
           icon: '🚀',
           temporades: [
-            { any: '2025/26 (3D en Línia)', resum: 'Format pilot independent: Lliga 3D en Línia (gener 2026). Èxit immediat atreient competidors individuals en disciplines com Compost Masculí i Tradicional Femení. Va funcionar com a dinamitzador de participació durant els mesos d\'hivern.', doc: 'docs/Ranquing_Lliga_3D_Linia_2025-26.pdf' },
-            { any: '2025/26 (Lliga regular)', resum: 'Densitat de clubs participants en el seu punt màxim històric. Descentralització absoluta amb arquers de clubs del nord, sud i centre (Vallfosca, Rubí, Olivella) completant íntegrament les lligues amb volums molt homogenis.', doc: 'docs/Ranquing_Lliga_3D_2025-26.pdf' },
+            { any: '2025/26 (En Línia)',
+              stats: { participants: 182, categories: 10, tirades: '3 (pilot online)', seus: 1, nota: 'Pilot' },
+              resum: 'Format pilot paral·lel: Lliga 3D en Línia (gener 2026) amb 182 participants en 10 categories (Compost, Arc Nu, Longbow i Tradicional per Home/Dona, més Longbow U15 i Tradicional U15). Participació superior a la lliga regular, confirmant la demanda latent per formats digitals accessibles.',
+              doc: 'docs/Ranquing_Lliga_3D_Linia_2025-26.pdf' },
+            { any: '2025/26 (Regular)',
+              stats: { participants: 131, categories: 20, tirades: '4 (millors 3)', seus: 4 },
+              resum: '131 participants en 20 categories. Seus molt descentralitzats: Pardines (Vallfosca), Arc Zen (Castellnou del Bages), Olivella i de nou Castellnou. Participació homogènia entre clubs del nord, sud i centre de Catalunya. Nova categoria Sub-15 Dona en Longbow.',
+              doc: 'docs/Ranquing_Lliga_3D_2025-26.pdf' },
           ]
         }
       ],
       conclusions: [
-        { titol: 'Especialització de l\'esport de bosc', icon: '🌲', text: 'Al contrari que les lligues de Sala o Aire Lliure, la Lliga de 3D ha desenvolupat una comunitat d\'arquers molt especialitzada. Molts noms de l\'arc compost, tradicional i longbow es repeteixen de manera ininterrompuda al llarg dels 7 anys analitzats, evidenciant un arrelament estructural molt potent de la modalitat.' },
-        { titol: 'Flexibilitat davant adversitats', icon: '🔄', text: 'La Federació ha sabut adaptar els requeriments competitius (de 4 de 5 tirades, a 2 de 3 post-pandèmia, i finalment assentant-se en 3 de 4) per protegir el volum de participants i assegurar que els rànquings finals no quedessin deserts.' },
-        { titol: 'Modernització i nous estímuls', icon: '🚀', text: 'La introducció de la modalitat experimental 3D en Línia el 2025-2026 reflecteix una evolució que no busca només mantenir la participació tradicional en entorns forestals, sinó trobar alternatives més dinàmiques i accessibles per captar nous perfils d\'arquers.' },
+        { titol: 'Comunitat especialitzada i fidel', icon: '🌲', text: 'La Lliga de 3D ha consolidat una comunitat molt especialitzada. La participació regular d\'arquers de múltiples clubs —molts repetint de manera ininterrompuda al llarg de tota la dècada— demostra un arrelament estructural molt potent d\'aquesta modalitat forestal a Catalunya.' },
+        { titol: 'Flexibilitat normativa', icon: '🔄', text: 'La Federació ha adaptat els requeriments competitius de forma intel·ligent: de millors 4 de 5 tirades (pre-pandèmia), a 2 de 3 (2021), i finalment a 3 de 4 des de 2022/23. Cada ajust ha protegit el volum de participants classificats i garantit finals amb plena representació.' },
+        { titol: 'Creixement de categories juvenils', icon: '👶', text: 'A partir de 2022/23 s\'incorporen progressivament Sub-18, Sub-21 i Sub-15 en Longbow, Tradicional i Compost. Aquesta expansió reflecteix una aposta clara per la fidelització de la cantera en l\'arc de bosc com a complement a les disciplines d\'aire lliure i sala.' },
+        { titol: 'Modernització i nous formats', icon: '🚀', text: 'La introducció del pilot "3D en Línia" el 2025/26 representa una doble evolució: manteniment de la participació tradicional en entorns forestals i exploració de formats digitals més accessibles per captar nous perfils d\'arquers i ampliar la temporada competitiva.' },
       ]
     },
   },
@@ -1035,15 +1111,62 @@ function renderDiscEvolucio(d) {
   var ev = d.evolucio;
   var html = '<div class="disc-evol-wrap">';
 
+  if (ev.chart && ev.chart.length) {
+    var maxVal = 0;
+    ev.chart.forEach(function(c) { if (c.val > maxVal) maxVal = c.val; });
+    html += '<div class="disc-evol-chart">'
+      + '<div class="disc-evol-chart-title">📊 Participació per temporada (inscrits aproximats)</div>';
+    ev.chart.forEach(function(c) {
+      var pct = Math.round(c.val / maxVal * 100);
+      var cls = 'disc-evol-bar-fill' + (c.pilot ? ' pilot' : '') + (c.destacat ? ' destacat' : '');
+      var anyLabel = c.any.replace('\n', ' ');
+      html += '<div class="disc-evol-bar-row">'
+        + '<div class="disc-evol-bar-label">' + escHtml(anyLabel) + '</div>'
+        + '<div class="disc-evol-bar-track"><div class="' + cls + '" style="width:' + pct + '%"></div></div>'
+        + '<div class="disc-evol-bar-val">~' + c.val + '<span class="disc-evol-bar-nota">' + escHtml(c.nota) + '</span></div>'
+        + '</div>';
+    });
+    html += '<p class="disc-evol-chart-note">* Dades extretes de les classificacions oficials FCTA. El recompte inclou tots els inscrits amb almenys 1 tirada registrada.</p>'
+      + '</div>';
+  }
+
   ev.seccions.forEach(function(sec) {
     html += '<div class="disc-evol-sec">'
-      + '<h3 class="disc-evol-sec-title">' + sec.icon + ' ' + escHtml(sec.titol) + '</h3>'
-      + '<div class="disc-evol-timeline">';
+      + '<h3 class="disc-evol-sec-title">' + sec.icon + ' ' + escHtml(sec.titol) + '</h3>';
+
+    if (sec.chart && sec.chart.length) {
+      var secMax = 0;
+      sec.chart.forEach(function(c) { if (c.val > secMax) secMax = c.val; });
+      html += '<div class="disc-evol-chart" style="margin-bottom:1.25rem">'
+        + '<div class="disc-evol-chart-title">📊 Participació per temporada</div>';
+      sec.chart.forEach(function(c) {
+        var pct = Math.round(c.val / secMax * 100);
+        var cls = 'disc-evol-bar-fill' + (c.pilot ? ' pilot' : '') + (c.destacat ? ' destacat' : '');
+        html += '<div class="disc-evol-bar-row">'
+          + '<div class="disc-evol-bar-label">' + escHtml(c.any) + '</div>'
+          + '<div class="disc-evol-bar-track"><div class="' + cls + '" style="width:' + pct + '%"></div></div>'
+          + '<div class="disc-evol-bar-val">~' + c.val + '<span class="disc-evol-bar-nota">' + escHtml(c.nota) + '</span></div>'
+          + '</div>';
+      });
+      html += '<p class="disc-evol-chart-note">* Recompte de totes les entrades amb almenys 1 tirada registrada al rànquing oficial.</p>'
+        + '</div>';
+    }
+
+    html += '<div class="disc-evol-timeline">';
     sec.temporades.forEach(function(t) {
       html += '<div class="disc-evol-item">'
         + '<div class="disc-evol-year">' + escHtml(t.any) + '</div>'
-        + '<div class="disc-evol-body">'
-        + '<p class="disc-evol-text">' + escHtml(t.resum) + '</p>';
+        + '<div class="disc-evol-body">';
+      if (t.stats) {
+        html += '<div class="disc-evol-stats">';
+        if (t.stats.participants) html += '<span class="disc-evol-stat">👥 ~' + t.stats.participants + ' participants</span>';
+        if (t.stats.categories)   html += '<span class="disc-evol-stat">📂 ' + t.stats.categories + ' categories</span>';
+        if (t.stats.tirades)      html += '<span class="disc-evol-stat">📅 ' + escHtml(t.stats.tirades) + '</span>';
+        if (t.stats.seus)         html += '<span class="disc-evol-stat">📍 ' + t.stats.seus + ' seus</span>';
+        if (t.stats.nota)         html += '<span class="disc-evol-stat nota">' + escHtml(t.stats.nota) + '</span>';
+        html += '</div>';
+      }
+      html += '<p class="disc-evol-text">' + escHtml(t.resum) + '</p>';
       if (t.doc) {
         html += '<a href="' + escHtml(t.doc) + '" target="_blank" rel="noopener" class="bsm bsm-n" style="margin-top:.4rem">⬇ Classificació ' + escHtml(t.any) + '</a>';
       }

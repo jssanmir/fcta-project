@@ -172,8 +172,26 @@
 .disc-evol-text{margin:0 0 .35rem;font-size:.88rem;color:var(--gray);line-height:1.55}
 .disc-evol-conclusions{margin-top:.5rem}
 .disc-evol-concl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+/* ── Chart de participació ─────────────────────────────── */
+.disc-evol-chart{background:var(--offwhite);border:1px solid var(--lightgray);border-radius:var(--r-lg);padding:1.25rem 1.5rem}
+.disc-evol-chart-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;color:var(--navy);margin:0 0 1rem}
+.disc-evol-bar-row{display:grid;grid-template-columns:80px 1fr auto;gap:.5rem .75rem;align-items:center;margin-bottom:.5rem}
+.disc-evol-bar-label{font-size:.78rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--navy);text-align:right;white-space:nowrap}
+.disc-evol-bar-track{background:var(--lightgray);border-radius:3px;height:16px;overflow:hidden}
+.disc-evol-bar-fill{height:100%;border-radius:3px;background:var(--navy-light)}
+.disc-evol-bar-fill.destacat{background:var(--gold-dark)}
+.disc-evol-bar-fill.pilot{background:var(--red-cat);opacity:.7}
+.disc-evol-bar-val{font-size:.78rem;color:var(--navy);font-weight:700;white-space:nowrap}
+.disc-evol-bar-nota{font-size:.7rem;color:var(--gray);font-weight:400;margin-left:.3rem}
+.disc-evol-chart-note{font-size:.72rem;color:var(--gray);margin:.75rem 0 0;line-height:1.45}
+/* ── Stats per temporada ─────────────────────────────────── */
+.disc-evol-stats{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.5rem}
+.disc-evol-stat{font-size:.72rem;background:var(--lightgray);color:var(--navy);border-radius:20px;padding:.15rem .6rem;white-space:nowrap;line-height:1.6}
+.disc-evol-stat.nota{background:var(--gold);color:var(--navy-dark);font-weight:700}
 @media(max-width:600px){
   .disc-evol-item{grid-template-columns:70px 1fr}
   .disc-evol-year{font-size:.85rem;padding-right:1rem}
   .disc-evol-concl-grid{grid-template-columns:1fr}
+  .disc-evol-bar-row{grid-template-columns:60px 1fr auto}
+  .disc-evol-bar-nota{display:none}
 }
