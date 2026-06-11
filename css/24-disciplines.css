@@ -157,3 +157,23 @@
   .disc-lliga-head{flex-direction:column;align-items:flex-start}
   .med-td-nom{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 }
+
+/* ── Tab Evolució ────────────────────────────────────────── */
+.disc-evol-wrap{display:flex;flex-direction:column;gap:2rem}
+.disc-evol-sec{}
+.disc-evol-sec-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;color:var(--navy);margin:0 0 1rem;padding-bottom:.5rem;border-bottom:2px solid var(--lightgray)}
+.disc-evol-timeline{display:flex;flex-direction:column;gap:0}
+.disc-evol-item{display:grid;grid-template-columns:90px 1fr;gap:0}
+.disc-evol-item:not(:last-child) .disc-evol-body{border-bottom:1px solid var(--lightgray)}
+.disc-evol-year{padding:.9rem .75rem .9rem 0;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;color:var(--navy-light);text-transform:uppercase;position:relative;text-align:right;padding-right:1.25rem}
+.disc-evol-year::after{content:'';position:absolute;right:0;top:1.15rem;width:10px;height:10px;background:var(--navy-light);border-radius:50%;transform:translateX(50%)}
+.disc-evol-item:not(:last-child) .disc-evol-year::before{content:'';position:absolute;right:4px;top:2rem;bottom:0;width:2px;background:var(--lightgray)}
+.disc-evol-body{padding:.9rem 0 .9rem 1.5rem;border-left:2px solid var(--lightgray)}
+.disc-evol-text{margin:0 0 .35rem;font-size:.88rem;color:var(--gray);line-height:1.55}
+.disc-evol-conclusions{margin-top:.5rem}
+.disc-evol-concl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+@media(max-width:600px){
+  .disc-evol-item{grid-template-columns:70px 1fr}
+  .disc-evol-year{font-size:.85rem;padding-right:1rem}
+  .disc-evol-concl-grid{grid-template-columns:1fr}
+}

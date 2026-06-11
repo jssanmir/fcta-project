@@ -108,6 +108,37 @@ var DISC_DATA = {
     ],
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: 'al',
+    evolucio: {
+      seccions: [
+        {
+          titol: 'Lliga Catalana d\'Aire Lliure',
+          icon: '☀️',
+          temporades: [
+            { any: '2025/26', resum: 'Estabilització competitiva molt alta en les categories reines. Al Recorbat Sènior Masculí, la competència sumà una densitat de puntuacions molt ajustada als primers llocs (liderats per Sergi Cebrián, Erfan Ribas i Raül Quiles), demostrant que la lliga atrau tant volum com alt nivell de rendiment consolidat any rere any.', doc: 'docs/Ranquing_Lliga_AL_2025-26.pdf' },
+            { any: '2024/25', resum: 'El format de comptabilitzar les "2 millors de 3 puntuacions" va incentivar que el volum d\'atletes inscrits al rànquing final es mantingués elevat, ja que no calia assistència perfecta. Van créixer les subdivisions d\'edat Sub-18 i Sub-21 en arc recorbat.', doc: 'docs/Ranquing_Lliga_AL_2025.pdf' },
+            { any: '2023/24', resum: 'Consolidació de la descentralització de les tirades amb alta participació repartida entre seus clau com Lleida, Cerdanyola del Vallès i Esclanyà. Repunt notable en les categories d\'Arc Nu (Nu Aleví, Nu Sub-15 i Nu Sènior) impulsat per clubs com Tir Arc Olesa i Club Tir Arc Les Franqueses.', doc: 'docs/Ranquing_Lliga_AL_2024.pdf' },
+            { any: '2022/23', resum: 'Increment significatiu en categories específiques com Recorbat Benjamí (amb noms com Nora Caballero i Glòria Moreton) i en les modalitats Tradicional/Longbow veterans (liderades per arquers recurrents com Miguel Serrahima).', doc: 'docs/Ranquing_Lliga_AL_2023.pdf' },
+            { any: '2021/22', resum: 'Temporada de consolidació de categories base, amb fort presència en categories escolars (Benjamí, Aleví) i veterans. Va servir de base estable per als anys posteriors.', doc: null },
+          ]
+        },
+        {
+          titol: 'Lliga Catalana de Tir en Sala',
+          icon: '🏟️',
+          temporades: [
+            { any: '2025/26', resum: 'Descentralització massiva de la participació cap a clubs fora de Barcelona. Categories minoritàries com el Longbow i l\'Arc Compost +50 van experimentar un creixement sòlid en clubs com Arquers Cambrils, Tir Arc Pardinyes, CA Cerdanyola del Vallès i Tir Arc Manresa.', doc: 'docs/Ranquing_Lliga_Sala_2025-26.pdf' },
+            { any: '2024/25', resum: 'Consolidació total del format de 4 seus regionals fixes (Caldes de Montbui, Constantí, Torrefarrera i Terrassa). Una de les taxes de participació històrica més altes en la categoria Recorbat Sènior Masculí, superant àmpliament la dotzena d\'arquers actius que van completar la totalitat de les rondes.', doc: 'docs/Ranquing_Lliga_Sala_2024-25.pdf' },
+            { any: '2023/24', resum: 'Temporada de referència per a la modalitat de sala, amb rànquing final complet disponible.', doc: 'docs/Ranquing_Lliga_Sala_2023-24.pdf' },
+            { any: '2022/23', resum: 'Ampliació del calendari competitiu a 4 tirades obligatòries. Increment en la diversificació de categories infantils actives en totes les jornades, amb auge en les categories benjamines femenines.', doc: null },
+            { any: '2021/22', resum: 'Format de 3 tirades puntuables. Participació concentrada en clubs de l\'àrea metropolitana (Arc Montjuïc i Talleda principalment).', doc: null },
+          ]
+        }
+      ],
+      conclusions: [
+        { titol: 'Fidelització del competidor', icon: '🏆', text: 'Existeix un nucli dur d\'esportistes d\'alt nivell (com Sergi Cebrián, Raül Quiles o Miguel Serrahima) que apareixen constantment liderant els pòdiums de les dues lligues des de 2022 fins a 2026, denotant una bona estructura de retenció de llicències competitives.' },
+        { titol: 'Creixement en modalitats tradicionals', icon: '🏹', text: 'Mentre l\'arc recorbat olímpic manté xifres massives i estables, les modalitats d\'Arc Nu, Longbow i Tradicional han passat d\'una presència modesta el 2022 a registrar graelles de sortida molt concorregudes als rànquings finals de 2025 i 2026, tant a sala com a l\'aire lliure.' },
+        { titol: 'Èxit de la descentralització', icon: '📍', text: 'La distribució de les jornades oficials per tot el territori català (Lleida, Girona, Tarragona i comarques de Barcelona) ha funcionat com a motor de participació local. Els clubs comarcals han incrementat progressivament el seu volum d\'atletes inscrits en comparació amb els anys inicials, on la concentració a clubs de la capital era superior.' },
+      ]
+    },
   },
 
   '3d': {
@@ -146,6 +177,7 @@ var DISC_DATA = {
     ],
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: '3d',
+    evolucio: null,
   },
 
   camp: {
@@ -182,6 +214,7 @@ var DISC_DATA = {
     ],
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: 'camp',
+    evolucio: null,
   },
 
   kyudo: {
@@ -200,6 +233,7 @@ var DISC_DATA = {
     records: [],
     resultatExtern: '#',
     circularsCategoria: 'kyudo',
+    evolucio: null,
   },
 };
 
@@ -667,11 +701,12 @@ function renderDiscTab(tab) {
   if (!d || !content) return;
 
   switch(tab) {
-    case 'info':    content.innerHTML = renderDiscInfo(d);        break;
-    case 'lliga':   content.innerHTML = renderDiscLliga(d);       break;
-    case 'resultats': content.innerHTML = renderDiscResultats(d); break;
-    case 'records': content.innerHTML = renderDiscRecords(d);     break;
-    case 'docs':    content.innerHTML = renderDiscDocs(d);        break;
+    case 'info':     content.innerHTML = renderDiscInfo(d);        break;
+    case 'lliga':    content.innerHTML = renderDiscLliga(d);       break;
+    case 'resultats':content.innerHTML = renderDiscResultats(d);   break;
+    case 'records':  content.innerHTML = renderDiscRecords(d);     break;
+    case 'docs':     content.innerHTML = renderDiscDocs(d);        break;
+    case 'evolucio': content.innerHTML = renderDiscEvolucio(d);    break;
   }
 }
 
@@ -941,6 +976,52 @@ function renderDiscDocs(d) {
           + '</a>';
       }
     });
+  }
+
+  html += '</div>';
+  return html;
+}
+
+function renderDiscEvolucio(d) {
+  if (!d.evolucio) {
+    return '<div class="disc-empty" style="padding:3rem 1rem;text-align:center">'
+      + '<div style="font-size:2rem;margin-bottom:.75rem">📊</div>'
+      + '<strong>Anàlisi d\'evolució en preparació</strong>'
+      + '<p style="margin:.5rem 0 0;color:var(--gray);font-size:.88rem">Properament publicarem l\'anàlisi històrica d\'aquesta disciplina.</p>'
+      + '</div>';
+  }
+
+  var ev = d.evolucio;
+  var html = '<div class="disc-evol-wrap">';
+
+  ev.seccions.forEach(function(sec) {
+    html += '<div class="disc-evol-sec">'
+      + '<h3 class="disc-evol-sec-title">' + sec.icon + ' ' + escHtml(sec.titol) + '</h3>'
+      + '<div class="disc-evol-timeline">';
+    sec.temporades.forEach(function(t) {
+      html += '<div class="disc-evol-item">'
+        + '<div class="disc-evol-year">' + escHtml(t.any) + '</div>'
+        + '<div class="disc-evol-body">'
+        + '<p class="disc-evol-text">' + escHtml(t.resum) + '</p>';
+      if (t.doc) {
+        html += '<a href="' + escHtml(t.doc) + '" target="_blank" rel="noopener" class="bsm bsm-n" style="margin-top:.4rem">⬇ Classificació ' + escHtml(t.any) + '</a>';
+      }
+      html += '</div></div>';
+    });
+    html += '</div></div>';
+  });
+
+  if (ev.conclusions && ev.conclusions.length) {
+    html += '<div class="disc-evol-conclusions">'
+      + '<h3 class="disc-evol-sec-title">📈 Tendències globals</h3>'
+      + '<div class="disc-evol-concl-grid">';
+    ev.conclusions.forEach(function(c) {
+      html += '<div class="disc-card">'
+        + '<h3>' + c.icon + ' ' + escHtml(c.titol) + '</h3>'
+        + '<p style="font-size:.88rem;color:var(--gray);line-height:1.55">' + escHtml(c.text) + '</p>'
+        + '</div>';
+    });
+    html += '</div></div>';
   }
 
   html += '</div>';
