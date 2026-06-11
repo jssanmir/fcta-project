@@ -35,7 +35,9 @@ var DISC_DATA = {
         ranquingLabel: 'Classificació Final Lliga AL 2025/26',
         historics: [
           { label: 'Classificació Final AL 2025/26', url: 'docs/Ranquing_Lliga_AL_2025-26.pdf' },
-          { label: 'Rànquing Final AL 2024',         url: 'docs/Ranquing_Lliga_AL_2024.pdf' },
+          { label: 'Classificació Final AL 2025',    url: 'docs/Ranquing_Lliga_AL_2025.pdf' },
+          { label: 'Classificació Final AL 2024',    url: 'docs/Ranquing_Lliga_AL_2024.pdf' },
+          { label: 'Classificació Final AL 2023',    url: 'docs/Ranquing_Lliga_AL_2023.pdf' },
         ],
       },
       {
@@ -52,7 +54,9 @@ var DISC_DATA = {
         ranquingLabel: 'Classificació Final Lliga Sala 2025/26',
         historics: [
           { label: 'Classificació Final Sala 2025/26', url: 'docs/Ranquing_Lliga_Sala_2025-26.pdf' },
-          { label: 'Rànquing Final Sala 2023/24',      url: 'docs/Ranquing_Lliga_Sala_2023-24.pdf' },
+          { label: 'Màster Indoor 2025',               url: 'docs/Ranquing_Master_Indoor_2025.pdf' },
+          { label: 'Classificació Final Sala 2024/25', url: 'docs/Ranquing_Lliga_Sala_2024-25.pdf' },
+          { label: 'Classificació Final Sala 2023/24', url: 'docs/Ranquing_Lliga_Sala_2023-24.pdf' },
         ],
       },
     ],
