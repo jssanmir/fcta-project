@@ -192,6 +192,24 @@ circulars: [
   {id:23,type:'form',num:'CIRC-2410',title:'Taller de Comptabilitat per a Clubs',desc:'Gestió econòmica i comptable d\'entitats esportives sense ànim de lucre',day:29,mon:'FEB',year:2024,url:'docs/2024022916412124-CIRC_2410_Taller_formacio_clubs_comptabilitat.pdf'},
   // KYUDO
   {id:24,type:'kyudo',num:'CIRC-2603',title:'Campionat de Catalunya de Kyudo 2026',desc:'Convocatòria i informació del campionat català de kyudo',day:10,mon:'MAR',year:2026,url:'#'},
+  // JUNY 2026
+  {id:40,type:'al',  num:'CIRC-2637',title:'76è Campionat de Catalunya d\'Aire Lliure',desc:'Convocatòria, normes i full d\'inscripció del 76è Campionat de Catalunya d\'Aire Lliure',day:8,mon:'JUN',year:2026,url:'docs/2026060814000183-CIRC_2637_76e_Campionat_Catalunya_Aire_Lliure.pdf'},
+  {id:41,type:'camp',num:'CIRC-2636',title:'Format de Competicions de Camp 2026/2027',desc:'Reglament, categories i format de les competicions de tir de camp per a la temporada 2026/2027',day:8,mon:'JUN',year:2026,url:'docs/2026060812213726-CIRC_2636_Format_competicions_Camp_2026_27.pdf'},
+  {id:42,type:'3d',  num:'CIRC-2635',title:'Format de Competicions 3D 2026/2027',desc:'Reglament, categories i format de les competicions de 3D i bosc per a la temporada 2026/2027',day:8,mon:'JUN',year:2026,url:'docs/2026060812201377-CIRC_2635_Format_competicions_3D_2026_27.pdf'},
+  {id:43,type:'al',  num:'CIRC-2634',title:'Format de Competicions de Sala 2026/2027',desc:'Reglament, categories i format de les competicions de sala (18m i 25m) per a la temporada 2026/2027',day:8,mon:'JUN',year:2026,url:'docs/2026060812193414-CIRC_2634_Format_competicions_Sala_2026_27.pdf'},
+  {id:44,type:'al',  num:'CIRC-2633',title:'Format de Competicions d\'Aire Lliure 2026/2027',desc:'Reglament, categories i format de les competicions d\'aire lliure per a la temporada 2026/2027',day:8,mon:'JUN',year:2026,url:'docs/2026060812190382-CIRC_2633_Format_competicions_Aire_Lliure_2026_27.pdf'},
+  {id:45,type:'fed', num:'CIRC-2632',title:'Calendaris Esportius 2026/2027',desc:'Calendaris esportius de totes les disciplines per a la temporada 2026/2027',day:8,mon:'JUN',year:2026,url:'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf'},
+  {id:46,type:'al',  num:'CIRC-2631',title:'4a Tirada Lliga Catalana d\'Arc Adaptat i Salut',desc:'Informació i inscripcions per a la 4a tirada de la Lliga Catalana d\'Arc Adaptat i Salut',day:4,mon:'JUN',year:2026,url:'docs/2026060416591123-CIRC_2631_4a_tirada_Lliga_Catalana_Arc_Adaptat_Salut.pdf'},
+  // MAIG 2026
+  {id:47,type:'fed', num:'CIRC-2630',title:'Comunicació de Participació – Cts. Espanya CESA i Promeses',desc:'Llista de participants catalans als Campionats d\'Espanya de CESA (Esport Base) i Promeses',day:29,mon:'MAI',year:2026,url:'docs/2026052913472786-CIRC_2630_COMUNICACIO_PARTICIPACIO_CTS-ESPANYA_CESA_I_PROMESES.pdf'},
+  {id:48,type:'3d',  num:'CIRC-2629',title:'Ajut al Campionat d\'Espanya de 3D',desc:'Sol·licitud d\'ajut econòmic de la FCTA per participar al Campionat d\'Espanya de Tir 3D',day:27,mon:'MAI',year:2026,url:'docs/2026052716580429-CIRC_2629_AJUT_CAMPIONAT_ESPANYA_3D.pdf'},
+  {id:49,type:'al',  num:'CIRC-2628',title:'Format de la Lliga Catalana d\'Arc Adaptat',desc:'Reglament i format de la Lliga Catalana d\'Arc Adaptat i Salut',day:26,mon:'MAI',year:2026,url:'docs/202605261057347-CIRC_2628_Format_Lliga_Arc_Adaptat.pdf'},
+  {id:50,type:'3d',  num:'CIRC-2627',title:'Competicions 3D en Línia 2026/2027',desc:'Format, calendari i inscripcions de les competicions de 3D en línia per a la temporada 2026/2027',day:21,mon:'MAI',year:2026,url:'docs/2026052117302440-CIRC_2627_Competicions_3D_Linia_2026_2027.pdf'},
+  {id:51,type:'fed', num:'CIRC-2626',title:'Comunicació de Participació – Campionat d\'Espanya de Veterans',desc:'Llista de participants catalans al Campionat d\'Espanya de Veterans',day:18,mon:'MAI',year:2026,url:'docs/2026051814533985-CIRC_2626_COMUNICACIO_PARTICIPACIO_CT-ESP_VETERANS.pdf'},
+  {id:52,type:'camp',num:'CIRC-2625',title:'Comunicació de Participació – Campionat d\'Espanya de Camp',desc:'Comunicació i llista de participants catalans al Campionat d\'Espanya de Tir de Camp',day:12,mon:'MAI',year:2026,url:'docs/2026051210484667-CIRC_2625_COMUNICACIO_PARTICIPACIO_CT-ESP_CAMP.pdf'},
+  {id:53,type:'fed', num:'CIRC-2624',title:'Ajut al II Gran Premi de Promeses LLNJCM',desc:'Sol·licitud d\'ajut de la FCTA per participar al II Gran Premi de Promeses de la Lliga Nacional de Joves Competidors i Mèrit',day:11,mon:'MAI',year:2026,url:'docs/2026051111225172-CIRC_2624_AJUT_A_II_GRAN_PREMI_PROMESES_LLNJCM.pdf'},
+  // ABRIL 2026
+  {id:54,type:'3d',  num:'CIRC-2623',title:'30è Campionat de Catalunya 3D 2026 – Resultats',desc:'Resultats i classificació final del 30è Campionat de Catalunya de Tir 3D celebrat el 2026',day:28,mon:'ABR',year:2026,url:'docs/2026042812155234-CIRC_2623_30e_Campionat_Catalunya_3D_2026.pdf'},
 ],
 
 // --- COMPETICIONS ---
