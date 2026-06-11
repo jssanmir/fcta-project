@@ -86,6 +86,15 @@ function _navFromHash() {
 
   setS(sec, true);
 
+  // ── Calendari > Temporada ────────────────────────────────
+  if (sec === 'calendari' && sub) {
+    setTimeout(function() {
+      var btn = document.getElementById('calTab' + sub.replace('-',''));
+      if (btn) setCalSeason(sub, btn);
+    }, 50);
+    return;
+  }
+
   // ── Competicions > Medaller ──────────────────────────────
   if (sec === 'competitions' && sub === 'medaller') {
     setTimeout(function() {

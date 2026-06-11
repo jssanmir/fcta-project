@@ -15,6 +15,7 @@ function setCalSeason(season, btn) {
   var tabs = document.querySelectorAll('.cal-stab');
   for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('act');
   if (btn) btn.classList.add('act');
+  try { history.replaceState(null, '', '#calendari/' + season); } catch(e) {}
   var s = CAL_SEASONS[season];
   var lbl = document.getElementById('calSeasonLabel');
   if (lbl) lbl.textContent = s.label;
