@@ -331,7 +331,77 @@ var DISC_DATA = {
     ],
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: 'camp',
-    evolucio: null,
+    evolucio: {
+      chart: [
+        { any: '2019',    val: 89, nota: '5 tirades · 13 categories' },
+        { any: '2020',    val: 90, nota: '2 tirades · COVID', destacat: true },
+        { any: '2021',    val: 62, nota: '3 tirades · COVID recovery' },
+        { any: '2022',    val: 78, nota: '4 tirades · 14 categories' },
+        { any: '2022/23', val: 81, nota: '4 tirades · 22 categories' },
+        { any: '2023/24', val: 51, nota: '4 tirades · millors 3' },
+        { any: '2024/25', val: 66, nota: '4 tirades · millors 3' },
+        { any: '2025/26', val: 58, nota: '3 tirades · millors 2' },
+      ],
+      seccions: [
+        {
+          titol: 'Consolidació pre-pandèmia (2019–2020)',
+          icon: '🏔️',
+          temporades: [
+            { any: '2020',
+              stats: { participants: 90, categories: 10, tirades: '2 (temporada COVID)', seus: 2 },
+              resum: '~90 participants en 2 tirades (la temporada va quedar truncada pel confinament de març 2020 per la pandèmia de COVID-19). Malgrat la irregularitat, la participació inicial va ser elevada, indicant una base sòlida de practicants fidels.' },
+            { any: '2019',
+              stats: { participants: 89, categories: 13, tirades: '5 tirades', seus: 5 },
+              resum: '~89 participants en 13 categories, distribuïts en 5 tirades repartides pel territori (Bages, Reixac, Montcada, Siurana, Montbui). La temporada 2019 representa el màxim de participació en format de 5 tirades, amb diversitat de categories des d\'Instintiu fins a Compost passant per Longbow, Nu i Recorbat.' },
+          ]
+        },
+        {
+          titol: 'Recuperació post-COVID (2021–2022)',
+          icon: '🔄',
+          temporades: [
+            { any: '2022',
+              stats: { participants: 78, categories: 14, tirades: '4 tirades', seus: 4 },
+              resum: '~78 participants en 14 categories amb 4 tirades distribuïdes entre març i juny. La participació recupera terreny respecte la caiguda del 2021, consolidant el retorn de clubs que havien pausat la seva activitat competitiva durant la pandèmia.' },
+            { any: '2021',
+              stats: { participants: 62, categories: 12, tirades: '3 tirades', seus: 3 },
+              resum: '~62 participants en 3 tirades (Castellnou del Bages, Rubí, Caldes de Montbui). Any de represa: la reducció respecte 2019–2020 reflecteix la prudència sanitària i la dificultat de mobilitzar clubs en temporada d\'incertesa. La base fidel de practicants, tanmateix, manté la lliga activa.' },
+          ]
+        },
+        {
+          titol: 'Nova era de temporada (2022/23–2024/25)',
+          icon: '📈',
+          temporades: [
+            { any: '2024/25',
+              stats: { participants: 66, categories: 18, tirades: '4 (millors 3)', seus: 4 },
+              resum: '~66 participants en 18 categories: Longbow, Tradicional, Nu, Compost i Recorbat amb divisions Sub-15, Sènior, +50 per gènere. Les 4 seus (Castellnou del Bages, Romanyà de la Selva, Caldes de Montbui, Mataró) garanteixen cobertura territorial. El criteri "millors 3 de 4" afavoreix la participació de practicants que no poden assistir a totes les tirades.',
+              doc: 'docs/Ranquing_Lliga_Camp_2024-25.pdf' },
+            { any: '2023/24',
+              stats: { participants: 51, categories: 20, tirades: '4 (millors 3)', seus: 4 },
+              resum: '~51 participants en 4 tirades (Montcada i Reixac, Castellnou del Bages, Romanyà de la Selva, Montcada i Reixac). Temporada amb lleuger descens de participació, però ampliació del catàleg de categories fins a ~20, incorporant divisions de Sub-18 i Recorbat Sub-21.',
+              doc: 'docs/Ranquing_Lliga_Camp_2023-24.pdf' },
+            { any: '2022/23',
+              stats: { participants: 81, categories: 22, tirades: '4 (millors 3 de 4)', seus: 4 },
+              resum: '~81 participants en 22 categories: màxim de participació dins el format modern de temporada. La transició al format estacional (novembre a abril) permet una millor integració en el calendari federat. Expansió notable de categories juvenils (Sub-18) i de Recorbat (Sub-21), reflectint creixement de la base de practicants.' },
+          ]
+        },
+        {
+          titol: 'Temporada actual (2025/26)',
+          icon: '🚀',
+          temporades: [
+            { any: '2025/26',
+              stats: { participants: 58, categories: 14, tirades: '3 (millors 2)', seus: 3 },
+              resum: '~58 participants en 3 tirades (Arc Zen Bages, Montcada i Reixac ×2). El format s\'ajusta a "millors 2 de 3", reduint la càrrega de desplaçaments. La participació es manté estable, amb una base sòlida de clubs catalans actius al circuit de camp.',
+              doc: 'docs/Ranquing_Lliga_Camp_2025-26.pdf' },
+          ]
+        }
+      ],
+      conclusions: [
+        { titol: 'Comunitat especialitzada i territorial', icon: '🏔️', text: 'La Lliga de Camp mobilitza una comunitat molt especialitzada que valora la competició en entorns naturals. Les seus diverses —Bages, Montcada, Romanyà, Mataró— demostren una distribució territorial saludable que garanteix accessibilitat als clubs de tot Catalunya.' },
+        { titol: 'Resistència post-pandèmia', icon: '🔄', text: 'Malgrat la caiguda de 2021 (62 participants) fruit de les restriccions COVID, la disciplina va recuperar terreny ràpidament: el 2022/23 va marcar el màxim de l\'era moderna (81 participants, 22 categories), confirmant la resiliència d\'una comunitat molt fidel al format WA Field.' },
+        { titol: 'Expansió de categories juvenils', icon: '👶', text: 'De les 13 categories de 2019 a les 22 del 2022/23, la creació de divisions Sub-18 i Sub-21 reflecteix un esforç conscient per integrar arquers joves al circuit de camp, garantint la renovació generacional d\'una disciplina exigent tècnicament.' },
+        { titol: 'Equilibri entre exigència i accessibilitat', icon: '⚖️', text: 'L\'evolució del criteri de classificació (de 5 tirades a "millors 3 de 4" i ara "millors 2 de 3") reflecteix la voluntat de la FCTA d\'equilibrar l\'exigència competitiva amb l\'accessibilitat: permetre que practicants amb obligacions laborals o familiars puguin participar sense veure\'s exclosos de la classificació final.' },
+      ]
+    },
   },
 
   kyudo: {
