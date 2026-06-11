@@ -177,7 +177,48 @@ var DISC_DATA = {
     ],
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: '3d',
-    evolucio: null,
+    evolucio: {
+      seccions: [
+        {
+          titol: 'Bloc inicial i consolidació pre-pandèmia (2018–2020)',
+          icon: '🌲',
+          temporades: [
+            { any: '2018/19', resum: 'Circuit de 5 competicions puntuables (millors 4). Alta concentració de clubs pioners, especialment el Club de Tir amb Arc Caldes de Montbui, copant pòdiums en categories massives com Arc Compost Sènior.', doc: 'docs/Ranquing_Lliga_3D_2018-19.pdf' },
+            { any: '2019/20', resum: 'Temporada truncada per les restriccions sanitàries. Les llistes provisionals ja mostraven una base competitiva fidel i creixement emergent en divisions tradicionals com el Longbow (Albert Barrull, Xavier Fernández).', doc: 'docs/Ranquing_Lliga_3D_2019-20_prov.pdf' },
+          ]
+        },
+        {
+          titol: 'Recuperació i format reduït (2021–2022)',
+          icon: '🔄',
+          temporades: [
+            { any: '2021', resum: 'Format adaptat de 3 tirades (Caldes de Montbui, Costa Brava, Rupit i Pruit), comptant les 2 millors puntuacions. Resposta molt positiva amb densa participació femenina en Arc Nu Sènior.', doc: 'docs/Ranquing_Lliga_3D_2021.pdf' },
+            { any: '2022', resum: 'Recuperació de l\'estructura de 4 tirades completes. Auge en categories d\'edat avançada: Tradicional Plus 50, amb clubs com Tir Arc Rubí i Club d\'Arquers Catalunya aportant arquers que disputaven la lliga sencera.', doc: 'docs/Ranquing_Lliga_3D_2022.pdf' },
+          ]
+        },
+        {
+          titol: 'Expansió i reajust de categories juvenils (2022–2025)',
+          icon: '📈',
+          temporades: [
+            { any: '2022/23', resum: 'Criteri "millor puntuació en 3 de 4 tirades". Increment orgànic de la cantera amb rankings oberts en categories molt joves com Longbow Sub-18 i Sub-21 masculí (clubs L\'Arboç i Costa Brava 3D).', doc: 'docs/Ranquing_Lliga_3D_2022-23.pdf' },
+            { any: '2023/24', resum: 'Diversificació geogràfica cap a escenaris tècnics com Romanyà de la Selva, Castellnou del Bages i Montcada i Reixac. Participació molt regular a Arc Compost Sènior Masculí, amb promedis superant els 420–450 punts (Javier Menchón i Jordi Soler).', doc: 'docs/Ranquing_Lliga_3D_2023-24.pdf' },
+            { any: '2024/25', resum: 'Hegemonia organitzativa a seus compartides per Montcada, Caldes de Montbui i Rubí. El nombre d\'atletes que completaven el mínim de 3 tirades per a la classificació final va créixer un pas més.', doc: 'docs/Ranquing_Lliga_3D_2024-25.pdf' },
+          ]
+        },
+        {
+          titol: 'Innovació i estat actual (2025–2026)',
+          icon: '🚀',
+          temporades: [
+            { any: '2025/26 (3D en Línia)', resum: 'Format pilot independent: Lliga 3D en Línia (gener 2026). Èxit immediat atreient competidors individuals en disciplines com Compost Masculí i Tradicional Femení. Va funcionar com a dinamitzador de participació durant els mesos d\'hivern.', doc: 'docs/Ranquing_Lliga_3D_Linia_2025-26.pdf' },
+            { any: '2025/26 (Lliga regular)', resum: 'Densitat de clubs participants en el seu punt màxim històric. Descentralització absoluta amb arquers de clubs del nord, sud i centre (Vallfosca, Rubí, Olivella) completant íntegrament les lligues amb volums molt homogenis.', doc: 'docs/Ranquing_Lliga_3D_2025-26.pdf' },
+          ]
+        }
+      ],
+      conclusions: [
+        { titol: 'Especialització de l\'esport de bosc', icon: '🌲', text: 'Al contrari que les lligues de Sala o Aire Lliure, la Lliga de 3D ha desenvolupat una comunitat d\'arquers molt especialitzada. Molts noms de l\'arc compost, tradicional i longbow es repeteixen de manera ininterrompuda al llarg dels 7 anys analitzats, evidenciant un arrelament estructural molt potent de la modalitat.' },
+        { titol: 'Flexibilitat davant adversitats', icon: '🔄', text: 'La Federació ha sabut adaptar els requeriments competitius (de 4 de 5 tirades, a 2 de 3 post-pandèmia, i finalment assentant-se en 3 de 4) per protegir el volum de participants i assegurar que els rànquings finals no quedessin deserts.' },
+        { titol: 'Modernització i nous estímuls', icon: '🚀', text: 'La introducció de la modalitat experimental 3D en Línia el 2025-2026 reflecteix una evolució que no busca només mantenir la participació tradicional en entorns forestals, sinó trobar alternatives més dinàmiques i accessibles per captar nous perfils d\'arquers.' },
+      ]
+    },
   },
 
   camp: {
