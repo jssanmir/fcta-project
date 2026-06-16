@@ -17,6 +17,7 @@ var multer    = require('multer');
 var path      = require('path');
 var fs        = require('fs');
 var crypto    = require('crypto');
+var nodemailer = require('nodemailer');
 
 // ── Configuració ───────────────────────────────────────────
 var PORT        = process.env.PORT       || 3000;
@@ -26,6 +27,7 @@ var IS_PROD     = process.env.NODE_ENV === 'production';
 var DATA_DIR    = path.join(__dirname, 'data');
 var UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
 var DB_PATH     = path.join(DATA_DIR, 'fcta.db');
+var PORTAL_URL  = (process.env.PORTAL_URL || 'http://localhost:3000').replace(/\/$/, '');
 
 // CRÍTIC: en producció, JWT_SECRET és obligatori
 if (IS_PROD && !JWT_SECRET) {
@@ -35,6 +37,92 @@ if (IS_PROD && !JWT_SECRET) {
 if (!JWT_SECRET) {
   JWT_SECRET = 'fcta-dev-INSEGUR-canvia-en-produccio';
   console.warn('AVIS: Usant JWT_SECRET de desenvolupament. Defineix JWT_SECRET al .env!');
+}
+
+// ── Email (nodemailer + Gmail) ─────────────────────────────
+var _mailTransporter = null;
+
+(function initMailer() {
+  var user = process.env.MAIL_USER;
+  var pass = process.env.MAIL_PASS;
+  if (!user || !pass) {
+    console.warn('[FCTA] Email desactivat: defineix MAIL_USER i MAIL_PASS al .env');
+    return;
+  }
+  _mailTransporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: { user: user, pass: pass }
+  });
+  _mailTransporter.verify(function(err) {
+    if (err) {
+      console.warn('[FCTA] Error connectant al servidor de correu:', err.message);
+      _mailTransporter = null;
+    } else {
+      console.log('[FCTA] Servidor de correu connectat: ' + user);
+    }
+  });
+})();
+
+function sendMail(to, subject, html) {
+  if (!_mailTransporter) return Promise.resolve({ skipped: true });
+  var from = process.env.MAIL_FROM || process.env.MAIL_USER;
+  return _mailTransporter.sendMail({ from: '"FCTA Portal" <' + from + '>', to: to, subject: subject, html: html })
+    .catch(function(e) { console.warn('[FCTA] Error enviant email a ' + to + ':', e.message); });
+}
+
+function mailActivacio(to, username, password) {
+  var subject = 'Accés al Portal FCTA – Compte creat';
+  var html = [
+    '<div style="font-family:sans-serif;max-width:520px;margin:0 auto;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden">',
+    '  <div style="background:#0F2447;padding:24px 32px;text-align:center">',
+    '    <h1 style="color:#F5B800;margin:0;font-size:1.4rem;letter-spacing:1px">FEDERACIÓ CATALANA DE TIR AMB ARC</h1>',
+    '  </div>',
+    '  <div style="padding:32px">',
+    '    <h2 style="color:#0F2447;margin-top:0">Benvingut/da al Portal FCTA</h2>',
+    '    <p>S\'ha creat un compte d\'accés per a tu. Utilitza les credencials següents per entrar:</p>',
+    '    <table style="background:#f4f6fa;border-radius:6px;padding:16px 24px;margin:20px 0;width:100%;border-collapse:collapse">',
+    '      <tr><td style="padding:6px 0;color:#5a6475;font-size:.9rem">Usuari:</td><td style="font-weight:700;color:#0F2447">' + username + '</td></tr>',
+    '      <tr><td style="padding:6px 0;color:#5a6475;font-size:.9rem">Contrasenya inicial:</td><td style="font-weight:700;color:#0F2447;letter-spacing:1px">' + password + '</td></tr>',
+    '    </table>',
+    '    <p style="color:#CC0001;font-size:.9rem"><strong>Important:</strong> Hauràs de canviar la contrasenya en el primer accés.</p>',
+    '    <div style="text-align:center;margin:28px 0">',
+    '      <a href="' + PORTAL_URL + '" style="background:#F5B800;color:#0F2447;text-decoration:none;padding:12px 32px;border-radius:6px;font-weight:700;font-size:1rem">Entrar al Portal</a>',
+    '    </div>',
+    '    <p style="font-size:.85rem;color:#5a6475">Si no esperaves aquest missatge, ignora\'l. Per a qualsevol dubte, contacta amb l\'administrador de la federació.</p>',
+    '  </div>',
+    '  <div style="background:#f4f6fa;padding:12px 32px;text-align:center;font-size:.8rem;color:#5a6475">',
+    '    Federació Catalana de Tir amb Arc · Portal oficial',
+    '  </div>',
+    '</div>'
+  ].join('\n');
+  return sendMail(to, subject, html);
+}
+
+function mailResetPassword(to, username, password) {
+  var subject = 'Portal FCTA – Nova contrasenya temporal';
+  var html = [
+    '<div style="font-family:sans-serif;max-width:520px;margin:0 auto;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden">',
+    '  <div style="background:#0F2447;padding:24px 32px;text-align:center">',
+    '    <h1 style="color:#F5B800;margin:0;font-size:1.4rem;letter-spacing:1px">FEDERACIÓ CATALANA DE TIR AMB ARC</h1>',
+    '  </div>',
+    '  <div style="padding:32px">',
+    '    <h2 style="color:#0F2447;margin-top:0">Restabliment de contrasenya</h2>',
+    '    <p>L\'administrador ha restablert la teva contrasenya. Utilitza les dades següents per tornar a entrar:</p>',
+    '    <table style="background:#f4f6fa;border-radius:6px;padding:16px 24px;margin:20px 0;width:100%;border-collapse:collapse">',
+    '      <tr><td style="padding:6px 0;color:#5a6475;font-size:.9rem">Usuari:</td><td style="font-weight:700;color:#0F2447">' + username + '</td></tr>',
+    '      <tr><td style="padding:6px 0;color:#5a6475;font-size:.9rem">Contrasenya temporal:</td><td style="font-weight:700;color:#0F2447;letter-spacing:1px">' + password + '</td></tr>',
+    '    </table>',
+    '    <p style="color:#CC0001;font-size:.9rem"><strong>Important:</strong> Hauràs de canviar la contrasenya en el proper accés.</p>',
+    '    <div style="text-align:center;margin:28px 0">',
+    '      <a href="' + PORTAL_URL + '" style="background:#F5B800;color:#0F2447;text-decoration:none;padding:12px 32px;border-radius:6px;font-weight:700;font-size:1rem">Entrar al Portal</a>',
+    '    </div>',
+    '  </div>',
+    '  <div style="background:#f4f6fa;padding:12px 32px;text-align:center;font-size:.8rem;color:#5a6475">',
+    '    Federació Catalana de Tir amb Arc · Portal oficial',
+    '  </div>',
+    '</div>'
+  ].join('\n');
+  return sendMail(to, subject, html);
 }
 
 // ── Assegura que existeixen els directoris ─────────────────
@@ -615,7 +703,9 @@ app.post('/api/users', verifyToken, requireRole('superadmin'), function (req, re
   ).run(username, hash, nom, email, role);
 
   audit(req.user.sub, 'USER_CREATE', username + ' (' + role + ')');
-  res.json({ ok: true, id: info.lastInsertRowid });
+  // Envia email d'activació si l'usuari té email
+  if (email) mailActivacio(email, username, password);
+  res.json({ ok: true, id: info.lastInsertRowid, mailSent: !!(email && _mailTransporter) });
 });
 
 app.patch('/api/users/:id', verifyToken, requireRole('superadmin'), function (req, res) {
@@ -664,7 +754,9 @@ app.post('/api/users/:id/reset-password', verifyToken, requireRole('superadmin')
   db.prepare('UPDATE users SET password_hash=?, must_change_pass=1 WHERE id=?')
     .run(bcrypt.hashSync(password, 12), id);
   audit(req.user.sub, 'USER_RESET_PASS', user.username);
-  res.json({ ok: true });
+  // Envia email de reset si l'usuari té email
+  if (user.email) mailResetPassword(user.email, user.username, password);
+  res.json({ ok: true, mailSent: !!(user.email && _mailTransporter) });
 });
 
 // ── API: Registre d'auditoria ──────────────────────────────

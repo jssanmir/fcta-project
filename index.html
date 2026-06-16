@@ -3006,7 +3006,7 @@
     <div class="login-error" id="loginError">Usuari o contrasenya incorrectes.</div>
     <button class="login-cancel" onclick="cancelLogin()">Cancel&middot;lar</button>
   </div>
-  <!-- TOTP step (step 2) -->
+  <!-- Pas 2: TOTP -->
   <div class="login-box" id="totpStep" style="display:none">
     <div class="login-logo">
       <div class="ll-icon">&#128272;</div>
@@ -3019,8 +3019,34 @@
         inputmode="numeric" pattern="[0-9]*"
         onkeydown="if(event.key==='Enter')doTotp()" style="letter-spacing:.25em;font-size:1.4rem;text-align:center">
     </div>
-    <button class="login-submit" onclick="doTotp()">Verificar</button>
-    <div class="login-error" id="totpError">Codi incorrecte. Torna-ho a intentar.</div>
+    <button class="login-submit" id="totpSubmitBtn" onclick="doTotp()">Verificar</button>
+    <div class="login-error" id="totpError"></div>
+    <button class="login-cancel" onclick="cancelLogin()">Cancel&middot;lar</button>
+  </div>
+  <!-- Pas 3: Canvi obligatori de contrasenya -->
+  <div class="login-box" id="changePassStep" style="display:none">
+    <div class="login-logo">
+      <div class="ll-icon">&#128274;</div>
+      <h2>Canvi de contrasenya</h2>
+      <p>Has de canviar la teva contrasenya inicial abans de continuar</p>
+    </div>
+    <div class="login-field">
+      <label>Contrasenya actual</label>
+      <input type="password" id="cpCurrentPass" placeholder="Contrasenya actual"
+        onkeydown="if(event.key==='Enter')doChangePass()">
+    </div>
+    <div class="login-field">
+      <label>Nova contrasenya <small style="color:var(--gray)">(m&iacute;n. 10 car. · maj+min+n&uacute;m)</small></label>
+      <input type="password" id="cpNewPass" placeholder="Nova contrasenya"
+        onkeydown="if(event.key==='Enter')doChangePass()">
+    </div>
+    <div class="login-field">
+      <label>Confirma la nova contrasenya</label>
+      <input type="password" id="cpConfirmPass" placeholder="Repeteix la nova contrasenya"
+        onkeydown="if(event.key==='Enter')doChangePass()">
+    </div>
+    <button class="login-submit" id="cpSubmitBtn" onclick="doChangePass()">Canviar contrasenya</button>
+    <div class="login-error" id="changePassError"></div>
     <button class="login-cancel" onclick="cancelLogin()">Cancel&middot;lar</button>
   </div>
 </div>
