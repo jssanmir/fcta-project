@@ -91,6 +91,15 @@ db.exec([
   ');'
 ].join('\n'));
 
+// ── Migracions de columnes (idempotent) ───────────────────
+[
+  'ALTER TABLE users ADD COLUMN email            TEXT',
+  'ALTER TABLE users ADD COLUMN actiu            INTEGER NOT NULL DEFAULT 1',
+  'ALTER TABLE users ADD COLUMN totp_secret      TEXT',
+  'ALTER TABLE users ADD COLUMN totp_enabled     INTEGER NOT NULL DEFAULT 0',
+  'ALTER TABLE users ADD COLUMN must_change_pass INTEGER NOT NULL DEFAULT 0',
+].forEach(function(sql){ try{ db.exec(sql); }catch(e){} });
+
 // ── Seed d'usuaris inicials ────────────────────────────────
 var countRow = db.prepare('SELECT COUNT(*) AS n FROM users').get();
 if (countRow.n === 0) {
@@ -155,6 +164,40 @@ if (countRow.n === 0) {
     console.warn('[FCTA] No s\'ha pogut crear el backup:', e.message);
   }
 })();
+
+// ── TOTP helpers (RFC 6238 · SHA-1 · 30s · 6 dígits) ──────
+function base32Decode(s) {
+  var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  var bits = 0, value = 0, output = [];
+  s = s.toUpperCase().replace(/=+$/, '').replace(/\s/g, '');
+  for (var i = 0; i < s.length; i++) {
+    var idx = alphabet.indexOf(s[i]);
+    if (idx === -1) continue;
+    value = (value << 5) | idx;
+    bits += 5;
+    if (bits >= 8) { output.push((value >>> (bits - 8)) & 255); bits -= 8; }
+  }
+  return Buffer.from(output);
+}
+
+function totpCode(secret, offsetSteps) {
+  var key  = base32Decode(secret);
+  var time = Math.floor(Date.now() / 1000 / 30) + (offsetSteps || 0);
+  var msg  = Buffer.alloc(8);
+  msg.writeUInt32BE(Math.floor(time / 0x100000000), 0);
+  msg.writeUInt32BE(time >>> 0, 4);
+  var hmac   = crypto.createHmac('sha1', key).update(msg).digest();
+  var offset = hmac[19] & 0xf;
+  var code   = ((hmac[offset] & 0x7f) << 24) | (hmac[offset+1] << 16) |
+               (hmac[offset+2] << 8)  | hmac[offset+3];
+  return String(code % 1000000).padStart(6, '0');
+}
+
+function totpVerify(secret, token) {
+  if (!secret || !token) return false;
+  var t = token.replace(/\s/g, '');
+  return totpCode(secret, -1) === t || totpCode(secret, 0) === t || totpCode(secret, 1) === t;
+}
 
 // ── Audit helper ───────────────────────────────────────────
 function audit(username, action, detail) {
@@ -304,8 +347,9 @@ app.use('/uploads', express.static(UPLOADS_DIR, { dotfiles: 'deny' }));
 
 // ── API: Login ─────────────────────────────────────────────
 app.post('/api/login', function (req, res) {
-  var username = String(req.body.username || '').trim().substring(0, 50);
-  var password = String(req.body.password || '').substring(0, 200);
+  var username  = String(req.body.username  || '').trim().substring(0, 50);
+  var password  = String(req.body.password  || '').substring(0, 200);
+  var totpCode  = String(req.body.totpCode  || '').replace(/\s/g, '').substring(0, 6);
 
   if (!username || !password) {
     return res.status(400).json({ error: 'Usuari i contrasenya obligatoris' });
@@ -313,24 +357,46 @@ app.post('/api/login', function (req, res) {
 
   var user = db.prepare('SELECT * FROM users WHERE username = ?').get(username);
 
-  // Temps constant independentment de si l'usuari existeix (evita timing attack)
   var dummyHash = '$2a$12$invaliddummyhashfortimingatk00';
-  var hash = user ? user.password_hash : dummyHash;
+  var hash  = user ? user.password_hash : dummyHash;
   var valid = bcrypt.compareSync(password, hash) && !!user;
 
   if (!valid) {
     audit(username, 'LOGIN_FAIL', req.ip);
     return setTimeout(function () {
       res.status(401).json({ error: 'Usuari o contrasenya incorrectes' });
-    }, 500 + Math.random() * 500); // retard aleatori 500-1000ms
+    }, 500 + Math.random() * 500);
+  }
+
+  if (user.actiu === 0) {
+    audit(username, 'LOGIN_BLOCKED', req.ip);
+    return setTimeout(function () {
+      res.status(401).json({ error: 'Compte desactivat. Contacta amb l\'administrador.' });
+    }, 500);
+  }
+
+  // Si l'usuari té 2FA actiu i no s'ha proporcionat codi → pas MFA
+  if (user.totp_enabled && !totpCode) {
+    return res.json({ mfaRequired: true });
+  }
+
+  // Si s'ha proporcionat codi TOTP → verificar
+  if (user.totp_enabled && totpCode) {
+    if (!totpVerify(user.totp_secret, totpCode)) {
+      audit(username, 'TOTP_FAIL', req.ip);
+      return setTimeout(function () {
+        res.status(401).json({ error: 'Codi 2FA incorrecte.' });
+      }, 500);
+    }
+    audit(username, 'TOTP_OK', req.ip);
   }
 
   audit(username, 'LOGIN_OK', req.ip);
   var token = signToken(user);
   res.json({
-    token: token,
-    nom:   user.nom,
-    role:  user.role,
+    token:              token,
+    nom:                user.nom,
+    role:               user.role,
     mustChangePassword: user.must_change_pass === 1
   });
 });
@@ -517,6 +583,107 @@ app.post('/api/backups', verifyToken, requireRole('superadmin'), function (req, 
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
+});
+
+// ── API: Gestió d'usuaris ──────────────────────────────────
+app.get('/api/users', verifyToken, requireRole('superadmin'), function (req, res) {
+  var users = db.prepare(
+    'SELECT id, username, nom, email, role, actiu, totp_enabled, must_change_pass FROM users ORDER BY id'
+  ).all();
+  res.json(users);
+});
+
+app.post('/api/users', verifyToken, requireRole('superadmin'), function (req, res) {
+  var username = String(req.body.username || '').trim().substring(0, 50);
+  var password = String(req.body.password || '').substring(0, 200);
+  var nom      = String(req.body.nom      || '').trim().substring(0, 100);
+  var email    = String(req.body.email    || '').trim().substring(0, 150);
+  var role     = ['superadmin','editor'].includes(req.body.role) ? req.body.role : 'editor';
+
+  if (!username || !password || !nom) {
+    return res.status(400).json({ error: 'Usuari, contrasenya i nom són obligatoris' });
+  }
+  if (password.length < 8) {
+    return res.status(400).json({ error: 'La contrasenya ha de tenir almenys 8 caràcters' });
+  }
+  var exists = db.prepare('SELECT id FROM users WHERE username = ?').get(username);
+  if (exists) return res.status(409).json({ error: 'Ja existeix un usuari amb aquest nom d\'usuari' });
+
+  var hash = bcrypt.hashSync(password, 12);
+  var info = db.prepare(
+    'INSERT INTO users (username, password_hash, nom, email, role, actiu, must_change_pass) VALUES (?,?,?,?,?,1,1)'
+  ).run(username, hash, nom, email, role);
+
+  audit(req.user.sub, 'USER_CREATE', username + ' (' + role + ')');
+  res.json({ ok: true, id: info.lastInsertRowid });
+});
+
+app.patch('/api/users/:id', verifyToken, requireRole('superadmin'), function (req, res) {
+  var id   = parseInt(req.params.id, 10);
+  var user = db.prepare('SELECT * FROM users WHERE id = ?').get(id);
+  if (!user) return res.status(404).json({ error: 'Usuari no trobat' });
+
+  if (typeof req.body.actiu !== 'undefined') {
+    var actiu = req.body.actiu ? 1 : 0;
+    db.prepare('UPDATE users SET actiu=? WHERE id=?').run(actiu, id);
+    audit(req.user.sub, actiu ? 'USER_ENABLE' : 'USER_DISABLE', user.username);
+  }
+  if (req.body.role && ['superadmin','editor'].includes(req.body.role)) {
+    db.prepare('UPDATE users SET role=? WHERE id=?').run(req.body.role, id);
+    audit(req.user.sub, 'USER_ROLE', user.username + ' → ' + req.body.role);
+  }
+  if (req.body.totp_secret !== undefined) {
+    var secret  = req.body.totp_secret  || null;
+    var enabled = req.body.totp_enabled ? 1 : 0;
+    db.prepare('UPDATE users SET totp_secret=?, totp_enabled=? WHERE id=?').run(secret, enabled, id);
+    audit(req.user.sub, enabled ? 'TOTP_ENABLE' : 'TOTP_RESET', user.username);
+  }
+  res.json({ ok: true });
+});
+
+app.delete('/api/users/:id', verifyToken, requireRole('superadmin'), function (req, res) {
+  var id   = parseInt(req.params.id, 10);
+  var user = db.prepare('SELECT * FROM users WHERE id = ?').get(id);
+  if (!user) return res.status(404).json({ error: 'Usuari no trobat' });
+  // Impedeix eliminar l'últim superadmin
+  var superCount = db.prepare("SELECT COUNT(*) AS n FROM users WHERE role='superadmin'").get().n;
+  if (user.role === 'superadmin' && superCount <= 1) {
+    return res.status(400).json({ error: 'No es pot eliminar l\'únic superadmin' });
+  }
+  db.prepare('DELETE FROM users WHERE id=?').run(id);
+  audit(req.user.sub, 'USER_DELETE', user.username);
+  res.json({ ok: true });
+});
+
+app.post('/api/users/:id/reset-password', verifyToken, requireRole('superadmin'), function (req, res) {
+  var id       = parseInt(req.params.id, 10);
+  var user     = db.prepare('SELECT * FROM users WHERE id = ?').get(id);
+  if (!user) return res.status(404).json({ error: 'Usuari no trobat' });
+  var password = String(req.body.password || '').substring(0, 200);
+  if (password.length < 8) return res.status(400).json({ error: 'Mínim 8 caràcters' });
+  db.prepare('UPDATE users SET password_hash=?, must_change_pass=1 WHERE id=?')
+    .run(bcrypt.hashSync(password, 12), id);
+  audit(req.user.sub, 'USER_RESET_PASS', user.username);
+  res.json({ ok: true });
+});
+
+// ── API: Registre d'auditoria ──────────────────────────────
+app.get('/api/audit', verifyToken, requireRole('superadmin'), function (req, res) {
+  var limit  = Math.min(parseInt(req.query.limit  || 100, 10), 500);
+  var offset = parseInt(req.query.offset || 0, 10);
+  var rows   = db.prepare(
+    'SELECT id, ts, username, action, detail FROM audit_log ORDER BY id DESC LIMIT ? OFFSET ?'
+  ).all(limit, offset);
+  var total  = db.prepare('SELECT COUNT(*) AS n FROM audit_log').get().n;
+  res.json({ rows: rows, total: total });
+});
+
+app.post('/api/audit', verifyToken, function (req, res) {
+  var action = String(req.body.action || '').trim().substring(0, 80);
+  var detail = String(req.body.detail || '').trim().substring(0, 200) || null;
+  if (!action) return res.status(400).json({ error: 'action requerit' });
+  audit(req.user.sub, action, detail);
+  res.json({ ok: true });
 });
 
 // ── API: Salut (sense info de versió) ─────────────────────
