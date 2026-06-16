@@ -496,6 +496,12 @@ app.get('/api/data', function (req, res) {
   res.json(JSON.parse(row.data));
 });
 
+// ── API: Timestamp de les dades (per a polling de sincronització) ──
+app.get('/api/data/ts', function (req, res) {
+  var row = db.prepare('SELECT updated_at FROM portal_state WHERE id = 1').get();
+  res.json({ updated_at: row ? row.updated_at : null });
+});
+
 // ── API: Desar dades (requereix JWT) ──────────────────────
 app.post('/api/data', verifyToken, function (req, res) {
   var data = req.body;

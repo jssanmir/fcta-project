@@ -157,4 +157,42 @@
   }
 
   dbLoad();
+
+  // ── Polling de sincronització ─────────────────────────────
+  // Cada 60 s comprova si les dades del servidor han canviat.
+  // Si updated_at és diferent del que tenim, carrega i re-renderitza.
+  var _lastUpdatedAt = null;
+  var POLL_INTERVAL  = 60 * 1000; // 60 segons
+
+  function pollSync() {
+    fetch(API_BASE + '/api/data/ts')
+      .then(function(res) { return res.json(); })
+      .then(function(d) {
+        if (!d || !d.updated_at) return;
+        if (_lastUpdatedAt === null) {
+          // Primera crida: guarda el timestamp actual sense recarregar
+          _lastUpdatedAt = d.updated_at;
+          return;
+        }
+        if (d.updated_at !== _lastUpdatedAt) {
+          // Les dades han canviat: carrega-les i re-renderitza
+          _lastUpdatedAt = d.updated_at;
+          fetch(API_BASE + '/api/data')
+            .then(function(res) { return res.json(); })
+            .then(function(saved) {
+              if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
+                applySnapshot(saved);
+                rerender();
+                if (typeof toast === 'function') toast('Dades actualitzades', '🔄');
+              }
+            })
+            .catch(function(){});
+        }
+      })
+      .catch(function(){});
+  }
+
+  // Primera crida als 5 s (per registrar el timestamp inicial un cop carregades les dades)
+  setTimeout(pollSync, 5000);
+  setInterval(pollSync, POLL_INTERVAL);
 })();
