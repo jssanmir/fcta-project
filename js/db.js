@@ -358,7 +358,12 @@ documents: [
 ],
 
 // --- TIRADES SOCIALS (poblades via DB.tirades, veure abaix) ---
-rounds: []
+rounds: [],
+
+// --- USUARIS DEL SISTEMA ---
+users: [
+  { id: 1, nom: 'Admin FCTA', email: 'admin@fcta.cat', rol: 'admin', actiu: true, totpSecret: null, totpEnabled: false, createdAt: '2024-01-01' }
+]
 };
 
 // ============================================================

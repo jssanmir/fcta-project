@@ -2386,7 +2386,6 @@
       <button class="disc-tab"     data-tab="resultats" onclick="setDiscTab('resultats',this)">📊 Resultats</button>
       <button class="disc-tab"     data-tab="records"   onclick="setDiscTab('records',this)">🏆 Rècords</button>
       <button class="disc-tab"     data-tab="docs"      onclick="setDiscTab('docs',this)">📄 Documents</button>
-      <button class="disc-tab"     data-tab="evolucio"  onclick="setDiscTab('evolucio',this)">📈 Evolució</button>
     </div>
   </div>
 
@@ -2989,7 +2988,7 @@
 
 <!-- LOGIN MODAL -->
 <div id="loginOverlay" style="display:none" class="login-overlay">
-  <div class="login-box">
+  <div class="login-box" id="loginStep1">
     <div class="login-logo">
       <div class="ll-icon">&#9881;&#65039;</div>
       <h2>Accés Administració</h2>
@@ -3005,6 +3004,23 @@
     </div>
     <button class="login-submit" onclick="doLogin()">Entrar</button>
     <div class="login-error" id="loginError">Usuari o contrasenya incorrectes.</div>
+    <button class="login-cancel" onclick="cancelLogin()">Cancel&middot;lar</button>
+  </div>
+  <!-- TOTP step (step 2) -->
+  <div class="login-box" id="totpStep" style="display:none">
+    <div class="login-logo">
+      <div class="ll-icon">&#128272;</div>
+      <h2>Verificaci&oacute; en dos passos</h2>
+      <p>Introdueix el codi de 6 d&iacute;gits de Google Authenticator</p>
+    </div>
+    <div class="login-field">
+      <label>Codi TOTP</label>
+      <input type="text" id="totpCode" placeholder="000000" maxlength="6" autocomplete="one-time-code"
+        inputmode="numeric" pattern="[0-9]*"
+        onkeydown="if(event.key==='Enter')doTotp()" style="letter-spacing:.25em;font-size:1.4rem;text-align:center">
+    </div>
+    <button class="login-submit" onclick="doTotp()">Verificar</button>
+    <div class="login-error" id="totpError">Codi incorrecte. Torna-ho a intentar.</div>
     <button class="login-cancel" onclick="cancelLogin()">Cancel&middot;lar</button>
   </div>
 </div>
@@ -3035,6 +3051,7 @@
         <button class="adm-tab" onclick="setATab('docs',this)">&#128194; Documents</button>
         <button class="adm-tab" onclick="setATab('gen',this)">&#9997;&#65039; Generador</button>
         <button class="adm-tab" onclick="setATab('backup',this)">&#128190; Backup</button>
+        <button class="adm-tab" onclick="setATab('usuaris',this)">&#128100; Usuaris</button>
       </nav>
       <div class="adm-body" id="admBody"></div>
     </div>
@@ -3054,6 +3071,8 @@
 <div id="toast" class="toast" style="display:none"><span id="tIcon">✅</span>&nbsp;<span id="tMsg"></span></div>
 
 <!-- JS Modules (load order matters) -->
+  <script src="https://cdn.jsdelivr.net/npm/otpauth@9.3.6/dist/otpauth.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script src="js/config.js"></script>
   <script src="js/db.js"></script>
   <script src="js/persist.js"></script>

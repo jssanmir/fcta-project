@@ -151,6 +151,7 @@ function renderATab(tab){
   else if(tab==='docs')    renderAdmDocs(b);
   else if(tab==='gen')     renderAdmGenerator(b);
   else if(tab==='backup')  renderAdmBackup(b);
+  else if(tab==='usuaris') renderAdmUsuaris(b);
 }
 
 // ── CIRCULARS CRUD ─────────────────────────────────────────
@@ -1529,3 +1530,183 @@ function renderAdmBackup(b) {
 // Legacy shims (kept for compatibility)
 function addCirc(){ crudAddCirc(); }
 function addNews(){ crudAddNews(); }
+
+// ── USUARIS CRUD ───────────────────────────────────────────
+function renderAdmUsuaris(b){
+  var roles=[{val:'admin',lbl:'Admin'},{val:'secretari',lbl:'Secretari/ària'}];
+  var rolesOpts=roles.map(function(r){ return '<option value="'+r.val+'">'+r.lbl+'</option>'; }).join('');
+
+  var rows=DB.users.map(function(u){
+    var rolBadge=u.rol==='admin'
+      ? '<span style="background:#1B3A6B;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">Admin</span>'
+      : '<span style="background:#5d4037;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">Secretari/ària</span>';
+    var statusBadge=u.actiu
+      ? '<span style="color:#059669;font-weight:600">● Actiu</span>'
+      : '<span style="color:#dc2626;font-weight:600">● Inactiu</span>';
+    var totpBadge=u.totpEnabled
+      ? '<span style="background:#059669;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">2FA ✓</span>'
+      : '<span style="background:#6b7280;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">Sense 2FA</span>';
+    var totpBtn=u.totpEnabled
+      ? '<button class="a-sub" style="background:#dc2626;font-size:.78rem;padding:4px 10px" onclick="admResetTotp('+u.id+')">&#128274; Revocar 2FA</button>'
+      : '<button class="a-sub" style="background:#059669;font-size:.78rem;padding:4px 10px" onclick="admShowTotpSetup('+u.id+')">&#128272; Configurar 2FA</button>';
+    return '<tr>'
+      +'<td style="font-weight:600">'+escHtml(u.nom)+'</td>'
+      +'<td style="color:var(--gray);font-size:.85rem">'+escHtml(u.email)+'</td>'
+      +'<td>'+rolBadge+'</td>'
+      +'<td>'+statusBadge+'</td>'
+      +'<td>'+totpBadge+'</td>'
+      +'<td style="display:flex;gap:.4rem;flex-wrap:wrap;align-items:center">'
+        +totpBtn
+        +'<button class="a-sub" style="background:'+(u.actiu?'#b45309':'#059669')+';font-size:.78rem;padding:4px 10px" onclick="admToggleUser('+u.id+')">'+(u.actiu?'Desactivar':'Activar')+'</button>'
+        +(u.id!==1?'<button class="a-sub a-del" style="font-size:.78rem;padding:4px 10px" onclick="admDelUser('+u.id+')">&#128465;</button>':'')
+      +'</td>'
+      +'</tr>';
+  }).join('');
+
+  b.innerHTML=
+    '<div class="crud-form">'
+    +'<div class="crud-form-title">&#10010; Nou Usuari</div>'
+    +'<div class="af-row">'
+    +mkField('Nom complet *','au_nom','text','','Anna García')
+    +mkField('Correu electrònic *','au_email','email','','anna@fcta.cat')
+    +'</div>'
+    +'<div class="af-row">'
+    +mkField('Rol *','au_rol','select','admin','',roles)
+    +'</div>'
+    +'<button class="a-sub success" onclick="admAddUser()">&#10010; Crear usuari</button>'
+    +'</div>'
+    +'<div class="adm-st">Usuaris del sistema <span class="crud-count-badge">'+DB.users.length+'</span></div>'
+    +'<div style="overflow-x:auto">'
+    +'<table style="width:100%;border-collapse:collapse;font-size:.88rem">'
+    +'<thead><tr style="background:var(--offwhite);text-align:left">'
+    +'<th style="padding:8px 12px">Nom</th><th style="padding:8px 12px">Email</th>'
+    +'<th style="padding:8px 12px">Rol</th><th style="padding:8px 12px">Estat</th>'
+    +'<th style="padding:8px 12px">2FA</th><th style="padding:8px 12px">Accions</th>'
+    +'</tr></thead>'
+    +'<tbody id="usersTableBody">'+rows+'</tbody>'
+    +'</table>'
+    +'</div>'
+    +'<div id="totpSetupPanel" style="display:none"></div>';
+}
+
+function admAddUser(){
+  var nom=fv('au_nom'), email=fv('au_email'), rol=fv('au_rol');
+  if(!nom||!email){ toast('Nom i email són obligatoris','⚠️'); return; }
+  if(DB.users.filter(function(u){ return u.email===email; }).length){
+    toast('Ja existeix un usuari amb aquest email','⚠️'); return;
+  }
+  DB.users.push({ id: Date.now(), nom:nom, email:email, rol:rol, actiu:true, totpSecret:null, totpEnabled:false, createdAt: new Date().toISOString().slice(0,10) });
+  toast('Usuari creat. Configura el 2FA per activar l\'accés.','👤');
+  renderATab('usuaris');
+}
+
+function admDelUser(id){
+  var u=DB.users.filter(function(x){ return x.id===id; })[0];
+  if(!u) return;
+  confirmDel(u.nom, function(){
+    DB.users=DB.users.filter(function(x){ return x.id!==id; });
+    toast('Usuari eliminat','🗑️');
+    renderATab('usuaris');
+  });
+}
+
+function admToggleUser(id){
+  var u=DB.users.filter(function(x){ return x.id===id; })[0];
+  if(!u) return;
+  u.actiu=!u.actiu;
+  toast(u.nom+' '+(u.actiu?'activat':'desactivat'),'👤');
+  renderATab('usuaris');
+}
+
+function admResetTotp(id){
+  var u=DB.users.filter(function(x){ return x.id===id; })[0];
+  if(!u) return;
+  if(!confirm('Revocar el 2FA de "'+u.nom+'"?\nHaurà de tornar a configurar Google Authenticator.')) return;
+  u.totpSecret=null; u.totpEnabled=false;
+  toast('2FA revocat per a '+u.nom,'🔓');
+  renderATab('usuaris');
+}
+
+function admShowTotpSetup(id){
+  var u=DB.users.filter(function(x){ return x.id===id; })[0];
+  if(!u){ toast('Usuari no trobat','⚠️'); return; }
+
+  // Genera secret TOTP nou
+  var secret=new OTPAuth.Secret({ size: 20 });
+  u.totpSecret=secret.base32;
+
+  var totp=new OTPAuth.TOTP({
+    issuer: 'FCTA Admin',
+    label: u.email,
+    algorithm: 'SHA1',
+    digits: 6,
+    period: 30,
+    secret: secret
+  });
+  var uri=totp.toString();
+
+  var panel=document.getElementById('totpSetupPanel');
+  if(!panel) return;
+  panel.style.display='';
+  panel.innerHTML=
+    '<div class="crud-form" style="margin-top:1.5rem;border:2px solid var(--navy-light)">'
+    +'<div class="crud-form-title">&#128272; Configurar 2FA per a '+escHtml(u.nom)+'</div>'
+    +'<div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start">'
+    +'<div>'
+    +'<p style="font-size:.88rem;color:var(--gray);margin:0 0 .75rem">1. Obre <strong>Google Authenticator</strong> i escaneja el codi QR:</p>'
+    +'<div id="totpQr" style="background:#fff;padding:10px;display:inline-block;border-radius:8px"></div>'
+    +'</div>'
+    +'<div style="flex:1;min-width:220px">'
+    +'<p style="font-size:.88rem;color:var(--gray);margin:0 0 .5rem">2. O introdueix manualment el secret:</p>'
+    +'<code style="background:var(--offwhite);padding:6px 10px;border-radius:6px;font-size:.82rem;word-break:break-all;display:block;margin-bottom:1rem">'+escHtml(u.totpSecret)+'</code>'
+    +'<p style="font-size:.88rem;color:var(--gray);margin:0 0 .5rem">3. Introdueix el codi generat per verificar:</p>'
+    +'<input type="text" id="totpVerifyCode" placeholder="000000" maxlength="6" inputmode="numeric"'
+    +' style="width:140px;font-size:1.3rem;letter-spacing:.2em;text-align:center;padding:8px;border:2px solid var(--navy-light);border-radius:8px"'
+    +' onkeydown="if(event.key===\'Enter\')admVerifyTotp('+id+')">'
+    +'<div style="margin-top:.75rem;display:flex;gap:.5rem">'
+    +'<button class="a-sub success" onclick="admVerifyTotp('+id+')">&#10003; Verificar i activar</button>'
+    +'<button class="a-sub a-del" onclick="admCancelTotpSetup('+id+')">Cancel·lar</button>'
+    +'</div>'
+    +'<div id="totpVerifyErr" style="display:none;color:#dc2626;font-size:.85rem;margin-top:.5rem">Codi incorrecte.</div>'
+    +'</div>'
+    +'</div>'
+    +'</div>';
+
+  // Scroll al panel
+  panel.scrollIntoView({ behavior:'smooth', block:'nearest' });
+
+  // Renderitza QR
+  try{
+    var qrEl=document.getElementById('totpQr');
+    qrEl.innerHTML='';
+    new QRCode(qrEl,{ text:uri, width:160, height:160, correctLevel:QRCode.CorrectLevel.M });
+  } catch(ex){ document.getElementById('totpQr').textContent='Error generant QR'; }
+}
+
+function admVerifyTotp(id){
+  var u=DB.users.filter(function(x){ return x.id===id; })[0];
+  if(!u||!u.totpSecret) return;
+  var code=(document.getElementById('totpVerifyCode')||{}).value||'';
+  var errEl=document.getElementById('totpVerifyErr');
+  var valid=false;
+  try{
+    var totp=new OTPAuth.TOTP({ secret: OTPAuth.Secret.fromBase32(u.totpSecret), digits:6, period:30 });
+    valid=(totp.validate({ token: code.replace(/\s/g,''), window:1 }) !== null);
+  } catch(ex){ valid=false; }
+
+  if(valid){
+    u.totpEnabled=true;
+    toast('2FA activat per a '+u.nom+' ✓','🔐');
+    renderATab('usuaris');
+  } else {
+    errEl.style.display='block';
+    document.getElementById('totpVerifyCode').value='';
+    document.getElementById('totpVerifyCode').focus();
+  }
+}
+
+function admCancelTotpSetup(id){
+  var u=DB.users.filter(function(x){ return x.id===id; })[0];
+  if(u){ u.totpSecret=null; u.totpEnabled=false; }
+  renderATab('usuaris');
+}
