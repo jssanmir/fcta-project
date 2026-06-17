@@ -82,7 +82,27 @@
       "Bash(NODE_ENV=production JWT_SECRET=test node server.js)",
       "Bash(cat nixpacks.toml)",
       "Bash(cat Procfile)",
-      "Bash(npm ls *)"
+      "Bash(npm ls *)",
+      "Bash(git commit *)",
+      "Bash(git stash *)",
+      "Bash(git merge *)",
+      "PowerShell(Get-ChildItem C:\\\\Projects\\\\fcta-project -Recurse -File | Where-Object { $_.Name -match \"estadis|result|ranquing\" } | Select-Object FullName)",
+      "PowerShell($content = Get-Content \"C:\\\\Projects\\\\fcta-project\\\\data\\\\competition_stats_full.json\" -Raw; Write-Host \"File size: $\\($content.Length\\) chars\"; $json = $content | ConvertFrom-Json; Write-Host \"Total competitions: $\\($json.Count\\)\")",
+      "Bash(git -C C:\\\\Projects\\\\fcta-project status --short)",
+      "Bash(git -C C:\\\\Projects\\\\fcta-project add css/24-disciplines.css index.html js/config.js js/disciplines.js)",
+      "Bash(git -C C:Projectsfcta-project commit -m ' *)",
+      "Bash(git reset *)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jcsanchez\\\\Downloads\" | Where-Object { $_.Name -match \"2022053|2021070|202002171054|2022122|2022011|2020021\" } | Select-Object Name)",
+      "Bash(cd \"C:\\\\Users\\\\jcsanchez\\\\Downloads\" && python3 -c \" *)",
+      "Bash(pip install *)",
+      "Bash(dir \"C:\\\\Users\\\\jcsanchez\\\\Downloads\" /b)",
+      "Bash(findstr /i \"lliga\\\\|classificaci\\\\|ranquing\\\\|sala\\\\|aire\")",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\jcsanchez\\\\Downloads\" -Filter \"*.pdf\")",
+      "Bash(Select-Object Name)",
+      "Bash(Sort-Object Name)",
+      "Bash(python -c \"import pdfplumber; print\\('pdfplumber available'\\)\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jcsanchez\\\\Downloads\" | Select-Object Name | Where-Object {$_.Name -match \"AL|Sala|aire|lliure|sala\"})",
+      "PowerShell(head -20)"
     ]
   }
 }
