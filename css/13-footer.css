@@ -16,5 +16,5 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:3.5rem 0 1
 .soc-icon{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.82rem;text-decoration:none;transition:all .2s;font-weight:700}
 .soc-icon:hover{background:var(--gold);color:var(--navy-dark)}
 .foot-bottom-right{display:flex;align-items:center;gap:.75rem}
-.foot-admin-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:600;padding:.35rem .8rem;border-radius:var(--r-sm);cursor:pointer;transition:all .2s}
-.foot-admin-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
+.foot-admin-btn{background:var(--gold);border:none;color:var(--navy-dark);font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:700;padding:.4rem 1rem;border-radius:var(--r-sm);cursor:pointer;transition:all .2s}
+.foot-admin-btn:hover{background:white;color:var(--navy-dark)}
