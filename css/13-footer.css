@@ -16,5 +16,6 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:3.5rem 0 1
 .soc-icon{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.82rem;text-decoration:none;transition:all .2s;font-weight:700}
 .soc-icon:hover{background:var(--gold);color:var(--navy-dark)}
 .foot-bottom-right{display:flex;align-items:center;gap:.75rem}
-.foot-admin-btn{background:var(--gold);border:none;color:var(--navy-dark);font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:700;padding:.4rem 1rem;border-radius:var(--r-sm);cursor:pointer;transition:all .2s}
-.foot-admin-btn:hover{background:white;color:var(--navy-dark)}
+.foot-admin-btn{display:none}
+.admin-float-btn{position:fixed;bottom:1.25rem;right:1.25rem;z-index:999;background:var(--navy-dark);border:2px solid var(--gold);color:var(--gold);font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:700;padding:.45rem .9rem;border-radius:var(--r-md);cursor:pointer;box-shadow:var(--shadow-md);transition:all .2s;opacity:.7}
+.admin-float-btn:hover{opacity:1;background:var(--gold);color:var(--navy-dark)}
