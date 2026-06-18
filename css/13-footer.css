@@ -16,6 +16,3 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:3.5rem 0 1
 .soc-icon{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.82rem;text-decoration:none;transition:all .2s;font-weight:700}
 .soc-icon:hover{background:var(--gold);color:var(--navy-dark)}
 .foot-bottom-right{display:flex;align-items:center;gap:.75rem}
-.foot-admin-btn{display:none}
-.admin-float-btn{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;background:var(--gold);border:none;color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:.5px;padding:.6rem 1.2rem;border-radius:var(--r-md);cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.4);transition:all .2s}
-.admin-float-btn:hover{background:white;color:var(--navy-dark);box-shadow:0 6px 20px rgba(0,0,0,.5)}
