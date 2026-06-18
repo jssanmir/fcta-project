@@ -5,14 +5,13 @@
 var DISC_DATA = {
 
   al: {
-    nom: 'Aire Lliure i Sala',
-    subtitol: 'Comitè Català d\'Aire Lliure i Sala',
+    nom: 'Aire Lliure',
+    subtitol: 'Comitè Català d\'Aire Lliure',
     icon: '🎯',
     color: '#1a6fb5',
-    descripcio: 'El tir d\'aire lliure i sala són les dues cares d\'una mateixa disciplina que s\'organitza en dues temporades complementàries. A l\'aire lliure (primavera-estiu) es dispara a dianes exteriors; a sala (tardor-hivern), en pavelló cobert. És la disciplina olímpica del tir amb arc i la més practicada a Catalunya.\n\nLa distància i la mida de diana depenen de l\'estil de l\'arc i de la categoria d\'edat. El recorbat sènior tira a 70 m amb una diana de 122 cm; el compost sènior, a 50 m amb diana de 80 cm retallada; categories menors i estils de bosc tiren a distàncies reduïdes. A sala, tothom tira a 18 m, però les dianes varien: 40 cm per a recorbat i compost, 60 cm per a la resta. La competició consta d\'una fase de classificació (Round 720: 72 fletxes en dues rondes) seguida d\'eliminatòries individuals i per equips.',
+    descripcio: 'El tir d\'aire lliure és la disciplina olímpica del tir amb arc i la més practicada a Catalunya. Es disputa a la primavera i estiu en instal·lacions exteriors, des de distàncies de 18 m fins a 70 m depenent de l\'estil i la categoria.\n\nEl recorbat sènior tira a 70 m amb una diana de 122 cm; el compost sènior, a 50 m amb diana de 80 cm retallada; categories menors i estils de bosc tiren a distàncies reduïdes. La competició consta d\'una fase de classificació (Round 720: 72 fletxes en dues rondes) seguida d\'eliminatòries individuals i per equips.',
     normativa: [
       { label: 'Format Competicions Aire Lliure 2026/27', url: 'docs/2026060812190382-CIRC_2633_Format_competicions_Aire_Lliure_2026_27.pdf' },
-      { label: 'Format Competicions Sala 2026/27',        url: 'docs/2026060812193414-CIRC_2634_Format_competicions_Sala_2026_27.pdf' },
     ],
     categories: ['Benjamí (U10)', 'Aleví (U12)', 'Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+', '60+'],
     estils: ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
@@ -35,29 +34,9 @@ var DISC_DATA = {
           { label: 'Classificació Final AL 2023',    url: 'docs/Ranquing_Lliga_AL_2023.pdf' },
         ],
       },
-      {
-        nom: 'Lliga Catalana de Sala 2025/2026',
-        tipus: 'sala',
-        temporada: '2025–26',
-        tirades: [
-          { num: '1ª', data: '18 gen 2026', lloc: 'Sant Celoni',            status: 'closed', circ: '#' },
-          { num: '2ª', data: 'feb 2026',    lloc: 'Manresa / Torrefarrera', status: 'closed', circ: '#' },
-          { num: '3ª', data: 'mar 2026',    lloc: 'Constantí / Manresa',    status: 'closed', circ: '#' },
-          { num: '4ª', data: 'abr 2026',    lloc: 'Constantí',              status: 'closed', circ: '#' },
-        ],
-        ranquingUrl: 'docs/Ranquing_Lliga_Sala_2025-26.pdf',
-        ranquingLabel: 'Classificació Final Lliga Sala 2025/26',
-        historics: [
-          { label: 'Classificació Final Sala 2025/26', url: 'docs/Ranquing_Lliga_Sala_2025-26.pdf' },
-          { label: 'Màster Indoor 2025',               url: 'docs/Ranquing_Master_Indoor_2025.pdf' },
-          { label: 'Classificació Final Sala 2024/25', url: 'docs/Ranquing_Lliga_Sala_2024-25.pdf' },
-          { label: 'Classificació Final Sala 2023/24', url: 'docs/Ranquing_Lliga_Sala_2023-24.pdf' },
-        ],
-      },
     ],
     campionats: [
       { nom: '73è Campionat de Catalunya Aire Lliure', data: 'jul 2026', lloc: 'Pendent de confirmar', status: 'soon' },
-      { nom: '58è Campionat de Catalunya de Sala',     data: '31 gen 2026', lloc: 'Manresa / Constantí', status: 'closed', resultatUrl: 'https://www.ianseo.net/Details.php?toId=26399' },
       { nom: 'Campionat de Catalunya Universitari',    data: '28 mar 2026', lloc: 'Tarragona',           status: 'closed', resultatUrl: 'https://www.ianseo.net/Details.php?toId=27386' },
     ],
     records: [
@@ -81,30 +60,71 @@ var DISC_DATA = {
       { disc:'Aire Lliure', estil:'Compost',  cat:'Sub-18 Home',  marca:'623 pts', atleta:'Santiago López Padilla',     any:'2014' },
       { disc:'Aire Lliure', estil:'Compost',  cat:'+50 Home',     marca:'673 pts', atleta:'Rafael Lijarcio Vergara',    any:'2013' },
       { disc:'Aire Lliure', estil:'Compost',  cat:'+50 Dona',     marca:'676 pts', atleta:'Elena García Muñoz',         any:'2012' },
+    ],
+    resultatExtern: 'https://ianseo.net',
+    circularsCategoria: 'al',
+  },
+
+  sala: {
+    nom: 'Sala',
+    subtitol: 'Comitè Català de Sala',
+    icon: '🏛️',
+    color: '#5c35a0',
+    descripcio: 'El tir de sala és la temporada interior del tir amb arc (tardor-hivern), que es disputa en pavelló cobert a 18 metres de distància. És la disciplina amb el calendari més intens: lliga catalana, campionats autonòmics, estatals i internacionals es concentren entre octubre i abril.\n\nTothom tira a 18 m, però les dianes varien: 40 cm per a arc recorbat i compost, i 60 cm per a arc nu, longbow i tradicional. La competició consta d\'una fase de classificació (60 fletxes) seguida d\'eliminatòries individuals i per equips en format set system.',
+    normativa: [
+      { label: 'Format Competicions Sala 2026/27', url: 'docs/2026060812193414-CIRC_2634_Format_competicions_Sala_2026_27.pdf' },
+    ],
+    categories: ['Benjamí (U10)', 'Aleví (U12)', 'Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+', '60+'],
+    estils: ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
+    lligues: [
+      {
+        nom: 'Lliga Catalana de Sala 2025/2026',
+        tipus: 'sala',
+        temporada: '2025–26',
+        tirades: [
+          { num: '1ª', data: '18 gen 2026', lloc: 'Sant Celoni',            status: 'closed', circ: '#' },
+          { num: '2ª', data: 'feb 2026',    lloc: 'Manresa / Torrefarrera', status: 'closed', circ: '#' },
+          { num: '3ª', data: 'mar 2026',    lloc: 'Constantí / Manresa',    status: 'closed', circ: '#' },
+          { num: '4ª', data: 'abr 2026',    lloc: 'Constantí',              status: 'closed', circ: '#' },
+        ],
+        ranquingUrl: 'docs/Ranquing_Lliga_Sala_2025-26.pdf',
+        ranquingLabel: 'Classificació Final Lliga Sala 2025/26',
+        historics: [
+          { label: 'Classificació Final Sala 2025/26', url: 'docs/Ranquing_Lliga_Sala_2025-26.pdf' },
+          { label: 'Màster Indoor 2025',               url: 'docs/Ranquing_Master_Indoor_2025.pdf' },
+          { label: 'Classificació Final Sala 2024/25', url: 'docs/Ranquing_Lliga_Sala_2024-25.pdf' },
+          { label: 'Classificació Final Sala 2023/24', url: 'docs/Ranquing_Lliga_Sala_2023-24.pdf' },
+        ],
+      },
+    ],
+    campionats: [
+      { nom: '58è Campionat de Catalunya de Sala', data: '31 gen 2026', lloc: 'Manresa / Constantí', status: 'closed', resultatUrl: 'https://www.ianseo.net/Details.php?toId=26399' },
+    ],
+    records: [
       // SALA – Arc Recorbat (18m · 60 fletxes) · Act. juny 2026
-      { disc:'Sala',        estil:'Recorbat', cat:'Sènior Dona',  marca:'585 pts', atleta:'Elia Canales Martin',        any:'2022' },
-      { disc:'Sala',        estil:'Recorbat', cat:'Sènior Home',  marca:'589 pts', atleta:'Arnau Peña Cervelló',        any:'2019' },
-      { disc:'Sala',        estil:'Recorbat', cat:'Sub-21 Dona',  marca:'583 pts', atleta:'Elia Canales Martin',        any:'2019' },
-      { disc:'Sala',        estil:'Recorbat', cat:'Sub-21 Home',  marca:'582 pts', atleta:'Arnau Peña Cervelló',        any:'2017' },
-      { disc:'Sala',        estil:'Recorbat', cat:'Sub-18 Dona',  marca:'580 pts', atleta:'Lucía Ramos Valiente',       any:'2022' },
-      { disc:'Sala',        estil:'Recorbat', cat:'Sub-18 Home',  marca:'569 pts', atleta:'Álvaro Salmerón',            any:'2009' },
-      { disc:'Sala',        estil:'Recorbat', cat:'+50 Home',     marca:'562 pts', atleta:'Luis Miguel Ramos Calleja',  any:'2019' },
-      { disc:'Sala',        estil:'Recorbat', cat:'+50 Dona',     marca:'511 pts', atleta:'Begoña Pérez Gómez',        any:'2026' },
+      { disc:'Sala', estil:'Recorbat', cat:'Sènior Dona',  marca:'585 pts', atleta:'Elia Canales Martin',        any:'2022' },
+      { disc:'Sala', estil:'Recorbat', cat:'Sènior Home',  marca:'589 pts', atleta:'Arnau Peña Cervelló',        any:'2019' },
+      { disc:'Sala', estil:'Recorbat', cat:'Sub-21 Dona',  marca:'583 pts', atleta:'Elia Canales Martin',        any:'2019' },
+      { disc:'Sala', estil:'Recorbat', cat:'Sub-21 Home',  marca:'582 pts', atleta:'Arnau Peña Cervelló',        any:'2017' },
+      { disc:'Sala', estil:'Recorbat', cat:'Sub-18 Dona',  marca:'580 pts', atleta:'Lucía Ramos Valiente',       any:'2022' },
+      { disc:'Sala', estil:'Recorbat', cat:'Sub-18 Home',  marca:'569 pts', atleta:'Álvaro Salmerón',            any:'2009' },
+      { disc:'Sala', estil:'Recorbat', cat:'+50 Home',     marca:'562 pts', atleta:'Luis Miguel Ramos Calleja',  any:'2019' },
+      { disc:'Sala', estil:'Recorbat', cat:'+50 Dona',     marca:'511 pts', atleta:'Begoña Pérez Gómez',         any:'2026' },
       // SALA – Arc Compost (18m · 60 fletxes) · Act. juny 2026
-      { disc:'Sala',        estil:'Compost',  cat:'Sènior Dona',  marca:'580 pts', atleta:'Maria Pitarch Laguna',       any:'2024' },
-      { disc:'Sala',        estil:'Compost',  cat:'Sènior Home',  marca:'590 pts', atleta:'César Gómez',                any:'2008' },
-      { disc:'Sala',        estil:'Compost',  cat:'Sub-21 Dona',  marca:'558 pts', atleta:'Núria Sinfreu Abad',         any:'2025' },
-      { disc:'Sala',        estil:'Compost',  cat:'Sub-21 Home',  marca:'574 pts', atleta:'Edgar Brocal',               any:'2010' },
-      { disc:'Sala',        estil:'Compost',  cat:'Sub-18 Dona',  marca:'544 pts', atleta:'Núria Sinfreu Abad',         any:'2021' },
-      { disc:'Sala',        estil:'Compost',  cat:'Sub-18 Home',  marca:'572 pts', atleta:'Santiago López Padilla',     any:'2014' },
-      { disc:'Sala',        estil:'Compost',  cat:'+50 Dona',     marca:'567 pts', atleta:'Ester Semis Astier',         any:'2023' },
-      { disc:'Sala',        estil:'Compost',  cat:'+50 Home',     marca:'582 pts', atleta:'Basili García',              any:'2017' },
+      { disc:'Sala', estil:'Compost',  cat:'Sènior Dona',  marca:'580 pts', atleta:'Maria Pitarch Laguna',       any:'2024' },
+      { disc:'Sala', estil:'Compost',  cat:'Sènior Home',  marca:'590 pts', atleta:'César Gómez',                any:'2008' },
+      { disc:'Sala', estil:'Compost',  cat:'Sub-21 Dona',  marca:'558 pts', atleta:'Núria Sinfreu Abad',         any:'2025' },
+      { disc:'Sala', estil:'Compost',  cat:'Sub-21 Home',  marca:'574 pts', atleta:'Edgar Brocal',               any:'2010' },
+      { disc:'Sala', estil:'Compost',  cat:'Sub-18 Dona',  marca:'544 pts', atleta:'Núria Sinfreu Abad',         any:'2021' },
+      { disc:'Sala', estil:'Compost',  cat:'Sub-18 Home',  marca:'572 pts', atleta:'Santiago López Padilla',     any:'2014' },
+      { disc:'Sala', estil:'Compost',  cat:'+50 Dona',     marca:'567 pts', atleta:'Ester Semis Astier',         any:'2023' },
+      { disc:'Sala', estil:'Compost',  cat:'+50 Home',     marca:'582 pts', atleta:'Basili García',              any:'2017' },
       // SALA – Arc Nu · Act. juny 2026
-      { disc:'Sala',        estil:'Arc Nu',   cat:'Sènior Dona',  marca:'528 pts', atleta:'Carme Sanchez Amado',        any:'2023' },
-      { disc:'Sala',        estil:'Arc Nu',   cat:'Sènior Home',  marca:'552 pts', atleta:'David García Fernández',     any:'2021' },
+      { disc:'Sala', estil:'Arc Nu',   cat:'Sènior Dona',  marca:'528 pts', atleta:'Carme Sanchez Amado',        any:'2023' },
+      { disc:'Sala', estil:'Arc Nu',   cat:'Sènior Home',  marca:'552 pts', atleta:'David García Fernández',     any:'2021' },
       // SALA – Tradicional · Act. juny 2026
-      { disc:'Sala',        estil:'Tradicional', cat:'Sènior Dona', marca:'563 pts', atleta:'Ana Lorente Molero',       any:'2025' },
-      { disc:'Sala',        estil:'Tradicional', cat:'Sènior Home', marca:'586 pts', atleta:'Juanjo Querol Guardiola',  any:'2021' },
+      { disc:'Sala', estil:'Tradicional', cat:'Sènior Dona', marca:'563 pts', atleta:'Ana Lorente Molero',       any:'2025' },
+      { disc:'Sala', estil:'Tradicional', cat:'Sènior Home', marca:'586 pts', atleta:'Juanjo Querol Guardiola',  any:'2021' },
     ],
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: 'al',
@@ -182,6 +202,53 @@ var DISC_DATA = {
     ],
     resultatExtern: 'https://ianseo.net',
     circularsCategoria: 'camp',
+  },
+
+  run: {
+    nom: 'Run Archery',
+    subtitol: 'Comitè Català de Run Archery',
+    icon: '🏃',
+    color: '#e65100',
+    descripcio: 'El Run Archery combina la carrera a peu amb el tir amb arc en un format de competició dinàmic i espectacular. Els participants altern en trams de carrera amb estacions de tir on han d\'encertar dianes, penalitzant els impactes fallits amb metres addicionals de carrera.\n\nEl circuit pot ser de tipus sprint (300–500 m amb 4 dianes) o de persecució. S\'utilitzen arcs recurved o compost, i les dianes es troben a distàncies variables. La disciplina combina resistència física, control de la pulsació i precisió de tir, sent una de les modalitats de més ràpid creixement a nivell europeu.',
+    normativa: [],
+    categories: ['Sub-18', 'Sub-21', 'Adult', '50+'],
+    estils: ['Arc Recorbat', 'Arc Compost'],
+    lligues: [],
+    campionats: [],
+    records: [],
+    resultatExtern: '#',
+    circularsCategoria: 'al',
+  },
+
+  aa: {
+    nom: 'Arc Adaptat',
+    subtitol: 'Comitè Català d\'Arc Adaptat',
+    icon: '♿',
+    color: '#00838f',
+    descripcio: 'L\'arc adaptat (tir amb arc paralímpic) és la modalitat inclusiva del tir amb arc, reconeguda per World Archery i present als Jocs Paralímpics des de 1960. A Catalunya hi ha clubs actius i una lliga catalana que es consolida any rere any.\n\nLes categories paralímpiques principals són: W1 (cadira de rodes amb afectació als membres superiors), W2 (cadira de rodes sense restriccions en els membres superiors), i VISRR / VISST per a esportistes amb discapacitat visual. Competeixen en arc recorbat i compost, disparant a 70 m (exterior) o 18 m (sala).',
+    normativa: [],
+    categories: ['W1', 'W2', 'VISRR', 'VISST', 'Open'],
+    estils: ['Arc Recorbat', 'Arc Compost'],
+    lligues: [
+      {
+        nom: 'Lliga Catalana Arc Adaptat 2025/2026',
+        tipus: 'al',
+        temporada: '2025–26',
+        tirades: [
+          { num: '1ª', data: 'nov 2025', lloc: 'Olesa de Montserrat', status: 'closed', circ: '#' },
+          { num: '2ª', data: 'feb 2026', lloc: 'Pendent',             status: 'closed', circ: '#' },
+          { num: '3ª', data: 'abr 2026', lloc: 'Olesa de Montserrat', status: 'closed', circ: '#' },
+          { num: 'Final', data: 'jun 2026', lloc: 'Arc Vng',          status: 'closed', circ: '#' },
+        ],
+        ranquingUrl: '#',
+        ranquingLabel: 'Classificació Final 2025/26',
+        historics: [],
+      },
+    ],
+    campionats: [],
+    records: [],
+    resultatExtern: '#',
+    circularsCategoria: 'al',
   },
 
   kyudo: {
@@ -633,7 +700,7 @@ function renderDisciplina() {
   tabs.forEach(function(t) { t.classList.remove('act'); });
   var recordsTab = document.querySelector('#discTabs [data-tab="records"]');
   if (recordsTab) {
-    var hideRecords = (_discActiva === '3d' || _discActiva === 'camp');
+    var hideRecords = (_discActiva === '3d' || _discActiva === 'camp' || _discActiva === 'run' || _discActiva === 'aa');
     recordsTab.style.display = hideRecords ? 'none' : '';
     if (hideRecords && _discTab === 'records') _discTab = 'info';
   }

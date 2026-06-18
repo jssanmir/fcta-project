@@ -42,9 +42,12 @@ var FCTA = {
 
   // ── Discipline keys (used in DISC_DATA and DB.documents) ─────
   disc: {
-    AL:      'al',      // Aire Lliure i Sala
+    AL:      'al',      // Aire Lliure
+    SALA:    'sala',    // Sala
     CAMP:    'camp',    // Tir de Camp
     D3:      '3d',      // 3D i Tir de Bosc
+    RUN:     'run',     // Run Archery
+    AA:      'aa',      // Arc Adaptat
     KYUDO:   'kyudo',   // Kyudo
     GENERAL: 'general', // Cross-discipline documents
   },
