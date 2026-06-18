@@ -31,7 +31,8 @@ var _SEO_TITLES = {
   pat:           'PAT – Programa Autonòmic de Tecnificació | FCTA',
   calendari:     'Calendari Esportiu | FCTA',
   medaller:      'Medaller | FCTA',
-  records:       'Rècords de Catalunya | FCTA'
+  records:       'Rècords de Catalunya | FCTA',
+  regimdisciplinari: 'Règim Disciplinari | FCTA'
 };
 
 function setS(sec, _noHash) {

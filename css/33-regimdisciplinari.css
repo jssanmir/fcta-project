@@ -1,0 +1,140 @@
+/* 33-regimdisciplinari.css – Règim disciplinari FCTA */
+
+.rd-article {
+  background: #fff;
+  border: 1px solid var(--lightgray);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6) var(--sp-6);
+  margin-bottom: var(--sp-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.rd-art-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--navy-dark);
+  border-left: 4px solid var(--navy-light);
+  padding-left: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  line-height: 1.2;
+}
+
+/* ── Graella greus / lleus ──────────────────────────────── */
+.rd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+.rd-block {
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+  border: 1.5px solid transparent;
+}
+
+.rd-block--greu {
+  background: #fff5f5;
+  border-color: #fca5a5;
+}
+
+.rd-block--lleu {
+  background: #fff9ed;
+  border-color: #fcd34d;
+}
+
+.rd-block-head {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  margin-bottom: var(--sp-3);
+  color: var(--navy-dark);
+}
+
+/* ── Llistes ─────────────────────────────────────────────── */
+.rd-list {
+  margin: var(--sp-3) 0 0 0;
+  padding-left: var(--sp-5);
+  color: var(--navy-dark);
+  font-size: .92rem;
+  line-height: 1.6;
+}
+
+.rd-list li { margin-bottom: var(--sp-2); }
+
+.rd-list--plain {
+  padding-left: 0;
+  list-style: none;
+}
+
+.rd-list--plain li {
+  padding: var(--sp-2) var(--sp-3);
+  border-left: 3px solid var(--lightgray);
+  margin-bottom: var(--sp-2);
+}
+
+.rd-list--ol {
+  list-style: decimal;
+}
+
+/* ── Prescripció ─────────────────────────────────────────── */
+.rd-prescription {
+  display: flex;
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.rd-presc-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  background: #fff;
+  border: 1px solid var(--lightgray);
+  border-radius: var(--r-lg);
+  padding: var(--sp-3) var(--sp-5);
+  flex: 1;
+  min-width: 180px;
+}
+
+.rd-presc-icon { font-size: 1.6rem; }
+
+.rd-presc-item strong {
+  display: block;
+  font-size: .9rem;
+  color: var(--navy-dark);
+}
+
+.rd-presc-time {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--navy);
+  display: block;
+  line-height: 1.1;
+}
+
+/* ── Peu ─────────────────────────────────────────────────── */
+.rd-footer {
+  margin-top: var(--sp-6);
+  padding: var(--sp-5);
+  background: var(--offwhite);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--lightgray);
+  text-align: center;
+  font-size: .88rem;
+  color: var(--gray);
+}
+
+.rd-footer p { margin-bottom: var(--sp-3); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .rd-grid { grid-template-columns: 1fr; }
+  .rd-article { padding: var(--sp-4); }
+  .rd-prescription { flex-direction: column; }
+}

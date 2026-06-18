@@ -82,6 +82,7 @@
   <link rel="stylesheet" href="css/31-comp-stats.css">
   <link rel="stylesheet" href="css/31-calendari.css">
   <link rel="stylesheet" href="css/31-records.css">
+  <link rel="stylesheet" href="css/33-regimdisciplinari.css">
   <link rel="stylesheet" href="css/32-nav-hub.css">
 </head>
 <body>
@@ -225,6 +226,7 @@
           <button class="hub-card" onclick="setS('transparencia')"><span class="hub-card-icon">📊</span><span class="hub-card-text"><span class="hub-card-name">Transparència</span><span class="hub-card-sub">Govern i comptes</span></span></button>
           <button class="hub-card" onclick="setS('juntadirectiva')"><span class="hub-card-icon">👥</span><span class="hub-card-text"><span class="hub-card-name">Junta Directiva</span><span class="hub-card-sub">Qui som</span></span></button>
           <button class="hub-card" onclick="setS('pat')"><span class="hub-card-icon">🥇</span><span class="hub-card-text"><span class="hub-card-name">PAT</span><span class="hub-card-sub">Programa de Tecnificació</span></span></button>
+          <button class="hub-card" onclick="setS('regimdisciplinari')"><span class="hub-card-icon">⚖️</span><span class="hub-card-text"><span class="hub-card-name">R&egrave;gim Disciplinari</span><span class="hub-card-sub">Infraccions i sancions</span></span></button>
         </div>
       </div>
 
@@ -2516,6 +2518,127 @@
 </div>
 
 <!-- REGLAMENTS -->
+<!-- RÈGIM DISCIPLINARI -->
+<div id="sRegimdisciplinari" style="display:none">
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+<div class="lic-hero" style="background:linear-gradient(135deg,var(--navy-dark) 0%,#1a3a7a 60%,#2a5298 100%)">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="lic-hero-badge">&#9878;&#65039; Normativa Interna</div>
+    <h1>R&egrave;gim<br><em>Disciplinari</em></h1>
+    <p>Infraccions, sancions i procediment disciplinari de la Federaci&oacute; Catalana de Tir amb Arc.</p>
+    <div style="margin-top:var(--sp-4);display:flex;gap:var(--sp-3);flex-wrap:wrap;align-items:center">
+      <a href="docs/REGIM_DISCIPLINARI_FCTA.pdf" target="_blank" rel="noopener" class="btn-gold" style="font-size:.9rem;padding:.55rem 1.25rem;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none">&#11015;&#65039; Descarregar PDF</a>
+      <span style="font-size:.8rem;opacity:.7">&#128197; Aprovat: 3 juny 2023</span>
+    </div>
+  </div>
+</div>
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<section class="section" style="background:var(--offwhite)">
+  <div class="container" style="max-width:860px">
+
+    <!-- Avís: normativa en revisió -->
+    <div style="background:#fff8e1;border:1.5px solid var(--gold);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-6);display:flex;gap:var(--sp-3);align-items:flex-start">
+      <span style="font-size:1.4rem;line-height:1">&#9888;&#65039;</span>
+      <div>
+        <strong style="color:var(--navy-dark);display:block;margin-bottom:.3rem">Normativa en revisi&oacute;</strong>
+        <p style="margin:0;font-size:.9rem;color:#5a4000">Aquest r&egrave;gim disciplinari, aprovat el 3 de juny de 2023, es troba actualment en proc&eacute;s de revisi&oacute; i actualitzaci&oacute;. Les refer&egrave;ncies a normatives espec&iacute;fiques (estatuts, reglaments) poden no reflectir la versi&oacute; vigent m&eacute;s recent. Per a qualsevol dubte o consulta, contacteu amb la Federaci&oacute;: <a href="mailto:info@fcta.cat" style="color:var(--navy-light)">info@fcta.cat</a>.</p>
+      </div>
+    </div>
+
+    <!-- Article 1 -->
+    <div class="rd-article">
+      <h2 class="rd-art-title">Article 1 &mdash; Classificaci&oacute; de les infraccions</h2>
+      <p>Les infraccions disciplin&agrave;ries per incompliment de deures dels federats i federades es classifiquen en <strong>greus</strong> i <strong>lleus</strong>.</p>
+
+      <div class="rd-grid">
+        <div class="rd-block rd-block--greu">
+          <div class="rd-block-head">&#128308; Infraccions greus</div>
+          <ul class="rd-list">
+            <li>Actes o omissions que perjudiquin o obstaculitzin greument la consecuci&oacute; de les finalitats de la Federaci&oacute;.</li>
+            <li>Atemptat contra la dignitat, l&rsquo;honestedat o l&rsquo;honor de la Federaci&oacute; o de la resta de persones federades, aix&iacute; com l&rsquo;assetjament sexual, per ra&oacute; de sexe o assetjament moral.</li>
+            <li>Actes o manifestacions que perjudiquin greument la imatge de la Federaci&oacute;.</li>
+            <li>Incompliment de les disposicions estatu&agrave;ries, reglament&agrave;ries o dels acords dels &ograve;rgans de govern, quan es considerin greus.</li>
+            <li>Reitereaci&oacute; de dues o m&eacute;s faltes lleus.</li>
+          </ul>
+        </div>
+        <div class="rd-block rd-block--lleu">
+          <div class="rd-block-head">&#128992; Infraccions lleus</div>
+          <ul class="rd-list">
+            <li>Neglig&egrave;ncia en el compliment dels deures estatu&agrave;ris, reglamentaris i derivats dels acords dels &ograve;rgans de govern de la Federaci&oacute;.</li>
+            <li>Incompliment de les disposicions estatu&agrave;ries, reglament&agrave;ries o dels acords dels &ograve;rgans de govern, quan no constitueixin infraccions greus.</li>
+            <li>Actes o omissions relacionats a l&rsquo;apartat anterior quan no tinguin la consideraci&oacute; de greus.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article 2 -->
+    <div class="rd-article">
+      <h2 class="rd-art-title">Article 2 &mdash; Sancions aplicables</h2>
+      <p>Les infraccions greus poden &eacute;sser sancionades amb <strong>suspensi&oacute; temporal de drets i llic&egrave;ncia</strong> o <strong>expulsi&oacute;</strong> de la Federaci&oacute;, seg&uuml;ent els criteris seg&uuml;ents:</p>
+      <ul class="rd-list rd-list--plain">
+        <li><strong>Expulsi&oacute;:</strong> nom&eacute;s per reitereaci&oacute; d&rsquo;infraccions greus que suposin incompliment d&rsquo;obligacions legals, estatut&agrave;ries o reglament&agrave;ries. En casos d&rsquo;assetjament, la reitereaci&oacute; no ser&agrave; necess&agrave;ria.</li>
+        <li><strong>Suspensi&oacute; temporal</strong> de l&rsquo;exercici dels drets de la persona federada, en funci&oacute; de les circumst&agrave;ncies concurrents.</li>
+        <li><strong>Infraccions lleus:</strong> advertiment verbal o escrit, en funci&oacute; de les circumst&agrave;ncies concurrents.</li>
+      </ul>
+    </div>
+
+    <!-- Article 3 -->
+    <div class="rd-article">
+      <h2 class="rd-art-title">Article 3 &mdash; Procediment disciplinari</h2>
+      <p>El procediment disciplinari ser&agrave; iniciat per acord de la Junta Directiva quan, d&rsquo;ofici, per den&uacute;ncia o per qualsevol altre mitj&agrave;, tingui coneixement de la comissi&oacute; d&rsquo;un fet que pugui &eacute;sser constitutiu d&rsquo;infracci&oacute;. La tramitaci&oacute; respectar&agrave; les regles seg&uuml;ents:</p>
+      <ol class="rd-list rd-list--ol">
+        <li><strong>Informaci&oacute; pr&egrave;via (opcional):</strong> la Junta Directiva podr&agrave; obrir un per&iacute;ode d&rsquo;informaci&oacute; pr&egrave;via per esbrinar les circumst&agrave;ncies dels fets.</li>
+        <li><strong>Comissi&oacute; instructora:</strong> dos membres de la Junta Directiva, el President i el responsable legal (instructor). Si l&rsquo;expedient &eacute;s contra un membre de la Junta, aquest no podr&agrave; formar-ne part ni votar-hi.</li>
+        <li><strong>Secret de les actuacions</strong> respecte de les persones no interessades, fins a la resoluci&oacute;.</li>
+        <li><strong>Plec de c&agrave;rrecs:</strong> exposici&oacute; dels fets imputats, infraccions, sancions aplicables, &ograve;rgan competent, danys i mesures provisionals.</li>
+        <li><strong>Al&middot;legacions:</strong> el plec es notifica a la persona interessada amb <strong>15 dies</strong> per formular al&middot;legacions.</li>
+        <li><strong>Proposta de resoluci&oacute;:</strong> formulada per l&rsquo;instructor; la persona interessada disposa de <strong>10 dies</strong> m&eacute;s per presentar al&middot;legacions.</li>
+        <li><strong>Resoluci&oacute; final:</strong> l&rsquo;instructor eleva l&rsquo;expedient a la comissi&oacute;, que emet un informe ratificat per majoria de la Junta Directiva.</li>
+      </ol>
+    </div>
+
+    <!-- Article 4 -->
+    <div class="rd-article">
+      <h2 class="rd-art-title">Article 4 &mdash; Recurs</h2>
+      <p>Davant la resoluci&oacute; sancionadora, la persona s&ograve;cia podr&agrave; interposar <strong>recurs davant l&rsquo;Assemblea General</strong> en el termini de <strong>15 dies</strong> a comptar des del seg&uuml;ent en el qual rebi la notificaci&oacute;.</p>
+    </div>
+
+    <!-- Article 5 -->
+    <div class="rd-article">
+      <h2 class="rd-art-title">Article 5 &mdash; Prescripci&oacute;</h2>
+      <p>Les infraccions es sotmeten als seg&uuml;ents per&iacute;odes de prescripci&oacute; a comptar des del dia en qu&egrave; es van cometre:</p>
+      <div class="rd-prescription">
+        <div class="rd-presc-item">
+          <span class="rd-presc-icon">&#128992;</span>
+          <div>
+            <strong>Infraccions lleus</strong>
+            <span class="rd-presc-time">6 mesos</span>
+          </div>
+        </div>
+        <div class="rd-presc-item">
+          <span class="rd-presc-icon">&#128308;</span>
+          <div>
+            <strong>Infraccions greus</strong>
+            <span class="rd-presc-time">1 any</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:.88rem;color:var(--gray);margin-top:var(--sp-3)">La prescripci&oacute; queda interrompuda per l&rsquo;inici del procediment disciplinari amb coneixement de la persona interessada. La paralitzaci&oacute; del procediment per un termini superior al mes, no imputable a la presumpta persona infractora, far&agrave; c&oacute;rrer de nou el termini interromput.</p>
+    </div>
+
+    <!-- Peu -->
+    <div class="rd-footer">
+      <p>&#128196; Document aprovat per la Junta Directiva de la FCTA el <strong>3 de juny de 2023</strong>. &Uacute;nicament per a membres federats de la FCTA.</p>
+      <a href="docs/REGIM_DISCIPLINARI_FCTA.pdf" target="_blank" rel="noopener" class="btn-gold" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;padding:.55rem 1.25rem;text-decoration:none">&#11015;&#65039; Descarregar document original (PDF)</a>
+    </div>
+
+  </div>
+</section>
+</div>
+
 <div id="sReglaments" style="display:none">
 <div class="lic-hero">
   <div class="container">
@@ -2876,6 +2999,7 @@
           <li><a href="#" onclick="setS('social');return false">Tirades Socials</a></li>
           <li><a href="#" onclick="setS('calendari');return false">Calendari Esportiu</a></li>
           <li><a href="#" onclick="setS('records');return false">R&egrave;cords de Catalunya</a></li>
+          <li><a href="#" onclick="setS('regimdisciplinari');return false">R&egrave;gim Disciplinari</a></li>
         </ul>
       </div>
       <div>

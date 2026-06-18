@@ -39,6 +39,7 @@ var FCTA = {
     { key: 'calendari',    id: 'Calendari',     label: 'Calendari' },
     { key: 'medaller',     id: 'Medaller',      label: 'Medaller' },
     { key: 'records',      id: 'Records',       label: 'Rècords' },
+    { key: 'regimdisciplinari', id: 'Regimdisciplinari', label: 'Règim Disciplinari' },
   ],
 
   // ── Discipline keys (used in DISC_DATA and DB.documents) ─────
