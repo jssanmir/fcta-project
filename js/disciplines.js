@@ -365,7 +365,7 @@ var MEDALS_2526 = {
 
 // ── Helpers per al medaller ───────────────────────────────
 function _getMedals2526(discKey) {
-  if (discKey === 'al')   return [MEDALS_2526.sala];
+  if (discKey === 'sala') return [MEDALS_2526.sala];
   if (discKey === '3d')   return MEDALS_2526['3d'];
   if (discKey === 'camp') return [MEDALS_2526.camp];
   return null;
@@ -873,7 +873,7 @@ function renderDiscLliga(d) {
 }
 
 function renderDiscResultats(d) {
-  var hasMedals = !!_getMedals2526(d.circularsCategoria);
+  var hasMedals = !!_getMedals2526(_discActiva);
 
   // Sub-nav
   var baseHash = '#disciplina/' + (_discActiva || '') + '/resultats/';
@@ -887,7 +887,7 @@ function renderDiscResultats(d) {
   html += '</div>';
 
   if (_discResView === 'medaller' && hasMedals) {
-    html += renderMedallerView(d.circularsCategoria);
+    html += renderMedallerView(_discActiva);
     return html;
   }
 
