@@ -8,8 +8,8 @@ nav{position:sticky;top:0;z-index:1000;background:var(--navy-dark);border-bottom
 .nav-links{display:flex;margin-left:auto}
 .nav-links a,.nav-links button{background:none;border:none;color:rgba(255,255,255,.8);font-family:'Barlow',sans-serif;font-size:.875rem;font-weight:500;padding:.45rem .85rem;cursor:pointer;text-decoration:none;transition:color .2s;white-space:nowrap}
 .nav-links a:hover,.nav-links button:hover,.nav-links a.act{color:var(--gold)}
-.nav-admin{background:var(--gold)!important;color:var(--navy-dark)!important;font-weight:700!important;border-radius:5px;padding:.4rem .9rem!important;margin-left:.4rem}
-.nav-admin:hover{background:white!important;color:var(--navy-dark)!important}
+.nav-admin{background:none!important;color:rgba(255,255,255,.35)!important;font-size:.8rem!important;padding:.25rem .4rem!important;margin-left:.25rem}
+.nav-admin:hover{color:rgba(255,255,255,.7)!important}
 .nav-social{display:flex;align-items:center;gap:.5rem;margin-left:.5rem}
 .nav-soc-link{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.15);color:#fff;transition:color .2s,background .2s}
 .nav-soc-link svg{width:26px;height:26px;display:block}
