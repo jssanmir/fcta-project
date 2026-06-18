@@ -10,4 +10,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--navy-dark);border-bottom
 .nav-links a:hover,.nav-links button:hover,.nav-links a.act{color:var(--gold)}
 .nav-admin{background:var(--gold)!important;color:var(--navy-dark)!important;font-weight:700!important;border-radius:5px;padding:.4rem .9rem!important;margin-left:.4rem}
 .nav-admin:hover{background:white!important;color:var(--navy-dark)!important}
+.nav-social{display:flex;align-items:center;gap:.3rem;margin-left:.5rem}
+.nav-soc-link{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;color:rgba(255,255,255,.65);transition:color .2s,background .2s}
+.nav-soc-link:hover{color:var(--gold);background:rgba(255,255,255,.08)}
 @media(max-width:780px){.nav-links{display:none}}
