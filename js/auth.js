@@ -75,10 +75,13 @@ function doLogin() {
         admSession = { nom: r.data.nom, role: r.data.role, user: u.trim() };
         document.getElementById('loginUser').value = '';
         document.getElementById('loginPass').value = '';
+        // Canvi forçat: no cal contrasenya actual
+        var wrap = document.getElementById('cpCurrentPassWrap');
+        if (wrap) wrap.style.display = 'none';
         _showLoginStep('changePassStep');
         _loginErrorClear('changePassError');
         setTimeout(function() {
-          var f = document.getElementById('cpCurrentPass');
+          var f = document.getElementById('cpNewPass');
           if (f) f.focus();
         }, 100);
       } else {
@@ -166,7 +169,10 @@ function doChangePass() {
 
   _loginErrorClear('changePassError');
 
-  if (!current || !newPass || !confirm) {
+  var wrap = document.getElementById('cpCurrentPassWrap');
+  var forcedChange = wrap && wrap.style.display === 'none';
+
+  if ((!forcedChange && !current) || !newPass || !confirm) {
     _loginError('changePassError', 'Omple tots els camps.');
     return;
   }
@@ -216,6 +222,8 @@ function doChangePass() {
 function _finishLogin() {
   document.getElementById('loginOverlay').style.display = 'none';
   _showLoginStep('loginStep1');
+  var wrap = document.getElementById('cpCurrentPassWrap');
+  if (wrap) wrap.style.display = '';
   openAdm();
 }
 
@@ -223,6 +231,8 @@ function _finishLogin() {
 function cancelLogin() {
   document.getElementById('loginOverlay').style.display = 'none';
   _showLoginStep('loginStep1');
+  var wrap = document.getElementById('cpCurrentPassWrap');
+  if (wrap) wrap.style.display = '';
   ['loginError','totpError','changePassError'].forEach(function(id) { _loginErrorClear(id); });
   ['loginUser','loginPass','totpCode','cpCurrentPass','cpNewPass','cpConfirmPass'].forEach(function(id) {
     var el = document.getElementById(id);

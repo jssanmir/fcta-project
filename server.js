@@ -589,7 +589,9 @@ app.post('/api/change-password', verifyToken, function (req, res) {
   }
 
   var user = db.prepare('SELECT * FROM users WHERE username = ?').get(req.user.sub);
-  if (!user || !bcrypt.compareSync(currentPass, user.password_hash)) {
+  if (!user) return res.status(401).json({ error: 'Usuari no trobat' });
+  // Si el canvi és forçat (primer accés), no cal verificar la contrasenya actual
+  if (user.must_change_pass !== 1 && !bcrypt.compareSync(currentPass, user.password_hash)) {
     return res.status(401).json({ error: 'Contrasenya actual incorrecta' });
   }
 
