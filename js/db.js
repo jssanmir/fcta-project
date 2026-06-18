@@ -153,6 +153,45 @@ var NEWS_CONTENT = {
     body: `<p>La temporada d'aire lliure ja està en marxa després de la celebració de les primeres tirades el passat <strong>14 de març</strong>, organitzades pels clubs <strong>Tir amb Arc Olesa</strong> i <strong>Club Arc Sant Celoni</strong>.</p>
 <p>Aquesta primera jornada ha servit per donar el tret de sortida a una nova temporada amb una bona participació i un ambient excel·lent entre els esportistes, que han tornat a gaudir de la competició a l'aire lliure.</p>
 <p>A <strong>Sant Celoni</strong>, la competició va incloure les divisions de compost, arc nu i longbow, amb participació oberta a totes les categories. Per la seva banda, a <strong>Olesa de Montserrat</strong>, la tirada va aplegar arquers de totes les edats i nivells.</p>`
+  },
+  7: {
+    title: "3 medalles per Catalunya al Campionat d'Espanya 3D 2026",
+    date: "24 de maig de 2026",
+    cat: "3D",
+    img: "img/news/noticia7.png",
+    body: `<p>Del <strong>22 al 24 de maig</strong>, <strong>Astúries</strong> va acollir el <strong>Campionat d'Espanya 3D 2026</strong>, amb la presència de <strong>25 representants de Catalunya</strong> competint entre els millors arquers i arqueres nacionals.</p>
+<p>Catalunya va tornar amb <strong>3 medalles destacades</strong>:</p>
+<ul><li><strong>Maria Pitarch</strong>, subcampiona d'Espanya en Arc Compost Dona</li><li><strong>Equip Divisions Dona</strong>: Casandra Campo, Tania Martinez, Maria Pitarch i Claudia Senserrich</li><li><strong>Equip Divisions Home</strong>: Oscar Amate, Enrique Flores, Víctor López i David Vivó</li></ul>
+<p>Felicitats a tots i totes pels resultats i per representar Catalunya al màxim nivell!</p>`
+  },
+  8: {
+    title: "Més de 150 esportistes a la 3a i última tirada de la Lliga Catalana d'Aire Lliure",
+    date: "1 de juny de 2026",
+    cat: "Aire Lliure",
+    img: "img/news/noticia8.png",
+    body: `<p>Més de <strong>150 esportistes</strong> han participat a <strong>Barcelona i Esclanà</strong> en la <strong>3a i última tirada de la Lliga Catalana d'Aire Lliure 2025/2026</strong>.</p>
+<p>La competició ha servit per tancar la lliga catalana i acabar d'afinar la preparació de cara al <strong>Campionat de Catalunya d'Aire Lliure</strong>, que tindrà lloc els dies <strong>4 i 5 de juliol a Barcelona</strong>.</p>
+<p>Enhorabona a tots els arquers i arqueres per la seva participació al llarg de la temporada. Ens veiem al Campionat de Catalunya!</p>`
+  },
+  9: {
+    title: "Catalunya aconsegueix 10 medalles al Campionat d'Espanya de Camp 2026",
+    date: "8 de juny de 2026",
+    cat: "Camp",
+    img: "img/news/noticia9.png",
+    body: `<p>La delegació catalana ha protagonitzat una actuació excel·lent al <strong>Campionat d'Espanya de Camp 2026</strong>, celebrat a <strong>Hoyos del Espino</strong>, aconseguint un total de <strong>10 medalles: 5 ors, 3 plates i 2 bronzes</strong>.</p>
+<p>Entre els nous campions d'Espanya i medallistes destaquen:</p>
+<ul><li><strong>Maria Pitarch</strong>, campiona d'Espanya en Compost Dona</li><li><strong>Mireia Comas</strong>, subcampiona d'Espanya en Longbow Dona</li><li><strong>Víctor López</strong>, campió d'Espanya en Tradicional Home</li><li><strong>David Vivó</strong>, medalla de bronze en Nu Home</li></ul>
+<p>Resultats per equips: <strong>Equip Divisions</strong> (Mireia Comas, Sergi Cebrián, Víctor López, Jordi Ricart i David Vivó) · <strong>Equip Mixt Compost</strong> (Maria Pitarch i Jordi Ricart) · <strong>Equip Mixt Longbow</strong> (Mireia Comas i José Manuel Martí) · <strong>Equip Mixt Recorbat</strong> (Jana Cahuè i Sergi Cebrián) · <strong>Equip Mixt Nu</strong> (Casandra Campo i David Vivó) · <strong>Equip Mixt Tradicional</strong> (M. Isabel Mompéon i Víctor López).</p>
+<p>Volem reconèixer la tasca de <strong>Santos Lopez</strong> com a delegat federatiu i felicitar la resta d'arquers i arqueres de la delegació catalana. El futur del tir amb arc català continua apuntant molt amunt!</p>`
+  },
+  10: {
+    title: "Final de la Lliga Catalana d'Arc Adaptat, Inclusiu i Salut",
+    date: "15 de juny de 2026",
+    cat: "Arc Adaptat",
+    img: "img/news/noticia10.png",
+    body: `<p>Vam celebrar el <strong>final de la Lliga Catalana d'Arc Adaptat, Inclusiu i Salut</strong> al <strong>Arc Vng</strong>. Aquesta lliga, que s'ha iniciat aquest any, ha estat tot un èxit i continua creixent jornada rere jornada, incorporant cada vegada més esportistes i consolidant-se com un espai de trobada, inclusió i esport per a tothom.</p>
+<p>Volem donar les gràcies als <strong>coordinadors d'aquest nou projecte</strong> per la seva dedicació, així com a tots els clubs, tècnics i persones implicades que han fet possible aquesta iniciativa.</p>
+<p>Enhorabona a tots els participants per la vostra implicació, esforç i esperit de superació. Aquest és només el començament d'un projecte amb molt de futur!</p>`
   }
 };
 
@@ -295,6 +334,10 @@ competitions: [
 
 // --- NOTÍCIES ---
 news: [
+  {id:10,cat:'Arc Adaptat',title:'Final de la Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut',date:'15 jun 2026',desc:'La Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut tanca la seva primera edició al Arc Vng amb un èxit de participació creixent.',img:'img/news/noticia10.png',url:'#news:10'},
+  {id:9,cat:'Camp',title:'Catalunya aconsegueix 10 medalles al Campionat d\'Espanya de Camp 2026',date:'8 jun 2026',desc:'La delegació catalana torna de Hoyos del Espino amb 10 medalles: 5 ors, 3 plates i 2 bronzes.',img:'img/news/noticia9.png',url:'#news:9'},
+  {id:8,cat:'Aire Lliure',title:'Més de 150 esportistes a la 3a i última tirada de la Lliga Catalana d\'Aire Lliure',date:'1 jun 2026',desc:'Barcelona i Esclanà acollen la 3a tirada que tanca la lliga i prepara els arquers per al Campionat de Catalunya (4-5 juliol).',img:'img/news/noticia8.png',url:'#news:8'},
+  {id:7,cat:'3D',title:'3 medalles per Catalunya al Campionat d\'Espanya 3D 2026',date:'24 mai 2026',desc:'25 representants catalans competeixen a Astúries i tornen amb 3 medalles, encapçalades per Maria Pitarch, subcampiona en Compost Dona.',img:'img/news/noticia7.png',url:'#news:7'},
   {id:1,cat:'Camp',title:'Montcada i Reixac acull el 56è Campionat de Catalunya de Camp',date:'24 mai 2026',desc:'El Club Català de Tir amb Arc ha acollit el 56è Campionat de Catalunya de Camp a Montcada i Reixac, posant punt final a la Lliga Catalana 2025/2026.',img:'img/news/noticia1.png',url:'#news:2'},
   {id:2,cat:'Camp',title:'Finalitza la Temporada de Camp 2025/2026 a Montcada i Reixac',date:'20 mai 2026',desc:'Finalitza la temporada 2025/2026 de tir de camp a Montcada i Reixac. Rànquing general ja disponible.',img:'img/news/noticia2.png',url:'#news:2'},
   {id:3,cat:'Aire Lliure',title:'Més de 150 arquers participen a la 2ª Tirada de la Lliga Catalana d\'Aire Lliure',date:'12 mai 2026',desc:'Més de 150 arquers i arqueres es van reunir a Figueres i Olivella en la 2ª tirada de la Lliga Catalana d\'aire lliure.',img:'img/news/noticia3.png',url:'#news:3'},
