@@ -737,7 +737,7 @@ function renderDiscTab(tab) {
     case 'info':     content.innerHTML = renderDiscInfo(d);        break;
     case 'lliga':    content.innerHTML = renderDiscLliga(d);       break;
     case 'resultats':content.innerHTML = renderDiscResultats(d);   break;
-    case 'records':  content.innerHTML = renderDiscRecords(d);     break;
+    case 'records':  content.innerHTML = renderDiscRecordsFromDB(_discActiva); break;
     case 'docs':     content.innerHTML = renderDiscDocs(d);        break;
   }
 }

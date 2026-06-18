@@ -30,7 +30,8 @@ var _SEO_TITLES = {
   comitejutges:  'Comitè de Jutges | FCTA',
   pat:           'PAT – Programa Autonòmic de Tecnificació | FCTA',
   calendari:     'Calendari Esportiu | FCTA',
-  medaller:      'Medaller | FCTA'
+  medaller:      'Medaller | FCTA',
+  records:       'Rècords de Catalunya | FCTA'
 };
 
 function setS(sec, _noHash) {
@@ -79,6 +80,11 @@ function setS(sec, _noHash) {
   }, NAV_ENTER_MS + 40);
 
   _navCurrent = nextEl;
+
+  // Section-specific callbacks
+  if (sec === 'records') {
+    setTimeout(function() { if (typeof initRecordsPage === 'function') initRecordsPage(); }, 50);
+  }
 }
 
 // ── URL hash routing ──────────────────────────────────────

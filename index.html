@@ -81,6 +81,7 @@
   <link rel="stylesheet" href="css/30-pat.css">
   <link rel="stylesheet" href="css/31-comp-stats.css">
   <link rel="stylesheet" href="css/31-calendari.css">
+  <link rel="stylesheet" href="css/31-records.css">
   <link rel="stylesheet" href="css/32-nav-hub.css">
 </head>
 <body>
@@ -2791,6 +2792,24 @@
 </section>
 </div>
 
+<!-- RÈCORDS DE CATALUNYA -->
+<div id="sRecords" style="display:none">
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+<div class="records-hero">
+  <div class="container">
+    <button class="lic-back-btn" onclick="setS('home')">&#8592; Tornar a l'inici</button>
+    <div class="records-hero-badge">&#127942; R&egrave;cords Oficials</div>
+    <h1>R&egrave;cords<br><em>de Catalunya</em></h1>
+    <p>R&egrave;cords oficials homologats per la FCTA. Sala &middot; Aire Lliure &middot; Arc Adaptat.</p>
+  </div>
+</div>
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+<section class="section" style="background:var(--offwhite);padding:0">
+  <div id="recordsContent"></div>
+</section>
+<div class="records-content container" style="display:none"></div>
+</div>
+
 <!-- CALENDARI ESPORTIU -->
 <div id="sCalendari" style="display:none">
 <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
@@ -2856,6 +2875,7 @@
           <li><a href="#" onclick="setS('inici');return false">Clubs</a></li>
           <li><a href="#" onclick="setS('social');return false">Tirades Socials</a></li>
           <li><a href="#" onclick="setS('calendari');return false">Calendari Esportiu</a></li>
+          <li><a href="#" onclick="setS('records');return false">R&egrave;cords de Catalunya</a></li>
         </ul>
       </div>
       <div>
@@ -3140,6 +3160,7 @@
   <script src="js/inici.js"></script>
   <script src="js/disciplines.js"></script>
   <script src="js/records_form.js"></script>
+  <script src="js/records_page.js"></script>
   <script src="js/calendari.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/init.js"></script>

@@ -1,0 +1,208 @@
+/* 31-records.css – Pàgina de rècords de Catalunya */
+
+/* ── Hero ────────────────────────────────────────────────── */
+.records-hero {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, #1a3a7a 60%, #2a5298 100%);
+  color: #fff;
+  padding: var(--sp-10) 0 var(--sp-8);
+  position: relative;
+  overflow: hidden;
+}
+.records-hero::before {
+  content: '🏆';
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(5rem, 12vw, 9rem);
+  opacity: .08;
+  pointer-events: none;
+}
+.records-hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  margin: var(--sp-3) 0 var(--sp-2);
+}
+.records-hero h1 em { color: var(--gold); font-style: normal; }
+.records-hero p {
+  font-size: clamp(.95rem, 2vw, 1.1rem);
+  opacity: .85;
+  max-width: 600px;
+}
+.records-hero-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: .2rem .75rem;
+  border-radius: var(--r-md);
+}
+
+/* ── Filtres ──────────────────────────────────────────────── */
+.rec-filters {
+  background: var(--offwhite);
+  border-bottom: 1px solid var(--lightgray);
+  padding: var(--sp-3) 0;
+  position: sticky;
+  top: 60px;
+  z-index: 90;
+}
+.rec-filters .container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.rec-tabs {
+  display: flex;
+  gap: var(--sp-1);
+  flex-wrap: wrap;
+}
+.rec-tab {
+  background: none;
+  border: 2px solid var(--lightgray);
+  border-radius: var(--r-lg);
+  padding: .35rem .9rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: .95rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all var(--dur-base) var(--tr);
+}
+.rec-tab:hover { border-color: var(--navy-light); color: var(--navy-light); }
+.rec-tab--active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.rec-selects {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.rec-sel {
+  border: 1px solid var(--lightgray);
+  border-radius: var(--r-md);
+  padding: .35rem .6rem;
+  font-size: .88rem;
+  color: var(--navy-dark);
+  background: #fff;
+  cursor: pointer;
+  min-width: 160px;
+}
+.rec-sex-btns {
+  display: flex;
+  gap: var(--sp-1);
+}
+.rec-sex {
+  background: none;
+  border: 1px solid var(--lightgray);
+  border-radius: var(--r-md);
+  padding: .3rem .7rem;
+  font-size: .85rem;
+  cursor: pointer;
+  color: var(--gray);
+  transition: all var(--dur-base) var(--tr);
+}
+.rec-sex:hover { border-color: var(--navy-light); color: var(--navy-light); }
+.rec-sex--active { background: var(--navy-light); border-color: var(--navy-light); color: #fff; }
+
+/* ── Contingut ────────────────────────────────────────────── */
+.records-content {
+  padding: var(--sp-6) 0 var(--sp-12);
+}
+.rec-group { margin-bottom: var(--sp-8); }
+.rec-group-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: var(--navy-dark);
+  border-left: 4px solid var(--gold);
+  padding-left: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+.rec-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--lightgray);
+  box-shadow: var(--shadow-sm);
+}
+.rec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+  background: #fff;
+}
+.rec-table thead th {
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: .6rem .75rem;
+  text-align: left;
+  white-space: nowrap;
+}
+.rec-table tbody tr { border-bottom: 1px solid var(--lightgray); }
+.rec-table tbody tr:last-child { border-bottom: none; }
+.rec-table tbody tr:hover { background: var(--offwhite); }
+.rec-table tbody td { padding: .55rem .75rem; vertical-align: middle; }
+.rec-marca { white-space: nowrap; font-size: 1rem; }
+.rec-marca strong { color: var(--navy-dark); font-size: 1.05rem; }
+.rec-format { font-size: .78rem; color: var(--gray); white-space: nowrap; }
+.rec-comp { font-size: .82rem; color: var(--gray); }
+.rec-data  { font-size: .82rem; color: var(--gray); white-space: nowrap; }
+
+/* ── Badges de sexe ───────────────────────────────────────── */
+.rec-sex-badge {
+  display: inline-block;
+  padding: .1rem .45rem;
+  border-radius: var(--r-sm);
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.rec-sex-badge--home { background: #dbeafe; color: #1d4ed8; }
+.rec-sex-badge--dona { background: #fce7f3; color: #be185d; }
+
+/* ── Peu i buit ───────────────────────────────────────────── */
+.rec-footer-note {
+  margin-top: var(--sp-6);
+  padding: var(--sp-4);
+  background: var(--offwhite);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--lightgray);
+  font-size: .85rem;
+  color: var(--gray);
+  text-align: center;
+}
+.rec-empty {
+  padding: var(--sp-6);
+  text-align: center;
+  color: var(--gray);
+  font-size: .95rem;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .rec-selects { flex-direction: column; align-items: stretch; }
+  .rec-sel { min-width: 0; width: 100%; }
+  .rec-table { font-size: .8rem; }
+  .rec-table thead th { padding: .5rem .5rem; font-size: .8rem; }
+  .rec-table tbody td { padding: .45rem .5rem; }
+  .rec-comp, .rec-data { display: none; }
+  .records-hero::before { display: none; }
+}
