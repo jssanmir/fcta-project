@@ -148,6 +148,7 @@ function renderATab(tab){
   else if(tab==='form')    renderAdmForm(b);
   else if(tab==='tirades') renderAdmTirades(b);
   else if(tab==='records') { b.innerHTML='<div class="adm-records-section"></div>'; renderAdmRecords(b.querySelector('.adm-records-section')); }
+  else if(tab==='lligues') renderAdmLligues(b);
   else if(tab==='docs')    renderAdmDocs(b);
   else if(tab==='gen')     renderAdmGenerator(b);
   else if(tab==='backup')  renderAdmBackup(b);

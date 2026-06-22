@@ -113,7 +113,19 @@
       "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" status)",
       "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" diff)",
       "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" add index.html js/auth.js server.js .claude/settings.local.json)",
-      "Bash(git -C 'C:\\\\Projects\\\\fcta-project' commit -m ' *)"
+      "Bash(git -C 'C:\\\\Projects\\\\fcta-project' commit -m ' *)",
+      "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" push)",
+      "Bash(pandoc \"C:\\\\temp\\\\news.docx\" -t markdown)",
+      "Bash(python -c ' *)",
+      "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" add js/db.js)",
+      "Bash(cp \"C:/temp/news_imgs/image5.jpeg\" \"C:/Projects/fcta-project/img/news/noticia10.jpeg\")",
+      "Bash(cp \"C:/temp/news_imgs/image13.jpeg\" \"C:/Projects/fcta-project/img/news/noticia9.jpeg\")",
+      "Bash(cp \"C:/temp/news_imgs/image14.jpeg\" \"C:/Projects/fcta-project/img/news/noticia8.jpeg\")",
+      "Bash(cp \"C:/temp/news_imgs/image15.jpeg\" \"C:/Projects/fcta-project/img/news/noticia7.jpeg\")",
+      "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" add js/db.js img/news/noticia7.jpeg img/news/noticia8.jpeg img/news/noticia9.jpeg img/news/noticia10.jpeg)",
+      "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" add index.html css/03-nav.css)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jcsanchez\\\\Downloads\\\\\" | Where-Object { $_.Name -match \"lliga|camp|3d|linea|classif\" -and $_.Name -match \"\\\\.pdf$\" } | Select-Object Name)",
+      "PowerShell(python \"C:\\\\Projects\\\\fcta-project\\\\parse_lligues.py\" 2>&1)"
     ]
   }
 }

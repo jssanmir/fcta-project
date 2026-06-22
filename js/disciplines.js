@@ -882,12 +882,13 @@ function renderDiscInfo(d) {
 }
 
 function renderDiscLliga(d) {
-  if (!d.lligues || !d.lligues.length) {
+  var lligues = (DB.lligues || []).filter(function(l){ return l.disc === _discActiva; });
+  if (!lligues.length) {
     return '<div class="disc-empty">No hi ha dades de lliga per a aquesta disciplina.</div>';
   }
 
   var html = '';
-  d.lligues.forEach(function(ll) {
+  lligues.forEach(function(ll) {
     // Construeix els botons de rànquings
     var ranqBtns = '';
     if (ll.ranquingUrl && ll.ranquingUrl !== '#') {

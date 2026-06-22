@@ -19,7 +19,7 @@
 .quick{background:var(--navy)}
 .quick-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 @media(max-width:900px){.quick-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:560px){.quick-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.quick-grid{grid-template-columns:1fr 1fr}.quick-grid>.qc:last-child:nth-child(odd){grid-column:span 2}}
 .qc{background:transparent;border:none;border-right:1px solid rgba(255,255,255,.08);padding:1.6rem 1.1rem;text-align:left;cursor:pointer;transition:background .25s;position:relative;font-family:'Barlow',sans-serif;width:100%}
 .qc:last-child{border-right:none}
 .qc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--tr)}
@@ -41,4 +41,4 @@
 /* FILTER BUTTONS */
 .filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.75rem}
 .fb{background:none;border:1.5px solid #c5cee0;color:var(--gray);font-family:'Barlow',sans-serif;font-size:.82rem;font-weight:600;padding:.35rem .9rem;border-radius:20px;cursor:pointer;transition:all .2s}
-.fb:hover,.fb.act{background:var(--navy);border-color:var(--navy);color:white}
+.fb:hover,.fb.act{

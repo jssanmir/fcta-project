@@ -658,6 +658,95 @@ records: [
 // --- TIRADES SOCIALS (poblades via DB.tirades, veure abaix) ---
 rounds: [],
 
+// --- LLIGUES ---
+lligues: [
+  // ── Aire Lliure ──────────────────────────────────────────
+  { id:1, disc:'al', nom:'Lliga Catalana Aire Lliure 2026', temporada:'2026',
+    tirades:[{num:'1ª',compId:13},{num:'2ª',compId:11},{num:'3ª',compId:1}],
+    ranquingUrl:'docs/Ranquing_Lliga_AL_2025-26.pdf',
+    ranquingLabel:'Classificació Final Lliga AL 2025/26',
+    historics:[
+      {label:'Classificació Final AL 2025/26',url:'docs/Ranquing_Lliga_AL_2025-26.pdf'},
+      {label:'Classificació Final AL 2025',   url:'docs/Ranquing_Lliga_AL_2025.pdf'},
+      {label:'Classificació Final AL 2024',   url:'docs/Ranquing_Lliga_AL_2024.pdf'},
+      {label:'Classificació Final AL 2023',   url:'docs/Ranquing_Lliga_AL_2023.pdf'}
+    ]
+  },
+  { id:2, disc:'al', nom:"Lliga Catalana Aire Lliure 2026/27", temporada:'2026/27',
+    tirades:[{num:'1ª',compId:122},{num:'2ª',compId:123},{num:'3ª',compId:124}],
+    ranquingUrl:'#', ranquingLabel:'Rànquing Lliga AL 2026/27', historics:[]
+  },
+  // ── Sala ─────────────────────────────────────────────────
+  { id:3, disc:'sala', nom:'Lliga Catalana de Sala 2025/2026', temporada:'2025–26',
+    tirades:[
+      {num:'1ª', data:'4–5 oct 2025',   lloc:'Constantí',                status:'closed', circ:'#', ianseo:'24680'},
+      {num:'2ª', data:'18–19 oct 2025', lloc:'Constantí / Torrefarrera', status:'closed', circ:'#', ianseo:'24861', ianseo2:'24860'},
+      {num:'3ª', data:'15–16 nov 2025', lloc:'Manresa / Torrefarrera',        status:'closed', circ:'#', ianseo:'25272', ianseo2:'25273'},
+      {num:'4ª', data:'6–7 des 2025',   lloc:'Constantí',                status:'closed', circ:'#', ianseo:'25582'}
+    ],
+    ranquingUrl:'docs/LLIGA_CAT_SALA_25_26_CLASSIFICACIO_FINAL.pdf',
+    ranquingLabel:'Classificació Final Lliga Sala 2025/26',
+    historics:[
+      {label:'Classificació Final Sala 2025/26', url:'docs/LLIGA_CAT_SALA_25_26_CLASSIFICACIO_FINAL.pdf'},
+      {label:'Màster Indoor 2025',               url:'docs/Ranquing_Master_Indoor_2025.pdf'},
+      {label:'Classificació Final Sala 2024/25', url:'docs/Ranquing_Lliga_Sala_2024-25.pdf'},
+      {label:'Classificació Final Sala 2023/24', url:'docs/Ranquing_Lliga_Sala_2023-24.pdf'}
+    ]
+  },
+  { id:4, disc:'sala', nom:'Lliga Catalana de Sala 2026/27', temporada:'2026–27',
+    tirades:[{num:'1ª',compId:106},{num:'2ª',compId:107},{num:'3ª',compId:108}],
+    ranquingUrl:'#', ranquingLabel:'Rànquing Lliga Sala 2026/27', historics:[]
+  },
+  // ── 3D ───────────────────────────────────────────────────
+  { id:5, disc:'3d', nom:'Lliga Catalana 3D 2025/2026', temporada:'2025–26',
+    tirades:[
+      {num:'1ª', data:'18 gen 2026', lloc:'Sant Celoni',          status:'closed', circ:'#'},
+      {num:'2ª', data:'22 feb 2026', lloc:'Olivella (Barcelona)', status:'closed', circ:'CIRC-2608'},
+      {num:'3ª', data:'22 feb 2026', lloc:'Olivella',             status:'closed', circ:'#'},
+      {num:'4ª', data:'12 abr 2026', lloc:'Castellnou del Bages', status:'closed', circ:'CIRC-2608'}
+    ],
+    ranquingUrl:'docs/Ranquing_Lliga_3D_2024-25.pdf',
+    ranquingLabel:'Rànquing Lliga 3D 2024/25',
+    historics:[
+      {label:'Rànquing Final 3D 2024/25',       url:'docs/Ranquing_Lliga_3D_2024-25.pdf'},
+      {label:'Rànquing Final 3D 2023/24',       url:'docs/Ranquing_Lliga_3D_2023-24.pdf'},
+      {label:'Rànquing Provisional 3D 2023/24', url:'docs/Ranquing_Lliga_3D_2023-24_prov.pdf'}
+    ]
+  },
+  { id:6, disc:'3d', nom:'Lliga Catalana 3D 2026/27', temporada:'2026/27',
+    tirades:[{num:'1ª',compId:117},{num:'2ª',compId:118},{num:'3ª',compId:119}],
+    ranquingUrl:'#', ranquingLabel:'Rànquing Lliga 3D 2026/27', historics:[]
+  },
+  // ── Camp ─────────────────────────────────────────────────
+  { id:7, disc:'camp', nom:'Lliga Catalana de Camp 2025/2026', temporada:'2025–26',
+    tirades:[
+      {num:'1ª', data:'11 gen 2026', lloc:'Castellnou del Bages', status:'closed', circ:'CIRC-2615'},
+      {num:'2ª', data:'8 mar 2026',  lloc:'Montcada i Reixac',    status:'closed', circ:'#'},
+      {num:'3ª', data:'3 mai 2026',  lloc:'Montcada i Reixac',    status:'closed', circ:'#'}
+    ],
+    ranquingUrl:'docs/Ranquing_Lliga_Camp_2023-24.pdf',
+    ranquingLabel:'Rànquing Lliga Camp 2023/24',
+    historics:[
+      {label:'Rànquing Lliga Camp 2023/24',       url:'docs/Ranquing_Lliga_Camp_2023-24.pdf'},
+      {label:'Classificació Final Camp 2020/21',  url:'docs/Ranquing_Lliga_Camp_2020-21.pdf'}
+    ]
+  },
+  { id:8, disc:'camp', nom:'Lliga Catalana de Camp 2026/27', temporada:'2026/27',
+    tirades:[{num:'1ª',compId:112},{num:'2ª',compId:113},{num:'3ª',compId:114}],
+    ranquingUrl:'#', ranquingLabel:'Rànquing Lliga Camp 2026/27', historics:[]
+  },
+  // ── Arc Adaptat ───────────────────────────────────────────
+  { id:9, disc:'aa', nom:'Lliga Catalana Arc Adaptat 2025/2026', temporada:'2025–26',
+    tirades:[
+      {num:'1ª',   data:'nov 2025', lloc:'Olesa de Montserrat', status:'closed', circ:'#'},
+      {num:'2ª',   data:'feb 2026', lloc:'Pendent',             status:'closed', circ:'#'},
+      {num:'3ª',   data:'abr 2026', lloc:'Olesa de Montserrat', status:'closed', circ:'#'},
+      {num:'Final',     data:'jun 2026', lloc:'Arc Vng',             status:'closed', circ:'#'}
+    ],
+    ranquingUrl:'#', ranquingLabel:'Classificació Final 2025/26', historics:[]
+  }
+],
+
 // --- USUARIS DEL SISTEMA ---
 users: [
   { id: 1, nom: 'Admin FCTA', email: 'admin@fcta.cat', rol: 'admin', actiu: true, totpSecret: null, totpEnabled: false, createdAt: '2024-01-01' }
