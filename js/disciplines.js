@@ -6,15 +6,15 @@ var DISC_DATA = {
 
   al: {
     nom: 'Aire Lliure',
-    subtitol: 'Comitè Català d\'Aire Lliure',
+    subtitol: '',
     icon: '🎯',
     color: '#1a6fb5',
-    descripcio: 'El tir d\'aire lliure és la disciplina olímpica del tir amb arc i la més practicada a Catalunya. Es disputa a la primavera i estiu en instal·lacions exteriors, des de distàncies de 18 m fins a 70 m depenent de l\'estil i la categoria.\n\nEl recorbat sènior tira a 70 m amb una diana de 122 cm; el compost sènior, a 50 m amb diana de 80 cm retallada; categories menors i estils de bosc tiren a distàncies reduïdes. La competició consta d\'una fase de classificació (Round 720: 72 fletxes en dues rondes) seguida d\'eliminatòries individuals i per equips.',
+    descripcio: 'El tir d\'aire lliure és la disciplina olímpica del tir amb arc i la més practicada a Catalunya. Es disputa al aire lliure en en instal·lacions exteriors on les condicions son molt relevants, des de distàncies de 12 m fins a 70 m depenent de l\'arc i la classe.\n\nEl recorbat sènior tira a 70 m amb una diana de 122 cm; el compost sènior, a 50 m amb diana de 80 cm reduida; categories d\'escola i menors tiren a distàncies més curtes. La competició consta d\'una fase de classificació (Round 720: 72 fletxes en dues rondes) seguida d\'eliminatòries individuals i per equips en el cas de campionat.',
     normativa: [
       { label: 'Format Competicions Aire Lliure 2026/27', url: 'docs/2026060812190382-CIRC_2633_Format_competicions_Aire_Lliure_2026_27.pdf' },
     ],
-    categories: ['Benjamí (U10)', 'Aleví (U12)', 'Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+', '60+'],
-    estils: ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
+    categories: ['Pre-Benjamin (Esquirol)', 'Aleví (U12) - Autonómic', 'Sub-15 (U15)', 'Sub-18 (U18)', 'Sub-21 (U21)', 'Senior', '50+',],
+    estils: ['Recorbat', 'Compost', 'Nu', 'Longbow', 'Tradicional'],
     lligues: [
       {
         nom: 'Lliga Catalana Aire Lliure 2026',
@@ -67,15 +67,15 @@ var DISC_DATA = {
 
   sala: {
     nom: 'Sala',
-    subtitol: 'Comitè Català de Sala',
+    subtitol: '',
     icon: '🏛️',
     color: '#5c35a0',
     descripcio: 'El tir de sala és la temporada interior del tir amb arc (tardor-hivern), que es disputa en pavelló cobert a 18 metres de distància. És la disciplina amb el calendari més intens: lliga catalana, campionats autonòmics, estatals i internacionals es concentren entre octubre i abril.\n\nTothom tira a 18 m, però les dianes varien: 40 cm per a arc recorbat i compost, i 60 cm per a arc nu, longbow i tradicional. La competició consta d\'una fase de classificació (60 fletxes) seguida d\'eliminatòries individuals i per equips en format set system.',
     normativa: [
       { label: 'Format Competicions Sala 2026/27', url: 'docs/2026060812193414-CIRC_2634_Format_competicions_Sala_2026_27.pdf' },
     ],
-    categories: ['Benjamí (U10)', 'Aleví (U12)', 'Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+', '60+'],
-    estils: ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
+    categories: ['Pre-Benjamin (Esquirol)', 'Aleví (U12) - Autonómic', 'Sub-15 (U15)', 'Sub-18 (U18)', 'Sub-21 (U21)', 'Senior', '50+',],
+    estils: ['Recorbat', 'Compost', 'Nu', 'Longbow', 'Tradicional'],
     lligues: [
       {
         nom: 'Lliga Catalana de Sala 2025/2026',
@@ -120,8 +120,8 @@ var DISC_DATA = {
       { disc:'Sala', estil:'Compost',  cat:'+50 Dona',     marca:'567 pts', atleta:'Ester Semis Astier',         any:'2023' },
       { disc:'Sala', estil:'Compost',  cat:'+50 Home',     marca:'582 pts', atleta:'Basili García',              any:'2017' },
       // SALA – Arc Nu · Act. juny 2026
-      { disc:'Sala', estil:'Arc Nu',   cat:'Sènior Dona',  marca:'528 pts', atleta:'Carme Sanchez Amado',        any:'2023' },
-      { disc:'Sala', estil:'Arc Nu',   cat:'Sènior Home',  marca:'552 pts', atleta:'David García Fernández',     any:'2021' },
+      { disc:'Sala', estil:'Nu',   cat:'Sènior Dona',  marca:'528 pts', atleta:'Carme Sanchez Amado',        any:'2023' },
+      { disc:'Sala', estil:'Nu',   cat:'Sènior Home',  marca:'552 pts', atleta:'David García Fernández',     any:'2021' },
       // SALA – Tradicional · Act. juny 2026
       { disc:'Sala', estil:'Tradicional', cat:'Sènior Dona', marca:'563 pts', atleta:'Ana Lorente Molero',       any:'2025' },
       { disc:'Sala', estil:'Tradicional', cat:'Sènior Home', marca:'586 pts', atleta:'Juanjo Querol Guardiola',  any:'2021' },
@@ -132,15 +132,15 @@ var DISC_DATA = {
 
   '3d': {
     nom: 'Tir 3D',
-    subtitol: 'Comitè Català de Tir de 3D',
+    subtitol: '',
     icon: '🌲',
     color: '#2e7d32',
     descripcio: 'El tir 3D és la modalitat més immersiva del tir amb arc: es practica en circuits forestals o en modalitat en linea, on les figures volumètriques estan situades en entorns naturals amb vegetació, irregularitats del terreny i jocs de llum. La clau d\'aquesta disciplina és l\'estimació de la distància —mai no es diu d\'on es tira fins que ets a la balisa— combinada amb la tècnica de tir.\n\nEs dispara a figures sintètics en 3D. Cada diana té zones de puntuació: 11, 10, 8 i 5. El circuit sol tenir 24 dianes; l\'arquer fa tot el recorregut en grup. Les distàncies màximes varien per divisió de l\'arc i classe, però mai superen els 45 m (compost).',
     normativa: [
       { label: 'Format Competicions 3D 2026/27', url: 'docs/2026060812201377-CIRC_2635_Format_competicions_3D_2026_27.pdf' },
     ],
-    categories: ['Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+'],
-    estils: ['Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
+    categories: ['Sub-15 (U15)', 'Sub-18 (U18)', 'Sub-21 (U21)', 'Senior', '50+'],
+    estils: ['Compost', 'Nu', 'Longbow', 'Tradicional'],
     lligues: [
       {
         nom: 'Lliga Catalana 3D 2025/2026',
@@ -170,15 +170,15 @@ var DISC_DATA = {
 
   camp: {
     nom: 'Tir de Camp',
-    subtitol: 'Comitè Català de Tir de Camp',
+    subtitol: '',
     icon: '🏔️',
     color: '#5d4037',
     descripcio: 'El tir de camp (WA Field) és una disciplina que combina la natura amb la tècnica: els arquers recorren un circuit de 24 dianes de paper situades en terreny accidentat, amunt i avall de pendents, entre arbres i amb angles de tir variats. Les propostes de tir poden ser desconegudes (distància no informada) i conegudes (distàncies marcades).\n\nLes dianes de camp utilitzen el sistema de puntuació WA: cara de diana circular amb zones de 6-5-4-3-2-1 punts. La distància màxima depèn de la divisió i la classe: el recorbat i compost sènior tira fins a 60 m en marc conegut (50 m en desconegut); els longbow senior fins a 40 m (veure reglamentació per més detalls).',
     normativa: [
       { label: 'Format Competicions Camp 2026/27', url: 'docs/2026060812213726-CIRC_2636_Format_competicions_Camp_2026_27.pdf' },
     ],
-    categories: ['Sub-15', 'Sub-18', 'Sub-21', 'Adult', '50+'],
-    estils: ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'],
+    categories: ['Sub-15 (U15)', 'Sub-18 (U18)', 'Sub-21 (U21)', 'Senior', '50+'],
+    estils: ['Recorbat', 'Compost', 'Nu', 'Longbow', 'Tradicional'],
     lligues: [
       {
         nom: 'Lliga Catalana de Camp 2025/2026',
@@ -211,8 +211,8 @@ var DISC_DATA = {
     color: '#e65100',
     descripcio: 'El Run Archery combina la carrera a peu amb el tir amb arc en un format de competició dinàmic i espectacular. Els participants altern en trams de carrera amb estacions de tir on han d\'encertar dianes, penalitzant els impactes fallits amb metres addicionals de carrera.\n\nEl circuit pot ser de tipus sprint (300–500 m amb 4 dianes) o de persecució. S\'utilitzen arcs recurved o compost, i les dianes es troben a distàncies variables. La disciplina combina resistència física, control de la pulsació i precisió de tir, sent una de les modalitats de més ràpid creixement a nivell europeu.',
     normativa: [],
-    categories: ['Sub-18', 'Sub-21', 'Adult', '50+'],
-    estils: ['Arc Recorbat', 'Arc Compost'],
+    categories: ['Sub-18 (U18)', 'Sub-21 (U21)', 'Senior', '50+'],
+    estils: ['Recorbat', 'Compost'],
     lligues: [],
     campionats: [],
     records: [],
@@ -228,7 +228,7 @@ var DISC_DATA = {
     descripcio: 'L\'arc adaptat (tir amb arc paralímpic) és la modalitat inclusiva del tir amb arc, reconeguda per World Archery i present als Jocs Paralímpics des de 1960. A Catalunya hi ha clubs actius i una lliga catalana que es consolida any rere any.\n\nLes categories paralímpiques principals són: W1 (cadira de rodes amb afectació als membres superiors), W2 (cadira de rodes sense restriccions en els membres superiors), i VISRR / VISST per a esportistes amb discapacitat visual. Competeixen en arc recorbat i compost, disparant a 70 m (exterior) o 18 m (sala).',
     normativa: [],
     categories: ['W1', 'W2', 'VISRR', 'VISST', 'Open'],
-    estils: ['Arc Recorbat', 'Arc Compost'],
+    estils: ['Recorbat', 'Compost'],
     lligues: [
       {
         nom: 'Lliga Catalana Arc Adaptat 2025/2026',
@@ -292,11 +292,11 @@ var MEDALS_2526 = {
       { cat:'50+',    div:'Recorbat',    sex:'D', or:['Laura M. Suarez Garrote','Club Tau T.A.'],                       argent:['Begoña Perez Gomez','Club Tau T.A.'],                bronze:['Montserrat Gustems Martínez','Arc Montjuïc'] },
       { cat:'50+',    div:'Recorbat',    sex:'H', or:['David Catalan Ramon','Club Tau T.A.'],                           argent:['Miguel Marti Val','T.A. L\'Hospitalet'],             bronze:['Fernando Cañada Romero','Arquers Cambrils'] },
       { cat:'50+',    div:'Compost',     sex:'H', or:['Jordi Tarragó Martí','T.A. Pardinyes'],                          argent:['Francesc Castillo Torres','Tir Arc Olesa'],          bronze:['Raul Alcocer Bernardino','C.A. Cerdanyola del Vallès'] },
-      // Arc Nu / Longbow / Tradicional (26400)
-      { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'],           argent:['Victor Lopez Rodriguez','T.A. Les Franqueses'],      bronze:['Carles Peña Costa','Arquers Castelldefels'] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Maria Eugenia Palomar Gutierrez','Arquers Terrassa'],            argent:['Ginevra Marina Lazzerini','T.A. Manresa'],           bronze:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'] },
-      { cat:'50+',    div:'Arc Nu',      sex:'H', or:['Miguel Ramirez Moreno','T.A. Les Franqueses'],                   argent:['Ricardo Dominguez Escrihuela','C.A. Cerdanyola del Vallès'], bronze:['Paco Sierra Jimenez','T.A. Les Franqueses'] },
-      { cat:'50+',    div:'Arc Nu',      sex:'D', or:['Laura Dorado Escalera','T.A. Les Franqueses'],                   argent:['Montse Vila Fortuny','T.A. Les Franqueses'],         bronze:['Rosa Maria Abad Pérez','Arquers Terrassa'] },
+      // Nu / Longbow / Tradicional (26400)
+      { cat:'Sènior', div:'Nu',      sex:'H', or:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'],           argent:['Victor Lopez Rodriguez','T.A. Les Franqueses'],      bronze:['Carles Peña Costa','Arquers Castelldefels'] },
+      { cat:'Sènior', div:'Nu',      sex:'D', or:['Maria Eugenia Palomar Gutierrez','Arquers Terrassa'],            argent:['Ginevra Marina Lazzerini','T.A. Manresa'],           bronze:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'] },
+      { cat:'50+',    div:'Nu',      sex:'H', or:['Miguel Ramirez Moreno','T.A. Les Franqueses'],                   argent:['Ricardo Dominguez Escrihuela','C.A. Cerdanyola del Vallès'], bronze:['Paco Sierra Jimenez','T.A. Les Franqueses'] },
+      { cat:'50+',    div:'Nu',      sex:'D', or:['Laura Dorado Escalera','T.A. Les Franqueses'],                   argent:['Montse Vila Fortuny','T.A. Les Franqueses'],         bronze:['Rosa Maria Abad Pérez','Arquers Terrassa'] },
       { cat:'Sènior', div:'Longbow',   sex:'H', or:['Adria Pla Casellas','Arc Montjuïc'],                             argent:['Juan Jose Ruiz Cabeza','Club Català T.A.'],           bronze:['Antonio Garcia Martin','T.A. Manresa'] },
       { cat:'Sènior', div:'Longbow',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],                       argent:['Rosa Martinez Ochoa','T.A. Les Franqueses'],         bronze:['Tania Martinez Bazan','Club Català T.A.'] },
       { cat:'50+',    div:'Longbow',   sex:'H', or:['Isidro Moyano García','T.A. Zen del Bages'],                     argent:['Felip Diaz Sanchez','Arquers del Moianès'],          bronze:['Toni Barnils Sola','T.A. Les Franqueses'] },
@@ -304,7 +304,7 @@ var MEDALS_2526 = {
       { cat:'Sènior', div:'Tradicional', sex:'D', or:['Ana Lorente Molero','T.A. Les Franqueses'],                      argent:['Mªisabel Mompeán Gimenez','T.A. Caldes de Montbui'], bronze:['Carmen Sarceda Rodriguez','Arc Montjuïc'] },
       { cat:'50+',    div:'Tradicional', sex:'H', or:['Enric Diaz Soler','T.A. Les Franqueses'],                        argent:['David López Abad','Tir Arc Olesa'],                  bronze:['Jorge Rueda Castro','Arquers Terrassa'] },
       { cat:'50+',    div:'Tradicional', sex:'D', or:['Cristina Plaza i Cervera','C.E. Molins de Rei'],                 argent:null, bronze:null },
-      { cat:'Sub-21', div:'Arc Nu',      sex:'H', or:['Albert Gil Serra','Arquers Terrassa'],                           argent:null, bronze:null },
+      { cat:'Sub-21', div:'Nu',      sex:'H', or:['Albert Gil Serra','Arquers Terrassa'],                           argent:null, bronze:null },
     ]
   },
   {
@@ -322,10 +322,10 @@ var MEDALS_2526 = {
       { cat:'Sènior', div:'Compost',     sex:'H', or:['Jose Perez Perez','Arc Montjuïc'],                            argent:['Manel Souto Pascual','C.A. Cerdanyola del Vallès'],    bronze:['Antonio Álvarez Fernandez',''] },
       { cat:'50+',    div:'Compost',     sex:'H', or:['Jordi Tarragó Martí','T.A. Pardinyes'],                       argent:['Raul Alcocer Bernardino',''],                                bronze:['Francesc Castillo Torres',''] },
       { cat:'Sub-21', div:'Compost',     sex:'H', or:['Arnau Barbero Diaz','T.A. Rubí'],                                  argent:['Pau Álvarez Babio','T.A. Rubí'],                   bronze:['Yuri Lou Giral','T.A. Rubí'] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Casandra Campo Tellez','T.A. Rubí'],                          argent:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'],              bronze:['Ginevra Marina Lazzerini','T.A. Manresa'] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David García Fernández','T.A. Rubí'],              argent:['Víctor López Rodríguez','T.A. Les Franqueses'], bronze:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'] },
-      { cat:'50+',    div:'Arc Nu',      sex:'D', or:['Laura Dorado Escalera','T.A. Les Franqueses'],                          argent:['Montse Vila Fortuny','T.A. Les Franqueses'],                bronze:['Rosa Maria Abad Pérez','Arquers Terrassa'] },
-      { cat:'50+',    div:'Arc Nu',      sex:'H', or:['Miguel Ramirez Moreno','T.A. Les Franqueses'],                          argent:['Francis De Miguel Rodriguez','T.A. Les Franqueses'],        bronze:['Oriol Ribalta Aymami','T.A. Encamp'] },
+      { cat:'Sènior', div:'Nu',      sex:'D', or:['Casandra Campo Tellez','T.A. Rubí'],                          argent:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'],              bronze:['Ginevra Marina Lazzerini','T.A. Manresa'] },
+      { cat:'Sènior', div:'Nu',      sex:'H', or:['David García Fernández','T.A. Rubí'],              argent:['Víctor López Rodríguez','T.A. Les Franqueses'], bronze:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'] },
+      { cat:'50+',    div:'Nu',      sex:'D', or:['Laura Dorado Escalera','T.A. Les Franqueses'],                          argent:['Montse Vila Fortuny','T.A. Les Franqueses'],                bronze:['Rosa Maria Abad Pérez','Arquers Terrassa'] },
+      { cat:'50+',    div:'Nu',      sex:'H', or:['Miguel Ramirez Moreno','T.A. Les Franqueses'],                          argent:['Francis De Miguel Rodriguez','T.A. Les Franqueses'],        bronze:['Oriol Ribalta Aymami','T.A. Encamp'] },
       { cat:'Sènior', div:'Longbow',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],                           argent:['María José Delgado Falcon','T.A. Les Franqueses'],bronze:['Tania Martinez Bazan','Club Català T.A.'] },
       { cat:'Sènior', div:'Longbow',   sex:'H', or:['Antonio Garcia Martin','T.A. Manresa'],                              argent:['Adria Pla Casellas','Arc Montjuïc'],                   bronze:['Miguel Serrahima Garcia','T.A. Les Franqueses'] },
       { cat:'50+',    div:'Longbow',   sex:'H', or:['Isidro Moyano Garcia','T.A. Zen del Bages'],                              argent:['Jose Manuel Ortega Perez','T.A. L\'Arboç'],            bronze:['Felip Díaz Sanchez','Arquers del Moianès'] },
@@ -354,9 +354,9 @@ var MEDALS_2526 = {
       { cat:'Sènior', div:'Compost',     sex:'D', or:['Alexandra Moura Ribeiro',''],                       argent:['Maria Pitarch Laguna','T.A. Caldes de Montbui'],         bronze:['Ester Semis Astier','Arc Montjuïc'] },
       { cat:'50+',    div:'Compost',     sex:'H', or:['Josep Castelló Folch','Arquers Terrassa'],         argent:['Javier Montesinos Lopez','T.A. Pardinyes'],               bronze:['Francesc Castillo Torres',''] },
       { cat:'Sub-21', div:'Compost',     sex:'H', or:['Arnau Barbero Diaz','Arquers Terrassa'],                argent:['Arnau Font Padros',''],                                   bronze:['Yuri Lou Giral','Arquers Terrassa'] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'],   argent:['Maria Eugenia Palomar Gutierrez','Arquers Terrassa'],    bronze:['Alba Del Puerto Madrid','Arc Montjuïc'] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['Carles Peña Costa',''],                       argent:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'],   bronze:['Josep Pla Aymerich','Arc Montjuïc'] },
-      { cat:'50+',    div:'Arc Nu',      sex:'H', or:['Diego Del Puerto Angorrilla',''],                       argent:['Jordi Madí Alsina','Arc Sant Celoni'],               bronze:['Josep Traveria Murillo','Arquers Sant Cugat'] },
+      { cat:'Sènior', div:'Nu',      sex:'D', or:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'],   argent:['Maria Eugenia Palomar Gutierrez','Arquers Terrassa'],    bronze:['Alba Del Puerto Madrid','Arc Montjuïc'] },
+      { cat:'Sènior', div:'Nu',      sex:'H', or:['Carles Peña Costa',''],                       argent:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'],   bronze:['Josep Pla Aymerich','Arc Montjuïc'] },
+      { cat:'50+',    div:'Nu',      sex:'H', or:['Diego Del Puerto Angorrilla',''],                       argent:['Jordi Madí Alsina','Arc Sant Celoni'],               bronze:['Josep Traveria Murillo','Arquers Sant Cugat'] },
       { cat:'Sènior', div:'Longbow',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],           argent:['Maria López Bermudez',''],                           bronze:null },
       { cat:'50+',    div:'Longbow',   sex:'H', or:['Jose Luis Velasco Molina','Arquers Castelldefels'],       argent:['Miguel Serrahima Garcia','T.A. Les Franqueses'],         bronze:['Alfredo Olaya Lafita',''] },
       { cat:'Sènior', div:'Tradicional', sex:'D', or:['Ana Lorente Molero',''],                           argent:['Monica Carreto Peñalba','Tir Arc Olesa'],            bronze:null },
@@ -372,15 +372,15 @@ var MEDALS_2526 = {
       data: '17 mai 2026',
       lloc: 'Montcada i Reixac',
       resultats: [
-        { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Vivo Ballarin','Club Català T.A.'],        argent:['Juan Pedro Serrano Manzano','T.A. L\'Hospitalet'],  bronze:['Carles Sabates Torres','T.A. Rubí'] },
-        { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],     argent:['Casandra Campo Tellez','T.A. Rubí'],                bronze:['Olga Moya Bonilla','Club Català T.A.'] },
+        { cat:'Sènior', div:'Nu',      sex:'H', or:['David Vivo Ballarin','Club Català T.A.'],        argent:['Juan Pedro Serrano Manzano','T.A. L\'Hospitalet'],  bronze:['Carles Sabates Torres','T.A. Rubí'] },
+        { cat:'Sènior', div:'Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],     argent:['Casandra Campo Tellez','T.A. Rubí'],                bronze:['Olga Moya Bonilla','Club Català T.A.'] },
         { cat:'Sènior', div:'Longbow',   sex:'H', or:['David Alejo Miñarro','T.A. Rubí'],               argent:['Jose Manuel Martí Martínez','Club Català T.A.'],    bronze:['Antoni Mercadal Oliver','T.A. Zen del Bages'] },
         { cat:'Sènior', div:'Longbow',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'],     argent:['Tania Martinez Bazan','Club Català T.A.'],          bronze:['Mireia Comas Franch','Draco Sagittariis'] },
         { cat:'Sènior', div:'Tradicional', sex:'H', or:['Victor Lopez Rodriguez','T.A. Les Franqueses'],  argent:['Albert Torres Martínez','T.A. Caldes de Montbui'],  bronze:['Carlos Carcamo Canuto','T.A. Les Franqueses'] },
         { cat:'Sènior', div:'Tradicional', sex:'D', or:['Mªisabel Mompeán Gimenez','T.A. Caldes de Montbui'], argent:['Maite Suarez González','T.A. Rubí'],            bronze:['Eva Mª Piquer Schkot','Club Català T.A.'] },
         { cat:'Sènior', div:'Compost',     sex:'H', or:['Javier Menchon Martinez','T.A. Caldes de Montbui'], argent:['André Sousa','T.A. Rubí'],                       bronze:['Françesc Josep Marquez Parareda','T.A. Mollet'] },
         { cat:'Sènior', div:'Compost',     sex:'D', or:['Maria Pitarch Laguna','T.A. Caldes de Montbui'], argent:null, bronze:null },
-        { cat:'Sub-21', div:'Arc Nu',      sex:'H', or:['Sergio Ortega Masó','T.A. Figueres'],            argent:null, bronze:null },
+        { cat:'Sub-21', div:'Nu',      sex:'H', or:['Sergio Ortega Masó','T.A. Figueres'],            argent:null, bronze:null },
         { cat:'Sub-15', div:'Tradicional', sex:'H', or:['Dídac Porta Valldosera','Arquers d\'Oliana'],    argent:['Mario Rodriguez Muñoz','T.A. Sant Andreu de la Barca'], bronze:['Genís Masdeu Ricart','Arquers del Vallès Fosc'] },
         { cat:'Sub-15', div:'Tradicional', sex:'D', or:['Anna Tàcies Gallardo','T.A. Les Franqueses'],    argent:null, bronze:null },
       ]
@@ -391,8 +391,8 @@ var MEDALS_2526 = {
       lloc: 'Catalunya',
       resultats: [
         { cat:'Sènior', div:'Compost',     sex:'H', or:['Javier Menchon Martinez','T.A. Caldes de Montbui'],    argent:['Miguel Angel Perez Diaz','T.A. Figueres'],          bronze:['Bartolome Jimenez Mejias','T.A. Caldes de Montbui'] },
-        { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Vivo Ballarin','T.A. Caldes de Montbui'],        argent:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'], bronze:['Sergio Ortega González','T.A. Figueres'] },
-        { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],           argent:['Irma Mercedes Galeano Valeriano','Club Català T.A.'], bronze:['Ana Elvira Serrano Garcia','Tir Arc Olesa'] },
+        { cat:'Sènior', div:'Nu',      sex:'H', or:['David Vivo Ballarin','T.A. Caldes de Montbui'],        argent:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'], bronze:['Sergio Ortega González','T.A. Figueres'] },
+        { cat:'Sènior', div:'Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],           argent:['Irma Mercedes Galeano Valeriano','Club Català T.A.'], bronze:['Ana Elvira Serrano Garcia','Tir Arc Olesa'] },
         { cat:'Sènior', div:'Longbow',   sex:'H', or:['Isidro Moyano García','T.A. Zen del Bages'],           argent:['Jose Manuel Martí Martínez','Club Català T.A.'],    bronze:['Enrique Flores Delgado','T.A. Rubí'] },
         { cat:'Sènior', div:'Longbow',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'],           argent:['Mireia Comas Franch','Draco Sagittariis'],          bronze:['Maria José Delgado Falcón','T.A. Les Franqueses'] },
         { cat:'Sènior', div:'Tradicional', sex:'H', or:['Juanjo Querol Guardiola','T.A. Sant Andreu de la Barca'], argent:['Jordi Gomez Rigat','C.A. Cerdanyola del Vallès'], bronze:['Antonio Hita Campillo','T.A. Sant Andreu de la Barca'] },
@@ -409,10 +409,10 @@ var MEDALS_2526 = {
         { cat:'Sènior', div:'Compost',     sex:'H', or:['Javier Menchon Martinez','T.A. Caldes de Montbui'], argent:['André Sousa',''],                    bronze:null },
         { cat:'Sènior', div:'Compost',     sex:'D', or:['Maria Pitarch Laguna','T.A. Caldes de Montbui'],  argent:null,                                 bronze:null },
         { cat:'50+',    div:'Compost',     sex:'H', or:['Françesc Josep Marquez Parareda','T.A. Arquers del Moianès'], argent:null,                      bronze:null },
-        { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Garcia Fernandez','T.A. Rubí'],              argent:['David Vivo Ballarin',''],            bronze:['Juan Carlos Sanchez Mirabal','C.A. Cerdanyola del Vallès'] },
-        { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Casandra Campo Tellez','T.A. Rubí'],               argent:['Jessica Mallén Zafra',''],           bronze:['Olga Moya Bonilla','Club Català T.A.'] },
-        { cat:'50+',    div:'Arc Nu',      sex:'H', or:['Maurici Peralta Tolos','Arquers Sant Cugat'],       argent:['Ricardo Masagué Mainou',''],        bronze:null },
-        { cat:'50+',    div:'Arc Nu',      sex:'D', or:['Irma Mercedes Valeriano','Club Català T.A.'],       argent:null,                                 bronze:null },
+        { cat:'Sènior', div:'Nu',      sex:'H', or:['David Garcia Fernandez','T.A. Rubí'],              argent:['David Vivo Ballarin',''],            bronze:['Juan Carlos Sanchez Mirabal','C.A. Cerdanyola del Vallès'] },
+        { cat:'Sènior', div:'Nu',      sex:'D', or:['Casandra Campo Tellez','T.A. Rubí'],               argent:['Jessica Mallén Zafra',''],           bronze:['Olga Moya Bonilla','Club Català T.A.'] },
+        { cat:'50+',    div:'Nu',      sex:'H', or:['Maurici Peralta Tolos','Arquers Sant Cugat'],       argent:['Ricardo Masagué Mainou',''],        bronze:null },
+        { cat:'50+',    div:'Nu',      sex:'D', or:['Irma Mercedes Valeriano','Club Català T.A.'],       argent:null,                                 bronze:null },
         { cat:'Sènior', div:'Longbow',   sex:'H', or:['Enrique Flores Delgado',''],                      argent:['Dionisio Martínez Martínez','Club Arquers Montsant'], bronze:['David Alejo Miñarro',''] },
         { cat:'Sènior', div:'Longbow',   sex:'D', or:['Marta Gelpi Camallonga',''],                      argent:['Tania Martinez Bazan','Club Català T.A.'], bronze:['Mireia Comas Franch','Draco Sagittariis'] },
         { cat:'50+',    div:'Longbow',   sex:'H', or:['Isidro Moyano García',''],                         argent:['Jose Manuel Martí Martínez','Club Català T.A.'], bronze:['Fortunato Moreno Alejos',''] },
@@ -434,8 +434,8 @@ var MEDALS_2526 = {
       { cat:'Sènior', div:'Recorbat',    sex:'D', or:['Jana Cahué Comas','Draco Sagittariis'],              argent:null, bronze:null },
       { cat:'Sènior', div:'Compost',     sex:'H', or:['Felipe Baena Cocera','T.A. Zen del Bages'],         argent:['Bartolome Jimenez Mejias','T.A. Caldes de Montbui'],  bronze:['Javier Menchon Martinez','T.A. Caldes de Montbui'] },
       { cat:'Sènior', div:'Compost',     sex:'D', or:['Alexandra Moura Ribeiro','Draco Sagittariis'],      argent:null, bronze:null },
-      { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Vivo Ballarin','Club Català T.A.'],           argent:['Oscar Jimenez Muriano','T.A. Sant Andreu de la Barca'], bronze:['Juan Pedro Serrano Manzano','T.A. L\'Hospitalet'] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],       argent:null, bronze:null },
+      { cat:'Sènior', div:'Nu',      sex:'H', or:['David Vivo Ballarin','Club Català T.A.'],           argent:['Oscar Jimenez Muriano','T.A. Sant Andreu de la Barca'], bronze:['Juan Pedro Serrano Manzano','T.A. L\'Hospitalet'] },
+      { cat:'Sènior', div:'Nu',      sex:'D', or:['Marta Gimeno Bonells','T.A. L\'Hospitalet'],       argent:null, bronze:null },
       { cat:'Sènior', div:'Longbow',   sex:'H', or:['David Alejo Miñarro','T.A. Rubí'],                  argent:['Marc Coll Bosch','Club Català T.A.'],                  bronze:['Jose Manuel Martí Martínez','Club Català T.A.'] },
       { cat:'Sènior', div:'Longbow',   sex:'D', or:['Mireia Comas Franch','Draco Sagittariis'],          argent:['Marta Gelpi Camallonga','Club Català T.A.'],           bronze:['Carmen del Rosario Mejía Carrión','T.A. Manresa'] },
       { cat:'Sènior', div:'Tradicional', sex:'H', or:['Victor Lopez Rodriguez','T.A. Les Franqueses'],     argent:['Pablo Beceiro Sanmateo','Arquers Sant Cugat'],         bronze:['Sergio Moral Quintana','Club Català T.A.'] },
@@ -453,9 +453,9 @@ var MEDALS_2526 = {
       { cat:'50+',    div:'Longbow',   sex:'H', or:['Jose Manuel Martí Martínez','Club Català T.A.'], argent:['Antoni Ferrando Bartumeu','Club Català T.A.'], bronze:['Isidro Moyano García','T.A. Zen del Bages'] },
       { cat:'Sènior', div:'Longbow',   sex:'H', or:['David Alejo Miñarro','T.A. Rubí'],   argent:['Juan Jose Ruiz Cabeza','Club Català T.A.'], bronze:['Julián Zazo Gomez','Arc Sant Celoni'] },
       { cat:'Sènior', div:'Longbow',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'], argent:['Mireia Comas Franch','Draco Sagittariis'], bronze:['Tania Martinez Bazan','Club Català T.A.'] },
-      { cat:'50+',    div:'Arc Nu',      sex:'H', or:['Juan Pedro Serrano Manzano',''],     argent:['Josep Sanchez Lamarca',''],            bronze:['Félix Pérez Cuevas',''] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'H', or:['David Vivo Ballarin',''],             argent:['Javier Ribatallada Espasa',''],        bronze:['Víctor Villarán Alfonso',''] },
-      { cat:'Sènior', div:'Arc Nu',      sex:'D', or:['Casandra Campo Tellez',''],           argent:['Marta Gimeno Bonells','T.A. L\'Hospitalet'], bronze:null },
+      { cat:'50+',    div:'Nu',      sex:'H', or:['Juan Pedro Serrano Manzano',''],     argent:['Josep Sanchez Lamarca',''],            bronze:['Félix Pérez Cuevas',''] },
+      { cat:'Sènior', div:'Nu',      sex:'H', or:['David Vivo Ballarin',''],             argent:['Javier Ribatallada Espasa',''],        bronze:['Víctor Villarán Alfonso',''] },
+      { cat:'Sènior', div:'Nu',      sex:'D', or:['Casandra Campo Tellez',''],           argent:['Marta Gimeno Bonells','T.A. L\'Hospitalet'], bronze:null },
       { cat:'Sènior', div:'Recorbat',    sex:'H', or:['Ignasi Gallardo Andres',''],          argent:['Daniel Muñoz Malagon',''],            bronze:null },
       { cat:'Sènior', div:'Recorbat',    sex:'D', or:['Jana Cahué Comas',''],                argent:null,                                   bronze:null },
       { cat:'50+',    div:'Tradicional', sex:'H', or:['Antonio Hita Campillo',''],           argent:['Helios Artesero González',''],        bronze:['David López Abad',''] },
@@ -882,13 +882,12 @@ function renderDiscInfo(d) {
 }
 
 function renderDiscLliga(d) {
-  var lligues = (DB.lligues || []).filter(function(l){ return l.disc === _discActiva; });
-  if (!lligues.length) {
+  if (!d.lligues || !d.lligues.length) {
     return '<div class="disc-empty">No hi ha dades de lliga per a aquesta disciplina.</div>';
   }
 
   var html = '';
-  lligues.forEach(function(ll) {
+  d.lligues.forEach(function(ll) {
     // Construeix els botons de rànquings
     var ranqBtns = '';
     if (ll.ranquingUrl && ll.ranquingUrl !== '#') {
