@@ -3294,32 +3294,6 @@
   <script src="js/utils.js"></script>
   <script src="js/init.js"></script>
 
-<!-- BOTTOM NAV (mobile) -->
-<nav class="bnav" id="bNav" aria-label="Navegació ràpida">
-  <div class="bnav-items">
-    <button class="bnav-item" onclick="setS('home');bNavClose()" id="bn-home">
-      <span class="bnav-item-icon">🏠</span>
-      <span class="bnav-item-label">Inici</span>
-    </button>
-    <button class="bnav-item" onclick="scrollToHub('hub-activitat');bNavClose()" id="bn-competicio">
-      <span class="bnav-item-icon">🏆</span>
-      <span class="bnav-item-label">Competició</span>
-    </button>
-    <button class="bnav-item" onclick="scrollToHub('hub-federacio');bNavClose()" id="bn-federacio">
-      <span class="bnav-item-icon">🏛️</span>
-      <span class="bnav-item-label">La Federació</span>
-    </button>
-    <button class="bnav-item" onclick="scrollToHub('hub-espais');bNavClose()" id="bn-espais">
-      <span class="bnav-item-icon">🎯</span>
-      <span class="bnav-item-label">Espais</span>
-    </button>
-  </div>
-</nav>
-
-<!-- BOTTOM NAV DRAWER (unused, kept for reference) -->
-<div class="bnav-drawer-overlay" id="bNavOverlay" onclick="bNavClose()" style="display:none"></div>
-<div class="bnav-drawer" id="bNavDrawer"></div>
-
 <script>
 function scrollToHub(id) {
   var isHome = document.getElementById('sHome').style.display !== 'none';
@@ -3333,33 +3307,18 @@ function scrollToHub(id) {
   }
 }
 
-function bNavClose() {
-  document.getElementById('bNavDrawer').classList.remove('open');
-  document.getElementById('bNavOverlay').classList.remove('open');
-}
-
 // ── Hash routing ──────────────────────────────────────────
-// Wraps setS() to keep the URL hash in sync with the active section.
-// This allows sharing direct links: fcta.cat/#circulars, #competitions…
 (function() {
   var origSetS = window.setS;
   if (typeof origSetS !== 'function') return;
 
   window.setS = function(key) {
     origSetS(key);
-    // Update URL hash without triggering a scroll
     if (history.replaceState) {
       history.replaceState(null, '', key === 'home' ? window.location.pathname : '#' + key);
     }
-    // Highlight bottom nav
-    var items = document.querySelectorAll('.bnav-item');
-    items.forEach(function(el) { el.classList.remove('bnav-act'); });
-    var bnMap = { home:'bn-home', hub_activitat:'bn-competicio', hub_federacio:'bn-federacio', hub_espais:'bn-espais' };
-    if (bnMap[key]) document.getElementById(bnMap[key]).classList.add('bnav-act');
-    else if (key === 'home') document.getElementById('bn-home').classList.add('bnav-act');
   };
 
-  // On load: navigate to the section in the hash, if any
   window.addEventListener('DOMContentLoaded', function() {
     var hash = window.location.hash.replace('#', '');
     if (hash && FCTA.sectionMap[hash]) {
