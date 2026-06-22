@@ -551,7 +551,7 @@ function _renderMedallerTable(items, nomLabel) {
 
 function _renderArquersPerCategoria(campionats) {
   var DIV_ORDER = ['Recorbat','Compost','Arc Nu','Longbow','Tradicional'];
-  var CAT_ORDER = ['Sènior','Sub-21','Sub-18','Sub-15','50+','60+'];
+  var CAT_ORDER = ['Sènior','Sub-21','Sub-18','Sub-15','50+'];
   var SEX_LABEL = { H: 'Home', D: 'Dones' };
 
   var html = '';
