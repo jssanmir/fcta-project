@@ -10,7 +10,7 @@ var REC_DISC_LABELS = {
 
 var REC_CAT_ORDER = [
   'Prebenjamí','Benjamí','Aleví','Sub-15','Sub-18','Sub-21',
-  'Sènior','Veterà','+50','+60'
+  'Sènior','Veterà','+50'
 ];
 
 var REC_ESTIL_ORDER = [

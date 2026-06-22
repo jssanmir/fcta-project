@@ -10,7 +10,7 @@ var REC_ESTILS = ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicion
 var REC_CATEGORIES = [
   'Prebenjamí (U10)', 'Benjamí (U12)', 'Aleví (U14)',
   'Sub-15', 'Sub-18', 'Sub-21',
-  'Sènior', '+50', '+60'
+  'Sènior', '+50'
 ];
 
 // ── Obre el modal del formulari ────────────────────────────
@@ -96,7 +96,7 @@ var ADM_REC_DISCS = [
   {val:'sala', lbl:'Sala'}, {val:'al', lbl:'Aire Lliure'}, {val:'aa', lbl:'Arc Adaptat'}
 ];
 var ADM_REC_ESTILS = ['Recorbat','Compost','Arc Nu','Longbow','Tradicional','Instintiu','Estàndard'];
-var ADM_REC_CATS   = ['Prebenjamí','Benjamí','Aleví','Sub-15','Sub-18','Sub-21','Sènior','Veterà','+50','+60'];
+var ADM_REC_CATS   = ['Prebenjamí','Benjamí','Aleví','Sub-15','Sub-18','Sub-21','Sènior','Veterà','+50'];
 var ADM_REC_SEXES  = ['Dona','Home'];
 var _admRecDisc = 'sala';
 var _admRecEditId = null;
