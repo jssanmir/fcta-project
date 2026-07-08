@@ -856,7 +856,7 @@ function renderDiscInfo(d) {
 
   // Categories
   if (d.categories && d.categories.length) {
-    html += '<div class="disc-card"><h3>🏅 Classes</h3><ul class="disc-tags">';
+    html += '<div class="disc-card"><h3>🏅 Edats</h3><ul class="disc-tags">';
     d.categories.forEach(function(c) { html += '<li>' + c + '</li>'; });
     html += '</ul>';
     if (d.estils && d.estils.length) {
