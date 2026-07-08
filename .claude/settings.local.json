@@ -125,7 +125,10 @@
       "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" add js/db.js img/news/noticia7.jpeg img/news/noticia8.jpeg img/news/noticia9.jpeg img/news/noticia10.jpeg)",
       "Bash(git -C \"C:\\\\Projects\\\\fcta-project\" add index.html css/03-nav.css)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jcsanchez\\\\Downloads\\\\\" | Where-Object { $_.Name -match \"lliga|camp|3d|linea|classif\" -and $_.Name -match \"\\\\.pdf$\" } | Select-Object Name)",
-      "PowerShell(python \"C:\\\\Projects\\\\fcta-project\\\\parse_lligues.py\" 2>&1)"
+      "PowerShell(python \"C:\\\\Projects\\\\fcta-project\\\\parse_lligues.py\" 2>&1)",
+      "Bash(Remove-Item \"C:\\\\Projects\\\\fcta-project\\\\.git\\\\index.lock\" -Force)",
+      "Bash(rm \"C:/Projects/fcta-project/.git/index.lock\")",
+      "Bash(rm \"C:/Projects/fcta-project/.git/HEAD.lock\" 2>/dev/null; ls \"C:/Projects/fcta-project/.git/\"*.lock 2>/dev/null)"
     ]
   }
 }

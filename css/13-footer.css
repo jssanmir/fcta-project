@@ -13,6 +13,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:3.5rem 0 1
 .foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
 .foot-bottom p{font-size:.78rem;color:rgba(255,255,255,.4)}
 .soc-icons{display:flex;gap:.55rem}
-.soc-icon{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.82rem;text-decoration:none;transition:all .2s;font-weight:700}
+.soc-icon{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:all .2s}
+.soc-icon svg{width:18px;height:18px;display:block}
 .soc-icon:hover{background:var(--gold);color:var(--navy-dark)}
 .foot-bottom-right{display:flex;align-items:center;gap:.75rem}
