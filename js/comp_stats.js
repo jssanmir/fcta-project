@@ -181,7 +181,12 @@ function setCompTab(tab, btn) {
   if (cal)      cal.style.display      = (tab === 'calendari') ? '' : 'none';
   if (panel)    panel.style.display    = (tab === 'stats')     ? '' : 'none';
   if (medPanel) medPanel.style.display = (tab === 'medaller')  ? '' : 'none';
-  try { history.replaceState(null, '', tab === 'medaller' ? '#competitions/medaller/' + _medallerTab : '#competitions'); } catch(e) {}
+  try {
+    var newHash = '#competitions';
+    if (tab === 'medaller') newHash = '#competitions/medaller/' + _medallerTab;
+    else if (tab === 'stats') newHash = '#competitions/stats';
+    history.replaceState(null, '', newHash);
+  } catch(e) {}
   if (tab === 'stats') _csInit();
   if (tab === 'medaller') {
     if (!medPanel.getAttribute('data-loaded') || medPanel.innerHTML === '') {

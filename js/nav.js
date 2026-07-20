@@ -137,6 +137,14 @@ function _navFromHash() {
       }
     }, 50);
   }
+
+  // ── Competicions > Estadístiques ──────────────────────────
+  if (sec === 'competitions' && sub === 'stats') {
+    setTimeout(function() {
+      var btn = document.querySelector('.comp-stab:nth-child(2)');
+      if (btn) setCompTab('stats', btn);
+    }, 50);
+  }
 }
 
 window.addEventListener('hashchange', _navFromHash);

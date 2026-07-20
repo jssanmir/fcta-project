@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded',function(){
   renderCalendari();
   renderHeroPanel();
   fixPuntVolat();
-  setS('home');
+  // No sobreescriure la navegació per hash (enllaços directes a #competitions/stats, etc.)
+  var _hashSec = (window.location.hash || '').replace('#', '').split('/')[0];
+  if (!FCTA.sectionMap[_hashSec]) setS('home');
 });
 
 // ── Fix l·l geminada en títols i etiquetes ────────────────
