@@ -145,6 +145,14 @@ function _navFromHash() {
       if (btn) setCompTab('stats', btn);
     }, 50);
   }
+
+  // ── Notícia individual (enllaç directe) ───────────────────
+  if (sec === 'news' && sub) {
+    setTimeout(function() {
+      openNews(parseInt(sub));
+      _newsPrevHash = '#news';
+    }, 80);
+  }
 }
 
 window.addEventListener('hashchange', _navFromHash);
