@@ -192,6 +192,27 @@ var NEWS_CONTENT = {
     body: `<p>Vam celebrar el <strong>final de la Lliga Catalana d'Arc Adaptat, Inclusiu i Salut</strong> al <strong>Arc Vng</strong>. Aquesta lliga, que s'ha iniciat aquest any, ha estat tot un èxit i continua creixent jornada rere jornada, incorporant cada vegada més esportistes i consolidant-se com un espai de trobada, inclusió i esport per a tothom.</p>
 <p>Volem donar les gràcies als <strong>coordinadors d'aquest nou projecte</strong> per la seva dedicació, així com a tots els clubs, tècnics i persones implicades que han fet possible aquesta iniciativa.</p>
 <p>Enhorabona a tots els participants per la vostra implicació, esforç i esperit de superació. Aquest és només el començament d'un projecte amb molt de futur!</p>`
+  },
+  11: {
+    title: "El 76è Campionat de Catalunya d'Aire Lliure reuneix més de 165 esportistes a Barcelona",
+    date: "6 de juliol de 2026",
+    cat: "Aire Lliure",
+    img: "img/news/noticia8.jpeg",
+    body: `<p>Aquest cap de setmana, <strong>Barcelona</strong> ha acollit el <strong>76è Campionat de Catalunya d'Aire Lliure</strong>, tant en la competició individual com per equips.</p>
+<p>La participació ha estat tot un èxit, amb més de <strong>165 esportistes</strong>, <strong>19 equips</strong> i <strong>28 clubs</strong> d'arreu del territori, que han omplert el camp de tir d'un gran ambient de competició.</p>
+<p>La calor ha estat també una de les protagonistes del cap de setmana, però no ha impedit que la competició es desenvolupés amb èxit i que els arquers i arqueres oferissin un gran nivell esportiu.</p>
+<p>Des de la FCTA volem agrair la implicació de totes les persones que han fet possible aquest campionat: els clubs, els tècnics i tècniques, els jutges, l'equip organitzador i, sobretot, tots els esportistes, que han contribuït a fer possible una competició de gran nivell i un excel·lent ambient esportiu.</p>
+<p>Aquest campionat és també el resultat de l'esforç col·lectiu per superar les dificultats que inevitablement apareixen al llarg del camí. Des de la FCTA continuarem treballant amb responsabilitat, escoltant i millorant, amb un únic objectiu: seguir impulsant el tir amb arc català i oferir les millors competicions possibles als nostres esportistes.</p>
+<p>Gràcies a tothom per fer possible un gran cap de setmana de tir amb arc. Enhorabona als campions i campiones i a tots els participants!</p>`
+  },
+  12: {
+    title: "El CAR Sant Cugat acull la 5ª jornada del Programa Autonòmic de Tecnificació",
+    date: "20 de juny de 2026",
+    cat: "PAT",
+    img: "img/news/noticia12.jpg",
+    body: `<p>El <strong>Centre d'Alt Rendiment (CAR) de Sant Cugat</strong> va acollir el passat <strong>20 de juny</strong> la <strong>5ª jornada del Programa Autonòmic de Tecnificació (PAT)</strong>, una nova cita dins del calendari de seguiment tècnic que la FCTA impulsa per als esportistes amb més projecció.</p>
+<p>La sessió, dirigida pel tècnic <strong>Lluís Culí</strong>, va reunir arquers i arqueres de les categories <strong>U15, U18 i U21</strong> en una jornada de treball i seguiment tècnic individualitzat, en el marc del model de tecnificació que la Federació desenvolupa en coordinació amb els clubs.</p>
+<p>Des de la FCTA felicitem tots els participants per la implicació i la feina feta durant la jornada. Seguim treballant per fer créixer el talent català! 💪🏼</p>`
   }
 };
 
@@ -335,6 +356,8 @@ competitions: [
 
 // --- NOTÍCIES ---
 news: [
+  {id:12,cat:'PAT',title:'El CAR Sant Cugat acull la 5ª jornada del Programa Autonòmic de Tecnificació',date:'20 jun 2026',desc:'Arquers i arqueres U15, U18 i U21 es reuneixen al CAR de Sant Cugat en una jornada de seguiment i treball tècnic dirigida per Lluís Culí.',img:'img/news/noticia12.jpg',url:'#news:12'},
+  {id:11,cat:'Aire Lliure',title:'El 76è Campionat de Catalunya d\'Aire Lliure reuneix més de 165 esportistes a Barcelona',date:'5 jul 2026',desc:'19 equips i 28 clubs d\'arreu del territori omplen el camp de tir en una competició individual i per equips de gran nivell, malgrat la calor.',img:'img/news/noticia8.jpeg',url:'#news:11'},
   {id:10,cat:'Arc Adaptat',title:'Final de la Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut',date:'15 jun 2026',desc:'La Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut tanca la seva primera edició al Arc Vng amb un èxit de participació creixent.',img:'img/news/noticia10.jpeg',url:'#news:10'},
   {id:9,cat:'Camp',title:'Catalunya aconsegueix 10 medalles al Campionat d\'Espanya de Camp 2026',date:'8 jun 2026',desc:'La delegació catalana torna de Hoyos del Espino amb 10 medalles: 5 ors, 3 plates i 2 bronzes.',img:'img/news/noticia9.jpeg',url:'#news:9'},
   {id:8,cat:'Aire Lliure',title:'Més de 150 esportistes a la 3a i última tirada de la Lliga Catalana d\'Aire Lliure',date:'1 jun 2026',desc:'Barcelona i Esclanà acollen la 3a tirada que tanca la lliga i prepara els arquers per al Campionat de Catalunya (4-5 juliol).',img:'img/news/noticia8.jpeg',url:'#news:8'},
