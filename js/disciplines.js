@@ -21,9 +21,9 @@ var DISC_DATA = {
         tipus: 'al',
         temporada: '2026',
         tirades: [
-          { num: '1ª', compId: 13 },
-          { num: '2ª', compId: 11 },
-          { num: '3ª', compId: 1  },
+          { num: '1ª', compId: 13, ianseo2: 27064 },
+          { num: '2ª', compId: 11, ianseo2: 27634 },
+          { num: '3ª', compId: 1, ianseo2: 28417 },
         ],
         ranquingUrl: 'docs/Ranquing_Lliga_AL_2025-26.pdf',
         ranquingLabel: 'Classificació Final Lliga AL 2025/26',
@@ -36,7 +36,7 @@ var DISC_DATA = {
       },
     ],
     campionats: [
-      { nom: '73è Campionat de Catalunya Aire Lliure', data: 'jul 2026', lloc: 'Pendent de confirmar', status: 'soon' },
+      { nom: '76è Campionat de Catalunya d\'Aire Lliure', data: '4-5 jul 2026', lloc: 'Barcelona', status: 'closed', resultatUrl: 'https://www.ianseo.net/Details.php?toId=29041' },
       { nom: 'Campionat de Catalunya Universitari',    data: '28 mar 2026', lloc: 'Tarragona',           status: 'closed', resultatUrl: 'https://www.ianseo.net/Details.php?toId=27386' },
     ],
     records: [
@@ -337,6 +337,32 @@ var MEDALS_2526 = {
   ],
 
   al: [
+  {
+    nom: '76è Campionat de Catalunya d\'Aire Lliure',
+    data: '4-5 jul 2026',
+    lloc: 'Barcelona',
+    resultats: [
+      { cat:'Sènior', div:'Recorbat',    sex:'H', or:['David Bonnin Vasquez','Arc Montjuïc'],              argent:['Ignasi Gallardo Andres','Draco Sagittariis'],        bronze:['Fran Sanchez Costas','Draco Sagittariis'] },
+      { cat:'Sènior', div:'Recorbat',    sex:'D', or:['Lucia Quiles Perez','Arquers Sant Cugat'],          argent:['Núria Barberà López','Arquers Castelldefels'],       bronze:['Jana Cahué Comas','Draco Sagittariis'] },
+      { cat:'50+',    div:'Recorbat',    sex:'H', or:['Josep Bravo Navas','T.A. Pardinyes'],               argent:['Daniel Bartoll Rios','Arquers Castelldefels'],       bronze:['Antoni Fraguas Castany','Draco Sagittariis'] },
+      { cat:'50+',    div:'Recorbat',    sex:'D', or:['Laura M. Suarez Garrote','Club Tau T.A.'],          argent:['Montserrat Gustems Martínez','Arc Montjuïc'],        bronze:['Begoña Perez Gomez','Club Tau T.A.'] },
+      { cat:'Sub-21', div:'Recorbat',    sex:'H', or:['Denis Carnicero Huerta','T.A. L\'Arboç'],           argent:['Jordi Brau Villálon','C.A. Cerdanyola del Vallès'],  bronze:['Martí Ussetti Forn','Arc Montjuïc'] },
+      { cat:'Sub-18', div:'Recorbat',    sex:'H', or:['Guiu Domingo Gonzalez','Escola Arquers Barcelona'], argent:['Josep Español Franques','Arquers Cambrils'],         bronze:['Daniel González Hernandez','T.A. Lleida'] },
+      { cat:'Sub-18', div:'Recorbat',    sex:'D', or:['Maelyn Macías Martin','Tir Arc Olesa'],             argent:['Laura Safont Catena','T.A. Lleida'],                 bronze:['Edurne Martinez Perez','Club Tau T.A.'] },
+      { cat:'Sènior', div:'Compost',     sex:'H', or:['Èric Pla Bort','Arc Montjuïc'],                     argent:['Jose Pérez Pérez','Arc Montjuïc'],                   bronze:['Manel Souto Pascual','C.A. Cerdanyola del Vallès'] },
+      { cat:'50+',    div:'Compost',     sex:'H', or:['Santiago Prieto Martin','Arc Montjuïc'],            argent:['Josep Castelló Folch','Arquers Terrassa'],           bronze:['Jordi Tarragó Martí','T.A. Pardinyes'] },
+      { cat:'Sub-21', div:'Compost',     sex:'H', or:['Arnau Barbero Diaz','Arquers Terrassa'],            argent:['Patrick Martisella Sió','Draco Sagittariis'],        bronze:['Arnau Font Padros','Arquers Terrassa'] },
+      { cat:'Sènior', div:'Nu',      sex:'H', or:['David Rafael Cardozo Ferreira','T.A. Les Franqueses'],  argent:['Luis Rodriguez Alvarez','T.A. Les Franqueses'],      bronze:['Josep Pla Aymerich','Arc Montjuïc'] },
+      { cat:'Sènior', div:'Nu',      sex:'D', or:['Oyuna Baturova Tsinguyeva','Arquers Terrassa'],         argent:['Alba Del Puerto Madrid','Arc Montjuïc'],             bronze:['Maria Eugenia Palomar Gutierrez','Arquers Terrassa'] },
+      { cat:'50+',    div:'Nu',      sex:'H', or:['Jordi Madí Alsina','Arc Sant Celoni'],                  argent:['Miguel Ramirez Moreno','T.A. Les Franqueses'],       bronze:['Angel Galiano Hernandez','T.A. Les Franqueses'] },
+      { cat:'Sènior', div:'Longbow',   sex:'H', or:['Enrique Flores Delgado','T.A. Rubí'],                 argent:['Antonio Garcia Martin','T.A. Manresa'],              bronze:['Jose Luis Velasco Molina','Arquers Castelldefels'] },
+      { cat:'Sènior', div:'Longbow',   sex:'D', or:['Marta Gelpi Camallonga','Club Català T.A.'],          argent:['Carmen Del Rosario Mejía Carrión','T.A. Manresa'],   bronze:['Maria José Delgado Falcón','T.A. Les Franqueses'] },
+      { cat:'50+',    div:'Longbow',   sex:'H', or:['Josep Sanchez Lamarca','Club Català T.A.'],           argent:['Toni Barnils Sola','T.A. Les Franqueses'],           bronze:['Alfredo Olaya Lafita','Arquers Castelldefels'] },
+      { cat:'Sènior', div:'Tradicional', sex:'H', or:['Victor Lopez Rodriguez','T.A. Les Franqueses'],     argent:['Aleix Montes Llorens','T.A. Les Franqueses'],        bronze:['Norman Gomez Martin','Arc Sant Celoni'] },
+      { cat:'Sènior', div:'Tradicional', sex:'D', or:['Ana Lorente Molero','T.A. Les Franqueses'],         argent:['Monica Carreto Peñalba','Tir Arc Olesa'],            bronze:['Laura Galante Saval','Arc Sant Celoni'] },
+      { cat:'50+',    div:'Tradicional', sex:'H', or:['Ramon Garcia Serrano','Arc Montjuïc'],              argent:['David López Abad','Tir Arc Olesa'],                  bronze:['Enric Diaz Soler','T.A. Les Franqueses'] },
+    ]
+  },
   {
     nom: 'Lliga Catalana d\'Aire Lliure 2025-26',
     data: 'mar–jun 2026',
@@ -688,7 +714,7 @@ function _renderClubsPerCompeticio() {
     { key: 'sala',  label: '🏟️ Sala',        nom: '58è CdC Sala + Lliga Sala',      resultats: mergeRes(MEDALS_2526.sala) },
     { key: '3d',    label: '🌲 3D',           nom: '30è CdC 3D + Lligues 3D',        resultats: mergeRes(MEDALS_2526['3d']) },
     { key: 'camp',  label: '🏔️ Camp',        nom: '56è CdC Camp + Lliga Camp',      resultats: mergeRes(MEDALS_2526.camp) },
-    { key: 'al',    label: '☀️ Aire Lliure', nom: 'Lliga Catalana d\'Aire Lliure',  resultats: mergeRes(MEDALS_2526.al) }
+    { key: 'al',    label: '☀️ Aire Lliure', nom: '76è CdC Aire Lliure + Lliga AL', resultats: mergeRes(MEDALS_2526.al) }
   ];
 
   var html = '';

@@ -15180,5 +15180,1314 @@
         ]
       }
     ]
+  },
+  {
+    "id": 130,
+    "title": "76è Campionat de Catalunya d'Aire Lliure",
+    "dateISO": "2026-07-04",
+    "type": "al",
+    "disc": "Aire Lliure",
+    "ianseo": 29041,
+    "icUrl": "https://www.ianseo.net/TourData/2026/29041/IC.php",
+    "accessible": true,
+    "totalParticipants": 161,
+    "divisions": [
+      {
+        "name": "Llistat de resultats Classe i Divisió - Individual",
+        "archers": []
+      },
+      {
+        "name": "Recurve - Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "CEBRIAN PUJOL Sergi",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 565
+          },
+          {
+            "pos": 2,
+            "name": "SANCHEZ COSTAS Fran",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 564
+          },
+          {
+            "pos": 3,
+            "name": "GALLARDO ANDRES Ignasi",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 560
+          },
+          {
+            "pos": 4,
+            "name": "BONNIN VASQUEZ David",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 543
+          },
+          {
+            "pos": 5,
+            "name": "RIBAS MALEKZADEH Ruhollah Erfan",
+            "club": "2210",
+            "clubName": "Club Escola Arquers Barcelona",
+            "score": 541
+          },
+          {
+            "pos": 6,
+            "name": "SAFONT CATENA Gerard",
+            "club": "2566",
+            "clubName": "Club Tir Amb Arc Lleida",
+            "score": 533
+          },
+          {
+            "pos": 7,
+            "name": "QUILES GARCÍA Raül",
+            "club": "2529",
+            "clubName": "Club Arquers Sant Cugat",
+            "score": 523
+          },
+          {
+            "pos": 8,
+            "name": "DOMINGO GONZÁLEZ Guiu",
+            "club": "2210",
+            "clubName": "Club Escola Arquers Barcelona",
+            "score": 521
+          },
+          {
+            "pos": 9,
+            "name": "RUIZ CASADO Oscar",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 509
+          },
+          {
+            "pos": 10,
+            "name": "VELASCO MARCÈ Eduard",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 493
+          },
+          {
+            "pos": 11,
+            "name": "GODIA JORDANA Oriol",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 488
+          },
+          {
+            "pos": 12,
+            "name": "MUÑOZ MALAGON Daniel",
+            "club": "2210",
+            "clubName": "Club Escola Arquers Barcelona",
+            "score": 486
+          },
+          {
+            "pos": 13,
+            "name": "VAZQUEZ QUINTAS Amador",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 478
+          },
+          {
+            "pos": 14,
+            "name": "VICENTE LÓPEZ David",
+            "club": "1049",
+            "clubName": "Club Tau De Tir Amb Arc",
+            "score": 468
+          },
+          {
+            "pos": 15,
+            "name": "MORALES MUÑOZ José",
+            "club": "2210",
+            "clubName": "Club Escola Arquers Barcelona",
+            "score": 428
+          },
+          {
+            "pos": 16,
+            "name": "ROMERO CONTRERAS Bruno",
+            "club": "2529",
+            "clubName": "Club Arquers Sant Cugat",
+            "score": 402
+          },
+          {
+            "pos": 17,
+            "name": "GARCÍA SOLERA Norman",
+            "club": "2210",
+            "clubName": "Club Escola Arquers Barcelona",
+            "score": 394
+          },
+          {
+            "pos": 18,
+            "name": "BERNAUS ESQUÉ Marc",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 386
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "BARBERÀ LÓPEZ Núria",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 557
+          },
+          {
+            "pos": 2,
+            "name": "NOGUEIRA NOGUEIRA Violeta",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 505
+          },
+          {
+            "pos": 3,
+            "name": "QUILES PEREZ Lucia",
+            "club": "2529",
+            "clubName": "Club Arquers Sant Cugat",
+            "score": 485
+          },
+          {
+            "pos": 4,
+            "name": "CAHUÉ COMAS Jana",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 480
+          },
+          {
+            "pos": 5,
+            "name": "PEREZ DE TUDELA ALBALAT Maria",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 261
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Under 21 Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "CARNICERO HUERTA Denis",
+            "club": "2316",
+            "clubName": "Club Tir Amb Arc L'arboç",
+            "score": 497
+          },
+          {
+            "pos": 2,
+            "name": "BRAU VILLALÓN Jordi",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 458
+          },
+          {
+            "pos": 3,
+            "name": "USSETTI FORN Martí",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 434
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Under 18 Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "DOMINGO GONZALEZ Guiu",
+            "club": "2210",
+            "clubName": "Club Escola Arquers Barcelona",
+            "score": 599
+          },
+          {
+            "pos": 2,
+            "name": "ESPAÑOL FRANQUES Josep",
+            "club": "2221",
+            "clubName": "Club De Tir Amb Arc De Cambril",
+            "score": 579
+          },
+          {
+            "pos": 3,
+            "name": "GONZÁLEZ HERNANDEZ Daniel",
+            "club": "2566",
+            "clubName": "Club Tir Amb Arc Lleida",
+            "score": 565
+          },
+          {
+            "pos": 4,
+            "name": "VÁZQUEZ DOMINGO Héctor",
+            "club": "2221",
+            "clubName": "Club De Tir Amb Arc De Cambril",
+            "score": 529
+          },
+          {
+            "pos": 5,
+            "name": "PEREZ BONAVILA Dídac",
+            "club": "1134",
+            "clubName": "Tir Arc Olesa",
+            "score": 517
+          },
+          {
+            "pos": 6,
+            "name": "ESPES DE HARO Daniel",
+            "club": "1134",
+            "clubName": "Tir Arc Olesa",
+            "score": 499
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Under 18 Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "MACÍAS MARTIN Maelyn",
+            "club": "1134",
+            "clubName": "Tir Arc Olesa",
+            "score": 528
+          },
+          {
+            "pos": 2,
+            "name": "SAFONT CATENA Laura",
+            "club": "2566",
+            "clubName": "Club Tir Amb Arc Lleida",
+            "score": 492
+          },
+          {
+            "pos": 3,
+            "name": "MARTINEZ PEREZ Edurne",
+            "club": "1049",
+            "clubName": "Club Tau De Tir Amb Arc",
+            "score": 480
+          },
+          {
+            "pos": 4,
+            "name": "SERRA SERRANO Marta",
+            "club": "1049",
+            "clubName": "Club Tau De Tir Amb Arc",
+            "score": 446
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Under 15 Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "VIZCAINO CULI Guillem",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 626
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Under 15 Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "MORETON GUIRAO Gloria",
+            "club": "1134",
+            "clubName": "Tir Arc Olesa",
+            "score": 598
+          },
+          {
+            "pos": 2,
+            "name": "GODIA GALLARDO Abril",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 569
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Aleví Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "MARTÍ GUINOVART Josep",
+            "club": "1049",
+            "clubName": "Club Tau De Tir Amb Arc",
+            "score": 577
+          },
+          {
+            "pos": 2,
+            "name": "MOLINA SERRET Daniel",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 576
+          },
+          {
+            "pos": 3,
+            "name": "ALEGRE BELLVER Oscar",
+            "club": "2316",
+            "clubName": "Club Tir Amb Arc L'arboç",
+            "score": 469
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Aleví Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "ZÚÑIGA GONZÁLEZ Lucia",
+            "club": "2221",
+            "clubName": "Club De Tir Amb Arc De Cambril",
+            "score": 537
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Benjamí Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "MONTES BARNILS Guerau",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 618
+          }
+        ]
+      },
+      {
+        "name": "Recurve - Benjamí Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "ISUAR GARCÍA Ariadna",
+            "club": "2609",
+            "clubName": "Tir Amb Arc Constantí",
+            "score": 291
+          }
+        ]
+      },
+      {
+        "name": "Recurve - 50+ Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "FRAGUAS CASTANY Antoni",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 582
+          },
+          {
+            "pos": 2,
+            "name": "BRAVO NAVAS Josep",
+            "club": "1116",
+            "clubName": "Club De Tir Amb Arc Pardinyes",
+            "score": 567
+          },
+          {
+            "pos": 3,
+            "name": "BUJARALOZ MAGRIÑA Joan Salvador",
+            "club": "1116",
+            "clubName": "Club De Tir Amb Arc Pardinyes",
+            "score": 562
+          },
+          {
+            "pos": 4,
+            "name": "BARTOLL RIOS Daniel",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 558
+          },
+          {
+            "pos": 5,
+            "name": "CAÑADA ROMERO Fernando",
+            "club": "2221",
+            "clubName": "Club De Tir Amb Arc De Cambril",
+            "score": 552
+          },
+          {
+            "pos": 6,
+            "name": "DELGADO CAMARA Carlos",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 511
+          },
+          {
+            "pos": 7,
+            "name": "GONZÁLEZ SORIA Rafael",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 484
+          },
+          {
+            "pos": 8,
+            "name": "MARTÍN MUÑOZ Jose Manuel",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 470
+          },
+          {
+            "pos": 9,
+            "name": "BORONAT CORNUDELLA Albert",
+            "club": "2566",
+            "clubName": "Club Tir Amb Arc Lleida",
+            "score": 453
+          },
+          {
+            "pos": 10,
+            "name": "PEREDA MAS Alfredo",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 343
+          }
+        ]
+      },
+      {
+        "name": "Recurve - 50+ Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "GUSTEMS MARTÍNEZ Montserrat",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 477
+          },
+          {
+            "pos": 2,
+            "name": "PEREZ GOMEZ Begoña",
+            "club": "1049",
+            "clubName": "Club Tau De Tir Amb Arc",
+            "score": 443
+          },
+          {
+            "pos": 3,
+            "name": "SUAREZ GARROTE Laura M",
+            "club": "1049",
+            "clubName": "Club Tau De Tir Amb Arc",
+            "score": 443
+          }
+        ]
+      },
+      {
+        "name": "Compound - Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "PLA BORT Eric",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 673
+          },
+          {
+            "pos": 2,
+            "name": "CÁCERES SÁNCHEZ Ángel David",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 659
+          },
+          {
+            "pos": 3,
+            "name": "PÉREZ PÉREZ Jose",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 656
+          },
+          {
+            "pos": 4,
+            "name": "SOUTO PASCUAL Manel",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 646
+          },
+          {
+            "pos": 5,
+            "name": "CLARET FERNANDEZ Josep",
+            "club": "2170",
+            "clubName": "Club De Tir Amb Arc De Caldes",
+            "score": 638
+          },
+          {
+            "pos": 6,
+            "name": "FIGUERAS BARTES Guillem",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 633
+          },
+          {
+            "pos": 7,
+            "name": "MARTISELLA SIÓ Patrick",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 625
+          },
+          {
+            "pos": 8,
+            "name": "MARTINEZ PAYA Pablo",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 611
+          },
+          {
+            "pos": 9,
+            "name": "HURTADO BELLIDO Manel",
+            "club": "2300",
+            "clubName": "ASSOC. DE TIR AMB ARC LA CONXO",
+            "score": 609
+          },
+          {
+            "pos": 10,
+            "name": "MARTINEZ BONIFACIO David",
+            "club": "2170",
+            "clubName": "Club De Tir Amb Arc De Caldes",
+            "score": 587
+          }
+        ]
+      },
+      {
+        "name": "Compound - Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "MOURA RIBEIRO GOMES DE SOUSA Alexandra",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 650
+          },
+          {
+            "pos": 2,
+            "name": "RODRIGUEZ COUTADO Lucia",
+            "club": "2300",
+            "clubName": "ASSOC. DE TIR AMB ARC LA CONXO",
+            "score": 548
+          }
+        ]
+      },
+      {
+        "name": "Compound - Under 21 Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "BARBERO DIAZ Arnau",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 626
+          },
+          {
+            "pos": 2,
+            "name": "MARTISELLA SIÓ Patrick",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 603
+          },
+          {
+            "pos": 3,
+            "name": "FONT PADROS Arnau",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 540
+          },
+          {
+            "pos": 4,
+            "name": "LOU GIRAL Yuri",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 436
+          },
+          {
+            "pos": 5,
+            "name": "ALVAREZ BABIO Pau",
+            "club": "2563",
+            "clubName": "Club Arquers Rubí",
+            "score": 420
+          }
+        ]
+      },
+      {
+        "name": "Compound - 50+ Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "PRIETO MARTIN Santiago",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 632
+          },
+          {
+            "pos": 2,
+            "name": "CASTELLÓ FOLCH Josep",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 630
+          },
+          {
+            "pos": 3,
+            "name": "TARRAGÓ MARTÍ Jordi",
+            "club": "1116",
+            "clubName": "Club De Tir Amb Arc Pardinyes",
+            "score": 627
+          },
+          {
+            "pos": 4,
+            "name": "LOPEZ GONZALEZ Jesus",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 623
+          },
+          {
+            "pos": 5,
+            "name": "PRAT MARTINEZ Miguel Angel",
+            "club": "2567",
+            "clubName": "Club De Tir Amb Arc Vilanova I",
+            "score": 610
+          },
+          {
+            "pos": 6,
+            "name": "JIMENEZ MEJIAS Bartolome",
+            "club": "2170",
+            "clubName": "Club De Tir Amb Arc De Caldes",
+            "score": 579
+          },
+          {
+            "pos": 7,
+            "name": "BLANCH SOROLLA Josep",
+            "club": "2567",
+            "clubName": "Club De Tir Amb Arc Vilanova I",
+            "score": 573
+          },
+          {
+            "pos": 8,
+            "name": "MONTESINOS LOPEZ Javier",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 567
+          },
+          {
+            "pos": 9,
+            "name": "VALBUENA HERNANDEZ Carlos",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 563
+          },
+          {
+            "pos": 10,
+            "name": "LEON EXPOSITO Vicente",
+            "club": "2182",
+            "clubName": "Club Tir Amb Arc Despi",
+            "score": 543
+          }
+        ]
+      },
+      {
+        "name": "Compound - 50+ Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "SEMIS ASTIER Ester",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 612
+          }
+        ]
+      },
+      {
+        "name": "Barebow - Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "RODRIGUEZ ALVAREZ Luis",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 611
+          },
+          {
+            "pos": 2,
+            "name": "CARDOZO FERREIRA David Rafael",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 611
+          },
+          {
+            "pos": 3,
+            "name": "SOLER POMIER Raül",
+            "club": "2692",
+            "clubName": "Club Esportiu De Tir Amb Arc D",
+            "score": 604
+          },
+          {
+            "pos": 4,
+            "name": "PLA AYMERICH Josep",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 593
+          },
+          {
+            "pos": 5,
+            "name": "DEL PUERTO ANGORRILLA Diego",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 505
+          },
+          {
+            "pos": 6,
+            "name": "BALBOA CANO Santi",
+            "club": "2056",
+            "clubName": "Arc Sant Celoni",
+            "score": 495
+          },
+          {
+            "pos": 7,
+            "name": "BERNINSONE Leonardo Guillermo",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 490
+          },
+          {
+            "pos": 8,
+            "name": "SARMIENTO GIMENO Albert",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 469
+          },
+          {
+            "pos": 9,
+            "name": "PUIG PUMAROLA Enric",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 465
+          },
+          {
+            "pos": 10,
+            "name": "JULIA PUSTIO Miguel",
+            "club": "2056",
+            "clubName": "Arc Sant Celoni",
+            "score": 462
+          },
+          {
+            "pos": 11,
+            "name": "FRÍAS JÍMENEZ Edgar",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 422
+          },
+          {
+            "pos": 12,
+            "name": "PEÑA COSTA Carles",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 324
+          }
+        ]
+      },
+      {
+        "name": "Barebow - Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "BATUROVA TSINGUYEVA Oyuna",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 610
+          },
+          {
+            "pos": 2,
+            "name": "DEL PUERTO MADRID Alba",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 567
+          },
+          {
+            "pos": 3,
+            "name": "PALOMAR GUTIERREZ Maria Eugenia",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 517
+          }
+        ]
+      },
+      {
+        "name": "Barebow - Under 15 Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "CATALAN VILLALBI Biel",
+            "club": "2316",
+            "clubName": "Club Tir Amb Arc L'arboç",
+            "score": 496
+          },
+          {
+            "pos": 2,
+            "name": "RODRÍGUEZ JIMÉNEZ Iu",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 458
+          }
+        ]
+      },
+      {
+        "name": "Barebow - Under 15 Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "TÀCIES GALLARDO Anna",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 467
+          },
+          {
+            "pos": 2,
+            "name": "ALVAREZ CARABALLO Nuria",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 391
+          },
+          {
+            "pos": 3,
+            "name": "ICKE MARTINEZ Emma",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 390
+          }
+        ]
+      },
+      {
+        "name": "Barebow - 50+ Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "RAMIREZ MORENO Miguel",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 548
+          },
+          {
+            "pos": 2,
+            "name": "MADI ALSINA Jordi",
+            "club": "2056",
+            "clubName": "Arc Sant Celoni",
+            "score": 547
+          },
+          {
+            "pos": 3,
+            "name": "TRAVERIA MURILLO Josep",
+            "club": "2529",
+            "clubName": "Club Arquers Sant Cugat",
+            "score": 531
+          },
+          {
+            "pos": 4,
+            "name": "GALIANO HERNANDEZ Angel",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 476
+          },
+          {
+            "pos": 5,
+            "name": "PORQUERAS LLOPIS Antonio",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 471
+          },
+          {
+            "pos": 6,
+            "name": "GARCIA MORENO Francisco",
+            "club": "2428",
+            "clubName": "Club Arquers Esclanya",
+            "score": 427
+          },
+          {
+            "pos": 7,
+            "name": "ROSSEL DURÓ Manel",
+            "club": "2308",
+            "clubName": "Club Tir Amb Arc Encamp",
+            "score": 413
+          },
+          {
+            "pos": 8,
+            "name": "JIMENEZ SANOU Jose Manuel",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 397
+          },
+          {
+            "pos": 9,
+            "name": "PEREZ RAMIREZ Miguel Angel",
+            "club": "2563",
+            "clubName": "Club Arquers Rubí",
+            "score": 395
+          }
+        ]
+      },
+      {
+        "name": "Tradicional - Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "LOPEZ RODRIGUEZ Victor",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 638
+          },
+          {
+            "pos": 2,
+            "name": "MONTES LLORENS Aleix",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 567
+          },
+          {
+            "pos": 3,
+            "name": "GOMEZ MARTIN Norman",
+            "club": "2056",
+            "clubName": "Arc Sant Celoni",
+            "score": 566
+          },
+          {
+            "pos": 4,
+            "name": "RUIZ GOMEZ Carlos",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 540
+          },
+          {
+            "pos": 5,
+            "name": "BORRÀS ANDÚJAR Albert",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 539
+          },
+          {
+            "pos": 6,
+            "name": "GALÁN MANTRANA Miguel",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 507
+          },
+          {
+            "pos": 7,
+            "name": "CARCAMO CANUTO Carlos",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 506
+          },
+          {
+            "pos": 8,
+            "name": "VAZ GARCIA Luis",
+            "club": "1134",
+            "clubName": "Tir Arc Olesa",
+            "score": 484
+          },
+          {
+            "pos": 9,
+            "name": "AZUAGA MERIDA Rafael",
+            "club": "2182",
+            "clubName": "Club Tir Amb Arc Despi",
+            "score": 464
+          }
+        ]
+      },
+      {
+        "name": "Tradicional - Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "LORENTE MOLERO Ana",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 580
+          },
+          {
+            "pos": 2,
+            "name": "SARCEDA RODRIGUEZ Carmen",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 503
+          },
+          {
+            "pos": 3,
+            "name": "CARRETO PEÑALBA Monica",
+            "club": "1134",
+            "clubName": "Tir Arc Olesa",
+            "score": 495
+          },
+          {
+            "pos": 4,
+            "name": "GALANTE SAVAL Laura",
+            "club": "2056",
+            "clubName": "Arc Sant Celoni",
+            "score": 464
+          },
+          {
+            "pos": 5,
+            "name": "SANSA CODINA Cristina",
+            "club": "2164",
+            "clubName": "Club Arquers Olivella",
+            "score": 444
+          }
+        ]
+      },
+      {
+        "name": "Tradicional - Under 18 Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "VELASQUEZ LORENZO Patricia",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 491
+          }
+        ]
+      },
+      {
+        "name": "Tradicional - Aleví Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "GUAL POCURULL Tian",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 567
+          },
+          {
+            "pos": 2,
+            "name": "D'APOLITO RIBO Elias",
+            "club": "2048",
+            "clubName": "Club Arquers Cerdanyola Del Va",
+            "score": 567
+          },
+          {
+            "pos": 3,
+            "name": "ROMERO CRESPI Quim",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 482
+          }
+        ]
+      },
+      {
+        "name": "Tradicional - Benjamí Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "MONTES BARNILS Otger",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 581
+          },
+          {
+            "pos": 2,
+            "name": "ALCOBERRO PALOMAS Bernat",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 418
+          }
+        ]
+      },
+      {
+        "name": "Tradicional - 50+ Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "LÓPEZ ABAD David",
+            "club": "1134",
+            "clubName": "Tir Arc Olesa",
+            "score": 600
+          },
+          {
+            "pos": 2,
+            "name": "GARCIA SERRANO Ramon",
+            "club": "1020",
+            "clubName": "Club Arc Montjuic",
+            "score": 564
+          },
+          {
+            "pos": 3,
+            "name": "RUEDA CASTRO Jorge",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 559
+          },
+          {
+            "pos": 4,
+            "name": "DIAZ SOLER Enric",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 555
+          },
+          {
+            "pos": 5,
+            "name": "LOPEZ LUQUE Miguel",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 541
+          },
+          {
+            "pos": 6,
+            "name": "VALLE ARIAS Antonio",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 535
+          },
+          {
+            "pos": 7,
+            "name": "GUZMAN SOLER Josep",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 527
+          },
+          {
+            "pos": 8,
+            "name": "PLUMED CARRETO Carles",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 517
+          },
+          {
+            "pos": 9,
+            "name": "ORDOÑEZ VELOSO Nicolas",
+            "club": "1110",
+            "clubName": "Club D'arquers Terrassa",
+            "score": 499
+          },
+          {
+            "pos": 10,
+            "name": "RIOSALIDO NUÑEZ Ferran",
+            "club": "2220",
+            "clubName": "Club Esportiu Arc Set",
+            "score": 489
+          },
+          {
+            "pos": 11,
+            "name": "ASENSIO FERNANDEZ Joan Manel",
+            "club": "2166",
+            "clubName": "Club Catala De Tir Amb Arc",
+            "score": 463
+          },
+          {
+            "pos": 12,
+            "name": "RUIZ PEREZ Jose Luis",
+            "club": "1022",
+            "clubName": "Club D'arquers De Catalunya",
+            "score": 347
+          }
+        ]
+      },
+      {
+        "name": "Tradicional - 50+ Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "GALLARDO RODRIGUEZ Maite",
+            "club": "2056",
+            "clubName": "Arc Sant Celoni",
+            "score": 423
+          }
+        ]
+      },
+      {
+        "name": "Long Bow - Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "FLORES DELGADO Enrique",
+            "club": "2563",
+            "clubName": "Club Arquers Rubí",
+            "score": 616
+          },
+          {
+            "pos": 2,
+            "name": "GARCIA MARTIN Antonio",
+            "club": "2683",
+            "clubName": "Club Tir Amb Arc Manresa",
+            "score": 540
+          },
+          {
+            "pos": 3,
+            "name": "COLL BOSCH Marc",
+            "club": "2166",
+            "clubName": "Club Catala De Tir Amb Arc",
+            "score": 496
+          },
+          {
+            "pos": 4,
+            "name": "VELASCO MOLINA Jose Luis",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 494
+          }
+        ]
+      },
+      {
+        "name": "Long Bow - Dona",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "DELGADO FALCÓN Maria José",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 552
+          },
+          {
+            "pos": 2,
+            "name": "MEJÍA CARRIÓN Carmen Del Rosario",
+            "club": "2683",
+            "clubName": "Club Tir Amb Arc Manresa",
+            "score": 503
+          },
+          {
+            "pos": 3,
+            "name": "FRANCH CONVALIA Anna",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 497
+          },
+          {
+            "pos": 4,
+            "name": "GELPI CAMALLONGA Marta",
+            "club": "2166",
+            "clubName": "Club Catala De Tir Amb Arc",
+            "score": 470
+          }
+        ]
+      },
+      {
+        "name": "Long Bow - 50+ Home",
+        "archers": [
+          {
+            "pos": 1,
+            "name": "BARNILS SOLA Toni",
+            "club": "2128",
+            "clubName": "Club De Tir Amb Arc Les Franqu",
+            "score": 548
+          },
+          {
+            "pos": 2,
+            "name": "SANCHEZ LAMARCA Josep",
+            "club": "2166",
+            "clubName": "Club Catala De Tir Amb Arc",
+            "score": 543
+          },
+          {
+            "pos": 3,
+            "name": "CORNELLANA CASANY Santiago",
+            "club": "2166",
+            "clubName": "Club Catala De Tir Amb Arc",
+            "score": 434
+          },
+          {
+            "pos": 4,
+            "name": "OLAYA LAFITA Alfredo",
+            "club": "2158",
+            "clubName": "Arquers Club Castelldefels",
+            "score": 415
+          },
+          {
+            "pos": 5,
+            "name": "RARIS CRESPO Manuel",
+            "club": "2164",
+            "clubName": "Club Arquers Olivella",
+            "score": 407
+          }
+        ]
+      }
+    ]
   }
 ]

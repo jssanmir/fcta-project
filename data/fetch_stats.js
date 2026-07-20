@@ -43,6 +43,7 @@ const COMPETITIONS = [
   { id:7,  title:"30è Campionat de Catalunya 3D",               dateISO:"2026-05-17", type:"trd",  disc:"3D / Bosc",    ianseo:28099 },
   { id:1,  title:"3ª Tirada Lliga Catalana Aire Lliure 2026 (Montjuïc/Barcelona)", dateISO:"2026-05-30", type:"al", disc:"Aire Lliure", ianseo:28416 },
   { id:15, title:"3ª Tirada Lliga Catalana Aire Lliure 2026 (Esclanyà/Girona)",    dateISO:"2026-05-31", type:"al", disc:"Aire Lliure", ianseo:28417 },
+  { id:130,title:"76è Campionat de Catalunya d'Aire Lliure",                      dateISO:"2026-07-04", type:"al", disc:"Aire Lliure", ianseo:29041 },
 ];
 
 // ── Helpers ────────────────────────────────────────────────────────────────

@@ -14,7 +14,7 @@ var REC_CAT_ORDER = [
 ];
 
 var REC_ESTIL_ORDER = [
-  'Recorbat','Compost','Arc Nu','Longbow','Tradicional','Instintiu','Estàndard'
+  'Recorbat','Compost','Arc Nu','Longbow','Tradicional','Estàndard'
 ];
 
 // ── Filtre actiu ───────────────────────────────────────────
@@ -134,7 +134,7 @@ function renderRecordsTable() {
       + '<h3 class="rec-group-title">' + estil + '</h3>'
       + '<div class="rec-table-wrap"><table class="rec-table">'
       + '<thead><tr>'
-      + '<th>Classe</th><th>Sexe</th><th>Format</th>'
+      + '<th>Edat</th><th>Sexe</th><th>Format</th>'
       + '<th class="rec-marca">Marca</th>'
       + '<th>Atleta</th><th>Competició</th><th>Data</th>'
       + '</tr></thead><tbody>';
@@ -204,7 +204,7 @@ function renderDiscRecordsFromDB(discKey) {
 
     html += '<h3 class="disc-section-title" style="margin-top:1.5rem">' + estil + '</h3>';
     html += '<table class="disc-records-table"><thead><tr>'
-      + '<th>Classe</th><th>Sexe</th><th>Format</th><th>Marca</th><th>Atleta</th><th>Any</th>'
+      + '<th>Edat</th><th>Sexe</th><th>Format</th><th>Marca</th><th>Atleta</th><th>Any</th>'
       + '</tr></thead><tbody>';
 
     mainRecs.sort(function(a, b) {

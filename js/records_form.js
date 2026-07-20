@@ -6,7 +6,7 @@ if (!DB.recordsSolicituds) DB.recordsSolicituds = [];
 
 // ── Opcions dels selects ───────────────────────────────────
 var REC_DISCIPLINES = ['Aire Lliure', 'Sala', '3D / Bosc', 'Tir de Camp'];
-var REC_ESTILS = ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional', 'Instintiu'];
+var REC_ESTILS = ['Arc Recorbat', 'Arc Compost', 'Arc Nu', 'Longbow', 'Tradicional'];
 var REC_CATEGORIES = [
   'Prebenjamí (U10)', 'Benjamí (U12)', 'Aleví (U14)',
   'Sub-15', 'Sub-18', 'Sub-21',
@@ -95,7 +95,7 @@ function submitRecordForm() {
 var ADM_REC_DISCS = [
   {val:'sala', lbl:'Sala'}, {val:'al', lbl:'Aire Lliure'}, {val:'aa', lbl:'Arc Adaptat'}
 ];
-var ADM_REC_ESTILS = ['Recorbat','Compost','Arc Nu','Longbow','Tradicional','Instintiu','Estàndard'];
+var ADM_REC_ESTILS = ['Recorbat','Compost','Arc Nu','Longbow','Tradicional','Estàndard'];
 var ADM_REC_CATS   = ['Prebenjamí','Benjamí','Aleví','Sub-15','Sub-18','Sub-21','Sènior','Veterà','+50'];
 var ADM_REC_SEXES  = ['Dona','Home'];
 var _admRecDisc = 'sala';

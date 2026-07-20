@@ -257,8 +257,9 @@ competitions: [
   // status base: 'open' | 'soon' | 'closed'
   // dateISO: YYYY-MM-DD — si la data ha passat, el sistema automàticament mostra 'closed'
   // ── Pròximes / Obertes ──────────────────────────────────
-  {id:1, type:'al',   title:'3ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'30 mai 2026',     dateISO:'2026-05-30', loc:'Barcelona / Esclanyà (Girona)',    status:'open',   circ:'CIRC-2622', url:'docs/REGLAMENT_COMPETICIONS_v1.6.pdf', ianseo:28416},
+  {id:1, type:'al',   title:'3ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'30 mai 2026',     dateISO:'2026-05-30', loc:'Barcelona / Esclanyà (Girona)',    status:'open',   circ:'CIRC-2622', url:'#',                                        ianseo:28416},
   // ── Tancades 2026 (ordre cronològic invers) ─────────────
+  {id:130,type:'al',  title:'76è Campionat de Catalunya d\'Aire Lliure',   disc:'Aire Lliure',  date:'4-5 jul 2026',    dateISO:'2026-07-04', loc:'Barcelona',                        status:'open',   circ:'CIRC-2637', url:'#',                                        ianseo:29041},
   {id:15,type:'al',   title:'3ª Tirada Lliga Catalana AL 2026 (Esclanyà)',disc:'Aire Lliure',  date:'31 mai 2026',     dateISO:'2026-05-31', loc:'Esclanyà (Girona)',                status:'open',   circ:'CIRC-2622', url:'#',                                        ianseo:28417},
   {id:7, type:'trd',  title:'30è Campionat de Catalunya 3D',               disc:'3D',    date:'17 mai 2026',     dateISO:'2026-05-17', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2616', url:'#',                                        ianseo:28099},
   {id:2, type:'camp', title:'56è Campionat de Catalunya de Camp',           disc:'Tir de Camp',  date:'10 mai 2026',     dateISO:'2026-05-10', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2620', url:'#news:2',                                  ianseo:28098},
@@ -267,6 +268,7 @@ competitions: [
   {id:11,type:'al',   title:'2ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'18 abr 2026',     dateISO:'2026-04-18', loc:'Olivella / Figueres',              status:'open',   circ:'CIRC-2617', url:'#news:3',                                  ianseo:27633},
   {id:5, type:'al',   title:'Campionat de Catalunya Universitari 2026',    disc:'Aire Lliure',  date:'28 mar 2026',     dateISO:'2026-03-28', loc:'Tarragona',                        status:'open',   circ:'CIRC-2610', url:'#news:5',                                  ianseo:27386},
   {id:13,type:'al',   title:'1ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Olesa de Montserrat / Sant Celoni',status:'open',   circ:'CIRC-2605', url:'#',                                        ianseo:27062},
+  {id:129,type:'al',  title:'1ª Tirada Lliga Catalana AL 2026 (Sant Celoni)',disc:'Aire Lliure', date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Sant Celoni (Vallès Oriental)',    status:'open',   circ:'CIRC-2605', url:'#',                                        ianseo:27064},
   {id:12,type:'camp', title:'2ª Tirada Lliga Catalana Camp 2026',           disc:'Tir de Camp',  date:'8 mar 2026',      dateISO:'2026-03-08', loc:'Montcada i Reixac',                status:'open',   circ:'#',         url:'#',                                        ianseo:26987},
   {id:3, type:'trd',  title:'3ª Tirada Lliga Catalana 3D 2026',            disc:'3D',    date:'22 feb 2026',     dateISO:'2026-02-22', loc:'Olivella (Barcelona)',              status:'open',   circ:'CIRC-2608', url:'#',                                        ianseo:26790},
   {id:8, type:'sala', title:'58è Campionat de Catalunya de Sala',          disc:'Sala – 18m',   date:'31 gen 2026',     dateISO:'2026-01-31', loc:'Manresa / Constantí',              status:'open',   circ:'#',         url:'#',                                        ianseo:26399},
@@ -369,7 +371,7 @@ clubs: [
 // disc: 'al' | '3d' | 'camp' | 'kyudo' | 'general'
 documents: [
   // ── Aire Lliure / Sala ──────────────────────────────────
-  {id:101, disc:'al',    nom:'WA Llibre 3 – Tir sobre diana (Aire Lliure i Sala)', url:'docs/WA_Llibre3_Aire_Lliure_Sala.pdf',          icon:'📘'},
+  {id:101, disc:'al',    nom:'WA Llibre 3 – Tir sobre diana (Aire Lliure i Sala)', url:'https://www.worldarchery.sport/rulebook',       icon:'📘'},
   {id:102, disc:'al',    nom:'Reglament de Competicions FCTA v1.6',                url:'docs/REGLAMENT_COMPETICIONS_v1.6.pdf',           icon:'📋'},
   {id:103, disc:'al',    nom:'Distàncies i papers Aire Lliure i Sala',             url:'docs/Distancies_Papers_AL_Sala.pdf',             icon:'📐'},
   {id:104, disc:'al',    nom:'Rècords AL – Recorbat i Compost (agost 2024)',       url:'docs/Records_AL_Recorbat_Compost_2024.pdf',      icon:'🏆'},
@@ -379,12 +381,12 @@ documents: [
   {id:108, disc:'al',    nom:'Rànquing Final Lliga AL 2024',                       url:'docs/Ranquing_Lliga_AL_2024.pdf',                icon:'📊'},
   {id:109, disc:'al',    nom:'Rànquing Final Lliga Sala 2023/24',                  url:'docs/Ranquing_Lliga_Sala_2023-24.pdf',           icon:'📊'},
   // ── 3D / Bosc ────────────────────────────────────────────
-  {id:201, disc:'3d',    nom:'WA Llibre 4 – Tir de Camp i 3D',                    url:'docs/WA_Llibre4_Camp_3D.pdf',                    icon:'📘'},
+  {id:201, disc:'3d',    nom:'WA Llibre 4 – Tir de Camp i 3D',                    url:'https://www.worldarchery.sport/rulebook',       icon:'📘'},
   {id:202, disc:'3d',    nom:'Reglament de Competicions FCTA v1.6',                url:'docs/REGLAMENT_COMPETICIONS_v1.6.pdf',           icon:'📋'},
   {id:203, disc:'3d',    nom:'Rànquing Final 3D 2024/25',                          url:'docs/Ranquing_Lliga_3D_2024-25.pdf',             icon:'📊'},
   {id:204, disc:'3d',    nom:'Rànquing Final 3D 2023/24',                          url:'docs/Ranquing_Lliga_3D_2023-24.pdf',             icon:'📊'},
   // ── Tir de Camp ──────────────────────────────────────────
-  {id:301, disc:'camp',  nom:'WA Llibre 4 – Tir de Camp i 3D',                    url:'docs/WA_Llibre4_Camp_3D.pdf',                    icon:'📘'},
+  {id:301, disc:'camp',  nom:'WA Llibre 4 – Tir de Camp i 3D',                    url:'https://www.worldarchery.sport/rulebook',       icon:'📘'},
   {id:302, disc:'camp',  nom:'Reglament de Competicions FCTA v1.6',                url:'docs/REGLAMENT_COMPETICIONS_v1.6.pdf',           icon:'📋'},
   {id:303, disc:'camp',  nom:'Rànquing Lliga Camp 2023/24',                        url:'docs/Ranquing_Lliga_Camp_2023-24.pdf',           icon:'📊'},
   {id:304, disc:'camp',  nom:'Classificació Final Camp 2020/21',                   url:'docs/Ranquing_Lliga_Camp_2020-21.pdf',           icon:'📊'},
@@ -607,7 +609,6 @@ records: [
   { id:267, disc:'al',   estil:'Tradicional', cat:'Sub-21',     sex:'Dona', format:'30m/72fl',           marca:309, atleta:'Carla Bordes Nicolás',      competicio:'2a Lliga Catalana',             data:'30/04/2022' },
   { id:268, disc:'al',   estil:'Tradicional', cat:'Sènior',     sex:'Home', format:'30m/72fl',           marca:642, atleta:'Juanjo Querol Guardiola',   competicio:'1a Lliga Catalana',             data:'03/10/2021' },
   { id:269, disc:'al',   estil:'Tradicional', cat:'Sènior',     sex:'Dona', format:'30m/72fl',           marca:614, atleta:'Miriam Monfort Fernández',  competicio:'Campionat de Catalunya',        data:'17/07/2021' },
-  { id:270, disc:'al',   estil:'Tradicional', cat:'+50',        sex:'Home', format:'30m/72fl',           marca:603, atleta:'Víctor Manuel Martí Simó',  competicio:'1a Lliga Catalana',             data:'09/05/2021' },
   { id:271, disc:'al',   estil:'Tradicional', cat:'+50',        sex:'Dona', format:'30m/72fl',           marca:326, atleta:'Yolanda Iniesta Martínez',  competicio:'2a Lliga Catalana',             data:'30/05/2021' },
   // ── AIRE LLIURE – Arc Nu (nova reglamentació 2020) ─────────
   { id:280, disc:'al',   estil:'Arc Nu',      cat:'Prebenjamí', sex:'Home', format:'12m/72fl',           marca:578, atleta:'Aleix Ucha Homedes',        competicio:'2a Lliga Catalana',             data:'30/04/2023' },
@@ -633,12 +634,10 @@ records: [
   { id:305, disc:'al',   estil:'Longbow',     cat:'Sènior',     sex:'Dona', format:'Round 720',          marca:603, atleta:'Mireia Comas Franch',          competicio:'3ª Tirada Lliga Catalana Aire Lliure 2026 (Esclanyà/Girona)', data:'31/05/2026' },
   { id:306, disc:'al',   estil:'Longbow',     cat:'+50',        sex:'Home', format:'30m/72fl',           marca:581, atleta:'Miguel Ángel Cabedo',       competicio:'1a Lliga Catalana',             data:'05/03/2023' },
   // ── AL – Nous rècords temporada 2025-26 (categories sense rècord previ) ──
-  { id:730, disc:'al',   estil:'Longbow',     cat:'+50',        sex:'Home', format:'Round 720', marca:496, atleta:'Jose Luis Velasco Molina',    competicio:'3ª Tirada Lliga Catalana Aire Lliure 2026 (Esclanyà/Girona)', data:'31/05/2026' },
   { id:731, disc:'al',   estil:'Longbow',     cat:'Sub-21',     sex:'Dona', format:'Round 720', marca:321, atleta:'Enora Gonzalez Gutierrez',    competicio:'3ª Tirada Lliga Catalana Aire Lliure 2026 (Montjuïc/Barcelona)', data:'30/05/2026' },
   { id:732, disc:'al',   estil:'Tradicional', cat:'+50',        sex:'Home', format:'Round 720', marca:624, atleta:'David López Abad',            competicio:'2ª Tirada Lliga Catalana Aire Lliure 2026',                  data:'18/04/2026' },
   { id:733, disc:'al',   estil:'Tradicional', cat:'Aleví',      sex:'Home', format:'Round 720', marca:589, atleta:'Tian Gual Pocurull',          competicio:'3ª Tirada Lliga Catalana Aire Lliure 2026 (Montjuïc/Barcelona)', data:'30/05/2026' },
   { id:734, disc:'al',   estil:'Tradicional', cat:'Benjamí',    sex:'Home', format:'Round 720', marca:593, atleta:'Otger Montes Barnils',        competicio:'3ª Tirada Lliga Catalana Aire Lliure 2026 (Montjuïc/Barcelona)', data:'30/05/2026' },
-  { id:735, disc:'al',   estil:'Tradicional', cat:'Sub-15',     sex:'Home', format:'Round 720', marca:174, atleta:'Biel Catalan Villalbi',       competicio:'1ª Tirada Lliga Catalana Aire Lliure 2026',                  data:'14/03/2026' },
   // ── ARC ADAPTAT – Sala ──────────────────────────────────────
   { id:400, disc:'aa',   estil:'Recorbat',    cat:'Sènior',     sex:'Home', format:'Sala 18m / WR2',     marca:546, atleta:'Jesús Martínez Leon',       competicio:'VII Ct. Catalunya',             data:'19/01/2014' },
   { id:401, disc:'aa',   estil:'Recorbat',    cat:'Sènior',     sex:'Home', format:'Sala 18m / ST',      marca:506, atleta:'Sergio Llamas Chicharro',   competicio:'VIII Ct. Espanya',              data:'19/02/2012' },
