@@ -831,9 +831,142 @@ function genNextCircNum(){
   return 'CIRC-'+(max+1);
 }
 
+// ── Textos i valors per defecte del generador, per disciplina ──────
+// Basats en les darreres circulars de "Format de Competicions" publicades
+// per a cada lliga (CIRC-2633 Aire Lliure, CIRC-2634 Sala, CIRC-2635 3D,
+// CIRC-2636 Camp, totes de juny 2026) i en el 76è Campionat de Catalunya
+// d'Aire Lliure (CIRC-2637), que confirma que inscripció i pagament es
+// fan conjuntament a través de la plataforma d'inscripcions — sense
+// transferència bancària per separat.
+var GEN_DISC_DEFAULTS = {
+
+  al: {
+    participants: 'Esportistes federats/ades a la FCTA amb llicència en vigor per a la temporada en curs, de totes les divisions (Recorbat, Compost, Nu, Tradicional, Longbow). Els menors d\'edat han de comptar amb l\'autorització del pare/mare o tutor legal.',
+    places: 'Sense límit de places (subjecte a la capacitat de la instal·lació).',
+    edatMin: 'Totes les categories, des de Prebenjamí fins a Sènior/+50',
+    format: 'Competició individual. Fase classificatòria: doble round (72 fletxes: 36+36) a la distància de cada categoria, en tandes de 6 fletxes amb un temps màxim de 180 segons (30 s/fletxa). Fase eliminatòria individual (semifinals i final) pels 4 millors classificats de cada categoria, sempre que hi hagi més de 3 inscrits/es.\nEs podrà disputar també competició per equips (3 esportistes de les categories Sènior/+50 per club i divisió).',
+    rondes: 'Doble round: 72 fletxes (36+36) a la distància de la categoria',
+    fletxes: '6 fletxes per tanda · 180 s per tanda (30 s/fletxa) en classificatòria',
+    dist: 'RC: 70 m (Sèn./Sub-21) · 60 m (Sub-18/Sub-15) · 40 m (Sub-12) | CO: 50 m (Sèn./Sub-21/Sub-18) · 40 m (Sub-15) | NU/LB/TR: 60 m (Sèn./Sub-21) · 50 m (Sub-18) · 40 m (Sub-15)',
+    diana: '122 cm (RC) · 80 cm retallada (CO) · 80 cm (NU/LB/TR) · 60 cm (categories menors)',
+    elim: 'Fase eliminatòria (semifinals i final): dos esportistes per diana i tir simultani. Sistema de sets WA per a totes les divisions excepte Compost, que juga per puntuació acumulada (5 tandes de 3 fletxes, 90 s per tanda).',
+    lliga: 'Prova puntuable per a la Lliga Catalana d\'Aire Lliure. La classificació final de la lliga es determina pel còmput de totes les tirades disputades, sense descartar-ne cap puntuació. Cada competició adquireix oficialitat amb la publicació de la circular corresponent.',
+    desempat: 'RC: en cas d\'empat en sets, tirada de desempat a la diana X; la fletxa més propera al centre guanya. Resta de divisions: major puntuació als 10, 9, 8… fletxes finals, successivament.',
+    resultats: 'Gestió i resultats en directe a través de la plataforma Ianseo. Resultats oficials publicats a la web de la FCTA.',
+    horari: [['08:30','Recepció d\'arquers i verificació de material'],['09:00','Escalfament oficial'],['09:30','Inici de la competició – 1ª ronda'],['11:30','Inici de la competició – 2ª ronda'],['13:30','Pausa dinar'],['14:30','Eliminatòries'],['17:00','Finals i lliurament de premis']],
+    classes: [['Recorbat (RC)','15'],['Compost (CO)','15'],['Tradicional (TR)','12'],['Nu (BB)','12'],['Longbow (LB)','12']],
+    formDesc: 'La inscripció es realitza mitjançant el formulari en línia indicat, que inclou el pagament de la taxa d\'inscripció en el mateix procés. La plaça no queda confirmada fins a completar tot el procés d\'inscripció i pagament.\nEn cas d\'arribar al límit de participants, es podrà habilitar una llista d\'espera a través de la mateixa plataforma. No s\'admeten inscripcions fora de termini.',
+    pagament: 'La inscripció i el pagament de la taxa es fan conjuntament a través de la plataforma d\'inscripcions en línia; no cal fer cap transferència ni pagament per separat.\nEn cas de renúncia comunicada amb més de 72 h d\'antelació, es retornarà el 50% de l\'import. Passada aquesta data, no hi ha dret a devolució.'
+  },
+
+  sala: {
+    participants: 'Esportistes federats/ades a la FCTA amb llicència en vigor per a la temporada en curs, de totes les divisions (Recorbat, Compost, Nu, Tradicional, Longbow). Els menors d\'edat han de comptar amb l\'autorització del pare/mare o tutor legal.',
+    places: 'Sense límit de places (subjecte a la capacitat de la instal·lació indoor).',
+    edatMin: 'Totes les categories, des de Prebenjamí fins a Sènior/+50',
+    format: 'Competició individual a 18 m. Ronda de classificació de 60 fletxes (2 rondes de 30), en tandes de 3 fletxes amb un temps màxim de 2 minuts per tanda. Fase eliminatòria individual (semifinals i final) pels 4 millors classificats de cada categoria, sempre que hi hagi més de 3 inscrits/es.',
+    rondes: '60 fletxes (2 rondes de 30) a 18 m',
+    fletxes: '3 fletxes per tanda · 2 min per tanda',
+    dist: '18 m per a totes les categories i divisions',
+    diana: '40 cm (triple vertical, RC/CO) · 60 cm (NU/LB/TR i categories menors)',
+    elim: 'Fase eliminatòria (semifinals i final): dos esportistes per diana i tir simultani. Sistema de sets WA per a totes les divisions excepte Compost, que juga per puntuació acumulada.',
+    lliga: 'Prova puntuable per a la Lliga Catalana de Sala. La classificació final de la lliga es determina pel còmput de totes les tirades disputades, sense descartar-ne cap puntuació. Cada competició adquireix oficialitat amb la publicació de la circular corresponent.',
+    desempat: 'RC: en cas d\'empat en sets, tirada de desempat a la diana X; la fletxa més propera al centre guanya. Resta de divisions: major puntuació a les fletxes finals, successivament.',
+    resultats: 'Gestió i resultats en directe a través de la plataforma Ianseo. Resultats oficials publicats a la web de la FCTA.',
+    horari: [['08:30','Recepció d\'arquers i verificació de material'],['09:00','Escalfament oficial'],['09:30','Inici de la competició – 1ª ronda (30 fletxes)'],['11:00','Inici de la competició – 2ª ronda (30 fletxes)'],['13:00','Pausa dinar'],['14:30','Eliminatòries'],['17:00','Finals i lliurament de premis']],
+    classes: [['Recorbat (RC)','15'],['Compost (CO)','15'],['Tradicional (TR)','12'],['Nu (BB)','12'],['Longbow (LB)','12']],
+    formDesc: 'La inscripció es realitza mitjançant el formulari en línia indicat, que inclou el pagament de la taxa d\'inscripció en el mateix procés. La plaça no queda confirmada fins a completar tot el procés d\'inscripció i pagament.\nEn cas d\'arribar al límit de participants, es podrà habilitar una llista d\'espera a través de la mateixa plataforma. No s\'admeten inscripcions fora de termini.',
+    pagament: 'La inscripció i el pagament de la taxa es fan conjuntament a través de la plataforma d\'inscripcions en línia; no cal fer cap transferència ni pagament per separat.\nEn cas de renúncia comunicada amb més de 72 h d\'antelació, es retornarà el 50% de l\'import. Passada aquesta data, no hi ha dret a devolució.'
+  },
+
+  camp: {
+    participants: 'Esportistes federats/ades a la FCTA amb llicència en vigor. Divisions: Compost, Recorbat, Nu, Tradicional i Longbow. Classes: Sènior i Sub-15 (la categoria +50 queda integrada dins de Sènior). Els menors d\'edat han de comptar amb l\'autorització del pare/mare o tutor legal.',
+    places: 'Cal un mínim de 40 participants inscrits/es per poder celebrar la tirada. En cas de no assolir-se aquest mínim, la competició quedarà suspesa i es retornarà íntegrament l\'import de la inscripció a totes les persones inscrites.',
+    edatMin: 'Sub-15 en endavant',
+    format: 'Circuit de 24 dianes (12 de distància coneguda i 12 de distància desconeguda). Els 4 primers classificats de cada divisió i sexe disputaran eliminatòries per optar al medaller, sempre que hi hagi un mínim de 4 arquers/eres inscrits/es.',
+    rondes: 'Circuit de 24 dianes: 12 conegudes + 12 desconegudes',
+    fletxes: 'Segons la distribució de patrulles establerta a la circular de cada competició',
+    dist: 'Distàncies variables (conegudes i desconegudes) segons el recorregut homologat del camp de tir',
+    diana: 'Cares de diana de camp segons distància, d\'acord amb el Reglament de Competicions FCTA i les regles World Archery',
+    elim: 'Eliminatòries (4 primers classificats per divisió i sexe) per optar al medaller. Per tenir dret a trofeus, medalles o reconeixements de la FCTA cal haver participat en 3 de les 3 tirades de la lliga catalana de camp.',
+    lliga: 'Prova puntuable per a la Lliga Catalana de Camp. La classificació final de la lliga es determina pel còmput de totes les tirades disputades, sense descartar-ne cap.',
+    desempat: 'Segons el Reglament de Competicions FCTA i les regles World Archery de tir de camp.',
+    resultats: 'Gestió i resultats en directe a través de la plataforma Ianseo. Resultats oficials publicats a la web de la FCTA.',
+    horari: [['08:00','Recepció d\'arquers i verificació de material'],['08:30','Briefing i sorteig de patrulles'],['09:00','Inici circuit conegut (12 dianes)'],['12:00','Pausa'],['12:30','Inici circuit desconegut (12 dianes)'],['15:30','Eliminatòries'],['17:00','Lliurament de premis']],
+    classes: [['Sènior','20'],['Sub-15','10']],
+    formDesc: 'La inscripció es realitza mitjançant el formulari en línia indicat, que inclou el pagament de la taxa d\'inscripció en el mateix procés. La plaça no queda confirmada fins a completar tot el procés d\'inscripció i pagament. No s\'admeten inscripcions fora de termini.',
+    pagament: 'La inscripció i el pagament de la taxa es fan conjuntament a través de la plataforma d\'inscripcions en línia; no cal fer cap transferència ni pagament per separat.\nSi no s\'assoleix el mínim de 40 participants, la competició quedarà suspesa i es retornarà íntegrament l\'import a totes les persones inscrites.'
+  },
+
+  '3d': {
+    participants: 'Esportistes federats/ades a la FCTA amb llicència en vigor. Divisions: Compost, Nu, Tradicional i Longbow. Classes: Sènior i Sub-15 (la categoria +50 queda integrada dins de Sènior). Els menors d\'edat han de comptar amb l\'autorització del pare/mare o tutor legal.',
+    places: 'Límit màxim de 192 esportistes participants.',
+    edatMin: 'Sub-15 en endavant',
+    format: 'Circuit de 24 dianes 3D. Es disputen 2 torns per divisions (Longbow/Tradicional en un torn, Nu/Compost en l\'altre) si el club només disposa d\'un circuit; amb 2 circuits disponibles, la competició es fa en un únic torn.',
+    rondes: 'Circuit de 24 dianes 3D (2 torns segons divisió, si escau)',
+    fletxes: 'Segons la distribució de patrulles establerta a la circular de cada competició',
+    dist: 'Distàncies desconegudes, segons el recorregut homologat del circuit 3D',
+    diana: 'Dianes 3D (figures d\'animal) homologades, d\'acord amb el Reglament de Competicions FCTA i les regles World Archery',
+    elim: 'Eliminatòries (4 primers classificats per divisió i sexe) per optar al medaller, sempre que hi hagi un mínim de 4 arquers/eres per divisió i sexe. Per tenir dret a trofeus, medalles o reconeixements de la FCTA cal haver participat en 3 de les 3 tirades de la lliga catalana de 3D.',
+    lliga: 'Prova puntuable per a la Lliga Catalana de 3D. La classificació final de la lliga es determina pel còmput de totes les tirades disputades, sense descartar-ne cap.',
+    desempat: 'Segons el Reglament de Competicions FCTA i les regles World Archery de tir 3D.',
+    resultats: 'Gestió i resultats en directe a través de la plataforma Ianseo. Resultats oficials publicats a la web de la FCTA.',
+    horari: [['08:00','Recepció d\'arquers i verificació de material'],['08:30','Briefing i sorteig de patrulles/torns'],['09:00','Inici 1r torn (Longbow/Tradicional)'],['12:00','Pausa'],['12:30','Inici 2n torn (Nu/Compost)'],['15:30','Eliminatòries'],['17:00','Lliurament de premis']],
+    classes: [['Sènior','20'],['Sub-15','10']],
+    formDesc: 'La inscripció es realitza mitjançant el formulari en línia indicat, que inclou el pagament de la taxa d\'inscripció en el mateix procés. La plaça no queda confirmada fins a completar tot el procés d\'inscripció i pagament. No s\'admeten inscripcions fora de termini.',
+    pagament: 'La inscripció i el pagament de la taxa es fan conjuntament a través de la plataforma d\'inscripcions en línia; no cal fer cap transferència ni pagament per separat.'
+  },
+
+  kyudo: {
+    participants: 'Esportistes federats/ades a la FCTA amb llicència en vigor per a la temporada en curs.',
+    places: 'Sense límit de places (subjecte a la capacitat de la instal·lació).',
+    edatMin: 'Sub-15 en endavant',
+    format: 'Competició individual segons el reglament de Kyudo aplicable. Els detalls específics del format es publicaran amb la circular de cada competició.',
+    rondes: 'Segons format establert a la circular de la competició',
+    fletxes: '',
+    dist: '',
+    diana: '',
+    elim: '',
+    lliga: 'Prova puntuable per a la temporada en curs. Cada competició adquireix oficialitat amb la publicació de la circular corresponent.',
+    desempat: '',
+    resultats: 'Resultats oficials publicats a la web de la FCTA.',
+    horari: [['09:00','Recepció i verificació de material'],['09:30','Inici de la competició'],['13:00','Pausa dinar'],['14:00','Continuació i lliurament de premis']],
+    classes: [['General','15']],
+    formDesc: 'La inscripció es realitza mitjançant el formulari en línia indicat, que inclou el pagament de la taxa d\'inscripció en el mateix procés.',
+    pagament: 'La inscripció i el pagament de la taxa es fan conjuntament a través de la plataforma d\'inscripcions en línia; no cal fer cap transferència ni pagament per separat.'
+  },
+
+  fed: {
+    participants: 'Esportistes, clubs i/o tècnics federats/ades a la FCTA, segons s\'especifiqui a la convocatòria.',
+    places: 'Sense límit de places, subjecte a la capacitat de la instal·lació o de l\'activitat.',
+    edatMin: '',
+    format: 'Detalls específics segons la naturalesa de l\'activitat convocada.',
+    rondes: '',
+    fletxes: '',
+    dist: '',
+    diana: '',
+    elim: '',
+    lliga: '',
+    desempat: '',
+    resultats: '',
+    horari: [['09:00','Recepció'],['09:30','Inici de l\'activitat']],
+    classes: [],
+    formDesc: 'La inscripció es realitza mitjançant el formulari en línia indicat, que inclou el pagament (si escau) en el mateix procés.',
+    pagament: 'La inscripció i el pagament (si escau) es fan conjuntament a través de la plataforma d\'inscripcions en línia; no cal fer cap transferència ni pagament per separat.'
+  }
+};
+// El generador tracta 'sala' com a subtipus de 'al' a efectes de tipus de
+// circular/competició (comparteixen badge 'cb-al'), però amb textos propis.
+GEN_DISC_DEFAULTS.al.label = 'Aire Lliure';
+GEN_DISC_DEFAULTS.sala.label = 'Sala';
+GEN_DISC_DEFAULTS.camp.label = 'Tir de Camp';
+GEN_DISC_DEFAULTS['3d'].label = '3D / Bosc';
+GEN_DISC_DEFAULTS.kyudo.label = 'Kyudo';
+GEN_DISC_DEFAULTS.fed.label = 'Federació (general)';
+
 function renderAdmGenerator(b){
   var discOpts=[
-    {val:'al',lbl:'Aire Lliure / Sala'},
+    {val:'al',lbl:'Aire Lliure'},
+    {val:'sala',lbl:'Sala'},
     {val:'camp',lbl:'Tir de Camp'},
     {val:'3d',lbl:'3D / Bosc'},
     {val:'kyudo',lbl:'Kyudo'},
@@ -848,11 +981,12 @@ function renderAdmGenerator(b){
     {val:'altre',lbl:'Altra competició'}
   ];
   var suggested=genNextCircNum();
+  var d0=GEN_DISC_DEFAULTS.al; // disciplina per defecte en obrir el formulari
   b.innerHTML=
     '<div class="gen-wrap">'
     +'<div class="gen-form-col">'
     +'<div class="crud-form-title">✍️ Generador de Circulars de Competició</div>'
-    +'<p style="color:var(--gray);font-size:.82rem;margin:-.25rem 0 1rem">Omple els camps i clica <strong>Generar</strong> per obtenir la circular en format imprimible.</p>'
+    +'<p style="color:var(--gray);font-size:.82rem;margin:-.25rem 0 1rem">Omple els camps i clica <strong>Generar</strong> per obtenir la circular en format imprimible. En canviar la <strong>disciplina</strong>, els textos genèrics s\'actualitzen automàticament.</p>'
 
     // ── Identificació ──────────────────────────────────────
     +'<div class="gen-section-label">Identificació</div>'
@@ -886,41 +1020,31 @@ function renderAdmGenerator(b){
 
     // ── Participants ───────────────────────────────────────
     +'<div class="gen-section-label">Participants</div>'
-    +mkField('Qui pot participar','gn_participants','textarea',
-      'Esportistes federats/ades a la FCTA amb llicència en vigor per a la temporada en curs, de totes les categories i divisions. Els menors d\'edat han de comptar amb l\'autorització del pare/mare o tutor legal.',
-      '')
+    +mkField('Qui pot participar','gn_participants','textarea',d0.participants,'')
     +'<div class="af-row">'
-    +mkField('Límit de places','gn_places','text','Sense límit de places (subjecte a la capacitat del recinte).','')
-    +mkField('Edat mínima','gn_edat','text','Sub-12 (Aleví) en endavant','')
+    +mkField('Límit de places','gn_places','text',d0.places,'')
+    +mkField('Edat mínima','gn_edat','text',d0.edatMin,'')
     +'</div>'
 
     // ── Sistema de competició ──────────────────────────────
     +'<div class="gen-section-label">Sistema de competició</div>'
-    +mkField('Format general','gn_format','textarea',
-      'Competició individual. Fase de classificació (Round 720: 72 fletxes en 2 rondes de 36) seguida d\'eliminatòries directes per al podi (1/8, 1/4, semifinals i final).\nEs podran disputar també eliminatòries per equips (3+1) si el nombre de participants ho permet.',
-      '')
+    +mkField('Format general','gn_format','textarea',d0.format,'')
     +'<div class="af-row">'
-    +mkField('Rondes de classificació','gn_rondes','text','2 rondes de 36 fletxes (Round 720 · màxim 720 punts)','')
-    +mkField('Fletxes per sèrie','gn_fletxes','text','6 fletxes per sèrie · 2 min 30 s per sèrie (Aire Lliure)','')
+    +mkField('Rondes de classificació','gn_rondes','text',d0.rondes,'')
+    +mkField('Fletxes per sèrie','gn_fletxes','text',d0.fletxes,'')
     +'</div>'
     +'<div class="af-row">'
-    +mkField('Distàncies','gn_dist','text',
-      'RC: 70 m (Sèn./Sub-21) · 60 m (Sub-18/Sub-15) · 40 m (Sub-12) | CO: 50 m (Sèn./Sub-21/Sub-18) · 40 m (Sub-15) | NU/LB/TR: 60 m (Sèn./Sub-21) · 50 m (Sub-18) · 40 m (Sub-15)',
-      '')
-    +mkField('Tipus de diana','gn_diana','text','122 cm (RC) · 80 cm retallada (CO) · 80 cm (NU/LB/TR) · 60 cm (Sub-12 i categories menors)','')
+    +mkField('Distàncies','gn_dist','text',d0.dist,'')
+    +mkField('Tipus de diana','gn_diana','text',d0.diana,'')
     +'</div>'
-    +mkField('Sistema d\'eliminatòries','gn_elim','textarea',
-      'Arc Recorbat (RC): sistema de sets WA (5 sets de 3 fletxes; guanya qui primer arriba a 6 punts de set).\nArc Compost (CO) i resta de divisions: acumulació de punts (3 fletxes per tirada; 5 tirades en semifinals i final, 4 en rondes anteriors).\nEn cas d\'empat en sets (RC): tirada de desempat a la diana X; la fletxa més propera al centre guanya.',
-      '')
+    +mkField('Sistema d\'eliminatòries','gn_elim','textarea',d0.elim,'')
 
     // ── Lliga i classificació ──────────────────────────────
     +'<div class="gen-section-label">Lliga i classificació</div>'
-    +mkField('Puntuació per a la lliga','gn_lliga','textarea',
-      'Prova puntuable per a la Lliga Catalana d\'Aire Lliure 2026.\nEs comptabilitzen les 3 millors marques de les 4 tirades de la temporada. La classificació final de la lliga es publicarà a la web de la FCTA un cop tancada la temporada.',
-      '')
+    +mkField('Puntuació per a la lliga','gn_lliga','textarea',d0.lliga,'')
     +'<div class="af-row">'
-    +mkField('Criteri de desempat','gn_desempat','text','Major puntuació als darrers 10 fletxes de la classificació; si persisteix, als 9, 8, 7... i així successivament fins a 1 fletxa.','')
-    +mkField('Publicació resultats','gn_resultats','text','Resultats en directe a través d\'Ianseo. Resultats oficials publicats a la web de la FCTA en un termini màxim de 48 h.','')
+    +mkField('Criteri de desempat','gn_desempat','text',d0.desempat,'')
+    +mkField('Publicació resultats','gn_resultats','text',d0.resultats,'')
     +'</div>'
 
     // ── Horari ─────────────────────────────────────────────
@@ -934,19 +1058,13 @@ function renderAdmGenerator(b){
     +'<button class="gen-add-row-btn"'+dataAttr('onclick','genAddCatRow',[])+'>+ Afegir classe</button>'
 
     // ── Inscripcions i pagament ────────────────────────────
+    // Inscripció i pagament es fan conjuntament a través de la plataforma
+    // d'inscripcions en línia (p.ex. Addon Sport): no hi ha camps de
+    // transferència bancària perquè no s'utilitza aquest mètode.
     +'<div class="gen-section-label">Inscripcions i pagament</div>'
-    +mkField('Formulari / URL d\'inscripció','gn_form_url','url','','https://forms.gle/... o email')
-    +mkField('Instruccions d\'inscripció','gn_form_desc','textarea',
-      'Descarregar la fitxa d\'inscripció des de la web de la FCTA o demanar-la al club organitzador.\nEnviar la fitxa emplenada per correu electrònic a l\'adreça de contacte indicada.\nLa plaça queda reservada un cop confirmada la recepció de la fitxa i el pagament.\nTermini màxim d\'inscripció: vegeu data indicada. No s\'admeten inscripcions fora de termini.',
-      '')
-    +'<div class="af-row">'
-    +mkField('IBAN compte bancari','gn_iban','text','','Ex: ES12 1234 5678 9012 3456 7890')
-    +mkField('Titular del compte','gn_iban_nom','text','','Ex: Club Arc Barcelona')
-    +'</div>'
-    +mkField('Concepte de transferència','gn_iban_concepte','text','Nom i cognoms complets de l\'esportista + NIF/NIE + número circular (ex: CIRC-XXXX)','')
-    +mkField('Forma de pagament','gn_pagament','textarea',
-      'Transferència bancària prèvia al compte indicat. Adjuntar el justificant de pagament a la fitxa d\'inscripció.\nNo s\'accepten pagaments en efectiu el dia de la competició.\nEn cas de renúncia comunicada amb més de 72 h d\'antelació, es retornarà el 50% de l\'import. Passada aquesta data, no hi ha dret a devolució.',
-      '')
+    +mkField('Formulari / URL d\'inscripció','gn_form_url','url','','https://event.addon-sport.com/... o forms.gle/...')
+    +mkField('Instruccions d\'inscripció','gn_form_desc','textarea',d0.formDesc,'')
+    +mkField('Forma de pagament','gn_pagament','textarea',d0.pagament,'')
 
     // ── Informació addicional ──────────────────────────────
     +'<div class="gen-section-label">Informació addicional</div>'
@@ -969,21 +1087,48 @@ function renderAdmGenerator(b){
     +'</div>'
     +'</div>';
 
-  // Horari per defecte
-  genAddHorariRow('08:30','Recepció d\'arquers i verificació de material');
-  genAddHorariRow('09:00','Escalfament oficial');
-  genAddHorariRow('09:30','Inici de la competició – 1ª ronda');
-  genAddHorariRow('11:30','Inici de la competició – 2ª ronda');
-  genAddHorariRow('13:30','Pausa dinar');
-  genAddHorariRow('14:30','Eliminatòries');
-  genAddHorariRow('17:00','Finals i lliurament de premis');
+  // Afegeix l'onchange a la disciplina (fet aquí i no amb dataAttr en línia,
+  // per no duplicar el mateix codi al initial render i a genOnDiscChange)
+  var discSel=document.getElementById('gn_disc');
+  if(discSel){
+    discSel.setAttribute('data-onchange','genOnDiscChange');
+    discSel.setAttribute('data-onchange-args','["@val"]');
+  }
 
-  // Classes i preus per defecte
-  genAddCatRow('Recorbat (RC)','15');
-  genAddCatRow('Compost (CO)','15');
-  genAddCatRow('Tradicional (TR)','12');
-  genAddCatRow('Nu (BB)','12');
-  genAddCatRow('Longbow (LB)','12');
+  genFillHorariCats('al');
+}
+
+// Reomple les línies d'horari i de classes/taxes segons la disciplina donada
+function genFillHorariCats(disc){
+  var d=GEN_DISC_DEFAULTS[disc]||GEN_DISC_DEFAULTS.al;
+  var hRows=document.getElementById('gen-horari-rows');
+  var cRows=document.getElementById('gen-cat-rows');
+  if(hRows) hRows.innerHTML='';
+  if(cRows) cRows.innerHTML='';
+  d.horari.forEach(function(h){ genAddHorariRow(h[0],h[1]); });
+  d.classes.forEach(function(c){ genAddCatRow(c[0],c[1]); });
+}
+
+// Actualitza els textos genèrics del formulari en canviar la disciplina.
+// Sobreescriu els camps de text/format perquè reflecteixin la darrera
+// circular de "Format de Competicions" publicada per a cada lliga
+// (Aire Lliure, Sala, Camp i 3D) — mantenint intactes les dades pròpies
+// de l'esdeveniment (títol, club, dates, contacte, etc.).
+function genOnDiscChange(disc){
+  var d=GEN_DISC_DEFAULTS[disc]||GEN_DISC_DEFAULTS.al;
+  var map={
+    gn_participants:d.participants, gn_places:d.places, gn_edat:d.edatMin,
+    gn_format:d.format, gn_rondes:d.rondes, gn_fletxes:d.fletxes,
+    gn_dist:d.dist, gn_diana:d.diana, gn_elim:d.elim,
+    gn_lliga:d.lliga, gn_desempat:d.desempat, gn_resultats:d.resultats,
+    gn_form_desc:d.formDesc, gn_pagament:d.pagament
+  };
+  Object.keys(map).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.value=map[id];
+  });
+  genFillHorariCats(disc);
+  toast('Textos actualitzats per a '+(d.label||disc),'✍️');
 }
 
 function genAddHorariRow(hora,desc){
@@ -1054,7 +1199,7 @@ function generateCircular(){
     return;
   }
   var disc=fv('gn_disc');
-  var discNoms={al:'Aire Lliure / Sala',camp:'Tir de Camp','3d':'3D / Bosc',kyudo:'Kyudo',fed:'General'};
+  var discNoms={al:'Aire Lliure',sala:'Sala',camp:'Tir de Camp','3d':'3D / Bosc',kyudo:'Kyudo',fed:'General'};
   var club=fv('gn_club');
   var contact=fv('gn_contact');
   var email=fv('gn_email');
@@ -1078,9 +1223,6 @@ function generateCircular(){
   var resultats=fv('gn_resultats');
   var formUrl=fv('gn_form_url');
   var formDesc=fv('gn_form_desc');
-  var iban=fv('gn_iban');
-  var ibanNom=fv('gn_iban_nom');
-  var ibanConcepte=fv('gn_iban_concepte');
   var pagament=fv('gn_pagament');
   var regl=fv('gn_regl');
   var premis=fv('gn_premis');
@@ -1143,8 +1285,6 @@ function generateCircular(){
     +'.circ-table th{background:#1B3A6B;color:#fff;font-weight:700;padding:5px 8px;text-align:left;font-size:8.5pt;text-transform:uppercase;letter-spacing:.04em}'
     +'.circ-table td{padding:5px 8px;border-bottom:1px solid #E8ECF3}'
     +'.circ-table tr:nth-child(even) td{background:#F4F6FA}'
-    +'.circ-iban-box{background:#F4F6FA;border:1px solid #E8ECF3;border-radius:4px;padding:8px 12px;font-size:9.5pt;margin-top:6px}'
-    +'.circ-iban-box strong{color:#0F2447}'
     +'.circ-footer{margin-top:18px;padding:10px 20px;background:#F4F6FA;border-top:2px solid #E8ECF3;font-size:8pt;color:#666;display:flex;justify-content:space-between;align-items:center}'
     +'.circ-footer strong{color:#0F2447}'
     +'p{font-size:9.5pt;margin:5px 0;line-height:1.5}'
@@ -1244,13 +1384,6 @@ function generateCircular(){
   if(formDesc)      inscHTML+='<p>'+escHtml(formDesc).replace(/\n/g,'<br>')+'</p>';
   if(formUrl)       inscHTML+='<p><span class="circ-info-label">Formulari / inscripció:</span> <a href="'+escHtml(formUrl)+'">'+escHtml(formUrl)+'</a></p>';
   if(pagament)      inscHTML+='<p>'+escHtml(pagament).replace(/\n/g,'<br>')+'</p>';
-  if(iban){
-    inscHTML+='<div class="circ-iban-box">'
-      +'<strong>Compte bancari:</strong> '+escHtml(iban)
-      +(ibanNom?' &nbsp;·&nbsp; Titular: '+escHtml(ibanNom):'')
-      +(ibanConcepte?'<br><strong>Concepte transferència:</strong> '+escHtml(ibanConcepte):'')
-      +'</div>';
-  }
   if(inscHTML){
     html+='<div class="circ-section"><div class="circ-section-title">Inscripcions i pagament</div>'+inscHTML+'</div>';
   }
