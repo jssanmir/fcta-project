@@ -41,23 +41,41 @@ if (!JWT_SECRET) {
 
 // ── Email (nodemailer + Gmail) ─────────────────────────────
 var _mailTransporter = null;
+// Estat consultable des de /api/mail-status (superadmin) perquè no calgui
+// remenar els logs de Railway per saber per què l'email no funciona.
+var _mailStatus = {
+  configured:  false,  // MAIL_USER i MAIL_PASS estan definits
+  connected:   false,  // la darrera verificació SMTP ha anat bé
+  user:        null,
+  lastError:   null,
+  lastCheckAt: null
+};
 
 (function initMailer() {
   var user = process.env.MAIL_USER;
   var pass = process.env.MAIL_PASS;
+  _mailStatus.user = user || null;
   if (!user || !pass) {
+    _mailStatus.configured = false;
+    _mailStatus.lastError  = 'MAIL_USER i/o MAIL_PASS no definits al servidor';
     console.warn('[FCTA] Email desactivat: defineix MAIL_USER i MAIL_PASS al .env');
     return;
   }
+  _mailStatus.configured = true;
   _mailTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: { user: user, pass: pass }
   });
   _mailTransporter.verify(function(err) {
+    _mailStatus.lastCheckAt = new Date().toISOString();
     if (err) {
+      _mailStatus.connected = false;
+      _mailStatus.lastError = err.message;
       console.warn('[FCTA] Error connectant al servidor de correu:', err.message);
       _mailTransporter = null;
     } else {
+      _mailStatus.connected = true;
+      _mailStatus.lastError = null;
       console.log('[FCTA] Servidor de correu connectat: ' + user);
     }
   });
@@ -67,7 +85,16 @@ function sendMail(to, subject, html) {
   if (!_mailTransporter) return Promise.resolve({ skipped: true });
   var from = process.env.MAIL_FROM || process.env.MAIL_USER;
   return _mailTransporter.sendMail({ from: '"FCTA Portal" <' + from + '>', to: to, subject: subject, html: html })
-    .catch(function(e) { console.warn('[FCTA] Error enviant email a ' + to + ':', e.message); });
+    .then(function(info) {
+      _mailStatus.lastError = null;
+      return info;
+    })
+    .catch(function(e) {
+      // Un enviament concret pot fallar encara que la verificació inicial
+      // anés bé (p.ex. Gmail bloqueja l'IP després d'uns quants enviaments).
+      _mailStatus.lastError = 'Enviament a ' + to + ': ' + e.message;
+      console.warn('[FCTA] Error enviant email a ' + to + ':', e.message);
+    });
 }
 
 function mailActivacio(to, username, password) {
@@ -935,6 +962,13 @@ app.post('/api/audit', verifyToken, function (req, res) {
 // ── API: Salut (sense info de versió) ─────────────────────
 app.get('/api/health', function (req, res) {
   res.json({ status: 'ok' });
+});
+
+// ── API: Estat del servei de correu (diagnòstic) ───────────
+// Evita haver de remenar els logs del servidor per saber per què
+// l'enviament d'emails no funciona en producció.
+app.get('/api/mail-status', verifyToken, requireRole('superadmin'), function (req, res) {
+  res.json(_mailStatus);
 });
 
 // ── Gestió d'errors global ─────────────────────────────────

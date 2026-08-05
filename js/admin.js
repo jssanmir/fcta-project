@@ -1705,7 +1705,11 @@ function renderAdmUsuaris(b){
   var roles=[{val:'superadmin',lbl:'Superadmin'},{val:'editor',lbl:'Editor'}];
 
   b.innerHTML=
-    '<div class="crud-form">'
+    '<div class="adm-st" style="display:flex;align-items:center;gap:.6rem">Estat del servei de correu'
+    +'<button class="bsm bsm-o" style="padding:.15rem .6rem;font-size:.72rem;margin-left:auto"'+dataAttr('onclick','_admLoadMailStatus',[])+'>&#8635; Comprovar</button>'
+    +'</div>'
+    +'<div id="mailStatusBox" style="margin-bottom:1.5rem"><p style="padding:.5rem 0;color:var(--gray);font-size:.85rem">Comprovant…</p></div>'
+    +'<div class="crud-form">'
     +'<div class="crud-form-title">&#10010; Nou Usuari</div>'
     +'<div class="af-row">'
     +mkField('Nom d\'usuari (login) *','au_username','text','','anna.garcia')
@@ -1730,6 +1734,35 @@ function renderAdmUsuaris(b){
 
   _admLoadUsers();
   _admLoadAudit();
+  _admLoadMailStatus();
+}
+
+function _admLoadMailStatus(){
+  var box = document.getElementById('mailStatusBox');
+  if (box) box.innerHTML = '<p style="padding:.5rem 0;color:var(--gray);font-size:.85rem">Comprovant…</p>';
+  admApiFetch('/api/mail-status', {}, function(s){
+    if (!box) return;
+    var ok = s.configured && s.connected;
+    var color = ok ? '#059669' : '#dc2626';
+    var icon  = ok ? '✅' : '⚠️';
+    var lines = [];
+    lines.push('<div style="font-weight:700;color:'+color+'">'+icon+' '+(ok ? 'Correu operatiu' : 'Correu NO operatiu')+'</div>');
+    lines.push('<div style="font-size:.82rem;color:var(--gray);margin-top:.3rem">');
+    lines.push('Configurat (MAIL_USER/MAIL_PASS definits): <strong>'+(s.configured?'Sí':'No')+'</strong><br>');
+    if (s.user) lines.push('Compte: <strong>'+escHtml(s.user)+'</strong><br>');
+    lines.push('Connexió SMTP verificada: <strong>'+(s.connected?'Sí':'No')+'</strong>');
+    if (s.lastCheckAt) lines.push(' ('+new Date(s.lastCheckAt).toLocaleString('ca-ES')+')');
+    if (s.lastError) lines.push('<br><span style="color:#dc2626">Darrer error: '+escHtml(s.lastError)+'</span>');
+    lines.push('</div>');
+    if (!s.configured) {
+      lines.push('<div style="font-size:.8rem;color:var(--gray);margin-top:.5rem">→ Defineix <code>MAIL_USER</code>, <code>MAIL_PASS</code> i <code>MAIL_FROM</code> a les variables d\'entorn del servidor (Railway → Variables) i torna a desplegar.</div>');
+    } else if (!s.connected) {
+      lines.push('<div style="font-size:.8rem;color:var(--gray);margin-top:.5rem">→ Les variables existeixen però la connexió falla. Revisa el missatge d\'error de dalt: sol ser una contrasenya d\'aplicació incorrecta/caducada, o Gmail bloquejant l\'inici de sessió des d\'un IP nou (revisa myaccount.google.com/notifications).</div>');
+    }
+    box.innerHTML = '<div class="bk-preview-box" style="border-color:'+color+'">'+lines.join('')+'</div>';
+  }, function(err){
+    if (box) box.innerHTML = '<p style="padding:.5rem 0;color:#dc2626;font-size:.85rem">Error consultant l\'estat: '+escHtml(err)+'</p>';
+  });
 }
 
 function _admRenderUsersTable(users){
