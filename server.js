@@ -48,13 +48,24 @@ var _mailStatus = {
   connected:   false,  // la darrera verificació SMTP ha anat bé
   user:        null,
   lastError:   null,
-  lastCheckAt: null
+  lastCheckAt: null,
+  // Diagnòstic detallat de process.env (mai el valor real de MAIL_PASS,
+  // només si existeix i la seva llargada) — per distingir "no definida",
+  // "definida però buida" i "definida amb espais en blanc sobrants",
+  // que des de fora del servidor són indistingibles.
+  raw: null
 };
 
 (function initMailer() {
   var user = process.env.MAIL_USER;
   var pass = process.env.MAIL_PASS;
   _mailStatus.user = user || null;
+  _mailStatus.raw = {
+    MAIL_USER:  { present: 'MAIL_USER'  in process.env, length: user ? user.length : 0, trimmedDiffers: !!user && user !== user.trim() },
+    MAIL_PASS:  { present: 'MAIL_PASS'  in process.env, length: pass ? pass.length : 0, trimmedDiffers: !!pass && pass !== pass.trim() },
+    MAIL_FROM:  { present: 'MAIL_FROM'  in process.env, length: (process.env.MAIL_FROM||'').length },
+    PORTAL_URL: { present: 'PORTAL_URL' in process.env, length: (process.env.PORTAL_URL||'').length }
+  };
   if (!user || !pass) {
     _mailStatus.configured = false;
     _mailStatus.lastError  = 'MAIL_USER i/o MAIL_PASS no definits al servidor';

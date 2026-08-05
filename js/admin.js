@@ -1892,6 +1892,21 @@ function _admLoadMailStatus(){
     } else if (!s.connected) {
       lines.push('<div style="font-size:.8rem;color:var(--gray);margin-top:.5rem">→ Les variables existeixen però la connexió falla. Revisa el missatge d\'error de dalt: sol ser una contrasenya d\'aplicació incorrecta/caducada, o Gmail bloquejant l\'inici de sessió des d\'un IP nou (revisa myaccount.google.com/notifications).</div>');
     }
+    // Diagnòstic detallat de com arriben (o no) les variables al procés —
+    // distingeix "no definida", "definida buida" i "amb espais sobrants",
+    // que des de Railway es veuen totes tres igual ("definida").
+    if (s.raw) {
+      var rawRows = Object.keys(s.raw).map(function(k){
+        var r = s.raw[k];
+        var st = !r.present ? '<span style="color:#dc2626">no present a process.env</span>'
+          : r.length === 0 ? '<span style="color:#dc2626">present però buida</span>'
+          : r.trimmedDiffers ? '<span style="color:#b45309">present (' + r.length + ' car.) amb espais en blanc sobrants</span>'
+          : '<span style="color:#059669">present (' + r.length + ' car.)</span>';
+        return '<tr><td style="padding:2px 8px 2px 0;font-family:monospace">'+k+'</td><td>'+st+'</td></tr>';
+      }).join('');
+      lines.push('<details style="margin-top:.6rem"><summary style="cursor:pointer;font-size:.78rem;color:var(--gray)">Diagnòstic detallat de les variables</summary>'
+        +'<table style="font-size:.78rem;margin-top:.4rem">'+rawRows+'</table></details>');
+    }
     box.innerHTML = '<div class="bk-preview-box" style="border-color:'+color+'">'+lines.join('')+'</div>';
   }, function(err){
     if (box) box.innerHTML = '<p style="padding:.5rem 0;color:#dc2626;font-size:.85rem">Error consultant l\'estat: '+escHtml(err)+'</p>';
