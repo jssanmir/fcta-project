@@ -657,7 +657,7 @@ function renderMedallerView(discKey) {
   html += _renderMedallerTable(agrClubs.clubs, 'Club');
 
   html += '<div style="text-align:right;margin-top:1rem">'
-    + '<button class="disc-btn-sm" onclick="setMedaller()">'
+    + '<button class="disc-btn-sm"' + dataAttr('onclick','setMedaller',[]) + '>'
     + '🏆 Veure Medaller General de Clubs →</button></div>';
 
   return html;
@@ -743,11 +743,11 @@ function renderMedallerGlobal() {
     + '</div>'
     + '<div class="med-global-nav">'
     + '<a class="disc-rnav-btn' + (_medallerTab === 'competicio' ? ' act' : '') + '" '
-    + 'href="' + HASH_BASE + 'competicio" onclick="setMedallerTab(\'competicio\');return false">🏅 Per Competició</a>'
+    + 'href="' + HASH_BASE + 'competicio"' + dataAttr('onclick','setMedallerTab',['competicio']) + '>🏅 Per Competició</a>'
     + '<a class="disc-rnav-btn' + (_medallerTab === 'divisio' ? ' act' : '') + '" '
-    + 'href="' + HASH_BASE + 'divisio" onclick="setMedallerTab(\'divisio\');return false">🏹 Per Divisió</a>'
+    + 'href="' + HASH_BASE + 'divisio"' + dataAttr('onclick','setMedallerTab',['divisio']) + '>🏹 Per Divisió</a>'
     + '<a class="disc-rnav-btn' + (_medallerTab === 'general' ? ' act' : '') + '" '
-    + 'href="' + HASH_BASE + 'general" onclick="setMedallerTab(\'general\');return false">🏆 General</a>'
+    + 'href="' + HASH_BASE + 'general"' + dataAttr('onclick','setMedallerTab',['general']) + '>🏆 General</a>'
     + '</div>';
 
   if (_medallerTab === 'general') {
@@ -835,6 +835,11 @@ function setDiscTab(tab, btn, _noHash) {
   renderDiscTab(tab);
 }
 
+// Drecera des de la nota de reglaments cap a la pestanya Documents
+function goToDiscDocs() {
+  setDiscTab('docs', document.querySelector('#discTabs [data-tab=\'docs\']'));
+}
+
 function _setDiscResView(view) {
   _discResView = view;
   _discUpdateHash();
@@ -899,7 +904,7 @@ function renderDiscInfo(d) {
     + 'per temporada, divisió d\'arc i classe d\'edat. Per a la informació oficial i actualitzada consulta el '
     + '<strong>Reglament de Competicions FCTA</strong> i els <strong>Llibres de Regles de la World Archery</strong> '
     + 'disponibles a la pestanya '
-    + '<button onclick="setDiscTab(\'docs\', document.querySelector(\'#discTabs [data-tab=\\\'docs\\\']\'))" '
+    + '<button' + dataAttr('onclick','goToDiscDocs',[]) + ' '
     + 'style="background:none;border:none;padding:0;font-weight:700;color:var(--navy-light);cursor:pointer;font-family:inherit;font-size:inherit;text-decoration:underline">📄 Documents →</button>'
     + '</div>';
 
@@ -958,7 +963,7 @@ function renderDiscLliga(d) {
       } else if (status === 'closed') {
         if (url && url.indexOf('#news:') === 0) {
           var nid = parseInt(url.replace('#news:', ''));
-          acts += '<button class="bsm bsm-o" onclick="openNews(' + nid + ')">📰 Notícia</button>';
+          acts += '<button class="bsm bsm-o"' + dataAttr('onclick','openNews',[nid]) + '>📰 Notícia</button>';
         } else if (url && url !== '#') {
           acts += '<a class="bsm bsm-o" href="' + url + '" target="_blank">📊 Resultats</a>';
         }
@@ -996,10 +1001,10 @@ function renderDiscResultats(d) {
   var baseHash = '#disciplina/' + (_discActiva || '') + '/resultats/';
   var html = '<div class="disc-res-nav">'
     + '<a class="disc-rnav-btn' + (_discResView === 'camps' ? ' act' : '') + '" '
-    + 'href="' + baseHash + 'camps" onclick="_setDiscResView(\'camps\');return false">🏆 Campionats</a>';
+    + 'href="' + baseHash + 'camps"' + dataAttr('onclick','_setDiscResView',['camps']) + '>🏆 Campionats</a>';
   if (hasMedals) {
     html += '<a class="disc-rnav-btn' + (_discResView === 'medaller' ? ' act' : '') + '" '
-      + 'href="' + baseHash + 'medaller" onclick="_setDiscResView(\'medaller\');return false">📊 Medaller 2025-26</a>';
+      + 'href="' + baseHash + 'medaller"' + dataAttr('onclick','_setDiscResView',['medaller']) + '>📊 Medaller 2025-26</a>';
   }
   html += '</div>';
 
@@ -1018,7 +1023,7 @@ function renderDiscResultats(d) {
       if (c.resultatUrl && c.resultatUrl !== '#') {
         if (c.resultatUrl.startsWith('#news:')) {
           var nid = parseInt(c.resultatUrl.replace('#news:',''));
-          btnHtml = '<button class="disc-btn-sm" onclick="openNews(' + nid + ')">📰 Veure notícia →</button>';
+          btnHtml = '<button class="disc-btn-sm"' + dataAttr('onclick','openNews',[nid]) + '>📰 Veure notícia →</button>';
         } else {
           btnHtml = '<a href="' + c.resultatUrl + '" target="_blank" class="disc-btn-sm">📊 Resultats →</a>';
         }
@@ -1080,7 +1085,7 @@ function renderDiscRecords(d) {
 
   // Botó per sol·licitar nou rècord
   html += '<div style="margin-top:1.5rem;text-align:right">'
-    + '<button class="disc-btn-sm" style="font-size:.85rem;padding:.5rem 1rem" onclick="openRecordForm()">'
+    + '<button class="disc-btn-sm" style="font-size:.85rem;padding:.5rem 1rem"' + dataAttr('onclick','openRecordForm',[]) + '>'
     + '🏆 Sol·licitar homologació d\'un nou rècord</button></div>';
 
   return html;

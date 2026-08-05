@@ -320,10 +320,22 @@ function totpCode(secret, offsetSteps) {
   return String(code % 1000000).padStart(6, '0');
 }
 
+// Comparació en temps constant: evita filtrar per timing quins dígits
+// del codi coincideixen (defensa en profunditat; el risc real és baix
+// perquè el codi caduca als 30s, però és un cost zero d'aplicar).
+function timingSafeStrEqual(a, b) {
+  var bufA = Buffer.from(String(a));
+  var bufB = Buffer.from(String(b));
+  if (bufA.length !== bufB.length) return false;
+  return crypto.timingSafeEqual(bufA, bufB);
+}
+
 function totpVerify(secret, token) {
   if (!secret || !token) return false;
   var t = token.replace(/\s/g, '');
-  return totpCode(secret, -1) === t || totpCode(secret, 0) === t || totpCode(secret, 1) === t;
+  return timingSafeStrEqual(totpCode(secret, -1), t) ||
+         timingSafeStrEqual(totpCode(secret, 0), t) ||
+         timingSafeStrEqual(totpCode(secret, 1), t);
 }
 
 // ── Audit helper ───────────────────────────────────────────
@@ -391,6 +403,26 @@ function imgFilter(req, file, cb) {
 var uploadPdf = multer({ storage: storage, limits: { fileSize: 20*1024*1024 }, fileFilter: pdfFilter });
 var uploadImg = multer({ storage: storage, limits: { fileSize:  5*1024*1024 }, fileFilter: imgFilter });
 
+// ── Validació de contrasenyes ───────────────────────────────
+// Mateixa política a tot arreu on un admin fixa una contrasenya
+// (creació d'usuari, reset), no només a l'autoservei de canvi.
+function isStrongPassword(pw) {
+  return typeof pw === 'string' && pw.length >= 8 &&
+    /[A-Z]/.test(pw) && /[a-z]/.test(pw) && /[0-9]/.test(pw);
+}
+
+// ── Validació de fitxers d'imatge (magic bytes) ─────────────
+// El mimetype de multer ve del Content-Type que envia el client:
+// és fàcilment falsificable. Comprovem els primers bytes reals,
+// igual que ja es fa amb els PDFs.
+function detectImageMime(buf) {
+  if (buf.length >= 3 && buf[0] === 0xFF && buf[1] === 0xD8 && buf[2] === 0xFF) return 'image/jpeg';
+  if (buf.length >= 4 && buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4E && buf[3] === 0x47) return 'image/png';
+  if (buf.length >= 4 && buf[0] === 0x47 && buf[1] === 0x49 && buf[2] === 0x46 && buf[3] === 0x38) return 'image/gif';
+  if (buf.length >= 12 && buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WEBP') return 'image/webp';
+  return null;
+}
+
 // ── Validació d'URLs ───────────────────────────────────────
 function isSafeUrl(url) {
   if (!url || url === '#') return true;
@@ -410,26 +442,53 @@ var app = express();
 app.set('trust proxy', 1);
 
 // ── Security headers (helmet) ──────────────────────────────
-// CSP desactivada: el portal és una SPA amb onclick/styles inline a tot arreu.
-// Migrar a event listeners externs és un refactor major (futur).
-// La resta de headers de seguretat es mantenen actius.
+// CSP activada: tots els antics onclick/onchange/... inline s'han migrat
+// a delegació d'esdeveniments (js/events.js, atributs data-onXxx) i
+// l'únic <script> inline s'ha extret a js/hash_routing.js. Per tant
+// script-src pot ser estricte (sense 'unsafe-inline').
+// style-src manté 'unsafe-inline' perquè hi ha molts style="" inline
+// (no executen codi — el risc real de CSS injection és molt menor que
+// el d'script injection, que és el que CSP evita aquí).
 app.use(helmet({
-  contentSecurityPolicy:    false,   // desactivada fins a refactor inline → extern
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc:  ["'self'"],
+      scriptSrc:   ["'self'", 'https://cdn.jsdelivr.net'], // otpauth + qrcodejs (2FA)
+      styleSrc:    ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      fontSrc:     ["'self'", 'https://fonts.gstatic.com'],
+      imgSrc:      ["'self'", 'data:'],
+      connectSrc:  ["'self'"],
+      objectSrc:   ["'none'"],
+      baseUri:     ["'self'"],
+      formAction:  ["'self'"],
+      frameAncestors: ["'self'"]
+    }
+  },
   crossOriginEmbedderPolicy: false,  // necessari per PDFs en iframe
   frameguard: { action: 'sameorigin' }  // anti-clickjacking: permet iframes same-origin
 }));
 
 // ── CORS ───────────────────────────────────────────────────
-var allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').filter(Boolean);
-app.use(cors({
-  origin: function (origin, cb) {
-    // Permet peticions sense origin (same-origin, curl, etc.)
-    if (!origin) return cb(null, true);
-    if (allowedOrigins.length === 0) return cb(null, true); // dev: tot permès
-    if (allowedOrigins.includes(origin)) return cb(null, true);
-    cb(new Error('CORS no permès per ' + origin));
-  },
-  credentials: false
+// El portal es serveix des del mateix origen que l'API (SPA + backend
+// al mateix Express), així que la petició "legítima" normal SEMPRE és
+// same-origin. En lloc de comparar contra PORTAL_URL (fràgil: no
+// coincideix si s'accedeix per un domini propi, un altre subdomini de
+// Railway, o en local), reflectim l'origen només quan coincideix
+// realment amb l'amfitrió que està servint la petició (req.headers.host).
+// Qualsevol altre origen només s'accepta si apareix a ALLOWED_ORIGINS.
+var allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+if (IS_PROD && allowedOrigins.length === 0) {
+  console.warn('AVIS: ALLOWED_ORIGINS no definit en producció. Només s\'acceptaran peticions del mateix origen que serveix el portal. Defineix ALLOWED_ORIGINS al .env (separat per comes) si cal permetre altres dominis.');
+}
+app.use(cors(function (req, cb) {
+  var origin = req.headers.origin;
+  var allow  = true;
+  if (origin) {
+    var sameOrigin = false;
+    try { sameOrigin = new (require('url').URL)(origin).host === req.headers.host; } catch (e) {}
+    allow = sameOrigin || allowedOrigins.indexOf(origin) !== -1 || (!IS_PROD && allowedOrigins.length === 0);
+  }
+  cb(null, { origin: allow, credentials: false });
 }));
 
 // ── Rate limiting ──────────────────────────────────────────
@@ -453,6 +512,16 @@ var uploadLimiter = rateLimit({
   message: { error: 'Límit de pujades assolit. Torna-ho a provar en 1 hora.' }
 });
 
+// Endpoints que impliquen verificar/canviar credencials: límit estricte
+// per dificultar atacs de força bruta (p.ex. provar "currentPassword").
+var sensitiveLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,  // 15 min
+  max: 10,
+  message: { error: 'Massa intents. Torna-ho a provar en 15 minuts.' },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
 app.use('/api/', apiLimiter);
 app.use('/api/login', loginLimiter);
 app.use('/api/upload', uploadLimiter);
@@ -460,16 +529,26 @@ app.use('/api/upload', uploadLimiter);
 app.use(express.json({ limit: '2mb' }));
 
 // ── Fitxers estàtics ───────────────────────────────────────
-app.use(express.static(path.join(__dirname), {
-  index: 'index.html',
-  dotfiles: 'ignore',
+// IMPORTANT: només es serveixen els directoris/fitxers PÚBLICS del
+// portal (css/, js/, img/, docs/, index.html, robots.txt, sitemap.xml).
+// Abans es feia `express.static(__dirname)`, que servia TOT el
+// directori arrel del projecte — incloent server.js (codi font del
+// backend), package.json, data/fcta.db (la base de dades SQLite amb
+// els hashos de contrasenya i els secrets TOTP de 2FA!) i els
+// backups. Qualsevol visitant podia descarregar-los directament
+// (p.ex. /server.js o /data/fcta.db) sense cap autenticació.
+var pdfHeaders = {
   setHeaders: function (res, filePath) {
-    // Headers addicionals per a PDFs i imatges
-    if (filePath.endsWith('.pdf')) {
-      res.setHeader('Content-Disposition', 'inline');
-    }
+    if (filePath.endsWith('.pdf')) res.setHeader('Content-Disposition', 'inline');
   }
-}));
+};
+app.use('/css',  express.static(path.join(__dirname, 'css')));
+app.use('/js',   express.static(path.join(__dirname, 'js')));
+app.use('/img',  express.static(path.join(__dirname, 'img')));
+app.use('/docs', express.static(path.join(__dirname, 'docs'), pdfHeaders));
+app.get('/robots.txt',  function (req, res) { res.sendFile(path.join(__dirname, 'robots.txt')); });
+app.get('/sitemap.xml', function (req, res) { res.sendFile(path.join(__dirname, 'sitemap.xml')); });
+app.get('/', function (req, res) { res.sendFile(path.join(__dirname, 'index.html')); });
 app.use('/uploads', express.static(UPLOADS_DIR, { dotfiles: 'deny' }));
 
 // ── API: Login ─────────────────────────────────────────────
@@ -597,6 +676,17 @@ app.post('/api/upload/image', verifyToken, function (req, res) {
   uploadImg.single('file')(req, res, function (err) {
     if (err) return res.status(400).json({ error: err.message || 'Error en pujar la imatge' });
     if (!req.file) return res.status(400).json({ error: 'Imatge no rebuda o format invàlid (jpg, png, webp, gif · màx. 5 MB)' });
+
+    // Verifica magic bytes: el mimetype del formulari és falsificable
+    var fd  = fs.openSync(req.file.path, 'r');
+    var buf = Buffer.alloc(12);
+    var n   = fs.readSync(fd, buf, 0, 12, 0);
+    fs.closeSync(fd);
+    if (!detectImageMime(buf.slice(0, n))) {
+      fs.unlinkSync(req.file.path);
+      return res.status(400).json({ error: 'El fitxer no és una imatge vàlida' });
+    }
+
     audit(req.user.sub, 'UPLOAD_IMG', req.file.filename);
     res.json({ url: '/uploads/' + req.file.filename, nom: req.file.originalname });
   });
@@ -615,7 +705,7 @@ app.delete('/api/upload/:filename', verifyToken, requireRole('superadmin'), func
 });
 
 // ── API: Canviar contrasenya ───────────────────────────────
-app.post('/api/change-password', verifyToken, function (req, res) {
+app.post('/api/change-password', sensitiveLimiter, verifyToken, function (req, res) {
   var currentPass = String(req.body.currentPassword || '').substring(0, 200);
   var newPass     = String(req.body.newPassword     || '').substring(0, 200);
 
@@ -740,8 +830,8 @@ app.post('/api/users', verifyToken, requireRole('superadmin'), function (req, re
   if (!username || !password || !nom) {
     return res.status(400).json({ error: 'Usuari, contrasenya i nom són obligatoris' });
   }
-  if (password.length < 8) {
-    return res.status(400).json({ error: 'La contrasenya ha de tenir almenys 8 caràcters' });
+  if (!isStrongPassword(password)) {
+    return res.status(400).json({ error: 'La contrasenya ha de tenir almenys 8 caràcters amb majúscules, minúscules i números' });
   }
   var exists = db.prepare('SELECT id FROM users WHERE username = ?').get(username);
   if (exists) return res.status(409).json({ error: 'Ja existeix un usuari amb aquest nom d\'usuari' });
@@ -794,12 +884,14 @@ app.delete('/api/users/:id', verifyToken, requireRole('superadmin'), function (r
   res.json({ ok: true });
 });
 
-app.post('/api/users/:id/reset-password', verifyToken, requireRole('superadmin'), function (req, res) {
+app.post('/api/users/:id/reset-password', sensitiveLimiter, verifyToken, requireRole('superadmin'), function (req, res) {
   var id       = parseInt(req.params.id, 10);
   var user     = db.prepare('SELECT * FROM users WHERE id = ?').get(id);
   if (!user) return res.status(404).json({ error: 'Usuari no trobat' });
   var password = String(req.body.password || '').substring(0, 200);
-  if (password.length < 8) return res.status(400).json({ error: 'Mínim 8 caràcters' });
+  if (!isStrongPassword(password)) {
+    return res.status(400).json({ error: 'La contrasenya ha de tenir almenys 8 caràcters amb majúscules, minúscules i números' });
+  }
   db.prepare('UPDATE users SET password_hash=?, must_change_pass=1 WHERE id=?')
     .run(bcrypt.hashSync(password, 12), id);
   audit(req.user.sub, 'USER_RESET_PASS', user.username);
@@ -819,10 +911,23 @@ app.get('/api/audit', verifyToken, requireRole('superadmin'), function (req, res
   res.json({ rows: rows, total: total });
 });
 
+// Aquest endpoint permet a QUALSEVOL usuari autenticat (fins i tot un
+// 'editor') escriure al registre d'auditoria — és com el client anota
+// accions puntuals (afegir/eliminar circulars, notícies...) que no
+// queden reflectides pel POST /api/data genèric. Sense una llista
+// tancada d'accions vàlides, un compte compromès podria falsificar
+// entrades (p.ex. suplantar accions d'un altre usuari) per confondre
+// una investigació posterior.
+var CLIENT_AUDIT_ACTIONS = [
+  'CIRC_ADD','CIRC_DEL','NEWS_ADD','NEWS_DEL','COMP_ADD','COMP_DEL',
+  'FORM_ADD','FORM_DEL','DOC_ADD','DOC_DEL'
+];
 app.post('/api/audit', verifyToken, function (req, res) {
   var action = String(req.body.action || '').trim().substring(0, 80);
   var detail = String(req.body.detail || '').trim().substring(0, 200) || null;
-  if (!action) return res.status(400).json({ error: 'action requerit' });
+  if (!action || CLIENT_AUDIT_ACTIONS.indexOf(action) === -1) {
+    return res.status(400).json({ error: 'Acció no reconeguda' });
+  }
   audit(req.user.sub, action, detail);
   res.json({ ok: true });
 });

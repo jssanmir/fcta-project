@@ -18,8 +18,9 @@ function openM(cid){
     +'<div class="mrow"><div class="mfg"><label>Correu electr\u00f2nic</label><input type="email" placeholder="correu@exemple.cat"></div>'
     +'<div class="mfg"><label>Tel\u00e8fon</label><input type="tel" placeholder="6XX XXX XXX"></div></div>'
     +'<p style="font-size:.76rem;color:var(--gray);margin-bottom:.6rem;line-height:1.6">En enviar la inscripci\u00f3 rebr\u00e0s un correu de confirmaci\u00f3. Termini de pagament: 48h.</p>'
-    +'<button class="m-sub" onclick="toast(\'Inscripci\u00f3 enviada! Rebr\u00e0s confirmaci\u00f3 per correu.\',\'&#9989;\');closeM()">&#9993;&#65039; Enviar Inscripci\u00f3</button>';
+    +'<button class="m-sub"' + dataAttr('onclick','submitInscripcio',[]) + '>&#9993;&#65039; Enviar Inscripci\u00f3</button>';
   document.getElementById('mWrap').style.display='flex';
 }
+function submitInscripcio(){ toast('Inscripci\u00f3 enviada! Rebr\u00e0s confirmaci\u00f3 per correu.','\u2705'); closeM(); }
 function closeM(){document.getElementById('mWrap').style.display='none';}
 function closeMOut(e){if(e.target===document.getElementById('mWrap'))closeM();}

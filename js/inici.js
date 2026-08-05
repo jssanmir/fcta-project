@@ -107,7 +107,7 @@ function renderClubs() {
     if (c.email) contactHtml += '<a href="mailto:' + c.email + '" class="club-contact">✉️ ' + c.email + '</a>';
 
     var logoHtml = c.logo
-      ? '<img class="club-logo" src="' + c.logo + '" alt="' + c.nom + '" onerror="this.outerHTML=\'<div class=&quot;club-initial&quot;>' + c.nom.charAt(0) + '</div>\'">'
+      ? '<img class="club-logo" src="' + c.logo + '" alt="' + c.nom + '"' + dataAttr('onerror','showInitialOnError',[c.nom.charAt(0)]) + '>'
       : '<div class="club-initial">' + c.nom.charAt(0) + '</div>';
 
     return '<div class="club-card">'

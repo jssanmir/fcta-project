@@ -39,12 +39,12 @@ function renderComp(f) {
         acts = '<a class="bsm bsm-o" href="' + c.url + '" target="_blank">&#128196; Més info</a>';
       }
     } else if (status === 'soon') {
-      acts = '<button class="bsm bsm-o" onclick="toast(\'T\'avisarem quan s\'obrin les inscripcions!\',\'&#128276;\')">&#128276; Avisa\'m</button>';
+      acts = '<button class="bsm bsm-o"' + dataAttr('onclick','toast',["T'avisarem quan s'obrin les inscripcions!",'🔔']) + '>&#128276; Avisa\'m</button>';
     } else {
       // closed
       if (c.url && c.url.indexOf('#news:') === 0) {
         var nid = parseInt(c.url.replace('#news:', ''));
-        acts = '<button class="bsm bsm-o" onclick="openNews(' + nid + ')">&#128202; Notícia</button>';
+        acts = '<button class="bsm bsm-o"' + dataAttr('onclick','openNews',[nid]) + '>&#128202; Notícia</button>';
       } else if (c.url && c.url !== '#') {
         acts = '<a class="bsm bsm-o" href="' + c.url + '" target="_blank">&#128202; Resultats</a>';
       }

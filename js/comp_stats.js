@@ -308,11 +308,11 @@ function _csRender() {
     '<div class="cs-toolbar">' +
       '<div class="cs-filter-group">' +
         '<label class="cs-filter-label">🏛️ Club</label>' +
-        '<select id="csClubSel" class="cs-select" onchange="_csOnClub(this.value)">' + clubOpts + '</select>' +
+        '<select id="csClubSel" class="cs-select"' + dataAttr('onchange','_csOnClub',['@val']) + '>' + clubOpts + '</select>' +
       '</div>' +
       '<div class="cs-filter-group">' +
         '<label class="cs-filter-label">🏹 Modalitat</label>' +
-        '<select id="csTypeSel" class="cs-select" onchange="_csOnType(this.value)">' + typeOpts + '</select>' +
+        '<select id="csTypeSel" class="cs-select"' + dataAttr('onchange','_csOnType',['@val']) + '>' + typeOpts + '</select>' +
       '</div>' +
     '</div>' +
     '<div id="csContent"></div>';
@@ -656,7 +656,7 @@ function _csDivChart(data) {
     // Botons de categoria
     var catBtns = cats.map(function(cat) {
       return '<button class="cs-cat-btn' + (cat === activeCat ? ' act' : '') +
-        '" onclick="_csCatSet(\'' + t + '\',\'' + cat + '\')">' +
+        '"' + dataAttr('onclick','_csCatSet',[t,cat]) + '>' +
         escHtml(_csCatLabel(cat)) + '</button>';
     }).join('');
 
@@ -669,7 +669,7 @@ function _csDivChart(data) {
       var variant  = _csClassVariant(cls);
       var isActive = !activeCls || activeCls.indexOf(cls) >= 0;
       return '<button class="cs-cls-btn' + (isActive ? ' act' : '') +
-        '" onclick="_csClsToggle(\'' + t + '\',\'' + activeCat + '\',\'' + cls.replace(/'/g,"\\'") + '\')">' +
+        '"' + dataAttr('onclick','_csClsToggle',[t,activeCat,cls]) + '>' +
         escHtml(variant) + '</button>';
     }).join('');
 

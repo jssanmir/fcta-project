@@ -95,9 +95,9 @@ function renderCalendari() {
 
   var mobileHtml  = '<div class="cal-mobile-nav-wrap">';
   mobileHtml += '<div class="cal-mobile-nav">';
-  mobileHtml += '<button class="cal-mob-arrow" onclick="calMobilePrev()">&#8249;</button>';
+  mobileHtml += '<button class="cal-mob-arrow"' + dataAttr('onclick','calMobilePrev',[]) + '>&#8249;</button>';
   mobileHtml += '<span id="calMobLabel" class="cal-mob-label"></span>';
-  mobileHtml += '<button class="cal-mob-arrow" onclick="calMobileNext()">&#8250;</button>';
+  mobileHtml += '<button class="cal-mob-arrow"' + dataAttr('onclick','calMobileNext',[]) + '>&#8250;</button>';
   mobileHtml += '</div>';
   mobileHtml += '<div id="calMobileMonth"></div>';
   mobileHtml += '</div>';
@@ -152,8 +152,8 @@ function calRenderMonth(year, month, today) {
     if (dayComps.length) cls += ' cal-cell-event';
 
     if (dayComps.length) {
-      var ids = dayComps.map(function(c) { return c.id; }).join(',');
-      html += '<div class="' + cls + '" onclick="calOpenModal([' + ids + '])" title="' + escHtml(dayComps.map(function(c){return c.title;}).join(' · ')) + '">';
+      var ids = dayComps.map(function(c) { return c.id; });
+      html += '<div class="' + cls + '"' + dataAttr('onclick','calOpenModal',[ids]) + ' title="' + escHtml(dayComps.map(function(c){return c.title;}).join(' · ')) + '">';
       html += '<span class="cal-day-num">' + d + '</span>';
       html += '<div class="cal-day-dots">';
       var maxDots = Math.min(dayComps.length, 3);

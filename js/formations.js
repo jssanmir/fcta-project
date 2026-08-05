@@ -14,7 +14,7 @@ function renderForm(){
       if(l.url && l.url.indexOf('CIRC_2435') > -1) circKey = 'CIRC-2435';
       if(l.url && l.url.indexOf('CIRC_2447') > -1) circKey = 'CIRC-2447';
       if(circKey){
-        return '<button onclick="openPDF(\'' + circKey + '\')" class="form-link" style="background:none;border:none;padding:0;text-align:left;cursor:pointer;color:var(--navy-light);font-family:inherit;font-size:.78rem">&#128065; ' + l.txt.replace('\ud83d\udcc4 ','') + '</button>';
+        return '<button' + dataAttr('onclick','openPDF',[circKey]) + ' class="form-link" style="background:none;border:none;padding:0;text-align:left;cursor:pointer;color:var(--navy-light);font-family:inherit;font-size:.78rem">&#128065; ' + l.txt.replace('\ud83d\udcc4 ','') + '</button>';
       }
       return '<a href="' + l.url + '" target="_blank" class="form-link">' + l.txt + '</a>';
     }).join('');
@@ -25,7 +25,7 @@ function renderForm(){
       + '<p>' + f.desc + '</p>'
       + '<div class="form-meta"><span>&#128197; <strong>' + f.dates + '</strong></span><span>&#128101; <strong>' + f.places + '</strong></span></div>'
       + '<div class="form-links">' + linksHtml + '</div>'
-      + '<button class="bsm bsm-n" onclick="toast(\'Redirigint a la inscripci\u00f3...\',\'&#127891;\')">Inscriu-te</button>'
+      + '<button class="bsm bsm-n"' + dataAttr('onclick','toast',['Redirigint a la inscripci\u00f3...','\ud83c\udf93']) + '>Inscriu-te</button>'
       + '</div>';
   }).join('');
 }

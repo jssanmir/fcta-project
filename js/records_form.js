@@ -35,6 +35,7 @@ function closeRecordForm() {
   document.getElementById('recordFormOverlay').style.display = 'none';
   document.body.style.overflow = '';
 }
+function closeRecordFormOut(e){ if(e.target===document.getElementById('recordFormOverlay'))closeRecordForm(); }
 
 // ── Envia la sol·licitud ───────────────────────────────────
 function submitRecordForm() {
@@ -111,7 +112,7 @@ function renderAdmRecords(container) {
   // Filtre per disciplina
   html += '<div style="display:flex;gap:.4rem;margin-bottom:.75rem;flex-wrap:wrap">';
   ADM_REC_DISCS.forEach(function(d) {
-    html += '<button onclick="_setAdmRecDisc(\'' + d.val + '\')" '
+    html += '<button' + dataAttr('onclick','_setAdmRecDisc',[d.val]) + ' '
       + 'style="background:' + (d.val === _admRecDisc ? 'var(--navy)' : 'var(--offwhite)') + ';'
       + 'color:' + (d.val === _admRecDisc ? 'white' : 'var(--navy)') + ';'
       + 'border:1.5px solid var(--navy);border-radius:var(--r-md);padding:.3rem .75rem;font-size:.8rem;font-weight:700;cursor:pointer">'
@@ -143,8 +144,8 @@ function renderAdmRecords(container) {
     + '</div>'
     + (editing ? '<input type="hidden" id="rc_edit_id" value="' + _admRecEditId + '">' : '')
     + '<div style="display:flex;gap:.5rem">'
-    + '<button class="a-sub success" onclick="crudSaveRecord()">' + (editing ? '💾 Desar canvis' : '&#10010; Afegir Rècord') + '</button>'
-    + (editing ? '<button class="a-sub danger" onclick="_cancelEditRecord()">✕ Cancel·lar</button>' : '')
+    + '<button class="a-sub success"' + dataAttr('onclick','crudSaveRecord',[]) + '>' + (editing ? '💾 Desar canvis' : '&#10010; Afegir Rècord') + '</button>'
+    + (editing ? '<button class="a-sub danger"' + dataAttr('onclick','_cancelEditRecord',[]) + '>✕ Cancel·lar</button>' : '')
     + '</div>'
     + '</div>';
 
@@ -176,8 +177,8 @@ function renderAdmRecords(container) {
         + '<td style="padding:.3rem .5rem">' + escHtml(r.atleta) + '</td>'
         + '<td style="padding:.3rem .5rem;color:var(--gray)">' + escHtml(r.data||'') + '</td>'
         + '<td style="padding:.3rem .5rem;white-space:nowrap">'
-        + '<button class="btn-edit-crud" onclick="crudEditRecord(' + r.id + ')">✏</button> '
-        + '<button class="btn-del-crud" onclick="crudDelRecord(' + r.id + ')">🗑</button>'
+        + '<button class="btn-edit-crud"' + dataAttr('onclick','crudEditRecord',[r.id]) + '>✏</button> '
+        + '<button class="btn-del-crud"' + dataAttr('onclick','crudDelRecord',[r.id]) + '>🗑</button>'
         + '</td></tr>';
     });
     html += '</tbody></table></div>';
@@ -210,8 +211,8 @@ function renderAdmRecords(container) {
         + '<span style="font-size:.78rem;color:var(--gray)">✉️ ' + escHtml(r.email) + '</span>'
         + (r.obs ? '<br><em style="font-size:.78rem;color:var(--gray)">' + escHtml(r.obs) + '</em>' : '')
         + '<div style="margin-top:.6rem;display:flex;gap:.5rem">'
-        + '<button class="btn-ok-crud" onclick="approveRecord(' + r.id + ')">✅ Aprovar i afegir</button>'
-        + '<button class="btn-rej-crud" onclick="rejectRecord(' + r.id + ')">✗ Rebutjar</button>'
+        + '<button class="btn-ok-crud"' + dataAttr('onclick','approveRecord',[r.id]) + '>✅ Aprovar i afegir</button>'
+        + '<button class="btn-rej-crud"' + dataAttr('onclick','rejectRecord',[r.id]) + '>✗ Rebutjar</button>'
         + '</div>'
         + '</div>';
     });

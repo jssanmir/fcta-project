@@ -21,7 +21,7 @@ function renderAdmLligues(b) {
   // Tabs de disciplina
   var discTabs = _ADM_LL_DISCS.map(function(d) {
     var act = d.val === _admLligaDisc;
-    return '<button onclick="_setAdmLligaDisc(\'' + d.val + '\')" '
+    return '<button' + dataAttr('onclick','_setAdmLligaDisc',[d.val]) + ' '
       + 'style="background:' + (act ? 'var(--navy)' : 'var(--offwhite)') + ';'
       + 'color:' + (act ? 'white' : 'var(--navy)') + ';'
       + 'border:1.5px solid var(--navy);border-radius:var(--r-md);'
@@ -43,7 +43,7 @@ function renderAdmLligues(b) {
     + mkField('Etiqueta rànquing', 'll_rlbl', 'text', '', 'Classificació Final Lliga 2026/27')
     + '</div>'
     + mkUploadField('PDF Rànquing', 'll_rurl', '', 'pdf')
-    + '<button class="a-sub success" onclick="crudAddLliga()">&#10010; Crear Lliga</button>'
+    + '<button class="a-sub success"' + dataAttr('onclick','crudAddLliga',[]) + '>&#10010; Crear Lliga</button>'
     + '</div>';
 
   // ─ Llistat de lligues ────────────────────────────────────
@@ -85,7 +85,7 @@ function _renderAdmLligaCard(ll) {
       tiHtml += '<div style="display:flex;gap:.5rem;align-items:center;font-size:.8rem;padding:.3rem 0;border-bottom:1px solid var(--lightgray)">'
         + '<span style="font-weight:700;min-width:3.5rem;color:var(--navy)">' + escHtml(t.num) + '</span>'
         + '<span style="flex:1;color:var(--gray)">' + escHtml(info) + '</span>'
-        + '<button class="btn-del-crud" style="padding:.2rem .45rem" onclick="crudDelTirada(' + ll.id + ',' + idx + ')">✕</button>'
+        + '<button class="btn-del-crud" style="padding:.2rem .45rem"' + dataAttr('onclick','crudDelTirada',[ll.id,idx]) + '>✕</button>'
         + '</div>';
     });
   } else {
@@ -112,8 +112,8 @@ function _renderAdmLligaCard(ll) {
         : '')
     + '</div>'
     + '<div style="display:flex;gap:.4rem">'
-    + '<button class="btn-edit-crud" onclick="crudEditLliga(' + ll.id + ')">✏ Editar</button>'
-    + '<button class="btn-del-crud" onclick="crudDelLliga(' + ll.id + ')">🗑</button>'
+    + '<button class="btn-edit-crud"' + dataAttr('onclick','crudEditLliga',[ll.id]) + '>✏ Editar</button>'
+    + '<button class="btn-del-crud"' + dataAttr('onclick','crudDelLliga',[ll.id]) + '>🗑</button>'
     + '</div>'
     + '</div>'
     // Tirades actuals
@@ -128,7 +128,7 @@ function _renderAdmLligaCard(ll) {
     + '<div class="af-g" style="width:5rem;margin-bottom:0"><label>Núm</label>'
     + '<input type="text" id="ti_num_' + ll.id + '" placeholder="1ª, Final…"></div>'
     + '<div class="af-g" style="flex:1;min-width:12rem;margin-bottom:0"><label>Competició del calendari (opcional)</label>'
-    + '<select id="ti_comp_' + ll.id + '" onchange="_tiCompChange(' + ll.id + ',this.value)">' + compOpts + '</select></div>'
+    + '<select id="ti_comp_' + ll.id + '"' + dataAttr('onchange','_tiCompChange',[ll.id,'@val']) + '>' + compOpts + '</select></div>'
     + '</div>'
     + '<div id="ti_manual_' + ll.id + '" style="display:none;margin-top:.4rem">'
     + '<div style="display:flex;gap:.4rem;flex-wrap:wrap">'
@@ -150,7 +150,7 @@ function _renderAdmLligaCard(ll) {
     + '<input type="text" id="ti_ianseo_' + ll.id + '" placeholder="28416"></div>'
     + '</div>'
     + '</div>'
-    + '<button class="a-sub success" style="margin-top:.5rem;font-size:.82rem;padding:.35rem .8rem" onclick="crudAddTirada(' + ll.id + ')">+ Afegir tirada</button>'
+    + '<button class="a-sub success" style="margin-top:.5rem;font-size:.82rem;padding:.35rem .8rem"' + dataAttr('onclick','crudAddTirada',[ll.id]) + '>+ Afegir tirada</button>'
     + '</div>'
     + '</div>';
 }

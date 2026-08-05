@@ -12,6 +12,12 @@ function filtCirc(type,btn){
   btn.classList.add('act');
   renderCirc(type);
 }
+// Drecera des d'altres seccions (p.ex. Comitè de Jutges) cap a les
+// circulars de Jutges ja filtrades.
+function goToJutCirculars(){
+  filtCirc('jut', document.querySelector('#circFilters .fb:nth-child(7)'));
+  setS('circulars');
+}
 function renderCirc(f){
   var data = (f==='all' ? DB.circulars : DB.circulars.filter(function(c){return c.type===f}))
     .slice().sort(function(a,b){ return _circVal(b) - _circVal(a); });
@@ -20,7 +26,7 @@ function renderCirc(f){
     var hasExtUrl = c.url && c.url !== '#';
     var dlEl;
     if(hasPdfContent){
-      dlEl = '<button class="circ-dl" onclick="openPDF(\'' + c.num + '\')" title="Veure PDF" style="background:var(--navy)">&#128065;</button>';
+      dlEl = '<button class="circ-dl"' + dataAttr('onclick','openPDF',[c.num]) + ' title="Veure PDF" style="background:var(--navy)">&#128065;</button>';
     } else if(hasExtUrl){
       dlEl = '<a class="circ-dl" href="' + c.url + '" target="_blank" title="Descarregar PDF">&#11015;</a>';
     } else {

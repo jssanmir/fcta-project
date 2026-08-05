@@ -46,7 +46,7 @@ function mkUploadField(label, idUrl, currentUrl, type) {
   var preview = '';
   if (currentUrl && !isPdf) {
     preview = '<img id="prev_'+idUrl+'" src="'+escHtml(currentUrl)+'" '
-            + 'style="max-width:80px;max-height:60px;border-radius:4px;margin-top:4px;display:block" onerror="this.style.display=\'none\'">';
+            + 'style="max-width:80px;max-height:60px;border-radius:4px;margin-top:4px;display:block"'+dataAttr('onerror','hideOnError',[])+'>';
   } else if (currentUrl && isPdf) {
     preview = '<a id="prev_'+idUrl+'" href="'+escHtml(currentUrl)+'" target="_blank" '
             + 'style="font-size:.78rem;color:var(--navy-light);display:block;margin-top:4px">📄 '
@@ -61,7 +61,7 @@ function mkUploadField(label, idUrl, currentUrl, type) {
     + '<label class="upload-btn" style="cursor:pointer;background:var(--navy);color:white;border-radius:var(--r-md);'
     +   'padding:.4rem .9rem;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:.4rem">'
     + (isPdf ? '📄 Pujar PDF' : '🖼️ Pujar imatge')
-    + '<input type="file" accept="'+accept+'" style="display:none" onchange="handleUpload(this,\''+idUrl+'\',\''+type+'\')">'
+    + '<input type="file" accept="'+accept+'" style="display:none"'+dataAttr('onchange','handleUpload',['@el',idUrl,type])+'>'
     + '</label>'
     + '<span id="ustat_'+idUrl+'" style="font-size:.78rem;color:var(--gray)"></span>'
     + '</div>'
@@ -176,7 +176,7 @@ function renderAdmCirculars(b){
     +mkUploadField('PDF de la circular','ac_u','','pdf')
     +'</div>'
     +mkField('Descripci\u00f3 breu','ac_d','textarea','','Resum del contingut de la circular')
-    +'<button class="a-sub success" onclick="crudAddCirc()">&#10010; Publicar Circular</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddCirc',[])+'>&#10010; Publicar Circular</button>'
     +'</div>'
     +'<div class="adm-st">Circulars publicades <span class="crud-count-badge">'+DB.circulars.length+'</span></div>'
     +'<div class="crud-list" id="circCrudList">'
@@ -191,8 +191,8 @@ function renderAdmCirculars(b){
         +'</span></div>'
         +'</div>'
         +'<div class="crud-item-acts">'
-        +'<button class="btn-edit-crud" onclick="crudEditCirc('+c.id+')">&#9998; Editar</button>'
-        +'<button class="btn-del-crud" onclick="crudDelCirc('+c.id+',\''+escHtml(c.num)+'\')">&#128465;</button>'
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditCirc',[c.id])+'>&#9998; Editar</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelCirc',[c.id,c.num])+'>&#128465;</button>'
         +'</div>'
         +'</div>';
     }).join('')
@@ -241,8 +241,8 @@ function crudEditCirc(id){
     +mkUploadField('PDF de la circular','ec_u_'+id,c.url&&c.url!=='#'?c.url:'','pdf')
     +mkField('Descripci\u00f3','ec_d_'+id,'textarea',c.desc,'')
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
-    +'<button class="a-sub success" onclick="crudSaveCirc('+id+')">&#10003; Desar</button>'
-    +'<button class="a-sub" style="background:#64748b" onclick="crudCancelCirc('+id+')">Cancel\u00b7lar</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveCirc',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelCirc',[id])+'>Cancel\u00b7lar</button>'
     +'</div>';
   item.appendChild(editDiv);
 }
@@ -296,7 +296,7 @@ function renderAdmNews(b){
     +mkUploadField('Imatge de la not\u00edcia','an_img','','image')
     +mkField('URL Not\u00edcia completa','an_url','url','','https://...')
     +'</div>'
-    +'<button class="a-sub success" onclick="crudAddNews()">&#10010; Publicar Not\u00edcia</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddNews',[])+'>&#10010; Publicar Not\u00edcia</button>'
     +'</div>'
     +'<div class="adm-st">Not\u00edcies <span class="crud-count-badge">'+DB.news.length+'</span></div>'
     +'<div class="crud-list" id="newsCrudList">'
@@ -307,8 +307,8 @@ function renderAdmNews(b){
         +'<div class="crud-item-meta"><span>'+escHtml(n.date)+'</span><span>'+escHtml(n.cat)+'</span></div>'
         +'</div>'
         +'<div class="crud-item-acts">'
-        +'<button class="btn-edit-crud" onclick="crudEditNews('+n.id+')">&#9998; Editar</button>'
-        +'<button class="btn-del-crud" onclick="crudDelNews('+n.id+',\''+escHtml(n.title.substring(0,30))+'...\')">&#128465;</button>'
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditNews',[n.id])+'>&#9998; Editar</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelNews',[n.id,n.title.substring(0,30)+'...'])+'>&#128465;</button>'
         +'</div>'
         +'</div>';
     }).join('')
@@ -350,8 +350,8 @@ function crudEditNews(id){
     +mkField('URL Not\u00edcia','en_url_'+id,'url',n.url&&n.url!=='#'?n.url:'','https://...')
     +'</div>'
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
-    +'<button class="a-sub success" onclick="crudSaveNews('+id+')">&#10003; Desar</button>'
-    +'<button class="a-sub" style="background:#64748b" onclick="crudCancelNews('+id+')">Cancel\u00b7lar</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveNews',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelNews',[id])+'>Cancel\u00b7lar</button>'
     +'</div>';
   item.appendChild(editDiv);
 }
@@ -407,7 +407,7 @@ function renderAdmComp(b){
     +mkField('URL m\u00e9s info','acomp_url','url','','https://...')
     +'</div>'
     +mkField('Disciplina (text lliure)','acomp_disc','text','','Ex: Aire Lliure, Tir de Camp...')
-    +'<button class="a-sub success" onclick="crudAddComp()">&#10010; Publicar Competici\u00f3</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddComp',[])+'>&#10010; Publicar Competici\u00f3</button>'
     +'</div>'
     +'<div class="adm-st">Competicions <span class="crud-count-badge">'+DB.competitions.length+'</span></div>'
     +'<div class="crud-list">'
@@ -419,8 +419,8 @@ function renderAdmComp(b){
         +'<div class="crud-item-meta"><span>'+escHtml(c.date)+'</span><span>'+escHtml(c.loc)+'</span><span>'+sL[c.status]+'</span></div>'
         +'</div>'
         +'<div class="crud-item-acts">'
-        +'<button class="btn-edit-crud" onclick="crudEditComp('+c.id+')">&#9998;</button>'
-        +'<button class="btn-del-crud" onclick="crudDelComp('+c.id+',\''+escHtml(c.title.substring(0,25))+'...\')">&#128465;</button>'
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditComp',[c.id])+'>&#9998;</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelComp',[c.id,c.title.substring(0,25)+'...'])+'>&#128465;</button>'
         +'</div>'
         +'</div>';
     }).join('')
@@ -466,10 +466,14 @@ function crudEditComp(id){
     +mkField('URL','ec_comp_url_'+id,'url',c.url&&c.url!=='#'?c.url:'','')
     +'</div>'
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
-    +'<button class="a-sub success" onclick="crudSaveComp('+id+')">&#10003; Desar</button>'
-    +'<button class="a-sub" style="background:#64748b" onclick="document.getElementById(\'compedit-'+id+'\').remove();document.getElementById(\'compitem-'+id+'\').classList.remove(\'editing\')">Cancel\u00b7lar</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveComp',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelComp',[id])+'>Cancel\u00b7lar</button>'
     +'</div>';
   item.appendChild(editDiv);
+}
+function crudCancelComp(id){
+  var e=document.getElementById('compedit-'+id); if(e) e.remove();
+  var it=document.getElementById('compitem-'+id); if(it) it.classList.remove('editing');
 }
 function crudSaveComp(id){
   var c=DB.competitions.find(function(x){return x.id===id;});
@@ -512,7 +516,7 @@ function renderAdmForm(b){
     +mkField('Icona (emoji)','af_ic','text','\ud83c\udf93','')
     +'</div>'
     +mkField('Descripci\u00f3 *','af_d','textarea','','Continguts, objectius i requisits')
-    +'<button class="a-sub success" onclick="crudAddForm()">&#10010; Publicar Curs</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddForm',[])+'>&#10010; Publicar Curs</button>'
     +'</div>'
     +'<div class="adm-st">Cursos <span class="crud-count-badge">'+DB.formations.length+'</span></div>'
     +'<div class="crud-list">'
@@ -523,8 +527,8 @@ function renderAdmForm(b){
         +'<div class="crud-item-meta"><span>'+escHtml(f.dates)+'</span><span>'+escHtml(f.level)+'</span><span>'+escHtml(f.places)+'</span></div>'
         +'</div>'
         +'<div class="crud-item-acts">'
-        +'<button class="btn-edit-crud" onclick="crudEditForm('+f.id+')">&#9998;</button>'
-        +'<button class="btn-del-crud" onclick="crudDelForm('+f.id+',\''+escHtml(f.title.substring(0,25))+'...\')">&#128465;</button>'
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditForm',[f.id])+'>&#9998;</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelForm',[f.id,f.title.substring(0,25)+'...'])+'>&#128465;</button>'
         +'</div>'
         +'</div>';
     }).join('')
@@ -564,10 +568,14 @@ function crudEditForm(id){
     +'</div>'
     +mkField('Descripci\u00f3','ef_d_'+id,'textarea',f.desc,'')
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
-    +'<button class="a-sub success" onclick="crudSaveForm('+id+')">&#10003; Desar</button>'
-    +'<button class="a-sub" style="background:#64748b" onclick="document.getElementById(\'fedit-'+id+'\').remove();document.getElementById(\'fitem-'+id+'\').classList.remove(\'editing\')">Cancel\u00b7lar</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveForm',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelForm',[id])+'>Cancel\u00b7lar</button>'
     +'</div>';
   item.appendChild(editDiv);
+}
+function crudCancelForm(id){
+  var e=document.getElementById('fedit-'+id); if(e) e.remove();
+  var it=document.getElementById('fitem-'+id); if(it) it.classList.remove('editing');
 }
 function crudSaveForm(id){
   var f=DB.formations.find(function(x){return x.id===id;});
@@ -607,8 +615,8 @@ function renderAdmTirades(b){
             +'<div class="crud-item-meta"><span>'+escHtml(t.club)+'</span><span>'+tLbl(t)+'</span><span>'+escHtml(t.dataStr)+'</span></div>'
             +'</div>'
             +'<div class="crud-item-acts">'
-            +'<button class="btn-ok-crud" onclick="approveT('+t.id+')">&#10003; Publicar</button>'
-            +'<button class="btn-rej-crud" onclick="rejectT('+t.id+')">&#10007; Rebutjar</button>'
+            +'<button class="btn-ok-crud"'+dataAttr('onclick','approveT',[t.id])+'>&#10003; Publicar</button>'
+            +'<button class="btn-rej-crud"'+dataAttr('onclick','rejectT',[t.id])+'>&#10007; Rebutjar</button>'
             +'</div>'
             +'</div>';
         }).join('')
@@ -624,7 +632,7 @@ function renderAdmTirades(b){
             +'<div class="crud-item-meta"><span>'+tLbl(t)+'</span><span>'+escHtml(t.dataStr)+'</span></div>'
             +'</div>'
             +'<div class="crud-item-acts">'
-            +'<button class="btn-del-crud" onclick="rejectT('+t.id+')" title="Eliminar">&#128465;</button>'
+            +'<button class="btn-del-crud"'+dataAttr('onclick','rejectT',[t.id])+' title="Eliminar">&#128465;</button>'
             +'</div>'
             +'</div>';
         }).join('')
@@ -678,7 +686,7 @@ function renderAdmDocs(b){
 
   var filterBtns = discFilterOpts.map(function(o){
     var act = _admDocDisc===o.val ? 'act' : '';
-    return '<button class="fb '+act+'" onclick="admDocFilter(\''+o.val+'\',this)">'+o.lbl+'</button>';
+    return '<button class="fb '+act+'"'+dataAttr('onclick','admDocFilter',[o.val,'@el'])+'>'+o.lbl+'</button>';
   }).join('');
 
   b.innerHTML=
@@ -690,7 +698,7 @@ function renderAdmDocs(b){
     +mkField('Icona','adoc_icon','select','📄','',iconOpts)
     +'</div>'
     +mkUploadField('PDF del document *','adoc_url','','pdf')
-    +'<button class="a-sub success" onclick="crudAddDoc()">&#10010; Publicar Document</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddDoc',[])+'>&#10010; Publicar Document</button>'
     +'</div>'
     +'<div class="adm-st" style="display:flex;align-items:center;gap:.75rem">'
     +'Documents <span class="crud-count-badge">'+DB.documents.length+'</span>'
@@ -717,8 +725,8 @@ function _renderDocList(docs){
       +'</div>'
       +'<div class="crud-item-acts">'
       +(doc.url&&doc.url!=='#'?'<a class="btn-edit-crud" href="'+escHtml(doc.url)+'" target="_blank" style="text-decoration:none">&#128065; Veure</a>':'')
-      +'<button class="btn-edit-crud" onclick="crudEditDoc('+doc.id+')">&#9998; Editar</button>'
-      +'<button class="btn-del-crud" onclick="crudDelDoc('+doc.id+',\''+escHtml(doc.nom.substring(0,30))+'...\')">&#128465;</button>'
+      +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditDoc',[doc.id])+'>&#9998; Editar</button>'
+      +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelDoc',[doc.id,doc.nom.substring(0,30)+'...'])+'>&#128465;</button>'
       +'</div>'
       +'</div>';
   }).join('');
@@ -774,8 +782,8 @@ function crudEditDoc(id){
     +'</div>'
     +mkUploadField('PDF del document','edoc_url_'+id,doc.url&&doc.url!=='#'?doc.url:'','pdf')
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
-    +'<button class="a-sub success" onclick="crudSaveDoc('+id+')">&#10003; Desar</button>'
-    +'<button class="a-sub" style="background:#64748b" onclick="crudCancelDoc('+id+')">Cancel·lar</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveDoc',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelDoc',[id])+'>Cancel·lar</button>'
     +'</div>';
   item.appendChild(editDiv);
 }
@@ -918,12 +926,12 @@ function renderAdmGenerator(b){
     // ── Horari ─────────────────────────────────────────────
     +'<div class="gen-section-label">Horari de la jornada</div>'
     +'<div id="gen-horari-rows" class="gen-dyn-rows"></div>'
-    +'<button class="gen-add-row-btn" onclick="genAddHorariRow()">+ Afegir línia d\'horari</button>'
+    +'<button class="gen-add-row-btn"'+dataAttr('onclick','genAddHorariRow',[])+'>+ Afegir línia d\'horari</button>'
 
     // ── Classes i preus ────────────────────────────────────
     +'<div class="gen-section-label">Classes i taxes d\'inscripció</div>'
     +'<div id="gen-cat-rows" class="gen-dyn-rows"></div>'
-    +'<button class="gen-add-row-btn" onclick="genAddCatRow()">+ Afegir classe</button>'
+    +'<button class="gen-add-row-btn"'+dataAttr('onclick','genAddCatRow',[])+'>+ Afegir classe</button>'
 
     // ── Inscripcions i pagament ────────────────────────────
     +'<div class="gen-section-label">Inscripcions i pagament</div>'
@@ -951,8 +959,8 @@ function renderAdmGenerator(b){
       '')
 
     +'<div style="display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap">'
-    +'<button class="a-sub success" style="font-size:.95rem;padding:.6rem 1.4rem" onclick="generateCircular()">📄 Generar Vista Prèvia</button>'
-    +'<button class="a-sub" style="background:var(--navy);font-size:.95rem;padding:.6rem 1.4rem" onclick="genPublicarCircular()">✚ Publicar a Circulars</button>'
+    +'<button class="a-sub success" style="font-size:.95rem;padding:.6rem 1.4rem"'+dataAttr('onclick','generateCircular',[])+'>📄 Generar Vista Prèvia</button>'
+    +'<button class="a-sub" style="background:var(--navy);font-size:.95rem;padding:.6rem 1.4rem"'+dataAttr('onclick','genPublicarCircular',[])+'>✚ Publicar a Circulars</button>'
     +'</div>'
     +'</div>'
 
@@ -986,7 +994,7 @@ function genAddHorariRow(hora,desc){
   row.innerHTML=
     '<input type="time" class="gen-hora-input" value="'+(hora||'')+'" placeholder="HH:MM">'
     +'<input type="text" class="gen-desc-input" value="'+(desc||'')+'" placeholder="Descripció de l\'activitat" style="flex:1">'
-    +'<button class="gen-rm-btn" onclick="genRemoveRow(this)" title="Eliminar">✕</button>';
+    +'<button class="gen-rm-btn"'+dataAttr('onclick','genRemoveRow',['@el'])+' title="Eliminar">✕</button>';
   container.appendChild(row);
 }
 
@@ -998,7 +1006,7 @@ function genAddCatRow(cat,preu){
   row.innerHTML=
     '<input type="text" class="gen-cat-input" value="'+(cat||'')+'" placeholder="Classe" style="flex:2">'
     +'<input type="text" class="gen-preu-input" value="'+(preu||'')+'" placeholder="Preu (€)" style="flex:.8;min-width:70px">'
-    +'<button class="gen-rm-btn" onclick="genRemoveRow(this)" title="Eliminar">✕</button>';
+    +'<button class="gen-rm-btn"'+dataAttr('onclick','genRemoveRow',['@el'])+' title="Eliminar">✕</button>';
   container.appendChild(row);
 }
 
@@ -1284,7 +1292,7 @@ function generateCircular(){
   if(!col) return;
   col.innerHTML=
     '<div class="gen-preview-actions">'
-    +'<button class="a-sub success" onclick="genPrint()">🖨️ Imprimir / Descarregar PDF</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','genPrint',[])+'>🖨️ Imprimir / Descarregar PDF</button>'
     +'</div>'
     +'<div class="gen-preview-frame-wrap"><iframe id="gen-iframe" class="gen-preview-iframe"></iframe></div>';
 
@@ -1447,6 +1455,7 @@ function bkImportRead(input) {
       if(!snap._v){ toast('Fitxer de backup no vàlid','⚠️'); return; }
       var ts = snap._ts ? _bkFmtDate(snap._ts) : 'desconeguda';
       var nFiles = snap._files ? Object.keys(snap._files).length : 0;
+      _bkPendingImport = snap; // evita haver d'incrustar tot el JSON en un atribut HTML
       preview.innerHTML =
         '<div class="bk-preview-box">'
         +'<div class="bk-preview-title">📋 Contingut del fitxer</div>'
@@ -1454,7 +1463,7 @@ function bkImportRead(input) {
         +(nFiles ? ' · <strong>'+nFiles+'</strong> fitxers (PDF/imatges) inclosos' : '')+'</div>'
         +'<div class="bk-preview-counts">'+_bkSummary(snap)+'</div>'
         +'<div class="bk-preview-warn">⚠️ Aquesta acció substituirà les dades actuals. No es pot desfer.</div>'
-        +'<button class="a-sub" style="background:#dc2626;margin-top:.75rem" onclick="bkImportConfirm('+JSON.stringify(JSON.stringify(snap))+')">'
+        +'<button class="a-sub" style="background:#dc2626;margin-top:.75rem"'+dataAttr('onclick','bkImportConfirm',[])+'>'
         +'&#8635; Aplicar aquest backup</button>'
         +'</div>';
     } catch(err) {
@@ -1517,12 +1526,16 @@ function _bkRemapUrls(obj, map) {
   }
 }
 
-function bkImportConfirm(jsonStr) {
+var _bkPendingImport = null; // snapshot pendent d'aplicar (desat per bkImportRead)
+
+function bkImportConfirm() {
   if(!confirm('Aplicar el backup?\n\nAixò sobreescriurà TOTES les dades actuals.\nAssegura\'t que tens un backup de l\'estat actual.')) return;
   try {
-    var snap  = JSON.parse(jsonStr);
+    var snap  = _bkPendingImport;
+    if (!snap) { toast('Cap backup seleccionat','⚠️'); return; }
     var files = snap._files || null;
     delete snap._files;
+    _bkPendingImport = null; // consumit; evita reaplicar-lo per accident
 
     if (files && Object.keys(files).length) {
       var token = window.dbGetToken ? window.dbGetToken() : '';
@@ -1606,8 +1619,8 @@ function renderAdmBackup(b) {
         +'<div class="bk-ckpt-counts">'+_bkSummary(c)+'</div>'
         +'</div>'
         +'<div class="crud-item-acts">'
-        +'<button class="btn-edit-crud" onclick="bkRestoreCheckpoint('+i+')" title="Restaurar">&#8635; Restaurar</button>'
-        +'<button class="btn-del-crud" onclick="bkDeleteCheckpoint('+i+')" title="Eliminar">&#128465;</button>'
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','bkRestoreCheckpoint',[i])+' title="Restaurar">&#8635; Restaurar</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','bkDeleteCheckpoint',[i])+' title="Eliminar">&#128465;</button>'
         +'</div>'
         +'</div>';
     }).join('');
@@ -1628,15 +1641,15 @@ function renderAdmBackup(b) {
     +'<div class="bk-section">'
     +'<div class="adm-st">Exportar backup complet (fitxer JSON)</div>'
     +'<p class="bk-desc">Descàrrega un fitxer JSON amb totes les dades actuals <strong>i els documents/imatges pujats</strong> (PDFs de circulars, imatges de notícies, etc.). Guarda\'l al teu ordinador per poder restaurar-ho tot en qualsevol moment.</p>'
-    +'<button class="a-sub success" onclick="bkExport()">&#8681; Descarregar backup ara</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','bkExport',[])+'>&#8681; Descarregar backup ara</button>'
     +'</div>'
 
     // ── Import ────────────────────────────────────────────────
     +'<div class="bk-section">'
     +'<div class="adm-st">Importar backup (des de fitxer)</div>'
     +'<p class="bk-desc">Selecciona un fitxer JSON exportat anteriorment per restaurar les dades i els fitxers que continguin.</p>'
-    +'<input type="file" id="bkFileInput" accept=".json,application/json" style="display:none" onchange="bkImportRead(this)">'
-    +'<button class="a-sub" style="background:var(--navy)" onclick="bkImportStart()">&#8679; Seleccionar fitxer de backup…</button>'
+    +'<input type="file" id="bkFileInput" accept=".json,application/json" style="display:none"'+dataAttr('onchange','bkImportRead',['@el'])+'>'
+    +'<button class="a-sub" style="background:var(--navy)"'+dataAttr('onclick','bkImportStart',[])+'>&#8679; Seleccionar fitxer de backup…</button>'
     +'<div id="bkImportPreview" style="margin-top:1rem"></div>'
     +'</div>'
 
@@ -1645,7 +1658,7 @@ function renderAdmBackup(b) {
     +'<div class="adm-st" style="display:flex;align-items:center;gap:.75rem">'
     +'Punts de control ràpids <span class="crud-count-badge">'+ckpts.length+'/'+_BK_MAX+'</span>'
     +(ckpts.length < _BK_MAX
-      ? '<button class="a-sub success" style="padding:.25rem .75rem;font-size:.8rem;margin-left:auto" onclick="bkSaveCheckpoint()">+ Desar punt de control ara</button>'
+      ? '<button class="a-sub success" style="padding:.25rem .75rem;font-size:.8rem;margin-left:auto"'+dataAttr('onclick','bkSaveCheckpoint',[])+'>+ Desar punt de control ara</button>'
       : '<span style="font-size:.78rem;color:var(--gray);margin-left:auto">Màxim '+_BK_MAX+' punts. Elimina\'n un per afegir-ne un altre.</span>')
     +'</div>'
     +'<p class="bk-desc">Els punts de control es guarden al navegador (localStorage). Ideals per a un desament ràpid abans de fer canvis importants.</p>'
@@ -1707,7 +1720,7 @@ function renderAdmUsuaris(b){
     +mkField('Confirma contrasenya *','au_pass2','password','','Repeteix la contrasenya')
     +'</div>'
     +'<p style="font-size:.82rem;color:var(--gray);margin:.25rem 0 .75rem">&#128274; L\'usuari haurà de canviar la contrasenya en el primer accés.</p>'
-    +'<button class="a-sub success" onclick="admAddUser()">&#10010; Crear usuari</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','admAddUser',[])+'>&#10010; Crear usuari</button>'
     +'</div>'
     +'<div class="adm-st">Usuaris del sistema <span class="crud-count-badge" id="usersCount">…</span></div>'
     +'<div id="usersTableWrap" style="overflow-x:auto"><p style="padding:1rem;color:var(--gray)">Carregant…</p></div>'
@@ -1737,9 +1750,9 @@ function _admRenderUsersTable(users){
       ? '<span style="background:#059669;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">2FA &#10003;</span>'
       : '<span style="background:#6b7280;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">Sense 2FA</span>';
     var totpBtn = u.totp_enabled
-      ? '<button class="usr-act-btn danger" title="Revocar 2FA" onclick="admResetTotp('+u.id+')">&#128274;</button>'
-      : '<button class="usr-act-btn ok" title="Configurar 2FA" onclick="admShowTotpSetup('+u.id+')">&#128272;</button>';
-    var resetPassBtn = '<button class="usr-act-btn muted" title="Restablir contrasenya" onclick="admResetPass('+u.id+')">&#128273;</button>';
+      ? '<button class="usr-act-btn danger" title="Revocar 2FA"'+dataAttr('onclick','admResetTotp',[u.id])+'>&#128274;</button>'
+      : '<button class="usr-act-btn ok" title="Configurar 2FA"'+dataAttr('onclick','admShowTotpSetup',[u.id])+'>&#128272;</button>';
+    var resetPassBtn = '<button class="usr-act-btn muted" title="Restablir contrasenya"'+dataAttr('onclick','admResetPass',[u.id])+'>&#128273;</button>';
     return '<tr>'
       +'<td style="font-weight:600">'+escHtml(u.username)+'</td>'
       +'<td>'+escHtml(u.nom)+mustChg+'</td>'
@@ -1749,8 +1762,8 @@ function _admRenderUsersTable(users){
       +'<td>'+totpBadge+'</td>'
       +'<td><div class="usr-acts">'
         +totpBtn+resetPassBtn
-        +'<button class="usr-act-btn '+(u.actiu?'warn':'ok')+'" title="'+(u.actiu?'Desactivar':'Activar')+'" onclick="admToggleUser('+u.id+')">'+(u.actiu?'&#9208;':'&#9654;')+'</button>'
-        +'<button class="usr-act-btn danger" title="Eliminar usuari" onclick="admDelUser('+u.id+')">&#128465;</button>'
+        +'<button class="usr-act-btn '+(u.actiu?'warn':'ok')+'" title="'+(u.actiu?'Desactivar':'Activar')+'"'+dataAttr('onclick','admToggleUser',[u.id])+'>'+(u.actiu?'&#9208;':'&#9654;')+'</button>'
+        +'<button class="usr-act-btn danger" title="Eliminar usuari"'+dataAttr('onclick','admDelUser',[u.id])+'>&#128465;</button>'
       +'</div></td>'
       +'</tr>';
   }).join('');
@@ -1794,8 +1807,8 @@ function _admLoadAudit(offset){
     }).join('');
 
     var nav = '';
-    if (offset > 0) nav += '<button class="bsm bsm-o" onclick="_admLoadAudit('+(offset-50)+')">&#8592; Anterior</button> ';
-    if (offset + 50 < data.total) nav += '<button class="bsm bsm-o" onclick="_admLoadAudit('+(offset+50)+')">Següent &#8594;</button>';
+    if (offset > 0) nav += '<button class="bsm bsm-o"'+dataAttr('onclick','_admLoadAudit',[offset-50])+'>&#8592; Anterior</button> ';
+    if (offset + 50 < data.total) nav += '<button class="bsm bsm-o"'+dataAttr('onclick','_admLoadAudit',[offset+50])+'>Següent &#8594;</button>';
 
     var wrap = document.getElementById('auditTableWrap');
     if (!wrap) return;
@@ -1931,10 +1944,10 @@ function admShowTotpSetup(id){
     +'<p style="font-size:.88rem;color:var(--gray);margin:0 0 .5rem">3. Introdueix el codi generat per verificar:</p>'
     +'<input type="text" id="totpVerifyCode" placeholder="000000" maxlength="6" inputmode="numeric"'
     +' style="width:140px;font-size:1.3rem;letter-spacing:.2em;text-align:center;padding:8px;border:2px solid var(--navy-light);border-radius:8px"'
-    +' onkeydown="if(event.key===\'Enter\')admVerifyTotp('+id+',\''+secretB32+'\')">'
+    +dataEnterAttr('admVerifyTotp',[id,secretB32])+'>'
     +'<div style="margin-top:.75rem;display:flex;gap:.5rem">'
-    +'<button class="a-sub success" onclick="admVerifyTotp('+id+',\''+secretB32+'\')">&#10003; Verificar i activar</button>'
-    +'<button class="a-sub a-del" onclick="admCancelTotpSetup()">Cancel·lar</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','admVerifyTotp',[id,secretB32])+'>&#10003; Verificar i activar</button>'
+    +'<button class="a-sub a-del"'+dataAttr('onclick','admCancelTotpSetup',[])+'>Cancel·lar</button>'
     +'</div>'
     +'<div id="totpVerifyErr" style="display:none;color:#dc2626;font-size:.85rem;margin-top:.5rem">Codi incorrecte.</div>'
     +'</div>'

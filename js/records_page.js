@@ -33,7 +33,7 @@ function buildRecordsFilters() {
   var discTabs = '';
   Object.keys(REC_DISC_LABELS).forEach(function(k) {
     discTabs += '<button class="rec-tab' + (_recFilter.disc === k ? ' rec-tab--active' : '')
-      + '" onclick="setRecDisc(\'' + k + '\')">' + REC_DISC_LABELS[k] + '</button>';
+      + '"' + dataAttr('onclick','setRecDisc',[k]) + '>' + REC_DISC_LABELS[k] + '</button>';
   });
 
   // Estils disponibles per a la disciplina activa
@@ -53,12 +53,12 @@ function buildRecordsFilters() {
   return '<div class="rec-filters">'
     + '<div class="rec-tabs">' + discTabs + '</div>'
     + '<div class="rec-selects">'
-    + '<select class="rec-sel" onchange="setRecEstil(this.value)">' + estilOpts + '</select>'
-    + '<select class="rec-sel" onchange="setRecCat(this.value)">' + catOpts + '</select>'
+    + '<select class="rec-sel"' + dataAttr('onchange','setRecEstil',['@val']) + '>' + estilOpts + '</select>'
+    + '<select class="rec-sel"' + dataAttr('onchange','setRecCat',['@val']) + '>' + catOpts + '</select>'
     + '<div class="rec-sex-btns">'
-    + '<button class="rec-sex' + (!_recFilter.sex ? ' rec-sex--active' : '') + '" onclick="setRecSex(\'\')">Tots</button>'
-    + '<button class="rec-sex' + (_recFilter.sex === 'Home' ? ' rec-sex--active' : '') + '" onclick="setRecSex(\'Home\')">Home</button>'
-    + '<button class="rec-sex' + (_recFilter.sex === 'Dona' ? ' rec-sex--active' : '') + '" onclick="setRecSex(\'Dona\')">Dona</button>'
+    + '<button class="rec-sex' + (!_recFilter.sex ? ' rec-sex--active' : '') + '"' + dataAttr('onclick','setRecSex',['']) + '>Tots</button>'
+    + '<button class="rec-sex' + (_recFilter.sex === 'Home' ? ' rec-sex--active' : '') + '"' + dataAttr('onclick','setRecSex',['Home']) + '>Home</button>'
+    + '<button class="rec-sex' + (_recFilter.sex === 'Dona' ? ' rec-sex--active' : '') + '"' + dataAttr('onclick','setRecSex',['Dona']) + '>Dona</button>'
     + '</div>'
     + '</div>'
     + '</div>';
@@ -167,7 +167,7 @@ function renderRecordsTable() {
   // Nota d'actualització + botó sol·licitar
   html += '<div class="rec-footer-note">'
     + '<p>📅 Actualització: Sala mar. 2024 · Aire Lliure ago. 2024 · Trad/Nu/LB mar. 2024 · Arc Adaptat jul. 2021</p>'
-    + '<button class="btn-gold" style="margin-top:.75rem" onclick="openRecordForm()">🏆 Sol·licitar homologació d\'un nou rècord</button>'
+    + '<button class="btn-gold" style="margin-top:.75rem"' + dataAttr('onclick','openRecordForm',[]) + '>🏆 Sol·licitar homologació d\'un nou rècord</button>'
     + '</div>';
 
   el.innerHTML = html;
@@ -227,9 +227,9 @@ function renderDiscRecordsFromDB(discKey) {
     html += '</tbody></table>';
   });
 
-  html += '<p class="disc-records-note">Per als rècords complets de totes les classes i formats consulta la <a href="#" onclick="setS(\'records\');return false" style="color:var(--navy-light)">pàgina de Rècords</a>.</p>';
+  html += '<p class="disc-records-note">Per als rècords complets de totes les classes i formats consulta la <a href="#"' + dataAttr('onclick','setS',['records']) + ' style="color:var(--navy-light)">pàgina de Rècords</a>.</p>';
   html += '<div style="margin-top:1rem;text-align:right">'
-    + '<button class="disc-btn-sm" style="font-size:.85rem;padding:.5rem 1rem" onclick="openRecordForm()">'
+    + '<button class="disc-btn-sm" style="font-size:.85rem;padding:.5rem 1rem"' + dataAttr('onclick','openRecordForm',[]) + '>'
     + '🏆 Sol·licitar homologació d\'un nou rècord</button></div>';
 
   return html;
