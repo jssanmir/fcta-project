@@ -1365,20 +1365,69 @@ function _bkSummary(snap) {
   }).filter(Boolean).join('');
 }
 
+// ── Fitxers pujats (PDF/imatges) referenciats dins d'un snapshot ──
+// Recorre recursivament totes les cadenes del snapshot i recull les
+// que apunten a /uploads/... (fitxers pujats des del panell, no
+// versionats a git — a diferència de docs/ i img/, que sí ho estan).
+function _bkCollectUploadUrls(obj, found) {
+  found = found || {};
+  if (Array.isArray(obj)) {
+    obj.forEach(function(v){ _bkCollectUploadUrls(v, found); });
+  } else if (obj && typeof obj === 'object') {
+    Object.keys(obj).forEach(function(k){ _bkCollectUploadUrls(obj[k], found); });
+  } else if (typeof obj === 'string' && /^\/uploads\//.test(obj)) {
+    found[obj] = true;
+  }
+  return Object.keys(found);
+}
+
+function _bkFileToBase64(blob) {
+  return new Promise(function(resolve, reject){
+    var reader = new FileReader();
+    reader.onload  = function(){ resolve(reader.result); }; // data:mime;base64,....
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+// Descarrega cada fitxer /uploads/... i el converteix a base64.
+// Els errors individuals (fitxer no trobat, etc.) no aturen la resta.
+function _bkFetchUploadFiles(urls) {
+  var out   = {};
+  var chain = Promise.resolve();
+  urls.forEach(function(url){
+    chain = chain.then(function(){
+      return fetch(url)
+        .then(function(r){ if(!r.ok) throw new Error('no trobat'); return r.blob(); })
+        .then(_bkFileToBase64)
+        .then(function(dataUrl){ out[url] = dataUrl; })
+        .catch(function(e){ console.warn('Backup: no s\'ha pogut incloure '+url, e); });
+    });
+  });
+  return chain.then(function(){ return out; });
+}
+
 // ── Export ──────────────────────────────────────────────────
 function bkExport() {
   var snap = _bkSnapshot();
-  var json = JSON.stringify(snap, null, 2);
-  var blob = new Blob([json], {type:'application/json'});
-  var url  = URL.createObjectURL(blob);
-  var d    = new Date(snap._ts);
-  var pad  = function(n){ return n<10?'0'+n:n; };
-  var name = 'fcta-backup-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())
-             +'-'+pad(d.getHours())+pad(d.getMinutes())+'.json';
-  var a    = document.createElement('a');
-  a.href=url; a.download=name; a.click();
-  URL.revokeObjectURL(url);
-  toast('Backup descarregat: '+name,'💾');
+  var urls = _bkCollectUploadUrls(snap);
+  if (urls.length) toast('Preparant backup ('+urls.length+' fitxers)…','⏳');
+
+  _bkFetchUploadFiles(urls).then(function(files){
+    snap._files = files; // { '/uploads/xxx.pdf': 'data:...;base64,...' }
+    var json = JSON.stringify(snap, null, 2);
+    var blob = new Blob([json], {type:'application/json'});
+    var url  = URL.createObjectURL(blob);
+    var d    = new Date(snap._ts);
+    var pad  = function(n){ return n<10?'0'+n:n; };
+    var name = 'fcta-backup-'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())
+               +'-'+pad(d.getHours())+pad(d.getMinutes())+'.json';
+    var a    = document.createElement('a');
+    a.href=url; a.download=name; a.click();
+    URL.revokeObjectURL(url);
+    var nFiles = Object.keys(files).length;
+    toast('Backup descarregat: '+name+(nFiles?' · '+nFiles+' fitxers inclosos':''),'💾');
+  });
 }
 
 // ── Import ──────────────────────────────────────────────────
@@ -1397,10 +1446,12 @@ function bkImportRead(input) {
       var snap = JSON.parse(e.target.result);
       if(!snap._v){ toast('Fitxer de backup no vàlid','⚠️'); return; }
       var ts = snap._ts ? _bkFmtDate(snap._ts) : 'desconeguda';
+      var nFiles = snap._files ? Object.keys(snap._files).length : 0;
       preview.innerHTML =
         '<div class="bk-preview-box">'
         +'<div class="bk-preview-title">📋 Contingut del fitxer</div>'
-        +'<div class="bk-preview-meta">Data del backup: <strong>'+ts+'</strong></div>'
+        +'<div class="bk-preview-meta">Data del backup: <strong>'+ts+'</strong>'
+        +(nFiles ? ' · <strong>'+nFiles+'</strong> fitxers (PDF/imatges) inclosos' : '')+'</div>'
         +'<div class="bk-preview-counts">'+_bkSummary(snap)+'</div>'
         +'<div class="bk-preview-warn">⚠️ Aquesta acció substituirà les dades actuals. No es pot desfer.</div>'
         +'<button class="a-sub" style="background:#dc2626;margin-top:.75rem" onclick="bkImportConfirm('+JSON.stringify(JSON.stringify(snap))+')">'
@@ -1414,13 +1465,79 @@ function bkImportRead(input) {
   reader.readAsText(file);
 }
 
+// Converteix una data URL (base64) de nou en un Blob binari
+function _bkDataUrlToBlob(dataUrl) {
+  var parts     = dataUrl.split(',');
+  var mimeMatch = parts[0].match(/:(.*?);/);
+  var mime      = mimeMatch ? mimeMatch[1] : 'application/octet-stream';
+  var bin       = atob(parts[1]);
+  var arr       = new Uint8Array(bin.length);
+  for (var i=0; i<bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return new Blob([arr], {type: mime});
+}
+
+// Repuja els fitxers inclosos al backup (via els endpoints d'upload
+// existents, que ja validen tipus/mida) i retorna un mapa
+// { url-antiga: url-nova } per actualitzar les referències al snapshot.
+function _bkRestoreFiles(files, token) {
+  var urls = Object.keys(files || {});
+  if (!urls.length) return Promise.resolve({});
+  var map   = {};
+  var chain = Promise.resolve();
+  urls.forEach(function(oldUrl){
+    chain = chain.then(function(){
+      var blob     = _bkDataUrlToBlob(files[oldUrl]);
+      var isPdf    = /\.pdf(\?|$)/i.test(oldUrl);
+      var endpoint = isPdf ? '/api/upload/pdf' : '/api/upload/image';
+      var origName = oldUrl.split('/').pop();
+      var fd = new FormData();
+      fd.append('file', blob, origName);
+      return fetch(endpoint, {
+        method: 'POST',
+        headers: token ? {'Authorization':'Bearer '+token} : {},
+        body: fd
+      }).then(function(r){ return r.json(); })
+        .then(function(d){ if (d.url) map[oldUrl] = d.url; })
+        .catch(function(){});
+    });
+  });
+  return chain.then(function(){ return map; });
+}
+
+// Substitueix, dins de tot el snapshot, les URLs antigues de fitxers
+// per les noves URLs assignades en repujar-los.
+function _bkRemapUrls(obj, map) {
+  if (Array.isArray(obj)) {
+    obj.forEach(function(v){ _bkRemapUrls(v, map); });
+  } else if (obj && typeof obj === 'object') {
+    Object.keys(obj).forEach(function(k){
+      if (typeof obj[k] === 'string' && map[obj[k]]) obj[k] = map[obj[k]];
+      else _bkRemapUrls(obj[k], map);
+    });
+  }
+}
+
 function bkImportConfirm(jsonStr) {
   if(!confirm('Aplicar el backup?\n\nAixò sobreescriurà TOTES les dades actuals.\nAssegura\'t que tens un backup de l\'estat actual.')) return;
   try {
-    var snap = JSON.parse(jsonStr);
-    _bkApply(snap);
-    toast('Backup aplicat correctament','✅');
-    renderAdmBackup(document.getElementById('admBody'));
+    var snap  = JSON.parse(jsonStr);
+    var files = snap._files || null;
+    delete snap._files;
+
+    if (files && Object.keys(files).length) {
+      var token = window.dbGetToken ? window.dbGetToken() : '';
+      toast('Restaurant fitxers…','⏳');
+      _bkRestoreFiles(files, token).then(function(map){
+        _bkRemapUrls(snap, map);
+        _bkApply(snap);
+        toast('Backup aplicat correctament · '+Object.keys(map).length+' fitxers restaurats','✅');
+        renderAdmBackup(document.getElementById('admBody'));
+      });
+    } else {
+      _bkApply(snap);
+      toast('Backup aplicat correctament','✅');
+      renderAdmBackup(document.getElementById('admBody'));
+    }
   } catch(err) {
     toast('Error al restaurar: '+err.message,'⚠️');
   }
@@ -1509,15 +1626,15 @@ function renderAdmBackup(b) {
 
     // ── Export ────────────────────────────────────────────────
     +'<div class="bk-section">'
-    +'<div class="adm-st">Exportar backup (fitxer JSON)</div>'
-    +'<p class="bk-desc">Descàrrega un fitxer JSON amb totes les dades actuals. Guarda\'l al teu ordinador per poder restaurar-les en qualsevol moment.</p>'
+    +'<div class="adm-st">Exportar backup complet (fitxer JSON)</div>'
+    +'<p class="bk-desc">Descàrrega un fitxer JSON amb totes les dades actuals <strong>i els documents/imatges pujats</strong> (PDFs de circulars, imatges de notícies, etc.). Guarda\'l al teu ordinador per poder restaurar-ho tot en qualsevol moment.</p>'
     +'<button class="a-sub success" onclick="bkExport()">&#8681; Descarregar backup ara</button>'
     +'</div>'
 
     // ── Import ────────────────────────────────────────────────
     +'<div class="bk-section">'
     +'<div class="adm-st">Importar backup (des de fitxer)</div>'
-    +'<p class="bk-desc">Selecciona un fitxer JSON exportat anteriorment per restaurar les dades.</p>'
+    +'<p class="bk-desc">Selecciona un fitxer JSON exportat anteriorment per restaurar les dades i els fitxers que continguin.</p>'
     +'<input type="file" id="bkFileInput" accept=".json,application/json" style="display:none" onchange="bkImportRead(this)">'
     +'<button class="a-sub" style="background:var(--navy)" onclick="bkImportStart()">&#8679; Seleccionar fitxer de backup…</button>'
     +'<div id="bkImportPreview" style="margin-top:1rem"></div>'
@@ -1620,9 +1737,9 @@ function _admRenderUsersTable(users){
       ? '<span style="background:#059669;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">2FA &#10003;</span>'
       : '<span style="background:#6b7280;color:#fff;padding:2px 8px;border-radius:12px;font-size:.75rem">Sense 2FA</span>';
     var totpBtn = u.totp_enabled
-      ? '<button class="a-sub" style="background:#dc2626;font-size:.78rem;padding:4px 10px" onclick="admResetTotp('+u.id+')">&#128274; Revocar 2FA</button>'
-      : '<button class="a-sub" style="background:#059669;font-size:.78rem;padding:4px 10px" onclick="admShowTotpSetup('+u.id+')">&#128272; Configurar 2FA</button>';
-    var resetPassBtn = '<button class="a-sub" style="background:#6b7280;font-size:.78rem;padding:4px 10px" onclick="admResetPass('+u.id+')">&#128273; Reset pwd</button>';
+      ? '<button class="usr-act-btn danger" title="Revocar 2FA" onclick="admResetTotp('+u.id+')">&#128274;</button>'
+      : '<button class="usr-act-btn ok" title="Configurar 2FA" onclick="admShowTotpSetup('+u.id+')">&#128272;</button>';
+    var resetPassBtn = '<button class="usr-act-btn muted" title="Restablir contrasenya" onclick="admResetPass('+u.id+')">&#128273;</button>';
     return '<tr>'
       +'<td style="font-weight:600">'+escHtml(u.username)+'</td>'
       +'<td>'+escHtml(u.nom)+mustChg+'</td>'
@@ -1630,18 +1747,18 @@ function _admRenderUsersTable(users){
       +'<td>'+rolBadge+'</td>'
       +'<td>'+statusBadge+'</td>'
       +'<td>'+totpBadge+'</td>'
-      +'<td style="display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;padding:6px 8px">'
-        +totpBtn+' '+resetPassBtn
-        +'<button class="a-sub" style="background:'+(u.actiu?'#b45309':'#059669')+';font-size:.78rem;padding:4px 10px" onclick="admToggleUser('+u.id+')">'+(u.actiu?'Desactivar':'Activar')+'</button>'
-        +'<button class="a-sub a-del" style="font-size:.78rem;padding:4px 10px" onclick="admDelUser('+u.id+')">&#128465;</button>'
-      +'</td>'
+      +'<td><div class="usr-acts">'
+        +totpBtn+resetPassBtn
+        +'<button class="usr-act-btn '+(u.actiu?'warn':'ok')+'" title="'+(u.actiu?'Desactivar':'Activar')+'" onclick="admToggleUser('+u.id+')">'+(u.actiu?'&#9208;':'&#9654;')+'</button>'
+        +'<button class="usr-act-btn danger" title="Eliminar usuari" onclick="admDelUser('+u.id+')">&#128465;</button>'
+      +'</div></td>'
       +'</tr>';
   }).join('');
 
   var wrap = document.getElementById('usersTableWrap');
   if (!wrap) return;
   wrap.innerHTML =
-    '<table style="width:100%;border-collapse:collapse;font-size:.85rem">'
+    '<table class="adm-grid-table">'
     +'<thead><tr style="background:var(--offwhite);text-align:left">'
     +'<th style="padding:8px 10px">Usuari</th><th style="padding:8px 10px">Nom</th>'
     +'<th style="padding:8px 10px">Email</th><th style="padding:8px 10px">Rol</th>'
@@ -1683,7 +1800,7 @@ function _admLoadAudit(offset){
     var wrap = document.getElementById('auditTableWrap');
     if (!wrap) return;
     wrap.innerHTML =
-      '<table style="width:100%;border-collapse:collapse;font-size:.85rem">'
+      '<table class="adm-grid-table">'
       +'<thead><tr style="background:var(--offwhite);text-align:left">'
       +'<th style="padding:6px 10px">Data/hora</th><th style="padding:6px 10px">Usuari</th>'
       +'<th style="padding:6px 10px">Acció</th><th style="padding:6px 10px">Detall</th>'

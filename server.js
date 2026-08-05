@@ -221,8 +221,46 @@ if (countRow.n === 0) {
   }
 })();
 
+// ── Backup complet: dades + fitxers pujats ────────────────
+// Els fitxers pujats des del panell (PDFs, imatges) es guarden a
+// data/uploads/ i NO viuen a portal_state — cal incloure'ls a part
+// perquè un backup sigui realment complet i restaurable.
+function snapshotUploadsDir() {
+  try {
+    if (!fs.existsSync(UPLOADS_DIR)) return [];
+    return fs.readdirSync(UPLOADS_DIR)
+      .filter(function (f) {
+        try { return fs.statSync(path.join(UPLOADS_DIR, f)).isFile(); }
+        catch (e) { return false; }
+      })
+      .map(function (f) {
+        return { name: f, content: fs.readFileSync(path.join(UPLOADS_DIR, f)).toString('base64') };
+      });
+  } catch (e) {
+    console.warn('[FCTA] No s\'han pogut llegir els fitxers pujats per al backup:', e.message);
+    return [];
+  }
+}
+
+function restoreUploadsDir(files) {
+  if (!Array.isArray(files)) return 0;
+  if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  var restored = 0;
+  files.forEach(function (f) {
+    if (!f || !f.name || !f.content) return;
+    var name     = path.basename(String(f.name)); // evita path traversal
+    var filepath = path.join(UPLOADS_DIR, name);
+    if (!filepath.startsWith(UPLOADS_DIR)) return; // seguretat extra
+    try {
+      fs.writeFileSync(filepath, Buffer.from(f.content, 'base64'));
+      restored++;
+    } catch (e) { /* fitxer individual fallit: continua amb la resta */ }
+  });
+  return restored;
+}
+
 // ── Backup automàtic en arrencada ─────────────────────────
-// Desa una còpia JSON de les dades de producció a data/backups/
+// Desa una còpia JSON de les dades + fitxers pujats a data/backups/
 // Protegeix contra pèrdues accidentals per deploys o errors.
 (function autoBackup() {
   try {
@@ -245,7 +283,8 @@ if (countRow.n === 0) {
     fs.writeFileSync(backupPath, JSON.stringify({
       backup_ts:  new Date().toISOString(),
       updated_at: row.updated_at,
-      data:       JSON.parse(row.data)
+      data:       JSON.parse(row.data),
+      uploads:    snapshotUploadsDir()
     }, null, 2));
     console.log('[FCTA] Backup creat: ' + path.basename(backupPath));
   } catch (e) {
@@ -636,8 +675,9 @@ app.post('/api/backups/:name/restore', verifyToken, requireRole('superadmin'), f
     var now    = new Date().toISOString();
     db.prepare('INSERT INTO portal_state (id,data,updated_at) VALUES (1,?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data, updated_at=excluded.updated_at')
       .run(JSON.stringify(data), now);
-    audit(req.user.sub, 'RESTORE_BACKUP', name);
-    res.json({ ok: true, restored_from: name });
+    var restoredFiles = restoreUploadsDir(backup.uploads);
+    audit(req.user.sub, 'RESTORE_BACKUP', name + (restoredFiles ? ' (+' + restoredFiles + ' fitxers)' : ''));
+    res.json({ ok: true, restored_from: name, restored_files: restoredFiles });
   } catch (e) {
     res.status(500).json({ error: 'Error restaurant el backup: ' + e.message });
   }
@@ -672,7 +712,8 @@ app.post('/api/backups', verifyToken, requireRole('superadmin'), function (req, 
     var filename = 'manual_' + req.user.sub + '_' + ts + '.json';
     fs.writeFileSync(path.join(backupDir, filename), JSON.stringify({
       backup_ts: new Date().toISOString(), updated_at: row.updated_at,
-      data: JSON.parse(row.data)
+      data:      JSON.parse(row.data),
+      uploads:   snapshotUploadsDir()
     }, null, 2));
     audit(req.user.sub, 'MANUAL_BACKUP', filename);
     res.json({ ok: true, name: filename });
