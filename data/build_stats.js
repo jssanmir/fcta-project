@@ -1,4 +1,5 @@
-// Script per generar competition_stats_full.json amb totes les dades individuals
+// Script per generar docs/competition_stats_<temporada-actual>.json amb
+// totes les dades individuals (veure CS_CURRENT_SEASON a js/comp_stats.js)
 // Executa: node data/build_stats.js
 
 const fs = require('fs');
@@ -306,8 +307,10 @@ const competitions = [
 // Write the full JSON
 // docs/, NO data/: a Railway data/ té un volum persistent muntat que
 // amagaria aquest fitxer estàtic en producció (veure comentari a
-// js/comp_stats.js).
-const outputPath = __dirname + '/../docs/competition_stats_full.json';
+// js/comp_stats.js). Escriu a la temporada ACTUAL (CS_CURRENT_SEASON
+// a js/comp_stats.js) — actualitza aquest nom quan comenci una nova
+// temporada.
+const outputPath = __dirname + '/../docs/competition_stats_2026-27.json';
 fs.writeFileSync(outputPath, JSON.stringify(competitions, null, 2), 'utf8');
 console.log('Written', competitions.length, 'competitions to', outputPath);
 console.log('File size:', fs.statSync(outputPath).size, 'bytes');

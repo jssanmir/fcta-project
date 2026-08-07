@@ -1,7 +1,8 @@
 /**
  * fetch_stats.js
  * Obté les estadístiques completes de cada tirada de la FCTA des d'Ianseo
- * i genera competition_stats_full.json amb tots els tiradors individuals.
+ * i genera docs/competition_stats_<temporada-actual>.json amb tots els
+ * tiradors individuals (veure CS_CURRENT_SEASON a js/comp_stats.js).
  *
  * Ús: node data/fetch_stats.js
  * Requereix: Node.js >= 18 (fetch natiu) o instal·la node-fetch
@@ -260,8 +261,10 @@ async function main() {
 
   // docs/, NO data/: a Railway data/ té un volum persistent muntat que
   // amagaria aquest fitxer estàtic en producció (veure comentari a
-  // js/comp_stats.js).
-  const outputPath = __dirname + '/../docs/competition_stats_full.json';
+  // js/comp_stats.js). Escriu a la temporada ACTUAL (CS_CURRENT_SEASON
+  // a js/comp_stats.js) — actualitza aquest nom quan comenci una nova
+  // temporada.
+  const outputPath = __dirname + '/../docs/competition_stats_2026-27.json';
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2), 'utf8');
 
   const sizeMB = (fs.statSync(outputPath).size / 1024).toFixed(1);

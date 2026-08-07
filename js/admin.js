@@ -479,7 +479,10 @@ function renderAdmComp(b){
     +mkField('Disciplina (text lliure)','acomp_disc','text','','Ex: Aire Lliure, Tir de Camp...')
     +'<button class="a-sub success"'+dataAttr('onclick','crudAddComp',[])+'>&#10010; Publicar Competici\u00f3</button>'
     +'</div>'
-    +'<div class="adm-st">Competicions <span class="crud-count-badge">'+DB.competitions.length+'</span></div>'
+    +'<div class="adm-st" style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap">'
+    +'<span>Competicions <span class="crud-count-badge">'+DB.competitions.length+'</span></span>'
+    +'<button class="bsm bsm-n" style="font-size:.78rem;padding:.35rem .8rem"'+dataAttr('onclick','admExportCompCSV',[])+'>&#11015;&#65039; Exporta CSV</button>'
+    +'</div>'
     +'<div class="crud-list">'
     +admSortByDateDesc(DB.competitions,function(c){return c.dateISO?admIsoKey(c.dateISO):admDateKey(c.date);}).map(function(c){
       var sL={open:'Obertes',soon:'Pr\u00f2ximament',closed:'Tancat'};
@@ -579,6 +582,40 @@ function crudDelComp(id,name){
     renderAdmComp(document.getElementById('admBody'));
     toast('Competici\u00f3 eliminada.','&#128465;');
   });
+}
+
+// \u2500\u2500 EXPORTACI\u00d3 CSV \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// Escapa un valor per a un camp CSV (RFC 4180): entre cometes si cont\u00e9
+// comes, cometes o salts de l\u00ednia; les cometes internes es dupliquen.
+function _csvEsc(v){
+  var s=String(v===undefined||v===null?'':v);
+  if(/["\n\r,]/.test(s)) s='"'+s.replace(/"/g,'""')+'"';
+  return s;
+}
+function admExportCompCSV(){
+  var tipusLbl={al:'Aire Lliure',sala:'Sala',camp:'Camp',trd:'3D/Bosc'};
+  var estatLbl={open:'Inscripcions obertes',soon:'Pr\u00f2ximament',closed:'Tancat'};
+  var cols=['T\u00edtol','Disciplina','Estat','Data','Data ISO','Seu','Circular','ID Ianseo','URL inscripcions','URL m\u00e9s info / resultats'];
+  var rows=admSortByDateDesc(DB.competitions,function(c){return c.dateISO?admIsoKey(c.dateISO):admDateKey(c.date);}).map(function(c){
+    return [
+      c.title||'', tipusLbl[c.type]||c.disc||c.type||'', estatLbl[c.status]||c.status||'',
+      c.date||'', c.dateISO||'', c.loc||'', (c.circ&&c.circ!=='#')?c.circ:'',
+      c.ianseo||'', (c.inscripcio&&c.inscripcio!=='#')?c.inscripcio:'', (c.url&&c.url!=='#')?c.url:''
+    ].map(_csvEsc).join(',');
+  });
+  // BOM UTF-8 perqu\u00e8 l'Excel obri correctament els accents
+  var csv='\ufeff'+cols.map(_csvEsc).join(',')+'\r\n'+rows.join('\r\n');
+  var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;
+  a.download='competicions-fcta-'+todayISO()+'.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  admLog('COMP_EXPORT_CSV', DB.competitions.length+' competicions');
+  toast('CSV de competicions descarregat ('+DB.competitions.length+' files).','&#128190;');
 }
 
 // ── FORMACIÓ CRUD ──────────────────────────────────────────

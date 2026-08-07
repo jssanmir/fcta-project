@@ -1064,7 +1064,7 @@ app.get('/api/audit', verifyToken, requireRole('superadmin'), function (req, res
 // una investigació posterior.
 var CLIENT_AUDIT_ACTIONS = [
   'CIRC_ADD','CIRC_DEL','NEWS_ADD','NEWS_DEL','COMP_ADD','COMP_DEL',
-  'FORM_ADD','FORM_DEL','DOC_ADD','DOC_DEL'
+  'FORM_ADD','FORM_DEL','DOC_ADD','DOC_DEL','COMP_EXPORT_CSV'
 ];
 app.post('/api/audit', verifyToken, function (req, res) {
   var action = String(req.body.action || '').trim().substring(0, 80);

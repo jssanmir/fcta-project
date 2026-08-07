@@ -2,9 +2,12 @@
 // Cerca per nom/cognoms i mostra l'historial complet de participacions
 // i puntuacions d'un arquer a competicions oficials de la FCTA.
 //
-// Font de dades: docs/competition_stats_full.json, carregada via
-// _csLoadData() (compartida amb comp_stats.js — si ja s'ha visitat
-// Competicions > Estadístiques, es reaprofita sense tornar a descarregar).
+// Font de dades: TOTES les temporades definides a CS_SEASONS
+// (comp_stats.js) combinades — a diferència de Competicions >
+// Estadístiques, aquí es vol l'historial complet de carrera, no una
+// temporada sola. Es reaprofita la caché per temporada de comp_stats.js
+// (_csFetchSeason), així que no es torna a descarregar el que ja s'hagi
+// carregat des de l'altra pàgina.
 //
 // IMPORTANT: no hi ha número de llicència enlloc del portal (ni a
 // aquestes dades, que venen d'Ianseo, ni a DB — la gestió de
@@ -34,7 +37,7 @@ function _usNorm(s) {
 // ── Construcció de l'índex arquer → participacions ───────────
 function _usBuildIndex() {
   var idx = {};
-  (_csData || []).forEach(function(comp) {
+  (_usAllSeasonsData || []).forEach(function(comp) {
     (comp.divisions || []).forEach(function(div) {
       (div.archers || []).forEach(function(a) {
         if (!a.name) return;
@@ -54,22 +57,37 @@ function _usBuildIndex() {
   return idx;
 }
 
+// Aquesta pàgina és un historial de carrera: a diferència de
+// Competicions > Estadístiques (que mostra una temporada alhora), aquí
+// es combinen TOTES les temporades de CS_SEASONS perquè un arquer vegi
+// totes les seves participacions, no només les de la temporada activa.
+var _usAllSeasonsData = null;
+
+function _usLoadAllSeasons(onDone) {
+  var keys    = CS_SEASON_ORDER.slice();
+  var results = [];
+  var pending = keys.length;
+  if (!pending) { onDone([]); return; }
+  keys.forEach(function(key) {
+    _csFetchSeason(key,
+      function(data) { results = results.concat(data); if (--pending === 0) onDone(results); },
+      function()     { if (--pending === 0) onDone(results); } // una temporada caiguda no bloqueja la resta
+    );
+  });
+}
+
 // ── Inicialització de la pàgina (cridat des de nav.js en entrar-hi) ──
 function usInit() {
   var content = document.getElementById('usContent');
   if (!content) return;
   if (_usIndex) { _usRenderIdle(); return; }
   content.innerHTML = '<div class="cs-loading">Carregant dades…</div>';
-  _csLoadData(
-    function() {
-      _usIndex = _usBuildIndex();
-      _csGetClubMap(); // omple _csClubMap perquè _csClubLabel() resolgui noms complets
-      _usRenderIdle();
-    },
-    function(err) {
-      content.innerHTML = '<div class="cs-loading cs-error">No s\'han pogut carregar les dades: ' + err.message + '</div>';
-    }
-  );
+  _usLoadAllSeasons(function(all) {
+    _usAllSeasonsData = all;
+    _usIndex = _usBuildIndex();
+    _csGetClubMap(); // omple _csClubMap perquè _csClubLabel() resolgui noms complets
+    _usRenderIdle();
+  });
 }
 
 function _usRenderIdle() {

@@ -1,5 +1,6 @@
 // comp_stats.js – Sub-pàgina d'estadístiques de competicions
-// Dades: docs/competition_stats_full.json (generat per data/fetch_stats.js)
+// Dades: docs/competition_stats_<temporada>.json (generat per
+// data/fetch_stats.js), un fitxer per temporada — veure CS_SEASONS.
 // IMPORTANT: NO a data/ — a Railway hi ha un volum persistent muntat a
 // /app/data (per no perdre fcta.db en cada deploy), que substitueix tot
 // el contingut d'aquell directori pel del volum. Un fitxer estàtic dins
@@ -7,8 +8,22 @@
 // estàticament i no forma part del volum.
 // ──────────────────────────────────────────────────────────────────────
 
-var _csData    = null;   // dades carregades
-var _csLoading = false;
+// ── Temporades ────────────────────────────────────────────
+// Cada temporada és un fitxer independent. La temporada "actual" és la
+// que s'omple en curs (buida fins que hi hagi resultats); les altres
+// són arxiu històric, de només lectura. Per començar-ne una de nova:
+// afegir una entrada aquí + fer que data/fetch_stats.js hi escrigui.
+var CS_SEASONS = {
+  '2026-27': { label: 'Temporada 2026/2027', file: 'docs/competition_stats_2026-27.json' },
+  '2025-26': { label: 'Temporada 2025/2026', file: 'docs/competition_stats_2025-26.json' }
+};
+var CS_SEASON_ORDER   = ['2026-27', '2025-26']; // més nova primer
+var CS_CURRENT_SEASON = '2026-27';
+
+var _csActiveSeason = CS_CURRENT_SEASON;
+var _csSeasonCache  = {};  // { seasonKey: dades } — caché per temporada, un cop carregada
+var _csData    = null;     // dades de la temporada ACTIVA (la resta del fitxer hi treballa igual que abans)
+var _csLoading = {};       // { seasonKey: bool }
 var _csClub    = 'all';  // filtre actiu de club
 var _csType    = 'all';  // filtre actiu de disciplina
 
@@ -202,17 +217,21 @@ function setCompTab(tab, btn) {
   }
 }
 
-// ── Càrrega de dades (compartida amb js/user_stats.js) ──────
-// _csData és global i es reaprofita entre pàgines: qui el demani
-// primer el carrega; l'altra pàgina el troba ja en memòria.
-var _csDataCbs = []; // callbacks pendents mentre _csLoading és true
-function _csLoadData(onSuccess, onError) {
-  if (_csData) { onSuccess(_csData); return; }
-  _csDataCbs.push({ ok: onSuccess, err: onError });
-  if (_csLoading) return;
-  _csLoading = true;
+// ── Càrrega de dades per temporada (compartida amb js/user_stats.js) ──
+// Cada temporada es carrega i es cacheja per separat a _csSeasonCache;
+// user_stats.js en pot demanar vàries alhora (historial complet d'un
+// arquer) sense interferir amb la temporada activa d'aquesta pàgina.
+var _csDataCbs = {}; // { seasonKey: [ {ok,err}, ... ] } — pendents mentre carrega
+function _csFetchSeason(seasonKey, onSuccess, onError) {
+  var season = CS_SEASONS[seasonKey];
+  if (!season) { if (onError) onError(new Error('Temporada desconeguda: ' + seasonKey)); return; }
+  if (_csSeasonCache[seasonKey]) { onSuccess(_csSeasonCache[seasonKey]); return; }
+  if (!_csDataCbs[seasonKey]) _csDataCbs[seasonKey] = [];
+  _csDataCbs[seasonKey].push({ ok: onSuccess, err: onError });
+  if (_csLoading[seasonKey]) return;
+  _csLoading[seasonKey] = true;
 
-  fetch('docs/competition_stats_full.json')
+  fetch(season.file)
     .then(function(r) { return r.json(); })
     .then(function(d) {
       d.forEach(function(c) {
@@ -220,17 +239,31 @@ function _csLoadData(onSuccess, onError) {
           div.name = _csNormDivName(div.name);
         });
       });
-      _csData    = d;
-      _csLoading = false;
-      _csDataCbs.splice(0).forEach(function(cb){ cb.ok(d); });
+      _csSeasonCache[seasonKey] = d;
+      _csLoading[seasonKey] = false;
+      _csDataCbs[seasonKey].splice(0).forEach(function(cb){ cb.ok(d); });
     })
     .catch(function(err) {
-      _csLoading = false;
-      _csDataCbs.splice(0).forEach(function(cb){ if (cb.err) cb.err(err); });
+      _csLoading[seasonKey] = false;
+      _csDataCbs[seasonKey].splice(0).forEach(function(cb){ if (cb.err) cb.err(err); });
     });
 }
 
-// ── Càrrega de dades ────────────────────────────────────────
+// Carrega la temporada ACTIVA d'aquesta pàgina (manté el nom antic
+// perquè la resta del fitxer no ha de canviar).
+function _csLoadData(onSuccess, onError) {
+  _csFetchSeason(_csActiveSeason, function(d) { _csData = d; onSuccess(d); }, onError);
+}
+
+// ── Canvi de temporada ──────────────────────────────────────
+function _csOnSeason(val) {
+  if (!CS_SEASONS[val] || val === _csActiveSeason) return;
+  _csActiveSeason = val;
+  _csData = _csSeasonCache[val] || null;
+  _csInit();
+}
+
+// ── Inicialització ────────────────────────────────────────
 function _csInit() {
   if (_csData) { _csRender(); return; }
   var panel = document.getElementById('compStatsPanel');
@@ -324,8 +357,17 @@ function _csRender() {
       icon + _CS_TYPE_LABELS[t] + '</option>';
   }).join('');
 
+  var seasonOpts = CS_SEASON_ORDER.map(function(s) {
+    return '<option value="' + s + '"' + (_csActiveSeason === s ? ' selected' : '') + '>' +
+      escHtml(CS_SEASONS[s].label) + (s === CS_CURRENT_SEASON ? ' (actual)' : '') + '</option>';
+  }).join('');
+
   panel.innerHTML =
     '<div class="cs-toolbar">' +
+      '<div class="cs-filter-group">' +
+        '<label class="cs-filter-label">📅 Temporada</label>' +
+        '<select id="csSeasonSel" class="cs-select"' + dataAttr('onchange','_csOnSeason',['@val']) + '>' + seasonOpts + '</select>' +
+      '</div>' +
       '<div class="cs-filter-group">' +
         '<label class="cs-filter-label">🏛️ Club</label>' +
         '<select id="csClubSel" class="cs-select"' + dataAttr('onchange','_csOnClub',['@val']) + '>' + clubOpts + '</select>' +
@@ -352,7 +394,9 @@ function _csContent() {
   var data    = _csFilter(_csClub, _csType);
   var content = document.getElementById('csContent');
   if (!data.length) {
-    content.innerHTML = '<div class="cs-empty">Cap dada disponible per a la selecció actual.</div>';
+    content.innerHTML = (!_csData || !_csData.length)
+      ? '<div class="cs-empty">📭 Encara no hi ha resultats de la ' + escHtml(CS_SEASONS[_csActiveSeason].label) + '.<br>Es començaran a mostrar aquí a mesura que es disputin competicions.</div>'
+      : '<div class="cs-empty">Cap dada disponible per a la selecció actual.</div>';
     return;
   }
 
