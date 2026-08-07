@@ -84,6 +84,7 @@
   <link rel="stylesheet" href="css/31-records.css">
   <link rel="stylesheet" href="css/33-regimdisciplinari.css">
   <link rel="stylesheet" href="css/32-nav-hub.css">
+  <link rel="stylesheet" href="css/34-user-stats.css">
 </head>
 <body>
 
@@ -2976,6 +2977,35 @@
 <div class="records-content container" style="display:none"></div>
 </div>
 
+<!-- ESTADÍSTIQUES PER ARQUER -->
+<div id="sEstadArquer" style="display:none">
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+<div class="us-hero">
+  <div class="container">
+    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
+    <div class="us-hero-badge">&#128202; El teu historial</div>
+    <h1>Les Meves<br><em>Estadístiques</em></h1>
+    <p>Cerca el teu nom (o cognoms) i consulta totes les teves participacions i puntuacions a competicions oficials de la FCTA.</p>
+  </div>
+</div>
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+<section class="section" style="background:var(--offwhite)">
+  <div class="container">
+    <div class="us-search-wrap">
+      <div class="us-search-box">
+        <span class="us-search-icon">&#128269;</span>
+        <input type="text" id="usSearchInput" class="us-search-input" placeholder="Escriu el teu cognom… (ex: Pérez)" autocomplete="off"
+          data-oninput="usOnSearchInput" data-oninput-args="[&quot;@val&quot;]"
+          data-onkeydown-enter="usSearchEnter">
+        <button id="usClearBtn" class="us-search-clear" style="display:none" data-onclick="usClearSearch">&#10005;</button>
+      </div>
+      <div id="usSuggestions" class="us-suggestions" style="display:none"></div>
+    </div>
+    <div id="usContent"></div>
+  </div>
+</section>
+</div>
+
 <!-- CALENDARI ESPORTIU -->
 <div id="sCalendari" style="display:none">
 <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
@@ -3059,6 +3089,7 @@
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;social&quot;]">Tirades Socials</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;calendari&quot;]">Calendari Esportiu</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;records&quot;]">R&egrave;cords de Catalunya</a></li>
+          <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;estadarquer&quot;]">Les Meves Estad&iacute;stiques</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;regimdisciplinari&quot;]">R&egrave;gim Disciplinari</a></li>
         </ul>
       </div>
@@ -3343,6 +3374,7 @@
   <script src="js/circulars.js"></script>
   <script src="js/competitions.js"></script>
   <script src="js/comp_stats.js"></script>
+  <script src="js/user_stats.js"></script>
   <script src="js/news.js"></script>
   <script src="js/formations.js"></script>
   <script src="js/tirades.js"></script>

@@ -202,13 +202,15 @@ function setCompTab(tab, btn) {
   }
 }
 
-// ── Càrrega de dades ────────────────────────────────────────
-function _csInit() {
-  if (_csData)    { _csRender(); return; }
+// ── Càrrega de dades (compartida amb js/user_stats.js) ──────
+// _csData és global i es reaprofita entre pàgines: qui el demani
+// primer el carrega; l'altra pàgina el troba ja en memòria.
+var _csDataCbs = []; // callbacks pendents mentre _csLoading és true
+function _csLoadData(onSuccess, onError) {
+  if (_csData) { onSuccess(_csData); return; }
+  _csDataCbs.push({ ok: onSuccess, err: onError });
   if (_csLoading) return;
   _csLoading = true;
-  var panel = document.getElementById('compStatsPanel');
-  panel.innerHTML = '<div class="cs-loading">Carregant estadístiques…</div>';
 
   fetch('docs/competition_stats_full.json')
     .then(function(r) { return r.json(); })
@@ -220,13 +222,26 @@ function _csInit() {
       });
       _csData    = d;
       _csLoading = false;
-      _csRender();
+      _csDataCbs.splice(0).forEach(function(cb){ cb.ok(d); });
     })
     .catch(function(err) {
       _csLoading = false;
+      _csDataCbs.splice(0).forEach(function(cb){ if (cb.err) cb.err(err); });
+    });
+}
+
+// ── Càrrega de dades ────────────────────────────────────────
+function _csInit() {
+  if (_csData) { _csRender(); return; }
+  var panel = document.getElementById('compStatsPanel');
+  panel.innerHTML = '<div class="cs-loading">Carregant estadístiques…</div>';
+  _csLoadData(
+    function() { _csRender(); },
+    function(err) {
       document.getElementById('compStatsPanel').innerHTML =
         '<div class="cs-loading cs-error">No s\'han pogut carregar les dades: ' + err.message + '</div>';
-    });
+    }
+  );
 }
 
 // ── Llista de clubs (normalitzats, sense duplicats) ─────────
@@ -319,6 +334,10 @@ function _csRender() {
         '<label class="cs-filter-label">🏹 Modalitat</label>' +
         '<select id="csTypeSel" class="cs-select"' + dataAttr('onchange','_csOnType',['@val']) + '>' + typeOpts + '</select>' +
       '</div>' +
+    '</div>' +
+    '<div class="cs-personal-cta">' +
+      '<span>👤 Vols veure només les teves puntuacions?</span>' +
+      '<button class="bsm bsm-o"' + dataAttr('onclick','setS',['estadarquer']) + '>📊 Les Meves Estadístiques →</button>' +
     '</div>' +
     '<div id="csContent"></div>';
 
@@ -632,6 +651,14 @@ function _csAllClsFor(type, cat) {
   return Object.keys(set).sort(function(a,b){ return a.length - b.length || a.localeCompare(b,'ca'); });
 }
 
+// El Round 900 (Aire Lliure) usa una escala de puntuació pròpia (màx.
+// 900) diferent de la resta de tirades d'aire lliure (WA 720/1440):
+// no és comparable en un mateix gràfic de puntuació màxima cronològic
+// (sí que compta per a les altres estadístiques, com participació).
+function _csScoreComparable(c) {
+  return !(c.type === 'al' && /round\s*900/i.test(c.title || ''));
+}
+
 // ── Gràfic principal ────────────────────────────────────────
 function _csDivChart(data) {
   var types = (_csType === 'all') ? ['al','sala','camp','trd'] : [_csType];
@@ -639,7 +666,7 @@ function _csDivChart(data) {
   var blocks = types.map(function(t) {
     // Competicions d'aquest tipus amb dades, ordenades cronològicament
     var comps = data
-      .filter(function(c){ return c.type === t && c.fDivisions && c.fDivisions.length; })
+      .filter(function(c){ return c.type === t && c.fDivisions && c.fDivisions.length && _csScoreComparable(c); })
       .slice().sort(function(a,b){ return a.dateISO.localeCompare(b.dateISO); });
     if (!comps.length) return '';
 

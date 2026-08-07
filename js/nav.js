@@ -32,7 +32,8 @@ var _SEO_TITLES = {
   calendari:     'Calendari Esportiu | FCTA',
   medaller:      'Medaller | FCTA',
   records:       'Rècords de Catalunya | FCTA',
-  regimdisciplinari: 'Règim Disciplinari | FCTA'
+  regimdisciplinari: 'Règim Disciplinari | FCTA',
+  estadarquer:   'Les Meves Estadístiques | FCTA'
 };
 
 function setS(sec, _noHash) {
@@ -85,6 +86,9 @@ function setS(sec, _noHash) {
   // Section-specific callbacks
   if (sec === 'records') {
     setTimeout(function() { if (typeof initRecordsPage === 'function') initRecordsPage(); }, 50);
+  }
+  if (sec === 'estadarquer') {
+    setTimeout(function() { if (typeof usInit === 'function') usInit(); }, 50);
   }
 }
 
