@@ -853,7 +853,7 @@ function renderDiscTab(tab) {
 
   switch(tab) {
     case 'info':     content.innerHTML = renderDiscInfo(d);        break;
-    case 'lliga':    content.innerHTML = renderDiscLliga(d);       break;
+    case 'lliga':    content.innerHTML = renderDiscLliga(_discActiva); break;
     case 'resultats':content.innerHTML = renderDiscResultats(d);   break;
     case 'records':  content.innerHTML = renderDiscRecordsFromDB(_discActiva); break;
     case 'docs':     content.innerHTML = renderDiscDocs(d);        break;
@@ -912,13 +912,14 @@ function renderDiscInfo(d) {
   return html;
 }
 
-function renderDiscLliga(d) {
-  if (!d.lligues || !d.lligues.length) {
+function renderDiscLliga(discKey) {
+  var lligues = (DB.lligues || []).filter(function(l){ return l.disc === discKey; });
+  if (!lligues.length) {
     return '<div class="disc-empty">No hi ha dades de lliga per a aquesta disciplina.</div>';
   }
 
   var html = '';
-  d.lligues.forEach(function(ll) {
+  lligues.forEach(function(ll) {
     // Construeix els botons de rànquings
     var ranqBtns = '';
     if (ll.ranquingUrl && ll.ranquingUrl !== '#') {

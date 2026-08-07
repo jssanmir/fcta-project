@@ -150,7 +150,7 @@ function renderAdmRecords(container) {
     + '</div>';
 
   // Llistat de rècords filtrats
-  var recs = (DB.records||[]).filter(function(r){ return r.disc === _admRecDisc; });
+  var recs = admSortByDateDesc((DB.records||[]).filter(function(r){ return r.disc === _admRecDisc; }),function(r){return admDmyKey(r.data);});
   html += '<div style="font-size:.78rem;color:var(--gray);margin-bottom:.4rem">'
     + recs.length + ' rècords per ' + (ADM_REC_DISCS.find(function(d){return d.val===_admRecDisc;}) || {lbl:_admRecDisc}).lbl + '</div>';
 
@@ -185,8 +185,8 @@ function renderAdmRecords(container) {
   }
 
   // ─ Secció 2: Sol·licituds pendents ────────────────────────
-  var pend = (DB.recordsSolicituds || []).filter(function(r){ return r.status === 'pend'; });
-  var aprov = (DB.recordsSolicituds || []).filter(function(r){ return r.status !== 'pend'; });
+  var pend = admSortByDateDesc((DB.recordsSolicituds || []).filter(function(r){ return r.status === 'pend'; }),function(r){return admIsoKey(r.data);});
+  var aprov = admSortByDateDesc((DB.recordsSolicituds || []).filter(function(r){ return r.status !== 'pend'; }),function(r){return admIsoKey(r.data);});
 
   html += '<div class="adm-st" style="margin-top:1.5rem">Sol·licituds d\'homologació pendents'
     + (pend.length ? ' <span class="crud-count-badge">' + pend.length + '</span>' : '')

@@ -22,7 +22,6 @@
 .lic-payment{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--gray);margin-top:.5rem}
 
 .lic-novelty{background:var(--navy-dark);border-radius:10px;padding:2rem;margin-bottom:2.5rem;position:relative;overflow:hidden}
-.lic-novelty::before{content:'NOU';position:absolute;top:1rem;right:1rem;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:900;letter-spacing:1px;padding:.2rem .65rem;border-radius:20px}
 .lic-novelty h3{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:900;color:var(--gold);text-transform:uppercase;margin-bottom:1.25rem}
 .lic-types{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:560px){.lic-types{grid-template-columns:1fr}}
@@ -51,3 +50,25 @@
 
 .lic-back-btn{display:inline-flex;align-items:center;gap:.5rem;background:none;border:none;color:rgba(255,255,255,.7);font-family:'Barlow',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;padding:0;transition:color .2s;margin-bottom:1.5rem}
 .lic-back-btn:hover{color:var(--gold)}
+
+/* ── Taula de tarifes ─────────────────────────────────────── */
+.lic-tarifes{background:white;border-radius:10px;padding:1.75rem;margin-bottom:2.5rem;box-shadow:0 2px 8px rgba(27,58,107,.08)}
+.lic-tarifes h3{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;color:var(--navy-dark);text-transform:uppercase;margin-bottom:.3rem;padding-bottom:.6rem;border-bottom:2px solid var(--lightgray)}
+.lic-tarifes-note{font-size:.82rem;color:var(--gray);margin:.9rem 0 1.25rem;line-height:1.6}
+.lic-tarifes-note strong{color:var(--navy-dark)}
+.lic-table-wrap{overflow-x:auto;border-radius:var(--r-lg);border:1px solid var(--lightgray)}
+.lic-table{width:100%;border-collapse:collapse;font-size:.88rem;background:#fff}
+.lic-table thead th{background:var(--navy);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;padding:.6rem .85rem;text-align:right;white-space:nowrap}
+.lic-table thead th:first-child{text-align:left}
+.lic-table tbody tr{border-bottom:1px solid var(--lightgray)}
+.lic-table tbody tr:last-child{border-bottom:none}
+.lic-table tbody tr:hover{background:var(--offwhite)}
+.lic-table tbody td{padding:.55rem .85rem;vertical-align:middle;text-align:right}
+.lic-table tbody td:first-child{text-align:left}
+.lic-table tr.lic-group-row td{background:var(--offwhite);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--navy);padding:.4rem .85rem}
+.lic-table td.lic-price{font-weight:700;color:var(--navy-dark);font-variant-numeric:tabular-nums}
+.lic-table td.lic-nodata{color:var(--gray)}
+.lic-table small{display:block;font-weight:400;color:var(--gray);font-size:.74rem;margin-top:.15rem}
+.lic-tarifes-foot{margin-top:1.25rem;padding:1rem 1.1rem;background:var(--offwhite);border-radius:8px;font-size:.8rem;color:var(--gray);line-height:1.7}
+.lic-tarifes-foot strong{color:var(--navy-dark)}
+.lic-tarifes-cta{margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.75rem}

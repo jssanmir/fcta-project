@@ -137,6 +137,46 @@ function confirmDel(name,fn){
   if(confirm('Eliminar "'+name+'"?\nAquesta acci\u00f3 no es pot desfer.')){ fn(); }
 }
 
+// \u2500\u2500 ORDENACI\u00d3 PER DATA (llistes admin: m\u00e9s recent primer) \u2500\u2500
+var ADM_MESOS={gen:0,gener:0,feb:1,febrer:1,mar:2,marc:2,'mar\u00e7':2,abr:3,abril:3,
+  mai:4,maig:4,jun:5,juny:5,jul:6,juliol:6,ago:7,agost:7,
+  set:8,setembre:8,oct:9,octubre:9,nov:10,novembre:10,des:11,desembre:11};
+// Extreu una data aproximada d'un text lliure ("14-15 juny 2026", "24 mai 2026"\u2026)
+function admDateKey(str){
+  if(!str) return -Infinity;
+  var s=String(str).toLowerCase();
+  var yearM=s.match(/(19|20)\d{2}/);
+  if(!yearM) return -Infinity;
+  var year=parseInt(yearM[0],10);
+  var monthIdx=0;
+  for(var key in ADM_MESOS){
+    if(s.indexOf(key)!==-1){ monthIdx=ADM_MESOS[key]; break; }
+  }
+  var dayM=s.match(/\b(\d{1,2})\b/);
+  var day=dayM?parseInt(dayM[1],10):1;
+  if(day<1||day>31) day=1;
+  return new Date(year,monthIdx,day).getTime();
+}
+// Data en format ISO (YYYY-MM-DD, p.ex. valor d'un <input type=date>)
+function admIsoKey(str){
+  if(!str) return -Infinity;
+  var t=new Date(str).getTime();
+  return isNaN(t)?-Infinity:t;
+}
+// Data en format DD/MM/AAAA
+function admDmyKey(str){
+  if(!str) return -Infinity;
+  var p=String(str).split('/');
+  if(p.length!==3) return admDateKey(str);
+  var d=parseInt(p[0],10),m=parseInt(p[1],10)-1,y=parseInt(p[2],10);
+  if(isNaN(d)||isNaN(m)||isNaN(y)) return -Infinity;
+  return new Date(y,m,d).getTime();
+}
+// Retorna una c\u00f2pia de l'array ordenada de m\u00e9s recent a m\u00e9s antic segons keyFn
+function admSortByDateDesc(arr,keyFn){
+  return (arr||[]).slice().sort(function(a,b){ return keyFn(b)-keyFn(a); });
+}
+
 // ── TAB RENDERER ───────────────────────────────────────────
 function renderATab(tab){
   if(!admSession){ return; }
@@ -180,7 +220,7 @@ function renderAdmCirculars(b){
     +'</div>'
     +'<div class="adm-st">Circulars publicades <span class="crud-count-badge">'+DB.circulars.length+'</span></div>'
     +'<div class="crud-list" id="circCrudList">'
-    +DB.circulars.map(function(c,i){
+    +admSortByDateDesc(DB.circulars,function(c){return admDateKey(c.day+' '+c.mon+' '+c.year);}).map(function(c,i){
       return '<div class="crud-item" id="citem-'+c.id+'">'
         +'<div class="crud-item-info">'
         +'<div class="crud-item-title">'+escHtml(c.num)+' &mdash; '+escHtml(c.title)+'</div>'
@@ -300,7 +340,7 @@ function renderAdmNews(b){
     +'</div>'
     +'<div class="adm-st">Not\u00edcies <span class="crud-count-badge">'+DB.news.length+'</span></div>'
     +'<div class="crud-list" id="newsCrudList">'
-    +DB.news.map(function(n){
+    +admSortByDateDesc(DB.news,function(n){return admDateKey(n.date);}).map(function(n){
       return '<div class="crud-item" id="nitem-'+n.id+'">'
         +'<div class="crud-item-info">'
         +'<div class="crud-item-title">'+escHtml(n.title)+'</div>'
@@ -411,7 +451,7 @@ function renderAdmComp(b){
     +'</div>'
     +'<div class="adm-st">Competicions <span class="crud-count-badge">'+DB.competitions.length+'</span></div>'
     +'<div class="crud-list">'
-    +DB.competitions.map(function(c){
+    +admSortByDateDesc(DB.competitions,function(c){return c.dateISO?admIsoKey(c.dateISO):admDateKey(c.date);}).map(function(c){
       var sL={open:'Obertes',soon:'Pr\u00f2ximament',closed:'Tancat'};
       return '<div class="crud-item" id="compitem-'+c.id+'">'
         +'<div class="crud-item-info">'
@@ -520,7 +560,7 @@ function renderAdmForm(b){
     +'</div>'
     +'<div class="adm-st">Cursos <span class="crud-count-badge">'+DB.formations.length+'</span></div>'
     +'<div class="crud-list">'
-    +DB.formations.map(function(f){
+    +admSortByDateDesc(DB.formations,function(f){return admDateKey(f.dates);}).map(function(f){
       return '<div class="crud-item" id="fitem-'+f.id+'">'
         +'<div class="crud-item-info">'
         +'<div class="crud-item-title">'+escHtml(f.icon)+' '+escHtml(f.title)+'</div>'
@@ -601,8 +641,8 @@ function crudDelForm(id,name){
 
 // ── TIRADES ADMIN ──────────────────────────────────────────
 function renderAdmTirades(b){
-  var pend=(DB.tirades||[]).filter(function(t){return t.status==='pend';});
-  var valides=(DB.tirades||[]).filter(function(t){return t.status==='valid';});
+  var pend=admSortByDateDesc((DB.tirades||[]).filter(function(t){return t.status==='pend';}),function(t){return admIsoKey(t.data);});
+  var valides=admSortByDateDesc((DB.tirades||[]).filter(function(t){return t.status==='valid';}),function(t){return admIsoKey(t.data);});
   var tLbl=function(t){return(tipusLabels&&tipusLabels[t.tipus])?tipusLabels[t.tipus].lbl:t.tipus;};
   b.innerHTML=
     '<div class="adm-st">Tirades pendents <span class="crud-count-badge">'+pend.length+'</span></div>'
