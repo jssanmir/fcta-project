@@ -5,6 +5,20 @@
 var _CIRC_MON = {GEN:1,FEB:2,MAR:3,ABR:4,MAI:5,JUN:6,JUL:7,AGO:8,SET:9,OCT:10,NOV:11,DES:12};
 function _circVal(c){ return (c.year||0)*10000 + (_CIRC_MON[c.mon]||0)*100 + (c.day||0); }
 
+// ── Publicació programada ───────────────────────────────────
+// c.pubDate (ISO YYYY-MM-DD, opcional): si no hi és, es publica de
+// seguida (compatible amb totes les circulars existents). Si hi és,
+// la circular queda amagada del públic fins que arribi aquesta data.
+// No cal cap tasca programada al servidor: es recalcula sol a cada
+// render (igual que resolveStatus() fa amb les competicions), tant en
+// carregar la pàgina com en cada sincronització de fons (persist.js).
+function todayISO(){
+  var d=new Date();
+  var m=d.getMonth()+1, day=d.getDate();
+  return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(day<10?'0':'')+day;
+}
+function circIsPublished(c){ return !c.pubDate || c.pubDate <= todayISO(); }
+
 // CIRCULARS
 // ============================================================
 function filtCirc(type,btn){
@@ -19,7 +33,8 @@ function goToJutCirculars(){
   setS('circulars');
 }
 function renderCirc(f){
-  var data = (f==='all' ? DB.circulars : DB.circulars.filter(function(c){return c.type===f}))
+  var pub = DB.circulars.filter(circIsPublished);
+  var data = (f==='all' ? pub : pub.filter(function(c){return c.type===f}))
     .slice().sort(function(a,b){ return _circVal(b) - _circVal(a); });
   document.getElementById('circGrid').innerHTML = data.map(function(c){
     var hasPdfContent = PDF_CONTENT[c.num] !== undefined;

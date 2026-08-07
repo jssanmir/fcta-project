@@ -37,8 +37,11 @@ function renderComp(f) {
     var acts = '';
 
     if (status === 'open') {
+      if (c.inscripcio && c.inscripcio !== '#') {
+        acts += '<a class="bsm bsm-o" href="' + c.inscripcio + '" target="_blank">&#128221; Inscriu-te</a>';
+      }
       if (c.url && c.url !== '#' && c.url.indexOf('#news:') !== 0) {
-        acts = '<a class="bsm bsm-o" href="' + c.url + '" target="_blank">&#128196; Més info</a>';
+        acts += '<a class="bsm ' + (c.inscripcio && c.inscripcio !== '#' ? 'bsm-n' : 'bsm-o') + '" href="' + c.url + '" target="_blank">&#128196; Més info</a>';
       }
     } else if (status === 'soon') {
       acts = '<button class="bsm bsm-o"' + dataAttr('onclick','toast',["T'avisarem quan s'obrin les inscripcions!",'🔔']) + '>&#128276; Avisa\'m</button>';

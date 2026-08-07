@@ -222,6 +222,9 @@ function calOpenModal(ids) {
     if (gcalUrl) {
       html += '<a href="' + gcalUrl + '" target="_blank" rel="noopener" class="cal-gcal-btn">&#128197; Afegir a Google Calendar</a>';
     }
+    if (c.inscripcio && c.inscripcio !== '#') {
+      html += '<a href="' + escHtml(c.inscripcio) + '" target="_blank" rel="noopener" class="cal-modal-link">&#128221; Inscriu-te</a>';
+    }
     if (c.url && c.url !== '#') {
       html += '<a href="' + escHtml(c.url) + '" target="_blank" rel="noopener" class="cal-modal-link">&#128196; Més informació</a>';
     }

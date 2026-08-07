@@ -62,34 +62,38 @@ function submitRecordForm() {
     return;
   }
 
-  var sol = {
-    id:         Date.now(),
-    disc:       disc,
-    estil:      estil,
-    cat:        cat + ' ' + sexe,
-    marca:      marca,
-    atleta:     atleta,
-    club:       club,
-    data:       data,
-    competicio: comp,
-    email:      email,
-    obs:        obs,
-    status:     'pend',
-    creat:      new Date().toLocaleDateString('ca-ES')
-  };
+  var btn = document.querySelector('#recordFormOverlay .a-sub, #recordFormOverlay button[data-onclick="submitRecordForm"]');
+  if (btn) btn.disabled = true;
 
-  DB.recordsSolicituds.unshift(sol);
-  dbSave();
-  updatePendDot();
+  // Formulari públic: no requereix sessió d'admin, per això NO passa
+  // per dbSave() (que és un no-op sense token) sinó per un endpoint
+  // dedicat que només permet afegir una sol·licitud pendent.
+  fetch('/api/records/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      disc: disc, estil: estil, cat: cat + ' ' + sexe, marca: marca, atleta: atleta,
+      club: club, data: data, competicio: comp, email: email, obs: obs
+    })
+  })
+  .then(function(res){ return res.json().then(function(d){ return {ok:res.ok, data:d}; }); })
+  .then(function(r){
+    if (btn) btn.disabled = false;
+    if (!r.ok) { toast(r.data.error || 'Error en enviar la sol·licitud', '⚠️'); return; }
 
-  // Reset formulari
-  ['rf_marca','rf_atleta','rf_club','rf_competicio','rf_email','rf_obs'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.value = '';
+    // Reset formulari
+    ['rf_marca','rf_atleta','rf_club','rf_competicio','rf_email','rf_obs'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+
+    closeRecordForm();
+    toast('Sol·licitud enviada! Serà revisada per l\'administrador.', '🏆');
+  })
+  .catch(function(){
+    if (btn) btn.disabled = false;
+    toast('Error de connexió en enviar la sol·licitud', '⚠️');
   });
-
-  closeRecordForm();
-  toast('Sol·licitud enviada! Serà revisada per l\'administrador.', '🏆');
 }
 
 // ── Opcions pels selects d'admin ───────────────────────────

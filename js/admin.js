@@ -18,8 +18,15 @@ function admDoBackup() {
 }
 
 // ── ADMIN PANEL ────────────────────────────────────────────
+// _admCloseTimer: si es tanca i es torna a obrir el panell abans que
+// acabi l'animació de sortida (400ms), cal cancel·lar el setTimeout
+// pendent — si no, amaga l'overlay (display:none) 400ms després
+// d'haver-lo tornat a obrir, deixant-lo invisible encara que
+// admPanel ja tingui la classe 'open'.
+var _admCloseTimer = null;
 function openAdm(){
   if(!admSession){ openAdmin(); return; }
+  if(_admCloseTimer){ clearTimeout(_admCloseTimer); _admCloseTimer=null; }
   document.getElementById('admOverlay').style.display='flex';
   setTimeout(function(){ document.getElementById('admPanel').classList.add('open'); },10);
   var badge=document.getElementById('admUserBadge');
@@ -28,7 +35,8 @@ function openAdm(){
 }
 function closeAdm(){
   document.getElementById('admPanel').classList.remove('open');
-  setTimeout(function(){ document.getElementById('admOverlay').style.display='none'; },400);
+  if(_admCloseTimer) clearTimeout(_admCloseTimer);
+  _admCloseTimer=setTimeout(function(){ document.getElementById('admOverlay').style.display='none'; _admCloseTimer=null; },400);
 }
 function closeAdmOut(e){ if(e.target===document.getElementById('admOverlay'))closeAdm(); }
 function setATab(tab,btn){
@@ -215,12 +223,15 @@ function renderAdmCirculars(b){
     +mkField('Data','ac_dt','date','','')
     +mkUploadField('PDF de la circular','ac_u','','pdf')
     +'</div>'
+    +mkField('Data de publicaci\u00f3 (opcional)','ac_pub','date','','')
+    +'<div style="font-size:.78rem;color:var(--gray);margin:-.6rem 0 .75rem">Deixa-ho buit per publicar-la de seguida. Si hi poses una data futura, la circular es mant\u00e9 oculta al p\u00fablic fins que arribi.</div>'
     +mkField('Descripci\u00f3 breu','ac_d','textarea','','Resum del contingut de la circular')
     +'<button class="a-sub success"'+dataAttr('onclick','crudAddCirc',[])+'>&#10010; Publicar Circular</button>'
     +'</div>'
     +'<div class="adm-st">Circulars publicades <span class="crud-count-badge">'+DB.circulars.length+'</span></div>'
     +'<div class="crud-list" id="circCrudList">'
     +admSortByDateDesc(DB.circulars,function(c){return admDateKey(c.day+' '+c.mon+' '+c.year);}).map(function(c,i){
+      var scheduled = c.pubDate && !circIsPublished(c);
       return '<div class="crud-item" id="citem-'+c.id+'">'
         +'<div class="crud-item-info">'
         +'<div class="crud-item-title">'+escHtml(c.num)+' &mdash; '+escHtml(c.title)+'</div>'
@@ -228,6 +239,7 @@ function renderAdmCirculars(b){
         +(c.url&&c.url!=='#'&&!c.url.includes('circulars/?')
           ?'<span style="color:#059669">&#10003; URL</span>'
           :'<span style="color:#dc2626">&#10005; Sense URL directa</span>')
+        +(scheduled?'<span style="color:#b45309">&#128337; Programada: '+escHtml(genFmtDate(c.pubDate))+'</span>':'')
         +'</span></div>'
         +'</div>'
         +'<div class="crud-item-acts">'
@@ -239,17 +251,17 @@ function renderAdmCirculars(b){
     +'</div>';
 }
 function crudAddCirc(){
-  var t=fv('ac_t'),n=fv('ac_n'),c=fv('ac_c'),d=fv('ac_d'),u=fv('ac_u'),dt=fv('ac_dt');
+  var t=fv('ac_t'),n=fv('ac_n'),c=fv('ac_c'),d=fv('ac_d'),u=fv('ac_u'),dt=fv('ac_dt'),pub=fv('ac_pub');
   if(!t||!n){toast('Omple el t\u00edtol i el n\u00famero','&#9888;&#65039;');return;}
   var MONS=['GEN','FEB','MAR','ABR','MAI','JUN','JUL','AGO','SET','OCT','NOV','DES'];
   var date=dt?new Date(dt):new Date();
   DB.circulars.unshift({id:Date.now(),type:c||'fed',num:n,title:t,desc:d,
-    day:date.getDate(),mon:MONS[date.getMonth()],year:date.getFullYear(),url:u||'#'});
+    day:date.getDate(),mon:MONS[date.getMonth()],year:date.getFullYear(),url:u||'#',pubDate:pub||''});
   dbSave();
   admLog('CIRC_ADD', n+' – '+t);
   renderCirc('all');
   renderAdmCirculars(document.getElementById('admBody'));
-  toast('Circular "'+n+'" publicada!','&#9989;');
+  toast(pub&&pub>todayISO()?'Circular "'+n+'" programada per al '+genFmtDate(pub)+'!':'Circular "'+n+'" publicada!','&#9989;');
 }
 function crudEditCirc(id){
   var c=DB.circulars.find(function(x){return x.id===id;});
@@ -279,6 +291,8 @@ function crudEditCirc(id){
     +mkField('Any','ec_yr_'+id,'number',c.year,'')
     +'</div>'
     +mkUploadField('PDF de la circular','ec_u_'+id,c.url&&c.url!=='#'?c.url:'','pdf')
+    +mkField('Data de publicaci\u00f3 (opcional)','ec_pub_'+id,'date',c.pubDate||'','')
+    +'<div style="font-size:.78rem;color:var(--gray);margin:-.6rem 0 .75rem">Deixa-ho buit per publicar-la de seguida.</div>'
     +mkField('Descripci\u00f3','ec_d_'+id,'textarea',c.desc,'')
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
     +'<button class="a-sub success"'+dataAttr('onclick','crudSaveCirc',[id])+'>&#10003; Desar</button>'
@@ -298,6 +312,7 @@ function crudSaveCirc(id){
   var u=fv('ec_u_'+id); c.url=u||'#';
   var day=parseInt(fv('ec_day_'+id)); if(!isNaN(day)&&day>0&&day<=31) c.day=day;
   var yr=parseInt(fv('ec_yr_'+id)); if(!isNaN(yr)&&yr>2000) c.year=yr;
+  c.pubDate=fv('ec_pub_'+id)||'';
   dbSave();
   renderCirc('all');
   renderAdmCirculars(document.getElementById('admBody'));
@@ -427,6 +442,17 @@ function crudDelNews(id,name){
 }
 
 // ── COMPETICIONS CRUD ──────────────────────────────────────
+// La competici\u00f3 \u00e9s el centre de tot: en lloc de repetir el n\u00famero de
+// circular a m\u00e0 (amb risc d'errors de picada), es tria d'una llista
+// real de circulars existents.
+function _compCircOptions(){
+  var opts=[{val:'',lbl:'\u2014 Cap \u2014'}];
+  admSortByDateDesc(DB.circulars,function(c){return admDateKey(c.day+' '+c.mon+' '+c.year);}).forEach(function(c){
+    var t=c.title&&c.title.length>40?c.title.substring(0,40)+'\u2026':(c.title||'');
+    opts.push({val:c.num, lbl:c.num+' \u2014 '+t});
+  });
+  return opts;
+}
 function renderAdmComp(b){
   var tipusOpts=[{val:'al',lbl:'Aire Lliure'},{val:'sala',lbl:'Sala'},{val:'camp',lbl:'Camp'},{val:'trd',lbl:'3D/Bosc'}];
   var estatOpts=[{val:'open',lbl:'Inscripcions obertes'},{val:'soon',lbl:'Pr\u00f2ximament'},{val:'closed',lbl:'Tancat'}];
@@ -443,8 +469,12 @@ function renderAdmComp(b){
     +mkField('Seu','acomp_loc','text','','Localitat')
     +'</div>'
     +'<div class="af-row">'
-    +mkField('Circular (CIRC-XXXX)','acomp_circ','text','','CIRC-XXXX')
-    +mkField('URL m\u00e9s info','acomp_url','url','','https://...')
+    +mkField('Circular vinculada','acomp_circ','select','','',_compCircOptions())
+    +mkField('ID Ianseo','acomp_ianseo','text','','28416')
+    +'</div>'
+    +'<div class="af-row">'
+    +mkField('URL inscripcions','acomp_insc','url','','https://...')
+    +mkField('URL m\u00e9s info / resultats','acomp_url','url','','https://...')
     +'</div>'
     +mkField('Disciplina (text lliure)','acomp_disc','text','','Ex: Aire Lliure, Tir de Camp...')
     +'<button class="a-sub success"'+dataAttr('onclick','crudAddComp',[])+'>&#10010; Publicar Competici\u00f3</button>'
@@ -456,7 +486,11 @@ function renderAdmComp(b){
       return '<div class="crud-item" id="compitem-'+c.id+'">'
         +'<div class="crud-item-info">'
         +'<div class="crud-item-title">'+escHtml(c.title)+'</div>'
-        +'<div class="crud-item-meta"><span>'+escHtml(c.date)+'</span><span>'+escHtml(c.loc)+'</span><span>'+sL[c.status]+'</span></div>'
+        +'<div class="crud-item-meta"><span>'+escHtml(c.date)+'</span><span>'+escHtml(c.loc)+'</span><span>'+sL[c.status]+'</span>'
+        +(c.circ&&c.circ!=='#'?'<span style="color:#059669">&#128203; '+escHtml(c.circ)+'</span>':'')
+        +(c.ianseo?'<span style="color:#059669">&#128200; Ianseo</span>':'')
+        +(c.inscripcio&&c.inscripcio!=='#'?'<span style="color:#059669">&#128221; Inscripcions</span>':'')
+        +'</div>'
         +'</div>'
         +'<div class="crud-item-acts">'
         +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditComp',[c.id])+'>&#9998;</button>'
@@ -472,7 +506,8 @@ function crudAddComp(){
     title:t,disc:fv('acomp_disc')||fv('acomp_tp'),
     date:fv('acomp_dt'),loc:fv('acomp_loc'),
     status:fv('acomp_st')||'soon',
-    circ:fv('acomp_circ'),url:fv('acomp_url')||'#'});
+    circ:fv('acomp_circ'),url:fv('acomp_url')||'#',
+    inscripcio:fv('acomp_insc')||'', ianseo:fv('acomp_ianseo')||''});
   dbSave();
   admLog('COMP_ADD', t);
   renderComp('all');
@@ -502,8 +537,12 @@ function crudEditComp(id){
     +mkField('Seu','ec_comp_loc_'+id,'text',c.loc,'')
     +'</div>'
     +'<div class="af-row">'
-    +mkField('Circular','ec_comp_circ_'+id,'text',c.circ,'')
-    +mkField('URL','ec_comp_url_'+id,'url',c.url&&c.url!=='#'?c.url:'','')
+    +mkField('Circular vinculada','ec_comp_circ_'+id,'select',c.circ,'',_compCircOptions())
+    +mkField('ID Ianseo','ec_comp_ianseo_'+id,'text',c.ianseo||'','28416')
+    +'</div>'
+    +'<div class="af-row">'
+    +mkField('URL inscripcions','ec_comp_insc_'+id,'url',c.inscripcio&&c.inscripcio!=='#'?c.inscripcio:'','https://...')
+    +mkField('URL més info / resultats','ec_comp_url_'+id,'url',c.url&&c.url!=='#'?c.url:'','')
     +'</div>'
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
     +'<button class="a-sub success"'+dataAttr('onclick','crudSaveComp',[id])+'>&#10003; Desar</button>'
@@ -524,6 +563,8 @@ function crudSaveComp(id){
   c.date=fv('ec_comp_dt_'+id)||c.date;
   c.loc=fv('ec_comp_loc_'+id)||c.loc;
   c.circ=fv('ec_comp_circ_'+id); c.url=fv('ec_comp_url_'+id)||'#';
+  c.inscripcio=fv('ec_comp_insc_'+id)||'';
+  c.ianseo=fv('ec_comp_ianseo_'+id)||'';
   dbSave();
   renderComp('all');
   renderAdmComp(document.getElementById('admBody'));

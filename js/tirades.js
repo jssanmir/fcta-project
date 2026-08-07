@@ -159,17 +159,32 @@ function submitTirada(){
   var tel=(document.getElementById('nt_tel')||{}).value||'';
   var img=(document.getElementById('nt_img')||{}).value||'';
   var insc=(document.getElementById('nt_inscripcio')||{}).value||'';
-  var months=['gener','febrer','mar\u00e7','abril','maig','juny','juliol','agost','setembre','octubre','novembre','desembre'];
-  var parts=data.split('-');
-  var dataStr=(parts[2]?parseInt(parts[2]):'')+' de '+(months[parseInt(parts[1])-1]||'')+' de '+(parts[0]||'');
-  DB.tirades.unshift({id:Date.now(),nom:nom.trim(),club:club,tipus:tipus,data:data,dataStr:dataStr,hora:hora,lloc:lloc,desc:desc.trim(),email:email.trim(),tel:tel,inscripcio:insc,img:img,status:'pend'});
-  dbSave();
-  updatePendDot();
-  toast('Tirada enviada! Ser\u00e0 visible un cop validada per l\'administrador (m\u00e0x. 48h).','&#9989;');
-  ['nt_nom','nt_lloc','nt_desc','nt_email','nt_tel','nt_img','nt_inscripcio','nt_hora'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
-  ['nt_club','nt_tipus'].forEach(function(id){var el=document.getElementById(id);if(el)el.selectedIndex=0;});
-  document.querySelectorAll('.stab').forEach(function(b){b.classList.remove('act')});
-  var tabs=document.querySelectorAll('.stab');if(tabs[0])tabs[0].classList.add('act');
-  var t=document.getElementById('sSocialTauler');var n=document.getElementById('sSocialNova');
-  if(t)t.style.display='block';if(n)n.style.display='none';
+
+  var btn = document.querySelector('#sSocialNova .a-sub, #sSocialNova button[data-onclick="submitTirada"]');
+  if (btn) btn.disabled = true;
+
+  // Formulari p\u00fablic: no requereix sessi\u00f3 d'admin, per aix\u00f2 NO passa
+  // per dbSave() (que \u00e9s un no-op sense token) sin\u00f3 per un endpoint
+  // dedicat que nom\u00e9s permet afegir una tirada pendent.
+  fetch('/api/tirades/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({nom:nom.trim(),club:club,tipus:tipus,data:data,hora:hora,lloc:lloc,desc:desc.trim(),email:email.trim(),tel:tel,img:img,inscripcio:insc})
+  })
+  .then(function(res){ return res.json().then(function(d){ return {ok:res.ok, data:d}; }); })
+  .then(function(r){
+    if (btn) btn.disabled = false;
+    if (!r.ok) { toast(r.data.error || 'Error en enviar la tirada','\u26a0\ufe0f'); return; }
+    toast('Tirada enviada! Ser\u00e0 visible un cop validada per l\'administrador (m\u00e0x. 48h).','&#9989;');
+    ['nt_nom','nt_lloc','nt_desc','nt_email','nt_tel','nt_img','nt_inscripcio','nt_hora'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+    ['nt_club','nt_tipus'].forEach(function(id){var el=document.getElementById(id);if(el)el.selectedIndex=0;});
+    document.querySelectorAll('.stab').forEach(function(b){b.classList.remove('act')});
+    var tabs=document.querySelectorAll('.stab');if(tabs[0])tabs[0].classList.add('act');
+    var t=document.getElementById('sSocialTauler');var n=document.getElementById('sSocialNova');
+    if(t)t.style.display='block';if(n)n.style.display='none';
+  })
+  .catch(function(){
+    if (btn) btn.disabled = false;
+    toast('Error de connexi\u00f3 en enviar la tirada','\u26a0\ufe0f');
+  });
 }

@@ -461,6 +461,24 @@ function detectImageMime(buf) {
   return null;
 }
 
+// ── Sanititza text lliure vingut d'un formulari públic ──────
+function sanitizeStr(v, maxLen) {
+  return String(v == null ? '' : v).trim().slice(0, maxLen || 500);
+}
+var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// ── Legeix/escriu portal_state (per als endpoints públics
+// d'afegir-només que no volen dependre d'un snapshot del client) ──
+function readPortalState() {
+  var row = db.prepare('SELECT data FROM portal_state WHERE id = 1').get();
+  try { return row ? JSON.parse(row.data) : {}; } catch (e) { return {}; }
+}
+function writePortalState(state) {
+  var now = new Date().toISOString();
+  db.prepare('INSERT INTO portal_state (id,data,updated_at) VALUES (1,?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data, updated_at=excluded.updated_at')
+    .run(JSON.stringify(state), now);
+}
+
 // ── Validació d'URLs ───────────────────────────────────────
 function isSafeUrl(url) {
   if (!url || url === '#') return true;
@@ -548,6 +566,14 @@ var uploadLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,  // 1 hora
   max: 30,                    // màx 30 uploads per IP per hora
   message: { error: 'Límit de pujades assolit. Torna-ho a provar en 1 hora.' }
+});
+
+// Formularis públics (tirades socials, sol·licituds de rècord): sense
+// auth per disseny, però limitats per evitar espam massiu.
+var publicSubmitLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,  // 1 hora
+  max: 10,                    // màx 10 sol·licituds per IP i hora
+  message: { error: 'Massa sol·licituds des d\'aquesta connexió. Torna-ho a provar més tard.' }
 });
 
 // Endpoints que impliquen verificar/canviar credencials: límit estricte
@@ -656,6 +682,86 @@ app.get('/api/data', function (req, res) {
 app.get('/api/data/ts', function (req, res) {
   var row = db.prepare('SELECT updated_at FROM portal_state WHERE id = 1').get();
   res.json({ updated_at: row ? row.updated_at : null });
+});
+
+// ── API: Sol·licitud pública de tirada social (SENSE JWT) ──
+// A diferència de POST /api/data (només admin), aquest endpoint és
+// públic per disseny: qualsevol club ha de poder enviar una proposta
+// de tirada sense necessitar credencials. Per limitar el risc:
+//   - NOMÉS afegeix un element nou a tirades[], mai toca la resta
+//     de l'estat ni permet sobreescriure'l (el client no envia
+//     l'snapshot sencer, només els camps d'aquest formulari).
+//   - status sempre 'pend' i id el genera el servidor: el client no
+//     pot fer-se passar per una tirada ja validada.
+//   - Camps sanititzats (longitud i, per a URLs, protocol).
+//   - Limitat per IP (publicSubmitLimiter).
+app.post('/api/tirades/submit', publicSubmitLimiter, function (req, res) {
+  var b     = req.body || {};
+  var nom   = sanitizeStr(b.nom, 150);
+  var club  = sanitizeStr(b.club, 150);
+  var tipus = sanitizeStr(b.tipus, 20);
+  var data  = sanitizeStr(b.data, 20);
+  var desc  = sanitizeStr(b.desc, 3000);
+  var email = sanitizeStr(b.email, 200);
+  if (!nom || !club || !tipus || !data || !desc || !email) {
+    return res.status(400).json({ error: 'Falten camps obligatoris' });
+  }
+  if (!EMAIL_RE.test(email)) {
+    return res.status(400).json({ error: 'El correu no és vàlid' });
+  }
+
+  var months = ['gener','febrer','març','abril','maig','juny','juliol','agost','setembre','octubre','novembre','desembre'];
+  var parts  = data.split('-');
+  var dataStr = (parts[2] ? parseInt(parts[2], 10) : '') + ' de ' + (months[parseInt(parts[1], 10) - 1] || '') + ' de ' + (parts[0] || '');
+  var insc = sanitizeStr(b.inscripcio, 500);
+  var img  = sanitizeStr(b.img, 500);
+
+  var tirada = {
+    id: Date.now(), nom: nom, club: club, tipus: tipus, data: data, dataStr: dataStr,
+    hora: sanitizeStr(b.hora, 20), lloc: sanitizeStr(b.lloc, 200), desc: desc, email: email,
+    tel: sanitizeStr(b.tel, 30), inscripcio: isSafeUrl(insc) ? insc : '',
+    img: isSafeUrl(img) ? img : '', status: 'pend'
+  };
+
+  var state = readPortalState();
+  if (!Array.isArray(state.tirades)) state.tirades = [];
+  state.tirades.unshift(tirada);
+  writePortalState(state);
+  audit('public', 'TIRADA_SUBMIT', nom + ' / ' + club);
+  res.json({ ok: true });
+});
+
+// ── API: Sol·licitud pública d'homologació de rècord (SENSE JWT) ──
+// Mateix disseny restringit que /api/tirades/submit (veure comentari).
+app.post('/api/records/submit', publicSubmitLimiter, function (req, res) {
+  var b      = req.body || {};
+  var disc   = sanitizeStr(b.disc, 50);
+  var estil  = sanitizeStr(b.estil, 50);
+  var cat    = sanitizeStr(b.cat, 50);
+  var marca  = sanitizeStr(b.marca, 50);
+  var atleta = sanitizeStr(b.atleta, 150);
+  var data   = sanitizeStr(b.data, 50);
+  var email  = sanitizeStr(b.email, 200);
+  if (!disc || !estil || !cat || !marca || !atleta || !data || !email) {
+    return res.status(400).json({ error: 'Falten camps obligatoris' });
+  }
+  if (!EMAIL_RE.test(email)) {
+    return res.status(400).json({ error: 'El correu no és vàlid' });
+  }
+
+  var sol = {
+    id: Date.now(), disc: disc, estil: estil, cat: cat, marca: marca, atleta: atleta,
+    club: sanitizeStr(b.club, 150), data: data, competicio: sanitizeStr(b.competicio, 200),
+    email: email, obs: sanitizeStr(b.obs, 1000), status: 'pend',
+    creat: new Date().toLocaleDateString('ca-ES')
+  };
+
+  var state = readPortalState();
+  if (!Array.isArray(state.recordsSolicituds)) state.recordsSolicituds = [];
+  state.recordsSolicituds.unshift(sol);
+  writePortalState(state);
+  audit('public', 'RECORD_SOL_SUBMIT', atleta + ' / ' + disc);
+  res.json({ ok: true });
 });
 
 // ── API: Desar dades (requereix JWT) ──────────────────────

@@ -962,6 +962,7 @@ function renderDiscLliga(discKey) {
       var data    = comp ? comp.date : (t.data || '—');
       var circ    = comp ? comp.circ : (t.circ || '');
       var url     = comp ? comp.url  : (t.url  || '');
+      var insc    = comp ? comp.inscripcio : (t.inscripcio || '');
       var ianseo  = comp ? comp.ianseo : (t.ianseo || '');
       var ianseo2 = t.ianseo2 || '';
 
@@ -971,8 +972,11 @@ function renderDiscLliga(discKey) {
       // Botons d'acció (iguals que a renderComp)
       var acts = '';
       if (status === 'open') {
+        if (insc && insc !== '#') {
+          acts += '<a class="bsm bsm-o" href="' + insc + '" target="_blank">📝 Inscriu-te</a>';
+        }
         if (url && url !== '#' && url.indexOf('#news:') !== 0) {
-          acts += '<a class="bsm bsm-o" href="' + url + '" target="_blank">📄 Més info</a>';
+          acts += '<a class="bsm ' + (insc && insc !== '#' ? 'bsm-n' : 'bsm-o') + '" href="' + url + '" target="_blank">📄 Més info</a>';
         }
       } else if (status === 'closed') {
         if (url && url.indexOf('#news:') === 0) {
@@ -1132,7 +1136,7 @@ function renderDiscDocs(d) {
   }
 
   // Circulars relacionades (del DB)
-  var relCirc = (DB.circulars || []).filter(function(c){ return c.type === d.circularsCategoria; });
+  var relCirc = (DB.circulars || []).filter(function(c){ return c.type === d.circularsCategoria && circIsPublished(c); });
   if (relCirc.length) {
     html += '<div class="disc-docs-title" style="margin-top:1.5rem">Circulars relacionades</div>';
     relCirc.slice(0, 5).forEach(function(c) {
