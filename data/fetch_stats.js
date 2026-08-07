@@ -258,7 +258,10 @@ async function main() {
   // Sort by dateISO
   results.sort((a, b) => a.dateISO.localeCompare(b.dateISO));
 
-  const outputPath = __dirname + '/competition_stats_full.json';
+  // docs/, NO data/: a Railway data/ té un volum persistent muntat que
+  // amagaria aquest fitxer estàtic en producció (veure comentari a
+  // js/comp_stats.js).
+  const outputPath = __dirname + '/../docs/competition_stats_full.json';
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2), 'utf8');
 
   const sizeMB = (fs.statSync(outputPath).size / 1024).toFixed(1);

@@ -304,7 +304,10 @@ const competitions = [
 ];
 
 // Write the full JSON
-const outputPath = __dirname + '/competition_stats_full.json';
+// docs/, NO data/: a Railway data/ té un volum persistent muntat que
+// amagaria aquest fitxer estàtic en producció (veure comentari a
+// js/comp_stats.js).
+const outputPath = __dirname + '/../docs/competition_stats_full.json';
 fs.writeFileSync(outputPath, JSON.stringify(competitions, null, 2), 'utf8');
 console.log('Written', competitions.length, 'competitions to', outputPath);
 console.log('File size:', fs.statSync(outputPath).size, 'bytes');

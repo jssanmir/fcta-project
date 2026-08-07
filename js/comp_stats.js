@@ -1,5 +1,10 @@
 // comp_stats.js – Sub-pàgina d'estadístiques de competicions
-// Dades: data/competition_stats_full.json (generat per fetch_stats.js)
+// Dades: docs/competition_stats_full.json (generat per data/fetch_stats.js)
+// IMPORTANT: NO a data/ — a Railway hi ha un volum persistent muntat a
+// /app/data (per no perdre fcta.db en cada deploy), que substitueix tot
+// el contingut d'aquell directori pel del volum. Un fitxer estàtic dins
+// data/ quedaria invisible en producció (ENOENT). docs/ es serveix
+// estàticament i no forma part del volum.
 // ──────────────────────────────────────────────────────────────────────
 
 var _csData    = null;   // dades carregades
@@ -205,7 +210,7 @@ function _csInit() {
   var panel = document.getElementById('compStatsPanel');
   panel.innerHTML = '<div class="cs-loading">Carregant estadístiques…</div>';
 
-  fetch('data/competition_stats_full.json')
+  fetch('docs/competition_stats_full.json')
     .then(function(r) { return r.json(); })
     .then(function(d) {
       d.forEach(function(c) {
