@@ -71,6 +71,21 @@
   delegate('error', 'onerror', { capture: true });
   delegate('load',  'onload',  { capture: true });
 
+  // Patró "tancar overlay en clicar el fons" (data-onbackdrop="fnName").
+  // Deliberadament FORA de delegate(): aquell mecanisme crida sempre
+  // evt.preventDefault(), i com que aquests overlays engloben tot el
+  // contingut (formularis, inputs file...), qualsevol clic a dins que
+  // bombollés fins aquí cancel·laria l'acció per defecte de l'element
+  // clicat (p.ex. l'input file de "Pujar PDF" no arribaria mai a obrir
+  // el selector). Aquí només actuem quan el clic és EXACTAMENT sobre
+  // el fons (e.target === el), no quan hi bombolla.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-onbackdrop]') : null;
+    if (!el || e.target !== el) return;
+    var fn = window[el.getAttribute('data-onbackdrop')];
+    if (typeof fn === 'function') fn(e);
+  });
+
   // Patró habitual "Enter per enviar" (abans: onkeydown="if(event.key==='Enter')fn(...)")
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Enter') return;

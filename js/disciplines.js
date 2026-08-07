@@ -912,8 +912,21 @@ function renderDiscInfo(d) {
   return html;
 }
 
+// Valor cronològic d'una temporada ('2026' / '2026/27' / '2025–26'…):
+// s'agafa l'any final de la temporada perquè "2026/27" quedi després de "2026".
+function _llTemporadaVal(temp) {
+  var parts = String(temp || '').split(/[\/\-–]/);
+  var last  = parts[parts.length - 1].trim();
+  var year  = parseInt(last, 10);
+  if (isNaN(year)) return 0;
+  return year < 100 ? year + 2000 : year;
+}
+
 function renderDiscLliga(discKey) {
-  var lligues = (DB.lligues || []).filter(function(l){ return l.disc === discKey; });
+  var lligues = (DB.lligues || [])
+    .filter(function(l){ return l.disc === discKey; })
+    .slice()
+    .sort(function(a, b){ return _llTemporadaVal(b.temporada) - _llTemporadaVal(a.temporada); });
   if (!lligues.length) {
     return '<div class="disc-empty">No hi ha dades de lliga per a aquesta disciplina.</div>';
   }

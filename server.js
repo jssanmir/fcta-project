@@ -584,6 +584,12 @@ app.use('/css',  express.static(path.join(__dirname, 'css')));
 app.use('/js',   express.static(path.join(__dirname, 'js')));
 app.use('/img',  express.static(path.join(__dirname, 'img')));
 app.use('/docs', express.static(path.join(__dirname, 'docs'), pdfHeaders));
+// Només aquest fitxer JSON públic (estadístiques de competicions) — MAI
+// tot el directori data/, que conté fcta.db amb hashos de contrasenya
+// i secrets TOTP de 2FA (veure comentari més amunt).
+app.get('/data/competition_stats_full.json', function (req, res) {
+  res.sendFile(path.join(__dirname, 'data', 'competition_stats_full.json'));
+});
 app.get('/robots.txt',  function (req, res) { res.sendFile(path.join(__dirname, 'robots.txt')); });
 app.get('/sitemap.xml', function (req, res) { res.sendFile(path.join(__dirname, 'sitemap.xml')); });
 app.get('/', function (req, res) { res.sendFile(path.join(__dirname, 'index.html')); });

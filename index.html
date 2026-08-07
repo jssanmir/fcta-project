@@ -3096,7 +3096,7 @@
 </footer>
 
 <!-- MODAL SOL·LICITUD RÈCORD -->
-<div id="recordFormOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9000;align-items:center;justify-content:center;padding:1rem" data-onclick="closeRecordFormOut" data-onclick-args="[&quot;@event&quot;]">
+<div id="recordFormOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9000;align-items:center;justify-content:center;padding:1rem" data-onbackdrop="closeRecordFormOut">
   <div style="background:white;border-radius:14px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.35)">
     <div style="background:var(--navy-dark);padding:1.25rem 1.5rem;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between">
       <div>
@@ -3191,7 +3191,7 @@
 </div>
 
 <!-- NEWS ARTICLE MODAL -->
-<div id="newsOverlay" style="display:none" class="pdf-overlay" data-onclick="closeNewsOut" data-onclick-args="[&quot;@event&quot;]">
+<div id="newsOverlay" style="display:none" class="pdf-overlay" data-onbackdrop="closeNewsOut">
   <div class="pdf-modal">
     <div class="pdf-modal-head">
       <div class="pdf-modal-title" id="newsModalTitle">Notícia</div>
@@ -3206,7 +3206,7 @@
 </div>
 
 <!-- PDF VIEWER MODAL -->
-<div id="pdfOverlay" style="display:none" class="pdf-overlay" data-onclick="closePDFOut" data-onclick-args="[&quot;@event&quot;]">
+<div id="pdfOverlay" style="display:none" class="pdf-overlay" data-onbackdrop="closePDFOut">
   <div class="pdf-modal">
     <div class="pdf-modal-head">
       <div class="pdf-modal-title" id="pdfTitle">Document</div>
@@ -3287,7 +3287,7 @@
 </div>
 
 <!-- ADMIN PANEL -->
-<div id="admOverlay" class="adm-overlay" style="display:none" data-onclick="closeAdmOut" data-onclick-args="[&quot;@event&quot;]">
+<div id="admOverlay" class="adm-overlay" style="display:none" data-onbackdrop="closeAdmOut">
   <div class="adm-panel" id="admPanel">
     <div class="adm-head">
       <div class="adm-title">
@@ -3320,7 +3320,7 @@
   </div>
 </div>
 <!-- INSCRIPTION MODAL -->
-<div id="mWrap" style="display:none" class="modal-wrap" data-onclick="closeMOut" data-onclick-args="[&quot;@event&quot;]">
+<div id="mWrap" style="display:none" class="modal-wrap" data-onbackdrop="closeMOut">
   <div class="modal">
     <div class="modal-head">
       <div class="modal-title" id="mTitle">Inscripció</div>

@@ -23,9 +23,11 @@ function filtComp(type, btn) {
 
 // ── Render ─────────────────────────────────────────────────
 function renderComp(f) {
-  var data = f === 'all'
+  var data = (f === 'all'
     ? DB.competitions
-    : DB.competitions.filter(function(c) { return c.type === f; });
+    : DB.competitions.filter(function(c) { return c.type === f; }))
+    .slice()
+    .sort(function(a, b) { return (b.dateISO || '').localeCompare(a.dateISO || ''); });
 
   var sL = { open: 'Inscripcions obertes', soon: 'Pròximament', closed: 'Tancat' };
   var sC = { open: 's-open', soon: 's-soon', closed: 's-closed' };
