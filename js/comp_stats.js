@@ -101,13 +101,14 @@ var _CS_NAMES = {
   'CTAU':  'T.A. Urgell'
 };
 
-/** Normalitza el gènere en noms de divisió (Men→Home, Women→Dona, etc.) */
+/** Normalitza el gènere en noms de divisió (hombre/Home/Men → Home,
+ *  mujer/Dona/Women → Dona, singular i plural). Sense distinció de
+ *  majúscules/minúscules perquè les diferents federacions (RFETA/FCTA/
+ *  Ianseo) no fan servir la mateixa capitalització als seus exports. */
 function _csNormDivName(name) {
   return name
-    .replace(/\bWomen\b/g, 'Dona')
-    .replace(/\bMujer\b/g, 'Dona')
-    .replace(/\bMen\b/g, 'Home')
-    .replace(/\bHombre\b/g, 'Home');
+    .replace(/\b(Women|Mujeres|Mujer)\b/gi, 'Dona')
+    .replace(/\b(Men|Hombres|Hombre)\b/gi, 'Home');
 }
 
 // Variantes de noms de text → codi canònic

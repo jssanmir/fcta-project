@@ -37,6 +37,16 @@ function _usFetchArchive(onSuccess, onError) {
     .then(function(r) { return r.json(); })
     .then(function(d) {
       if (!Array.isArray(d)) throw new Error('Arxiu històric invàlid');
+      // El CSV d'origen barreja "hombre"/"Home"/"Men" (i "mujer"/"Dona"/
+      // "Women") segons la federació que va emetre cada resultat.
+      // S'unifica amb la mateixa _csNormDivName() que ja fa servir
+      // comp_stats.js per a les temporades en viu, perquè una mateixa
+      // categoria no aparegui repetida amb tres etiquetes diferents.
+      d.forEach(function(comp) {
+        (comp.divisions || []).forEach(function(div) {
+          div.name = _csNormDivName(div.name);
+        });
+      });
       _usArchiveCache = d;
       onSuccess(d);
     })
