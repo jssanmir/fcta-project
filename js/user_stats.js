@@ -18,6 +18,31 @@
 var _usIndex    = null;  // { normKey: { display, entries:[...] } }
 var _usSelected = null;  // normKey seleccionat actualment
 
+// ── Arxiu històric extern ─────────────────────────────────────
+// docs/archer_history_archive.json: competicions de fora del circuit
+// FCTA/Ianseo de temporada actual (Campionats d'Espanya i de Catalunya
+// 2011–2024, importats des d'un CSV extern). Mateix format que els
+// fitxers de CS_SEASONS (títol, dateISO, type, disc, divisions[].archers[]),
+// però es carrega a banda perquè NO ha d'aparèixer com a "temporada" al
+// selector de Competicions > Estadístiques — només alimenta l'historial
+// de carrera d'aquesta pàgina. Els registres importats tenen
+// dateApprox:true (només se'n coneix l'any, no el dia exacte) i alguns
+// tenen type:'unknown' (no s'ha pogut determinar la modalitat pel títol).
+var US_ARCHIVE_FILE = 'docs/archer_history_archive.json';
+var _usArchiveCache = null;
+
+function _usFetchArchive(onSuccess, onError) {
+  if (_usArchiveCache) { onSuccess(_usArchiveCache); return; }
+  fetch(US_ARCHIVE_FILE)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!Array.isArray(d)) throw new Error('Arxiu històric invàlid');
+      _usArchiveCache = d;
+      onSuccess(d);
+    })
+    .catch(function(err) { if (onError) onError(err); });
+}
+
 // ── Normalització de noms (accents, majúscules, espais) ─────
 // Permet que "Perez" trobi "Pérez" i agrupa variants d'accentuació
 // del mateix arquer entre competicions diferents.
@@ -66,14 +91,18 @@ var _usAllSeasonsData = null;
 function _usLoadAllSeasons(onDone) {
   var keys    = CS_SEASON_ORDER.slice();
   var results = [];
-  var pending = keys.length;
-  if (!pending) { onDone([]); return; }
+  var pending = keys.length + 1; // +1 per l'arxiu històric extern
+  function settle() { if (--pending === 0) onDone(results); }
   keys.forEach(function(key) {
     _csFetchSeason(key,
-      function(data) { results = results.concat(data); if (--pending === 0) onDone(results); },
-      function()     { if (--pending === 0) onDone(results); } // una temporada caiguda no bloqueja la resta
+      function(data) { results = results.concat(data); settle(); },
+      function()     { settle(); } // una temporada caiguda no bloqueja la resta
     );
   });
+  _usFetchArchive(
+    function(data) { results = results.concat(data); settle(); },
+    function()     { settle(); } // arxiu no disponible no bloqueja les temporades en viu
+  );
 }
 
 // ── Inicialització de la pàgina (cridat des de nav.js en entrar-hi) ──

@@ -234,6 +234,14 @@ function _csFetchSeason(seasonKey, onSuccess, onError) {
   fetch(season.file)
     .then(function(r) { return r.json(); })
     .then(function(d) {
+      // Si el servidor no ha pogut servir el fitxer (p.ex. un deploy a
+      // mitges, o un problema intern), pot respondre amb un objecte
+      // d'error en lloc de la llista esperada — donem un missatge que
+      // ajudi a diagnosticar-ho en lloc del genèric "d.forEach is not
+      // a function".
+      if (!Array.isArray(d)) {
+        throw new Error('El servidor no ha retornat una llista vàlida per a ' + season.file + ' (proveu de refrescar amb Ctrl+Shift+R; si segueix fallant, pot ser que el darrer desplegament no s\'hagi completat).');
+      }
       d.forEach(function(c) {
         (c.divisions || []).forEach(function(div) {
           div.name = _csNormDivName(div.name);

@@ -1,6 +1,6 @@
 {
-  "backup_ts": "2026-06-18T09:50:32.117Z",
-  "updated_at": "2026-06-16T10:29:56.663Z",
+  "backup_ts": "2026-08-07T11:01:56.868Z",
+  "updated_at": "2026-08-07T10:52:07.753Z",
   "data": {
     "circulars": [
       {
@@ -446,6 +446,19 @@
     ],
     "competitions": [
       {
+        "id": 130,
+        "type": "al",
+        "title": "76è Campionat de Catalunya d'Aire Lliure",
+        "disc": "Aire Lliure",
+        "date": "4-5 jul 2026",
+        "dateISO": "2026-07-04",
+        "loc": "Barcelona",
+        "status": "open",
+        "circ": "CIRC-2637",
+        "url": "#",
+        "ianseo": 29041
+      },
+      {
         "id": 1,
         "type": "al",
         "title": "3ª Tirada Lliga Catalana Aire Lliure 2026",
@@ -455,7 +468,7 @@
         "loc": "Barcelona / Esclanyà (Girona)",
         "status": "open",
         "circ": "CIRC-2622",
-        "url": "docs/REGLAMENT_COMPETICIONS_v1.6.pdf",
+        "url": "#",
         "ianseo": 28416
       },
       {
@@ -561,6 +574,19 @@
         "circ": "CIRC-2605",
         "url": "#",
         "ianseo": 27062
+      },
+      {
+        "id": 129,
+        "type": "al",
+        "title": "1ª Tirada Lliga Catalana AL 2026 (Sant Celoni)",
+        "disc": "Aire Lliure",
+        "date": "14 mar 2026",
+        "dateISO": "2026-03-14",
+        "loc": "Sant Celoni (Vallès Oriental)",
+        "status": "open",
+        "circ": "CIRC-2605",
+        "url": "#",
+        "ianseo": 27064
       },
       {
         "id": 12,
@@ -1239,6 +1265,60 @@
     ],
     "news": [
       {
+        "id": 12,
+        "cat": "PAT",
+        "title": "El CAR Sant Cugat acull la 5ª jornada del Programa Autonòmic de Tecnificació",
+        "date": "20 jun 2026",
+        "desc": "Arquers i arqueres U15, U18 i U21 es reuneixen al CAR de Sant Cugat en una jornada de seguiment i treball tècnic dirigida per Lluís Culí.",
+        "img": "img/news/noticia12.jpg",
+        "url": "#"
+      },
+      {
+        "id": 11,
+        "cat": "Aire Lliure",
+        "title": "El 76è Campionat de Catalunya d'Aire Lliure reuneix més de 165 esportistes a Barcelona",
+        "date": "5 jul 2026",
+        "desc": "19 equips i 28 clubs d'arreu del territori omplen el camp de tir en una competició individual i per equips de gran nivell, malgrat la calor.",
+        "img": "img/news/noticia8.jpeg",
+        "url": "#"
+      },
+      {
+        "id": 10,
+        "cat": "Arc Adaptat",
+        "title": "Final de la Lliga Catalana d'Arc Adaptat, Inclusiu i Salut",
+        "date": "15 jun 2026",
+        "desc": "La Lliga Catalana d'Arc Adaptat, Inclusiu i Salut tanca la seva primera edició al Arc Vng amb un èxit de participació creixent.",
+        "img": "img/news/noticia10.jpeg",
+        "url": "#"
+      },
+      {
+        "id": 9,
+        "cat": "Camp",
+        "title": "Catalunya aconsegueix 10 medalles al Campionat d'Espanya de Camp 2026",
+        "date": "8 jun 2026",
+        "desc": "La delegació catalana torna de Hoyos del Espino amb 10 medalles: 5 ors, 3 plates i 2 bronzes.",
+        "img": "img/news/noticia9.jpeg",
+        "url": "#"
+      },
+      {
+        "id": 8,
+        "cat": "Aire Lliure",
+        "title": "Més de 150 esportistes a la 3a i última tirada de la Lliga Catalana d'Aire Lliure",
+        "date": "1 jun 2026",
+        "desc": "Barcelona i Esclanà acollen la 3a tirada que tanca la lliga i prepara els arquers per al Campionat de Catalunya (4-5 juliol).",
+        "img": "img/news/noticia8.jpeg",
+        "url": "#"
+      },
+      {
+        "id": 7,
+        "cat": "3D",
+        "title": "3 medalles per Catalunya al Campionat d'Espanya 3D 2026",
+        "date": "24 mai 2026",
+        "desc": "25 representants catalans competeixen a Astúries i tornen amb 3 medalles, encapçalades per Maria Pitarch, subcampiona en Compost Dona.",
+        "img": "img/news/noticia7.jpeg",
+        "url": "#"
+      },
+      {
         "id": 1,
         "cat": "Camp",
         "title": "Montcada i Reixac acull el 56è Campionat de Catalunya de Camp",
@@ -1607,5 +1687,11 @@
       }
     ],
     "recordsSolicituds": []
-  }
+  },
+  "uploads": [
+    {
+      "name": "1780561963251_test.pdf",
+      "content": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyA+PgplbmRvYmoKeHJlZgowIDAKdHJhaWxlcgo8PCAvU2l6ZSAxIC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo5CiUlRU9G"
+    }
+  ]
 }
