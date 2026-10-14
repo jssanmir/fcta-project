@@ -213,6 +213,373 @@ var NEWS_CONTENT = {
     body: `<p>El <strong>Centre d'Alt Rendiment (CAR) de Sant Cugat</strong> va acollir el passat <strong>20 de juny</strong> la <strong>5ª jornada del Programa Autonòmic de Tecnificació (PAT)</strong>, una nova cita dins del calendari de seguiment tècnic que la FCTA impulsa per als esportistes amb més projecció.</p>
 <p>La sessió, dirigida pel tècnic <strong>Lluís Culí</strong>, va reunir arquers i arqueres de les categories <strong>U15, U18 i U21</strong> en una jornada de treball i seguiment tècnic individualitzat, en el marc del model de tecnificació que la Federació desenvolupa en coordinació amb els clubs.</p>
 <p>Des de la FCTA felicitem tots els participants per la implicació i la feina feta durant la jornada. Seguim treballant per fer créixer el talent català! 💪🏼</p>`
+  },
+  13: {
+    title: "Campionat d'Espanya d'Arc Recorbat i Compost en Sala 2024/2025",
+    date: "11 de febrer de 2025",
+    cat: "Sala",
+    img: "img/news/noticia13.jpg",
+    body: `<p>Del <strong>6 al 9 de febrer</strong> s'ha celebrat a <strong>Valladolid</strong> el Campionat d'Espanya d'Arc Recorbat i Compost en Sala 2024/2025.</p>
+<p>Les categories més joves <strong>U15, U18 i U21</strong> van obrir el campionat dijous, amb la qualificació i les eliminatòries, finals individuals i per equips el divendres. Hi van participar <strong>23 esportistes de Catalunya</strong>.</p>
+<ul><li><strong>Bronze</strong> per a l'equip d'arc compost U21, format per Nuria Sinfreu i Pau Barreda.</li><li><strong>4es posicions</strong> de l'equip femení d'arc recorbat U15 (Abril Godia, Maelyn Macías i Gloria Moreton) i de l'equip masculí recorbat U21 (Roc Rueda, Ian Serra i Gerard Safont), que van lluitar pel bronze.</li></ul>
+<p>El <strong>8 i 9 de febrer</strong> va continuar el campionat per a les categories absolutes, amb <strong>25 esportistes catalans</strong>:</p>
+<ul><li><strong>Plata</strong> per a Elia Canales en arc recorbat femení.</li><li><strong>Bronze</strong> per a l'equip femení d'arc compost: Nuria Sinfreu, Maria Pitarch i Alexandra Moura.</li></ul>
+<p>Des de la FCTA felicitem tots els participants, tècnics i organitzadors per la seva dedicació i esforç.</p>`
+  },
+  14: {
+    title: "3a Tirada de la Lliga Catalana de Camp 2024/2025",
+    date: "16 de febrer de 2025",
+    cat: "Camp",
+    img: "img/news/noticia14.jpg",
+    body: `<p>El passat <strong>16 de febrer</strong>, el <strong>Club de Tir amb Arc Caldes de Montbui</strong> va acollir la <strong>3a tirada de la Lliga Catalana de Camp</strong> 2024/2025, amb <strong>71 participants</strong> de <strong>17 clubs</strong> d'arreu de Catalunya.</p>
+<p>La lliga de camp conclourà el <strong>16 de març a Mataró</strong> amb la 4a i última tirada.</p>
+<p>Des de la FCTA volem agrair la participació de tots els esportistes i el suport dels organitzadors, clubs i voluntaris que fan possible aquesta lliga.</p>`
+  },
+  15: {
+    title: "Finalitza la Lliga Catalana de 3D amb la quarta tirada a Rubí",
+    date: "2 de març de 2025",
+    cat: "3D",
+    img: "img/news/noticia15.jpg",
+    body: `<p>El diumenge <strong>2 de març de 2025</strong> es va celebrar la <strong>4a i última tirada de la Lliga Catalana 3D 2024/2025</strong> al <strong>Club Arqueros de Rubí</strong>, que ha marcat la cloenda de la lliga abans del Campionat de Catalunya de 3D, previst al Club Arc Zen del Bages (Castellnou del Bages).</p>
+<p>Hi van competir <strong>100 arquers i arqueres</strong> de <strong>26 clubs</strong> d'arreu de Catalunya en un recorregut exigent que va posar a prova la seva precisió i concentració.</p>
+<p>Amb aquesta tirada es tanca la classificació final de la lliga catalana 3D de la temporada 2024/2025.</p>`
+  },
+  16: {
+    title: "Per una carrera sense obstacles – 8M, Dia Internacional de la Dona",
+    date: "7 de març de 2025",
+    cat: "Federació",
+    img: "img/news/noticia16.jpg",
+    body: `<p>El <strong>8 de març de 2025</strong>, en el marc del Dia Internacional de la Dona, la Federació Catalana de Tir amb Arc reafirma el seu compromís en la lluita contra qualsevol forma de discriminació envers les dones en tots els àmbits de la societat, defensant un futur basat en la igualtat de gènere i d'oportunitats.</p>
+<p>Animem totes les dones vinculades a l'esport —directives, entrenadores, àrbitres, esportistes i voluntàries— a seguir endavant amb el compromís de liderar clubs, federacions i entitats esportives. <strong>Per una carrera sense obstacles!</strong></p>
+<p>Des de la FCTA i la UFEC continuarem treballant per:</p>
+<ul><li>Fer del nostre un sector encara més valuós.</li><li>Avançar fermament cap a la igualtat.</li><li>Fer créixer la participació femenina en l'esport.</li><li>Reforçar l'esport com a eina clau per a l'empoderament de les dones i el seu lideratge en la presa de decisions.</li></ul>`
+  },
+  17: {
+    title: "Nou límit de temps per fletxa en competicions",
+    date: "14 de març de 2025",
+    cat: "Jutges",
+    body: `<p>A partir d'aquesta temporada, en totes les competicions nacionals i catalanes (<strong>excepte les modalitats de camp, 3D i els campionats per a esportistes amb discapacitat</strong>), el temps disponible per tirar cada fletxa es redueix a <strong>30 segons</strong>. La norma s'aplica tant a la fase classificatòria com a l'eliminatòria, excepte a les finals amb tir altern.</p>
+<p>La modificació afecta les Lligues Catalanes, els Campionats de Catalunya i els Campionats d'Espanya d'arc recorbat, compost, tradicional, nu i longbow, tant en sala com a l'aire lliure, així com els Grans Premis d'Espanya per a les categories absoluta, U21, U18 i U15.</p>
+<p><strong>Exemples pràctics:</strong></p>
+<ul><li><strong>Fase classificatòria:</strong> en tandes de 6 fletxes, el temps total serà de 180 segons (tres minuts) en lloc dels quatre minuts d'abans.</li><li><strong>Fase eliminatòria:</strong> en tandes de 3 fletxes, el temps total serà de 90 segons (un minut i mig) en lloc dels dos minuts anteriors.</li></ul>
+<p>Aquest canvi busca agilitzar les competicions i unificar criteris amb altres circuits internacionals.</p>`
+  },
+  18: {
+    title: "Conclou la Lliga Catalana de Tir de Camp 2024/2025",
+    date: "19 de març de 2025",
+    cat: "Camp",
+    img: "img/news/noticia18.jpg",
+    body: `<p>El diumenge <strong>16 de març</strong> va tenir lloc la <strong>4a i última tirada de la Lliga Catalana de Camp 2024/2025</strong>, a les instal·lacions del <strong>Tir Esportiu Mataró</strong>, amb <strong>55 esportistes</strong> de <strong>12 clubs</strong>.</p>
+<p>Amb aquesta jornada es dona per finalitzada una edició de la lliga que s'ha disputat des d'octubre fins al març.</p>
+<p>La propera cita de tir de camp serà el <strong>55è Campionat de Catalunya de Camp</strong>, l'1 de juny al Club Tir amb Arc Costa Brava 3D.</p>`
+  },
+  19: {
+    title: "Inici de la temporada d'aire lliure amb la 1a tirada de la Lliga Catalana 2024/2025",
+    date: "26 de març de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia19.jpg",
+    body: `<p>El cap de setmana del <strong>22 i 23 de març</strong> va marcar l'inici de la temporada d'aire lliure amb la <strong>1a tirada de la Lliga Catalana d'Aire Lliure 2024/2025</strong>, a les instal·lacions del <strong>Club Tir amb Arc Pardinyes</strong> (Lleida).</p>
+<p>Hi van competir <strong>230 arquers</strong> de <strong>33 clubs</strong> d'arreu de Catalunya. Malgrat la pluja, la competició es va poder desenvolupar amb èxit.</p>
+<p>Amb aquesta primera tirada queda inaugurada la temporada d'aire lliure, amb quatre competicions de lliga fins al mes de juny.</p>`
+  },
+  20: {
+    title: "Esclanyà acull la 3a tirada de la Lliga Catalana d'Aire Lliure",
+    date: "30 d'abril de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia20.jpg",
+    body: `<p>Diumenge <strong>27 d'abril</strong>, <strong>Esclanyà</strong> (Girona) va ser l'escenari de la 3a tirada de la Lliga Catalana d'Aire Lliure 2024/2025. La jornada es va desenvolupar en dos torns, matí i tarda, amb <strong>156 esportistes</strong> de <strong>27 clubs</strong> d'arreu de Catalunya.</p>
+<p>L'esdeveniment va reunir arquers de totes les categories i divisions en una jornada de bon ambient, esportivitat i condicions meteorològiques favorables.</p>`
+  },
+  21: {
+    title: "Jornada de portes obertes per la prevenció del limfedema amb tir amb arc",
+    date: "7 de maig de 2025",
+    cat: "Arc Adaptat",
+    img: "img/news/noticia21.jpg",
+    body: `<p>Us convidem a una jornada molt especial: coneix el projecte de <strong>prevenció del limfedema mitjançant el tir amb arc</strong>, pensat per a persones que han superat el càncer de mama.</p>
+<p>📅 <strong>Diumenge 11 de maig</strong> · 🕥 <strong>10:30 h</strong><br>📍 <strong>Club Tir Arc Olesa</strong></p>
+<p>Una sessió matinal per descobrir, compartir i viure el tir amb arc com a eina terapèutica. Hi esteu tots convidats!</p>`
+  },
+  22: {
+    title: "Celebrat amb èxit el 29è Campionat de Catalunya 3D 2024/2025 a Castellnou del Bages",
+    date: "20 de maig de 2025",
+    cat: "3D",
+    img: "img/news/noticia22.jpg",
+    body: `<p>El <strong>18 de maig de 2025</strong>, el <strong>Club Tir amb Arc Zen del Bages</strong> va acollir el <strong>29è Campionat de Catalunya 3D</strong>, amb <strong>90 arquers i arqueres</strong> de <strong>21 clubs</strong>, en les modalitats de compost, arc nu, longbow i arc tradicional.</p>
+<p><strong>Podis:</strong></p>
+<ul><li><strong>Arc nu femení:</strong> 1a Rosa Miñano · 2a Casandra Campo · 3a Carmen Cuevas</li><li><strong>Arc nu masculí:</strong> 1r David Garcia · 2n Carles Sabatés · 3r David Vivo</li><li><strong>Compost masculí:</strong> 1r Josep Claret · 2n Xavier Menchon · 3r Luis Santiago</li><li><strong>Longbow femení:</strong> 1a Maria José Delgado · 2a Tania Martínez · 3a Rosa Martínez</li><li><strong>Longbow masculí:</strong> 1r Isidro Moyano · 2n Marc Coll · 3r David Alejo</li><li><strong>Tradicional femení:</strong> 1a Eva M. Piquer · 2a M. Isabel Mompean · 3a M. Carme Alongina</li><li><strong>Tradicional masculí:</strong> 1r Víctor López · 2n Òscar Amate · 3r Juan Carlos Ahumada</li></ul>
+<p>Felicitem totes les persones participants i agraïm al Club Tir amb Arc Zen del Bages i a l'equip de jutges la bona organització.</p>`
+  },
+  23: {
+    title: "Gran cloenda de la Lliga Catalana d'Aire Lliure a Olesa de Montserrat",
+    date: "26 de maig de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia23.jpg",
+    body: `<p>Aquest cap de setmana s'ha posat punt final a la <strong>Lliga Catalana d'Aire Lliure 2024/2025</strong> amb la 4a i última tirada, a les instal·lacions del <strong>Tir Arc Olesa</strong>, amb <strong>174 arquers i arqueres</strong> de <strong>28 clubs</strong>.</p>
+<p>Agraïm als participants, clubs, equips organitzadors i jutges la seva dedicació al llarg de tot el campionat.</p>
+<p><strong>Properes cites destacades:</strong></p>
+<ul><li>📅 22 de juny · Campionat de Catalunya d'arc Tradicional, Nu i Longbow – Les Franqueses del Vallès</li><li>📅 6 de juliol · Campionat de Catalunya d'arc Recorbat i Compost – Terrassa</li></ul>`
+  },
+  24: {
+    title: "Èxit català al Campionat d'Espanya 3D 2025 a Sòria",
+    date: "27 de maig de 2025",
+    cat: "3D",
+    img: "img/news/noticia24.jpg",
+    body: `<p>Del <strong>23 al 25 de maig</strong>, més de <strong>25 arquers i arqueres catalans</strong> han participat al <strong>Campionat d'Espanya 3D 2025</strong>, celebrat a Sòria.</p>
+<p><strong>Resultats individuals destacats:</strong></p>
+<ul><li>🥇 Jordi Ricart – Or en Compost Sènior</li><li>🥈 Maria Pitarch – Plata en Compost Sènior</li><li>🥉 David Garcia – Bronze en Nu Sènior</li><li>🥉 Casandra Campo – Bronze en Nu Sènior</li><li>🥉 Oscar Amate – Bronze en Tradicional Sènior</li></ul>
+<p><strong>Per equips:</strong></p>
+<ul><li>🥇 Or per a l'equip d'arc Compost Mixt: Maria Pitarch i Jordi Ricart</li><li>🥉 Bronze per a l'equip d'arc Nu Mixt: Casandra Campo i David Garcia</li></ul>
+<p>Moltes felicitats a tots els participants i medallistes!</p>`
+  },
+  25: {
+    title: "Final de temporada de camp amb el 55è Campionat de Catalunya a Romanyà de la Selva",
+    date: "2 de juny de 2025",
+    cat: "Camp",
+    img: "img/news/noticia25.jpg",
+    body: `<p>El diumenge <strong>1 de juny de 2025</strong>, el <strong>Club Tir amb Arc Costa Brava 3D</strong> i la FCTA van organitzar el <strong>55è Campionat de Catalunya de Camp</strong>, l'última prova catalana del calendari federatiu de tir de camp. Hi van competir fins a <strong>60 arquers de 17 clubs</strong>, tancant la temporada esportiva 2024/2025.</p>
+<p>La competició es va desenvolupar en un entorn natural privilegiat, amb un recorregut pensat per desafiar habilitats i estratègia.</p>
+<p>Des de la Federació volem felicitar tots els participants per l'alt nivell mostrat i agrair la tasca del Club Tir amb Arc Costa Brava 3D, dels jutges i dels voluntaris.</p>`
+  },
+  26: {
+    title: "Catalunya triomfa al Campionat d'Espanya de Camp amb 11 medalles",
+    date: "10 de juny de 2025",
+    cat: "Camp",
+    img: "img/news/noticia26.jpg",
+    body: `<p><strong>Segòvia</strong> va ser l'escenari del <strong>Campionat d'Espanya de Camp 2025</strong>, celebrat els dies <strong>7 i 8 de juny</strong>, amb Catalunya liderant el medaller amb un total de <strong>11 medalles</strong>.</p>
+<p><strong>Medalles individuals:</strong></p>
+<ul><li>🥇 Maria Pitarch – Compost Dona</li><li>🥇 Jordi Ricart – Compost Home</li><li>🥈 Sergi Cebrián – Recorbat Home</li><li>🥈 Alexandra Moura Ribeiro – Compost Dona</li><li>🥈 Casandra Campo – Nu Dona</li><li>🥉 Mireia Comas – Longbow Dona</li><li>🥉 David Garcia – Nu Home</li></ul>
+<p><strong>Medalles per equips:</strong></p>
+<ul><li>🥇 Equip Compost Mixt: Maria Pitarch i Jordi Ricart</li><li>🥈 Equip Recorbat Mixt: Jana Cahué i Sergi Cebrián</li><li>🥈 Equip Tradicional Mixt: Mª Isabel Mompeán i Òscar Amate</li><li>🥉 Equip 5 divisions: Tania Martínez, Òscar Amate, Sergi Cebrián, David Garcia i Jordi Ricart</li></ul>
+<p>Enhorabona a totes i tots! Catalunya continua sumant èxits a nivell estatal.</p>`
+  },
+  27: {
+    title: "75è Campionat de Catalunya d'Arc Tradicional, Nu i Longbow a Les Franqueses",
+    date: "22 de juny de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia27.jpg",
+    body: `<p>El cap de setmana passat es va disputar al <strong>Club Tir amb Arc Les Franqueses</strong> el <strong>75è Campionat de Catalunya d'Arc Tradicional, Nu i Longbow d'Aire Lliure 2025</strong>, amb <strong>79 arquers i arqueres</strong> de <strong>22 clubs</strong> d'arreu de Catalunya.</p>
+<p>La jornada va estar marcada pel bon ambient i un excel·lent nivell competitiu en totes les categories. A més, ja es pot consultar el <strong>rànquing final català 2024/2025</strong>, amb les classificacions de totes les categories de la temporada.</p>
+<p>Des de l'organització volem agrair la participació de tots els esportistes i la tasca dels clubs, jutges i voluntaris.</p>`
+  },
+  28: {
+    title: "Rècords i medalles al Campionat d'Espanya d'Arc Tradicional, Nu i Longbow 2025",
+    date: "30 de juny de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia28.jpg",
+    body: `<p>El cap de setmana del <strong>28 i 29 de juny</strong> es va celebrar a Madrid el <strong>Campionat d'Espanya d'Arc Tradicional, Nu i Longbow d'Aire Lliure 2025</strong>, una cita marcada pels èxits esportius i la superació de rècords nacionals. Hi van competir <strong>22 arquers i arqueres</strong> catalans.</p>
+<p><strong>Resultats per equips:</strong></p>
+<ul><li>🥇 Equip Tradicional Masculí: <strong>nou rècord d'Espanya amb 1812 punts</strong> (Miguel Galán, Ramon Garcia i Victor Lopez)</li><li>🥈 Equip Nu Masculí: David Rafael Cardozo, Carles Peña i Luis Rodriguez</li><li>🥈 Equip Tradicional Mixt: <strong>nou rècord d'Espanya amb 1267 punts</strong> (Ana Lorente i Victor Lopez)</li><li>🥉 Equip Nu Mixt: Oyuna Baturova i David Rafael Cardozo</li></ul>
+<p><strong>Resultats individuals destacats:</strong></p>
+<ul><li>Victor Lopez – Or en Tradicional Masculí</li><li>Carles Peña – Plata en Nu Masculí</li><li>Oyuna Baturova – Or en Nu Femení</li><li>Maria Eugenia Palomar – Bronze en Nu Femení</li></ul>
+<p>Enhorabona a tots els participants!</p>`
+  },
+  29: {
+    title: "El 75è Campionat de Catalunya d'Arc Recorbat i Compost tanca la temporada a Terrassa",
+    date: "6 de juliol de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia29.jpg",
+    body: `<p>Aquest cap de setmana s'ha celebrat al <strong>Club Arquers Terrassa</strong> el <strong>75è Campionat de Catalunya d'Arc Recorbat i Compost a l'Aire Lliure</strong>, amb més de <strong>100 esportistes</strong> de <strong>22 clubs</strong>. El campionat ha servit també per cloure la temporada 2024/2025 de la Lliga Catalana d'Aire Lliure, amb l'entrega de premis als medallistes de la temporada.</p>
+<p>Ja es pot consultar el <strong>rànquing final català 2024/2025</strong> amb les classificacions oficials de totes les categories.</p>
+<p><strong>Campions de Catalunya (or) per categories:</strong></p>
+<ul><li>Recorbat Benjamí F: Lucía Zuñiga · M: Josep Martí</li><li>Recorbat Aleví F: Abril Godia · M: Daniel Molina</li><li>Recorbat Sub 15 F: Glòria Moreton · M: Guillem Vizcaino</li><li>Recorbat Sub 18 F: Laura Safont · M: Josep Español</li><li>Recorbat Sub 21 F: Jana Cahue · M: Gerard Safont</li><li>Recorbat Sènior F: Núria Barbera · M: Arnau Peña</li><li>Recorbat 50+ F: Maria Luisa García · M: Daniel Pérez</li><li>Compost Sub 18 M: Arnau Barbero</li><li>Compost Sènior F: Hala Eligibly · M: Manel Souto</li><li>Compost 50+ M: Juan R. Martinez</li></ul>
+<p>Agraïm als participants, al club amfitrió, a l'equip de jutges i als voluntaris que han fet possible la jornada.</p>`
+  },
+  30: {
+    title: "Seminari d'arc longbow i tradicional a Barcelona",
+    date: "7 de juliol de 2025",
+    cat: "Formació",
+    img: "img/news/noticia30.jpg",
+    body: `<p>Els passats <strong>5 i 6 de juliol</strong> es va organitzar a Barcelona un seminari intensiu dedicat a l'<strong>arc longbow i tradicional</strong>, impartit pel reconegut arquer i formador <strong>Jairo Valentín</strong>.</p>
+<p>Durant dues jornades es va aprofundir en la tècnica del tir amb arc i en els processos psicològics aplicats a l'entrenament i la competició, combinant una sòlida base teòrica amb una part pràctica centrada en l'ajust del material i el treball d'aspectes tècnics essencials.</p>
+<p>Gràcies a totes les persones que ho heu fet possible!</p>`
+  },
+  31: {
+    title: "Èxit de participació a la sessió formativa «Tir amb arc i prevenció del limfedema»",
+    date: "12 de juliol de 2025",
+    cat: "Arc Adaptat",
+    body: `<p>El passat <strong>12 de juliol de 2025</strong>, la FCTA va organitzar la sessió formativa <strong>«Tir amb arc i prevenció del limfedema»</strong>, una jornada pionera que va reunir <strong>16 participants</strong> a la Casa de l'Esport de Barcelona.</p>
+<p>Adreçada a tècnics, esportistes, professionals de l'àmbit esportiu i persones interessades en l'aplicació terapèutica del tir amb arc, la formació va combinar continguts teòrics i pràctics sobre els fonaments científics del limfedema —una afecció comuna després del tractament del càncer de mama— i com el tir amb arc pot ser una eina beneficiosa per a la seva prevenció i gestió.</p>
+<p>Amb iniciatives com aquesta, la Federació continua apostant per un tir amb arc accessible, inclusiu i compromès amb el benestar de les persones.</p>`
+  },
+  32: {
+    title: "Tir amb arc i treball en equip al Campionat de Catalunya de Clubs 2025",
+    date: "14 de juliol de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia32.jpg",
+    body: `<p>Aquest cap de setmana s'ha disputat el <strong>Campionat de Catalunya de Clubs 2025</strong> al <strong>Club Tir amb Arc Pardinyes</strong>, amb <strong>17 equips</strong> de clubs d'arreu de Catalunya.</p>
+<p><strong>Resultats per equips:</strong></p>
+<ul><li><strong>Recorbat:</strong> 🥇 Club Arc Montjuïc (Arnau Peña, Pol Viñas, Pablo Zamora) · 🥈 Club Arc Montjuïc (David Bonin, Oscar Ruiz, Eduard Velasco) · 🥉 Draco Sagittariis (Sergi Cebrian, Ignasi Gallardo, Roc Rueda)</li><li><strong>Compost:</strong> 🥇 Arc Pardinyes (Josep Brocal, Jose Gómez, Jordi Tarragó) · 🥈 Club Arc Montjuïc (Ester Semis, José Pérez, Eric Pla) · 🥉 Draco Sagittariis (Eulàlia Bordas, Alexandra Moura, Fran Sánchez)</li><li><strong>Arc Nu:</strong> 🥇 Draco Sagittariis (Mireia Comas, Raül Soler, David Vivo) · 🥈 Club Arc Franqueses (David R. Cardozo, Miguel Ramírez, Mario Ruiz)</li><li><strong>Tradicional:</strong> 🥇 Club Arc Franqueses (Ana Lorente, Víctor López, Aleix Montes) · 🥈 Club Arc Franqueses (Enric Díaz, Jose Luis Gimeno, Josep Mauri) · 🥉 Club Arc Montjuïc (Carmen Sarceda, Miguel Galán, Ramon Garcia)</li></ul>
+<p>Gràcies a tots els clubs, esportistes, jutges i organitzadors. Enhorabona a totes i tots!</p>`
+  },
+  33: {
+    title: "Campionats d'Espanya d'Arc Recorbat i Compost 2025",
+    date: "28 de juliol de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia33.jpg",
+    body: `<p>L'equip català ha tancat la temporada amb grans resultats als <strong>Campionats d'Espanya d'Arc Recorbat i Compost d'Aire Lliure 2025</strong>, celebrats a Madrid entre el <strong>18 i el 27 de juliol</strong>.</p>
+<p>Un total de <strong>25 esportistes catalans</strong> van competir al Campionat Absolut, amb la <strong>medalla de bronze</strong> de l'equip femení d'arc compost: <strong>Naila Alilouch Tayar, Hala Elgibily i Alexandra Moura Ribeiro Gomes de Sousa</strong>.</p>
+<p>Dies abans, del 18 al 20 de juliol, es va disputar el Campionat d'Espanya per a les categories d'edat <strong>U21, U18, U15 i +50</strong>, amb <strong>26 representants catalans</strong> i també molt bons resultats, amb medalles per a Laura M. Suárez, Óscar Ruiz, Montserrat Gustems i Begoña Pérez.</p>
+<p>Des de la FCTA felicitem tots els esportistes i agraïm a la RFETA l'organització dels campionats.</p>`
+  },
+  34: {
+    title: "Lliga 3D en línia, temporada 2025/2026",
+    date: "29 de juliol de 2025",
+    cat: "3D",
+    body: `<p>Amb el suport de la FCTA s'implementa una <strong>lliga 3D en línia</strong> a mode de prova pilot, que inclou <strong>tres competicions no oficials</strong> i un <strong>Campionat de Catalunya oficial</strong>. L'objectiu és facilitar l'entrenament i la selecció d'arquers per als campionats d'àmbit nacional en aquesta modalitat.</p>
+<p><strong>Calendari:</strong></p>
+<ul><li>1a sèrie – 2 de novembre de 2025 · Club Sant Andreu de la Barca (no oficial)</li><li>2a sèrie – 30 de novembre de 2025 · Club Olivella (no oficial)</li><li>3a sèrie – 28 de desembre de 2025 · Club Les Franqueses (no oficial)</li><li>Campionat de Catalunya – 18 de gener de 2026 · Club Sant Celoni (oficial)</li></ul>
+<p>S'aplicarà la normativa RFETA, excepte per a la categoria Sub 15, que seguirà la normativa FCTA. Cal tenir la llicència federativa vigent.</p>
+<p><strong>Divisions:</strong> longbow, tradicional, nu i compost. <strong>Classes:</strong> Sènior home i dona (més de 15 anys) i Sub 15 home i dona.</p>
+<p>Cada sèrie consta de 12 propostes de tir amb 2 fletxes per diana, en dues voltes (24 dianes). Les colles són de 4 participants. Per optar al medaller cal haver participat en dues de les tres tirades; la classificació final suma les dues millors puntuacions. Les medalles de les sèries no són les oficials de la FCTA.</p>
+<p><strong>Preus d'inscripció:</strong> sèries 15 € sènior / 10 € sub 15 · campionat 30 € sènior / 15 € sub 15.</p>
+<p>El Campionat de Catalunya es disputa en una sola jornada: un circuit classificatori del qual surten els quatre primers, que accedeixen a les eliminatòries (mínim de quatre participants per divisió i sexe).</p>`
+  },
+  35: {
+    title: "21è Campionat de Catalunya de Round 900",
+    date: "7 de setembre de 2025",
+    cat: "Aire Lliure",
+    img: "img/news/noticia35.jpg",
+    body: `<p>Barcelona va acollir el passat cap de setmana, <strong>6 i 7 de setembre</strong>, el <strong>21è Campionat de Catalunya Round 900</strong> i Memorial Jordi Adell, celebrat a les instal·lacions del <strong>Club Arc Montjuïc</strong>.</p>
+<p>És un campionat emblemàtic de setembre que posa el punt final a la temporada i s'ha consolidat com una cita ineludible del calendari. Hi van participar <strong>85 esportistes</strong> al llarg de dues jornades.</p>
+<p>Agraïm la implicació del Club Arc Montjuïc i de totes les persones que ho han fet possible.</p>`
+  },
+  36: {
+    title: "Gran participació a la 3a tirada de la Lliga Catalana de Sala 2025/2026",
+    date: "20 de novembre de 2025",
+    cat: "Sala",
+    img: "img/news/noticia36.jpg",
+    body: `<p>Aquest cap de setmana s'ha celebrat la <strong>3a tirada de la Lliga Catalana de Sala 2025/2026</strong>, acollida simultàniament pel <strong>Club Tir amb Arc Manresa</strong> i el <strong>Club Arquers Torrefarrera</strong>. Un total de <strong>230 participants</strong> han omplert totes les línies de tir.</p>
+<p>La propera cita serà la <strong>4a tirada</strong>, els dies <strong>6 i 7 de desembre</strong> al Club Tir amb Arc Constantí.</p>
+<p>Agraïm la participació de tots els arquers i arqueres i la dedicació dels clubs, voluntariat i organitzadors.</p>`
+  },
+  37: {
+    title: "La Lliga Catalana de Sala 2025/2026 es tanca amb una gran 4a tirada a Constantí",
+    date: "11 de desembre de 2025",
+    cat: "Sala",
+    img: "img/news/noticia37.jpg",
+    body: `<p>Aquest cap de setmana ha finalitzat la <strong>Lliga Catalana de Sala 2025/2026</strong> amb la <strong>4a i última tirada</strong>, acollida pel <strong>Club Tir amb Arc Constantí</strong>, amb gairebé <strong>200 esportistes</strong>.</p>
+<p>La competició s'ha dut a terme amb un ambient excel·lent i una gran organització del club amfitrió. Amb aquesta quarta tirada finalitza una edició marcada per una alta participació i un gran rendiment dels arquers i arqueres de totes les categories.</p>
+<p>Des de la Federació agraïm l'esforç de tots els participants, clubs, voluntariat i organitzadors.</p>`
+  },
+  38: {
+    title: "El Bages acull la 2a tirada de la Lliga Catalana 3D 2025/2026",
+    date: "18 de desembre de 2025",
+    cat: "3D",
+    img: "img/news/noticia38.jpg",
+    body: `<p>El <strong>Club Tir amb Arc Zen del Bages</strong> va ser l'escenari, diumenge passat, de la <strong>2a tirada de la Lliga Catalana 3D 2025/2026</strong>, amb gairebé un centenar d'arqueres i arquers de <strong>22 clubs</strong>.</p>
+<p>En aquesta segona cita, la FCTA va tornar a comptar amb el <strong>nou equip complet d'Ianseo</strong> (tauletes, antena, router, switch, ordinador, impressora i estació d'energia), que va permetre una gestió àgil i sense incidències. Els resultats es van poder publicar de manera immediata a <strong>ianseo.net</strong> un cop finalitzada la prova i superat el període de reclamacions.</p>
+<p>La propera cita serà el <strong>22 de febrer de 2026 a Olivella</strong>.</p>`
+  },
+  39: {
+    title: "Èxit de participació al Campionat de Catalunya de Clubs de Tir en Sala",
+    date: "22 de desembre de 2025",
+    cat: "Sala",
+    img: "img/news/noticia39.jpg",
+    body: `<p>Aquest cap de setmana s'ha celebrat al <strong>Club Tir amb Arc Manresa</strong> el <strong>Campionat de Catalunya de Clubs de Tir en Sala</strong>, amb <strong>138 esportistes</strong> distribuïts en <strong>36 equips</strong> de <strong>15 clubs</strong> de tota Catalunya.</p>
+<p>Abans de l'inici es va celebrar el <strong>Trofeu Màster de Catalunya</strong>, que reconeix els esportistes destacats de la Lliga Catalana: hi accedeixen els finalistes de les jornades de lliga, amb eliminatòries entre els vuit millors de cada divisió i finals entre els quatre millors.</p>
+<p><strong>Participants al Trofeu Màster:</strong></p>
+<ul><li><strong>Recorbat:</strong> Sergi Cebrian, David Bonin, Raúl Quiles</li><li><strong>Tradicional:</strong> Juanjo Querol, Enric Díaz, Jorge Rueda</li><li><strong>Compost:</strong> Manel Souto, Eric Pla, José Pérez</li><li><strong>Longbow:</strong> Mireia Comas, Antonio García, Carmen Mejía, Víctor López, Carles Peña, David Cardozo</li></ul>`
+  },
+  40: {
+    title: "Sant Celoni acull el 1r Campionat de Catalunya de Tir amb Arc 3D en Línia",
+    date: "19 de gener de 2026",
+    cat: "3D",
+    img: "img/news/noticia40.jpg",
+    body: `<p>El club <strong>Arc Sant Celoni</strong> va ser l'amfitrió, el <strong>18 de gener de 2026</strong>, del <strong>1r Campionat de Catalunya de Tir amb Arc 3D en Línia</strong>, una competició pionera que marca un pas endavant en aquesta disciplina a Catalunya.</p>
+<p>Tot i la pluja durant tota la jornada, la participació va ser un èxit i la competició es va desenvolupar amb total normalitat, amb una organització eficaç i professional.</p>
+<p>Des de la FCTA felicitem tots els participants, els jutges i l'equip organitzador.</p>`
+  },
+  41: {
+    title: "Èxits i medalles per als esportistes catalans a Ciudad Real",
+    date: "26 de gener de 2026",
+    cat: "3D",
+    img: "img/news/noticia41.jpg",
+    body: `<p>Aquest cap de setmana s'ha celebrat a <strong>Ciudad Real</strong> el <strong>Campionat d'Espanya 3D en sala</strong> i el <strong>Campionat d'Espanya d'arc tradicional, nu i longbow</strong>, amb <strong>34 esportistes</strong> catalans al 3D en sala i <strong>47</strong> al de tradicional, nu i longbow.</p>
+<p>Balanç: <strong>6 medalles individuals i 4 medalles per equips</strong>.</p>
+<p><strong>3D en sala:</strong></p>
+<ul><li>Compost Home: Jordi Ricart</li><li>Compost Dona: Maria Pitarch i Aida Domínguez</li><li>Longbow Dona: Mireia Comas</li><li>Tradicional Home: Víctor López</li><li>Equip compost mixt: Maria Pitarch i Jordi Ricart</li></ul>
+<p><strong>Tradicional, nu i longbow (equips):</strong></p>
+<ul><li>Equip tradicional mixt: Ana Lorente i Víctor López</li><li>Equip longbow mixt: Mireia Comas i Enrique Flores</li><li>Equip nu mixt: Mª Eugenia Palomar i David Rafael Cardozo</li></ul>
+<p>Des de la FCTA felicitem tots els esportistes i equips pels magnífics resultats.</p>`
+  },
+  42: {
+    title: "Constantí i Manresa acullen el 58è Campionat de Catalunya de Tir en Sala",
+    date: "3 de febrer de 2026",
+    cat: "Sala",
+    img: "img/news/noticia42.jpg",
+    body: `<p>El <strong>31 de gener i 1 de febrer</strong> s'ha celebrat el <strong>58è Campionat de Catalunya de Tir en Sala</strong>, que ha tancat oficialment la temporada de sala 2025/2026, a les instal·lacions del <strong>Tir amb Arc Constantí</strong> i del <strong>Tir amb Arc Manresa</strong>.</p>
+<p>L'esdeveniment ha coronat <strong>22 campions i campiones de Catalunya</strong> de sala, i ha estat l'escenari del lliurament de medalles de la Lliga Catalana. Hi han participat <strong>més de 170 arquers i arqueres</strong>.</p>
+<p>Agraïm la participació de tots els esportistes i la tasca dels clubs amfitrions i de totes les persones implicades.</p>`
+  },
+  43: {
+    title: "Èxit del 1r Torneig d'Arc Adaptat, Inclusiu i Salut a Olesa de Montserrat",
+    date: "9 de febrer de 2026",
+    cat: "Arc Adaptat",
+    img: "img/news/noticia43.jpg",
+    body: `<p>El dissabte <strong>7 de febrer</strong> es va celebrar amb gran èxit el <strong>1r Torneig d'Arc Adaptat, Inclusiu i Salut</strong> al <strong>Tir Arc Olesa</strong>, una iniciativa que dona continuïtat a la Lliga Local de Prevenció del Limfedema.</p>
+<p>Va incloure una categoria específica per a esportistes que participen en el projecte de limfedema en pacients oncològics, per fomentar la participació, consolidar la pràctica esportiva i afavorir la integració d'aquest col·lectiu.</p>
+<p>L'esdeveniment va combinar esport, salut i inclusió, i marca el camí per a futures edicions.</p>`
+  },
+  44: {
+    title: "Catalunya suma dues medalles als Campionats d'Espanya de Sala a Valladolid",
+    date: "17 de febrer de 2026",
+    cat: "Sala",
+    img: "img/news/noticia44.jpg",
+    body: `<p>Del <strong>12 al 13 de febrer</strong> es va disputar a <strong>Valladolid</strong> el Campionat d'Espanya de Sala U21, U18 i U15 d'arc recorbat i compost, amb <strong>16 esportistes</strong> de Catalunya:</p>
+<ul><li>🥈 <strong>Plata</strong> individual per a Gloria Moreton en arc recorbat U15.</li><li>🥉 <strong>Bronze</strong> per a l'equip femení d'arc recorbat U18: Maelyn Macías, Edurne Martinez i Laura Safont.</li></ul>
+<p>Del <strong>14 al 15 de febrer</strong> es va celebrar el Campionat d'Espanya Absolut d'arc recorbat i compost, amb <strong>18 esportistes</strong> catalans. Millors resultats:</p>
+<ul><li>4a posició individual per a Alexandra Moura (arc compost).</li><li>4a posició per a l'equip masculí d'arc compost: Pablo Martinez, Jose Perez i Eric Pla.</li></ul>
+<p>Enhorabona a tots els esportistes, i un reconeixement especial als dos jutges catalans presents al campionat.</p>`
+  },
+  45: {
+    title: "Gran jornada de 3D a Olivella",
+    date: "25 de febrer de 2026",
+    cat: "3D",
+    img: "img/news/noticia45.jpg",
+    body: `<p>El <strong>Club Arquers Olivella</strong> va acollir el <strong>22 de febrer de 2026</strong> la <strong>3a tirada de la Lliga Catalana 3D</strong>, amb <strong>105 esportistes</strong>.</p>
+<p>Malgrat el vent dels dies previs, que va obligar el club a treballar a contrarellotge, el circuit es va deixar en òptimes condicions. Un reconeixement especial als voluntaris, organitzadors i jutges.</p>
+<p>La competició continuarà amb la <strong>4a tirada, el 12 d'abril de 2026</strong>.</p>`
+  },
+  46: {
+    title: "Segona cita de la Lliga Catalana de Camp 2025/2026",
+    date: "11 de març de 2026",
+    cat: "Camp",
+    img: "img/news/noticia46.jpg",
+    body: `<p>La Lliga Catalana de Camp ha celebrat la <strong>2a tirada</strong> del calendari el passat <strong>8 de març</strong> a les instal·lacions del <strong>Club Català de Tir amb Arc</strong> (Montcada i Reixac).</p>
+<p>La jornada va començar amb certa inestabilitat meteorològica, però el temps va millorar i es va poder completar la competició amb bones condicions. Hi van participar <strong>41 esportistes</strong>.</p>
+<p>La <strong>3a tirada</strong> tindrà lloc el <strong>3 de maig</strong> a Montcada i Reixac. Ens hi retrobem!</p>`
+  },
+  47: {
+    title: "Arrenca la nova edició del Curs de Tècnic Nivell 1 en Tir amb Arc",
+    date: "17 de març de 2026",
+    cat: "Formació",
+    img: "img/news/noticia47.jpg",
+    body: `<p>Aquest cap de setmana s'ha donat el tret de sortida a la nova edició del <strong>Curs de Tècnic Nivell 1 en Tir amb Arc</strong>. Les primeres sessions, centrades en didàctica i metodologia, han estat impartides per <strong>Juan Carlos Ahumada Méndez</strong>.</p>
+<p>Enguany el curs compta amb un grup de <strong>23 alumnes</strong>. La FCTA us desitja molta sort en aquest nou camí.</p>
+<p>Si t'interessa convertir-te en tècnic de tir amb arc, consulta la informació sobre els cursos de Nivell 1 i altres formacions a la secció de Formació del portal.</p>`
+  },
+  48: {
+    title: "Aclariment sobre la coincidència d'una tirada de la Lliga Catalana amb Nîmes",
+    date: "15 d'agost de 2026",
+    cat: "Federació",
+    body: `<p>Davant d'algunes consultes rebudes sobre la coincidència d'una tirada de la Lliga Catalana amb el <strong>Nîmes Archery Tournament</strong>, la FCTA explica el criteri seguit en l'elaboració del calendari.</p>
+<p>La Federació reconeix la importància de Nîmes, una de les grans competicions internacionals de sala, i entén que alguns arquers catalans hi vulguin participar. No obstant això, la Lliga Catalana disposa d'un calendari federatiu propi, que depèn de molts factors que s'han de coordinar:</p>
+<ul><li>Calendari de competicions de la RFETA.</li><li>Campionats de Catalunya de les diferents disciplines.</li><li>Disponibilitat dels clubs organitzadors i de les seves instal·lacions.</li><li>Disponibilitat dels jutges.</li><li>Necessitat de distribuir adequadament totes les jornades al llarg de la temporada.</li></ul>
+<p>Per això una data de la Lliga Catalana no es pot establir únicament en funció de les competicions internacionals. Això no vol dir que no es tinguin en compte: la FCTA considera raonable incorporar-les com un dels elements a valorar en la planificació de futures temporades, però sense fer dependre d'elles tot el calendari.</p>
+<p>La coincidència tampoc és excepcional: el mateix cap de setmana de Nîmes hi ha altres calendaris de tir amb arc que mantenen competicions programades, fins i tot a França. Participar a Nîmes és una decisió esportiva legítima, i participar a la Lliga Catalana també ho és.</p>
+<p>La responsabilitat de la FCTA és buscar l'equilibri entre tots aquests interessos i garantir una Lliga Catalana estable, organitzada i previsible, evitant, sempre que sigui possible, coincidències que afectin significativament els esportistes.</p>`
+  },
+  49: {
+    title: "Llicència federativa: com accedir al Portal del federat",
+    date: "22 de setembre de 2026",
+    cat: "Federació",
+    body: `<p>La llicència federativa es gestiona a través del <strong>Portal del federat</strong> de la Reial Federació Espanyola de Tir amb Arc (<strong>federados.rfeta.es</strong>). Des del portal cada federat pot consultar el seu perfil, seguir l'estat de la seva llicència, descarregar-la al mòbil o en PDF i mantenir les seves dades al dia.</p>
+<p><strong>Abans de començar</strong> necessiteu el vostre NIF, NIE o passaport (el mateix que vau facilitar en federar-vos), el correu que consta al vostre perfil i un dispositiu amb connexió a internet.</p>
+<p><strong>Com entrar per primera vegada, en sis passos:</strong></p>
+<ol><li>Obriu el portal: www.federados.rfeta.es.</li><li>Cliqueu «Recuperar acceso» (serveix per crear la contrasenya la primera vegada).</li><li>Escriviu el document (amb la lletra i sense espais) i el correu del perfil, i cliqueu «Enviarme el enlace».</li><li>Obriu el correu de la RFETA i cliqueu «Establecer mi contraseña». L'enllaç caduca en una hora i només es pot fer servir una vegada.</li><li>Creeu la contrasenya (mínim 8 caràcters) i cliqueu «Guardar contraseña».</li><li>Accepteu la protecció de dades: baixeu fins al final del text, marqueu «He leído y acepto» i cliqueu «Aceptar y continuar».</li></ol>
+<p><strong>Important:</strong> mentre la clàusula de protecció de dades no estigui acceptada, la federació no pot tramitar la llicència, encara que el club l'hagi sol·licitada i estigui pagada. Només cal fer-ho una vegada.</p>
+<p><strong>Com descarregar la targeta federativa:</strong> torneu a entrar al portal, aneu a «Licencias», obriu el detall de la llicència de la temporada i cliqueu «Descargar licencia». Podeu triar certificat en PDF, rebre els enllaços per correu o afegir-la a Apple Wallet o Google Wallet. La descàrrega només apareix quan la llicència està tramitada i abonada.</p>
+<p><strong>Deixeu el perfil a punt:</strong> la foto surt a la llicència i, sense foto, la federació no la pot emetre; i el correu ha d'estar actualitzat perquè és el canal dels avisos. El document, el nom i la data de naixement no es poden modificar des del portal: si són incorrectes, comuniqueu-ho al vostre club o a la FCTA.</p>`
   }
 };
 
@@ -222,27 +589,11 @@ var DB = {
 circulars: [
   // FEDERACIÓ
   {id:1,type:'fed',num:'CIRC-2622',title:'3ª Tirada Lliga Catalana Aire Lliure 2026',desc:'Informació completa i inscripcions per a la 3ª tirada de la lliga catalana d\'aire lliure 2026',day:27,mon:'ABR',year:2026,url:'docs/2026042714461573-CIRC_2622_3a_tirada_Lliga_Catalana_AireLliure_2026.pdf'},
-  {id:2,type:'fed',num:'CIRC-2619',title:'Assemblea General Ordinària FCTA 2026',desc:'Convocatòria, ordre del dia i documentació de l\'assemblea',day:15,mon:'MAR',year:2026,url:'#'},
   {id:25,type:'fed',num:'CIRC-2509',title:'Sol·licitud d\'Informació Auditoria Interna FCTA',desc:'Procés d\'auditoria interna encarregat per la FCTA a FACSS Auditors. Sol·licitud d\'informació comptable als clubs',day:31,mon:'GEN',year:2025,url:'docs/2025013117490089-CIRC_2509_SOL.LICITUD_INFORMACIO_AUDITORIA_FCTA.pdf'},
-  {id:3,type:'fed',num:'CIRC-2613',title:'Preus Llicències Temporada 2025/2026',desc:'Actualització de tarifes de llicències aprovades per l\'assemblea',day:5,mon:'GEN',year:2026,url:'#'},
   // AIRE LLIURE / SALA
-  {id:4,type:'al',num:'CIRC-2621',title:'Lliga Catalana Aire Lliure 2026 – Calendari general',desc:'Calendari complet de la Lliga Catalana d\'aire lliure temporada 2026',day:10,mon:'GEN',year:2026,url:'#'},
-  {id:5,type:'al',num:'CIRC-2617',title:'2ª Tirada Lliga Catalana Aire Lliure',desc:'Informació de la 2ª tirada celebrada a Figueres i Olivella',day:5,mon:'MAR',year:2026,url:'#'},
-  {id:6,type:'al',num:'CIRC-2618',title:'Campionat de Catalunya de Sala 2026',desc:'Normes, categories, full d\'inscripció i seus del campionat',day:20,mon:'MAR',year:2026,url:'#'},
-  {id:7,type:'al',num:'CIRC-2610',title:'Campionat Catalunya Universitari 2026',desc:'Competició exclusiva per a esportistes universitaris de Catalunya – Tarragona',day:15,mon:'FEB',year:2026,url:'#'},
-  {id:8,type:'al',num:'CIRC-2605',title:'1ª Tirada Lliga Catalana Aire Lliure 2026',desc:'Olesa de Montserrat i Sant Celoni – inici de temporada',day:14,mon:'MAR',year:2026,url:'#'},
   // CAMP
-  {id:9,type:'camp',num:'CIRC-2620',title:'56è Campionat de Catalunya de Camp',desc:'Montcada i Reixac, juliol 2026. Punt final a la Lliga Catalana 2025/2026',day:15,mon:'ABR',year:2026,url:'#'},
-  {id:10,type:'camp',num:'CIRC-2615',title:'1ª Tirada Lliga Catalana de Camp 2025/2026',desc:'Informació i inscripcions per a la primera tirada de la lliga de camp',day:8,mon:'FEB',year:2026,url:'#'},
-  {id:11,type:'camp',num:'CIRC-2609',title:'Lliga Catalana Tir de Camp 2026 – Calendari',desc:'Calendari complet de la lliga de camp temporada 2025/2026',day:10,mon:'GEN',year:2026,url:'#'},
-  {id:12,type:'camp',num:'CIRC-2601',title:'Resultats 55è Campionat de Catalunya de Camp',desc:'Resultats definitius i rànquing final de la temporada 2024/2025',day:20,mon:'JUL',year:2025,url:'#'},
   // 3D / BOSC
-  {id:13,type:'3d',num:'CIRC-2616',title:'30è Campionat de Catalunya 3D 2026',desc:'Resultats i classificació final del 30è Campionat de Catalunya 3D',day:10,mon:'ABR',year:2026,url:'https://ianseo.net/Details.php?toId=28099'},
-  {id:14,type:'3d',num:'CIRC-2614',title:'Lliga Catalana 3D 2026 – Calendari i seu',desc:'Totes les dates i seus de la lliga de bosc temporada 2026',day:20,mon:'GEN',year:2026,url:'#'},
-  {id:15,type:'3d',num:'CIRC-2608',title:'2ª Tirada Lliga Catalana 3D',desc:'Informació de la 2ª tirada de la lliga de bosc 2026',day:15,mon:'MAR',year:2026,url:'#'},
   // JUTGES
-  {id:16,type:'jut',num:'CIRC-2611',title:'Curs de Jutges de Tir amb Arc 2026',desc:'Convocatòria i inscripció al curs de jutges de la FCTA',day:1,mon:'FEB',year:2026,url:'#'},
-  {id:17,type:'jut',num:'CIRC-2606',title:'Actualització Reglament Tècnic 2026',desc:'Noves modificacions del reglament tècnic aprovades per la junta directiva',day:15,mon:'FEB',year:2026,url:'#'},
   // FORMACIÓ
   {id:18,type:'form',num:'CIRC-2607',title:'Seminari de Psicologia Aplicada al Tir amb Arc',desc:'Inscripcions obertes. Formació general per a tècnics i esportistes',day:29,mon:'GEN',year:2026,url:'docs/2026012915470845-CIRC_2607_Seminari_psicologia_aplicada_tir_amb_arc.pdf'},
   {id:19,type:'form',num:'CIRC-2504',title:'Curs Tècnic Esportiu Nivell 1 – Convocatòria 2026/2027',desc:'La FCTA i el CCE convoquen el curs de tècnic esportiu de Nivell 1 en tir amb arc',day:15,mon:'GEN',year:2026,url:'docs/2026011516220845-CIRC_2504_Curs_Tecnic_Nivell1_2025_26.pdf'},
@@ -251,7 +602,6 @@ circulars: [
   {id:22,type:'form',num:'CIRC-2435',title:'Taller de Fiscalitat per a Clubs',desc:'Obligacions fiscals, declaracions i exempcions per a clubs i federacions',day:4,mon:'JUL',year:2024,url:'docs/202407041752453-CIRC_2435_Taller_formacio_clubs_fiscal.pdf'},
   {id:23,type:'form',num:'CIRC-2410',title:'Taller de Comptabilitat per a Clubs',desc:'Gestió econòmica i comptable d\'entitats esportives sense ànim de lucre',day:29,mon:'FEB',year:2024,url:'docs/2024022916412124-CIRC_2410_Taller_formacio_clubs_comptabilitat.pdf'},
   // KYUDO
-  {id:24,type:'kyudo',num:'CIRC-2603',title:'Campionat de Catalunya de Kyudo 2026',desc:'Convocatòria i informació del campionat català de kyudo',day:10,mon:'MAR',year:2026,url:'#'},
   // JUNY 2026
   {id:40,type:'al',  num:'CIRC-2637',title:'76è Campionat de Catalunya d\'Aire Lliure',desc:'Convocatòria, normes i full d\'inscripció del 76è Campionat de Catalunya d\'Aire Lliure',day:8,mon:'JUN',year:2026,url:'docs/2026060814000183-CIRC_2637_76e_Campionat_Catalunya_Aire_Lliure.pdf'},
   {id:41,type:'camp',num:'CIRC-2636',title:'Format de Competicions de Camp 2026/2027',desc:'Reglament, categories i format de les competicions de tir de camp per a la temporada 2026/2027',day:8,mon:'JUN',year:2026,url:'docs/2026060812213726-CIRC_2636_Format_competicions_Camp_2026_27.pdf'},
@@ -270,6 +620,41 @@ circulars: [
   {id:53,type:'fed', num:'CIRC-2624',title:'Ajut al II Gran Premi de Promeses LLNJCM',desc:'Sol·licitud d\'ajut de la FCTA per participar al II Gran Premi de Promeses de la Lliga Nacional de Joves Competidors i Mèrit',day:11,mon:'MAI',year:2026,url:'docs/2026051111225172-CIRC_2624_AJUT_A_II_GRAN_PREMI_PROMESES_LLNJCM.pdf'},
   // ABRIL 2026
   {id:54,type:'3d',  num:'CIRC-2623',title:'30è Campionat de Catalunya 3D 2026 – Resultats',desc:'Resultats i classificació final del 30è Campionat de Catalunya de Tir 3D celebrat el 2026',day:28,mon:'ABR',year:2026,url:'docs/2026042812155234-CIRC_2623_30e_Campionat_Catalunya_3D_2026.pdf'},
+  // SETEMBRE – OCTUBRE 2026 / JUNY – AGOST 2026 (afegides des de fcta.cat)
+  {id:55,type:'camp',num:'CIRC-2638',title:'Ajut als esportistes al Campionat d\'Espanya de Camp',desc:'Sol·licitud d\'ajut de la FCTA per als esportistes que participen al Campionat d\'Espanya de Tir de Camp',day:16,mon:'JUN',year:2026,url:'docs/2026061810062222-CIRC_2638_AJUT_CAMPIONAT_ESPANYA_CAMP.pdf'},
+  {id:56,type:'al',num:'CIRC-2639',title:'Ajut al Campionat d\'Espanya d\'Aire Lliure de Veterans',desc:'Sol·licitud d\'ajut de la FCTA per participar al Campionat d\'Espanya d\'Aire Lliure de Veterans',day:17,mon:'JUN',year:2026,url:'docs/2026061810074824-CIRC_2639_AJUT_CAMPIONAT_ESPANYA_ALL_VETERANS.pdf'},
+  {id:57,type:'al',num:'CIRC-2640',title:'Comunicació de Participació – Campionat d\'Espanya d\'Aire Lliure Tradicional, Longbow i Nu',desc:'Comunicació i llista de participants catalans al Campionat d\'Espanya d\'Aire Lliure de Tradicional, Longbow i Nu',day:23,mon:'JUN',year:2026,url:'docs/2026062518333324-CIRC_2640_COMUNICACIO_PARTICIPACIO_CTS-ESP_A_LL_TRADICIONAL_LBOW_NU.pdf'},
+  {id:58,type:'al',num:'CIRC-2641',title:'Comunicació de Participació – Campionat d\'Espanya d\'Aire Lliure Recorbat i Compost U21, U18, U15',desc:'Comunicació i llista de participants catalans al Campionat d\'Espanya d\'Aire Lliure d\'arc recorbat i compost U21, U18 i U15',day:24,mon:'JUN',year:2026,url:'docs/2026062518350779-CIRC_2641_COMUNICACIO_PARTICIPACIO_CTS-ESP_A_LL_RECORBAT_COMPOST_U21_U18_U15.pdf'},
+  {id:59,type:'al',num:'CIRC-2642',title:'Comunicació de Participació – Campionat d\'Espanya d\'Aire Lliure Recorbat i Compost Absolut',desc:'Comunicació i llista de participants catalans al Campionat d\'Espanya d\'Aire Lliure d\'arc recorbat i compost absolut',day:25,mon:'JUN',year:2026,url:'docs/2026062518360828-CIRC_2642_COMUNICACIO_PARTICIPACIO_CTS-ESP_A_LL_RECORBAT_COMPOST.pdf'},
+  {id:60,type:'al',num:'CIRC-2643',title:'Ajut al Campionat d\'Espanya d\'Aire Lliure Tradicional, Longbow i Nu',desc:'Sol·licitud d\'ajut de la FCTA per participar al Campionat d\'Espanya d\'Aire Lliure de Tradicional, Longbow i Nu',day:28,mon:'JUL',year:2026,url:'docs/2026073013524156-CIRC_2643_AJUT_CAMPIONAT_ESPANYA_ALL_TRAD-LBOW-NU.pdf'},
+  {id:61,type:'fed',num:'CIRC-2644',title:'Ajut al Campionat d\'Espanya CESA (Edat Escolar) i Promeses',desc:'Sol·licitud d\'ajut de la FCTA per participar al Campionat d\'Espanya de Seleccions Autonòmiques en Edat Escolar (CESA) i Promeses',day:29,mon:'JUL',year:2026,url:'docs/2026073013581971-CIRC_2644_AJUT_CAMPIONAT_ESPANYA_CESA_EdadEscolar_Promeses.pdf'},
+  {id:62,type:'al',num:'CIRC-2645',title:'Ajut al Campionat d\'Espanya U21, U18 i U15',desc:'Sol·licitud d\'ajut de la FCTA per participar al Campionat d\'Espanya d\'Aire Lliure U21, U18 i U15',day:4,mon:'AGO',year:2026,url:'docs/202608071407266-CIRC_2645_AJUT_CAMPIONAT_ESPANYA_U21_U18_U15.pdf'},
+  {id:63,type:'al',num:'CIRC-2646',title:'Ajut al Campionat d\'Espanya d\'Aire Lliure Recorbat i Compost Absolut',desc:'Sol·licitud d\'ajut de la FCTA per participar al Campionat d\'Espanya d\'Aire Lliure d\'arc recorbat i compost absolut',day:5,mon:'AGO',year:2026,url:'docs/2026080714084631-CIRC_2646_AJUT_CAMPIONAT_ESPANYA_ALL_RC_ABSOLUT.pdf'},
+  {id:64,type:'fed',num:'CIRC-2647',title:'Vacances FCTA',desc:'Comunicat sobre el període de vacances de les oficines de la FCTA',day:6,mon:'AGO',year:2026,url:'docs/2026080714095023-CIRC_2647_VACANCES_FCTA.pdf'},
+  {id:65,type:'al',num:'CIRC-2648',title:'XXII Campionat de Catalunya Round 900 – XIII Memorial Jordi Adell (Barcelona)',desc:'Convocatòria, normes i inscripcions del XXII Campionat de Catalunya de Round 900 i XIII Memorial Jordi Adell, 26 i 27 de setembre de 2026',day:12,mon:'AGO',year:2026,url:'docs/2026081216301622-CIRC_2648_Campionat_Catalunya_R900_2026_ACTUALITZADA.pdf'},
+  {id:66,type:'fed',num:'CIRC-2649',title:'Programa Autonòmic de Tecnificació – Setembre 2026',desc:'Convocatòria de la jornada del Programa Autonòmic de Tecnificació del mes de setembre de 2026',day:24,mon:'AGO',year:2026,url:'docs/2026082416361795-CIRC_2649_PROGRAMA_AUTONOMIC_TECNIFICACIO_Setembre.pdf'},
+  {id:67,type:'fed',num:'CIRC-2650',title:'Llicències Temporada 2026-2027',desc:'Informació sobre la tramitació i les tarifes de les llicències federatives de la temporada 2026/2027',day:15,mon:'SET',year:2026,url:'docs/2026091511525447-CIRC_2650_LLICENCIES_2026-2027_Df.pdf'},
+  {id:68,type:'3d',num:'CIRC-2651',title:'1ª Tirada Lliga Catalana 3D en Línia 2026/2027 (Figueres)',desc:'Informació i inscripcions per a la 1a tirada de la Lliga Catalana 3D en línia, 18 d\'octubre de 2026 a Figueres',day:28,mon:'SET',year:2026,url:'docs/2026100810223677-CIRC_2651_1a_Tirada_Lliga_Catalana_3D_en_linia_2026-27_Figueres.pdf'},
+  {id:69,type:'al',num:'CIRC-2652',title:'1ª Tirada Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut i de Prevenció del Limfedema (Olesa de Montserrat)',desc:'Informació i inscripcions per a la 1a tirada de la Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut i la 1a de la Lliga Catalana per a la Prevenció del Limfedema, 17 d\'octubre de 2026',day:1,mon:'OCT',year:2026,url:'docs/2026100111362234-CIRC_2652_1a_Tirada_Lliga_Catalana_Arc_Adaptat_2026-2027.pdf'},
+  {id:70,type:'fed',num:'CIRC-2653',title:'Programa Autonòmic de Tecnificació – Octubre 2026',desc:'Convocatòria de la jornada del Programa Autonòmic de Tecnificació del mes d\'octubre de 2026',day:5,mon:'OCT',year:2026,url:'docs/2026100514155775-CIRC_2653_Pla_Autonomic_Tecnificacio_Jornada_octubre_2026.pdf'},
+  {id:71,type:'al',num:'CIRC-2654',title:'1ª Tirada Lliga Catalana de Sala 2026/2027 (Olesa de Montserrat i Constantí)',desc:'Informació i inscripcions per a la 1a tirada de la Lliga Catalana de Sala, 24 i 25 d\'octubre de 2026',day:6,mon:'OCT',year:2026,url:'docs/2026100611542593-CIRC_2654_1a_Tirada_Lliga_Catalana_Sala_2026-2027_Olesa_M_i_Constanti.pdf'},
+  // GENER – ABRIL 2026 (circulars reals, afegides des de fcta.cat)
+  {id:72,type:'3d',num:'CIRC-2606',title:'3ª Tirada Lliga Catalana 3D 2025/2026 (Olivella)',desc:'Informació i inscripcions per a la 3a tirada de la Lliga Catalana 3D, 22 de febrer de 2026 a Olivella',day:29,mon:'GEN',year:2026,url:'docs/2026012911195089-CIRC_2606_3a_tirada_lliga_catalana_3D_2025_2026.pdf'},
+  {id:73,type:'fed',num:'CIRC-2608',title:'2ª Concentració del Programa Autonòmic de Tecnificació',desc:'Convocatòria de la 2a concentració del Programa Autonòmic de Tecnificació (febrer 2026)',day:3,mon:'FEB',year:2026,url:'docs/2026020309534960-CIRC_2608_Jornada_febrer_PAT.pdf'},
+  {id:74,type:'camp',num:'CIRC-2609',title:'2ª Tirada Lliga Catalana de Camp 2025/2026 (Montcada i Reixac)',desc:'Informació i inscripcions per a la 2a tirada de la Lliga Catalana de Camp, 8 de març de 2026',day:16,mon:'FEB',year:2026,url:'docs/2026021611000431-CIRC_2609_2a_tirada_lliga_cat_camp_2025_26.pdf'},
+  {id:75,type:'al',num:'CIRC-2610',title:'1ª Tirada Lliga Catalana d\'Aire Lliure 2025/2026 (Olesa de Montserrat i Sant Celoni)',desc:'Informació i inscripcions per a la 1a tirada de la Lliga Catalana d\'Aire Lliure, 14 de març de 2026',day:24,mon:'FEB',year:2026,url:'docs/2026022513155260-CIRC_2610_Lliga_Catalana_Aire_Lliure_2025_26.pdf'},
+  {id:76,type:'3d',num:'CIRC-2611',title:'Ajut als Campionats d\'Espanya de Sala 3D (Tradicional, Nu i Longbow)',desc:'Sol·licitud d\'ajut de la FCTA per participar als Campionats d\'Espanya de Sala 3D i de Tradicional, Nu i Longbow',day:25,mon:'FEB',year:2026,url:'docs/2026022514491361-CIRC_2611_AJUT_CTS_ESPANYA_SALA_3D_TLN.pdf'},
+  {id:77,type:'al',num:'CIRC-2612',title:'Ajut als Campionats d\'Espanya de Sala (Recorbat i Compost)',desc:'Sol·licitud d\'ajut de la FCTA per participar als Campionats d\'Espanya de Sala d\'arc recorbat i compost',day:26,mon:'FEB',year:2026,url:'docs/2026022514502712-CIRC_2612_AJUT_CTS_ESPANYA_SALA_RECORBAT_COMPOST.pdf'},
+  {id:78,type:'jut',num:'CIRC-2613',title:'Curs de Jutge Nacional (preinscripció)',desc:'Preinscripció al curs de jutge nacional',day:5,mon:'MAR',year:2026,url:'docs/2026030513205653-CIRC_2613_CURS_JUTGE_NACIONAL_PREINSCRIPCIO.pdf'},
+  {id:79,type:'al',num:'CIRC-2614',title:'2ª Tirada Lliga Catalana d\'Aire Lliure 2025/2026 (Figueres i Olivella)',desc:'Informació i inscripcions per a la 2a tirada de la Lliga Catalana d\'Aire Lliure, 18 i 19 d\'abril de 2026',day:19,mon:'MAR',year:2026,url:'docs/2026031914561671-CIRC_2614_2a_tirada_Lliga_Catalana_Aire_Lliure_2025_26.pdf'},
+  {id:80,type:'3d',num:'CIRC-2615',title:'4ª Tirada Lliga Catalana 3D 2025/2026 (Castellnou del Bages)',desc:'Informació i inscripcions per a la 4a tirada de la Lliga Catalana 3D, 12 d\'abril de 2026',day:25,mon:'MAR',year:2026,url:'docs/2026032509514199-CIRC_2615_4a_tirada_lliga_catalana_3D_2025_2026.pdf'},
+  {id:81,type:'al',num:'CIRC-2616',title:'Campionat de Catalunya Universitari 2026 (Tarragona)',desc:'Reglament i informació del Campionat de Catalunya Universitari de Tir amb Arc, 28 de març de 2026',day:24,mon:'MAR',year:2026,url:'docs/2026032614163881-CIRC_2616_Campionat_Catalunya_Universitari_2026.pdf'},
+  {id:82,type:'al',num:'CIRC-2617',title:'1ª Tirada d\'Arc Adaptat, Inclusiu i Salut (Olesa de Montserrat)',desc:'Informació i inscripcions per a la 1a tirada d\'Arc Adaptat, Inclusiu i Salut, 11 d\'abril de 2026',day:31,mon:'MAR',year:2026,url:'docs/2026033119305626-CIRC_2617_1a_tirada_Arc_Adaptat_2026.pdf'},
+  {id:83,type:'camp',num:'CIRC-2618',title:'3ª Tirada Lliga Catalana de Camp 2025/2026 (Montcada i Reixac)',desc:'Informació i inscripcions per a la 3a tirada de la Lliga Catalana de Camp, 3 de maig de 2026',day:14,mon:'ABR',year:2026,url:'docs/2026041612561787-CIRC_2618_3a_tirada_lliga_cat_camp_2025_26.pdf'},
+  {id:84,type:'fed',num:'CIRC-2619',title:'Ajut al I Gran Premi de Promeses (LLNJCM)',desc:'Sol·licitud d\'ajut de la FCTA per participar al I Gran Premi de Promeses de la Lliga Nacional de Joves Competidors i Mèrit',day:15,mon:'ABR',year:2026,url:'docs/2026041616190035-CIRC_2619_AJUT_A_I_GRAN_PREMI_PROMESES_LLNJCM.pdf'},
+  {id:85,type:'3d',num:'CIRC-2620',title:'Comunicació de Participació – Campionat d\'Espanya de 3D',desc:'Comunicació i llista de participants catalans al Campionat d\'Espanya de 3D',day:16,mon:'ABR',year:2026,url:'docs/2026041615182240-CIRC_2620_COMUNICACIO_PARTICIPACIO_CT-ESP_3D.pdf'},
+  {id:86,type:'jut',num:'RFETA-INFO',title:'Circular informativa RFETA – Curs de Jutges RFETA Nivell 1 (Barcelona)',desc:'Circular informativa de la RFETA sobre el curs de jutges RFETA de Nivell 1 a Catalunya',day:17,mon:'ABR',year:2026,url:'docs/2026041711342092-Circular_curso_jueces_RFETA_nivel_1_CATALUNA_2026.pdf'},
+  {id:87,type:'camp',num:'CIRC-2621',title:'56è Campionat de Catalunya de Camp 2025/2026 (Montcada i Reixac)',desc:'Convocatòria, normes i inscripcions del 56è Campionat de Catalunya de Camp, 10 de maig de 2026',day:21,mon:'ABR',year:2026,url:'docs/2026042115274986-CIRC_2621_56e_Campionat_Catalunya_Camp_2025_2026.pdf'},
 ],
 
 // --- COMPETICIONS ---
@@ -282,30 +667,30 @@ competitions: [
   // ── Tancades 2026 (ordre cronològic invers) ─────────────
   {id:130,type:'al',  title:'76è Campionat de Catalunya d\'Aire Lliure',   disc:'Aire Lliure',  date:'4-5 jul 2026',    dateISO:'2026-07-04', loc:'Barcelona',                        status:'open',   circ:'CIRC-2637', url:'#',                                        ianseo:29041},
   {id:15,type:'al',   title:'3ª Tirada Lliga Catalana AL 2026 (Esclanyà)',disc:'Aire Lliure',  date:'31 mai 2026',     dateISO:'2026-05-31', loc:'Esclanyà (Girona)',                status:'open',   circ:'CIRC-2622', url:'#',                                        ianseo:28417},
-  {id:7, type:'trd',  title:'30è Campionat de Catalunya 3D',               disc:'3D',    date:'17 mai 2026',     dateISO:'2026-05-17', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2616', url:'#',                                        ianseo:28099},
-  {id:2, type:'camp', title:'56è Campionat de Catalunya de Camp',           disc:'Tir de Camp',  date:'10 mai 2026',     dateISO:'2026-05-10', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2620', url:'#news:2',                                  ianseo:28098},
-  {id:9, type:'camp', title:'3ª Tirada Lliga Catalana Camp 2026',           disc:'Tir de Camp',  date:'3 mai 2026',      dateISO:'2026-05-03', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2620', url:'#',                                        ianseo:27988},
-  {id:10,type:'trd',  title:'4ª Tirada Lliga Catalana 3D 2026',            disc:'3D',    date:'12 abr 2026',     dateISO:'2026-04-12', loc:'Castellnou del Bages (Barcelona)', status:'open',   circ:'CIRC-2608', url:'#',                                        ianseo:27589},
-  {id:11,type:'al',   title:'2ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'18 abr 2026',     dateISO:'2026-04-18', loc:'Olivella / Figueres',              status:'open',   circ:'CIRC-2617', url:'#news:3',                                  ianseo:27633},
-  {id:5, type:'al',   title:'Campionat de Catalunya Universitari 2026',    disc:'Aire Lliure',  date:'28 mar 2026',     dateISO:'2026-03-28', loc:'Tarragona',                        status:'open',   circ:'CIRC-2610', url:'#news:5',                                  ianseo:27386},
-  {id:13,type:'al',   title:'1ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Olesa de Montserrat / Sant Celoni',status:'open',   circ:'CIRC-2605', url:'#',                                        ianseo:27062},
-  {id:129,type:'al',  title:'1ª Tirada Lliga Catalana AL 2026 (Sant Celoni)',disc:'Aire Lliure', date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Sant Celoni (Vallès Oriental)',    status:'open',   circ:'CIRC-2605', url:'#',                                        ianseo:27064},
-  {id:12,type:'camp', title:'2ª Tirada Lliga Catalana Camp 2026',           disc:'Tir de Camp',  date:'8 mar 2026',      dateISO:'2026-03-08', loc:'Montcada i Reixac',                status:'open',   circ:'#',         url:'#',                                        ianseo:26987},
-  {id:3, type:'trd',  title:'3ª Tirada Lliga Catalana 3D 2026',            disc:'3D',    date:'22 feb 2026',     dateISO:'2026-02-22', loc:'Olivella (Barcelona)',              status:'open',   circ:'CIRC-2608', url:'#',                                        ianseo:26790},
-  {id:8, type:'sala', title:'58è Campionat de Catalunya de Sala',          disc:'Sala – 18m',   date:'31 gen 2026',     dateISO:'2026-01-31', loc:'Manresa / Constantí',              status:'open',   circ:'#',         url:'#',                                        ianseo:26399},
+  {id:7, type:'trd',  title:'30è Campionat de Catalunya 3D',               disc:'3D',    date:'17 mai 2026',     dateISO:'2026-05-17', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2623', url:'#',                                        ianseo:28099},
+  {id:2, type:'camp', title:'56è Campionat de Catalunya de Camp',           disc:'Tir de Camp',  date:'10 mai 2026',     dateISO:'2026-05-10', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2621', url:'#news:2',                                  ianseo:28098},
+  {id:9, type:'camp', title:'3ª Tirada Lliga Catalana Camp 2026',           disc:'Tir de Camp',  date:'3 mai 2026',      dateISO:'2026-05-03', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2618', url:'#',                                        ianseo:27988},
+  {id:10,type:'trd',  title:'4ª Tirada Lliga Catalana 3D 2026',            disc:'3D',    date:'12 abr 2026',     dateISO:'2026-04-12', loc:'Castellnou del Bages (Barcelona)', status:'open',   circ:'CIRC-2615', url:'#',                                        ianseo:27589},
+  {id:11,type:'al',   title:'2ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'18 abr 2026',     dateISO:'2026-04-18', loc:'Olivella / Figueres',              status:'open',   circ:'CIRC-2614', url:'#news:3',                                  ianseo:27633},
+  {id:5, type:'al',   title:'Campionat de Catalunya Universitari 2026',    disc:'Aire Lliure',  date:'28 mar 2026',     dateISO:'2026-03-28', loc:'Tarragona',                        status:'open',   circ:'CIRC-2616', url:'#news:5',                                  ianseo:27386},
+  {id:13,type:'al',   title:'1ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Olesa de Montserrat / Sant Celoni',status:'open',   circ:'CIRC-2610', url:'#',                                        ianseo:27062},
+  {id:129,type:'al',  title:'1ª Tirada Lliga Catalana AL 2026 (Sant Celoni)',disc:'Aire Lliure', date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Sant Celoni (Vallès Oriental)',    status:'open',   circ:'CIRC-2610', url:'#',                                        ianseo:27064},
+  {id:12,type:'camp', title:'2ª Tirada Lliga Catalana Camp 2026',           disc:'Tir de Camp',  date:'8 mar 2026',      dateISO:'2026-03-08', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2609',         url:'#news:46',                                        ianseo:26987},
+  {id:3, type:'trd',  title:'3ª Tirada Lliga Catalana 3D 2026',            disc:'3D',    date:'22 feb 2026',     dateISO:'2026-02-22', loc:'Olivella (Barcelona)',              status:'open',   circ:'CIRC-2606', url:'#news:45',                                        ianseo:26790},
+  {id:8, type:'sala', title:'58è Campionat de Catalunya de Sala',          disc:'Sala – 18m',   date:'31 gen 2026',     dateISO:'2026-01-31', loc:'Manresa / Constantí',              status:'open',   circ:'#',         url:'#news:42',                                        ianseo:26399},
   {id:19,type:'al',   title:'I Trofeu Vila de Cambrils',                   disc:'Aire Lliure',  date:'24 gen 2026',     dateISO:'2026-01-24', loc:'Cambrils (Tarragonès)',             status:'open',   circ:'#',         url:'#',                                        ianseo:26423},
-  {id:20,type:'trd',  title:'1r Campionat Catalunya 3D en Línia 2026',     disc:'3D',    date:'18 gen 2026',     dateISO:'2026-01-18', loc:'Sant Celoni (Vallès Oriental)',     status:'open',   circ:'#',         url:'#',                                        ianseo:26307},
-  {id:6, type:'camp', title:'1ª Tirada Lliga Catalana Camp 2025/26',       disc:'Tir de Camp',  date:'11 gen 2026',     dateISO:'2026-01-11', loc:'Castellnou del Bages (Barcelona)', status:'open',   circ:'CIRC-2615', url:'#',                                        ianseo:26209},
+  {id:20,type:'trd',  title:'1r Campionat Catalunya 3D en Línia 2026',     disc:'3D',    date:'18 gen 2026',     dateISO:'2026-01-18', loc:'Sant Celoni (Vallès Oriental)',     status:'open',   circ:'#',         url:'#news:40',                                        ianseo:26307},
+  {id:6, type:'camp', title:'1ª Tirada Lliga Catalana Camp 2025/26',       disc:'Tir de Camp',  date:'11 gen 2026',     dateISO:'2026-01-11', loc:'Castellnou del Bages (Barcelona)', status:'open',   circ:'CIRC-2567', url:'#',                                        ianseo:26209},
   // ── Temporada 2025 (desembre) ────────────────────────────
   {id:21,type:'sala', title:'Campionat de Catalunya de Clubs 2025 – Sala', disc:'Sala – 18m',   date:'21 des 2025',     dateISO:'2025-12-21', loc:'Manresa',                          status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=FCTALS6',  ianseo:'FCTALS6'},
   {id:22,type:'sala', title:'Trofeu Màster de Catalunya Indoor 2025',      disc:'Sala – 18m',   date:'21 des 2025',     dateISO:'2025-12-21', loc:'Manresa',                          status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=FCTALS5',  ianseo:'FCTALS5'},
   {id:23,type:'trd',  title:'3ª Tirada Lliga Catalana 3D en Línia 2025/26',disc:'3D',    date:'27-28 des 2025',  dateISO:'2025-12-27', loc:'Club Tir amb Arc Les Franqueses',  status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=CAT3DLZ',  ianseo:'CAT3DLZ'},
   {id:24,type:'trd',  title:'2ª Tirada Lliga Catalana 3D 2025/2026',       disc:'3D',    date:'14 des 2025',     dateISO:'2025-12-14', loc:'Castellnou de Bages (Barcelona)',  status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=CAT3D26z', ianseo:'CAT3D26z'},
   {id:25,type:'al',   title:'2ª Trobada Lliga Inicia\'t 2025/2026',        disc:'Aire Lliure',  date:'13 des 2025',     dateISO:'2025-12-13', loc:'Montcada i Reixac',                status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=INIC25B',  ianseo:'INIC25B'},
-  {id:30,type:'sala', title:'4ª Tirada Lliga Catalana de Sala 2025/2026',  disc:'Sala – 18m',   date:'6-7 des 2025',    dateISO:'2025-12-06', loc:'Constantí (Tarragona)',             status:'closed', circ:'#',         url:'#',                                                ianseo:25582},
+  {id:30,type:'sala', title:'4ª Tirada Lliga Catalana de Sala 2025/2026',  disc:'Sala – 18m',   date:'6-7 des 2025',    dateISO:'2025-12-06', loc:'Constantí (Tarragona)',             status:'closed', circ:'#',         url:'#news:37',                                                ianseo:25582},
   // ── Temporada 2025 (novembre-setembre) ──────────────────
   {id:31,type:'trd',  title:'3D en Línia 2ª Tirada 2025/2026',             disc:'3D',    date:'29-30 nov 2025',  dateISO:'2025-11-29', loc:'En línia (clubs participants)',      status:'closed', circ:'#',         url:'#',                                                ianseo:'CAT3DLB'},
-  {id:32,type:'sala', title:'3ª Tirada Lliga Catalana de Sala 2025/2026',  disc:'Sala – 18m',   date:'15-16 nov 2025',  dateISO:'2025-11-15', loc:'Manresa / Torrefarrera (Lleida)',   status:'closed', circ:'#',         url:'#',                                                ianseo:25272},
+  {id:32,type:'sala', title:'3ª Tirada Lliga Catalana de Sala 2025/2026',  disc:'Sala – 18m',   date:'15-16 nov 2025',  dateISO:'2025-11-15', loc:'Manresa / Torrefarrera (Lleida)',   status:'closed', circ:'#',         url:'#news:36',                                                ianseo:25272},
   {id:33,type:'trd',  title:'3D en Línia 1ª Tirada 2025/2026',             disc:'3D',    date:'1-2 nov 2025',    dateISO:'2025-11-01', loc:'En línia (clubs participants)',      status:'closed', circ:'#',         url:'#',                                                ianseo:'CAT3DLA'},
   {id:34,type:'trd',  title:'1ª Tirada Lliga Catalana 3D 2025/2026',       disc:'3D',    date:'26 oct 2025',     dateISO:'2025-10-26', loc:'Pardines (Girona)',                  status:'closed', circ:'#',         url:'#',                                                ianseo:'CAT3D26A'},
   {id:35,type:'sala', title:'2ª Tirada Lliga Catalana de Sala 2025/2026',  disc:'Sala – 18m',   date:'18-19 oct 2025',  dateISO:'2025-10-18', loc:'Constantí / Torrefarrera (Lleida)', status:'closed', circ:'#',         url:'#',                                                ianseo:24861},
@@ -313,16 +698,16 @@ competitions: [
   {id:37,type:'sala', title:'1ª Tirada Lliga Catalana de Sala 2025/2026',  disc:'Sala – 18m',   date:'4-5 oct 2025',    dateISO:'2025-10-04', loc:'Constantí (Tarragona)',              status:'closed', circ:'#',         url:'#',                                                ianseo:24680},
   {id:38,type:'al',   title:'XXXII Trofeu Ciutat de Lleida – III Copa Pirineus – IV Memorial Alfred Piñol', disc:'Aire Lliure', date:'27-28 set 2025', dateISO:'2025-09-27', loc:'Lleida (Pardinyes)',   status:'closed', circ:'#', url:'#', ianseo:23781},
   {id:39,type:'al',   title:'XXII Copa Barcelona Femenina – XXXV Trofeu Mercè Esportiva', disc:'Aire Lliure', date:'28 set 2025', dateISO:'2025-09-28', loc:'Barcelona (Montjuïc)',       status:'closed', circ:'#', url:'#', ianseo:'CamCF25'},
-  {id:40,type:'al',   title:'XXI Campionat de Catalunya de Round 900 – XII Memorial Jordi Adell', disc:'Aire Lliure', date:'6-7 set 2025', dateISO:'2025-09-06', loc:'Barcelona (Montjuïc)', status:'closed', circ:'#', url:'#', ianseo:24295},
+  {id:40,type:'al',   title:'XXI Campionat de Catalunya de Round 900 – XII Memorial Jordi Adell', disc:'Aire Lliure', date:'6-7 set 2025', dateISO:'2025-09-06', loc:'Barcelona (Montjuïc)', status:'closed', circ:'#', url:'#news:35', ianseo:24295},
   // ── Temporada 2026-27 ────────────────────────────────────
   // 3D en Línia
-  {id:101,type:'trd', title:'1ª Tirada Lliga Catalana 3D en Línia 2026/27', disc:'3D', date:'18 oct 2026',    dateISO:'2026-10-18', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
+  {id:101,type:'trd', title:'1ª Tirada Lliga Catalana 3D en Línia 2026/27', disc:'3D', date:'18 oct 2026',    dateISO:'2026-10-18', loc:'Figueres (Girona)', status:'soon', circ:'CIRC-2651', url:'#'},
   {id:102,type:'trd', title:'2ª Tirada Lliga Catalana 3D en Línia 2026/27', disc:'3D', date:'15 nov 2026',    dateISO:'2026-11-15', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
   {id:103,type:'trd', title:'3ª Tirada Lliga Catalana 3D en Línia 2026/27', disc:'3D', date:'13 des 2026',    dateISO:'2026-12-13', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
   {id:104,type:'trd', title:'Campionat de Catalunya de 3D en Línia 2026/27', disc:'3D', date:'10 gen 2027',   dateISO:'2027-01-10', loc:'Per determinar', status:'soon', circ:'CIRC-2627', url:'#'},
   {id:105,type:'trd', title:'Campionat d\'Espanya 3D Sala',                  disc:'3D', date:'22-24 gen 2027', dateISO:'2027-01-22', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
   // Sala
-  {id:106,type:'sala',title:'1ª Tirada Lliga Catalana de Sala 2026/27',     disc:'Sala – 18m', date:'24-25 oct 2026',  dateISO:'2026-10-24', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
+  {id:106,type:'sala',title:'1ª Tirada Lliga Catalana de Sala 2026/27',     disc:'Sala – 18m', date:'24-25 oct 2026',  dateISO:'2026-10-24', loc:'Olesa de Montserrat / Constantí', status:'soon', circ:'CIRC-2654', url:'#'},
   {id:107,type:'sala',title:'2ª Tirada Lliga Catalana de Sala 2026/27',     disc:'Sala – 18m', date:'21-22 nov 2026',  dateISO:'2026-11-21', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
   {id:108,type:'sala',title:'3ª Tirada Lliga Catalana de Sala 2026/27',     disc:'Sala – 18m', date:'19-20 des 2026',  dateISO:'2026-12-19', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
   {id:109,type:'sala',title:'Campionat de Catalunya de Sala + Clubs 2026/27',disc:'Sala – 18m', date:'16-17 gen 2027',  dateISO:'2027-01-16', loc:'Per determinar', status:'soon', circ:'CIRC-2634', url:'#'},
@@ -352,10 +737,77 @@ competitions: [
   {id:27,type:'sala', title:'57è Campionat de Catalunya de Sala 2024-25',  disc:'Sala – 18m',   date:'14-15 des 2024',  dateISO:'2024-12-14', loc:'Constantí (Tarragona)',            status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=CATSA25X', ianseo:'CATSA25X'},
   {id:28,type:'sala', title:'4ª Lliga Catalana Sala (2024-25) – R.A.U.S.', disc:'Sala – 18m',   date:'7-8 des 2024',    dateISO:'2024-12-07', loc:'Terrassa (Barcelona)',             status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=CATSA25D', ianseo:'CATSA25D'},
   {id:29,type:'trd',  title:'2ª Lliga Catalana 3D 2024-25',                disc:'3D',    date:'1 des 2024',      dateISO:'2024-12-01', loc:'Caldes de Montbui (Barcelona)',    status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=CAT3D25B', ianseo:'CAT3D25B'},
+  // ── Temporada 2026-27: afegides des de fcta.cat ──
+  {id:131,type:'al',title:'XXII Campionat de Catalunya de Round 900 – XIII Memorial Jordi Adell',disc:'Aire Lliure',date:'26-27 set 2026',dateISO:'2026-09-26',loc:'Barcelona',status:'soon',circ:'CIRC-2648',url:'#'},
+  {id:132,type:'al',title:'1ª Tirada Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut 2026/27',disc:'Arc Adaptat',date:'17 oct 2026',dateISO:'2026-10-17',loc:'Olesa de Montserrat (Barcelona)',status:'soon',circ:'CIRC-2652',url:'#'},
+  // ── Arc Adaptat, Inclusiu i Salut 2025/26 ──
+  {id:133,type:'al',title:'1r Torneig d\'Arc Adaptat, Inclusiu i Salut',disc:'Arc Adaptat',date:'7 feb 2026',dateISO:'2026-02-07',loc:'Olesa de Montserrat (Barcelona)',status:'closed',circ:'CIRC-2605',url:'#news:43'},
+  {id:134,type:'al',title:'1ª Tirada Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut',disc:'Arc Adaptat',date:'11 abr 2026',dateISO:'2026-04-11',loc:'Olesa de Montserrat (Barcelona)',status:'closed',circ:'CIRC-2617',url:'#'},
+  {id:135,type:'al',title:'2ª Tirada Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut',disc:'Arc Adaptat',date:'9 mai 2026',dateISO:'2026-05-09',loc:'Olesa de Montserrat / Sant Cugat',status:'closed',circ:'CIRC-2628',url:'#'},
+  {id:136,type:'al',title:'3ª Tirada Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut',disc:'Arc Adaptat',date:'31 mai 2026',dateISO:'2026-05-31',loc:'Olivella (Barcelona)',status:'closed',circ:'CIRC-2628',url:'#'},
+  {id:137,type:'al',title:'4ª Tirada Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut',disc:'Arc Adaptat',date:'14 jun 2026',dateISO:'2026-06-14',loc:'Vilanova i la Geltrú (Barcelona)',status:'closed',circ:'CIRC-2631',url:'#'},
+  {id:138,type:'al',title:'Campionat de Catalunya d\'Arc Adaptat, Inclusiu i Salut',disc:'Arc Adaptat',date:'4 jul 2026',dateISO:'2026-07-04',loc:'Olesa de Montserrat (Barcelona)',status:'closed',circ:'CIRC-2628',url:'#'},
+  // ── Temporada 2024-25 (octubre 2024 – juliol 2025) ──
+  {id:140,type:'sala',title:'1ª Tirada Lliga Catalana de Sala 2024/2025',disc:'Sala – 18m',date:'12-13 oct 2024',dateISO:'2024-10-12',loc:'Caldes de Montbui (Barcelona)',status:'closed',circ:'#',url:'#'},
+  {id:141,type:'camp',title:'1ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'20 oct 2024',dateISO:'2024-10-20',loc:'Castellnou del Bages (Barcelona)',status:'closed',circ:'#',url:'#'},
+  {id:142,type:'sala',title:'2ª Tirada Lliga Catalana de Sala 2024/2025',disc:'Sala – 18m',date:'26-27 oct 2024',dateISO:'2024-10-26',loc:'Torrefarrera (Lleida) / Constantí (Tarragona)',status:'closed',circ:'#',url:'#'},
+  {id:143,type:'trd',title:'1ª Tirada Lliga Catalana 3D 2024/2025',disc:'3D',date:'10 nov 2024',dateISO:'2024-11-10',loc:'Montcada i Reixac (Barcelona)',status:'closed',circ:'#',url:'#'},
+  {id:144,type:'sala',title:'3ª Tirada Lliga Catalana de Sala 2024/2025',disc:'Sala – 18m',date:'16-17 nov 2024',dateISO:'2024-11-16',loc:'Torrefarrera (Lleida) / Constantí (Tarragona)',status:'closed',circ:'#',url:'#'},
+  {id:145,type:'camp',title:'2ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'12 gen 2025',dateISO:'2025-01-12',loc:'Romanyà de la Selva (Girona)',status:'closed',circ:'#',url:'#'},
+  {id:146,type:'trd',title:'3ª Tirada Lliga Catalana 3D 2024/2025',disc:'3D',date:'2 feb 2025',dateISO:'2025-02-02',loc:'Montcada i Reixac (Barcelona)',status:'closed',circ:'#',url:'#'},
+  {id:147,type:'camp',title:'3ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'16 feb 2025',dateISO:'2025-02-16',loc:'Caldes de Montbui (Barcelona)',status:'closed',circ:'#',url:'#news:14'},
+  {id:148,type:'trd',title:'4ª Tirada Lliga Catalana 3D 2024/2025',disc:'3D',date:'2 mar 2025',dateISO:'2025-03-02',loc:'Rubí (Barcelona)',status:'closed',circ:'#',url:'#news:15'},
+  {id:149,type:'camp',title:'4ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'16 mar 2025',dateISO:'2025-03-16',loc:'Mataró (Barcelona)',status:'closed',circ:'#',url:'#news:18'},
+  {id:150,type:'al',title:'1ª Tirada Lliga Catalana d\'Aire Lliure 2024/2025',disc:'Aire Lliure',date:'22-23 mar 2025',dateISO:'2025-03-22',loc:'Lleida (Pardinyes)',status:'closed',circ:'#',url:'#news:19'},
+  {id:151,type:'al',title:'Campionat de Catalunya Universitari 2025',disc:'Aire Lliure',date:'13 abr 2025',dateISO:'2025-04-13',loc:'Tarragona (Club TAU)',status:'closed',circ:'#',url:'#'},
+  {id:152,type:'al',title:'3ª Tirada Lliga Catalana d\'Aire Lliure 2024/2025',disc:'Aire Lliure',date:'27 abr 2025',dateISO:'2025-04-27',loc:'Esclanyà (Girona)',status:'closed',circ:'#',url:'#news:20'},
+  {id:153,type:'trd',title:'29è Campionat de Catalunya 3D 2024/2025',disc:'3D',date:'18 mai 2025',dateISO:'2025-05-18',loc:'Castellnou del Bages (Barcelona)',status:'closed',circ:'#',url:'#news:22'},
+  {id:154,type:'al',title:'4ª Tirada Lliga Catalana d\'Aire Lliure 2024/2025',disc:'Aire Lliure',date:'24-25 mai 2025',dateISO:'2025-05-24',loc:'Olesa de Montserrat (Barcelona)',status:'closed',circ:'#',url:'#news:23'},
+  {id:155,type:'camp',title:'55è Campionat de Catalunya de Camp 2024/2025',disc:'Tir de Camp',date:'1 jun 2025',dateISO:'2025-06-01',loc:'Romanyà de la Selva (Girona)',status:'closed',circ:'#',url:'#news:25'},
+  {id:156,type:'al',title:'75è Campionat de Catalunya d\'Arc Tradicional, Nu i Longbow d\'Aire Lliure',disc:'Aire Lliure',date:'22 jun 2025',dateISO:'2025-06-22',loc:'Les Franqueses del Vallès (Barcelona)',status:'closed',circ:'#',url:'#news:27'},
+  {id:157,type:'al',title:'75è Campionat de Catalunya d\'Arc Recorbat i Compost d\'Aire Lliure',disc:'Aire Lliure',date:'6 jul 2025',dateISO:'2025-07-06',loc:'Terrassa (Barcelona)',status:'closed',circ:'#',url:'#news:29'},
+  {id:158,type:'al',title:'Campionat de Catalunya de Clubs 2025',disc:'Aire Lliure',date:'13 jul 2025',dateISO:'2025-07-13',loc:'Lleida (Pardinyes)',status:'closed',circ:'#',url:'#news:32'},
 ],
 
 // --- NOTÍCIES ---
 news: [
+  {id:49,cat:'Federació',title:'Llicència federativa: com accedir al Portal del federat',date:'22 set 2026',desc:'Guia pas a pas per entrar per primera vegada al Portal del federat de la RFETA, acceptar la protecció de dades i descarregar la llicència al mòbil o en PDF.',url:'#news:49'},
+  {id:48,cat:'Federació',title:'Aclariment sobre la coincidència d\'una tirada de la Lliga Catalana amb Nîmes',date:'15 ago 2026',desc:'La FCTA explica els criteris seguits en l\'elaboració del calendari de la Lliga Catalana arran de la coincidència amb el Nîmes Archery Tournament.',url:'#news:48'},
+  {id:47,cat:'Formació',title:'Arrenca la nova edició del Curs de Tècnic Nivell 1 en Tir amb Arc',date:'17 mar 2026',desc:'Un grup de 23 alumnes inicia el curs amb les primeres sessions de didàctica i metodologia.',img:'img/news/noticia47.jpg',url:'#news:47'},
+  {id:46,cat:'Camp',title:'Segona cita de la Lliga Catalana de Camp 2025/2026',date:'11 mar 2026',desc:'41 esportistes a la 2a tirada de camp, el 8 de març al Club Català de Tir amb Arc.',img:'img/news/noticia46.jpg',url:'#news:46'},
+  {id:45,cat:'3D',title:'Gran jornada de 3D a Olivella',date:'25 feb 2026',desc:'105 esportistes a la 3a tirada de la Lliga Catalana 3D, organitzada pel Club Arquers Olivella.',img:'img/news/noticia45.jpg',url:'#news:45'},
+  {id:44,cat:'Sala',title:'Catalunya suma dues medalles als Campionats d\'Espanya de Sala a Valladolid',date:'17 feb 2026',desc:'Plata per a Gloria Moreton (U15) i bronze per a l\'equip femení recorbat U18; 4es posicions a l\'absolut.',img:'img/news/noticia44.jpg',url:'#news:44'},
+  {id:43,cat:'Arc Adaptat',title:'Èxit del 1r Torneig d\'Arc Adaptat, Inclusiu i Salut a Olesa de Montserrat',date:'9 feb 2026',desc:'El 7 de febrer, al Tir Arc Olesa, amb una categoria específica per al projecte de limfedema en pacients oncològics.',img:'img/news/noticia43.jpg',url:'#news:43'},
+  {id:42,cat:'Sala',title:'Constantí i Manresa acullen el 58è Campionat de Catalunya de Tir en Sala',date:'3 feb 2026',desc:'Més de 170 arquers i 22 nous campions i campiones de Catalunya de sala.',img:'img/news/noticia42.jpg',url:'#news:42'},
+  {id:41,cat:'3D',title:'Èxits i medalles per als esportistes catalans a Ciudad Real',date:'26 gen 2026',desc:'6 medalles individuals i 4 per equips als Campionats d\'Espanya 3D en sala i d\'arc tradicional, nu i longbow.',img:'img/news/noticia41.jpg',url:'#news:41'},
+  {id:40,cat:'3D',title:'Sant Celoni acull el 1r Campionat de Catalunya de Tir amb Arc 3D en Línia',date:'19 gen 2026',desc:'El Club Arc Sant Celoni organitza el 18 de gener la primera edició d\'aquesta competició pionera.',img:'img/news/noticia40.jpg',url:'#news:40'},
+  {id:39,cat:'Sala',title:'Èxit de participació al Campionat de Catalunya de Clubs de Tir en Sala',date:'22 des 2025',desc:'138 esportistes en 36 equips de 15 clubs a Manresa, i Trofeu Màster de Catalunya amb els millors de la Lliga.',img:'img/news/noticia39.jpg',url:'#news:39'},
+  {id:38,cat:'3D',title:'El Bages acull la 2a tirada de la Lliga Catalana 3D 2025/2026',date:'18 des 2025',desc:'Gairebé un centenar d\'arquers de 22 clubs al Club Tir amb Arc Zen del Bages, amb el nou equip complet d\'Ianseo de la FCTA.',img:'img/news/noticia38.jpg',url:'#news:38'},
+  {id:37,cat:'Sala',title:'La Lliga Catalana de Sala 2025/2026 es tanca amb una gran 4a tirada a Constantí',date:'11 des 2025',desc:'Gairebé 200 esportistes omplen les línies de tir en la jornada que tanca la lliga de sala.',img:'img/news/noticia37.jpg',url:'#news:37'},
+  {id:36,cat:'Sala',title:'Gran participació a la 3a tirada de la Lliga Catalana de Sala 2025/2026',date:'20 nov 2025',desc:'230 participants omplen les línies de tir a Manresa i Torrefarrera.',img:'img/news/noticia36.jpg',url:'#news:36'},
+  {id:35,cat:'Aire Lliure',title:'21è Campionat de Catalunya de Round 900',date:'7 set 2025',desc:'85 esportistes al 21è Campionat de Catalunya Round 900 i Memorial Jordi Adell, al Club Arc Montjuïc.',img:'img/news/noticia35.jpg',url:'#news:35'},
+  {id:34,cat:'3D',title:'Lliga 3D en línia, temporada 2025/2026',date:'29 jul 2025',desc:'Prova pilot amb tres competicions no oficials i un Campionat de Catalunya oficial de 3D en línia, gestionat a través d\'Ianseo.',url:'#news:34'},
+  {id:33,cat:'Aire Lliure',title:'Campionats d\'Espanya d\'Arc Recorbat i Compost 2025',date:'28 jul 2025',desc:'L\'equip català tanca la temporada amb 25 esportistes a l\'absolut i 26 a les categories U21, U18, U15 i +50, i bronze per a l\'equip femení de compost.',img:'img/news/noticia33.jpg',url:'#news:33'},
+  {id:32,cat:'Aire Lliure',title:'Tir amb arc i treball en equip al Campionat de Catalunya de Clubs 2025',date:'14 jul 2025',desc:'17 equips de clubs d\'arreu de Catalunya competeixen al Club Tir amb Arc Pardinyes.',img:'img/news/noticia32.jpg',url:'#news:32'},
+  {id:31,cat:'Arc Adaptat',title:'Èxit de participació a la sessió formativa «Tir amb arc i prevenció del limfedema»',date:'12 jul 2025',desc:'16 participants a la Casa de l\'Esport de Barcelona en una jornada pionera sobre l\'aplicació terapèutica del tir amb arc.',url:'#news:31'},
+  {id:30,cat:'Formació',title:'Seminari d\'arc longbow i tradicional a Barcelona',date:'7 jul 2025',desc:'Seminari intensiu de dos dies impartit per Jairo Valentín sobre tècnica i processos psicològics aplicats a l\'entrenament i la competició.',img:'img/news/noticia30.jpg',url:'#news:30'},
+  {id:29,cat:'Aire Lliure',title:'El 75è Campionat de Catalunya d\'Arc Recorbat i Compost tanca la temporada a Terrassa',date:'6 jul 2025',desc:'Més de 100 esportistes de 22 clubs al Club Arquers Terrassa, amb entrega de premis de la Lliga Catalana d\'Aire Lliure 2024/2025.',img:'img/news/noticia29.jpg',url:'#news:29'},
+  {id:28,cat:'Aire Lliure',title:'Rècords i medalles al Campionat d\'Espanya d\'Arc Tradicional, Nu i Longbow 2025',date:'30 jun 2025',desc:'22 arquers catalans a Madrid, amb dos nous rècords d\'Espanya per equips: 1812 punts (tradicional masculí) i 1267 punts (tradicional mixt).',img:'img/news/noticia28.jpg',url:'#news:28'},
+  {id:27,cat:'Aire Lliure',title:'75è Campionat de Catalunya d\'Arc Tradicional, Nu i Longbow a Les Franqueses',date:'22 jun 2025',desc:'79 arquers de 22 clubs competeixen al Club Tir amb Arc Les Franqueses. Ja està disponible el rànquing final català 2024/2025.',img:'img/news/noticia27.jpg',url:'#news:27'},
+  {id:26,cat:'Camp',title:'Catalunya triomfa al Campionat d\'Espanya de Camp amb 11 medalles',date:'10 jun 2025',desc:'Segòvia acull el Campionat d\'Espanya de Camp 2025, amb Catalunya al capdavant del medaller amb 11 medalles.',img:'img/news/noticia26.jpg',url:'#news:26'},
+  {id:25,cat:'Camp',title:'Final de temporada de camp amb el 55è Campionat de Catalunya a Romanyà de la Selva',date:'2 jun 2025',desc:'Fins a 60 arquers de 17 clubs tanquen la temporada 2024/2025 de tir de camp al Club Tir amb Arc Costa Brava 3D.',img:'img/news/noticia25.jpg',url:'#news:25'},
+  {id:24,cat:'3D',title:'Èxit català al Campionat d\'Espanya 3D 2025 a Sòria',date:'27 mai 2025',desc:'Més de 25 arquers catalans competeixen a Sòria amb or per a Jordi Ricart i per a l\'equip de compost mixt.',img:'img/news/noticia24.jpg',url:'#news:24'},
+  {id:23,cat:'Aire Lliure',title:'Gran cloenda de la Lliga Catalana d\'Aire Lliure a Olesa de Montserrat',date:'26 mai 2025',desc:'174 arquers de 28 clubs a la 4a i última tirada de la Lliga Catalana d\'Aire Lliure 2024/2025 al Tir Arc Olesa.',img:'img/news/noticia23.jpg',url:'#news:23'},
+  {id:22,cat:'3D',title:'Celebrat amb èxit el 29è Campionat de Catalunya 3D 2024/2025 a Castellnou del Bages',date:'20 mai 2025',desc:'90 arquers de 21 clubs competeixen al Club Tir amb Arc Zen del Bages en compost, nu, longbow i tradicional.',img:'img/news/noticia22.jpg',url:'#news:22'},
+  {id:21,cat:'Arc Adaptat',title:'Jornada de portes obertes per la prevenció del limfedema amb tir amb arc',date:'7 mai 2025',desc:'El diumenge 11 de maig, al Club Tir Arc Olesa, una jornada per descobrir el tir amb arc com a eina terapèutica per a persones que han superat un càncer de mama.',img:'img/news/noticia21.jpg',url:'#news:21'},
+  {id:20,cat:'Aire Lliure',title:'Esclanyà acull la 3a tirada de la Lliga Catalana d\'Aire Lliure',date:'30 abr 2025',desc:'156 esportistes de 27 clubs competeixen a Esclanyà (Girona) en dos torns, matí i tarda.',img:'img/news/noticia20.jpg',url:'#news:20'},
+  {id:19,cat:'Aire Lliure',title:'Inici de la temporada d\'aire lliure amb la 1a tirada de la Lliga Catalana 2024/2025',date:'26 mar 2025',desc:'230 arquers de 33 clubs competeixen a Pardinyes (Lleida) a la primera tirada d\'aire lliure.',img:'img/news/noticia19.jpg',url:'#news:19'},
+  {id:18,cat:'Camp',title:'Conclou la Lliga Catalana de Tir de Camp 2024/2025',date:'19 mar 2025',desc:'55 esportistes de 12 clubs competeixen a Mataró a la 4a i última tirada de la lliga de camp.',img:'img/news/noticia18.jpg',url:'#news:18'},
+  {id:17,cat:'Jutges',title:'Nou límit de temps per fletxa en competicions',date:'14 mar 2025',desc:'A partir d\'aquesta temporada, el temps per tirar cada fletxa es redueix a 30 segons en les competicions nacionals i catalanes (excepte camp, 3D i discapacitat).',url:'#news:17'},
+  {id:16,cat:'Federació',title:'Per una carrera sense obstacles – 8M, Dia Internacional de la Dona',date:'7 mar 2025',desc:'La FCTA reafirma el seu compromís amb la igualtat de gènere i la participació femenina a l\'esport.',img:'img/news/noticia16.jpg',url:'#news:16'},
+  {id:15,cat:'3D',title:'Finalitza la Lliga Catalana de 3D amb la quarta tirada a Rubí',date:'2 mar 2025',desc:'100 arquers de 26 clubs competeixen a la 4a i última tirada de la Lliga Catalana 3D 2024/2025 al Club Arqueros de Rubí.',img:'img/news/noticia15.jpg',url:'#news:15'},
+  {id:14,cat:'Camp',title:'3a Tirada de la Lliga Catalana de Camp 2024/2025',date:'16 feb 2025',desc:'El Club de Tir amb Arc Caldes de Montbui reuneix 71 participants de 17 clubs a la 3a tirada de la lliga de camp.',img:'img/news/noticia14.jpg',url:'#news:14'},
+  {id:13,cat:'Sala',title:'Campionat d\'Espanya d\'Arc Recorbat i Compost en Sala 2024/2025',date:'11 feb 2025',desc:'Valladolid acull el Campionat d\'Espanya de sala amb 23 esportistes catalans a les categories U15, U18 i U21 i 25 a l\'absolut. Bronze per a l\'equip compost U21 i plata per a Elia Canales.',img:'img/news/noticia13.jpg',url:'#news:13'},
   {id:12,cat:'PAT',title:'El CAR Sant Cugat acull la 5ª jornada del Programa Autonòmic de Tecnificació',date:'20 jun 2026',desc:'Arquers i arqueres U15, U18 i U21 es reuneixen al CAR de Sant Cugat en una jornada de seguiment i treball tècnic dirigida per Lluís Culí.',img:'img/news/noticia12.jpg',url:'#news:12'},
   {id:11,cat:'Aire Lliure',title:'El 76è Campionat de Catalunya d\'Aire Lliure reuneix més de 165 esportistes a Barcelona',date:'5 jul 2026',desc:'19 equips i 28 clubs d\'arreu del territori omplen el camp de tir en una competició individual i per equips de gran nivell, malgrat la calor.',img:'img/news/noticia8.jpeg',url:'#news:11'},
   {id:10,cat:'Arc Adaptat',title:'Final de la Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut',date:'15 jun 2026',desc:'La Lliga Catalana d\'Arc Adaptat, Inclusiu i Salut tanca la seva primera edició al Arc Vng amb un èxit de participació creixent.',img:'img/news/noticia10.jpeg',url:'#news:10'},
@@ -403,6 +855,7 @@ documents: [
   {id:107, disc:'al',    nom:'Rècords Menors',                                     url:'docs/Records_Menors_2021.pdf',                   icon:'🏆'},
   {id:108, disc:'al',    nom:'Rànquing Final Lliga AL 2024',                       url:'docs/Ranquing_Lliga_AL_2024.pdf',                icon:'📊'},
   {id:109, disc:'al',    nom:'Rànquing Final Lliga Sala 2023/24',                  url:'docs/Ranquing_Lliga_Sala_2023-24.pdf',           icon:'📊'},
+  {id:110, disc:'al',    nom:'Taula actualitzada de dianes i distàncies de Sala (14/10/2026)', url:'docs/2026101415411743-SALAALL_Quadre_edats_distancies_dianes_14_10_2026.pdf', icon:'📐'},
   // ── 3D / Bosc ────────────────────────────────────────────
   {id:201, disc:'3d',    nom:'WA Llibre 4 – Tir de Camp i 3D',                    url:'https://www.worldarchery.sport/rulebook',       icon:'📘'},
   {id:202, disc:'3d',    nom:'Reglament de Competicions FCTA v1.6',                url:'docs/REGLAMENT_COMPETICIONS_v1.6.pdf',           icon:'📋'},
@@ -759,10 +1212,11 @@ lligues: [
   // ── Arc Adaptat ───────────────────────────────────────────
   { id:9, disc:'aa', nom:'Lliga Catalana Arc Adaptat 2025/2026', temporada:'2025–26',
     tirades:[
-      {num:'1ª',   data:'nov 2025', lloc:'Olesa de Montserrat', status:'closed', circ:'#'},
-      {num:'2ª',   data:'feb 2026', lloc:'Pendent',             status:'closed', circ:'#'},
-      {num:'3ª',   data:'abr 2026', lloc:'Olesa de Montserrat', status:'closed', circ:'#'},
-      {num:'Final',     data:'jun 2026', lloc:'Arc Vng',             status:'closed', circ:'#'}
+      {num:'1ª',   data:'11 abr 2026', lloc:'Olesa de Montserrat',            status:'closed', circ:'CIRC-2617'},
+      {num:'2ª',   data:'9 mai 2026',  lloc:'Olesa de Montserrat / Sant Cugat', status:'closed', circ:'CIRC-2628'},
+      {num:'3ª',   data:'31 mai 2026', lloc:'Olivella',                         status:'closed', circ:'CIRC-2628'},
+      {num:'4ª',   data:'14 jun 2026', lloc:'Vilanova i la Geltrú',             status:'closed', circ:'CIRC-2631'},
+      {num:'Campionat', data:'4 jul 2026', lloc:'Olesa de Montserrat',          status:'closed', circ:'CIRC-2628'}
     ],
     ranquingUrl:'#', ranquingLabel:'Classificació Final 2025/26', historics:[]
   }
