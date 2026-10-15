@@ -741,6 +741,7 @@ function renderMedallerGlobal() {
     + '<h2 class="med-global-title">🏛️ Medaller de Clubs <em>Catalunya</em></h2>'
     + '<p class="med-global-sub">Classificació olímpica oficial · Campionats de Sala, 3D, Camp i Aire Lliure</p>'
     + '</div>'
+    + '<div class="pilot-note"><span aria-hidden="true">🧪</span><div><strong>Funcionalitat en prova pilot.</strong> Les classificacions per club s’estan provant: poden estar incompletes o contenir errors. Si en detectes algun, comunica’ns-ho a info@fcta.cat.</div></div>'
     + '<div class="med-global-nav">'
     + '<a class="disc-rnav-btn' + (_medallerTab === 'competicio' ? ' act' : '') + '" '
     + 'href="' + HASH_BASE + 'competicio"' + dataAttr('onclick','setMedallerTab',['competicio']) + '>🏅 Per Competició</a>'

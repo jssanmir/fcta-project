@@ -17,6 +17,7 @@
 
 var _usIndex    = null;  // { normKey: { display, entries:[...] } }
 var _usSelected = null;  // normKey seleccionat actualment
+var _usTypeFilter = 'all'; // filtre de modalitat: all | al | sala | camp | trd
 
 // ── Arxiu històric extern ─────────────────────────────────────
 // docs/archer_history_archive.json: competicions de fora del circuit
@@ -69,6 +70,183 @@ function _usNorm(s) {
   return out.toUpperCase().trim().replace(/\s+/g, ' ');
 }
 
+// ── Àlies de noms ────────────────────────────────────────────
+// Un mateix arquer pot aparèixer inscrit amb noms diferents a les
+// competicions (nom simple, nom compost, abreviat…) i, sense llicència a
+// les dades, no hi ha manera automàtica de saber-ho. Aquí es llisten a mà
+// les variants (clau normalitzada per _usNorm → clau canònica) que s'han
+// verificat com a la mateixa persona; s'agrupen sota una sola fitxa i
+// s'hi mostra la variant més completa.
+var US_NAME_ALIASES = {
+  // Domínguez Escrihuela (CACV): "Jose", "Ricardo" i "Jose Ricardo"
+  'DOMINGUEZ ESCRIHUELA JOSE': 'DOMINGUEZ ESCRIHUELA JOSE RICARDO',
+  'DOMINGUEZ ESCRIHUELA RICARDO': 'DOMINGUEZ ESCRIHUELA JOSE RICARDO',
+  // CASTELLO FOLCH Josep (9 part.)
+  'CASTELLO FOLCH JOSE': 'CASTELLO FOLCH JOSEP',
+  // D'APOLITO RIBO Elias (12 part.)
+  'D APOLITO RIBO ELIAS': 'D\'APOLITO RIBO ELIAS',
+  // DEL PUERTO ANGORRILLA Diego (21 part.)
+  'DEL PUERTO ANGORRILL DIEGO': 'DEL PUERTO ANGORRILLA DIEGO',
+  // GALIANO HERNANDEZ Angel (26 part.)
+  'GALIANO HRENANDEZ ANGEL': 'GALIANO HERNANDEZ ANGEL',
+  // GUZMAN SOLER Josep (12 part.)
+  'GUZMAN SOLER JOSE': 'GUZMAN SOLER JOSEP',
+  // MARTIN LOPEZ Miquel (7 part.)
+  'MARTIN LOPEZ MIGUEL': 'MARTIN LOPEZ MIQUEL',
+  // MOHEDANO CANALS Estel·la (4 part.)
+  'MOHEDANO CANALS ESTEL.LA': 'MOHEDANO CANALS ESTEL·LA',
+  'MOHEDANO CANALS ESTELLA': 'MOHEDANO CANALS ESTEL·LA',
+  // PEREZ BONAVILA Didac (21 part.)
+  'PEREZ BONAVILLA DIDAC': 'PEREZ BONAVILA DIDAC',
+  // SINFREU ABAD Nuria (18 part.)
+  'SINFEU ABAD NURIA': 'SINFREU ABAD NURIA',
+  'SINFREU NURIA': 'SINFREU ABAD NURIA',
+  // SINFREU VERGARA Antoni (12 part.)
+  'SINFEU VERGARA ANTONI': 'SINFREU VERGARA ANTONI',
+  // SORIA GARCIA Conrado (6 part.)
+  'SORIA GARCIA CONRAT': 'SORIA GARCIA CONRADO',
+  // CARBO LINAZA Georgina (11 part.)
+  'CARBO I LINAZA GEORGINA': 'CARBO LINAZA GEORGINA',
+  // FRAGUAS CASTANY Antoni (23 part.)
+  'FRAGUAS ANTONI': 'FRAGUAS CASTANY ANTONI',
+  // HURTADO BELLIDO Manel (21 part.)
+  'HURTADO MANEL': 'HURTADO BELLIDO MANEL',
+  'HURTADO BELLIDO MANUEL': 'HURTADO BELLIDO MANEL',
+  // MOURA RIBEIRO GOMES DE SOUSA Alexandra (32 part.)
+  'MOURA RIBEIRO ALEXANDRA': 'MOURA RIBEIRO GOMES DE SOUSA ALEXANDRA',
+  // RODRIGUEZ COUTADO Lucia (25 part.)
+  'RODRIGUEZ LUCIA': 'RODRIGUEZ COUTADO LUCIA',
+  // GUTIERREZ SARRIAS Montserrat (6 part.)
+  'GUTIERREZ SARRIAS MONTSERRAT NURIA': 'GUTIERREZ SARRIAS MONTSERRAT',
+  // PALOMAR GUTIERREZ Maria Eugenia (14 part.)
+  'PALOMAR GUTIERREZ EUGENIA': 'PALOMAR GUTIERREZ MARIA EUGENIA',
+  // PEREZ LAJARIN Jose Manuel (7 part.)
+  'PEREZ LAJARIN JOSE': 'PEREZ LAJARIN JOSE MANUEL',
+  // RIBAS MALEKZADEH Ruhollah Erfan (20 part.)
+  'RIBAS MALEKZADEH ERFAN': 'RIBAS MALEKZADEH RUHOLLAH ERFAN',
+  // ALEJO MINARRO David (10 part.)
+  'ALEJO DAVID': 'ALEJO MINARRO DAVID',
+  // CARDOZO FERREIRA David Rafael (24 part.)
+  'CARDOZO DAVID RAFAEL': 'CARDOZO FERREIRA DAVID RAFAEL',
+  'CARDOZO FERREIRA DAVID': 'CARDOZO FERREIRA DAVID RAFAEL',
+  // DOMINGO GONZALEZ Guiu (30 part.)
+  'DOMINGO I GONZALEZ GUIU': 'DOMINGO GONZALEZ GUIU',
+  // BONNIN VASQUEZ David (22 part.)
+  'BONNIN VASQUEZ D': 'BONNIN VASQUEZ DAVID',
+  // CAMPO TELLEZ Casandra (27 part.)
+  'CAMPO TELLEZ C.': 'CAMPO TELLEZ CASANDRA',
+  // GALLARDO ANDRES Ignasi (28 part.)
+  'GALLARDO ANDRES I.': 'GALLARDO ANDRES IGNASI',
+  // GARCIA FERNANDEZ David (27 part.)
+  'GARCIA FERNANDEZ D.': 'GARCIA FERNANDEZ DAVID',
+  // GARCIA SERRANO Ramon (24 part.)
+  'GARCIA SERRANO R.': 'GARCIA SERRANO RAMON',
+  // HERNANDEZ BARRETO Jose Antonio (9 part.)
+  'HERNANDEZ BARRETO J.': 'HERNANDEZ BARRETO JOSE ANTONIO',
+  // JAVIER CAMPOS Maria Luz (13 part.)
+  'JAVIER CAMPOS MARI LUZ': 'JAVIER CAMPOS MARIA LUZ',
+  'JAVIER CAMPOS MA LUZ': 'JAVIER CAMPOS MARIA LUZ',
+  // MARTOS CALDERON Sara (12 part.)
+  'MARTOS SARA': 'MARTOS CALDERON SARA',
+  // SIERRA MARTINEZ Alex (9 part.)
+  'SIERRA ALEX': 'SIERRA MARTINEZ ALEX',
+  // PRIANTE VIDAL Adolf (5 part.)
+  'PRIANTE I VIDAL ADOLF': 'PRIANTE VIDAL ADOLF',
+  // BRAVO NAVAS Josep (19 part.)
+  'BRAVO NAVAS JOSE': 'BRAVO NAVAS JOSEP',
+  // SAFONT CATENA Gerard (30 part.)
+  'SAFONT CATENA GERAD': 'SAFONT CATENA GERARD',
+  // SEMIS ASTIER Ester (24 part.)
+  'SEMIS ASTIER ESTHER': 'SEMIS ASTIER ESTER',
+  // VIZCAINO CULI Guillem (17 part.)
+  'VIZCAINO CULI GUILLEN': 'VIZCAINO CULI GUILLEM',
+  // VALLE ARIAS Antonio (21 part.)
+  'VALLE ARIES ANTONIO': 'VALLE ARIAS ANTONIO',
+  // RICART ROIG Jordi (32 part.)
+  'RICART ROIG JORDI RICART ROIG': 'RICART ROIG JORDI',
+  // SUAREZ GARROTE Laura M (27 part.)
+  'SUAREZ GARROTE LAURA': 'SUAREZ GARROTE LAURA M',
+  // PRAT MARTINEZ Miguel Angel (16 part.)
+  'PRAT MARTINEZ MIGUEL': 'PRAT MARTINEZ MIGUEL ANGEL',
+  // GARCIA BELLIDO Victor Manuel (5 part.)
+  'GARCIA BELLIDO VICTOR': 'GARCIA BELLIDO VICTOR MANUEL',
+  // LOPEZ GONZALEZ Jesus (6 part.)
+  'LOPEZ GONZALEZ JESUS (S)': 'LOPEZ GONZALEZ JESUS',
+  'LOPEZ GOMZALEZ JESUS': 'LOPEZ GONZALEZ JESUS',
+  // BARREDA COMAS Pau (14 part.)
+  'BARRERA COMAS PAU': 'BARREDA COMAS PAU',
+  // FERNANDEZ ROSELL Laia (10 part.)
+  'FERNANDEZ ROSSELL LAIA': 'FERNANDEZ ROSELL LAIA',
+  // FERNANDEZ BUIL Javier (17 part.)
+  'FERNANDEZ BUIL XAVIER': 'FERNANDEZ BUIL JAVIER',
+  // RIBATALLADA ESPASA Javier (14 part.)
+  'RIBATALLADA ESPASA XAVIER': 'RIBATALLADA ESPASA JAVIER',
+  // QUEROL GUARDIOLA Juanjo (16 part.)
+  'QUEROL GUARDIOLA JUAN JOSE': 'QUEROL GUARDIOLA JUANJO',
+  // ROMERO PEREZ Daniel (19 part.)
+  'ROMERO PEREZ DANI': 'ROMERO PEREZ DANIEL',
+  // ROMERO VILELA Miquel (2 part.)
+  'ROMERO VILELLA MIGUEL': 'ROMERO VILELA MIQUEL',
+  // PIFARRE TRUJILLO Miquel Angel (4 part.)
+  'PIFARRE TRUJILLO MIGUEL ANGEL': 'PIFARRE TRUJILLO MIQUEL ANGEL',
+  // SANCHEZ AMADO Carme (8 part.)
+  'SANCHEZ AMADO CARMEN': 'SANCHEZ AMADO CARME',
+  // MOTIS ALOS Alberto (6 part.)
+  'MOTIS ALOS ALBERT': 'MOTIS ALOS ALBERTO',
+  // PEREZ MESAS Jose (6 part.)
+  'PEREZ MESAS JOSEP': 'PEREZ MESAS JOSE',
+  // JUANOLA CODINA Sebastia (2 part.)
+  'JUANOLA CODINA SEBASTIAN': 'JUANOLA CODINA SEBASTIA',
+  // AMAT BERTRAN Julio (4 part.)
+  'AMAT BERTRAN JULI': 'AMAT BERTRAN JULIO',
+  // CASTILLO CASTANEDA Johann Samuel (3 part.)
+  'CASTILLO CASTANEDA JOHAN SAMUEL': 'CASTILLO CASTANEDA JOHANN SAMUEL',
+  // DE MIGUEL RODRIGUEZ Francis (8 part.)
+  'DE MIGUEL RODRIGUEZ FRANCESC': 'DE MIGUEL RODRIGUEZ FRANCIS',
+  // RUEDA CASTRO Jorge (18 part.)
+  'RUEDA CASTRO JORDI': 'RUEDA CASTRO JORGE',
+  // GOMEZ SERRA Cesar (5 part.)
+  'GOMEZ SERRA CESAR A.': 'GOMEZ SERRA CESAR',
+  // PEREZ SANCHEZ David Jose (7 part.)
+  'PEREZ SANCHEZ DAVID': 'PEREZ SANCHEZ DAVID JOSE',
+  // SANCHEZ TORRES Felix Antonio (16 part.)
+  'SANCHEZ TORRES FELIX': 'SANCHEZ TORRES FELIX ANTONIO',
+  // JIMENEZ MEJIAS Tolo (5 part.)
+  'JIMENEZ TOLO': 'JIMENEZ MEJIAS TOLO',
+  // PETIT CANTERO Genis (3 part.)
+  'PETIT GENIS': 'PETIT CANTERO GENIS',
+  // ORTEGA PIJUAN Alba (13 part.)
+  'ORTEGA ALBA': 'ORTEGA PIJUAN ALBA',
+  // GALERA LOPEZ DE FELIPE Julia (10 part.)
+  'GALERA LOPEZ JULIA': 'GALERA LOPEZ DE FELIPE JULIA',
+  // NUNEZ FERNANDEZ Jose Antonio (6 part.)
+  'NUNEZ JOSE ANTONIO': 'NUNEZ FERNANDEZ JOSE ANTONIO',
+  // VON AREND SALLARES Patricia (4 part.)
+  'VON AREND PATRICIA': 'VON AREND SALLARES PATRICIA',
+  // MONTERO CAPELLADES Blai (4 part.)
+  'MONTERO CAPELLANES BLAI': 'MONTERO CAPELLADES BLAI',
+  // RODRIGUEZ BIFET Didac (7 part.)
+  'RODRIGUEZ BITEF DIDAC': 'RODRIGUEZ BIFET DIDAC',
+  'RODRIGUET BIFET DIDAC': 'RODRIGUEZ BIFET DIDAC',
+  // ESCARABAJAL BELZUNCE Jose Maria (2 part.)
+  'ESCARBAJAL BELZUNCE JOSE MARIA': 'ESCARABAJAL BELZUNCE JOSE MARIA',
+  // COSTA RIQUILLO Jordi (2 part.)
+  'COSTA RIGUILLO JORDI': 'COSTA RIQUILLO JORDI',
+  // VALENTIN FERNANDEZ MATHIEU Marco (2 part.)
+  'VALENTIN-FERNANDEZ MATHIEU MARCO': 'VALENTIN FERNANDEZ MATHIEU MARCO',
+  // ARAGON BOLUFER Emma (2 part.)
+  'ARAGON BOWFER EMMA': 'ARAGON BOLUFER EMMA',
+  // GARCIA CASTELLANOS Maria Luisa (11 part.)
+  'GARCIA CASTELLANO MARIA LUISA': 'GARCIA CASTELLANOS MARIA LUISA',
+  // PEREZ DE TUDELA ALBALAT Maria (30 part.)
+  'PEREZ DE TUDELA ALBA MARIA': 'PEREZ DE TUDELA ALBALAT MARIA',
+  // PEREZ DE TUDELA ALBALAT Laia (16 part.)
+  'PEREZ DE TUDELA ALBA LAIA': 'PEREZ DE TUDELA ALBALAT LAIA'
+};
+
+var US_ALIAS_TARGETS = {};
+Object.keys(US_NAME_ALIASES).forEach(function(k) { US_ALIAS_TARGETS[US_NAME_ALIASES[k]] = true; });
+
 // ── Construcció de l'índex arquer → participacions ───────────
 function _usBuildIndex() {
   var idx = {};
@@ -76,10 +254,18 @@ function _usBuildIndex() {
     (comp.divisions || []).forEach(function(div) {
       (div.archers || []).forEach(function(a) {
         if (!a.name) return;
-        var key = _usNorm(a.name);
+        var rawKey = _usNorm(a.name);
+        var key = US_NAME_ALIASES[rawKey] || rawKey;
         if (!idx[key]) idx[key] = { display: a.name, entries: [] };
-        // Com a etiqueta, prefereix la variant més "completa" (amb accents)
-        if (a.name.length > idx[key].display.length) idx[key].display = a.name;
+        if (key !== rawKey) {
+          // variant d'un àlies: no pot imposar la seva etiqueta (pot ser l'errata)
+        } else if (US_ALIAS_TARGETS[key]) {
+          // nom canònic d'un àlies: és l'etiqueta que es mostra
+          idx[key].display = a.name; idx[key].fixed = true;
+        } else if (!idx[key].fixed && a.name.length > idx[key].display.length) {
+          // Com a etiqueta, prefereix la variant més "completa" (amb accents)
+          idx[key].display = a.name;
+        }
         idx[key].entries.push({
           compTitle: comp.title, dateISO: comp.dateISO, type: comp.type,
           disc: comp.disc, icUrl: comp.icUrl,
@@ -191,6 +377,7 @@ function usClearSearch() {
 
 // ── Selecció d'un arquer: mostra l'informe complet ───────────
 function usSelectArcher(key) {
+  if (key !== _usSelected) _usTypeFilter = 'all';
   _usSelected = key;
   var box = document.getElementById('usSuggestions');
   if (box) box.style.display = 'none';
@@ -203,6 +390,22 @@ function usSelectArcher(key) {
   _usRenderReport(key);
 }
 
+// ── Filtre per modalitat ──────────────────────────────────────
+// Les dades fan servir 'trd' per a 3D (algunes entrades antigues, '3d').
+var _US_FILTERS = [
+  { key: 'all',  label: 'Totes' },
+  { key: 'al',   label: 'Aire Lliure' },
+  { key: 'sala', label: 'Sala' },
+  { key: 'camp', label: 'Camp' },
+  { key: 'trd',  label: '3D' }
+];
+function _usTypeKey(t) { return t === '3d' ? 'trd' : t; }
+
+function usSetTypeFilter(t) {
+  _usTypeFilter = t;
+  if (_usSelected) _usRenderReport(_usSelected);
+}
+
 // ── Informe personal ──────────────────────────────────────────
 function _usRenderReport(key) {
   var content = document.getElementById('usContent');
@@ -210,13 +413,23 @@ function _usRenderReport(key) {
   var e = _usIndex[key];
   if (!e) { _usRenderIdle(); return; }
 
-  var entries = e.entries.slice().sort(function(a,b){ return b.dateISO.localeCompare(a.dateISO); });
+  var allEntries = e.entries.slice().sort(function(a,b){ return b.dateISO.localeCompare(a.dateISO); });
+
+  // Recompte per modalitat (sobre totes les participacions, per als botons del filtre)
+  var typeCount = { all: allEntries.length };
+  allEntries.forEach(function(en) {
+    var t = _usTypeKey(en.type);
+    typeCount[t] = (typeCount[t] || 0) + 1;
+  });
+  var entries = (_usTypeFilter === 'all')
+    ? allEntries
+    : allEntries.filter(function(en) { return _usTypeKey(en.type) === _usTypeFilter; });
 
   // Clubs representats (per si ha canviat de club al llarg del temps).
   // _csNormCode unifica variants numèriques/alfabètiques/text del mateix
   // club (p.ex. dos codis Ianseo diferents pel mateix club).
   var clubSet = {};
-  entries.forEach(function(en){
+  allEntries.forEach(function(en){
     if (!en.club) return;
     var code = _csNormCode(en.club) || en.club;
     if (!clubSet[code]) clubSet[code] = _csClubLabel(code) || en.clubName || en.club;
@@ -238,8 +451,20 @@ function _usRenderReport(key) {
       '<div class="us-report-name">' + escHtml(e.display) + '</div>' +
       '<div class="us-report-meta">' +
         '<span>🏟️ ' + escHtml(clubs.join(' · ') || '—') + '</span>' +
-        '<span>🏹 ' + entries.length + ' participaci' + (entries.length === 1 ? 'ó' : 'ons') + '</span>' +
+        '<span>🏹 ' + allEntries.length + ' participaci' + (allEntries.length === 1 ? 'ó' : 'ons') + '</span>' +
       '</div>' +
+    '</div>';
+
+  var filterBar =
+    '<div class="filters us-type-filters">' +
+      _US_FILTERS.map(function(f) {
+        var n = typeCount[f.key] || 0;
+        var icon = (f.key !== 'all' && _CS_TYPE_ICONS[f.key]) ? _CS_TYPE_ICONS[f.key] + ' ' : '';
+        return '<button class="fb' + (_usTypeFilter === f.key ? ' act' : '') + '"' +
+          (n === 0 && f.key !== 'all' ? ' disabled style="opacity:.45;cursor:default"' : '') +
+          dataAttr('onclick', 'usSetTypeFilter', [f.key]) + '>' +
+          icon + escHtml(f.label) + ' (' + n + ')</button>';
+      }).join('') +
     '</div>';
 
   var bestHtml = '';
@@ -285,5 +510,5 @@ function _usRenderReport(key) {
       '</div>' +
     '</div>';
 
-  content.innerHTML = header + bestHtml + table;
+  content.innerHTML = header + filterBar + bestHtml + table;
 }

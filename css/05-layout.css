@@ -42,3 +42,8 @@
 .filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.75rem}
 .fb{background:none;border:1.5px solid #c5cee0;color:var(--gray);font-family:'Barlow',sans-serif;font-size:.82rem;font-weight:600;padding:.35rem .9rem;border-radius:20px;cursor:pointer;transition:all .2s}
 .fb:hover,.fb.act{background:var(--navy);border-color:var(--navy);color:white}
+
+/* ── Funcionalitats en prova pilot ───────────────────────── */
+.pilot-badge{display:inline-block;margin-left:.5rem;padding:.12rem .6rem;border-radius:20px;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;white-space:nowrap}
+.pilot-note{display:flex;gap:var(--sp-3);align-items:flex-start;margin:0 0 var(--sp-4);padding:var(--sp-3) var(--sp-4);background:var(--offwhite);border:1px solid var(--lightgray);border-left:4px solid var(--gold);border-radius:var(--r-md);color:var(--gray);font-size:.88rem;line-height:1.5}
+.pilot-note strong{color:var(--navy-dark)}
