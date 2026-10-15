@@ -330,6 +330,65 @@ function restoreUploadsDir(files) {
   }
 })();
 
+// ── Patches de contingut (s'apliquen un sol cop, només afegint) ─
+// El portal llegeix les dades de portal_state (no de js/db.js), així que
+// afegir contingut nou al codi no el fa visible en producció. Cada fitxer
+// de patches/*.json descriu operacions idempotents sobre el snapshot:
+//   add        → afegeix elements d'una col·lecció si el seu id encara no hi és
+//   remove     → elimina ids (opcionalment només si la url no és un PDF local)
+//   setFields  → canvia camps només si el valor actual coincideix amb l'antic
+// Res no se sobreescriu: si el valor o l'id ja difereix, s'omet i queda al log.
+// El backup d'arrencada (autoBackup, just a dalt) ja s'ha fet abans d'aplicar-ne cap.
+(function applyContentPatches() {
+  try {
+    var dir = path.join(__dirname, 'patches');
+    if (!fs.existsSync(dir)) return;
+    db.exec('CREATE TABLE IF NOT EXISTS content_patches (name TEXT PRIMARY KEY, applied_at TEXT NOT NULL, summary TEXT)');
+    var files = fs.readdirSync(dir).filter(function (f) { return /\.json$/.test(f); }).sort();
+    files.forEach(function (f) {
+      var patch = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+      if (db.prepare('SELECT 1 FROM content_patches WHERE name = ?').get(patch.name)) return;
+      var row = db.prepare('SELECT data FROM portal_state WHERE id = 1').get();
+      if (!row) return; // BD buida: no es marca com a aplicat, es provarà en el proper arrencament
+      var state = JSON.parse(row.data);
+      var log = [];
+      patch.ops.forEach(function (o) {
+        var arr = state[o.collection];
+        if (!Array.isArray(arr)) { log.push(o.collection + ': col·lecció inexistent, s\'omet'); return; }
+        if (o.op === 'add') {
+          var have = {};
+          arr.forEach(function (x) { have[x.id] = true; });
+          var added = 0;
+          o.items.forEach(function (it) { if (!have[it.id]) { arr.push(it); added++; } });
+          log.push(o.collection + ' +' + added + (added < o.items.length ? ' (' + (o.items.length - added) + ' ja existien)' : ''));
+        } else if (o.op === 'remove') {
+          var before = arr.length;
+          state[o.collection] = arr.filter(function (x) {
+            if (o.ids.indexOf(x.id) < 0) return true;
+            return o.onlyIfUrlNotLocal && /^docs\//.test(x.url || '');
+          });
+          log.push(o.collection + ' -' + (before - state[o.collection].length));
+        } else if (o.op === 'setFields') {
+          var item = arr.filter(function (x) { return x.id === o.id; })[0];
+          if (!item) { log.push(o.collection + ' id ' + o.id + ': no existeix'); return; }
+          Object.keys(o.fields).forEach(function (k) {
+            if (JSON.stringify(item[k]) === JSON.stringify(o.fields[k][0])) item[k] = o.fields[k][1];
+            else log.push(o.collection + ' id ' + o.id + '.' + k + ': ja diferent, s\'omet');
+          });
+        }
+      });
+      var now = new Date().toISOString();
+      db.transaction(function () {
+        db.prepare('UPDATE portal_state SET data = ?, updated_at = ? WHERE id = 1').run(JSON.stringify(state), now);
+        db.prepare('INSERT INTO content_patches (name, applied_at, summary) VALUES (?,?,?)').run(patch.name, now, log.join('; '));
+      })();
+      console.log('[FCTA] Patch de contingut aplicat: ' + patch.name + ' → ' + log.join('; '));
+    });
+  } catch (e) {
+    console.warn('[FCTA] Error aplicant patches de contingut:', e.message);
+  }
+})();
+
 // ── TOTP helpers (RFC 6238 · SHA-1 · 30s · 6 dígits) ──────
 function base32Decode(s) {
   var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
