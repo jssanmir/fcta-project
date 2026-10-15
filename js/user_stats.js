@@ -244,6 +244,13 @@ var US_NAME_ALIASES = {
   'PEREZ DE TUDELA ALBA LAIA': 'PEREZ DE TUDELA ALBALAT LAIA'
 };
 
+// Entrades d'equip (campionats de clubs): Ianseo les publica com a "NOM - NOM"
+// (p. ex. "ARCSET1 - ARCSET1", "CAM TRAD - CAM TRAD") i no són arquers.
+function _usIsTeamEntry(name) {
+  var parts = String(name).split(" - ");
+  return parts.length === 2 && _usNorm(parts[0]) === _usNorm(parts[1]);
+}
+
 var US_ALIAS_TARGETS = {};
 Object.keys(US_NAME_ALIASES).forEach(function(k) { US_ALIAS_TARGETS[US_NAME_ALIASES[k]] = true; });
 
@@ -253,7 +260,7 @@ function _usBuildIndex() {
   (_usAllSeasonsData || []).forEach(function(comp) {
     (comp.divisions || []).forEach(function(div) {
       (div.archers || []).forEach(function(a) {
-        if (!a.name) return;
+        if (!a.name || _usIsTeamEntry(a.name)) return;
         var rawKey = _usNorm(a.name);
         var key = US_NAME_ALIASES[rawKey] || rawKey;
         if (!idx[key]) idx[key] = { display: a.name, entries: [] };
