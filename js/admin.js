@@ -346,7 +346,8 @@ function renderAdmNews(b){
       ['Aire Lliure','Camp','3D','Sala','Arc Adaptat','Kyudo','Universitari','Institucional'].map(function(v){return{val:v,lbl:v};}))
     +mkField('Data','an_dt','date','','')
     +'</div>'
-    +mkField('Resum *','an_d','textarea','','Primer par\u00e0graf de la not\u00edcia')
+    +mkField('Resum *','an_d','textarea','','Text breu que es mostra a la targeta de la not\u00edcia')
+    +'<div class="af-g"><label>Text de la not\u00edcia (negreta, llistes, enlla\u00e7os, emoticones\u2026)</label>'+rtEditor('an_body','','Escriu aqu\u00ed el text complet de la not\u00edcia\u2026')+'</div>'
     +'<div class="af-row">'
     +mkUploadField('Imatge de la not\u00edcia','an_img','','image')
     +mkField('URL Not\u00edcia completa','an_url','url','','https://...')
@@ -375,7 +376,10 @@ function crudAddNews(){
   var M=['gen','feb','mar','abr','mai','jun','jul','ago','set','oct','nov','des'];
   var now=dt?new Date(dt):new Date();
   var dateStr=now.getDate()+' '+M[now.getMonth()]+' '+now.getFullYear();
-  DB.news.unshift({id:Date.now(),cat:c||'General',title:t,date:dateStr,desc:d,img:img,url:url||'#'});
+  var item={id:Date.now(),cat:c||'General',title:t,date:dateStr,desc:d,img:img,url:url||'#'};
+  var body=rtGetHtml('an_body');
+  if(body) item.body=body;
+  DB.news.unshift(item);
   dbSave();
   admLog('NEWS_ADD', t);
   renderNews();
@@ -399,7 +403,8 @@ function crudEditNews(id){
       ['Aire Lliure','Camp','3D','Sala','Arc Adaptat','Kyudo','Universitari','Institucional'].map(function(v){return{val:v,lbl:v};}))
     +mkField('Data','en_dt_'+id,'text',n.date,'Ex: 24 mai 2026')
     +'</div>'
-    +mkField('Resum','en_d_'+id,'textarea',n.desc,'')
+    +mkField('Resum','en_d_'+id,'textarea',n.desc,'Text breu que es mostra a la targeta')
+    +'<div class="af-g"><label>Text de la not\u00edcia (negreta, llistes, enlla\u00e7os, emoticones\u2026)</label>'+rtEditor('en_body_'+id,newsBodyHtml(n),'Escriu aqu\u00ed el text complet de la not\u00edcia\u2026')+'</div>'
     +'<div class="af-row">'
     +mkUploadField('Imatge de la not\u00edcia','en_img_'+id,n.img||'','image')
     +mkField('URL Not\u00edcia','en_url_'+id,'url',n.url&&n.url!=='#'?n.url:'','https://...')
@@ -417,7 +422,9 @@ function crudSaveNews(id){
   n.title=t; n.cat=fv('en_c_'+id)||n.cat; n.date=fv('en_dt_'+id)||n.date;
   n.desc=fv('en_d_'+id); n.img=fv('en_img_'+id);
   var u=fv('en_url_'+id); n.url=u||'#';
-  if(NEWS_CONTENT[id]){ NEWS_CONTENT[id].title=t; NEWS_CONTENT[id].date=n.date; NEWS_CONTENT[id].cat=n.cat; }
+  var body=rtGetHtml('en_body_'+id);
+  if(body) n.body=body; else delete n.body;
+  if(NEWS_CONTENT[id]){ NEWS_CONTENT[id].title=t; NEWS_CONTENT[id].date=n.date; NEWS_CONTENT[id].cat=n.cat; if(body) NEWS_CONTENT[id].body=body; }
   dbSave();
   renderNews();
   renderAdmNews(document.getElementById('admBody'));

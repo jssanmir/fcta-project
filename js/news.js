@@ -73,7 +73,7 @@ function _renderNewsPage() {
     body.appendChild(dateEl);
     body.appendChild(h3);
     body.appendChild(p);
-    if (NEWS_CONTENT[n.id]) {
+    if (NEWS_CONTENT[n.id] || n.body) {
       var btn = document.createElement('button');
       btn.className = 'news-link';
       btn.style.cssText = 'background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:.8rem;font-weight:700;color:var(--navy-light)';

@@ -18,6 +18,7 @@ var path      = require('path');
 var fs        = require('fs');
 var crypto    = require('crypto');
 var nodemailer = require('nodemailer');
+var sanitizeHtml = require('sanitize-html');
 
 // ── Configuració ───────────────────────────────────────────
 var PORT        = process.env.PORT       || 3000;
@@ -538,6 +539,28 @@ function writePortalState(state) {
     .run(JSON.stringify(state), now);
 }
 
+// ── Text enriquit de les notícies (news[].body) ─────────────
+// És HTML que el client mostra amb innerHTML: es desa només amb una llista
+// blanca d'etiquetes (mateixa que js/richtext.js) i sense atributs, excepte href.
+var NEWS_BODY_OPTS = {
+  allowedTags: ['p','br','strong','em','u','s','ul','ol','li','a','h2','h3','h4','blockquote'],
+  allowedAttributes: { a: ['href','target','rel'] },
+  allowedSchemes: ['http','https','mailto'],
+  allowProtocolRelative: false,
+  transformTags: {
+    b: 'strong', i: 'em', div: 'p',
+    a: function (tag, attribs) {
+      var href = attribs.href || '';
+      var out = { href: href };
+      if (/^https?:/i.test(href)) { out.target = '_blank'; out.rel = 'noopener noreferrer'; }
+      return { tagName: 'a', attribs: out };
+    }
+  }
+};
+function sanitizeNewsBody(html) {
+  return sanitizeHtml(String(html || '').slice(0, 200000), NEWS_BODY_OPTS);
+}
+
 // ── Validació d'URLs ───────────────────────────────────────
 function isSafeUrl(url) {
   if (!url || url === '#') return true;
@@ -838,6 +861,11 @@ app.post('/api/data', verifyToken, function (req, res) {
       if (item.url && !isSafeUrl(item.url)) item.url = '#';
     });
   });
+  if (Array.isArray(data.news)) {
+    data.news.forEach(function (item) {
+      if (item && item.body !== undefined) item.body = sanitizeNewsBody(item.body);
+    });
+  }
 
   var now = new Date().toISOString();
   db.prepare('INSERT INTO portal_state (id,data,updated_at) VALUES (1,?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data, updated_at=excluded.updated_at')
