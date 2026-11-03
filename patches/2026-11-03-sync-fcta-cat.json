@@ -1,0 +1,96 @@
+{
+ "name": "2026-11-03-sync-fcta-cat",
+ "description": "Circulars CIRC-2655 a 2657, notícia del Mundial de Camp i 3D de Yankton i vinculació de les competicions de novembre 2026",
+ "ops": [
+  {
+   "op": "add",
+   "collection": "circulars",
+   "items": [
+    {
+     "id": 88,
+     "type": "3d",
+     "num": "CIRC-2655",
+     "title": "2ª Tirada Lliga Catalana 3D en línia 2026/27 (Olivella)",
+     "desc": "Convocatòria, horaris i inscripcions de la 2ª Tirada de la Lliga Catalana de 3D en línia, 15 de novembre de 2026 al Club Arquers Olivella",
+     "day": 27,
+     "mon": "OCT",
+     "year": 2026,
+     "url": "docs/2026102716160770-CIRC_2655_2a_Tirada_Lliga_Catalana_3D_en_linia_2026-27_Olivella.pdf"
+    },
+    {
+     "id": 89,
+     "type": "al",
+     "num": "CIRC-2656",
+     "title": "2ª Tirada Lliga Catalana d'Arc Adaptat, Inclusiu i Salut 2026/27 (Olesa de Montserrat)",
+     "desc": "Convocatòria de la 2ª Tirada d'Arc Adaptat, Inclusiu i Salut i de la 2ª Tirada per a la Prevenció del Limfedema, 14 de novembre de 2026 al Club Tir Arc Olesa",
+     "day": 30,
+     "mon": "OCT",
+     "year": 2026,
+     "url": "docs/2026103018564512-CIRC_2656_2a_Tirada_Lliga_Catalana_Arc_Adaptat_2026-2027.pdf"
+    },
+    {
+     "id": 90,
+     "type": "sala",
+     "num": "CIRC-2657",
+     "title": "2ª Tirada Lliga Catalana de Sala 2026/27 (Constantí)",
+     "desc": "Convocatòria, normes i inscripcions de la 2ª Tirada de la Lliga Catalana de Sala, 21 i 22 de novembre de 2026 al Club Tir amb Arc Constantí",
+     "day": 3,
+     "mon": "NOV",
+     "year": 2026,
+     "url": "docs/2026110309350312-CIRC_2657_2a_Tirada_Lliga_Catalana_Sala_2026-2027_Constanti.pdf"
+    }
+   ]
+  },
+  {
+   "op": "add",
+   "collection": "news",
+   "items": [
+    {
+     "id": 50,
+     "cat": "Camp",
+     "title": "Maria Pitarch aconsegueix dues medalles de bronze al Campionat del Món de Yankton",
+     "date": "13 oct 2026",
+     "desc": "Maria Pitarch suma dos bronzes amb els equips femenins espanyols al Mundial de Camp i 3D de Yankton (EUA): el primer a l'equip de recorbat de Camp, amb Iria de la Fuente i Ana Cano, i el segon a l'equip de 3D, amb Aia Palacio, Ana Cano i Encarna Garrido.",
+     "img": "img/news/noticia50.jpg",
+     "url": "#news:50"
+    }
+   ]
+  },
+  {
+   "op": "add",
+   "collection": "competitions",
+   "items": [
+    {
+     "id": 159,
+     "type": "al",
+     "title": "2ª Tirada Lliga Catalana d'Arc Adaptat, Inclusiu i Salut 2026/27",
+     "disc": "Arc Adaptat",
+     "date": "14 nov 2026",
+     "dateISO": "2026-11-14",
+     "loc": "Olesa de Montserrat (Barcelona)",
+     "status": "soon",
+     "circ": "CIRC-2656",
+     "url": "#"
+    }
+   ]
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 102,
+   "fields": {
+    "loc": ["Per determinar", "Olivella (Barcelona)"],
+    "circ": ["CIRC-2627", "CIRC-2655"]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 107,
+   "fields": {
+    "loc": ["Per determinar", "Constantí (Tarragona)"],
+    "circ": ["CIRC-2634", "CIRC-2657"]
+   }
+  }
+ ]
+}
