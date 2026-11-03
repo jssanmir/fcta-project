@@ -37,7 +37,6 @@ var FCTA = {
     { key: 'comitejutges',  id: 'ComiteJutges',  label: 'Comitè de Jutges' },
     { key: 'pat',           id: 'PAT',           label: 'PAT' },
     { key: 'calendari',    id: 'Calendari',     label: 'Calendari' },
-    { key: 'medaller',     id: 'Medaller',      label: 'Medaller' },
     { key: 'records',      id: 'Records',       label: 'Rècords' },
     { key: 'estadarquer',  id: 'EstadArquer',   label: 'Les Meves Estadístiques' },
     { key: 'regimdisciplinari', id: 'Regimdisciplinari', label: 'Règim Disciplinari' },

@@ -30,7 +30,6 @@ var _SEO_TITLES = {
   comitejutges:  'Comitè de Jutges | FCTA',
   pat:           'PAT – Programa Autonòmic de Tecnificació | FCTA',
   calendari:     'Calendari Esportiu | FCTA',
-  medaller:      'Medaller | FCTA',
   records:       'Rècords de Catalunya | FCTA',
   regimdisciplinari: 'Règim Disciplinari | FCTA',
   estadarquer:   'Les Meves Estadístiques | FCTA'
@@ -98,9 +97,8 @@ function _navFromHash() {
   if (!hash) return;
   var parts = hash.split('/');
   var sec   = parts[0];   // 'competitions' | 'disciplina' | ...
-  var sub   = parts[1];   // clau disciplina o 'medaller'
-  var tab   = parts[2];   // tab o subtab medaller
-  var view  = parts[3];   // sub-vista resultats o subtab medaller
+  var sub   = parts[1];   // clau disciplina
+  var tab   = parts[2];   // tab de la disciplina
 
   if (!FCTA.sectionMap[sec]) return;
 
@@ -111,10 +109,6 @@ function _navFromHash() {
       if (tab) {
         var tabBtn = document.querySelector('#discTabs [data-tab="' + tab + '"]');
         setDiscTab(tab, tabBtn, true);
-        if (tab === 'resultats' && view) {
-          _discResView = view;
-          renderDiscTab('resultats');
-        }
       }
     }, 80);
     return;
@@ -129,25 +123,6 @@ function _navFromHash() {
       if (btn) setCalSeason(sub, btn);
     }, 50);
     return;
-  }
-
-  // ── Competicions > Medaller ──────────────────────────────
-  if (sec === 'competitions' && sub === 'medaller') {
-    setTimeout(function() {
-      var btn = document.querySelector('.comp-stab:last-child');
-      if (btn) {
-        if (tab) _medallerTab = tab;
-        setCompTab('medaller', btn);
-      }
-    }, 50);
-  }
-
-  // ── Competicions > Estadístiques ──────────────────────────
-  if (sec === 'competitions' && sub === 'stats') {
-    setTimeout(function() {
-      var btn = document.querySelector('.comp-stab:nth-child(2)');
-      if (btn) setCompTab('stats', btn);
-    }, 50);
   }
 
   // ── Notícia individual (enllaç directe) ───────────────────

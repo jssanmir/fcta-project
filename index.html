@@ -275,13 +275,6 @@
     <h2 class="sec-title">Competicions i <em>Campionats</em></h2>
     <p class="sec-intro">Totes les competicions de la temporada 2025/2026. Consulta la informació i inscriu-te directament.</p>
 
-    <!-- Sub-tabs -->
-    <div class="comp-stabs">
-      <button class="comp-stab act" data-onclick="setCompTab" data-onclick-args="[&quot;calendari&quot;,&quot;@el&quot;]">📅 Calendari</button>
-      <button class="comp-stab"     data-onclick="setCompTab" data-onclick-args="[&quot;stats&quot;,&quot;@el&quot;]">📊 Estadístiques</button>
-      <button class="comp-stab"     data-onclick="setCompTab" data-onclick-args="[&quot;medaller&quot;,&quot;@el&quot;]">🏆 Medaller <span class="pilot-badge">Prova pilot</span></button>
-    </div>
-
     <!-- Calendari -->
     <div id="compCalendari">
       <div class="filters" id="compFilters">
@@ -293,12 +286,6 @@
       </div>
       <div class="comp-grid" id="compGrid"></div>
     </div>
-
-    <!-- Estadístiques -->
-    <div id="compStatsPanel" style="display:none"></div>
-
-    <!-- Medaller -->
-    <div id="compMedallerPanel" style="display:none"></div>
   </div>
 </section>
 </div>
@@ -2406,30 +2393,6 @@
 
   </div>
 </section>
-</div>
-
-<!-- MEDALLER GENERAL DE CLUBS -->
-<div id="sMedaller" style="display:none">
-
-<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
-
-<div class="NOM-hero" style="background:linear-gradient(135deg,var(--navy-dark) 0%,#1a3f78 100%);padding:3rem 0 2.5rem;border-bottom:4px solid var(--gold)">
-  <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">← Tornar a l'inici</button>
-    <div class="lic-hero-badge">🏆 Temporada 2025-26 <span class="pilot-badge">Prova pilot</span></div>
-    <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,5vw,3.2rem);color:white;text-transform:uppercase;margin:.5rem 0">Medaller General<br><em style="color:var(--gold)">de Clubs</em></h1>
-    <p style="color:rgba(255,255,255,.7);max-width:600px">Classificació olímpica (or · plata · bronze) de tots els clubs catalans a les competicions oficials de la temporada 2025-26: Campionat de Sala, Campionat 3D, Campionat 3D en Línia i Campionat de Camp.</p>
-  </div>
-</div>
-
-<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
-
-<section class="section" style="background:var(--offwhite)">
-  <div class="container">
-        <div id="medallerContent"></div>
-  </div>
-</section>
-
 </div>
 
 <!-- DISCIPLINA (secció genèrica reutilitzable) -->

@@ -2,31 +2,6 @@
    31-comp-stats.css – Estadístiques de competicions
    ══════════════════════════════════════════════════════ */
 
-/* ── Tabs de la secció de competicions ── */
-.comp-stabs {
-  display: flex;
-  gap: 0;
-  margin-bottom: var(--sp-6);
-  border-bottom: 2px solid var(--lightgray);
-}
-.comp-stab {
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  padding: var(--sp-3) var(--sp-6);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  cursor: pointer;
-  color: var(--gray);
-  transition: color var(--dur-base) var(--tr), border-color var(--dur-base) var(--tr);
-}
-.comp-stab:hover { color: var(--navy); }
-.comp-stab.act   { color: var(--navy); border-bottom-color: var(--gold); }
-
 /* ── Loading / error ── */
 .cs-loading {
   text-align: center;
