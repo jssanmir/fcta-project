@@ -47,7 +47,7 @@
   ]
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <!-- CSS Modules -->
   <link rel="stylesheet" href="css/01-variables.css">
   <link rel="stylesheet" href="css/02-senyera.css">
@@ -79,12 +79,10 @@
   <link rel="stylesheet" href="css/28-arcadaptat.css">
   <link rel="stylesheet" href="css/29-comitejutges.css">
   <link rel="stylesheet" href="css/30-pat.css">
-  <link rel="stylesheet" href="css/31-comp-stats.css">
   <link rel="stylesheet" href="css/31-calendari.css">
   <link rel="stylesheet" href="css/31-records.css">
   <link rel="stylesheet" href="css/33-regimdisciplinari.css">
   <link rel="stylesheet" href="css/32-nav-hub.css">
-  <link rel="stylesheet" href="css/34-user-stats.css">
   <link rel="stylesheet" href="css/35-carousel.css">
 </head>
 <body>
@@ -139,7 +137,7 @@
         <div><div class="hs-num">4.200+</div><div class="hs-label">Llicències actives</div></div>
         <div><div class="hs-num">120+</div><div class="hs-label">Clubs federats</div></div>
         <div><div class="hs-num">60+</div><div class="hs-label">Anys d'història</div></div>
-        <div><div class="hs-num">7</div><div class="hs-label">Disciplines</div></div>
+        <div><div class="hs-num">8</div><div class="hs-label">Disciplines</div></div>
       </div>
     </div>
     <div class="hero-disciplines">
@@ -161,9 +159,9 @@
           <span class="hero-disc-icon">🍁</span>
           <span class="hero-disc-name">Camp</span>
         </button>
-        <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;run&quot;]">
-          <span class="hero-disc-icon">🏃</span>
-          <span class="hero-disc-name">Run Archery</span>
+        <button class="hero-disc-card" data-onclick="setS" data-onclick-args="[&quot;pat&quot;]">
+          <span class="hero-disc-icon">⚡</span>
+          <span class="hero-disc-name">Tecnificació</span>
         </button>
         <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;aa&quot;]">
           <span class="hero-disc-icon">♿</span>
@@ -172,6 +170,10 @@
         <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;kyudo&quot;]">
           <span class="hero-disc-icon">🎌</span>
           <span class="hero-disc-name">Kyudo</span>
+        </button>
+        <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;run&quot;]">
+          <span class="hero-disc-icon">🏃</span>
+          <span class="hero-disc-name">Run Archery</span>
         </button>
       </div>
     </div>
@@ -238,9 +240,11 @@
     <div class="filters" id="circFilters">
       <button class="fb act" data-onclick="filtCirc" data-onclick-args="[&quot;all&quot;,&quot;@el&quot;]">Totes</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;fed&quot;,&quot;@el&quot;]">Federació</button>
-      <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;al&quot;,&quot;@el&quot;]">Aire Lliure / Sala</button>
+      <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;al&quot;,&quot;@el&quot;]">Aire Lliure</button>
+      <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;sala&quot;,&quot;@el&quot;]">Sala</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;camp&quot;,&quot;@el&quot;]">Camp</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;3d&quot;,&quot;@el&quot;]">3D</button>
+      <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;tec&quot;,&quot;@el&quot;]">Tecnificació</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;jut&quot;,&quot;@el&quot;]">Jutges</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;form&quot;,&quot;@el&quot;]">Formació</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;kyudo&quot;,&quot;@el&quot;]">Kyudo</button>
@@ -258,7 +262,7 @@
 <!-- COMPETITIONS -->
 <div id="sCompetitions" style="display:none">
 <div style="background:var(--navy-dark);padding:var(--sp-3) var(--sp-6)">
-  <button data-onclick="setS" data-onclick-args="[&quot;home&quot;]" style="display:inline-flex;align-items:center;gap:var(--sp-2);background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;padding:var(--sp-2) var(--sp-5);border-radius:var(--r-md);cursor:pointer;transition:all var(--dur-base) var(--tr)" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">&#8592; Tornar a l'inici</button>
+  <button data-onclick="setS" data-onclick-args="[&quot;home&quot;]" style="display:inline-flex;align-items:center;gap:var(--sp-2);background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.798rem;text-transform:uppercase;letter-spacing:.036em;padding:var(--sp-2) var(--sp-5);border-radius:var(--r-md);cursor:pointer;transition:all var(--dur-base) var(--tr)" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">&#8592; Tornar a l'inici</button>
 </div>
 <section class="section" style="background:var(--offwhite)">
   <div class="container">
@@ -1752,7 +1756,7 @@
     <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#127963;&#65039; Òrgan de Govern</div>
     <h1>Junta Directiva<br><em>FCTA</em></h1>
-    <p>Composició de la Junta Directiva de la Federació Catalana de Tir amb Arc, elegida democràticament pels clubs federats el desembre de 2024 per al mandat <strong>2024–2028</strong>.</p>
+    <div id="jdIntro"><p>Composició de la Junta Directiva de la Federació Catalana de Tir amb Arc, elegida democràticament pels clubs federats el desembre de 2024 per al mandat <strong>2024–2028</strong>.</p></div>
   </div>
 </div>
 
@@ -1761,104 +1765,8 @@
 <section class="section" style="background:var(--offwhite)">
   <div class="container">
 
-    <!-- PRESIDENT -->
-    <div class="jd-president-wrap">
-      <div class="jd-president-card">
-        <div class="jd-president-avatar">&#127939;</div>
-        <div class="jd-president-body">
-          <div class="jd-president-rol">President</div>
-          <h2 class="jd-president-nom">Juan Carlos Ahumada Méndez</h2>
-          <a href="mailto:presidencia@fcta.cat" class="jd-member-email">&#9993;&#65039; presidencia@fcta.cat</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CÀRRECS EXECUTIUS -->
-    <div class="jd-section-title">&#9670; Càrrecs executius</div>
-    <div class="jd-exec-grid">
-
-      <div class="jd-exec-card">
-        <div class="jd-exec-rol">1r Vicepresident</div>
-        <div class="jd-exec-nom">Francesc Altarriba Garcia</div>
-        <a href="mailto:faltarriba@fcta.cat" class="jd-member-email">faltarriba@fcta.cat</a>
-      </div>
-
-      <div class="jd-exec-card">
-        <div class="jd-exec-rol">2n Vicepresident</div>
-        <div class="jd-exec-nom">Josep Vivó Marce</div>
-        <a href="mailto:jvivo@fcta.cat" class="jd-member-email">jvivo@fcta.cat</a>
-      </div>
-
-      <div class="jd-exec-card">
-        <div class="jd-exec-rol">3r Vicepresident</div>
-        <div class="jd-exec-nom">Luis Francisco Fernández Berga</div>
-        <a href="mailto:lfernandez@fcta.cat" class="jd-member-email">lfernandez@fcta.cat</a>
-      </div>
-
-      <div class="jd-exec-card">
-        <div class="jd-exec-rol">Tresorer</div>
-        <div class="jd-exec-nom">Gregorio José García Orera</div>
-        <a href="mailto:gjgarcia@fcta.cat" class="jd-member-email">gjgarcia@fcta.cat</a>
-      </div>
-
-      <div class="jd-exec-card">
-        <div class="jd-exec-rol">Secretària</div>
-        <div class="jd-exec-nom">Joana Ballarin Giralt</div>
-        <a href="mailto:jballarin@fcta.cat" class="jd-member-email">jballarin@fcta.cat</a>
-      </div>
-
-    </div>
-
-    <!-- VOCALS -->
-    <div class="jd-section-title" style="margin-top:2rem">&#9670; Vocals</div>
-    <div class="jd-vocals-grid">
-
-      <div class="jd-vocal-card">
-        <div class="jd-vocal-avatar">&#127939;</div>
-        <div class="jd-vocal-body">
-          <div class="jd-vocal-nom">Margarita Bach Martínez</div>
-          <div class="jd-vocal-rol">Vocal</div>
-          <a href="mailto:mbach@fcta.cat" class="jd-member-email">mbach@fcta.cat</a>
-        </div>
-      </div>
-
-      <div class="jd-vocal-card">
-        <div class="jd-vocal-avatar">&#127939;</div>
-        <div class="jd-vocal-body">
-          <div class="jd-vocal-nom">Juan Carlos Sánchez Mirabal</div>
-          <div class="jd-vocal-rol">Vocal</div>
-          <a href="mailto:jcsanchez@fcta.cat" class="jd-member-email">jcsanchez@fcta.cat</a>
-        </div>
-      </div>
-
-      <div class="jd-vocal-card">
-        <div class="jd-vocal-avatar">&#127939;</div>
-        <div class="jd-vocal-body">
-          <div class="jd-vocal-nom">Mª Montserrat Safont Mas</div>
-          <div class="jd-vocal-rol">Vocal</div>
-          <a href="mailto:msafont@fcta.cat" class="jd-member-email">msafont@fcta.cat</a>
-        </div>
-      </div>
-
-      <div class="jd-vocal-card">
-        <div class="jd-vocal-avatar">&#127939;</div>
-        <div class="jd-vocal-body">
-          <div class="jd-vocal-nom">Joan Manel Asensio Fernández</div>
-          <div class="jd-vocal-rol">Vocal</div>
-          <a href="mailto:jmasensio@fcta.cat" class="jd-member-email">jmasensio@fcta.cat</a>
-        </div>
-      </div>
-
-      <div class="jd-vocal-card">
-        <div class="jd-vocal-avatar">&#127939;</div>
-        <div class="jd-vocal-body">
-          <div class="jd-vocal-nom">Santiago Cornellana Casany</div>
-          <div class="jd-vocal-rol">Vocal</div>
-          <a href="mailto:scornellana@fcta.cat" class="jd-member-email">scornellana@fcta.cat</a>
-        </div>
-      </div>
-
-    </div>
+    <!-- MEMBRES (configurables a Administració > Junta; js/junta.js) -->
+    <div id="jdMembers"></div>
 
     <!-- MANDAT I DOCUMENTACIÓ -->
     <div class="jd-info-row">
@@ -1866,14 +1774,14 @@
         <div class="jd-info-icon">&#128197;</div>
         <div class="jd-info-body">
           <strong>Mandat vigent</strong>
-          <span>Desembre 2024 – Novembre 2028</span>
+          <span id="jdMandat">Desembre 2024 – Novembre 2028</span>
         </div>
       </div>
       <div class="jd-info-card">
         <div class="jd-info-icon">&#127963;&#65039;</div>
         <div class="jd-info-body">
           <strong>Composició</strong>
-          <span>1 President &middot; 3 Vicepresidents &middot; 1 Secretària &middot; 1 Tresorer &middot; 5 Vocals</span>
+          <span id="jdComposicio">1 President &middot; 3 Vicepresidents &middot; 1 Secretària &middot; 1 Tresorer &middot; 5 Vocals</span>
         </div>
       </div>
       <div class="jd-info-card">
@@ -2931,36 +2839,6 @@
 <div class="records-content container" style="display:none"></div>
 </div>
 
-<!-- ESTADÍSTIQUES PER ARQUER -->
-<div id="sEstadArquer" style="display:none">
-<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
-<div class="us-hero">
-  <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
-    <div class="us-hero-badge">&#128202; El teu historial <span class="pilot-badge">Prova pilot</span></div>
-    <h1>Les Meves<br><em>Estadístiques</em></h1>
-    <p>Cerca el teu nom (o cognoms) i consulta totes les teves participacions i puntuacions a competicions oficials de la FCTA i RFETA.</p>
-  </div>
-</div>
-<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
-<section class="section" style="background:var(--offwhite)">
-  <div class="container">
-      <div class="pilot-note"><span aria-hidden="true">&#129514;</span><div><strong>Funcionalitat en prova pilot.</strong> Les estad&iacute;stiques personals s&rsquo;estan provant: les dades provenen dels resultats oficials publicats i poden estar incompletes o contenir errors. Si en detectes algun, comunica&rsquo;ns-ho a info@fcta.cat.</div></div>
-    <div class="us-search-wrap">
-      <div class="us-search-box">
-        <span class="us-search-icon">&#128269;</span>
-        <input type="text" id="usSearchInput" class="us-search-input" placeholder="Escriu el teu cognom… (ex: Pérez)" autocomplete="off"
-          data-oninput="usOnSearchInput" data-oninput-args="[&quot;@val&quot;]"
-          data-onkeydown-enter="usSearchEnter">
-        <button id="usClearBtn" class="us-search-clear" style="display:none" data-onclick="usClearSearch">&#10005;</button>
-      </div>
-      <div id="usSuggestions" class="us-suggestions" style="display:none"></div>
-    </div>
-    <div id="usContent"></div>
-  </div>
-</section>
-</div>
-
 <!-- CALENDARI ESPORTIU -->
 <div id="sCalendari" style="display:none">
 <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
@@ -3044,7 +2922,6 @@
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;social&quot;]">Tirades Socials</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;calendari&quot;]">Calendari Esportiu</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;records&quot;]">R&egrave;cords de Catalunya</a></li>
-          <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;estadarquer&quot;]">Les Meves Estad&iacute;stiques <span class="pilot-badge">Pilot</span></a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;regimdisciplinari&quot;]">R&egrave;gim Disciplinari</a></li>
         </ul>
       </div>
@@ -3086,7 +2963,7 @@
   <div style="background:white;border-radius:14px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.35)">
     <div style="background:var(--navy-dark);padding:1.25rem 1.5rem;border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:space-between">
       <div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;color:white;text-transform:uppercase">🏆 Sol·licitud d'homologació de rècord</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:1.008rem;font-weight:900;color:white;text-transform:uppercase">🏆 Sol·licitud d'homologació de rècord</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.15rem">La sol·licitud serà revisada per l'administrador de la FCTA</div>
       </div>
       <button data-onclick="closeRecordForm" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:1.4rem;cursor:pointer;line-height:1">✕</button>
@@ -3292,6 +3169,8 @@
         <button class="adm-tab act" data-onclick="setATab" data-onclick-args="[&quot;circ&quot;,&quot;@el&quot;]">&#128196; Circulars</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;news&quot;,&quot;@el&quot;]">&#128240; Notícies</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;car&quot;,&quot;@el&quot;]">&#127912; Carrusel</button>
+        <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;junta&quot;,&quot;@el&quot;]">&#127963;&#65039; Junta</button>
+        <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;disc&quot;,&quot;@el&quot;]">&#127919; Disciplines</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;comp&quot;,&quot;@el&quot;]">&#127942; Competicions</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;form&quot;,&quot;@el&quot;]">&#127891; Formació</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;tirades&quot;,&quot;@el&quot;]">&#127919; Tirades<span class="pend-dot" id="pendDot">0</span></button>
@@ -3330,8 +3209,6 @@
   <script src="js/nav.js"></script>
   <script src="js/circulars.js"></script>
   <script src="js/competitions.js"></script>
-  <script src="js/comp_stats.js"></script>
-  <script src="js/user_stats.js"></script>
   <script src="js/news.js"></script>
   <script src="js/formations.js"></script>
   <script src="js/tirades.js"></script>
@@ -3350,6 +3227,7 @@
   <script src="js/records_page.js"></script>
   <script src="js/calendari.js"></script>
   <script src="js/carousel.js"></script>
+  <script src="js/junta.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/init.js"></script>
   <script src="js/hash_routing.js"></script>

@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded',function(){
   renderCalendari();
   renderHeroPanel();
   renderCarousel();
+  renderJunta();
   fixPuntVolat();
   // No sobreescriure la navegació per hash (enllaços directes a #competitions/stats, etc.)
   var _hashSec = (window.location.hash || '').replace('#', '').split('/')[0];

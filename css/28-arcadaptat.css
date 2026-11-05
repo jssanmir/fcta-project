@@ -7,8 +7,8 @@
   color: white;
 }
 .aa-hero h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-family: 'Montserrat', sans-serif;
+  font-size:clamp(2.1rem, 5.04vw, 3.36rem);
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1;
@@ -22,11 +22,11 @@
 
 /* Section title */
 .aa-section-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.924rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .8px;
+  letter-spacing:.48px;
   color: var(--navy-dark);
   margin-bottom: 1.25rem;
   padding-bottom: .35rem;
@@ -62,8 +62,8 @@
   gap: .2rem;
 }
 .aa-stat-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.512rem;
   font-weight: 900;
   color: var(--gold, #f5c518);
   line-height: 1;
@@ -93,11 +93,11 @@
 .aa-cat-arw   { border-top-color: #e65100; }
 .aa-cat-badge {
   display: inline-block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.588rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing:.6px;
   padding: .15rem .65rem;
   border-radius: 4px;
   background: var(--offwhite);
@@ -109,8 +109,8 @@
 .aa-cat-st .aa-cat-badge    { background: #d1fae5; color: #065f46; }
 .aa-cat-arw .aa-cat-badge   { background: #ffedd5; color: #9a3412; }
 .aa-cat-card h4 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.84rem;
   font-weight: 800;
   color: var(--navy-dark);
   margin-bottom: .5rem;
@@ -136,8 +136,8 @@
 }
 .aa-format-icon { font-size: 2rem; margin-bottom: .6rem; }
 .aa-format-card h4 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.84rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -153,8 +153,8 @@
   background: var(--offwhite);
   border-radius: 6px;
   padding: .4rem .6rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.672rem;
   font-weight: 700;
   color: var(--navy-dark);
 }
@@ -173,11 +173,11 @@
 }
 .aa-news-icon { font-size: 1.8rem; flex-shrink: 0; }
 .aa-news-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .72rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.605rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing:.3px;
   color: var(--gold, #e6a800);
   margin-bottom: .2rem;
 }
@@ -195,8 +195,8 @@
 }
 .aa-tl-item:last-child { border-bottom: none; }
 .aa-tl-year {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.6rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.344rem;
   font-weight: 900;
   color: var(--gold, #f5c518);
   min-width: 60px;
@@ -228,7 +228,7 @@
   .aa-intro-stats { grid-template-columns: repeat(4,1fr); min-width: auto; }
   .aa-cat-grid, .aa-format-grid { grid-template-columns: 1fr 1fr; }
   .aa-news-highlight { flex-direction: column; gap: .75rem; }
-  .aa-tl-year { font-size: 1.2rem; min-width: 46px; }
+  .aa-tl-year { font-size:1.008rem; min-width: 46px; }
 }
 @media (max-width: 480px) {
   .aa-intro-stats { grid-template-columns: 1fr 1fr; }

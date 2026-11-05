@@ -1,0 +1,72 @@
+{
+ "name": "2026-11-05-circular-types",
+ "description": "Circulars: separa Sala d'Aire Lliure i afegeix el tipus Tecnificació",
+ "ops": [
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 43,
+   "fields": {
+    "type": [
+     "al",
+     "sala"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 71,
+   "fields": {
+    "type": [
+     "al",
+     "sala"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 77,
+   "fields": {
+    "type": [
+     "al",
+     "sala"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 66,
+   "fields": {
+    "type": [
+     "fed",
+     "tec"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 70,
+   "fields": {
+    "type": [
+     "fed",
+     "tec"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 73,
+   "fields": {
+    "type": [
+     "fed",
+     "tec"
+    ]
+   }
+  }
+ ]
+}

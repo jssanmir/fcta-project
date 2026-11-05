@@ -127,7 +127,7 @@ var DISC_DATA = {
       { disc:'Sala', estil:'Tradicional', cat:'Sènior Home', marca:'586 pts', atleta:'Juanjo Querol Guardiola',  any:'2021' },
     ],
     resultatExtern: 'https://ianseo.net',
-    circularsCategoria: 'al',
+    circularsCategoria: 'sala',
   },
 
   '3d': {
@@ -345,14 +345,21 @@ function renderDiscTab(tab) {
 }
 
 // ── Panels ────────────────────────────────────────────────
+// Text «Sobre la disciplina»: el text enriquit editat a Administració
+// (DB.discTexts) té prioritat sobre el text original de DISC_DATA.
+function discDescHtml(key) {
+  var d = DISC_DATA[key];
+  if (!d) return '';
+  var ov = DB.discTexts && DB.discTexts[key] && DB.discTexts[key].descripcio;
+  if (ov) return rtSanitize(ov);
+  return (d.descripcio || '').split('\n\n').map(function(p){ return '<p>' + p + '</p>'; }).join('');
+}
+
 function renderDiscInfo(d) {
   var html = '<div class="disc-info-grid">';
 
   // Descripció – suport per paràgrafs separats per \n\n
-  var descHtml = d.descripcio
-    .split('\n\n')
-    .map(function(p){ return '<p>' + p + '</p>'; })
-    .join('');
+  var descHtml = discDescHtml(_discActiva);
   html += '<div class="disc-card disc-card--wide">'
     + '<div class="disc-card-icon">' + d.icon + '</div>'
     + '<h3>Sobre la disciplina</h3>'

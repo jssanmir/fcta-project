@@ -7,8 +7,8 @@
   color: white;
 }
 .cj-hero h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-family: 'Montserrat', sans-serif;
+  font-size:clamp(2.016rem, 4.62vw, 3.36rem);
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1;
@@ -19,11 +19,11 @@
 
 /* Section titles */
 .cj-section-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.924rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .8px;
+  letter-spacing:.48px;
   color: var(--navy-dark);
   margin-bottom: .6rem;
   padding-bottom: .35rem;
@@ -60,8 +60,8 @@
   padding: .9rem 1.1rem;
 }
 .cj-obj-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.176rem;
   font-weight: 900;
   color: var(--gold, #f5c518);
   -webkit-text-stroke: 1px var(--navy-dark);
@@ -104,18 +104,18 @@
   background: rgba(255,255,255,.2);
   border: 1px solid rgba(255,255,255,.35);
   color: white;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .68rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.571rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing:.6px;
   padding: .15rem .6rem;
   border-radius: 4px;
   margin-bottom: .5rem;
 }
 .cj-level-header h4 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.05rem;
   font-weight: 900;
   text-transform: uppercase;
   margin-bottom: .25rem;
@@ -124,11 +124,11 @@
 .cj-level-scope { font-size: .78rem; color: rgba(255,255,255,.7); margin: 0; }
 .cj-level-body { padding: 1.1rem 1.4rem 1.4rem; flex: 1; }
 .cj-level-section-lbl {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .68rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.571rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .6px;
+  letter-spacing:.36px;
   color: var(--navy-light, #1a6fb5);
   margin: .9rem 0 .35rem;
 }
@@ -159,8 +159,8 @@
 .cj-role-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,.08); }
 .cj-role-icon { font-size: 1.8rem; margin-bottom: .5rem; }
 .cj-role-card h5 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .9rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.756rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -177,8 +177,8 @@
   margin-bottom: 2rem;
 }
 .cj-become h3 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.35rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.134rem;
   font-weight: 900;
   text-transform: uppercase;
   margin-bottom: .5rem;
@@ -196,8 +196,8 @@
 .cj-become-num {
   background: var(--gold, #f5c518);
   color: var(--navy-dark, #0f2240);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.008rem;
   font-weight: 900;
   width: 34px;
   height: 34px;

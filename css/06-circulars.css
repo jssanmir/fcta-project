@@ -2,7 +2,7 @@
 .circ-grid{display:grid;gap:1px;background:var(--lightgray)}
 .circ-row{background:white;display:grid;grid-template-columns:80px 1fr auto;gap:1rem;align-items:center;padding:1rem 1.25rem;transition:all .2s}
 .circ-row:hover{background:#f0f4ff;transform:translateX(3px)}
-.circ-day{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:900;color:var(--navy);line-height:1;text-align:center}
+.circ-day{font-family:'Montserrat',sans-serif;font-size:1.596rem;font-weight:900;color:var(--navy);line-height:1;text-align:center}
 .circ-mon{font-size:.68rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;text-align:center}
 .cbadge{display:inline-block;padding:.16rem .6rem;border-radius:3px;font-size:.67rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.25rem}
 .cb-al{background:#dbeafe;color:#1e3a8a}
@@ -12,6 +12,7 @@
 .cb-fed{background:#fff7ed;color:#7c2d12}
 .cb-form{background:#f0fdf4;color:#14532d}
 .cb-jut{background:#fef3c7;color:#78350f}
+.cb-tec{background:#e0f2fe;color:#075985}
 .cb-kyudo{background:#fae8ff;color:#701a75}
 .cb-general{background:#f1f5f9;color:#334155}
 .circ-title{font-weight:600;font-size:.92rem;color:var(--dark);margin-bottom:.12rem;line-height:1.3}

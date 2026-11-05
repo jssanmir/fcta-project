@@ -14,8 +14,15 @@ var REC_CAT_ORDER = [
 ];
 
 var REC_ESTIL_ORDER = [
-  'Recorbat','Compost','Arc Nu','Longbow','Tradicional','Estàndard'
+  'Recorbat','Compost','Arc Nu','Longbow','Longbow (80 reduïda)','Tradicional','Tradicional (80 reduïda)','Estàndard'
 ];
+
+// Sala: Longbow i Tradicional han canviat de diana. Els rècords anteriors es
+// conserven com «(80 reduïda)»; les divisions noves surten buides fins que
+// s'hi introdueixin rècords.
+var REC_ESTILS_NOUS = { sala: ['Longbow', 'Tradicional'] };
+function _recEstilNou(disc, estil) { return (REC_ESTILS_NOUS[disc] || []).indexOf(estil) >= 0; }
+var REC_NOU_NOTA = 'Encara no hi ha rècords en aquesta divisió: la diana de Sala ha canviat i els rècords s\'hi aniran introduint.';
 
 // ── Filtre actiu ───────────────────────────────────────────
 var _recFilter = { disc:'sala', estil:'', cat:'', sex:'' };
@@ -69,7 +76,7 @@ function getEstilsForDisc(disc) {
   (DB.records || []).forEach(function(r) {
     if (r.disc === disc) found[r.estil] = 1;
   });
-  return REC_ESTIL_ORDER.filter(function(e) { return found[e]; });
+  return REC_ESTIL_ORDER.filter(function(e) { return found[e] || _recEstilNou(disc, e); });
 }
 
 function getCatsForDisc(disc) {
@@ -112,7 +119,12 @@ function renderRecordsTable() {
     return true;
   });
 
-  if (!recs.length) {
+  // Divisions noves de Sala (sense rècords) que cal mostrar buides
+  var estilsBuits = (REC_ESTILS_NOUS[_recFilter.disc] || []).filter(function(e) {
+    return !_recFilter.estil || _recFilter.estil === e;
+  });
+
+  if (!recs.length && !estilsBuits.length) {
     el.innerHTML = '<p class="rec-empty">Cap rècord trobat amb els filtres seleccionats.</p>';
     return;
   }
@@ -129,7 +141,13 @@ function renderRecordsTable() {
   var html = '';
 
   REC_ESTIL_ORDER.forEach(function(estil) {
-    if (!byEstil[estil]) return;
+    if (!byEstil[estil]) {
+      if (estilsBuits.indexOf(estil) >= 0) {
+        html += '<div class="rec-group"><h3 class="rec-group-title">' + estil + '</h3>'
+          + '<p class="rec-empty">' + REC_NOU_NOTA + '</p></div>';
+      }
+      return;
+    }
     html += '<div class="rec-group">'
       + '<h3 class="rec-group-title">' + estil + '</h3>'
       + '<div class="rec-table-wrap"><table class="rec-table">'
@@ -188,7 +206,13 @@ function renderDiscRecordsFromDB(discKey) {
 
   var html = '';
   REC_ESTIL_ORDER.forEach(function(estil) {
-    if (!byEstil[estil]) return;
+    if (!byEstil[estil]) {
+      if (_recEstilNou(discKey, estil)) {
+        html += '<h3 class="disc-section-title" style="margin-top:1.5rem">' + estil + '</h3>'
+          + '<p class="disc-records-note">' + REC_NOU_NOTA + '</p>';
+      }
+      return;
+    }
 
     // Per a la pàgina de disciplina mostrem el format principal (60fl o Round 720)
     // agrupat per cat+sex, ordenant

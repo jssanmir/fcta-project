@@ -14,10 +14,10 @@
 .s-open{background:#dcfce7;color:#166534}
 .s-soon{background:#fef9c3;color:#713f12}
 .s-closed{background:#fee2e2;color:#7f1d1d}
-.comp-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.12rem;font-weight:800;color:var(--navy-dark);margin-bottom:.6rem;line-height:1.2;text-transform:uppercase}
+.comp-card h3{font-family:'Montserrat',sans-serif;font-size:.941rem;font-weight:800;color:var(--navy-dark);margin-bottom:.6rem;line-height:1.2;text-transform:uppercase}
 .comp-mi{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--gray);margin-bottom:.28rem}
 .comp-actions{display:flex;gap:.5rem;margin-top:.9rem;flex-wrap:wrap}
-.bsm{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;padding:.4rem .95rem;border-radius:4px;cursor:pointer;border:none;transition:all .2s}
+.bsm{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.672rem;letter-spacing:.3px;text-transform:uppercase;padding:.4rem .95rem;border-radius:4px;cursor:pointer;border:none;transition:all .2s}
 .bsm-n{background:var(--navy);color:white}
 .bsm-n:hover{background:var(--navy-dark)}
 .bsm-o{background:none;border:1.5px solid #c5cee0;color:var(--gray)}

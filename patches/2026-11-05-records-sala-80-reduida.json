@@ -1,0 +1,468 @@
+{
+ "name": "2026-11-05-records-sala-80-reduida",
+ "description": "Rècords de Sala de Longbow i Tradicional: passen a «(80 reduïda)» pel canvi de diana",
+ "ops": [
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 87,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 88,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 89,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 90,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 91,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 92,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 93,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 94,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 95,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 96,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 97,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 98,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 99,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 100,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 101,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 102,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 103,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 104,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 105,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 106,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 107,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 108,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 109,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 110,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 111,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 112,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 113,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 114,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 115,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 116,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 117,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 118,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 119,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 120,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 121,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 122,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 123,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 124,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 125,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 720,
+   "fields": {
+    "estil": [
+     "Longbow",
+     "Longbow (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 721,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "records",
+   "id": 722,
+   "fields": {
+    "estil": [
+     "Tradicional",
+     "Tradicional (80 reduïda)"
+    ]
+   }
+  }
+ ]
+}

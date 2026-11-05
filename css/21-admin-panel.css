@@ -3,18 +3,18 @@
 .adm-panel{background:#f8fafc;width:100vw;height:100vh;overflow:hidden;opacity:0;transform:translateY(1.5rem);transition:opacity .28s var(--tr),transform .28s var(--tr);display:flex;flex-direction:column;pointer-events:none}
 .adm-panel.open{opacity:1;transform:translateY(0);pointer-events:auto}
 .adm-head{background:var(--navy-dark);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:3px solid var(--gold)}
-.adm-title{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:900;color:white;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:.6rem}
+.adm-title{font-family:'Montserrat',sans-serif;font-size:.966rem;font-weight:900;color:white;text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:.6rem}
 .adm-user-badge{background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:.72rem;font-weight:600;padding:.2rem .6rem;border-radius:20px;letter-spacing:.5px}
 .adm-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.7rem;cursor:pointer;line-height:1;transition:color .2s}
 .adm-close:hover{color:var(--gold)}
-.adm-logout{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.7);font-size:.75rem;font-weight:600;padding:.3rem .8rem;border-radius:20px;cursor:pointer;margin-right:.5rem;transition:all .2s;font-family:'Barlow',sans-serif}
+.adm-logout{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.7);font-size:.69rem;font-weight:600;padding:.3rem .8rem;border-radius:20px;cursor:pointer;margin-right:.5rem;transition:all .2s;font-family:'Montserrat',sans-serif}
 .adm-logout:hover{background:rgba(220,38,38,.3);color:white}
 /* Layout interior: sidebar + contingut */
 .adm-inner{display:flex;flex:1;overflow:hidden}
 
 /* Sidebar de navegació (desktop) */
 .adm-nav{display:flex;flex-direction:column;width:200px;flex-shrink:0;background:var(--navy-dark);overflow-y:auto;padding:.75rem 0}
-.adm-tab{background:none;border:none;font-family:'Barlow',sans-serif;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.55);padding:.7rem 1.25rem;cursor:pointer;white-space:nowrap;border-left:3px solid transparent;text-align:left;width:100%;transition:all .2s;display:flex;align-items:center;gap:.5rem}
+.adm-tab{background:none;border:none;font-family:'Montserrat',sans-serif;font-size:.754rem;font-weight:600;color:rgba(255,255,255,.55);padding:.7rem 1.25rem;cursor:pointer;white-space:nowrap;border-left:3px solid transparent;text-align:left;width:100%;transition:all .2s;display:flex;align-items:center;gap:.5rem}
 .adm-tab:hover{color:white;background:rgba(255,255,255,.06)}
 .adm-tab.act{color:white;border-left-color:var(--gold);background:rgba(255,255,255,.1)}
 
@@ -29,19 +29,19 @@
   .adm-tab.act{border-bottom-color:var(--gold);border-left:none}
   .adm-body{padding:1rem}
 }
-.adm-st{font-family:'Barlow Condensed',sans-serif;font-size:.97rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.85rem;padding-bottom:.4rem;border-bottom:2px solid var(--lightgray);display:flex;align-items:center;justify-content:space-between}
+.adm-st{font-family:'Montserrat',sans-serif;font-size:.815rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.85rem;padding-bottom:.4rem;border-bottom:2px solid var(--lightgray);display:flex;align-items:center;justify-content:space-between}
 
 /* CRUD form */
 .crud-form{background:white;border:1px solid #e2e8f0;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem}
-.crud-form-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;color:var(--navy-dark);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.crud-form-title{font-family:'Montserrat',sans-serif;font-size:.84rem;font-weight:800;color:var(--navy-dark);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .af-g{display:flex;flex-direction:column;gap:.28rem;margin-bottom:.8rem}
 .af-g label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.4px}
-.af-g input,.af-g select,.af-g textarea{border:1.5px solid #ddd;border-radius:4px;padding:.55rem .85rem;font-family:'Barlow',sans-serif;font-size:.88rem;color:var(--dark);outline:none;transition:border-color .2s;background:white;width:100%}
+.af-g input,.af-g select,.af-g textarea{border:1.5px solid #ddd;border-radius:4px;padding:.55rem .85rem;font-family:'Montserrat',sans-serif;font-size:.81rem;color:var(--dark);outline:none;transition:border-color .2s;background:white;width:100%}
 .af-g input:focus,.af-g select:focus,.af-g textarea:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(27,58,107,.08)}
 .af-g textarea{resize:vertical;min-height:72px}
 .af-row{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
 @media(max-width:480px){.af-row{grid-template-columns:1fr}}
-.a-sub{background:var(--navy);color:white;border:none;border-radius:4px;padding:.65rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.92rem;text-transform:uppercase;letter-spacing:.8px;cursor:pointer;transition:background .2s;margin-top:.25rem}
+.a-sub{background:var(--navy);color:white;border:none;border-radius:4px;padding:.65rem 1.2rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.773rem;text-transform:uppercase;letter-spacing:.48px;cursor:pointer;transition:background .2s;margin-top:.25rem}
 .a-sub:hover{background:var(--navy-dark)}
 .a-sub.danger{background:#dc2626}
 .a-sub.danger:hover{background:#b91c1c}
@@ -88,15 +88,15 @@
 /* ── GENERADOR DE CIRCULARS ──────────────────────────────── */
 .gen-wrap{display:flex;flex-direction:column;gap:1.25rem}
 .gen-form-col{background:white;border:1px solid #e2e8f0;border-radius:8px;padding:1.25rem}
-.gen-section-label{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--navy);background:#f0f4ff;border-left:3px solid var(--gold);padding:.3rem .7rem;border-radius:0 4px 4px 0;margin:1rem 0 .6rem}
+.gen-section-label{font-family:'Montserrat',sans-serif;font-size:.689rem;font-weight:800;text-transform:uppercase;letter-spacing:.36px;color:var(--navy);background:#f0f4ff;border-left:3px solid var(--gold);padding:.3rem .7rem;border-radius:0 4px 4px 0;margin:1rem 0 .6rem}
 .gen-dyn-rows{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.5rem}
 .gen-dyn-row{display:flex;gap:.4rem;align-items:center}
-.gen-dyn-row input{border:1.5px solid #ddd;border-radius:4px;padding:.45rem .7rem;font-family:'Barlow',sans-serif;font-size:.84rem;color:var(--dark);outline:none;transition:border-color .2s;background:white}
+.gen-dyn-row input{border:1.5px solid #ddd;border-radius:4px;padding:.45rem .7rem;font-family:'Montserrat',sans-serif;font-size:.773rem;color:var(--dark);outline:none;transition:border-color .2s;background:white}
 .gen-dyn-row input:focus{border-color:var(--navy)}
 .gen-hora-input{width:80px;flex-shrink:0}
 .gen-rm-btn{background:#fee2e2;color:#991b1b;border:none;border-radius:4px;width:28px;height:28px;font-size:.75rem;cursor:pointer;flex-shrink:0;transition:all .2s;font-weight:700}
 .gen-rm-btn:hover{background:#dc2626;color:white}
-.gen-add-row-btn{background:none;border:1.5px dashed #c7d7f5;color:var(--navy-light);border-radius:4px;padding:.35rem .8rem;font-size:.78rem;font-weight:600;cursor:pointer;width:100%;margin-bottom:.25rem;transition:all .2s;font-family:'Barlow',sans-serif}
+.gen-add-row-btn{background:none;border:1.5px dashed #c7d7f5;color:var(--navy-light);border-radius:4px;padding:.35rem .8rem;font-size:.718rem;font-weight:600;cursor:pointer;width:100%;margin-bottom:.25rem;transition:all .2s;font-family:'Montserrat',sans-serif}
 .gen-add-row-btn:hover{background:#f0f4ff;border-color:var(--navy-light)}
 .gen-preview-col{display:flex;flex-direction:column;gap:.75rem}
 .gen-preview-placeholder{background:#f8fafc;border:2px dashed #d1d5db;border-radius:8px;padding:3rem 1rem;text-align:center;color:#9ca3af;font-size:1.5rem;line-height:2}
@@ -111,7 +111,7 @@
 .bk-state-counts strong{color:var(--navy-dark)}
 .bk-desc{font-size:.83rem;color:var(--gray);margin:.4rem 0 .85rem;line-height:1.55}
 .bk-preview-box{border:1.5px solid #e2e8f0;border-radius:6px;padding:.85rem 1rem;background:#f8fafc;margin-top:.5rem}
-.bk-preview-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.92rem;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.4rem}
+.bk-preview-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.773rem;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.4rem}
 .bk-preview-meta{font-size:.82rem;color:var(--gray);margin-bottom:.4rem}
 .bk-preview-counts{font-size:.82rem;color:var(--gray);line-height:2;margin-bottom:.5rem}
 .bk-preview-counts strong{color:var(--navy-dark)}
@@ -127,7 +127,7 @@
 .rt-wrap{border:1.5px solid var(--lightgray);border-radius:var(--r-md);background:#fff;overflow:hidden}
 .rt-wrap:focus-within{border-color:var(--navy-light)}
 .rt-toolbar{display:flex;flex-wrap:wrap;gap:.25rem;padding:.4rem;background:var(--offwhite);border-bottom:1px solid var(--lightgray)}
-.rt-btn{min-width:2rem;height:2rem;padding:0 .5rem;border:1px solid transparent;border-radius:var(--r-sm);background:transparent;color:var(--navy-dark);font-family:'Barlow',sans-serif;font-size:.9rem;cursor:pointer;line-height:1}
+.rt-btn{min-width:2rem;height:2rem;padding:0 .5rem;border:1px solid transparent;border-radius:var(--r-sm);background:transparent;color:var(--navy-dark);font-family:'Montserrat',sans-serif;font-size:.828rem;cursor:pointer;line-height:1}
 .rt-btn:hover{background:#fff;border-color:var(--lightgray)}
 .rt-btn:active{background:var(--lightgray)}
 .rt-emojis{flex-wrap:wrap;gap:.15rem;padding:.4rem;background:#fff;border-bottom:1px solid var(--lightgray)}
@@ -136,7 +136,7 @@
 .rt-area{min-height:11rem;max-height:26rem;overflow-y:auto;padding:.75rem .9rem;color:var(--navy-dark);font-size:.95rem;line-height:1.6;outline:none}
 .rt-area:empty::before{content:attr(data-ph);color:var(--gray);pointer-events:none}
 .rt-area p{margin:0 0 .75rem}
-.rt-area h2,.rt-area h3,.rt-area h4{margin:.5rem 0;font-family:'Barlow Condensed',sans-serif;font-weight:900;text-transform:uppercase}
+.rt-area h2,.rt-area h3,.rt-area h4{margin:.5rem 0;font-family:'Montserrat',sans-serif;font-weight:900;text-transform:uppercase}
 .rt-area ul,.rt-area ol{margin:0 0 .75rem 1.25rem;padding:0}
 .rt-area a{color:var(--navy-light);text-decoration:underline}
 .rt-area blockquote{margin:0 0 .75rem;padding-left:.75rem;border-left:3px solid var(--gold);color:var(--gray)}

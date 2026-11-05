@@ -31,8 +31,7 @@ var _SEO_TITLES = {
   pat:           'PAT – Programa Autonòmic de Tecnificació | FCTA',
   calendari:     'Calendari Esportiu | FCTA',
   records:       'Rècords de Catalunya | FCTA',
-  regimdisciplinari: 'Règim Disciplinari | FCTA',
-  estadarquer:   'Les Meves Estadístiques | FCTA'
+  regimdisciplinari: 'Règim Disciplinari | FCTA'
 };
 
 function setS(sec, _noHash) {
@@ -85,9 +84,6 @@ function setS(sec, _noHash) {
   // Section-specific callbacks
   if (sec === 'records') {
     setTimeout(function() { if (typeof initRecordsPage === 'function') initRecordsPage(); }, 50);
-  }
-  if (sec === 'estadarquer') {
-    setTimeout(function() { if (typeof usInit === 'function') usInit(); }, 50);
   }
 }
 

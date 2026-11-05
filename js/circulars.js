@@ -29,7 +29,7 @@ function filtCirc(type,btn){
 // Drecera des d'altres seccions (p.ex. Comitè de Jutges) cap a les
 // circulars de Jutges ja filtrades.
 function goToJutCirculars(){
-  filtCirc('jut', document.querySelector('#circFilters .fb:nth-child(7)'));
+  filtCirc('jut', document.querySelector('#circFilters .fb[data-onclick-args*="jut"]'));
   setS('circulars');
 }
 function renderCirc(f){

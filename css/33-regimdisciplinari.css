@@ -10,10 +10,10 @@
 }
 
 .rd-art-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-size:clamp(.924rem, 2.1vw, 1.176rem);
   color: var(--navy-dark);
   border-left: 4px solid var(--navy-light);
   padding-left: var(--sp-3);
@@ -46,11 +46,11 @@
 }
 
 .rd-block-head {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  font-size: 1rem;
-  letter-spacing: .04em;
+  font-size:.84rem;
+  letter-spacing:.024em;
   margin-bottom: var(--sp-3);
   color: var(--navy-dark);
 }
@@ -110,9 +110,9 @@
 }
 
 .rd-presc-time {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-size: 1.6rem;
+  font-size:1.344rem;
   color: var(--navy);
   display: block;
   line-height: 1.1;

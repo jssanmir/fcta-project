@@ -3,22 +3,22 @@
 .adm-panel{background:white;width:min(520px,100vw);height:100vh;overflow-y:auto;transform:translateX(105%);transition:transform .38s var(--tr)}
 .adm-panel.open{transform:translateX(0)}
 .adm-head{background:var(--navy-dark);padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5;border-bottom:3px solid var(--gold)}
-.adm-title{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;color:white;text-transform:uppercase;letter-spacing:1px}
+.adm-title{font-family:'Montserrat',sans-serif;font-size:1.008rem;font-weight:900;color:white;text-transform:uppercase;letter-spacing:.6px}
 .adm-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.7rem;cursor:pointer;line-height:1;transition:color .2s}
 .adm-close:hover{color:var(--gold)}
 .adm-nav{display:flex;overflow-x:auto;background:#f4f6fa;border-bottom:1px solid #ddd}
-.adm-tab{background:none;border:none;font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:600;color:var(--gray);padding:.6rem .95rem;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+.adm-tab{background:none;border:none;font-family:'Montserrat',sans-serif;font-size:.718rem;font-weight:600;color:var(--gray);padding:.6rem .95rem;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
 .adm-tab:hover{color:var(--navy)}
 .adm-tab.act{color:var(--navy);border-bottom-color:var(--navy)}
 .adm-body{padding:1.25rem}
-.adm-st{font-family:'Barlow Condensed',sans-serif;font-size:.97rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.8rem;padding-bottom:.35rem;border-bottom:2px solid var(--lightgray)}
+.adm-st{font-family:'Montserrat',sans-serif;font-size:.815rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.8rem;padding-bottom:.35rem;border-bottom:2px solid var(--lightgray)}
 .af-g{display:flex;flex-direction:column;gap:.28rem;margin-bottom:.8rem}
 .af-g label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.4px}
-.af-g input,.af-g select,.af-g textarea{border:1.5px solid #ddd;border-radius:4px;padding:.55rem .85rem;font-family:'Barlow',sans-serif;font-size:.88rem;color:var(--dark);outline:none;transition:border-color .2s;background:white}
+.af-g input,.af-g select,.af-g textarea{border:1.5px solid #ddd;border-radius:4px;padding:.55rem .85rem;font-family:'Montserrat',sans-serif;font-size:.81rem;color:var(--dark);outline:none;transition:border-color .2s;background:white}
 .af-g input:focus,.af-g select:focus,.af-g textarea:focus{border-color:var(--navy)}
 .af-g textarea{resize:vertical;min-height:72px}
 .af-row{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
-.a-sub{background:var(--navy);color:white;border:none;border-radius:4px;padding:.65rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.92rem;text-transform:uppercase;letter-spacing:.8px;cursor:pointer;transition:background .2s;width:100%;margin-top:.2rem}
+.a-sub{background:var(--navy);color:white;border:none;border-radius:4px;padding:.65rem 1.2rem;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.773rem;text-transform:uppercase;letter-spacing:.48px;cursor:pointer;transition:background .2s;width:100%;margin-top:.2rem}
 .a-sub:hover{background:var(--navy-dark)}
 .adm-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem}
 .ali{display:flex;align-items:center;gap:.6rem;padding:.75rem;background:#f4f6fa;border-radius:6px}

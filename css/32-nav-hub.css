@@ -5,12 +5,12 @@
 }
 .home-hub .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-6); }
 .home-hub-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size:clamp(1.092rem, 2.52vw, 1.512rem);
   text-transform: uppercase;
   color: white;
-  letter-spacing: .04em;
+  letter-spacing:.024em;
   margin-bottom: var(--sp-6);
 }
 .home-hub-title em { color: var(--gold); font-style: normal; }
@@ -50,9 +50,9 @@
 .hub-card-icon { font-size: 1.4rem; flex-shrink: 0; }
 .hub-card-text { display: flex; flex-direction: column; }
 .hub-card-name {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: .95rem;
+  font-size:.798rem;
   color: white;
   text-transform: uppercase;
   line-height: 1.2;

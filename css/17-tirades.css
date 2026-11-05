@@ -14,7 +14,7 @@
 .tirada-pend-tag{position:absolute;top:.6rem;right:.6rem;background:rgba(255,190,0,.2);color:#f0b800;font-size:.67rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;border:1px solid rgba(255,190,0,.3)}
 .tirada-body{padding:1.1rem 1.25rem}
 .tirada-club{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.35rem}
-.tirada-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:800;color:white;text-transform:uppercase;line-height:1.2;margin-bottom:.65rem}
+.tirada-card h3{font-family:'Montserrat',sans-serif;font-size:.966rem;font-weight:800;color:white;text-transform:uppercase;line-height:1.2;margin-bottom:.65rem}
 .tirada-meta{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.85rem}
 .tirada-mi{display:flex;align-items:flex-start;gap:.45rem;font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.4}
 .tirada-mi span:first-child{flex-shrink:0;margin-top:.05rem}

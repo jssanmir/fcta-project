@@ -1,22 +1,22 @@
 /* CALENDARI ESPORTIU */
 .cal-hero{background:linear-gradient(135deg,var(--navy-dark) 0%,#1a3a6b 60%,#2a4f8a 100%);padding:3rem 0 2.5rem;color:white}
-.cal-hero .lic-hero-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:20px;margin-bottom:1rem}
-.cal-hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;line-height:1;margin-bottom:.75rem}
+.cal-hero .lic-hero-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);font-family:'Montserrat',sans-serif;font-weight:900;font-size:.672rem;letter-spacing:1.2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:20px;margin-bottom:1rem}
+.cal-hero h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(1.68rem,4.2vw,2.688rem);text-transform:uppercase;line-height:1;margin-bottom:.75rem}
 .cal-hero h1 em{color:var(--gold);font-style:normal}
 .cal-hero p{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:600px;line-height:1.6;margin-bottom:1.5rem}
 
 .cal-season-tabs{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
-.cal-stab{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:20px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s}
+.cal-stab{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.714rem;letter-spacing:.6px;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:20px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s}
 .cal-stab:hover{background:rgba(255,255,255,.12);color:white;border-color:rgba(255,255,255,.6)}
 .cal-stab.act{background:var(--gold);color:var(--navy-dark);border-color:var(--gold);font-weight:900}
 
 .cal-hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1.5rem}
-.cal-btn-pdf{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:.5px;text-transform:uppercase;padding:.6rem 1.25rem;border-radius:6px;text-decoration:none;transition:background .2s}
+.cal-btn-pdf{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy-dark);font-family:'Montserrat',sans-serif;font-weight:900;font-size:.756rem;letter-spacing:.3px;text-transform:uppercase;padding:.6rem 1.25rem;border-radius:6px;text-decoration:none;transition:background .2s}
 .cal-btn-pdf:hover{background:var(--gold-dark)}
 
 .cal-export-bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding:.9rem 1.25rem;background:rgba(255,255,255,.07);border-radius:8px;border:1px solid rgba(255,255,255,.12)}
 .cal-export-label{font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-right:.25rem}
-.cal-exp-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.5px;text-transform:uppercase;padding:.38rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:all .2s;text-decoration:none}
+.cal-exp-btn{display:inline-flex;align-items:center;gap:.4rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.689rem;letter-spacing:.3px;text-transform:uppercase;padding:.38rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:all .2s;text-decoration:none}
 .cal-exp-ics{background:rgba(255,255,255,.15);color:white}
 .cal-exp-ics:hover{background:rgba(255,255,255,.28)}
 
@@ -31,8 +31,8 @@
 .cal-grid-month{background:white;border-radius:var(--r-lg);box-shadow:var(--shadow-sm);padding:1rem;overflow:hidden}
 
 .cal-grid-mheader{display:flex;align-items:baseline;gap:.45rem;margin-bottom:.75rem;padding-bottom:.55rem;border-bottom:2px solid var(--lightgray)}
-.cal-grid-mname{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;color:var(--navy-dark)}
-.cal-grid-myear{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;color:var(--gray)}
+.cal-grid-mname{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.966rem;text-transform:uppercase;color:var(--navy-dark)}
+.cal-grid-myear{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.714rem;color:var(--gray)}
 
 .cal-grid-row{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
 .cal-grid-dheader{margin-bottom:2px}
@@ -61,7 +61,7 @@
 .cal-mobile-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;background:white;border-radius:var(--r-lg);padding:.65rem 1rem;box-shadow:var(--shadow-sm)}
 .cal-mob-arrow{background:none;border:1.5px solid var(--lightgray);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--navy-dark);cursor:pointer;transition:all .2s;line-height:1}
 .cal-mob-arrow:hover{background:var(--navy-dark);color:white;border-color:var(--navy-dark)}
-.cal-mob-label{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--navy-dark)}
+.cal-mob-label{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.008rem;text-transform:uppercase;color:var(--navy-dark)}
 
 /* En mòbil les cel·les han de ser més grans */
 @media(max-width:700px){
@@ -84,7 +84,7 @@
 .cal-modal-overlay.open{display:flex}
 .cal-modal-box{background:white;border-radius:var(--r-xl);box-shadow:0 20px 60px rgba(0,0,0,.3);max-width:520px;width:100%;max-height:85vh;overflow-y:auto;position:relative}
 .cal-modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem .75rem;border-bottom:1px solid var(--lightgray);position:sticky;top:0;background:white;z-index:1;border-radius:var(--r-xl) var(--r-xl) 0 0}
-.cal-modal-htitle{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;color:var(--navy-dark)}
+.cal-modal-htitle{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.84rem;text-transform:uppercase;letter-spacing:.6px;color:var(--navy-dark)}
 .cal-modal-close{background:none;border:none;font-size:1.4rem;color:var(--gray);cursor:pointer;padding:.2rem .5rem;border-radius:4px;line-height:1;transition:color .2s,background .2s}
 .cal-modal-close:hover{color:var(--navy-dark);background:var(--offwhite)}
 
@@ -93,12 +93,12 @@
 .cal-modal-event{display:flex;gap:0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--lightgray)}
 .cal-modal-bar{width:5px;flex-shrink:0}
 .cal-modal-body{flex:1;padding:.75rem .9rem}
-.cal-modal-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;color:var(--navy-dark);line-height:1.2;margin-bottom:.5rem}
+.cal-modal-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.924rem;text-transform:uppercase;color:var(--navy-dark);line-height:1.2;margin-bottom:.5rem}
 .cal-modal-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .65rem;font-size:.8rem;color:var(--gray);margin-bottom:.65rem}
 .cal-modal-acts{display:flex;flex-wrap:wrap;gap:.5rem}
-.cal-gcal-btn{display:inline-flex;align-items:center;gap:.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.5px;text-transform:uppercase;padding:.32rem .75rem;border-radius:4px;background:#4285F4;color:white;text-decoration:none;white-space:nowrap;transition:background .2s}
+.cal-gcal-btn{display:inline-flex;align-items:center;gap:.3rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.655rem;letter-spacing:.3px;text-transform:uppercase;padding:.32rem .75rem;border-radius:4px;background:#4285F4;color:white;text-decoration:none;white-space:nowrap;transition:background .2s}
 .cal-gcal-btn:hover{background:#3367d6}
-.cal-modal-link{display:inline-flex;align-items:center;gap:.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.5px;text-transform:uppercase;padding:.32rem .75rem;border-radius:4px;background:var(--offwhite);color:var(--navy-dark);text-decoration:none;border:1px solid var(--lightgray);white-space:nowrap;transition:all .2s}
+.cal-modal-link{display:inline-flex;align-items:center;gap:.3rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.655rem;letter-spacing:.3px;text-transform:uppercase;padding:.32rem .75rem;border-radius:4px;background:var(--offwhite);color:var(--navy-dark);text-decoration:none;border:1px solid var(--lightgray);white-space:nowrap;transition:all .2s}
 .cal-modal-link:hover{background:var(--lightgray)}
 
 @media(max-width:480px){

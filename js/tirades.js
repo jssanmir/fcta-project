@@ -116,14 +116,14 @@ function openTirada(id){
   mBody.appendChild(meta);
 
   var dLabel = document.createElement('div');
-  dLabel.style.cssText = "font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin:.75rem 0 .4rem";
+  dLabel.style.cssText = "font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin:.75rem 0 .4rem";
   dLabel.textContent = 'Descripci\u00f3 i Regles';
   var dBlock = document.createElement('div'); dBlock.className = 'tirada-desc-block';
   dBlock.textContent = t.desc || '';
   mBody.appendChild(dLabel); mBody.appendChild(dBlock);
 
   var iLabel = document.createElement('div');
-  iLabel.style.cssText = "font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin:.75rem 0 .4rem";
+  iLabel.style.cssText = "font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;color:var(--navy-dark);margin:.75rem 0 .4rem";
   iLabel.textContent = 'Inscripcions';
   mBody.appendChild(iLabel);
   if (t.inscripcio && /^https?:\/\//.test(t.inscripcio)) {

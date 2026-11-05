@@ -106,8 +106,8 @@ img/                – Imatges
 | `--gray`          | `#5a6475` | Text secundari, meta            |
 
 ### Tipografia
-- **Cos:** `Barlow` (Google Fonts)
-- **Títols/Condensat:** `Barlow Condensed` — SEMPRE `font-weight:900`, `text-transform:uppercase`
+- **Cos:** `Montserrat` (Google Fonts)
+- **Títols:** `Montserrat` — SEMPRE `font-weight:900`, `text-transform:uppercase`
 - Títols de secció (`sec-title`): `clamp(1.8rem, 4vw, 2.8rem)`
 - El `<em>` dins de `sec-title` pren `color: var(--red-cat)`
 
@@ -146,6 +146,8 @@ Totes les dades viuen en l'objecte global `DB`:
 | `DB.documents`    | Array     | Documents PDF per disciplina (disc, nom, url)   |
 | `DB.clubs`        | Array     | Noms dels clubs (per al selector de tirades)    |
 | `DB.carousel`     | Array     | Diapositives del carrusel de la portada (img, title, url) — editable a Admin > Carrusel |
+| `DB.junta`        | Objecte   | Junta Directiva: intro, mandat i members[] (grup, rol, nom, email) — editable a Admin > Junta |
+| `DB.discTexts`    | Objecte   | Text «Sobre la disciplina» editat (HTML) per clau de disciplina — Admin > Disciplines |
 
 **Disc keys** per a `DB.documents.disc`: `'al'` · `'3d'` · `'camp'` · `'kyudo'` · `'general'`
 (definits a `FCTA.disc` en `config.js`)
@@ -186,7 +188,7 @@ La funció `setS(key)`:
 
 Accés: botó `⚙ Admin` a la nav. Credencials en `auth.js` (`admSession`).
 
-Pestanyes disponibles: Circulars · Notícies · Carrusel · Competicions · Formació · Tirades · Rècords · Documents
+Pestanyes disponibles: Circulars · Notícies · Carrusel · Junta · Disciplines · Competicions · Formació · Tirades · Rècords · Documents
 
 Cada pestanya té CRUD complet: afegir, editar inline, eliminar.
 La funció `renderATab(tab)` en `admin.js` despacha al renderer corresponent.

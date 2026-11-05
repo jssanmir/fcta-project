@@ -19,16 +19,12 @@
 .section{padding:4rem 0}
 .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
 .sec-label{font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy-light);margin-bottom:.6rem}
-.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--navy-dark);line-height:1.05;text-transform:uppercase;margin-bottom:.5rem}
+.sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.512rem,3.36vw,2.352rem);font-weight:900;color:var(--navy-dark);line-height:1.05;text-transform:uppercase;margin-bottom:.5rem}
 .sec-title em{color:var(--red-cat);font-style:normal}
 .sec-intro{font-size:.97rem;color:var(--gray);max-width:540px;line-height:1.7;margin-bottom:2.5rem}
 
 /* FILTER BUTTONS */
 .filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.75rem}
-.fb{background:none;border:1.5px solid #c5cee0;color:var(--gray);font-family:'Barlow',sans-serif;font-size:.82rem;font-weight:600;padding:.35rem .9rem;border-radius:20px;cursor:pointer;transition:all .2s}
+.fb{background:none;border:1.5px solid #c5cee0;color:var(--gray);font-family:'Montserrat',sans-serif;font-size:.754rem;font-weight:600;padding:.35rem .9rem;border-radius:20px;cursor:pointer;transition:all .2s}
 .fb:hover,.fb.act{background:var(--navy);border-color:var(--navy);color:white}
 
-/* ── Funcionalitats en prova pilot ───────────────────────── */
-.pilot-badge{display:inline-block;margin-left:.5rem;padding:.12rem .6rem;border-radius:20px;background:var(--gold);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;white-space:nowrap}
-.pilot-note{display:flex;gap:var(--sp-3);align-items:flex-start;margin:0 0 var(--sp-4);padding:var(--sp-3) var(--sp-4);background:var(--offwhite);border:1px solid var(--lightgray);border-left:4px solid var(--gold);border-radius:var(--r-md);color:var(--gray);font-size:.88rem;line-height:1.5}
-.pilot-note strong{color:var(--navy-dark)}

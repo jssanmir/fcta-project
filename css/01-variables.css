@@ -12,7 +12,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: var(--offwhite);
   color: var(--dark);
   overflow-x: hidden;
@@ -48,8 +48,8 @@ body {
   --info:        #0ea5e9;
 
   /* ── Typography ─────────────────────────────────────────── */
-  --font-body:   'Barlow', sans-serif;
-  --font-cond:   'Barlow Condensed', sans-serif;
+  --font-body:   'Montserrat', sans-serif;
+  --font-cond:   'Montserrat', sans-serif;
   --text-xs:     .72rem;
   --text-sm:     .82rem;
   --text-base:   .9rem;

@@ -8,11 +8,11 @@
 .news-cat-tag{position:absolute;top:.65rem;left:.65rem;background:var(--gold);color:var(--navy-dark);font-size:.67rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px}
 .news-body{padding:1rem 1.25rem}
 .news-date{font-size:.75rem;color:var(--gray);margin-bottom:.3rem}
-.news-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:800;color:var(--navy-dark);text-transform:uppercase;line-height:1.2;margin-bottom:.45rem}
+.news-card h3{font-family:'Montserrat',sans-serif;font-size:.882rem;font-weight:800;color:var(--navy-dark);text-transform:uppercase;line-height:1.2;margin-bottom:.45rem}
 .news-card p{font-size:.83rem;color:var(--gray);line-height:1.6}
 .news-link{display:inline-block;margin-top:.6rem;font-size:.8rem;font-weight:700;color:var(--navy-light);text-decoration:none;transition:color .2s}
 .news-link:hover{color:var(--navy-dark)}
 
-.news-page-btn{background:white;border:2px solid var(--lightgray);color:var(--navy-dark);font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:.55rem 1.25rem;border-radius:6px;cursor:pointer;transition:all .2s}
+.news-page-btn{background:white;border:2px solid var(--lightgray);color:var(--navy-dark);font-family:'Montserrat',sans-serif;font-size:.756rem;font-weight:800;text-transform:uppercase;letter-spacing:.3px;padding:.55rem 1.25rem;border-radius:6px;cursor:pointer;transition:all .2s}
 .news-page-btn:hover:not(:disabled){border-color:var(--navy-light);color:var(--navy-light)}
 .news-page-btn:disabled{opacity:.3;cursor:default}

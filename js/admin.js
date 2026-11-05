@@ -193,6 +193,8 @@ function renderATab(tab){
   if(tab==='circ')      renderAdmCirculars(b);
   else if(tab==='news')    renderAdmNews(b);
   else if(tab==='car')     renderAdmCarousel(b);
+  else if(tab==='junta')   renderAdmJunta(b);
+  else if(tab==='disc')    renderAdmDisc(b);
   else if(tab==='comp')    renderAdmComp(b);
   else if(tab==='form')    renderAdmForm(b);
   else if(tab==='tirades') renderAdmTirades(b);
@@ -208,7 +210,7 @@ function renderATab(tab){
 function renderAdmCirculars(b){
   var MONS=['GEN','FEB','MAR','ABR','MAI','JUN','JUL','AGO','SET','OCT','NOV','DES'];
   var tipos=[
-    {val:'fed',lbl:'Federaci\u00f3'},{val:'al',lbl:'Aire Lliure / Sala'},
+    {val:'fed',lbl:'Federaci\u00f3'},{val:'al',lbl:'Aire Lliure'},{val:'sala',lbl:'Sala'},{val:'tec',lbl:'Tecnificaci\u00f3'},
     {val:'camp',lbl:'Camp'},{val:'3d',lbl:'3D / Bosc'},
     {val:'jut',lbl:'Jutges'},{val:'form',lbl:'Formaci\u00f3'},{val:'kyudo',lbl:'Kyudo'}
   ];
@@ -274,14 +276,14 @@ function crudEditCirc(id){
   if(existing){existing.remove();return;}
   item.classList.add('editing');
   var tipos=[
-    {val:'fed',lbl:'Federaci\u00f3'},{val:'al',lbl:'Aire Lliure / Sala'},
+    {val:'fed',lbl:'Federaci\u00f3'},{val:'al',lbl:'Aire Lliure'},{val:'sala',lbl:'Sala'},{val:'tec',lbl:'Tecnificaci\u00f3'},
     {val:'camp',lbl:'Camp'},{val:'3d',lbl:'3D / Bosc'},
     {val:'jut',lbl:'Jutges'},{val:'form',lbl:'Formaci\u00f3'},{val:'kyudo',lbl:'Kyudo'}
   ];
   var editDiv=document.createElement('div');
   editDiv.className='crud-edit-form'; editDiv.id='cedit-'+id;
   editDiv.innerHTML=
-    '<div style="font-family:\'Barlow Condensed\',sans-serif;font-weight:800;font-size:.9rem;color:var(--navy-dark);text-transform:uppercase;margin-bottom:.75rem">Editar Circular</div>'
+    '<div style="font-family:\'Montserrat\',sans-serif;font-weight:800;font-size:.756rem;color:var(--navy-dark);text-transform:uppercase;margin-bottom:.75rem">Editar Circular</div>'
     +mkField('T\u00edtol *','ec_t_'+id,'text',c.title,'')
     +'<div class="af-row">'
     +mkField('N\u00famero','ec_n_'+id,'text',c.num,'')
@@ -555,6 +557,219 @@ function crudDelCar(id,name){
     _admCarSave();
     toast('Diapositiva eliminada.','&#128465;');
   });
+}
+
+// ── JUNTA DIRECTIVA CRUD ───────────────────────────────────
+// DB.junta = { intro, mandat, members:[{id,grup,rol,nom,email}] }. L'ordre de
+// la llista és l'ordre a la pàgina dins de cada grup (President, Càrrecs
+// executius, Vocals).
+function _admJuntaEnsure(){
+  if(!DB.junta) DB.junta={intro:'',mandat:'',members:[]};
+  if(!DB.junta.members) DB.junta.members=[];
+  return DB.junta;
+}
+function _admJuntaSave(){
+  dbSave();
+  renderJunta();
+  renderAdmJunta(document.getElementById('admBody'));
+}
+function _admJuntaGrupLbl(g){
+  var f=JUNTA_GRUPS.filter(function(x){return x.val===g;})[0];
+  return f?f.lbl:g;
+}
+function admJuntaEmailOk(e){
+  return !e || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+}
+function renderAdmJunta(b){
+  var J=_admJuntaEnsure();
+  var groups=['president','exec','vocal'];
+  b.innerHTML=
+    '<div class="crud-form">'
+    +'<div class="crud-form-title">&#9998; Textos de la pàgina</div>'
+    +'<div class="af-g"><label>Introducció (capçalera)</label>'+rtEditor('aj_intro',(J.intro&&!/</.test(J.intro))?'<p>'+escHtml(J.intro)+'</p>':(J.intro||''),'Text sota el títol de la pàgina')+'</div>'
+    +mkField('Mandat vigent','aj_mandat','text',J.mandat||'','Ex: Desembre 2024 – Novembre 2028')
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveJuntaTexts',[])+'>&#10003; Desar textos</button>'
+    +'</div>'
+    +'<div class="crud-form">'
+    +'<div class="crud-form-title">&#10010; Afegir membre</div>'
+    +'<div class="af-row">'
+    +mkField('Grup','aj_grup','select','vocal','',JUNTA_GRUPS.map(function(g){return{val:g.val,lbl:g.lbl};}))
+    +mkField('Càrrec *','aj_rol','text','','Ex: Vocal, Tresorer, 1r Vicepresident')
+    +'</div>'
+    +'<div class="af-row">'
+    +mkField('Nom i cognoms *','aj_nom','text','','')
+    +mkField('Correu electrònic','aj_email','email','','nom@fcta.cat')
+    +'</div>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddJunta',[])+'>&#10010; Afegir a la Junta</button>'
+    +'</div>'
+    +'<div class="adm-st">Membres <span class="crud-count-badge">'+J.members.length+'</span></div>'
+    +'<p style="font-size:.8rem;color:var(--gray);margin:0 0 .75rem">L’ordre és el de la pàgina pública dins de cada grup.</p>'
+    +groups.map(function(g){
+      var inG=J.members.filter(function(m){return m.grup===g;});
+      return '<div class="adm-st" style="margin-top:1rem">'+_admJuntaGrupLbl(g)+' <span class="crud-count-badge">'+inG.length+'</span></div>'
+        +'<div class="crud-list">'
+        +inG.map(function(m,i){
+          return '<div class="crud-item" id="jitem-'+m.id+'">'
+            +'<div class="crud-item-info">'
+            +'<div class="crud-item-title">'+escHtml(m.nom)+'</div>'
+            +'<div class="crud-item-meta"><span>'+escHtml(m.rol||'')+'</span><span>'+(m.email?escHtml(m.email):'Sense correu')+'</span></div>'
+            +'</div>'
+            +'<div class="crud-item-acts">'
+            +(i>0?'<button class="btn-edit-crud" title="Pujar" aria-label="Pujar"'+dataAttr('onclick','crudMoveJunta',[m.id,-1])+'>&#9650;</button>':'')
+            +(i<inG.length-1?'<button class="btn-edit-crud" title="Baixar" aria-label="Baixar"'+dataAttr('onclick','crudMoveJunta',[m.id,1])+'>&#9660;</button>':'')
+            +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditJunta',[m.id])+'>&#9998; Editar</button>'
+            +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelJunta',[m.id,(m.nom||'').substring(0,30)])+'>&#128465;</button>'
+            +'</div>'
+            +'</div>';
+        }).join('')
+        +'</div>';
+    }).join('');
+}
+function crudSaveJuntaTexts(){
+  var J=_admJuntaEnsure();
+  J.intro=rtGetHtml('aj_intro'); J.mandat=fv('aj_mandat');
+  admLog('JUNTA_TEXTS','');
+  _admJuntaSave();
+  toast('Textos desats!','&#9989;');
+}
+function crudAddJunta(){
+  var J=_admJuntaEnsure();
+  var g=fv('aj_grup'),r=fv('aj_rol'),n=fv('aj_nom'),e=fv('aj_email');
+  if(!r||!n){toast('Omple el càrrec i el nom','&#9888;&#65039;');return;}
+  if(!admJuntaEmailOk(e)){toast('El correu electrònic no és vàlid','&#9888;&#65039;');return;}
+  J.members.push({id:Date.now(),grup:g||'vocal',rol:r,nom:n,email:e});
+  admLog('JUNTA_ADD', n);
+  _admJuntaSave();
+  toast('Membre afegit!','&#9989;');
+}
+function crudEditJunta(id){
+  var m=_admJuntaEnsure().members.find(function(x){return x.id===id;});
+  if(!m) return;
+  var item=document.getElementById('jitem-'+id);
+  if(!item) return;
+  var existing=document.getElementById('jedit-'+id);
+  if(existing){existing.remove();item.classList.remove('editing');return;}
+  item.classList.add('editing');
+  var editDiv=document.createElement('div');
+  editDiv.className='crud-edit-form'; editDiv.id='jedit-'+id;
+  editDiv.innerHTML=
+    '<div class="af-row">'
+    +mkField('Grup','ej_grup_'+id,'select',m.grup,'',JUNTA_GRUPS.map(function(g){return{val:g.val,lbl:g.lbl};}))
+    +mkField('Càrrec *','ej_rol_'+id,'text',m.rol,'')
+    +'</div>'
+    +'<div class="af-row">'
+    +mkField('Nom i cognoms *','ej_nom_'+id,'text',m.nom,'')
+    +mkField('Correu electrònic','ej_email_'+id,'email',m.email||'','nom@fcta.cat')
+    +'</div>'
+    +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveJunta',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelJunta',[id])+'>Cancel·lar</button>'
+    +'</div>';
+  item.appendChild(editDiv);
+}
+function crudSaveJunta(id){
+  var m=_admJuntaEnsure().members.find(function(x){return x.id===id;});
+  if(!m) return;
+  var r=fv('ej_rol_'+id),n=fv('ej_nom_'+id),e=fv('ej_email_'+id);
+  if(!r||!n){toast('El càrrec i el nom no poden estar buits','&#9888;&#65039;');return;}
+  if(!admJuntaEmailOk(e)){toast('El correu electrònic no és vàlid','&#9888;&#65039;');return;}
+  m.grup=fv('ej_grup_'+id)||m.grup; m.rol=r; m.nom=n; m.email=e;
+  admLog('JUNTA_EDIT', n);
+  _admJuntaSave();
+  toast('Membre desat!','&#9989;');
+}
+function crudCancelJunta(id){
+  var item=document.getElementById('jitem-'+id);
+  var form=document.getElementById('jedit-'+id);
+  if(item) item.classList.remove('editing');
+  if(form) form.remove();
+}
+function crudMoveJunta(id,dir){
+  var list=_admJuntaEnsure().members;
+  var i=list.findIndex(function(x){return x.id===id;});
+  if(i<0) return;
+  var g=list[i].grup, j=i+dir;
+  while(j>=0&&j<list.length&&list[j].grup!==g) j+=dir;
+  if(j<0||j>=list.length) return;
+  var tmp=list[i]; list[i]=list[j]; list[j]=tmp;
+  _admJuntaSave();
+}
+function crudDelJunta(id,name){
+  confirmDel(name,function(){
+    var J=_admJuntaEnsure();
+    J.members=J.members.filter(function(x){return x.id!==id;});
+    admLog('JUNTA_DEL', name);
+    _admJuntaSave();
+    toast('Membre eliminat.','&#128465;');
+  });
+}
+
+// ── TEXTS DE LES DISCIPLINES (text enriquit) ───────────────
+// DB.discTexts[clau] = { descripcio: '<p>…</p>' } substitueix el text original
+// «Sobre la disciplina» de DISC_DATA (js/disciplines.js). Sense entrada, es
+// mostra el text original.
+function renderAdmDisc(b){
+  var keys=Object.keys(DISC_DATA);
+  b.innerHTML=
+    '<p style="font-size:.85rem;color:var(--gray);margin:0 0 1rem">Edita el text «Sobre la disciplina» de cada pàgina de disciplina. Admet negreta, cursiva, llistes, enllaços i emoticones.</p>'
+    +'<div class="crud-list">'
+    +keys.map(function(k){
+      var d=DISC_DATA[k];
+      var edited=!!(DB.discTexts&&DB.discTexts[k]&&DB.discTexts[k].descripcio);
+      return '<div class="crud-item" id="ditem-'+k+'">'
+        +'<div class="crud-item-info">'
+        +'<div class="crud-item-title">'+escHtml((d.icon||'')+' '+d.nom)+'</div>'
+        +'<div class="crud-item-meta"><span>'+(edited?'Text editat':'Text original')+'</span></div>'
+        +'</div>'
+        +'<div class="crud-item-acts">'
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditDisc',[k])+'>&#9998; Editar</button>'
+        +'</div>'
+        +'</div>';
+    }).join('')
+    +'</div>';
+}
+function crudEditDisc(k){
+  var item=document.getElementById('ditem-'+k);
+  if(!item||!DISC_DATA[k]) return;
+  var existing=document.getElementById('dedit-'+k);
+  if(existing){existing.remove();item.classList.remove('editing');return;}
+  item.classList.add('editing');
+  var editDiv=document.createElement('div');
+  editDiv.className='crud-edit-form'; editDiv.id='dedit-'+k;
+  editDiv.innerHTML=
+    '<div class="af-g"><label>Text de la disciplina</label>'+rtEditor('ed_'+k,discDescHtml(k),'Escriu el text de la disciplina…')+'</div>'
+    +'<div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveDisc',[k])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#b45309"'+dataAttr('onclick','crudResetDisc',[k])+'>Restaurar el text original</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelDisc',[k])+'>Cancel·lar</button>'
+    +'</div>';
+  item.appendChild(editDiv);
+}
+function _admDiscDone(k){
+  dbSave();
+  if(typeof renderDisciplina==='function' && typeof _discActiva!=='undefined' && _discActiva===k) renderDisciplina();
+  renderAdmDisc(document.getElementById('admBody'));
+}
+function crudSaveDisc(k){
+  var html=rtGetHtml('ed_'+k);
+  if(!html){toast('El text no pot estar buit','&#9888;&#65039;');return;}
+  if(!DB.discTexts) DB.discTexts={};
+  DB.discTexts[k]={descripcio:html};
+  admLog('DISC_TEXT', k);
+  _admDiscDone(k);
+  toast('Text desat!','&#9989;');
+}
+function crudResetDisc(k){
+  if(DB.discTexts) delete DB.discTexts[k];
+  admLog('DISC_TEXT_RESET', k);
+  _admDiscDone(k);
+  toast('Text original restaurat.','&#8635;');
+}
+function crudCancelDisc(k){
+  var item=document.getElementById('ditem-'+k);
+  var form=document.getElementById('dedit-'+k);
+  if(item) item.classList.remove('editing');
+  if(form) form.remove();
 }
 
 // ── COMPETICIONS CRUD ──────────────────────────────────────
@@ -1703,9 +1918,9 @@ function genPublicarCircular(){
 }
 
 // ── BACKUP / RESTORE ───────────────────────────────────────
-var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds','carousel'];
+var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds','carousel','junta','discTexts'];
 var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
-  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords',carousel:'Carrusel'};
+  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines'};
 var _BK_PREFIX = 'fcta_ckpt_';
 var _BK_MAX    = 3;
 

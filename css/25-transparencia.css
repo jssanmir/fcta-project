@@ -61,11 +61,11 @@
   gap: .15rem;
 }
 .transp-junta-rol {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.588rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing:.3px;
   color: var(--gray);
 }
 .transp-junta-nom {
@@ -100,11 +100,11 @@
   gap: .1rem;
 }
 .transp-dades-item strong {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.588rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing:.3px;
   color: var(--gray);
 }
 .transp-dades-item span {

@@ -2,7 +2,7 @@
 .senyera-h + .senyera-h { display: none; }
 
 /* ── L·L geminada en fonts condensades ─────────────────── */
-/* Barlow Condensed 900 uppercase comprimeix el punt volat;
+/* Montserrat 900 uppercase comprimeix el punt volat;
    usem la variant normal per al punt i afegim espai lateral */
 .punt-volat {
   font-family: inherit;

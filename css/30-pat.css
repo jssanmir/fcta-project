@@ -7,8 +7,8 @@
   color: white;
 }
 .pat-hero h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-family: 'Montserrat', sans-serif;
+  font-size:clamp(1.848rem, 4.62vw, 3.192rem);
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.05;
@@ -19,11 +19,11 @@
 
 /* Section titles */
 .pat-section-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.924rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .8px;
+  letter-spacing:.48px;
   color: var(--navy-dark);
   margin-bottom: 1.25rem;
   padding-bottom: .35rem;
@@ -61,8 +61,8 @@
   gap: .2rem;
 }
 .pat-stat-n {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.428rem;
   font-weight: 900;
   color: var(--gold, #f5c518);
   line-height: 1;
@@ -90,8 +90,8 @@
   line-height: 1.5;
 }
 .pat-obj-n {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.176rem;
   font-weight: 900;
   color: var(--gold, #f5c518);
   -webkit-text-stroke: 1px var(--navy-dark);
@@ -121,8 +121,8 @@
 .pat-principi:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08); transform: translateY(-2px); }
 .pat-principi-icon { font-size: 1.8rem; margin-bottom: .5rem; }
 .pat-principi h5 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .9rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.756rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -145,8 +145,8 @@
   padding: 1.1rem 1.25rem;
 }
 .pat-estructura-card h5 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .88rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.739rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -166,8 +166,8 @@
   padding: 1.5rem;
 }
 .pat-seleccio-perfil h5, .pat-seleccio-criteris h5 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .85rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.714rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -186,8 +186,8 @@
 .pat-criteri-n {
   background: var(--navy-dark);
   color: var(--gold, #f5c518);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.63rem;
   font-weight: 900;
   width: 20px;
   height: 20px;
@@ -207,8 +207,8 @@
   margin-bottom: 1rem;
 }
 .pat-acces-vies h5 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .9rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.756rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -233,11 +233,11 @@
   margin-bottom: .4rem;
 }
 .pat-cal-mes {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .85rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.714rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing:.3px;
   min-width: 52px;
   text-align: center;
   padding: .3rem .4rem;
@@ -268,8 +268,8 @@
   padding: 1.25rem 1.5rem;
 }
 .pat-aval-card h5 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: .88rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.739rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);

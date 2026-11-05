@@ -26,8 +26,8 @@
 .ass-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); transform: translateY(-2px); }
 .ass-card-icon { font-size: 2rem; margin-bottom: .6rem; }
 .ass-card h4 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.84rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -44,11 +44,11 @@
   margin-bottom: 2.5rem;
 }
 .ass-protocol h3 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.176rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing:.3px;
   margin-bottom: .35rem;
 }
 
@@ -65,8 +65,8 @@
 .ass-step-num {
   background: var(--gold, #f5c518);
   color: var(--navy-dark, #0f2240);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.26rem;
   font-weight: 900;
   width: 42px;
   height: 42px;
@@ -78,8 +78,8 @@
 }
 .ass-step-body { flex: 1; }
 .ass-step-body h4 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.05rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.882rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--gold, #f5c518);
@@ -103,8 +103,8 @@
   gap: .4rem;
   background: var(--gold, #f5c518);
   color: var(--navy-dark, #0f2240);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:.84rem;
   font-weight: 800;
   text-transform: uppercase;
   padding: .45rem 1.1rem;
@@ -134,8 +134,8 @@
   margin-top: 2.5rem;
 }
 .ass-faqs h3 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size:1.05rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--navy-dark);
@@ -184,7 +184,7 @@
 @media (max-width: 600px) {
   .ass-grid { grid-template-columns: 1fr 1fr; }
   .ass-step { flex-direction: column; gap: .75rem; }
-  .ass-step-num { width: 34px; height: 34px; font-size: 1.2rem; }
+  .ass-step-num { width: 34px; height: 34px; font-size:1.008rem; }
   .ass-protocol { padding: 1.5rem 1rem; }
   .ass-contact-row { flex-direction: column; gap: .3rem; }
 }

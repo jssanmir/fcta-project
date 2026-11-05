@@ -38,7 +38,6 @@ var FCTA = {
     { key: 'pat',           id: 'PAT',           label: 'PAT' },
     { key: 'calendari',    id: 'Calendari',     label: 'Calendari' },
     { key: 'records',      id: 'Records',       label: 'Rècords' },
-    { key: 'estadarquer',  id: 'EstadArquer',   label: 'Les Meves Estadístiques' },
     { key: 'regimdisciplinari', id: 'Regimdisciplinari', label: 'Règim Disciplinari' },
   ],
 
@@ -56,13 +55,14 @@ var FCTA = {
 
   // ── Competition / circular type metadata ─────────────────────
   typeLabel: {
-    al:      'Aire Lliure / Sala',
+    al:      'Aire Lliure',
     camp:    'Camp',
     '3d':    '3D / Bosc',
     sala:    'Sala',
     fed:     'Federació',
     form:    'Formació',
     jut:     'Jutges',
+    tec:     'Tecnificació',
     kyudo:   'Kyudo',
     general: 'General',
   },
@@ -71,10 +71,11 @@ var FCTA = {
     al:      'cb-al',
     camp:    'cb-camp',
     '3d':    'cb-3d',
-    sala:    'cb-al',
+    sala:    'cb-sala',
     fed:     'cb-fed',
     form:    'cb-form',
     jut:     'cb-jut',
+    tec:     'cb-tec',
     kyudo:   'cb-kyudo',
     general: 'cb-general',
     trd:     'cb-3d',  // alias used in competitions

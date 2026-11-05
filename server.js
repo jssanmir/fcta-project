@@ -877,6 +877,38 @@ app.post('/api/data', verifyToken, function (req, res) {
     }).filter(function (item) { return item.img; });
   }
 
+  // Textos de disciplines (HTML enriquit saneat, només claus conegudes)
+  if (data.discTexts !== undefined) {
+    var dtIn = (data.discTexts && typeof data.discTexts === 'object' && !Array.isArray(data.discTexts)) ? data.discTexts : {};
+    var dtOut = {};
+    ['al', 'sala', '3d', 'camp', 'run', 'aa', 'kyudo'].forEach(function (k) {
+      var html = dtIn[k] && dtIn[k].descripcio ? sanitizeNewsBody(dtIn[k].descripcio) : '';
+      if (html) dtOut[k] = { descripcio: html };
+    });
+    data.discTexts = dtOut;
+  }
+
+  // Junta Directiva: textos curts i membres validats (grup, nom, correu)
+  if (data.junta !== undefined) {
+    var jun = (data.junta && typeof data.junta === 'object' && !Array.isArray(data.junta)) ? data.junta : {};
+    var JUNTA_GRUPS = ['president', 'exec', 'vocal'];
+    data.junta = {
+      intro:  sanitizeNewsBody(jun.intro).slice(0, 5000),
+      mandat: sanitizeStr(jun.mandat, 120),
+      members: (Array.isArray(jun.members) ? jun.members : []).slice(0, 60).map(function (m) {
+        m = m || {};
+        var email = sanitizeStr(m.email, 120);
+        return {
+          id:    Number(m.id) || Date.now(),
+          grup:  JUNTA_GRUPS.indexOf(m.grup) >= 0 ? m.grup : 'vocal',
+          rol:   sanitizeStr(m.rol, 80),
+          nom:   sanitizeStr(m.nom, 120),
+          email: EMAIL_RE.test(email) ? email : ''
+        };
+      }).filter(function (m) { return m.nom; })
+    };
+  }
+
   if (Array.isArray(data.news)) {
     data.news.forEach(function (item) {
       if (item && item.body !== undefined) item.body = sanitizeNewsBody(item.body);

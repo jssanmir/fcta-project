@@ -100,7 +100,7 @@ function submitRecordForm() {
 var ADM_REC_DISCS = [
   {val:'sala', lbl:'Sala'}, {val:'al', lbl:'Aire Lliure'}, {val:'aa', lbl:'Arc Adaptat'}
 ];
-var ADM_REC_ESTILS = ['Recorbat','Compost','Arc Nu','Longbow','Tradicional','Estàndard'];
+var ADM_REC_ESTILS = ['Recorbat','Compost','Arc Nu','Longbow','Longbow (80 reduïda)','Tradicional','Tradicional (80 reduïda)','Estàndard'];
 var ADM_REC_CATS   = ['Prebenjamí','Benjamí','Aleví','Sub-15','Sub-18','Sub-21','Sènior','Veterà','+50'];
 var ADM_REC_SEXES  = ['Dona','Home'];
 var _admRecDisc = 'sala';
