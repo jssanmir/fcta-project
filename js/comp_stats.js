@@ -26,8 +26,8 @@ var CS_CURRENT_SEASON = '2026-27';
 var _csSeasonCache  = {};  // { seasonKey: dades } — caché per temporada, un cop carregada
 var _csLoading = {};       // { seasonKey: bool }
 
-var _CS_TYPE_LABELS  = { all:'Totes', al:'Aire Lliure', sala:'Sala – 18m', camp:'Tir de Camp', trd:'3D / Bosc' };
-var _CS_TYPE_ICONS   = { al:'🏹', sala:'🏟️', camp:'🌲', trd:'🌄' };
+var _CS_TYPE_LABELS  = { all:'Totes', al:'Aire Lliure', sala:'Sala – 18m', camp:'Camp', trd:'3D / Bosc' };
+var _CS_TYPE_ICONS   = { al:'☀️', sala:'🎯', camp:'🍁', trd:'🌄' };
 
 // ── Normalització de clubs ──────────────────────────────────
 // Ianseo usa IDs numèrics (1020) o alfabètics (CAM) per al mateix club.

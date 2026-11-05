@@ -192,6 +192,7 @@ function renderATab(tab){
   if(!b) return;
   if(tab==='circ')      renderAdmCirculars(b);
   else if(tab==='news')    renderAdmNews(b);
+  else if(tab==='car')     renderAdmCarousel(b);
   else if(tab==='comp')    renderAdmComp(b);
   else if(tab==='form')    renderAdmForm(b);
   else if(tab==='tirades') renderAdmTirades(b);
@@ -448,6 +449,114 @@ function crudDelNews(id,name){
   });
 }
 
+// ── CARRUSEL CRUD ──────────────────────────────────────────
+// Diapositives de la portada: foto + títol + link. L'ordre de la llista és
+// l'ordre del carrusel. El link pot ser una adreça (https://…), una notícia
+// (#news:ID), una secció del portal (#calendari/2026-27) o un document
+// (docs/fitxer.pdf, /uploads/…). Opcional: sense link la foto no és clicable.
+function admCarLinkOk(u){
+  return !u || /^(https?:\/\/|#|docs\/|\/uploads\/)/.test(u);
+}
+function _admCarSave(){
+  dbSave();
+  renderCarousel();
+  renderAdmCarousel(document.getElementById('admBody'));
+}
+function renderAdmCarousel(b){
+  var list=DB.carousel||[];
+  b.innerHTML=
+    '<div class="crud-form">'
+    +'<div class="crud-form-title">&#10010; Afegir diapositiva al carrusel</div>'
+    +mkUploadField('Foto *','ac_img','','image')
+    +mkField('Títol *','ac_t','text','','Títol que es mostra sobre la foto')
+    +mkField('Link','ac_url','text','','https://… · #news:50 · #calendari/2026-27 · docs/fitxer.pdf')
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddCar',[])+'>&#10010; Afegir al carrusel</button>'
+    +'</div>'
+    +'<div class="adm-st">Diapositives <span class="crud-count-badge">'+list.length+'</span></div>'
+    +'<p style="font-size:.8rem;color:var(--gray);margin:0 0 .75rem">L’ordre d’aquesta llista és l’ordre del carrusel a la portada. El link és opcional.</p>'
+    +'<div class="crud-list" id="carCrudList">'
+    +(list.length?'':'<div class="crud-item"><div class="crud-item-info"><div class="crud-item-meta">Cap diapositiva: el carrusel no es mostra a la portada.</div></div></div>')
+    +list.map(function(s,i){
+      return '<div class="crud-item" id="citem-'+s.id+'">'
+        +'<img src="'+escHtml(s.img||'')+'" alt="" style="width:80px;height:50px;object-fit:cover;border-radius:4px;flex:none"'+dataAttr('onerror','hideOnError',[])+'>'
+        +'<div class="crud-item-info">'
+        +'<div class="crud-item-title">'+escHtml(s.title||'')+'</div>'
+        +'<div class="crud-item-meta"><span>'+(i+1)+' de '+list.length+'</span><span>'+(s.url&&s.url!=='#'?escHtml(s.url):'Sense link')+'</span></div>'
+        +'</div>'
+        +'<div class="crud-item-acts">'
+        +(i>0?'<button class="btn-edit-crud" title="Pujar" aria-label="Pujar"'+dataAttr('onclick','crudMoveCar',[s.id,-1])+'>&#9650;</button>':'')
+        +(i<list.length-1?'<button class="btn-edit-crud" title="Baixar" aria-label="Baixar"'+dataAttr('onclick','crudMoveCar',[s.id,1])+'>&#9660;</button>':'')
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditCar',[s.id])+'>&#9998; Editar</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelCar',[s.id,(s.title||'').substring(0,30)])+'>&#128465;</button>'
+        +'</div>'
+        +'</div>';
+    }).join('')
+    +'</div>';
+}
+function crudAddCar(){
+  var img=fv('ac_img'),t=fv('ac_t'),u=fv('ac_url');
+  if(!img||!t){toast('Puja una foto i escriu el títol','&#9888;&#65039;');return;}
+  if(!admCarLinkOk(u)){toast('Link no vàlid: ha de començar per https://, #, docs/ o /uploads/','&#9888;&#65039;');return;}
+  if(!DB.carousel) DB.carousel=[];
+  DB.carousel.push({id:Date.now(),img:img,title:t,url:u});
+  admLog('CAR_ADD', t);
+  _admCarSave();
+  toast('Diapositiva afegida!','&#9989;');
+}
+function crudEditCar(id){
+  var s=(DB.carousel||[]).find(function(x){return x.id===id;});
+  if(!s) return;
+  var item=document.getElementById('citem-'+id);
+  if(!item) return;
+  var existing=document.getElementById('cedit-'+id);
+  if(existing){existing.remove();item.classList.remove('editing');return;}
+  item.classList.add('editing');
+  var editDiv=document.createElement('div');
+  editDiv.className='crud-edit-form'; editDiv.id='cedit-'+id;
+  editDiv.innerHTML=
+    mkUploadField('Foto *','ec_img_'+id,s.img||'','image')
+    +mkField('Títol *','ec_t_'+id,'text',s.title,'')
+    +mkField('Link','ec_url_'+id,'text',s.url&&s.url!=='#'?s.url:'','https://… · #news:50 · #calendari/2026-27 · docs/fitxer.pdf')
+    +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveCar',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelCar',[id])+'>Cancel·lar</button>'
+    +'</div>';
+  item.appendChild(editDiv);
+}
+function crudSaveCar(id){
+  var s=(DB.carousel||[]).find(function(x){return x.id===id;});
+  if(!s) return;
+  var img=fv('ec_img_'+id),t=fv('ec_t_'+id),u=fv('ec_url_'+id);
+  if(!img||!t){toast('La foto i el títol no poden estar buits','&#9888;&#65039;');return;}
+  if(!admCarLinkOk(u)){toast('Link no vàlid: ha de començar per https://, #, docs/ o /uploads/','&#9888;&#65039;');return;}
+  s.img=img; s.title=t; s.url=u;
+  admLog('CAR_EDIT', t);
+  _admCarSave();
+  toast('Diapositiva desada!','&#9989;');
+}
+function crudCancelCar(id){
+  var item=document.getElementById('citem-'+id);
+  var form=document.getElementById('cedit-'+id);
+  if(item) item.classList.remove('editing');
+  if(form) form.remove();
+}
+function crudMoveCar(id,dir){
+  var list=DB.carousel||[];
+  var i=list.findIndex(function(x){return x.id===id;});
+  var j=i+dir;
+  if(i<0||j<0||j>=list.length) return;
+  var tmp=list[i]; list[i]=list[j]; list[j]=tmp;
+  _admCarSave();
+}
+function crudDelCar(id,name){
+  confirmDel(name,function(){
+    DB.carousel=(DB.carousel||[]).filter(function(x){return x.id!==id;});
+    admLog('CAR_DEL', name);
+    _admCarSave();
+    toast('Diapositiva eliminada.','&#128465;');
+  });
+}
+
 // ── COMPETICIONS CRUD ──────────────────────────────────────
 // La competici\u00f3 \u00e9s el centre de tot: en lloc de repetir el n\u00famero de
 // circular a m\u00e0 (amb risc d'errors de picada), es tria d'una llista
@@ -483,7 +592,7 @@ function renderAdmComp(b){
     +mkField('URL inscripcions','acomp_insc','url','','https://...')
     +mkField('URL m\u00e9s info / resultats','acomp_url','url','','https://...')
     +'</div>'
-    +mkField('Disciplina (text lliure)','acomp_disc','text','','Ex: Aire Lliure, Tir de Camp...')
+    +mkField('Disciplina (text lliure)','acomp_disc','text','','Ex: Aire Lliure, Camp...')
     +'<button class="a-sub success"'+dataAttr('onclick','crudAddComp',[])+'>&#10010; Publicar Competici\u00f3</button>'
     +'</div>'
     +'<div class="adm-st" style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap">'
@@ -791,7 +900,7 @@ function renderAdmDocs(b){
   var discOpts=[
     {val:'al',   lbl:'Aire Lliure / Sala'},
     {val:'3d',   lbl:'3D / Bosc'},
-    {val:'camp', lbl:'Tir de Camp'},
+    {val:'camp', lbl:'Camp'},
     {val:'kyudo',lbl:'Kyudo'},
     {val:'general',lbl:'General (totes les disciplines)'},
   ];
@@ -888,7 +997,7 @@ function crudEditDoc(id){
   item.classList.add('editing');
   var discOpts=[
     {val:'al',lbl:'Aire Lliure / Sala'},{val:'3d',lbl:'3D / Bosc'},
-    {val:'camp',lbl:'Tir de Camp'},{val:'kyudo',lbl:'Kyudo'},
+    {val:'camp',lbl:'Camp'},{val:'kyudo',lbl:'Kyudo'},
     {val:'general',lbl:'General'},
   ];
   var iconOpts=[
@@ -1083,7 +1192,7 @@ var GEN_DISC_DEFAULTS = {
 // circular/competició (comparteixen badge 'cb-al'), però amb textos propis.
 GEN_DISC_DEFAULTS.al.label = 'Aire Lliure';
 GEN_DISC_DEFAULTS.sala.label = 'Sala';
-GEN_DISC_DEFAULTS.camp.label = 'Tir de Camp';
+GEN_DISC_DEFAULTS.camp.label = 'Camp';
 GEN_DISC_DEFAULTS['3d'].label = '3D / Bosc';
 GEN_DISC_DEFAULTS.kyudo.label = 'Kyudo';
 GEN_DISC_DEFAULTS.fed.label = 'Federació (general)';
@@ -1092,7 +1201,7 @@ function renderAdmGenerator(b){
   var discOpts=[
     {val:'al',lbl:'Aire Lliure'},
     {val:'sala',lbl:'Sala'},
-    {val:'camp',lbl:'Tir de Camp'},
+    {val:'camp',lbl:'Camp'},
     {val:'3d',lbl:'3D / Bosc'},
     {val:'kyudo',lbl:'Kyudo'},
     {val:'fed',lbl:'Federació (general)'}
@@ -1324,7 +1433,7 @@ function generateCircular(){
     return;
   }
   var disc=fv('gn_disc');
-  var discNoms={al:'Aire Lliure',sala:'Sala',camp:'Tir de Camp','3d':'3D / Bosc',kyudo:'Kyudo',fed:'General'};
+  var discNoms={al:'Aire Lliure',sala:'Sala',camp:'Camp','3d':'3D / Bosc',kyudo:'Kyudo',fed:'General'};
   var club=fv('gn_club');
   var contact=fv('gn_contact');
   var email=fv('gn_email');
@@ -1594,9 +1703,9 @@ function genPublicarCircular(){
 }
 
 // ── BACKUP / RESTORE ───────────────────────────────────────
-var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds'];
+var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds','carousel'];
 var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
-  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords'};
+  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords',carousel:'Carrusel'};
 var _BK_PREFIX = 'fcta_ckpt_';
 var _BK_MAX    = 3;
 
@@ -1614,6 +1723,7 @@ function _bkApply(snap) {
   if(typeof renderNews==='function')    renderNews();
   if(typeof renderForm==='function')    renderForm();
   if(typeof renderTirades==='function') renderTirades('all');
+  if(typeof renderCarousel==='function') renderCarousel();
   if(typeof updatePendDot==='function') updatePendDot();
 }
 

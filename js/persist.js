@@ -9,7 +9,7 @@
   var LS_CACHE = 'fcta_db_cache';   // cache de lectura del servidor (read-only)
   var API_BASE = '';
   var FIELDS   = ['circulars', 'competitions', 'news', 'formations',
-                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues'];
+                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel'];
 
   // ── Neteja de dades antigues de localStorage ──────────────
   // Elimina qualsevol dada que pogués haver estat injectada o
@@ -110,6 +110,7 @@
     if (typeof renderTirades === 'function')     renderTirades('all');
     if (typeof renderCalendari === 'function')   renderCalendari();
     if (typeof renderHeroPanel === 'function')   renderHeroPanel();
+    if (typeof renderCarousel === 'function')    renderCarousel();
     if (typeof updatePendDot === 'function')     updatePendDot();
     if (typeof renderRecordsTable === 'function') renderRecordsTable();
     if (typeof renderDisciplina === 'function')   renderDisciplina(); // refresca la pestanya de disciplina activa (info/docs/records/resultats)

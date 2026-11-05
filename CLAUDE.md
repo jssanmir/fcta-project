@@ -145,6 +145,7 @@ Totes les dades viuen en l'objecte global `DB`:
 | `DB.tirades`      | Array     | Tirades socials (status: 'pend' o 'valid')      |
 | `DB.documents`    | Array     | Documents PDF per disciplina (disc, nom, url)   |
 | `DB.clubs`        | Array     | Noms dels clubs (per al selector de tirades)    |
+| `DB.carousel`     | Array     | Diapositives del carrusel de la portada (img, title, url) — editable a Admin > Carrusel |
 
 **Disc keys** per a `DB.documents.disc`: `'al'` · `'3d'` · `'camp'` · `'kyudo'` · `'general'`
 (definits a `FCTA.disc` en `config.js`)
@@ -185,7 +186,7 @@ La funció `setS(key)`:
 
 Accés: botó `⚙ Admin` a la nav. Credencials en `auth.js` (`admSession`).
 
-Pestanyes disponibles: Circulars · Notícies · Competicions · Formació · Tirades · Rècords · Documents
+Pestanyes disponibles: Circulars · Notícies · Carrusel · Competicions · Formació · Tirades · Rècords · Documents
 
 Cada pestanya té CRUD complet: afegir, editar inline, eliminar.
 La funció `renderATab(tab)` en `admin.js` despacha al renderer corresponent.

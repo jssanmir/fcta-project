@@ -1,0 +1,160 @@
+{
+ "name": "2026-11-05-camp-label",
+ "description": "Disciplina de les competicions de camp: Tir de Camp → Camp",
+ "ops": [
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 2,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 9,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 12,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 6,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 112,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 113,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 114,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 115,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 116,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 141,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 145,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 147,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 149,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "competitions",
+   "id": 155,
+   "fields": {
+    "disc": [
+     "Tir de Camp",
+     "Camp"
+    ]
+   }
+  }
+ ]
+}

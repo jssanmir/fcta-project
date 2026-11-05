@@ -585,6 +585,13 @@ var NEWS_CONTENT = {
 
 var DB = {
 
+// --- CARRUSEL DE LA PORTADA (editable a Administració > Carrusel) ---
+carousel: [
+  {id:1, img:'img/news/noticia50.jpg', title:'Maria Pitarch aconsegueix dues medalles de bronze al Campionat del Món de Yankton', url:'#news:50'},
+  {id:2, img:'img/news/noticia8.jpeg', title:"El 76è Campionat de Catalunya d'Aire Lliure reuneix més de 165 esportistes a Barcelona", url:'#news:11'},
+  {id:3, img:'img/news/noticia12.jpg', title:'El CAR Sant Cugat acull la 5ª jornada del Programa Autonòmic de Tecnificació', url:'#news:12'}
+],
+
 // --- CIRCULARS ---
 circulars: [
   // FEDERACIÓ
@@ -668,19 +675,19 @@ competitions: [
   {id:130,type:'al',  title:'76è Campionat de Catalunya d\'Aire Lliure',   disc:'Aire Lliure',  date:'4-5 jul 2026',    dateISO:'2026-07-04', loc:'Barcelona',                        status:'open',   circ:'CIRC-2637', url:'#',                                        ianseo:29041},
   {id:15,type:'al',   title:'3ª Tirada Lliga Catalana AL 2026 (Esclanyà)',disc:'Aire Lliure',  date:'31 mai 2026',     dateISO:'2026-05-31', loc:'Esclanyà (Girona)',                status:'open',   circ:'CIRC-2622', url:'#',                                        ianseo:28417},
   {id:7, type:'trd',  title:'30è Campionat de Catalunya 3D',               disc:'3D',    date:'17 mai 2026',     dateISO:'2026-05-17', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2623', url:'#',                                        ianseo:28099},
-  {id:2, type:'camp', title:'56è Campionat de Catalunya de Camp',           disc:'Tir de Camp',  date:'10 mai 2026',     dateISO:'2026-05-10', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2621', url:'#news:2',                                  ianseo:28098},
-  {id:9, type:'camp', title:'3ª Tirada Lliga Catalana Camp 2026',           disc:'Tir de Camp',  date:'3 mai 2026',      dateISO:'2026-05-03', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2618', url:'#',                                        ianseo:27988},
+  {id:2, type:'camp', title:'56è Campionat de Catalunya de Camp',           disc:'Camp',  date:'10 mai 2026',     dateISO:'2026-05-10', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2621', url:'#news:2',                                  ianseo:28098},
+  {id:9, type:'camp', title:'3ª Tirada Lliga Catalana Camp 2026',           disc:'Camp',  date:'3 mai 2026',      dateISO:'2026-05-03', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2618', url:'#',                                        ianseo:27988},
   {id:10,type:'trd',  title:'4ª Tirada Lliga Catalana 3D 2026',            disc:'3D',    date:'12 abr 2026',     dateISO:'2026-04-12', loc:'Castellnou del Bages (Barcelona)', status:'open',   circ:'CIRC-2615', url:'#',                                        ianseo:27589},
   {id:11,type:'al',   title:'2ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'18 abr 2026',     dateISO:'2026-04-18', loc:'Olivella / Figueres',              status:'open',   circ:'CIRC-2614', url:'#news:3',                                  ianseo:27633},
   {id:5, type:'al',   title:'Campionat de Catalunya Universitari 2026',    disc:'Aire Lliure',  date:'28 mar 2026',     dateISO:'2026-03-28', loc:'Tarragona',                        status:'open',   circ:'CIRC-2616', url:'#news:5',                                  ianseo:27386},
   {id:13,type:'al',   title:'1ª Tirada Lliga Catalana Aire Lliure 2026',   disc:'Aire Lliure',  date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Olesa de Montserrat / Sant Celoni',status:'open',   circ:'CIRC-2610', url:'#',                                        ianseo:27062},
   {id:129,type:'al',  title:'1ª Tirada Lliga Catalana AL 2026 (Sant Celoni)',disc:'Aire Lliure', date:'14 mar 2026',     dateISO:'2026-03-14', loc:'Sant Celoni (Vallès Oriental)',    status:'open',   circ:'CIRC-2610', url:'#',                                        ianseo:27064},
-  {id:12,type:'camp', title:'2ª Tirada Lliga Catalana Camp 2026',           disc:'Tir de Camp',  date:'8 mar 2026',      dateISO:'2026-03-08', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2609',         url:'#news:46',                                        ianseo:26987},
+  {id:12,type:'camp', title:'2ª Tirada Lliga Catalana Camp 2026',           disc:'Camp',  date:'8 mar 2026',      dateISO:'2026-03-08', loc:'Montcada i Reixac',                status:'open',   circ:'CIRC-2609',         url:'#news:46',                                        ianseo:26987},
   {id:3, type:'trd',  title:'3ª Tirada Lliga Catalana 3D 2026',            disc:'3D',    date:'22 feb 2026',     dateISO:'2026-02-22', loc:'Olivella (Barcelona)',              status:'open',   circ:'CIRC-2606', url:'#news:45',                                        ianseo:26790},
   {id:8, type:'sala', title:'58è Campionat de Catalunya de Sala',          disc:'Sala – 18m',   date:'31 gen 2026',     dateISO:'2026-01-31', loc:'Manresa / Constantí',              status:'open',   circ:'#',         url:'#news:42',                                        ianseo:26399},
   {id:19,type:'al',   title:'I Trofeu Vila de Cambrils',                   disc:'Aire Lliure',  date:'24 gen 2026',     dateISO:'2026-01-24', loc:'Cambrils (Tarragonès)',             status:'open',   circ:'#',         url:'#',                                        ianseo:26423},
   {id:20,type:'trd',  title:'1r Campionat Catalunya 3D en Línia 2026',     disc:'3D',    date:'18 gen 2026',     dateISO:'2026-01-18', loc:'Sant Celoni (Vallès Oriental)',     status:'open',   circ:'#',         url:'#news:40',                                        ianseo:26307},
-  {id:6, type:'camp', title:'1ª Tirada Lliga Catalana Camp 2025/26',       disc:'Tir de Camp',  date:'11 gen 2026',     dateISO:'2026-01-11', loc:'Castellnou del Bages (Barcelona)', status:'open',   circ:'CIRC-2567', url:'#',                                        ianseo:26209},
+  {id:6, type:'camp', title:'1ª Tirada Lliga Catalana Camp 2025/26',       disc:'Camp',  date:'11 gen 2026',     dateISO:'2026-01-11', loc:'Castellnou del Bages (Barcelona)', status:'open',   circ:'CIRC-2567', url:'#',                                        ianseo:26209},
   // ── Temporada 2025 (desembre) ────────────────────────────
   {id:21,type:'sala', title:'Campionat de Catalunya de Clubs 2025 – Sala', disc:'Sala – 18m',   date:'21 des 2025',     dateISO:'2025-12-21', loc:'Manresa',                          status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=FCTALS6',  ianseo:'FCTALS6'},
   {id:22,type:'sala', title:'Trofeu Màster de Catalunya Indoor 2025',      disc:'Sala – 18m',   date:'21 des 2025',     dateISO:'2025-12-21', loc:'Manresa',                          status:'closed', circ:'#',         url:'https://www.ianseo.net/Details.php?toId=FCTALS5',  ianseo:'FCTALS5'},
@@ -714,11 +721,11 @@ competitions: [
   {id:110,type:'sala',title:'Campionat d\'Espanya TNL Sala',                 disc:'Sala – 18m', date:'22-24 gen 2027',  dateISO:'2027-01-22', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
   {id:111,type:'sala',title:'Campionat d\'Espanya RC Sala',                  disc:'Sala – 18m', date:'4-7 feb 2027',    dateISO:'2027-02-04', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
   // Camp
-  {id:112,type:'camp',title:'1ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Tir de Camp', date:'31 gen 2027',    dateISO:'2027-01-31', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
-  {id:113,type:'camp',title:'2ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Tir de Camp', date:'28 feb 2027',    dateISO:'2027-02-28', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
-  {id:114,type:'camp',title:'3ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Tir de Camp', date:'18 abr 2027',    dateISO:'2027-04-18', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
-  {id:115,type:'camp',title:'Campionat de Catalunya de Camp 2026/27',       disc:'Tir de Camp', date:'16 mai 2027',    dateISO:'2027-05-16', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
-  {id:116,type:'camp',title:'Campionat d\'Espanya de Camp',                  disc:'Tir de Camp', date:'4-6 jun 2027',   dateISO:'2027-06-04', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
+  {id:112,type:'camp',title:'1ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Camp', date:'31 gen 2027',    dateISO:'2027-01-31', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:113,type:'camp',title:'2ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Camp', date:'28 feb 2027',    dateISO:'2027-02-28', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:114,type:'camp',title:'3ª Tirada Lliga Catalana de Camp 2026/27',     disc:'Camp', date:'18 abr 2027',    dateISO:'2027-04-18', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:115,type:'camp',title:'Campionat de Catalunya de Camp 2026/27',       disc:'Camp', date:'16 mai 2027',    dateISO:'2027-05-16', loc:'Per determinar', status:'soon', circ:'CIRC-2636', url:'#'},
+  {id:116,type:'camp',title:'Campionat d\'Espanya de Camp',                  disc:'Camp', date:'4-6 jun 2027',   dateISO:'2027-06-04', loc:'Per determinar', status:'soon', circ:'#',         url:'#'},
   // 3D
   {id:117,type:'3d',  title:'1ª Tirada Lliga Catalana de 3D 2026/27',       disc:'3D', date:'14 feb 2027',    dateISO:'2027-02-14', loc:'Per determinar', status:'soon', circ:'CIRC-2635', url:'#'},
   {id:118,type:'3d',  title:'2ª Tirada Lliga Catalana de 3D 2026/27',       disc:'3D', date:'14 mar 2027',    dateISO:'2027-03-14', loc:'Per determinar', status:'soon', circ:'CIRC-2635', url:'#'},
@@ -749,21 +756,21 @@ competitions: [
   {id:138,type:'al',title:'Campionat de Catalunya d\'Arc Adaptat, Inclusiu i Salut',disc:'Arc Adaptat',date:'4 jul 2026',dateISO:'2026-07-04',loc:'Olesa de Montserrat (Barcelona)',status:'closed',circ:'CIRC-2628',url:'#'},
   // ── Temporada 2024-25 (octubre 2024 – juliol 2025) ──
   {id:140,type:'sala',title:'1ª Tirada Lliga Catalana de Sala 2024/2025',disc:'Sala – 18m',date:'12-13 oct 2024',dateISO:'2024-10-12',loc:'Caldes de Montbui (Barcelona)',status:'closed',circ:'#',url:'#'},
-  {id:141,type:'camp',title:'1ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'20 oct 2024',dateISO:'2024-10-20',loc:'Castellnou del Bages (Barcelona)',status:'closed',circ:'#',url:'#'},
+  {id:141,type:'camp',title:'1ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Camp',date:'20 oct 2024',dateISO:'2024-10-20',loc:'Castellnou del Bages (Barcelona)',status:'closed',circ:'#',url:'#'},
   {id:142,type:'sala',title:'2ª Tirada Lliga Catalana de Sala 2024/2025',disc:'Sala – 18m',date:'26-27 oct 2024',dateISO:'2024-10-26',loc:'Torrefarrera (Lleida) / Constantí (Tarragona)',status:'closed',circ:'#',url:'#'},
   {id:143,type:'trd',title:'1ª Tirada Lliga Catalana 3D 2024/2025',disc:'3D',date:'10 nov 2024',dateISO:'2024-11-10',loc:'Montcada i Reixac (Barcelona)',status:'closed',circ:'#',url:'#'},
   {id:144,type:'sala',title:'3ª Tirada Lliga Catalana de Sala 2024/2025',disc:'Sala – 18m',date:'16-17 nov 2024',dateISO:'2024-11-16',loc:'Torrefarrera (Lleida) / Constantí (Tarragona)',status:'closed',circ:'#',url:'#'},
-  {id:145,type:'camp',title:'2ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'12 gen 2025',dateISO:'2025-01-12',loc:'Romanyà de la Selva (Girona)',status:'closed',circ:'#',url:'#'},
+  {id:145,type:'camp',title:'2ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Camp',date:'12 gen 2025',dateISO:'2025-01-12',loc:'Romanyà de la Selva (Girona)',status:'closed',circ:'#',url:'#'},
   {id:146,type:'trd',title:'3ª Tirada Lliga Catalana 3D 2024/2025',disc:'3D',date:'2 feb 2025',dateISO:'2025-02-02',loc:'Montcada i Reixac (Barcelona)',status:'closed',circ:'#',url:'#'},
-  {id:147,type:'camp',title:'3ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'16 feb 2025',dateISO:'2025-02-16',loc:'Caldes de Montbui (Barcelona)',status:'closed',circ:'#',url:'#news:14'},
+  {id:147,type:'camp',title:'3ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Camp',date:'16 feb 2025',dateISO:'2025-02-16',loc:'Caldes de Montbui (Barcelona)',status:'closed',circ:'#',url:'#news:14'},
   {id:148,type:'trd',title:'4ª Tirada Lliga Catalana 3D 2024/2025',disc:'3D',date:'2 mar 2025',dateISO:'2025-03-02',loc:'Rubí (Barcelona)',status:'closed',circ:'#',url:'#news:15'},
-  {id:149,type:'camp',title:'4ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Tir de Camp',date:'16 mar 2025',dateISO:'2025-03-16',loc:'Mataró (Barcelona)',status:'closed',circ:'#',url:'#news:18'},
+  {id:149,type:'camp',title:'4ª Tirada Lliga Catalana de Camp 2024/2025',disc:'Camp',date:'16 mar 2025',dateISO:'2025-03-16',loc:'Mataró (Barcelona)',status:'closed',circ:'#',url:'#news:18'},
   {id:150,type:'al',title:'1ª Tirada Lliga Catalana d\'Aire Lliure 2024/2025',disc:'Aire Lliure',date:'22-23 mar 2025',dateISO:'2025-03-22',loc:'Lleida (Pardinyes)',status:'closed',circ:'#',url:'#news:19'},
   {id:151,type:'al',title:'Campionat de Catalunya Universitari 2025',disc:'Aire Lliure',date:'13 abr 2025',dateISO:'2025-04-13',loc:'Tarragona (Club TAU)',status:'closed',circ:'#',url:'#'},
   {id:152,type:'al',title:'3ª Tirada Lliga Catalana d\'Aire Lliure 2024/2025',disc:'Aire Lliure',date:'27 abr 2025',dateISO:'2025-04-27',loc:'Esclanyà (Girona)',status:'closed',circ:'#',url:'#news:20'},
   {id:153,type:'trd',title:'29è Campionat de Catalunya 3D 2024/2025',disc:'3D',date:'18 mai 2025',dateISO:'2025-05-18',loc:'Castellnou del Bages (Barcelona)',status:'closed',circ:'#',url:'#news:22'},
   {id:154,type:'al',title:'4ª Tirada Lliga Catalana d\'Aire Lliure 2024/2025',disc:'Aire Lliure',date:'24-25 mai 2025',dateISO:'2025-05-24',loc:'Olesa de Montserrat (Barcelona)',status:'closed',circ:'#',url:'#news:23'},
-  {id:155,type:'camp',title:'55è Campionat de Catalunya de Camp 2024/2025',disc:'Tir de Camp',date:'1 jun 2025',dateISO:'2025-06-01',loc:'Romanyà de la Selva (Girona)',status:'closed',circ:'#',url:'#news:25'},
+  {id:155,type:'camp',title:'55è Campionat de Catalunya de Camp 2024/2025',disc:'Camp',date:'1 jun 2025',dateISO:'2025-06-01',loc:'Romanyà de la Selva (Girona)',status:'closed',circ:'#',url:'#news:25'},
   {id:156,type:'al',title:'75è Campionat de Catalunya d\'Arc Tradicional, Nu i Longbow d\'Aire Lliure',disc:'Aire Lliure',date:'22 jun 2025',dateISO:'2025-06-22',loc:'Les Franqueses del Vallès (Barcelona)',status:'closed',circ:'#',url:'#news:27'},
   {id:157,type:'al',title:'75è Campionat de Catalunya d\'Arc Recorbat i Compost d\'Aire Lliure',disc:'Aire Lliure',date:'6 jul 2025',dateISO:'2025-07-06',loc:'Terrassa (Barcelona)',status:'closed',circ:'#',url:'#news:29'},
   {id:158,type:'al',title:'Campionat de Catalunya de Clubs 2025',disc:'Aire Lliure',date:'13 jul 2025',dateISO:'2025-07-13',loc:'Lleida (Pardinyes)',status:'closed',circ:'#',url:'#news:32'},

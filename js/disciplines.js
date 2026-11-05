@@ -7,7 +7,7 @@ var DISC_DATA = {
   al: {
     nom: 'Aire Lliure',
     subtitol: '',
-    icon: '🎯',
+    icon: '☀️',
     color: '#1a6fb5',
     descripcio: 'El tir d\'aire lliure és la disciplina olímpica del tir amb arc i la més practicada a Catalunya. Es disputa al aire lliure en en instal·lacions exteriors on les condicions son molt relevants, des de distàncies de 12 m fins a 70 m depenent de l\'arc i la classe.\n\nEl recorbat sènior tira a 70 m amb una diana de 122 cm; el compost sènior, a 50 m amb diana de 80 cm reduida; categories d\'escola i menors tiren a distàncies més curtes. La competició consta d\'una fase de classificació (Round 720: 72 fletxes en dues rondes) seguida d\'eliminatòries individuals i per equips en el cas de campionat.',
     normativa: [
@@ -68,7 +68,7 @@ var DISC_DATA = {
   sala: {
     nom: 'Sala',
     subtitol: '',
-    icon: '🏛️',
+    icon: '🎯',
     color: '#5c35a0',
     descripcio: 'El tir de sala és la temporada interior del tir amb arc (tardor-hivern), que es disputa en pavelló cobert a 18 metres de distància. És la disciplina amb el calendari més intens: lliga catalana, campionats autonòmics, estatals i internacionals es concentren entre octubre i abril.\n\nTothom tira a 18 m, però les dianes varien: 40 cm per a arc recorbat i compost, i 60 cm per a arc nu, longbow i tradicional. La competició consta d\'una fase de classificació (60 fletxes) seguida d\'eliminatòries individuals i per equips en format set system.',
     normativa: [
@@ -169,9 +169,9 @@ var DISC_DATA = {
   },
 
   camp: {
-    nom: 'Tir de Camp',
+    nom: 'Camp',
     subtitol: '',
-    icon: '🏔️',
+    icon: '🍁',
     color: '#5d4037',
     descripcio: 'El tir de camp (WA Field) és una disciplina que combina la natura amb la tècnica: els arquers recorren un circuit de 24 dianes de paper situades en terreny accidentat, amunt i avall de pendents, entre arbres i amb angles de tir variats. Les propostes de tir poden ser desconegudes (distància no informada) i conegudes (distàncies marcades).\n\nLes dianes de camp utilitzen el sistema de puntuació WA: cara de diana circular amb zones de 6-5-4-3-2-1 punts. La distància màxima depèn de la divisió i la classe: el recorbat i compost sènior tira fins a 60 m en marc conegut (50 m en desconegut); els longbow senior fins a 40 m (veure reglamentació per més detalls).',
     normativa: [

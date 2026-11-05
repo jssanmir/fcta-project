@@ -85,6 +85,7 @@
   <link rel="stylesheet" href="css/33-regimdisciplinari.css">
   <link rel="stylesheet" href="css/32-nav-hub.css">
   <link rel="stylesheet" href="css/34-user-stats.css">
+  <link rel="stylesheet" href="css/35-carousel.css">
 </head>
 <body>
 
@@ -125,7 +126,6 @@
 
 <!-- HERO -->
 <section class="hero" id="sHome">
-  <div class="hero-bg-img" aria-hidden="true"></div>
   <div class="hero-content">
     <div>
       <div class="hero-badge">🏹 Des de 1965 · Catalunya</div>
@@ -146,11 +146,11 @@
       <div class="hero-disc-label">Disciplines</div>
       <div class="hero-disc-grid">
         <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;al&quot;]">
-          <span class="hero-disc-icon">🎯</span>
+          <span class="hero-disc-icon">☀️</span>
           <span class="hero-disc-name">Aire Lliure</span>
         </button>
         <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;sala&quot;]">
-          <span class="hero-disc-icon">🏛️</span>
+          <span class="hero-disc-icon">🎯</span>
           <span class="hero-disc-name">Sala</span>
         </button>
         <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;3d&quot;]">
@@ -158,8 +158,8 @@
           <span class="hero-disc-name">3D</span>
         </button>
         <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;camp&quot;]">
-          <span class="hero-disc-icon">🏔️</span>
-          <span class="hero-disc-name">Tir de<br>Camp</span>
+          <span class="hero-disc-icon">🍁</span>
+          <span class="hero-disc-name">Camp</span>
         </button>
         <button class="hero-disc-card" data-onclick="setDisciplina" data-onclick-args="[&quot;run&quot;]">
           <span class="hero-disc-icon">🏃</span>
@@ -179,17 +179,8 @@
 
   <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 
-  <!-- QUICK ACCESS -->
-  <div class="quick">
-    <div class="quick-grid">
-      <button class="qc qc--highlight" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]"><span class="qc-icon">🏹</span><div class="qc-title">Comença ara</div><div class="qc-sub">Clubs i primers passos</div></button>
-      <button class="qc" data-onclick="setS" data-onclick-args="[&quot;circulars&quot;]"><span class="qc-icon">📄</span><div class="qc-title">Circulars</div><div class="qc-sub">Documents oficials de la federació</div></button>
-      <button class="qc" data-onclick="setS" data-onclick-args="[&quot;competitions&quot;]"><span class="qc-icon">🏆</span><div class="qc-title">Competicions</div><div class="qc-sub">Calendari i resultats</div></button>
-      <button class="qc" data-onclick="setS" data-onclick-args="[&quot;competitions&quot;]"><span class="qc-icon">📝</span><div class="qc-title">Inscripcions</div><div class="qc-sub">Competicions i campionats</div></button>
-      <button class="qc" data-onclick="setS" data-onclick-args="[&quot;news&quot;]"><span class="qc-icon">📰</span><div class="qc-title">Notícies</div><div class="qc-sub">Resultats i novetats</div></button>
-      <button class="qc" data-onclick="setS" data-onclick-args="[&quot;formation&quot;]"><span class="qc-icon">🎓</span><div class="qc-title">Formació</div><div class="qc-sub">Cursos i seminaris</div></button>
-    </div>
-  </div>
+  <!-- CARRUSEL (configurable a Administració > Carrusel) -->
+  <div class="home-carousel" id="homeCarousel"></div>
 
   <div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 
@@ -361,7 +352,7 @@
           <div class="sf-g"><label>Tipus de tirada *</label><select id="nt_tipus">
             <option value="">-- Selecciona --</option>
             <option value="al">Aire Lliure</option>
-            <option value="camp">Tir de Camp</option>
+            <option value="camp">Camp</option>
             <option value="3d">3D</option>
             <option value="sala">Sala</option>
             <option value="mixt">Mixt / Altres</option>
@@ -2980,8 +2971,8 @@
     <h1>Calendari<br><em>Esportiu FCTA</em></h1>
     <p>Totes les competicions i campionats. Selecciona la temporada i exporta el calendari al teu dispositiu.</p>
     <div class="cal-season-tabs">
-      <button id="calTab2526" class="cal-stab act" data-onclick="setCalSeason" data-onclick-args="[&quot;2025-26&quot;,&quot;@el&quot;]">Temporada 2025/26</button>
-      <button id="calTab2627" class="cal-stab" data-onclick="setCalSeason" data-onclick-args="[&quot;2026-27&quot;,&quot;@el&quot;]">Temporada 2026/27</button>
+      <button id="calTab2526" class="cal-stab" data-onclick="setCalSeason" data-onclick-args="[&quot;2025-26&quot;,&quot;@el&quot;]">Temporada 2025/26</button>
+      <button id="calTab2627" class="cal-stab act" data-onclick="setCalSeason" data-onclick-args="[&quot;2026-27&quot;,&quot;@el&quot;]">Temporada 2026/27</button>
     </div>
     <div class="cal-hero-actions">
       <a id="calPdfBtn" href="docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf" target="_blank" rel="noopener" class="cal-btn-pdf">&#11015;&#65039; Descarregar PDF calendari</a>
@@ -2997,7 +2988,7 @@
 <div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 <section class="section" style="background:var(--offwhite)">
   <div class="container">
-    <div id="calSeasonLabel" class="sec-label">Temporada 2025/2026</div>
+    <div id="calSeasonLabel" class="sec-label">Temporada 2026/2027</div>
     <h2 class="sec-title">Calendari <em>Esportiu</em></h2>
     <p class="sec-intro">Visualitza totes les competicions federades al calendari. Clica sobre una data marcada per veure els detalls i afegir-la al teu Google Calendar.</p>
     <div class="cal-legend">
@@ -3300,6 +3291,7 @@
       <nav class="adm-nav" id="admNav">
         <button class="adm-tab act" data-onclick="setATab" data-onclick-args="[&quot;circ&quot;,&quot;@el&quot;]">&#128196; Circulars</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;news&quot;,&quot;@el&quot;]">&#128240; Notícies</button>
+        <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;car&quot;,&quot;@el&quot;]">&#127912; Carrusel</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;comp&quot;,&quot;@el&quot;]">&#127942; Competicions</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;form&quot;,&quot;@el&quot;]">&#127891; Formació</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;tirades&quot;,&quot;@el&quot;]">&#127919; Tirades<span class="pend-dot" id="pendDot">0</span></button>
@@ -3357,6 +3349,7 @@
   <script src="js/admin_lligues.js"></script>
   <script src="js/records_page.js"></script>
   <script src="js/calendari.js"></script>
+  <script src="js/carousel.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/init.js"></script>
   <script src="js/hash_routing.js"></script>

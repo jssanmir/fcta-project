@@ -9,7 +9,7 @@ DB.tirades = [
   {id:4,nom:"Tirada de Camp Muntanya \u2013 CA Lleida",club:"CA Lleida",tipus:"camp",data:"2026-07-12",dataStr:"12 de juliol de 2026",hora:"07:30",lloc:"Zona esportiva del Sec\u00e0 de Sant Pere, Lleida",desc:"Tirada de camp amistosa en paratge natural.\n\nFORMAT: 24 dianes WA de camp, marc desconegut\nDIST\u00c0NCIES: 5-60m\nCATEGORIES: Tots els estils benvinguts\nAFORAMENT: 50 arquers\nINSCRIPCI\u00d3: 8\u20ac. Dinar de germanor al camp (12h).",email:"info@caleida.cat",tel:"650 789 012",inscripcio:"Per email o WhatsApp al 650 789 012",img:"img/tirades/tirada_camp.jpg",status:"pend"}
 ];
 
-var tipusLabels = {al:{lbl:"Aire Lliure",cls:"cb-al"},camp:{lbl:"Tir de Camp",cls:"cb-camp"},"3d":{lbl:"3D / Bosc",cls:"cb-3d"},sala:{lbl:"Sala",cls:"cb-sala"},mixt:{lbl:"Mixt",cls:"cb-fed"}};
+var tipusLabels = {al:{lbl:"Aire Lliure",cls:"cb-al"},camp:{lbl:"Camp",cls:"cb-camp"},"3d":{lbl:"3D / Bosc",cls:"cb-3d"},sala:{lbl:"Sala",cls:"cb-sala"},mixt:{lbl:"Mixt",cls:"cb-fed"}};
 
 function setSTab(tab,btn){
   document.querySelectorAll('.stab').forEach(function(b){b.classList.remove('act')});

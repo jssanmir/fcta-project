@@ -4,7 +4,7 @@ var CAL_MONTH_NAMES = ['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','
 var CAL_MONTH_SHORT = ['gen','feb','mar','abr','mai','jun','jul','ago','set','oct','nov','des'];
 var CAL_DAY_NAMES   = ['Dl','Dt','Dc','Dj','Dv','Ds','Dg'];
 
-var calActiveSeason   = '2025-26';
+var calActiveSeason   = '2026-27';
 var calMobileIdx      = 0;  // index into calMonthList
 var calMonthList      = []; // [{year, month}] for current season
 var calDateMap        = {}; // 'YYYY-MM-DD' → [comp, ...]

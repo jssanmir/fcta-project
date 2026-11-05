@@ -861,6 +861,22 @@ app.post('/api/data', verifyToken, function (req, res) {
       if (item.url && !isSafeUrl(item.url)) item.url = '#';
     });
   });
+  // Carrusel de la portada: només foto local (CSP img-src 'self'), títol i link segur
+  if (data.carousel !== undefined) {
+    data.carousel = (Array.isArray(data.carousel) ? data.carousel : []).slice(0, 30).map(function (item) {
+      item = item || {};
+      var img = String(item.img || '');
+      var url = String(item.url || '').trim();
+      var okUrl = isSafeUrl(url) || /^#[A-Za-z0-9_\-\/:.]*$/.test(url);
+      return {
+        id:    Number(item.id) || Date.now(),
+        img:   /^(\/uploads\/|img\/)[^\s"'<>]+$/.test(img) ? img : '',
+        title: sanitizeStr(item.title, 150),
+        url:   okUrl ? url.slice(0, 500) : ''
+      };
+    }).filter(function (item) { return item.img; });
+  }
+
   if (Array.isArray(data.news)) {
     data.news.forEach(function (item) {
       if (item && item.body !== undefined) item.body = sanitizeNewsBody(item.body);
