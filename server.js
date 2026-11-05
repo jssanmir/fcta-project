@@ -877,6 +877,19 @@ app.post('/api/data', verifyToken, function (req, res) {
     }).filter(function (item) { return item.img; });
   }
 
+  // Calendari esportiu: temporada única (nom, dates ISO) i PDF amb URL segura
+  if (data.calendari !== undefined) {
+    var calIn = (data.calendari && typeof data.calendari === 'object' && !Array.isArray(data.calendari)) ? data.calendari : {};
+    var isoRe = /^\d{4}-\d{2}-\d{2}$/;
+    var calPdf = String(calIn.pdf || '').trim();
+    data.calendari = {
+      label: sanitizeStr(calIn.label, 100),
+      from:  isoRe.test(calIn.from) ? calIn.from : '',
+      to:    isoRe.test(calIn.to) ? calIn.to : '',
+      pdf:   isSafeUrl(calPdf) ? calPdf.slice(0, 500) : ''
+    };
+  }
+
   // Textos de disciplines (HTML enriquit saneat, només claus conegudes)
   if (data.discTexts !== undefined) {
     var dtIn = (data.discTexts && typeof data.discTexts === 'object' && !Array.isArray(data.discTexts)) ? data.discTexts : {};

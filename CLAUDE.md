@@ -148,6 +148,7 @@ Totes les dades viuen en l'objecte global `DB`:
 | `DB.carousel`     | Array     | Diapositives del carrusel de la portada (img, title, url) — editable a Admin > Carrusel |
 | `DB.junta`        | Objecte   | Junta Directiva: intro, mandat i members[] (grup, rol, nom, email) — editable a Admin > Junta |
 | `DB.discTexts`    | Objecte   | Text «Sobre la disciplina» editat (HTML) per clau de disciplina — Admin > Disciplines |
+| `DB.calendari`    | Objecte   | Temporada única del Calendari Esportiu: label, from, to (ISO) i pdf — Admin > Calendari |
 
 **Disc keys** per a `DB.documents.disc`: `'al'` · `'3d'` · `'camp'` · `'kyudo'` · `'general'`
 (definits a `FCTA.disc` en `config.js`)
@@ -188,7 +189,7 @@ La funció `setS(key)`:
 
 Accés: botó `⚙ Admin` a la nav. Credencials en `auth.js` (`admSession`).
 
-Pestanyes disponibles: Circulars · Notícies · Carrusel · Junta · Disciplines · Competicions · Formació · Tirades · Rècords · Documents
+Pestanyes disponibles: Circulars · Notícies · Carrusel · Junta · Disciplines · Calendari · Competicions · Formació · Tirades · Rècords · Documents
 
 Cada pestanya té CRUD complet: afegir, editar inline, eliminar.
 La funció `renderATab(tab)` en `admin.js` despacha al renderer corresponent.

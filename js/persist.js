@@ -9,7 +9,7 @@
   var LS_CACHE = 'fcta_db_cache';   // cache de lectura del servidor (read-only)
   var API_BASE = '';
   var FIELDS   = ['circulars', 'competitions', 'news', 'formations',
-                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel', 'junta', 'discTexts'];
+                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel', 'junta', 'discTexts', 'calendari'];
 
   // ── Neteja de dades antigues de localStorage ──────────────
   // Elimina qualsevol dada que pogués haver estat injectada o

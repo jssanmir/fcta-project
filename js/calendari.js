@@ -4,15 +4,21 @@ var CAL_MONTH_NAMES = ['Gener','Febrer','Març','Abril','Maig','Juny','Juliol','
 var CAL_MONTH_SHORT = ['gen','feb','mar','abr','mai','jun','jul','ago','set','oct','nov','des'];
 var CAL_DAY_NAMES   = ['Dl','Dt','Dc','Dj','Dv','Ds','Dg'];
 
-var calActiveSeason   = '2026-27';
 var calMobileIdx      = 0;  // index into calMonthList
 var calMonthList      = []; // [{year, month}] for current season
 var calDateMap        = {}; // 'YYYY-MM-DD' → [comp, ...]
 
-var CAL_SEASONS = {
-  '2025-26': { label: 'Temporada 2025/2026', from: '2025-09-01', to: '2026-08-31', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' },
-  '2026-27': { label: 'Temporada 2026/2027', from: '2026-09-01', to: '2027-08-31', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' }
-};
+// Temporada única i configurable (Administració > Calendari): DB.calendari
+var CAL_DEFAULT = { label: 'Temporada 2026/2027', from: '2026-09-01', to: '2027-08-31', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' };
+function calConfig() {
+  var c = DB.calendari || {};
+  return {
+    label: c.label || CAL_DEFAULT.label,
+    from:  c.from  || CAL_DEFAULT.from,
+    to:    c.to    || CAL_DEFAULT.to,
+    pdf:   (c.pdf === undefined) ? CAL_DEFAULT.pdf : c.pdf
+  };
+}
 
 // Color per tipus (ha de coincidir amb .cal-dot-* i .cal-event-bar.*)
 var CAL_TYPE_COLOR = {
@@ -31,20 +37,17 @@ function calTypeKey(type) {
   return (type === 'trd') ? '3d' : (type || 'al');
 }
 
-// ── Canvi de temporada ──────────────────────────────────────────
-function setCalSeason(season, btn) {
-  calActiveSeason = season;
-  calMobileIdx = 0;
-  var tabs = document.querySelectorAll('.cal-stab');
-  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('act');
-  if (btn) btn.classList.add('act');
-  try { history.replaceState(null, '', '#calendari/' + season); } catch(e) {}
-  var s = CAL_SEASONS[season];
+// ── Capçalera: nom de la temporada, PDF i targeta de la portada ──
+function calApplyConfig(s) {
   var lbl = document.getElementById('calSeasonLabel');
   if (lbl) lbl.textContent = s.label;
+  var hub = document.getElementById('hubCalSub');
+  if (hub) hub.textContent = s.label;
   var pdfBtn = document.getElementById('calPdfBtn');
-  if (pdfBtn) pdfBtn.href = s.pdf;
-  renderCalendari();
+  if (pdfBtn) {
+    if (s.pdf) { pdfBtn.href = s.pdf; pdfBtn.style.display = ''; }
+    else pdfBtn.style.display = 'none';
+  }
 }
 
 // ── Renderització principal ─────────────────────────────────────
@@ -52,7 +55,8 @@ function renderCalendari() {
   var today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  var s = CAL_SEASONS[calActiveSeason];
+  var s = calConfig();
+  calApplyConfig(s);
 
   var comps = DB.competitions.filter(function(c) {
     return c.dateISO && c.dateISO >= s.from && c.dateISO <= s.to;
@@ -268,14 +272,14 @@ function exportCalendariICS() {
   var lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//FCTA//Calendari Esportiu 2025-2026//CA',
+    'PRODID:-//FCTA//Calendari Esportiu//CA',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'X-WR-CALNAME:FCTA – Calendari Esportiu',
     'X-WR-CALDESC:Calendari oficial de la Federació Catalana de Tir amb Arc',
     'X-WR-TIMEZONE:Europe/Madrid'
   ];
-  var s = CAL_SEASONS[calActiveSeason];
+  var s = calConfig();
   var comps = DB.competitions.filter(function(c) {
     return c.dateISO && c.dateISO >= s.from && c.dateISO <= s.to;
   });
@@ -299,7 +303,7 @@ function exportCalendariICS() {
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   a.href = url;
-  a.download = 'calendari-fcta-' + calActiveSeason + '.ics';
+  a.download = 'calendari-fcta-' + s.from.slice(0, 4) + '-' + s.to.slice(0, 4) + '.ics';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

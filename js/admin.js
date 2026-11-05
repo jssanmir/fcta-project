@@ -195,6 +195,7 @@ function renderATab(tab){
   else if(tab==='car')     renderAdmCarousel(b);
   else if(tab==='junta')   renderAdmJunta(b);
   else if(tab==='disc')    renderAdmDisc(b);
+  else if(tab==='cal')     renderAdmCal(b);
   else if(tab==='comp')    renderAdmComp(b);
   else if(tab==='form')    renderAdmForm(b);
   else if(tab==='tirades') renderAdmTirades(b);
@@ -770,6 +771,48 @@ function crudCancelDisc(k){
   var form=document.getElementById('dedit-'+k);
   if(item) item.classList.remove('editing');
   if(form) form.remove();
+}
+
+// ── CALENDARI ESPORTIU (temporada i PDF configurables) ─────
+// DB.calendari = { label, from, to, pdf }: nom de la temporada, data d'inici i
+// final (determinen els mesos i les competicions que es mostren) i PDF oficial.
+function renderAdmCal(b){
+  var c=calConfig();
+  b.innerHTML=
+    '<div class="crud-form">'
+    +'<div class="crud-form-title">&#128197; Calendari esportiu</div>'
+    +'<p style="font-size:.85rem;color:var(--gray);margin:0 0 .75rem">El calendari de la web mostra una sola temporada. Les competicions que hi surten són les que cauen entre la data d’inici i la de final.</p>'
+    +mkField('Nom de la temporada *','acal_label','text',c.label,'Ex: Temporada 2026/2027')
+    +'<div class="af-row">'
+    +mkField('Data d’inici *','acal_from','date',c.from,'')
+    +mkField('Data de final *','acal_to','date',c.to,'')
+    +'</div>'
+    +mkUploadField('PDF del calendari','acal_pdf',c.pdf||'','pdf')
+    +'<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveCal',[])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#b45309"'+dataAttr('onclick','crudRemoveCalPdf',[])+'>Treure el PDF</button>'
+    +'</div>'
+    +'</div>';
+}
+function crudSaveCal(){
+  var l=fv('acal_label'),f=fv('acal_from'),t=fv('acal_to'),p=fv('acal_pdf');
+  if(!l||!f||!t){toast('Omple el nom i les dates de la temporada','&#9888;&#65039;');return;}
+  if(f>=t){toast('La data de final ha de ser posterior a la d’inici','&#9888;&#65039;');return;}
+  DB.calendari={label:l,from:f,to:t,pdf:p};
+  dbSave();
+  admLog('CAL_SAVE', l);
+  renderCalendari();
+  renderAdmCal(document.getElementById('admBody'));
+  toast('Calendari desat!','&#9989;');
+}
+function crudRemoveCalPdf(){
+  var c=calConfig();
+  DB.calendari={label:c.label,from:c.from,to:c.to,pdf:''};
+  dbSave();
+  admLog('CAL_PDF_REMOVE','');
+  renderCalendari();
+  renderAdmCal(document.getElementById('admBody'));
+  toast('PDF tret del calendari.','&#128465;');
 }
 
 // ── COMPETICIONS CRUD ──────────────────────────────────────
@@ -1918,9 +1961,9 @@ function genPublicarCircular(){
 }
 
 // ── BACKUP / RESTORE ───────────────────────────────────────
-var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds','carousel','junta','discTexts'];
+var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds','carousel','junta','discTexts','calendari'];
 var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
-  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines'};
+  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari'};
 var _BK_PREFIX = 'fcta_ckpt_';
 var _BK_MAX    = 3;
 

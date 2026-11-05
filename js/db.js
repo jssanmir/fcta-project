@@ -592,6 +592,9 @@ carousel: [
   {id:3, img:'img/news/noticia12.jpg', title:'El CAR Sant Cugat acull la 5ª jornada del Programa Autonòmic de Tecnificació', url:'#news:12'}
 ],
 
+// --- CALENDARI ESPORTIU: temporada única i PDF (editable a Administració > Calendari) ---
+calendari: { label: 'Temporada 2026/2027', from: '2026-09-01', to: '2027-08-31', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' },
+
 // --- TEXTS DE LES DISCIPLINES editats a Administració > Disciplines (text enriquit) ---
 // { al: { descripcio: '<p>…</p>' }, … } — sense entrada es mostra el text original de DISC_DATA
 discTexts: {},
