@@ -102,7 +102,7 @@
       <a href="#home" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">🏠 Inici</a>
       <a href="#" data-onclick="scrollToHub" data-onclick-args="[&quot;hub-federacio&quot;]">🏛️ La Federació</a>
       <a href="#inici" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]">🏹 Clubs</a>
-      <a href="#" data-onclick="scrollToHub" data-onclick-args="[&quot;hub-espais&quot;]">🎯 Espais</a>
+      <a href="#" data-onclick="scrollToHub" data-onclick-args="[&quot;hub-espais&quot;]">🎯 Espai especial</a>
       <button class="nav-admin" data-onclick="openAdm" title="Administració">⚙</button>
     </div>
     <div class="nav-social">
@@ -191,18 +191,20 @@
     <div class="container">
       <div class="home-hub-title">Tot el portal <em>FCTA</em></div>
 
+      <!-- A · COMPETICIÓ I ACTIVITATS -->
       <div class="home-hub-group" id="hub-activitat">
-        <div class="home-hub-group-label">Competició i activitat</div>
+        <div class="home-hub-group-label">Competició i activitats</div>
         <div class="home-hub-grid">
+          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]"><span class="hub-card-icon">🏹</span><span class="hub-card-text"><span class="hub-card-name">Comença</span><span class="hub-card-sub">Clubs i primers passos</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;competitions&quot;]"><span class="hub-card-icon">🏆</span><span class="hub-card-text"><span class="hub-card-name">Competicions</span><span class="hub-card-sub">Calendari i inscripcions</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;calendari&quot;]"><span class="hub-card-icon">📅</span><span class="hub-card-text"><span class="hub-card-name">Calendari</span><span class="hub-card-sub" id="hubCalSub">Temporada 2026/27</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;circulars&quot;]"><span class="hub-card-icon">📄</span><span class="hub-card-text"><span class="hub-card-name">Circulars</span><span class="hub-card-sub">Documents oficials</span></span></button>
-          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;social&quot;]"><span class="hub-card-icon">🎯</span><span class="hub-card-text"><span class="hub-card-name">Tirades Socials</span><span class="hub-card-sub">Activitat al club</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;news&quot;]"><span class="hub-card-icon">📰</span><span class="hub-card-text"><span class="hub-card-name">Notícies</span><span class="hub-card-sub">Resultats i novetats</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;formation&quot;]"><span class="hub-card-icon">🎓</span><span class="hub-card-text"><span class="hub-card-name">Formació</span><span class="hub-card-sub">Cursos i seminaris</span></span></button>
         </div>
       </div>
 
+      <!-- B · LA FEDERACIÓ -->
       <div class="home-hub-group" id="hub-federacio">
         <div class="home-hub-group-label">La Federació</div>
         <div class="home-hub-grid">
@@ -212,17 +214,16 @@
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;assegurances&quot;]"><span class="hub-card-icon">🛡️</span><span class="hub-card-text"><span class="hub-card-name">Assegurances</span><span class="hub-card-sub">Cobertura federativa</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;transparencia&quot;]"><span class="hub-card-icon">📊</span><span class="hub-card-text"><span class="hub-card-name">Transparència</span><span class="hub-card-sub">Govern i comptes</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;juntadirectiva&quot;]"><span class="hub-card-icon">👥</span><span class="hub-card-text"><span class="hub-card-name">Junta Directiva</span><span class="hub-card-sub">Qui som</span></span></button>
-          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;pat&quot;]"><span class="hub-card-icon">🥇</span><span class="hub-card-text"><span class="hub-card-name">PAT</span><span class="hub-card-sub">Programa de Tecnificació</span></span></button>
-          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;regimdisciplinari&quot;]"><span class="hub-card-icon">⚖️</span><span class="hub-card-text"><span class="hub-card-name">R&egrave;gim Disciplinari</span><span class="hub-card-sub">Infraccions i sancions</span></span></button>
         </div>
       </div>
 
-      <div class="home-hub-group" id="hub-espais">
-        <div class="home-hub-group-label">Espais específics</div>
+      <!-- C · ESPAI ESPECIAL -->
+      <div class="home-hub-group home-hub-group--special" id="hub-espais">
+        <div class="home-hub-group-label">Espai especial</div>
         <div class="home-hub-grid">
-          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;arcadaptat&quot;]"><span class="hub-card-icon">♿</span><span class="hub-card-text"><span class="hub-card-name">Arc Adaptat</span><span class="hub-card-sub">Esport inclusiu</span></span></button>
-          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;comitejutges&quot;]"><span class="hub-card-icon">🏅</span><span class="hub-card-text"><span class="hub-card-name">Comitè de Jutges</span><span class="hub-card-sub">Formació i recursos</span></span></button>
-          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]"><span class="hub-card-icon">🏹</span><span class="hub-card-text"><span class="hub-card-name">Comença</span><span class="hub-card-sub">Clubs i primers passos</span></span></button>
+          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;pat&quot;]"><span class="hub-card-icon">🥇</span><span class="hub-card-text"><span class="hub-card-name">PAT</span><span class="hub-card-sub">Programa de Tecnificació</span></span></button>
+          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;social&quot;]"><span class="hub-card-icon">🎯</span><span class="hub-card-text"><span class="hub-card-name">Tirades socials</span><span class="hub-card-sub">Activitat al club</span></span></button>
+          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;comitejutges&quot;]"><span class="hub-card-icon">🏅</span><span class="hub-card-text"><span class="hub-card-name">Jutges</span><span class="hub-card-sub">Formació i recursos</span></span></button>
         </div>
       </div>
     </div>
@@ -318,7 +319,7 @@
 <div id="sSocial" style="display:none">
 <section class="social-section section">
   <div class="container">
-    <div class="sec-label" style="color:var(--gold)">Espai Clubs</div>
+    <div class="sec-label" style="color:var(--gold)">Fora del calendari oficial</div>
     <h2 class="sec-title" style="color:white">Tirades <em style="color:var(--gold)">Socials</em></h2>
     <p class="sec-intro" style="color:rgba(255,255,255,.65)">Tirades amistoses organitzades pels clubs fora del calendari oficial de la FCTA. Qualsevol club federat pot publicar la seva tirada. Les tirades han de ser validades per un administrador abans de ser visibles.</p>
 
