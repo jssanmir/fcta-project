@@ -1961,9 +1961,12 @@ function genPublicarCircular(){
 }
 
 // ── BACKUP / RESTORE ───────────────────────────────────────
-var _BK_FIELDS = ['circulars','competitions','news','formations','tirades','documents','recordsSolicituds','carousel','junta','discTexts','calendari'];
+// Les àrees del backup són exactament les que es desen (persist.js: DB_FIELDS), perquè
+// una àrea configurable nova no es quedi mai fora dels backups.
+var _BK_FIELDS = (window.DB_FIELDS || []).slice();
 var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
-  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Rècords',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari'};
+  formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Sol·licituds de rècord',
+  records:'Rècords',lligues:'Lligues',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari'};
 var _BK_PREFIX = 'fcta_ckpt_';
 var _BK_MAX    = 3;
 
@@ -1976,13 +1979,7 @@ function _bkSnapshot() {
 function _bkApply(snap) {
   _BK_FIELDS.forEach(function(k){ if(snap[k]!==undefined) DB[k]=snap[k]; });
   dbSave();
-  if(typeof renderCirc==='function')    renderCirc('all');
-  if(typeof renderComp==='function')    renderComp('all');
-  if(typeof renderNews==='function')    renderNews();
-  if(typeof renderForm==='function')    renderForm();
-  if(typeof renderTirades==='function') renderTirades('all');
-  if(typeof renderCarousel==='function') renderCarousel();
-  if(typeof updatePendDot==='function') updatePendDot();
+  if(typeof dbRerender==='function') dbRerender();
 }
 
 function _bkFmtDate(ts) {
@@ -1992,10 +1989,19 @@ function _bkFmtDate(ts) {
     +' '+pad(d.getHours())+':'+pad(d.getMinutes());
 }
 
+// Elements d'una àrea: llistes → longitud; Junta → membres; objectes (textos,
+// calendari) → nombre de claus amb contingut.
+function _bkCount(k, v) {
+  if (Array.isArray(v)) return v.length;
+  if (!v || typeof v !== 'object') return null;
+  if (k === 'junta') return (v.members || []).length;
+  return Object.keys(v).filter(function(x){ return v[x]; }).length;
+}
+
 function _bkSummary(snap) {
   return _BK_FIELDS.map(function(k){
-    var arr = snap[k]; if(!Array.isArray(arr)) return null;
-    return '<span style="margin-right:.75rem"><strong>'+arr.length+'</strong> '+_BK_LABELS[k]+'</span>';
+    var n = _bkCount(k, snap[k]); if(n === null) return null;
+    return '<span style="margin-right:.75rem"><strong>'+n+'</strong> '+_BK_LABELS[k]+'</span>';
   }).filter(Boolean).join('');
 }
 

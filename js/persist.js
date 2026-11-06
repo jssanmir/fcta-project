@@ -11,6 +11,9 @@
   var FIELDS   = ['circulars', 'competitions', 'news', 'formations',
                   'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel', 'junta', 'discTexts', 'calendari'];
 
+  // Llista única d'àrees configurables: la fan servir el desat, els backups i les restauracions.
+  window.DB_FIELDS = FIELDS;
+
   // ── Neteja de dades antigues de localStorage ──────────────
   // Elimina qualsevol dada que pogués haver estat injectada o
   // manipulada manualment des del navegador.
@@ -116,6 +119,8 @@
     if (typeof renderRecordsTable === 'function') renderRecordsTable();
     if (typeof renderDisciplina === 'function')   renderDisciplina(); // refresca la pestanya de disciplina activa (info/docs/records/resultats)
   }
+
+  window.dbRerender = rerender;
 
   // ── Carrega les dades en iniciar ──────────────────────────
   // Ordre de prioritat:
