@@ -48,8 +48,6 @@
 .lic-contact-card h4{font-family:'Montserrat',sans-serif;font-size:.84rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.3rem}
 .lic-contact-card p{font-size:.8rem;color:var(--gray);line-height:1.5}
 
-.lic-back-btn{display:inline-flex;align-items:center;gap:.5rem;background:none;border:none;color:rgba(255,255,255,.7);font-family:'Montserrat',sans-serif;font-size:.828rem;font-weight:600;cursor:pointer;padding:0;transition:color .2s;margin-bottom:1.5rem}
-.lic-back-btn:hover{color:var(--gold)}
 
 /* ── Taula de tarifes ─────────────────────────────────────── */
 .lic-tarifes{background:white;border-radius:10px;padding:1.75rem;margin-bottom:2.5rem;box-shadow:0 2px 8px rgba(27,58,107,.08)}

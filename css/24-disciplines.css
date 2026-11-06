@@ -8,11 +8,9 @@
 .disc-hero-icon .hub-ico{width:38px;height:38px}
 .disc-hero-text h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.68rem,4.2vw,2.688rem);font-weight:900;color:white;text-transform:uppercase;line-height:1;margin-bottom:.3rem}
 .disc-hero-sub{font-size:.9rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px}
-.disc-hero-back{margin-left:auto;font-family:'Montserrat',sans-serif;font-size:.689rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:rgba(255,255,255,.45);background:none;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.45rem .9rem;cursor:pointer;transition:all .2s}
-.disc-hero-back:hover{color:white;border-color:rgba(255,255,255,.4)}
 
 /* Tabs */
-.disc-tabs-bar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:100}
+.disc-tabs-bar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:calc(67px + var(--back-h) + 1px);z-index:100}
 .disc-tabs-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;gap:0;overflow-x:auto}
 .disc-tab{background:none;border:none;border-bottom:3px solid transparent;font-family:'Montserrat',sans-serif;font-size:.756rem;font-weight:800;text-transform:uppercase;letter-spacing:.3px;color:rgba(255,255,255,.45);padding:.85rem 1.25rem;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-1px}
 .disc-tab:hover{color:rgba(255,255,255,.8)}
@@ -96,8 +94,7 @@
 /* Mòbil */
 @media(max-width:600px){
   .disc-hero-inner{flex-wrap:wrap}
-  .disc-hero-back{width:100%;order:-1}
-  .disc-info-grid{grid-template-columns:1fr}
+    .disc-info-grid{grid-template-columns:1fr}
   .disc-card--wide{grid-column:1}
   .disc-camp-grid{grid-template-columns:1fr}
   .disc-lliga-head{flex-direction:column;align-items:flex-start}

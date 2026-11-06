@@ -338,6 +338,7 @@ function restoreUploadsDir(files) {
 //   add        → afegeix elements d'una col·lecció si el seu id encara no hi és
 //   remove     → elimina ids (opcionalment només si la url no és un PDF local)
 //   setFields  → canvia camps només si el valor actual coincideix amb l'antic
+//   setIfMissing → afegeix camps nous a un element només si encara no existeixen
 // Res no se sobreescriu: si el valor o l'id ja difereix, s'omet i queda al log.
 // El backup d'arrencada (autoBackup, just a dalt) ja s'ha fet abans d'aplicar-ne cap.
 (function applyContentPatches() {
@@ -375,6 +376,13 @@ function restoreUploadsDir(files) {
           Object.keys(o.fields).forEach(function (k) {
             if (JSON.stringify(item[k]) === JSON.stringify(o.fields[k][0])) item[k] = o.fields[k][1];
             else log.push(o.collection + ' id ' + o.id + '.' + k + ': ja diferent, s\'omet');
+          });
+        } else if (o.op === 'setIfMissing') {
+          var itm = arr.filter(function (x) { return x.id === o.id; })[0];
+          if (!itm) { log.push(o.collection + ' id ' + o.id + ': no existeix'); return; }
+          Object.keys(o.fields).forEach(function (k) {
+            if (itm[k] === undefined) itm[k] = o.fields[k];
+            else log.push(o.collection + ' id ' + o.id + '.' + k + ': ja definit, s\'omet');
           });
         }
       });

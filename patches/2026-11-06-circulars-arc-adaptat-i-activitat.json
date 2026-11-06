@@ -1,0 +1,125 @@
+{
+ "name": "2026-11-06-circulars-arc-adaptat-i-activitat",
+ "description": "Circulars: tipus Arc Adaptat i data de l'activitat (Formació/Jutges) separada de la de publicació",
+ "ops": [
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 46,
+   "fields": {
+    "type": [
+     "al",
+     "aa"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 49,
+   "fields": {
+    "type": [
+     "al",
+     "aa"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 69,
+   "fields": {
+    "type": [
+     "al",
+     "aa"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 82,
+   "fields": {
+    "type": [
+     "al",
+     "aa"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "circulars",
+   "id": 89,
+   "fields": {
+    "type": [
+     "al",
+     "aa"
+    ]
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 18,
+   "fields": {
+    "event": "28 de febrer de 2026"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 19,
+   "fields": {
+    "event": "Inici: 27 de febrer de 2026"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 20,
+   "fields": {
+    "event": "26 de febrer de 2025"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 21,
+   "fields": {
+    "event": "7 de novembre de 2024"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 22,
+   "fields": {
+    "event": "18 de juliol de 2024"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 23,
+   "fields": {
+    "event": "21 de març de 2024"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 78,
+   "fields": {
+    "event": "Preinscripció fins al 30 d'abril de 2026"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "circulars",
+   "id": 86,
+   "fields": {
+    "event": "Del 31 d'agost a l'11 de setembre de 2026 (fase en línia)"
+   }
+  }
+ ]
+}

@@ -2,7 +2,7 @@
 // ──────────────────────────────────────────────────────────
 
 // ── NEWS VIEWER ───────────────────────────────────────────────
-var _newsPrevHash = null;
+var _newsPushed = false;   // l'entrada d'historial #news/ID l'hem creat nosaltres (tancar = enrere)
 // Article d'una notícia: el text editat des de l'admin (DB.news[].body, HTML ja
 // saneat) té prioritat sobre el text original de NEWS_CONTENT (db.js).
 function newsArticle(id){
@@ -27,7 +27,7 @@ function newsBodyHtml(n){
   return base&&base.body?base.body:'';
 }
 
-function openNews(id){
+function openNews(id, fromHistory){
   var art=newsArticle(id);
   if(!art)return;
   art.body=rtSanitize(art.body);
@@ -41,17 +41,21 @@ function openNews(id){
   document.body.style.overflow='hidden';
 
   var target = '#news/' + id;
-  if (window.location.hash !== target) {
-    _newsPrevHash = window.location.hash || '#news';
-    try { history.replaceState(null, '', target); } catch(e) {}
+  if (!fromHistory && window.location.hash !== target) {
+    navPushHash(target);
+    _newsPushed = true;
   }
 }
-function closeNews(){
-  document.getElementById('newsOverlay').style.display='none';
-  document.body.style.overflow='';
-  if (_newsPrevHash !== null) {
-    try { history.replaceState(null, '', _newsPrevHash); } catch(e) {}
-    _newsPrevHash = null;
+function closeNews(silent){
+  var ov = document.getElementById('newsOverlay');
+  var wasOpen = ov.style.display === 'flex';
+  if (silent && !wasOpen) return;
+  ov.style.display = 'none';
+  document.body.style.overflow = '';
+  if (silent) { _newsPushed = false; return; }
+  if (window.location.hash.indexOf('#news/') === 0) {
+    if (_newsPushed) { _newsPushed = false; history.back(); }
+    else navReplaceHash('#news');
   }
 }
 function closeNewsOut(e){if(e.target===document.getElementById('newsOverlay'))closeNews();}

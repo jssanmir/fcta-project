@@ -121,6 +121,15 @@
     </div>
   </div>
 </nav>
+<div class="back-bar" id="backBar">
+  <div class="back-bar-inner">
+    <button type="button" class="back-btn" data-onclick="navBack" aria-label="Tornar enrere">
+      <svg class="back-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      <span id="backLabel">Tornar a l'inici</span>
+    </button>
+    <span class="back-crumb" id="backCrumb"></span>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="sHome">
@@ -270,10 +279,11 @@
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;sala&quot;,&quot;@el&quot;]">Sala</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;camp&quot;,&quot;@el&quot;]">Camp</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;3d&quot;,&quot;@el&quot;]">3D</button>
-      <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;tec&quot;,&quot;@el&quot;]">Tecnificació</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;jut&quot;,&quot;@el&quot;]">Jutges</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;form&quot;,&quot;@el&quot;]">Formació</button>
       <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;kyudo&quot;,&quot;@el&quot;]">Kyudo</button>
+      <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;tec&quot;,&quot;@el&quot;]">Tecnificació</button>
+      <button class="fb" data-onclick="filtCirc" data-onclick-args="[&quot;aa&quot;,&quot;@el&quot;]">Arc Adaptat</button>
     </div>
     <div style="font-size:.76rem;color:var(--gray);margin-bottom:.85rem;display:flex;gap:1.25rem;flex-wrap:wrap;align-items:center">
       <span style="display:flex;align-items:center;gap:.4rem"><span style="background:var(--navy);color:white;border-radius:3px;padding:.15rem .45rem;font-size:.8rem">&#128065;</span> Visor integrat</span>
@@ -287,9 +297,6 @@
 
 <!-- COMPETITIONS -->
 <div id="sCompetitions" style="display:none">
-<div style="background:var(--navy-dark);padding:var(--sp-3) var(--sp-6)">
-  <button data-onclick="setS" data-onclick-args="[&quot;home&quot;]" style="display:inline-flex;align-items:center;gap:var(--sp-2);background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.798rem;text-transform:uppercase;letter-spacing:.036em;padding:var(--sp-2) var(--sp-5);border-radius:var(--r-md);cursor:pointer;transition:all var(--dur-base) var(--tr)" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">&#8592; Tornar a l'inici</button>
-</div>
 <section class="section" style="background:var(--offwhite)">
   <div class="container">
     <div class="sec-label">Calendari Esportiu</div>
@@ -427,7 +434,6 @@
 
 <div class="lic-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#127939; Llicències 2026&#8211;2027</div>
     <h1>Federa't amb<br>la FCTA</h1>
     <p>Les llicències federatives permeten practicar el tir amb arc dins del marc legal i amb la cobertura necessària. La gestió es fa exclusivament a través dels clubs inscrits a la Federació.</p>
@@ -660,7 +666,6 @@
 
 <div class="doc-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="doc-badge">&#128196; Documents i Actes Oficials</div>
     <h1>Documentació<br>FCTA</h1>
     <p>Accés a tota la documentació oficial de la Federació Catalana de Tir amb Arc: actes, eleccions, assemblees, professionals de l'esport i formació.</p>
@@ -928,7 +933,6 @@
 
 <div class="pat-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#127919; Alt Rendiment Juvenil &middot; Arc Recorbat</div>
     <h1>Programa Autonòmic<br><em>de Tecnificació (PAT)</em></h1>
     <p>El PAT de la FCTA és l'esllaó entre la formació de base als clubs i els programes de tecnificació d'àmbit nacional. Adreçat a arquers d'<strong>arc recorbat</strong> de les categories <strong>Infantil, Cadet i Júnior</strong> amb projecció competitiva.</p>
@@ -1200,7 +1204,6 @@
 
 <div class="cj-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#9878;&#65039; Jutges de Tir amb Arc</div>
     <h1>Comitè Català<br><em>de Jutges</em></h1>
     <p>El Comitè Català de Jutges és el grup de treball autònom de la FCTA encarregat de garantir l'aplicació homogènia del reglament en totes les competicions federades de Catalunya.</p>
@@ -1588,7 +1591,6 @@
 
 <div class="aa-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#9855;&#65039; Esport Inclusiu &amp; Paralímpic</div>
     <h1>Arc Adaptat<br><em>FCTA</em></h1>
     <p>El Comitè Català d'Arc Adaptat promou la pràctica del tir amb arc entre persones amb discapacitat física a Catalunya, des de la iniciació fins a l'alta competició paralímpica.</p>
@@ -1779,7 +1781,6 @@
 
 <div class="jd-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#127963;&#65039; Òrgan de Govern</div>
     <h1>Junta Directiva<br><em>FCTA</em></h1>
     <div id="jdIntro"><p>Composició de la Junta Directiva de la Federació Catalana de Tir amb Arc, elegida democràticament pels clubs federats el desembre de 2024 per al mandat <strong>2024–2028</strong>.</p></div>
@@ -1877,7 +1878,6 @@
 
 <div class="lic-hero" style="background:linear-gradient(135deg,#1a3a5c 0%,#0f2240 100%)">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#128737;&#65039; Assegurança Esportiva Federativa</div>
     <h1>Assegurances<br><em>FCTA</em></h1>
     <p>Tots els esportistes federats a la FCTA disposen d'una assegurança d'accidents esportius obligatòria inclosa en la llicència federativa, gestionada per <strong>MGS Seguros</strong>.</p>
@@ -2061,7 +2061,6 @@
 
 <div class="doc-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="doc-badge">&#128269; Portal de Transparència</div>
     <h1>Transparència<br><em>FCTA</em></h1>
     <p>Accés a la documentació oficial de la Federació Catalana de Tir amb Arc d'acord amb les obligacions de transparència de les federacions esportives de Catalunya establertes pel Consell Català de l'Esport.</p>
@@ -2330,7 +2329,6 @@
         <h1 id="discNom">Disciplina</h1>
         <div class="disc-hero-sub" id="discSub">Comitè Català</div>
       </div>
-      <button class="disc-hero-back" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">← Enrere</button>
     </div>
   </div>
 
@@ -2455,7 +2453,6 @@
 <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 <div class="lic-hero" style="background:linear-gradient(135deg,var(--navy-dark) 0%,#1a3a7a 60%,#2a5298 100%)">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#9878;&#65039; Normativa Interna</div>
     <h1>R&egrave;gim<br><em>Disciplinari</em></h1>
     <p>Infraccions, sancions i procediment disciplinari de la Federaci&oacute; Catalana de Tir amb Arc.</p>
@@ -2574,7 +2571,6 @@
 <div id="sReglaments" style="display:none">
 <div class="lic-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#128218; Normativa Oficial</div>
     <h1>Reglaments<br><span style="font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:var(--gold)">de la FCTA</span></h1>
     <p>Tots els reglaments, estatuts i normatives que regeixen la pràctica del tir amb arc a Catalunya, organitzats per comitès i disciplines.</p>
@@ -2852,7 +2848,6 @@
 <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 <div class="records-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="records-hero-badge">&#127942; R&egrave;cords Oficials</div>
     <h1>R&egrave;cords<br><em>de Catalunya</em></h1>
     <p>R&egrave;cords oficials homologats per la FCTA. Sala &middot; Aire Lliure &middot; Arc Adaptat.</p>
@@ -2870,7 +2865,6 @@
 <div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 <div class="cal-hero">
   <div class="container">
-    <button class="lic-back-btn" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">&#8592; Tornar a l'inici</button>
     <div class="lic-hero-badge">&#128197; Calendari Esportiu FCTA</div>
     <h1>Calendari<br><em>Esportiu FCTA</em></h1>
     <p>Totes les competicions i campionats de la temporada. Exporta el calendari al teu dispositiu.</p>

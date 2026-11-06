@@ -16,3 +16,15 @@ nav{position:sticky;top:0;z-index:1000;background:var(--navy-dark);border-bottom
 .nav-soc-link:hover{color:var(--gold);background:rgba(255,255,255,.25)}
 @media(max-width:1000px){.nav-inner{gap:.75rem}.nav-links a,.nav-links button{padding:.45rem .5rem}.nav-social{margin-left:.25rem}}
 @media(max-width:780px){.nav-links{display:none}}
+
+/* ── Botó «Tornar» únic (sota el menú, a totes les seccions menys l'inici) ── */
+:root{--back-h:50px}
+.back-bar{display:none;position:sticky;top:67px;z-index:900;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.back-bar.show{display:block}
+.back-bar-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;height:var(--back-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:.42rem 1.1rem .42rem .7rem;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem;line-height:1.2;cursor:pointer;transition:all var(--dur-base) var(--tr);min-height:36px}
+.back-btn:hover,.back-btn:focus-visible{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);outline:none}
+.back-ico{width:18px;height:18px;fill:none;stroke:var(--gold);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:stroke var(--dur-base) var(--tr)}
+.back-btn:hover .back-ico,.back-btn:focus-visible .back-ico{stroke:var(--navy-dark)}
+.back-crumb{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media(max-width:700px){.back-bar-inner{padding:0 1rem}.back-btn{font-size:.78rem;padding:.38rem .9rem .38rem .6rem}.back-crumb{font-size:.66rem;max-width:42vw}}

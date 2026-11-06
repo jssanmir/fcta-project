@@ -63,6 +63,7 @@ var FCTA = {
     form:    'Formació',
     jut:     'Jutges',
     tec:     'Tecnificació',
+    aa:      'Arc Adaptat',
     kyudo:   'Kyudo',
     general: 'General',
   },
@@ -76,6 +77,7 @@ var FCTA = {
     form:    'cb-form',
     jut:     'cb-jut',
     tec:     'cb-tec',
+    aa:      'cb-aa',
     kyudo:   'cb-kyudo',
     general: 'cb-general',
     trd:     'cb-3d',  // alias used in competitions

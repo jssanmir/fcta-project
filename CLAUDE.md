@@ -71,7 +71,6 @@ img/                – Imatges
   <div class="senyera-h thick">...</div>
   <div class="NOM-hero">
     <div class="container">
-      <button class="lic-back-btn" onclick="setS('home')">← Tornar a l'inici</button>
       <div class="lic-hero-badge">🏷️ Subtítol</div>
       <h1>Títol<br><em>FCTA</em></h1>
       <p>Descripció...</p>
@@ -87,6 +86,8 @@ img/                – Imatges
 ```
 
 **Atenció:** La senyera `thick` HA D'ESTAR dins del `<div id="sXxx">`, no fora.
+
+**Botó «Tornar»:** és únic i global (`#backBar` a `index.html`, lògica a `nav.js`); no cal afegir-ne cap a cada secció. `setS()` crea entrades reals a l'historial (`pushState`) i el botó fa `history.back()` quan hi ha navegació prèvia dins del portal.
 
 ---
 

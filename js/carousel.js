@@ -129,6 +129,6 @@ function carouselGo(url) {
     if (newsArticle(m[1])) openNews(parseInt(m[1], 10)); else setS('news');
     return;
   }
-  if (url.charAt(0) === '#') { window.location.hash = url; return; }
+  if (url.charAt(0) === '#') { if (typeof navGoHash === 'function') navGoHash(url); else window.location.hash = url; return; }
   window.open(url, '_blank', 'noopener');
 }

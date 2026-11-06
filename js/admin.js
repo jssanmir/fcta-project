@@ -213,7 +213,7 @@ function renderAdmCirculars(b){
   var tipos=[
     {val:'fed',lbl:'Federaci\u00f3'},{val:'al',lbl:'Aire Lliure'},{val:'sala',lbl:'Sala'},{val:'tec',lbl:'Tecnificaci\u00f3'},
     {val:'camp',lbl:'Camp'},{val:'3d',lbl:'3D / Bosc'},
-    {val:'jut',lbl:'Jutges'},{val:'form',lbl:'Formaci\u00f3'},{val:'kyudo',lbl:'Kyudo'}
+    {val:'jut',lbl:'Jutges'},{val:'form',lbl:'Formaci\u00f3'},{val:'kyudo',lbl:'Kyudo'},{val:'aa',lbl:'Arc Adaptat'}
   ];
   b.innerHTML=
     '<div class="crud-form">'
@@ -224,11 +224,12 @@ function renderAdmCirculars(b){
     +mkField('Classe *','ac_c','select','fed','',tipos)
     +'</div>'
     +'<div class="af-row">'
-    +mkField('Data','ac_dt','date','','')
+    +mkField('Data de la circular','ac_dt','date','','')
     +mkUploadField('PDF de la circular','ac_u','','pdf')
     +'</div>'
     +mkField('Data de publicaci\u00f3 (opcional)','ac_pub','date','','')
     +'<div style="font-size:.78rem;color:var(--gray);margin:-.6rem 0 .75rem">Deixa-ho buit per publicar-la de seguida. Si hi poses una data futura, la circular es mant\u00e9 oculta al p\u00fablic fins que arribi.</div>'
+    +mkField('Data de l\u2019activitat (opcional)','ac_ev','text','','Ex: 28 de febrer de 2026 (nom\u00e9s si la circular convoca un curs, taller o esdeveniment)')
     +mkField('Descripci\u00f3 breu','ac_d','textarea','','Resum del contingut de la circular')
     +'<button class="a-sub success"'+dataAttr('onclick','crudAddCirc',[])+'>&#10010; Publicar Circular</button>'
     +'</div>'
@@ -260,7 +261,7 @@ function crudAddCirc(){
   var MONS=['GEN','FEB','MAR','ABR','MAI','JUN','JUL','AGO','SET','OCT','NOV','DES'];
   var date=dt?new Date(dt):new Date();
   DB.circulars.unshift({id:Date.now(),type:c||'fed',num:n,title:t,desc:d,
-    day:date.getDate(),mon:MONS[date.getMonth()],year:date.getFullYear(),url:u||'#',pubDate:pub||''});
+    day:date.getDate(),mon:MONS[date.getMonth()],year:date.getFullYear(),url:u||'#',pubDate:pub||'',event:fv('ac_ev')});
   dbSave();
   admLog('CIRC_ADD', n+' – '+t);
   renderCirc('all');
@@ -279,7 +280,7 @@ function crudEditCirc(id){
   var tipos=[
     {val:'fed',lbl:'Federaci\u00f3'},{val:'al',lbl:'Aire Lliure'},{val:'sala',lbl:'Sala'},{val:'tec',lbl:'Tecnificaci\u00f3'},
     {val:'camp',lbl:'Camp'},{val:'3d',lbl:'3D / Bosc'},
-    {val:'jut',lbl:'Jutges'},{val:'form',lbl:'Formaci\u00f3'},{val:'kyudo',lbl:'Kyudo'}
+    {val:'jut',lbl:'Jutges'},{val:'form',lbl:'Formaci\u00f3'},{val:'kyudo',lbl:'Kyudo'},{val:'aa',lbl:'Arc Adaptat'}
   ];
   var editDiv=document.createElement('div');
   editDiv.className='crud-edit-form'; editDiv.id='cedit-'+id;
@@ -297,6 +298,7 @@ function crudEditCirc(id){
     +mkUploadField('PDF de la circular','ec_u_'+id,c.url&&c.url!=='#'?c.url:'','pdf')
     +mkField('Data de publicaci\u00f3 (opcional)','ec_pub_'+id,'date',c.pubDate||'','')
     +'<div style="font-size:.78rem;color:var(--gray);margin:-.6rem 0 .75rem">Deixa-ho buit per publicar-la de seguida.</div>'
+    +mkField('Data de l\u2019activitat (opcional)','ec_ev_'+id,'text',c.event||'','Ex: 28 de febrer de 2026 (nom\u00e9s si la circular convoca un curs, taller o esdeveniment)')
     +mkField('Descripci\u00f3','ec_d_'+id,'textarea',c.desc,'')
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
     +'<button class="a-sub success"'+dataAttr('onclick','crudSaveCirc',[id])+'>&#10003; Desar</button>'
@@ -317,6 +319,7 @@ function crudSaveCirc(id){
   var day=parseInt(fv('ec_day_'+id)); if(!isNaN(day)&&day>0&&day<=31) c.day=day;
   var yr=parseInt(fv('ec_yr_'+id)); if(!isNaN(yr)&&yr>2000) c.year=yr;
   c.pubDate=fv('ec_pub_'+id)||'';
+  c.event=fv('ec_ev_'+id);
   dbSave();
   renderCirc('all');
   renderAdmCirculars(document.getElementById('admBody'));

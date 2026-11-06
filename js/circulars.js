@@ -48,10 +48,11 @@ function renderCirc(f){
       dlEl = '<span class="circ-dl" style="background:var(--lightgray);color:var(--gray);cursor:default" title="PDF pendent de publicar">&#8211;</span>';
     }
     return '<div class="circ-row">'
-      + '<div><div class="circ-day">' + c.day + '</div><div class="circ-mon">' + c.mon + ' ' + c.year + '</div></div>'
+      + '<div title="Data de publicació de la circular"><div class="circ-day">' + c.day + '</div><div class="circ-mon">' + c.mon + ' ' + c.year + '</div></div>'
       + '<div><span class="cbadge ' + bCls[c.type] + '">' + bLbl[c.type] + '</span>'
       + '<div class="circ-title">' + c.title + '</div>'
-      + '<div class="circ-meta">' + c.num + ' · ' + c.desc + '</div></div>'
+      + '<div class="circ-meta">' + c.num + ' · ' + c.desc + '</div>'
+      + (c.event ? '<div class="circ-event">&#128197; Activitat: ' + escHtml(c.event) + '</div>' : '') + '</div>'
       + dlEl + '</div>';
   }).join('');
 }

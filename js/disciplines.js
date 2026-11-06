@@ -248,7 +248,7 @@ var DISC_DATA = {
     campionats: [],
     records: [],
     resultatExtern: '#',
-    circularsCategoria: 'al',
+    circularsCategoria: 'aa',
   },
 
   kyudo: {
@@ -285,7 +285,7 @@ function setDisciplina(key, _noHash) {
 
 function _discUpdateHash() {
   var h = 'disciplina/' + _discActiva + '/' + _discTab;
-  try { history.replaceState(null, '', '#' + h); } catch(e) {}
+  navReplaceHash('#' + h);
 }
 
 // ── Render principal ──────────────────────────────────────

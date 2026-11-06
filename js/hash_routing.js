@@ -13,22 +13,4 @@ function scrollToHub(id) {
   }
 }
 
-// ── Hash routing ──────────────────────────────────────────
-(function() {
-  var origSetS = window.setS;
-  if (typeof origSetS !== 'function') return;
-
-  window.setS = function(key) {
-    origSetS(key);
-    if (history.replaceState) {
-      history.replaceState(null, '', key === 'home' ? window.location.pathname : '#' + key);
-    }
-  };
-
-  window.addEventListener('DOMContentLoaded', function() {
-    var hash = window.location.hash.replace('#', '');
-    if (hash && FCTA.sectionMap[hash]) {
-      setS(hash);
-    }
-  });
-})();
+// El routing per hash i l'historial viuen a nav.js (setS, navPushHash, popstate).
