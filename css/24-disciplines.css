@@ -4,7 +4,8 @@
 /* Hero */
 .disc-hero{background:var(--navy-dark);position:relative;overflow:hidden;padding:4rem 0 3rem;border-bottom:4px solid var(--disc-color)}
 .disc-hero-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
-.disc-hero-icon{font-size:3.5rem;line-height:1;flex-shrink:0}
+.disc-hero-icon{width:68px;height:68px;border-radius:18px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,rgba(245,184,0,.28),rgba(245,184,0,.08));border:1px solid rgba(245,184,0,.35)}
+.disc-hero-icon .hub-ico{width:38px;height:38px}
 .disc-hero-text h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.68rem,4.2vw,2.688rem);font-weight:900;color:white;text-transform:uppercase;line-height:1;margin-bottom:.3rem}
 .disc-hero-sub{font-size:.9rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px}
 .disc-hero-back{margin-left:auto;font-family:'Montserrat',sans-serif;font-size:.689rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:rgba(255,255,255,.45);background:none;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.45rem .9rem;cursor:pointer;transition:all .2s}
@@ -24,7 +25,8 @@
 .disc-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
 .disc-card{background:white;border-radius:10px;padding:1.5rem;box-shadow:0 2px 8px rgba(27,58,107,.07)}
 .disc-card--wide{grid-column:1/-1}
-.disc-card-icon{font-size:2.2rem;margin-bottom:.75rem}
+.disc-card-icon{width:52px;height:52px;border-radius:14px;margin-bottom:.75rem;display:grid;place-items:center;color:var(--navy);background:linear-gradient(135deg,rgba(245,184,0,.2),rgba(245,184,0,.06));border:1px solid rgba(245,184,0,.3)}
+.disc-card-icon .hub-ico{width:30px;height:30px}
 .disc-card h3{font-family:'Montserrat',sans-serif;font-size:.84rem;font-weight:900;color:var(--navy-dark);text-transform:uppercase;margin-bottom:.75rem}
 .disc-dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem}
 .disc-dl dt{font-weight:700;font-size:.82rem;color:var(--navy-dark);white-space:nowrap}

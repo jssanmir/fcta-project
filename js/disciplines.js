@@ -294,7 +294,7 @@ function renderDisciplina() {
   if (!d) return;
 
   // Capçalera
-  document.getElementById('discIcon').textContent = d.icon;
+  document.getElementById('discIcon').innerHTML = discIconHtml(_discActiva, d.icon);
   document.getElementById('discNom').textContent = d.nom;
   document.getElementById('discSub').textContent = d.subtitol;
   document.getElementById('discHero').style.borderBottomColor = d.color;
@@ -345,6 +345,13 @@ function renderDiscTab(tab) {
 }
 
 // ── Panels ────────────────────────────────────────────────
+// Icones SVG (sprite d'index.html) de cada disciplina
+var DISC_ICON_SVG = { al: 'sun', sala: 'target', '3d': 'tree', camp: 'leaf', run: 'runner', aa: 'access', kyudo: 'torii' };
+function discIconHtml(key, fallback) {
+  var n = DISC_ICON_SVG[key];
+  return n ? '<svg class="hub-ico" aria-hidden="true"><use href="#ic-' + n + '"/></svg>' : (fallback || '');
+}
+
 // Text «Sobre la disciplina»: el text enriquit editat a Administració
 // (DB.discTexts) té prioritat sobre el text original de DISC_DATA.
 function discDescHtml(key) {
@@ -361,7 +368,7 @@ function renderDiscInfo(d) {
   // Descripció – suport per paràgrafs separats per \n\n
   var descHtml = discDescHtml(_discActiva);
   html += '<div class="disc-card disc-card--wide">'
-    + '<div class="disc-card-icon">' + d.icon + '</div>'
+    + '<div class="disc-card-icon">' + discIconHtml(_discActiva, d.icon) + '</div>'
     + '<h3>Sobre la disciplina</h3>'
     + descHtml + '</div>';
 

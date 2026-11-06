@@ -59,6 +59,8 @@
 .ic-a { fill: currentColor; }
 .ic-b { fill: var(--gold); }
 .ic-c { fill: var(--navy-dark); opacity: .72; }
+.ic-s { fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.ic-sb { stroke: var(--gold); }
 .hub-card:hover .hub-card-icon { background: linear-gradient(135deg, rgba(245,184,0,.4), rgba(245,184,0,.12)); transform: scale(1.06); }
 .hub-card-text { display: flex; flex-direction: column; min-width: 0; }
 .hub-card-name {

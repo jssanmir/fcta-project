@@ -27,7 +27,8 @@
 .hero-disc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
 .hero-disc-card{background:rgba(15,36,71,.78);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem .75rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;cursor:pointer;transition:all .2s;text-align:center;font-family:inherit}
 .hero-disc-card:hover{background:rgba(255,255,255,.14);border-color:rgba(245,184,0,.4);transform:translateY(-2px)}
-.hero-disc-icon{font-size:2rem;line-height:1}
+.hero-disc-icon{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,rgba(245,184,0,.26),rgba(245,184,0,.07));border:1px solid rgba(245,184,0,.32)}
+.hero-disc-icon .hub-ico{width:27px;height:27px}
 .hero-disc-name{font-family:'Montserrat',sans-serif;font-size:.798rem;font-weight:800;text-transform:uppercase;letter-spacing:.3px;color:white;line-height:1.2}
 .hero-disc-cta{background:none;border:1px solid rgba(245,184,0,.35);border-radius:8px;padding:.6rem 1rem;font-family:'Montserrat',sans-serif;font-size:.689rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--gold);cursor:pointer;transition:all .2s;text-align:center}
 .hero-disc-cta:hover{background:rgba(245,184,0,.1);border-color:var(--gold)}
@@ -39,7 +40,8 @@
   .hero-disciplines{order:2} /* sota el text */
   .hero-disc-grid{grid-template-columns:repeat(4,1fr);gap:.5rem} /* 1 fila de 4 */
   .hero-disc-card{padding:.9rem .4rem;gap:.35rem;border-radius:10px}
-  .hero-disc-icon{font-size:1.6rem}
+  .hero-disc-icon{width:38px;height:38px;border-radius:11px}
+  .hero-disc-icon .hub-ico{width:22px;height:22px}
   .hero-disc-name{font-size:.655rem;letter-spacing:0}
   .hero-disc-cta{display:none} /* prou espai amb el botó ja existent */
 }
