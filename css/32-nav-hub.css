@@ -27,7 +27,7 @@
 }
 .home-hub-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: var(--sp-3);
 }
 .hub-card {
@@ -47,8 +47,20 @@
   border-color: var(--gold);
   transform: translateY(-2px);
 }
-.hub-card-icon { font-size: 1.4rem; flex-shrink: 0; }
-.hub-card-text { display: flex; flex-direction: column; }
+.hub-card { min-width: 0; }
+.hub-card-icon {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
+  display: grid; place-items: center; color: #fff;
+  background: linear-gradient(135deg, rgba(245,184,0,.24), rgba(245,184,0,.06));
+  border: 1px solid rgba(245,184,0,.3);
+  transition: background var(--dur-base) var(--tr), transform var(--dur-base) var(--tr);
+}
+.hub-ico { width: 24px; height: 24px; display: block; }
+.ic-a { fill: currentColor; }
+.ic-b { fill: var(--gold); }
+.ic-c { fill: var(--navy-dark); opacity: .72; }
+.hub-card:hover .hub-card-icon { background: linear-gradient(135deg, rgba(245,184,0,.4), rgba(245,184,0,.12)); transform: scale(1.06); }
+.hub-card-text { display: flex; flex-direction: column; min-width: 0; }
 .hub-card-name {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -56,12 +68,15 @@
   color: white;
   text-transform: uppercase;
   line-height: 1.2;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 .hub-card-sub {
   font-size: .7rem;
   color: rgba(255,255,255,.45);
   margin-top: 2px;
   line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 /* ── «Espai especial» – tercer bloc, etiqueta amb accent daurat ── */
@@ -71,9 +86,9 @@
 }
 
 @media (max-width: 700px) {
-  .home-hub-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--sp-2); }
-  .hub-card { padding: var(--sp-3); }
-  .hub-card-icon { font-size: 1.2rem; }
+  .home-hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2); }
+  .hub-card { padding: var(--sp-3); flex-direction: column; align-items: flex-start; gap: var(--sp-2); }
+  .hub-card-icon { width: 40px; height: 40px; }
 }
 
 /* ── Mobile Bottom Navigation ───────────────────────────── */
