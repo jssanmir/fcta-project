@@ -29,6 +29,8 @@ var FCTA = {
     { key: 'documentacio',  id: 'Documentacio',  label: 'Documentació' },
     { key: 'reglaments',    id: 'Reglaments',    label: 'Reglaments' },
     { key: 'inici',         id: 'Inici',         label: 'Comença' },
+    { key: 'clubs',         id: 'Clubs',         label: 'Clubs' },
+    { key: 'club',          id: 'Club',          label: 'Fitxa de club' },
     { key: 'disciplina',    id: 'Disciplina',    label: 'Disciplina' },
     { key: 'transparencia', id: 'Transparencia', label: 'Transparència' },
     { key: 'assegurances',  id: 'Assegurances',  label: 'Assegurances' },

@@ -101,7 +101,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#home" data-onclick="setS" data-onclick-args="[&quot;home&quot;]">🏠 Inici</a>
       <a href="#" data-onclick="scrollToHub" data-onclick-args="[&quot;hub-federacio&quot;]">🏛️ La Federació</a>
-      <a href="#inici" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]">🏹 Clubs</a>
+      <a href="#clubs" data-onclick="setS" data-onclick-args="[&quot;clubs&quot;]">🏹 Clubs</a>
       <a href="#" data-onclick="scrollToHub" data-onclick-args="[&quot;hub-espais&quot;]">🎯 Espais</a>
       <button class="nav-admin" data-onclick="openAdm" title="Administració">⚙</button>
     </div>
@@ -253,7 +253,7 @@
       <div class="home-hub-group home-hub-group--special" id="hub-espais">
         <div class="home-hub-group-label">Espais</div>
         <div class="home-hub-grid">
-          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]"><span class="hub-card-icon"><svg class="hub-ico" aria-hidden="true"><use href="#ic-pin"/></svg></span><span class="hub-card-text"><span class="hub-card-name">Clubs</span><span class="hub-card-sub">Clubs i primers passos</span></span></button>
+          <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;clubs&quot;]"><span class="hub-card-icon"><svg class="hub-ico" aria-hidden="true"><use href="#ic-pin"/></svg></span><span class="hub-card-text"><span class="hub-card-name">Clubs</span><span class="hub-card-sub">Clubs i primers passos</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;social&quot;]"><span class="hub-card-icon"><svg class="hub-ico" aria-hidden="true"><use href="#ic-target"/></svg></span><span class="hub-card-text"><span class="hub-card-name">Tirades Socials</span><span class="hub-card-sub">Activitat al club</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;calendari&quot;]"><span class="hub-card-icon"><svg class="hub-ico" aria-hidden="true"><use href="#ic-calendar"/></svg></span><span class="hub-card-text"><span class="hub-card-name">Calendari Esportiu</span><span class="hub-card-sub" id="hubCalSub">Temporada 2026/27</span></span></button>
           <button class="hub-card" data-onclick="setS" data-onclick-args="[&quot;records&quot;]"><span class="hub-card-icon"><svg class="hub-ico" aria-hidden="true"><use href="#ic-medal"/></svg></span><span class="hub-card-text"><span class="hub-card-name">R&egrave;cords de Catalunya</span><span class="hub-card-sub">Marques oficials</span></span></button>
@@ -668,7 +668,7 @@
   <div class="container">
     <div class="doc-badge">&#128196; Documents i Actes Oficials</div>
     <h1>Documentació<br>FCTA</h1>
-    <p>Accés a tota la documentació oficial de la Federació Catalana de Tir amb Arc: actes, eleccions, assemblees, professionals de l'esport i formació.</p>
+    <div id="docIntro"><p>Accés a tota la documentació oficial de la Federació Catalana de Tir amb Arc: eleccions, actes dels comitès, estatuts, professionals de l'esport i formació.</p></div>
   </div>
 </div>
 
@@ -677,251 +677,15 @@
 <section class="section" style="background:var(--offwhite)">
   <div class="container">
 
-    <!-- TABS -->
-    <div class="doc-tabs" id="docTabs">
-      <button class="doc-tab act" data-onclick="setDocTab" data-onclick-args="[&quot;eleccions&quot;,&quot;@el&quot;]"><span class="doc-tab-icon">&#9745;&#65039;</span> Eleccions</button>
-      <button class="doc-tab" data-onclick="setDocTab" data-onclick-args="[&quot;assemblees&quot;,&quot;@el&quot;]"><span class="doc-tab-icon">&#128101;</span> Assemblees</button>
-      <button class="doc-tab" data-onclick="setDocTab" data-onclick-args="[&quot;actes&quot;,&quot;@el&quot;]"><span class="doc-tab-icon">&#128203;</span> Actes</button>
-      <button class="doc-tab" data-onclick="setDocTab" data-onclick-args="[&quot;professionals&quot;,&quot;@el&quot;]"><span class="doc-tab-icon">&#127979;</span> Professionals de l'Esport</button>
-      <button class="doc-tab" data-onclick="setDocTab" data-onclick-args="[&quot;cursos&quot;,&quot;@el&quot;]"><span class="doc-tab-icon">&#127891;</span> Cursos Formatius</button>
+    <!-- Pestanyes + cercador (js/documentacio.js) -->
+    <div class="dc-tools" id="docTools">
+      <div class="dc-tabs" id="docTabs"></div>
+      <label class="dc-search">
+        <svg class="dc-search-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.500"/><path d="M16 16l4.500 4.500"/></svg>
+        <input type="search" id="docSearch" placeholder="Cerca documents…" autocomplete="off" aria-label="Cerca documents" data-oninput="docSearch" data-oninput-args="[&quot;@val&quot;]">
+      </label>
     </div>
-
-    <!-- ── ELECCIONS ──────────────────────────────────────── -->
-    <div class="doc-panel act" id="dpEleccions">
-      <div class="doc-info-card">
-        <div class="doc-info-icon">&#9745;&#65039;</div>
-        <div class="doc-info-body">
-          <h4>Eleccions a la Junta Directiva FCTA</h4>
-          <p>Documentació dels processos electorals de la FCTA. Per a la documentació completa (censos, candidatures, actes d'escrutini) accedeix a la secció Eleccions a aquest portal.</p>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#128337;</span> Eleccions FCTA 2020</div>
-        <div class="doc-list">
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128196;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Comunicat Eleccions FCTA 2020</div>
-              <div class="doc-item-meta"><span>&#128197; 14 des. 2020</span><span>Candidatures, votació i instruccions</span></div>
-            </div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
-            <span class="doc-item-icon">&#128279;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Cens, Candidatures i Acta d'Escrutini 2020</div>
-              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; pestaña Eleccions</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#128337;</span> Eleccions FCTA 2016 i anteriors</div>
-        <div class="doc-list">
-          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
-            <span class="doc-item-icon">&#128279;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Documentació Eleccions 2016 i històric</div>
-              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; pestaña Eleccions</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── ASSEMBLEES ─────────────────────────────────────── -->
-    <div class="doc-panel" id="dpAssemblees">
-      <div class="doc-info-card">
-        <div class="doc-info-icon">&#128101;</div>
-        <div class="doc-info-body">
-          <h4>Assemblees Generals FCTA</h4>
-          <p>Convocatories, ordres del dia i actes de les assemblees generals de la FCTA. La documentació completa estarà disponible en aquest portal.</p>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#128197;</span> Assemblees Generals (totes les edicions)</div>
-        <div class="doc-list">
-          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
-            <span class="doc-item-icon">&#128279;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Convocatories i Actes d'Assemblea General</div>
-              <div class="doc-item-meta"><span>En construcció</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
-            <span class="doc-item-icon">&#128279;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Documentació Assemblees a Documentació FCTA</div>
-              <div class="doc-item-meta"><span>aquest portal &rarr; pestaña Assemblees</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-          <a href="#" class="doc-item" style="border-left-color:var(--navy-light)">
-            <span class="doc-item-icon">&#128220;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Estatuts Vigents de la FCTA</div>
-              <div class="doc-item-meta"><span>Secció Estatuts a aquest portal</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── ACTES ──────────────────────────────────────────── -->
-    <div class="doc-panel" id="dpActes">
-      <div class="doc-info-card">
-        <div class="doc-info-icon">&#128203;</div>
-        <div class="doc-info-body">
-          <h4>Actes Oficials</h4>
-          <p>Actes de la Junta Directiva i d'altres òrgans de la FCTA. Publicades d'acord amb les obligacions de transparència de les federacions esportives catalanes. Disponibles a aquest portal.</p>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#128337;</span> Actes Junta Directiva i Assemblees</div>
-        <div class="doc-list">
-          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
-            <span class="doc-item-icon">&#128279;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Actes de la Junta Directiva (històric)</div>
-              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; Actes</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
-            <span class="doc-item-icon">&#128279;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Actes Assemblees Generals (històric)</div>
-              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; pestaña Actes</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── PROFESSIONALS ──────────────────────────────────── -->
-    <div class="doc-panel" id="dpProfessionals">
-      <div class="doc-info-card">
-        <div class="doc-info-icon">&#127979;</div>
-        <div class="doc-info-body">
-          <h4>Professionals de l'Esport &ndash; ROPE</h4>
-          <p>Informació sobre el Registre Oficial de Professionals de l'Esport (ROPE) de Catalunya. Els tècnics de tir amb arc han d'estar inscrits al ROPE per exercir professionalment.</p>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#128221;</span> Documents disponibles directament</div>
-        <div class="doc-list">
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128221;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Nota Informativa: Tinença, ús i Transport de l'Arc</div>
-              <div class="doc-item-meta"><span>&#128197; Oct. 2021</span><span>&#128196; Descarrega PDF</span></div>
-            </div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128196;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Programa de Tecnificació Base (PATD)</div>
-              <div class="doc-item-meta"><span>&#128197; 2026</span><span>&#128196; Descarrega PDF</span></div>
-            </div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://esport.gencat.cat/ca/arees_dactuacio/professionals_i_titulacions/rope/" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#127760;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Portal ROPE &ndash; Consell Català de l'Esport</div>
-              <div class="doc-item-meta"><span>Registre Oficial de Professionals de l'Esport</span></div>
-            </div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#128196;</span> Resta de documentació de Professionals</div>
-        <div class="doc-list">
-          <a href="#" class="doc-item" style="border-left-color:var(--gold)">
-            <span class="doc-item-icon">&#128279;</span>
-            <div class="doc-item-body">
-              <div class="doc-item-title">Clàusules Consentiment Competicions, Targetes Esportives i més</div>
-              <div class="doc-item-meta"><span>Disponibles en aquest portal &rarr; Professionals de l'Esport</span></div>
-            </div>
-            <span class="doc-item-arrow" style="color:var(--gold)">&#8599;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── CURSOS FORMATIUS ───────────────────────────────── -->
-    <div class="doc-panel" id="dpCursos">
-      <div class="doc-info-card">
-        <div class="doc-info-icon">&#127891;</div>
-        <div class="doc-info-body">
-          <h4>Cursos Formatius</h4>
-          <p>Documentació de cursos i accions formatives organitzades per la FCTA. Per a la formació activa de la temporada vigent, consulta la <button data-onclick="setS" data-onclick-args="[&quot;formation&quot;]" style="background:none;border:none;padding:0;color:var(--navy-light);font-weight:600;cursor:pointer;font-family:inherit;font-size:inherit">secció de Formació</button>.</p>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#127891;</span> Curs Tècnic Esportiu Nivell 1 &ndash; 2026/2027</div>
-        <div class="doc-list">
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128196;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Circular Curs Tècnic Nivell 1 &ndash; CIRC-2504</div><div class="doc-item-meta"><span>&#128197; Gen. 2026</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128203;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Formulari d'Inscripció &ndash; Curs N1 2026</div><div class="doc-item-meta"><span>&#128197; 2026</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128203;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Full Resum de Tràmits &ndash; Curs N1</div><div class="doc-item-meta"><span>&#128197; 2026</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128101;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Llistat Definitiu d'Alumnes Admesos &ndash; Curs N1 2026</div><div class="doc-item-meta"><span>&#128197; Feb. 2026</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-        </div>
-      </div>
-      <div class="doc-sub">
-        <div class="doc-sub-title"><span>&#128101;</span> Formació per a Clubs</div>
-        <div class="doc-list">
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#9878;&#65039;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Taller Jurídic per a Clubs &ndash; CIRC-2511</div><div class="doc-item-meta"><span>&#128197; Feb. 2025</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128202;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Taller de Comptabilitat per a Clubs &ndash; CIRC-2410</div><div class="doc-item-meta"><span>&#128197; Feb. 2024</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#128196;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Fiscalitat dels Clubs Esportius &ndash; CIRC-2435</div><div class="doc-item-meta"><span>&#128197; Jul. 2024</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#129309;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Laboral i Voluntariat Esportiu &ndash; CIRC-2447</div><div class="doc-item-meta"><span>&#128197; Oct. 2024</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-          <a href="https://aquest portal" target="_blank" class="doc-item">
-            <span class="doc-item-icon">&#129504;</span>
-            <div class="doc-item-body"><div class="doc-item-title">Seminari de Psicologia Aplicada &ndash; CIRC-2607</div><div class="doc-item-meta"><span>&#128197; Gen. 2026</span><span>&#128196; Descarrega PDF</span></div></div>
-            <span class="doc-item-arrow">&#8594;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
+    <div id="docContent"></div>
   </div>
 </section>
 </div>
@@ -2351,74 +2115,49 @@
 
 <div class="inici-hero">
   <div class="container">
-    <div class="lic-hero-badge" style="margin-bottom:1rem">🏹 Per a nous arquers</div>
-    <h1>Comença a tirar<em>amb arc</em></h1>
-    <p>El tir amb arc és un esport accessible per a tothom, des dels 8 anys. Descobreix com unir-te a un dels més de 120 clubs federats a Catalunya.</p>
-    <div class="inici-steps">
-      <div class="inici-step">
-        <div class="inici-step-num">1</div>
-        <h3>Troba un club a prop teu</h3>
-        <p>Cerca el club federat més proper i contacta'l. La majoria ofereixen una primera sessió de prova sense cost.</p>
-      </div>
-      <div class="inici-step">
-        <div class="inici-step-num">2</div>
-        <h3>Fes-te soci</h3>
-        <p>Apunta't al club i obté la llicència federativa a través d'ell. La llicència t'inclou assegurança esportiva.</p>
-      </div>
-      <div class="inici-step">
-        <div class="inici-step-num">3</div>
-        <h3>Comença a competir</h3>
-        <p>Amb la llicència pots participar en tirades socials, lligues catalanes i campionats autonòmics.</p>
-      </div>
-    </div>
+    <div class="lic-hero-badge" style="margin-bottom:1rem" id="cmBadge">🏹 Per a nous arquers</div>
+    <h1 id="cmTitle">Comença a tirar<em>amb arc</em></h1>
+    <div id="cmIntro"><p>El tir amb arc és un esport accessible per a tothom, des dels 8 anys.</p></div>
+    <div class="inici-steps" id="cmSteps"></div>
   </div>
 </div>
 
 <div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
 
-<!-- INFO PRÀCTICA -->
+<!-- INFO PRÀCTICA (editable a Administració > Vols començar) -->
 <section class="section" style="background:var(--offwhite)">
   <div class="container">
-    <div class="sec-label">Tot el que necessites saber</div>
-    <h2 class="sec-title">Informació <em>per a principiants</em></h2>
-
-    <div class="inici-info-grid">
-
-      <div class="inici-card">
-        <div class="inici-card-icon">🏹</div>
-        <h3>Equipament inicial</h3>
-        <p>No cal comprar res per començar. Els clubs disposen de material de pràctica. Quan progressis, el teu primer equipament bàsic serà:</p>
-        <ul>
-          <li><strong>Arc d'iniciació</strong>: des de ~100 €</li>
-          <li><strong>Fletxes</strong> (set de 6): des de ~60 €</li>
-          <li><strong>Braçalet i dactilera</strong>: ~20–40 €</li>
-        </ul>
-        <p style="margin-top:.6rem">Els clubs orienten sobre quin material s'adapta millor al teu nivell i tipus d'arc. Recordem que la pràctica ha de ser supervisada fins que es completi la formació
-</p>
-      </div>
-
-      <div class="inici-card">
-        <div class="inici-card-icon">📋</div>
-        <h3>Llicència federativa</h3>
-        <p>La llicència es tramita a través del teu club. Per a la temporada <strong>2025–2026</strong>:</p>
-        <ul>
-          <li><strong>Llicència Nacional:</strong> vàlida a tot l'Estat. Accés a competicions estatals.</li>
-          <li><strong>Llicència Autonòmica:</strong> vàlida a Catalunya. Tarifa reduïda.</li>
-        </ul>
-        <p style="margin-top:.6rem">Inclou assegurança d'accidents i responsabilitat civil.</p>
-        <button class="inici-card-cta" data-onclick="setS" data-onclick-args="[&quot;llicencies&quot;]">📄 Veure preus i formularis →</button>
-      </div>
-
-    </div>
+    <div class="sec-label" id="cmInfoLabel">Tot el que necessites saber</div>
+    <h2 class="sec-title" id="cmInfoTitle">Informació <em>per a principiants</em></h2>
+    <div class="inici-info-grid inici-info-grid--single" id="cmLicense"></div>
   </div>
 </section>
 
-<!-- CLUBS -->
+<!-- ACCÉS ALS CLUBS -->
+<section class="section" style="background:white">
+  <div class="container" id="cmClubsCta"></div>
+</section>
+
+</div>
+
+<!-- CLUBS: pàgina pròpia (directori) -->
+<div id="sClubs" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div class="inici-hero inici-hero--sm">
+  <div class="container">
+    <div class="lic-hero-badge" style="margin-bottom:1rem" id="clBadge">📍 Directori</div>
+    <h1 id="clTitle">Clubs<em>federats</em></h1>
+    <div id="clIntro"></div>
+  </div>
+</div>
+
+<div class="senyera-h thin"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
 <section class="section" style="background:white">
   <div class="container">
-    <div class="sec-label">+120 clubs federats</div>
-    <h2 class="sec-title">Troba el teu <em>club</em></h2>
-    <p class="sec-intro">Cerca per nom, municipi o comarca, o utilitza la geolocalització per trobar els clubs més propers a tu.</p>
+    <div class="sec-label" id="clLabel">+120 clubs federats</div>
 
     <div class="clubs-toolbar">
       <div class="clubs-search">
@@ -2433,7 +2172,7 @@
       Cap club trobat per a la cerca "<span id="clubsNoResultQ"></span>".
     </div>
 
-    <div style="margin-top:2rem;padding:1.25rem 1.5rem;background:var(--offwhite);border-radius:10px;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <div class="clubs-help">
       <span style="font-size:1.5rem">📞</span>
       <div>
         <div style="font-weight:700;font-size:.9rem;color:var(--navy-dark)">No trobes el teu club o vols més informació?</div>
@@ -2442,8 +2181,25 @@
       <a href="mailto:info@fcta.cat" class="btn-gold" style="margin-left:auto;font-size:.85rem;padding:.6rem 1.25rem">Contactar →</a>
     </div>
 
+    <div class="clubs-help clubs-help--start">
+      <span style="font-size:1.5rem">🏹</span>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;color:var(--navy-dark)">Vols començar a tirar amb arc?</div>
+        <div style="font-size:.83rem;color:var(--gray)">Descobreix els passos per fer-te soci d'un club i aconseguir la llicència.</div>
+      </div>
+      <button type="button" class="btn-gold" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]" style="margin-left:auto;font-size:.85rem;padding:.6rem 1.25rem">Vols començar? →</button>
+    </div>
   </div>
 </section>
+
+</div>
+
+<!-- FITXA DE CLUB -->
+<div id="sClub" style="display:none">
+
+<div class="senyera-h thick"><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div><div class="sh r"></div><div class="sh g"></div></div>
+
+<div id="clubFitxa"></div>
 
 </div>
 
@@ -2934,7 +2690,8 @@
         <ul class="foot-links">
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;arcadaptat&quot;]">Arc Adaptat</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;comitejutges&quot;]">Comitè de Jutges</a></li>
-          <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]">Clubs</a></li>
+          <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;clubs&quot;]">Clubs</a></li>
+          <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;inici&quot;]">Vols començar?</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;social&quot;]">Tirades Socials</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;calendari&quot;]">Calendari Esportiu</a></li>
           <li><a href="#" data-onclick="setS" data-onclick-args="[&quot;records&quot;]">R&egrave;cords de Catalunya</a></li>
@@ -3188,6 +2945,9 @@
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;junta&quot;,&quot;@el&quot;]">&#127963;&#65039; Junta</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;disc&quot;,&quot;@el&quot;]">&#127919; Disciplines</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;cal&quot;,&quot;@el&quot;]">&#128197; Calendari</button>
+        <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;docum&quot;,&quot;@el&quot;]">&#128193; Documentació</button>
+        <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;comenca&quot;,&quot;@el&quot;]">&#127993; Vols començar</button>
+        <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;clubs&quot;,&quot;@el&quot;]">&#128205; Clubs</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;comp&quot;,&quot;@el&quot;]">&#127942; Competicions</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;form&quot;,&quot;@el&quot;]">&#127891; Formació</button>
         <button class="adm-tab" data-onclick="setATab" data-onclick-args="[&quot;tirades&quot;,&quot;@el&quot;]">&#127919; Tirades<span class="pend-dot" id="pendDot">0</span></button>

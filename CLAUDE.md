@@ -150,6 +150,9 @@ Totes les dades viuen en l'objecte global `DB`:
 | `DB.junta`        | Objecte   | Junta Directiva: intro, mandat i members[] (grup, rol, nom, email) — editable a Admin > Junta |
 | `DB.discTexts`    | Objecte   | Text «Sobre la disciplina» editat (HTML) per clau de disciplina — Admin > Disciplines |
 | `DB.calendari`    | Objecte   | Temporada única del Calendari Esportiu: label, from, to (ISO) i pdf — Admin > Calendari |
+| `DB.documentacio` | Objecte   | Pàgina Documentació: intro i categories[] > groups[] > docs[] (title, date, desc, url) — Admin > Documentació; les categories buides no es mostren |
+| `DB.comenca`      | Objecte   | Textos de «Vols començar?» (passos, llicència federativa…) i capçalera de Clubs — Admin > Vols començar |
+| `DB.clubsDir`     | Array     | Directori de clubs amb fitxa pròpia (nom, municipi, contacte, disciplines, desc…) — Admin > Clubs |
 
 **Disc keys** per a `DB.documents.disc`: `'al'` · `'3d'` · `'camp'` · `'kyudo'` · `'general'`
 (definits a `FCTA.disc` en `config.js`)
@@ -190,7 +193,7 @@ La funció `setS(key)`:
 
 Accés: botó `⚙ Admin` a la nav. Credencials en `auth.js` (`admSession`).
 
-Pestanyes disponibles: Circulars · Notícies · Carrusel · Junta · Disciplines · Calendari · Competicions · Formació · Tirades · Rècords · Documents
+Pestanyes disponibles: Circulars · Notícies · Carrusel · Junta · Disciplines · Calendari · Documentació · Vols començar · Clubs · Competicions · Formació · Tirades · Rècords · Documents
 
 Cada pestanya té CRUD complet: afegir, editar inline, eliminar.
 La funció `renderATab(tab)` en `admin.js` despacha al renderer corresponent.

@@ -9,7 +9,7 @@
   var LS_CACHE = 'fcta_db_cache';   // cache de lectura del servidor (read-only)
   var API_BASE = '';
   var FIELDS   = ['circulars', 'competitions', 'news', 'formations',
-                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel', 'junta', 'discTexts', 'calendari'];
+                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel', 'junta', 'discTexts', 'calendari', 'documentacio', 'comenca', 'clubsDir'];
 
   // Llista única d'àrees configurables: la fan servir el desat, els backups i les restauracions.
   window.DB_FIELDS = FIELDS;
@@ -115,6 +115,10 @@
     if (typeof renderHeroPanel === 'function')   renderHeroPanel();
     if (typeof renderCarousel === 'function')    renderCarousel();
     if (typeof renderJunta === 'function')       renderJunta();
+    if (typeof renderDocumentacio === 'function') renderDocumentacio();
+    if (typeof renderComenca === 'function')     renderComenca();
+    if (typeof renderClubs === 'function')       renderClubs();
+    if (typeof renderClubFitxa === 'function')   renderClubFitxa();
     if (typeof updatePendDot === 'function')     updatePendDot();
     if (typeof renderRecordsTable === 'function') renderRecordsTable();
     if (typeof renderDisciplina === 'function')   renderDisciplina(); // refresca la pestanya de disciplina activa (info/docs/records/resultats)

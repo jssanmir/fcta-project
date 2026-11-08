@@ -1,4 +1,4 @@
-/* ── DOCUMENTACIÓ */ ─────────────────────────────────── */
+/* ── DOCUMENTACIÓ ─────────────────────────────────── */
 .doc-hero{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy-mid,#244d8a) 100%);padding:3.5rem 0 2.5rem;position:relative;overflow:hidden}
 .doc-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:320px;height:320px;border-radius:50%;border:60px solid rgba(255,255,255,.04);pointer-events:none}
 .doc-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,184,0,.15);border:1px solid rgba(245,184,0,.35);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.3rem .9rem;border-radius:20px;margin-bottom:1rem}
@@ -46,3 +46,60 @@
 .doc-empty{text-align:center;padding:3rem 1rem;color:var(--gray)}
 .doc-empty-icon{font-size:2.5rem;opacity:.35;margin-bottom:.75rem}
 .doc-empty p{font-size:.9rem;line-height:1.7}
+
+
+/* ═══ Documentació redissenyada (js/documentacio.js) ═══ */
+.dc-tools{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.75rem}
+.dc-tabs{display:flex;flex-wrap:wrap;gap:.6rem}
+.dc-tab{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem .9rem .5rem .5rem;background:#fff;border:1.5px solid var(--lightgray);border-radius:999px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;color:var(--navy-dark);cursor:pointer;transition:all var(--dur-base) var(--tr)}
+.dc-tab:hover{border-color:var(--navy-light);transform:translateY(-1px)}
+.dc-tab.act{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:var(--shadow-md)}
+.dc-tab-ico{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;flex-shrink:0}
+.dc-tab.act .dc-tab-ico{background:rgba(255,255,255,.16)}
+.dc-tab-ico .hub-ico{width:17px;height:17px}
+.dc-tab-n{font-size:.7rem;font-weight:800;background:var(--lightgray);color:var(--navy);border-radius:999px;padding:.05rem .5rem}
+.dc-tab.act .dc-tab-n{background:var(--gold);color:var(--navy-dark)}
+.dc-search{display:flex;align-items:center;gap:.6rem;max-width:420px;background:#fff;border:1.5px solid var(--lightgray);border-radius:var(--r-lg);padding:0 .9rem;transition:border-color var(--dur-base) var(--tr)}
+.dc-search:focus-within{border-color:var(--navy-light)}
+.dc-search-ico{width:18px;height:18px;fill:none;stroke:var(--gray);stroke-width:2;stroke-linecap:round;flex-shrink:0}
+.dc-search input{flex:1;min-width:0;border:none;outline:none;background:none;font:inherit;font-size:.9rem;padding:.7rem 0;color:var(--navy-dark)}
+.dc-cat-head{display:flex;gap:1rem;align-items:flex-start;background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:#fff;border-radius:var(--r-xl);padding:1.25rem 1.5rem;margin-bottom:1.75rem}
+.dc-cat-ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;background:rgba(245,184,0,.18);border:1px solid rgba(245,184,0,.4);color:#fff}
+.dc-cat-ico .hub-ico{width:28px;height:28px}
+.dc-cat-info{min-width:0}
+.dc-cat-title{font-family:'Montserrat',sans-serif;font-weight:900;text-transform:uppercase;font-size:1.1rem;margin:0 0 .35rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;color:#fff}
+.dc-count{font-size:.66rem;font-weight:700;letter-spacing:.03em;text-transform:none;color:var(--navy-dark);background:var(--gold);border-radius:999px;padding:.1rem .6rem}
+.dc-cat-desc{font-size:.88rem;line-height:1.65;color:rgba(255,255,255,.82)}
+.dc-cat-desc p{margin:0 0 .5rem}
+.dc-cat-desc a{color:var(--gold)}
+.dc-group{margin-bottom:2rem}
+.dc-group-title{display:flex;align-items:center;gap:.6rem;font-family:'Montserrat',sans-serif;font-weight:900;font-size:.88rem;text-transform:uppercase;letter-spacing:.03em;color:var(--navy-dark);margin:0 0 .9rem;padding-bottom:.5rem;border-bottom:2px solid var(--lightgray)}
+.dc-group-title .dc-count{background:var(--lightgray);color:var(--navy)}
+.dc-group-ico{width:26px;height:26px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.dc-group-ico .hub-ico{width:15px;height:15px}
+.dc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:.8rem}
+.dc-card{display:flex;align-items:center;gap:.9rem;background:#fff;border:1px solid var(--lightgray);border-left:4px solid var(--navy-light);border-radius:var(--r-lg);padding:.9rem 1rem;box-shadow:var(--shadow-sm);transition:all var(--dur-base) var(--tr);min-width:0}
+.dc-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-left-color:var(--gold)}
+.dc-card-badge{flex-shrink:0;width:42px;height:50px;border-radius:6px;background:var(--red-cat);color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;font-size:.6rem;letter-spacing:.06em;display:grid;place-items:center;position:relative;overflow:hidden}
+.dc-card-badge::before{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 12px 12px 0;border-color:transparent #fff transparent transparent}
+.dc-card-badge--web{background:var(--navy-light)}
+.dc-card-body{flex:1;min-width:0}
+.dc-card-title{font-weight:700;font-size:.86rem;color:var(--navy-dark);line-height:1.3;overflow-wrap:anywhere}
+.dc-card-meta{display:flex;flex-wrap:wrap;gap:.2rem .8rem;margin-top:.3rem;font-size:.73rem;color:var(--gray);line-height:1.4}
+.dc-card-meta .dc-date{font-weight:700;color:var(--navy-light)}
+.dc-card-acts{display:flex;gap:.4rem;flex-shrink:0}
+.dc-btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:.35rem .9rem;border-radius:999px;background:var(--navy);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.74rem;text-decoration:none;border:1.5px solid var(--navy);transition:all var(--dur-base) var(--tr)}
+.dc-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
+.dc-btn--ghost{background:#fff;color:var(--navy);padding:.35rem .65rem}
+.dc-pending{font-size:.7rem;font-weight:700;color:var(--gray);text-transform:uppercase}
+.dc-result-info{font-size:.82rem;color:var(--gray);margin:0 0 1rem}
+@media(max-width:700px){.dc-grid{grid-template-columns:1fr}.dc-card{flex-wrap:wrap}.dc-card-acts{width:100%;justify-content:flex-end}.dc-cat-head{padding:1rem}.dc-tab{font-size:.74rem}.dc-search{max-width:none}}
+
+/* ── Administració de la Documentació ── */
+.adm-dc-tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 1rem}
+.adm-dc-tab{background:#fff;border:1.5px solid var(--lightgray);border-radius:999px;padding:.35rem .85rem;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--navy-dark)}
+.adm-dc-tab.act{background:var(--navy);border-color:var(--navy);color:#fff}
+.adm-dc-tab span{opacity:.7;margin-left:.35rem;font-weight:600}
+.adm-dc-group{border:1px solid var(--lightgray);border-radius:10px;padding:.9rem;margin-bottom:1rem;background:#fff}
+.adm-dc-group-head{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:.7rem}
+.adm-dc-group-head input{flex:1;min-width:160px;padding:.45rem .6rem;border:1.5px solid var(--lightgray);border-radius:6px;font:inherit}

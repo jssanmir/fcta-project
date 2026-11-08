@@ -885,6 +885,89 @@ app.post('/api/data', verifyToken, function (req, res) {
     }).filter(function (item) { return item.img; });
   }
 
+  // Vols començar? (textos) i directori de clubs (fitxes): textos saneats, URL i correus validats
+  if (data.comenca !== undefined) {
+    var cmIn = (data.comenca && typeof data.comenca === 'object' && !Array.isArray(data.comenca)) ? data.comenca : {};
+    var cmRich = function (v) { return sanitizeNewsBody(v).slice(0, 5000); };
+    var cmTgt = function (v) { v = String(v || ''); return /^[a-z]{2,30}$/.test(v) ? v : ''; };
+    var cmLic = cmIn.license || {}, cmCta = cmIn.clubsCta || {}, cmClubs = cmIn.clubs || {};
+    data.comenca = {
+      badge: sanitizeStr(cmIn.badge, 80), title1: sanitizeStr(cmIn.title1, 100), titleEm: sanitizeStr(cmIn.titleEm, 100),
+      intro: cmRich(cmIn.intro),
+      steps: (Array.isArray(cmIn.steps) ? cmIn.steps : []).slice(0, 8).map(function (st) {
+        st = st || {};
+        return { title: sanitizeStr(st.title, 120), text: cmRich(st.text), linkLabel: sanitizeStr(st.linkLabel, 80), linkTarget: cmTgt(st.linkTarget) };
+      }),
+      infoLabel: sanitizeStr(cmIn.infoLabel, 120), infoTitle: sanitizeStr(cmIn.infoTitle, 120), infoTitleEm: sanitizeStr(cmIn.infoTitleEm, 120),
+      license: { title: sanitizeStr(cmLic.title, 120), body: cmRich(cmLic.body), ctaLabel: sanitizeStr(cmLic.ctaLabel, 80), ctaTarget: cmTgt(cmLic.ctaTarget) },
+      clubsCta: { title: sanitizeStr(cmCta.title, 120), text: cmRich(cmCta.text), label: sanitizeStr(cmCta.label, 80) },
+      clubs: { badge: sanitizeStr(cmClubs.badge, 80), title: sanitizeStr(cmClubs.title, 100), titleEm: sanitizeStr(cmClubs.titleEm, 100), intro: cmRich(cmClubs.intro), label: sanitizeStr(cmClubs.label, 120) }
+    };
+  }
+  if (data.clubsDir !== undefined) {
+    var CLUB_DISCS_OK = ['Aire Lliure', 'Sala', '3D', 'Camp', 'Tecnificació', 'Arc Adaptat', 'Kyudo', 'Run Archery'];
+    var clUrl = function (v) { v = String(v || '').trim(); return /^https?:\/\//.test(v) && isSafeUrl(v) ? v.slice(0, 500) : ''; };
+    var clNum = function (v) { var n = (v === null || v === '' || v === undefined) ? NaN : Number(v); return isFinite(n) ? n : null; };
+    var clSlugs = {};
+    data.clubsDir = (Array.isArray(data.clubsDir) ? data.clubsDir : []).slice(0, 400).map(function (c, i) {
+      c = c || {};
+      var email = sanitizeStr(c.email, 120), logo = String(c.logo || '').trim();
+      var base = String(c.slug || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 50) || ('club-' + i);
+      var slug = base, n = 2;
+      while (clSlugs[slug]) { slug = base + '-' + n; n++; }
+      clSlugs[slug] = true;
+      return {
+        id: Number(c.id) || (Date.now() + i), slug: slug,
+        nom: sanitizeStr(c.nom, 150), municipi: sanitizeStr(c.municipi, 100), comarca: sanitizeStr(c.comarca, 100),
+        adreca: sanitizeStr(c.adreca, 200), tel: sanitizeStr(c.tel, 30), email: EMAIL_RE.test(email) ? email : '',
+        web: clUrl(c.web), facebook: clUrl(c.facebook), instagram: clUrl(c.instagram),
+        disciplines: (Array.isArray(c.disciplines) ? c.disciplines : []).filter(function (d) { return CLUB_DISCS_OK.indexOf(d) >= 0; }),
+        lat: clNum(c.lat), lng: clNum(c.lng),
+        logo: /^(\/uploads\/|img\/)[^\s"'<>]+$/.test(logo) ? logo : '',
+        desc: sanitizeNewsBody(c.desc).slice(0, 8000)
+      };
+    }).filter(function (c) { return c.nom; });
+  }
+
+  // Documentació: pestanyes > grups > documents (textos saneats, URL segura, icones permeses)
+  if (data.documentacio !== undefined) {
+    var dcIn = (data.documentacio && typeof data.documentacio === 'object' && !Array.isArray(data.documentacio)) ? data.documentacio : {};
+    var DC_ICONS = ['folder', 'doc', 'book', 'scale', 'users', 'shield', 'eye', 'grad', 'medal', 'calendar', 'id', 'news', 'trophy', 'bars', 'pin', 'target'];
+    var dcArr = function (v, max) { return (Array.isArray(v) ? v : []).slice(0, max); };
+    data.documentacio = {
+      intro: sanitizeNewsBody(dcIn.intro).slice(0, 5000),
+      categories: dcArr(dcIn.categories, 30).map(function (c, ci) {
+        c = c || {};
+        var id = Number(c.id) || (Date.now() + ci);
+        return {
+          id: id,
+          key: String(c.key || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) || ('cat' + id),
+          title: sanitizeStr(c.title, 100),
+          icon: DC_ICONS.indexOf(c.icon) >= 0 ? c.icon : 'folder',
+          desc: sanitizeNewsBody(c.desc).slice(0, 5000),
+          groups: dcArr(c.groups, 40).map(function (g, gi) {
+            g = g || {};
+            return {
+              id: Number(g.id) || (Date.now() + gi),
+              title: sanitizeStr(g.title, 120),
+              docs: dcArr(g.docs, 300).map(function (d, di) {
+                d = d || {};
+                var u = String(d.url || '').trim();
+                return {
+                  id: Number(d.id) || (Date.now() + di),
+                  title: sanitizeStr(d.title, 200),
+                  date: sanitizeStr(d.date, 40),
+                  desc: sanitizeStr(d.desc, 400),
+                  url: isSafeUrl(u) ? u.slice(0, 500) : ''
+                };
+              }).filter(function (d) { return d.title; })
+            };
+          })
+        };
+      }).filter(function (c) { return c.title; })
+    };
+  }
+
   // Calendari esportiu: temporada única (nom, dates ISO) i PDF amb URL segura
   if (data.calendari !== undefined) {
     var calIn = (data.calendari && typeof data.calendari === 'object' && !Array.isArray(data.calendari)) ? data.calendari : {};

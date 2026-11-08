@@ -592,6 +592,1129 @@ carousel: [
   {id:3, img:'img/news/noticia12.jpg', title:'El CAR Sant Cugat acull la 5ª jornada del Programa Autonòmic de Tecnificació', url:'#news:12'}
 ],
 
+// --- VOLS COMENÇAR? (textos editables a Administració > Vols començar) ---
+comenca: {
+    "badge": "🏹 Per a nous arquers",
+    "title1": "Comença a tirar",
+    "titleEm": "amb arc",
+    "intro": "<p>El tir amb arc és un esport accessible per a tothom, des dels 8 anys. Descobreix com unir-te a un dels més de 120 clubs federats a Catalunya.</p>",
+    "steps": [
+      {
+        "title": "Troba un club a prop teu",
+        "text": "<p>Consulta el directori de clubs federats i contacta amb el que et quedi més a prop per conèixer les opcions per començar a practicar el tir amb arc.</p>",
+        "linkLabel": "Veure el directori de clubs",
+        "linkTarget": "clubs"
+      },
+      {
+        "title": "Fes-te soci",
+        "text": "<p>Apunta't al club i obté la llicència federativa a través d'ell. La llicència t'inclou assegurança esportiva.</p>",
+        "linkLabel": "",
+        "linkTarget": ""
+      },
+      {
+        "title": "Comença a competir",
+        "text": "<p>Un cop tinguis la llicència federativa, podràs participar en tirades socials, lligues catalanes i campionats oficials, tant autonòmics com estatals, en funció del tipus de llicència. Hi ha competicions per a tots els nivells i edats.</p>",
+        "linkLabel": "",
+        "linkTarget": ""
+      }
+    ],
+    "infoLabel": "Tot el que necessites saber",
+    "infoTitle": "Informació",
+    "infoTitleEm": "per a principiants",
+    "license": {
+      "title": "Llicència federativa",
+      "body": "<p>La llicència es tramita a través del teu club. Per a la temporada <strong>2026–2027</strong>:</p><ul><li><strong>Llicència Nacional:</strong> vàlida a tot l'Estat. Accés a competicions estatals.</li><li><strong>Llicència Autonòmica:</strong> vàlida a Catalunya. Accés a competicions d'àmbit català.</li></ul><p>Inclou assegurança d'accidents i responsabilitat civil.</p>",
+      "ctaLabel": "Veure preus i formularis",
+      "ctaTarget": "llicencies"
+    },
+    "clubsCta": {
+      "title": "Troba el teu club",
+      "text": "<p>Cerca per nom, municipi o comarca, o utilitza la geolocalització per trobar els clubs més propers a tu.</p>",
+      "label": "Veure el directori de clubs"
+    },
+    "clubs": {
+      "badge": "📍 Directori",
+      "title": "Clubs",
+      "titleEm": "federats",
+      "intro": "<p>Cerca per nom, municipi o comarca, o utilitza la geolocalització per trobar els clubs més propers a tu. Clica «Veure fitxa» per conèixer cada club.</p>",
+      "label": "+120 clubs federats"
+    }
+  },
+
+// --- DIRECTORI DE CLUBS amb fitxa (editable a Administració > Clubs) ---
+clubsDir: [
+    {
+      "id": 3000,
+      "slug": "club-escola-arquers-barcelona",
+      "nom": "Club Escola Arquers Barcelona",
+      "municipi": "Barcelona",
+      "comarca": "Barcelonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.3851,
+      "lng": 2.1734,
+      "logo": "img/clubs/club-escola-arquers-barcelona.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3001,
+      "slug": "club-arc-montjuic",
+      "nom": "Club Arc Montjuïc",
+      "municipi": "Barcelona",
+      "comarca": "Barcelonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.373,
+      "lng": 2.153,
+      "logo": "",
+      "desc": ""
+    },
+    {
+      "id": 3002,
+      "slug": "club-arquers-poblenou",
+      "nom": "Club Arquers Poblenou",
+      "municipi": "Barcelona",
+      "comarca": "Barcelonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.403,
+      "lng": 2.202,
+      "logo": "img/clubs/club-arquers-poblenou.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3003,
+      "slug": "zen-kyudo-club-barcelona",
+      "nom": "Zen Kyudo Club Barcelona",
+      "municipi": "Barcelona",
+      "comarca": "Barcelonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.3851,
+      "lng": 2.1734,
+      "logo": "img/clubs/zen-kyudo-club-barcelona.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3004,
+      "slug": "fundacio-pere-tarres",
+      "nom": "Fundació Pere Tarrés",
+      "municipi": "Barcelona",
+      "comarca": "Barcelonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.394,
+      "lng": 2.14,
+      "logo": "img/clubs/fundacio-pere-tarres.png",
+      "desc": ""
+    },
+    {
+      "id": 3005,
+      "slug": "club-arquers-badalona",
+      "nom": "Club Arquers Badalona",
+      "municipi": "Badalona",
+      "comarca": "Barcelonès",
+      "adreca": "",
+      "tel": "",
+      "email": "arquersbadalona@hotmail.com",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.45,
+      "lng": 2.2472,
+      "logo": "img/clubs/club-arquers-badalona.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3006,
+      "slug": "club-catala-de-tir-amb-arc",
+      "nom": "Club Català de Tir amb Arc",
+      "municipi": "Montcada i Reixac",
+      "comarca": "Vallès Occidental",
+      "adreca": "",
+      "tel": "682 407 747",
+      "email": "cctacpe@gmail.com",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.4883,
+      "lng": 2.2096,
+      "logo": "img/clubs/club-catala.png",
+      "desc": ""
+    },
+    {
+      "id": 3007,
+      "slug": "club-arquers-terrassa",
+      "nom": "Club Arquers Terrassa",
+      "municipi": "Terrassa",
+      "comarca": "Vallès Occidental",
+      "adreca": "",
+      "tel": "681 802 951",
+      "email": "c.arquersterrassa@gmail.com",
+      "web": "https://arquersterrassa.cat",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.5647,
+      "lng": 1.9951,
+      "logo": "img/clubs/arquers-terrassa.webp",
+      "desc": ""
+    },
+    {
+      "id": 3008,
+      "slug": "club-tiro-con-arco-rubi",
+      "nom": "Club Tiro con Arco Rubí",
+      "municipi": "Rubí",
+      "comarca": "Vallès Occidental",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.4937,
+      "lng": 2.0326,
+      "logo": "img/clubs/club-tiro-con-arco-rubi.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3009,
+      "slug": "club-arquers-sant-cugat",
+      "nom": "Club Arquers Sant Cugat",
+      "municipi": "Sant Cugat del Vallès",
+      "comarca": "Vallès Occidental",
+      "adreca": "",
+      "tel": "936 754 353",
+      "email": "arquersdesantcugat@gmail.com",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.4667,
+      "lng": 2.0833,
+      "logo": "img/clubs/club-arquers-sant-cugat-del-valles.png",
+      "desc": ""
+    },
+    {
+      "id": 3010,
+      "slug": "club-arquers-cerdanyola",
+      "nom": "Club Arquers Cerdanyola",
+      "municipi": "Cerdanyola del Vallès",
+      "comarca": "Vallès Occidental",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.49,
+      "lng": 2.14,
+      "logo": "img/clubs/club-arquers-cerdanyola-del-valles.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3011,
+      "slug": "arc-sant-celoni",
+      "nom": "Arc Sant Celoni",
+      "municipi": "Sant Celoni",
+      "comarca": "Vallès Oriental",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.6897,
+      "lng": 2.4969,
+      "logo": "img/clubs/arc-sant-celoni-2.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3012,
+      "slug": "club-de-tir-amb-arc-franqueses",
+      "nom": "Club de Tir amb Arc Franqueses",
+      "municipi": "Les Franqueses del Vallès",
+      "comarca": "Vallès Oriental",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.621,
+      "lng": 2.357,
+      "logo": "img/clubs/club-de-tir-amb-arc-les-franqueses.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3013,
+      "slug": "arquers-de-vallromanes",
+      "nom": "Arquers de Vallromanes",
+      "municipi": "Vallromanes",
+      "comarca": "Vallès Oriental",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.517,
+      "lng": 2.315,
+      "logo": "img/clubs/arquers-de-vallromanes.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3014,
+      "slug": "club-tir-arc-caldes-de-montbui",
+      "nom": "Club Tir Arc Caldes de Montbui",
+      "municipi": "Caldes de Montbui",
+      "comarca": "Vallès Oriental",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.629,
+      "lng": 2.164,
+      "logo": "img/clubs/club-tir-arc-caldes-de-montbui.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3015,
+      "slug": "club-tir-amb-arc-vallgorguina",
+      "nom": "Club Tir amb Arc Vallgorguina",
+      "municipi": "Vallgorguina",
+      "comarca": "Vallès Oriental",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.649,
+      "lng": 2.511,
+      "logo": "img/clubs/club-de-tir-amb-arc-vallgorguina.jpeg",
+      "desc": ""
+    },
+    {
+      "id": 3016,
+      "slug": "tir-arc-olesa",
+      "nom": "Tir Arc Olesa",
+      "municipi": "Olesa de Montserrat",
+      "comarca": "Baix Llobregat",
+      "adreca": "",
+      "tel": "607 462 927",
+      "email": "taolesa@arcolesa.org",
+      "web": "https://arcolesa.org",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.5437,
+      "lng": 1.8941,
+      "logo": "img/clubs/tir-arc-olesa.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3017,
+      "slug": "club-tir-amb-arc-despi",
+      "nom": "Club Tir amb Arc Despí",
+      "municipi": "Sant Joan Despí",
+      "comarca": "Baix Llobregat",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.3657,
+      "lng": 2.0384,
+      "logo": "img/clubs/club-tir-amb-arc-despi.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3018,
+      "slug": "club-sant-andreu-de-la-barca",
+      "nom": "Club Sant Andreu de la Barca",
+      "municipi": "Sant Andreu de la Barca",
+      "comarca": "Baix Llobregat",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.4286,
+      "lng": 1.9847,
+      "logo": "img/clubs/club-tir-amb-arc-sant-andreu-de-la-barca.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3019,
+      "slug": "arquers-club-castelldefels",
+      "nom": "Arquers Club Castelldefels",
+      "municipi": "Castelldefels",
+      "comarca": "Baix Llobregat",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.279,
+      "lng": 1.977,
+      "logo": "img/clubs/arquers-club-castelldefels.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3020,
+      "slug": "tir-esportiu-mataro",
+      "nom": "Tir Esportiu Mataró",
+      "municipi": "Mataró",
+      "comarca": "Maresme",
+      "adreca": "",
+      "tel": "937 990 053",
+      "email": "info@eltem.es",
+      "web": "https://www.eltem.es",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.5421,
+      "lng": 2.4445,
+      "logo": "img/clubs/tir-esportiu-mataro.png",
+      "desc": ""
+    },
+    {
+      "id": 3021,
+      "slug": "club-arquers-dosrius",
+      "nom": "Club Arquers Dosrius",
+      "municipi": "Dosrius",
+      "comarca": "Maresme",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.564,
+      "lng": 2.474,
+      "logo": "img/clubs/club-arquers-dosrius.gif",
+      "desc": ""
+    },
+    {
+      "id": 3022,
+      "slug": "la-conxorxa-d-arenys-de-mar",
+      "nom": "La Conxorxa d'Arenys de Mar",
+      "municipi": "Arenys de Mar",
+      "comarca": "Maresme",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.581,
+      "lng": 2.548,
+      "logo": "img/clubs/associacio-de-tir-amb-arc-la-conxorxa-darenys-de-mar.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3023,
+      "slug": "club-de-tir-amb-arc-vilanova",
+      "nom": "Club de Tir amb Arc Vilanova",
+      "municipi": "Vilanova i la Geltrú",
+      "comarca": "Garraf",
+      "adreca": "",
+      "tel": "616 958 037",
+      "email": "club@arcvng.com",
+      "web": "https://www.arcvng.com",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.2239,
+      "lng": 1.7251,
+      "logo": "img/clubs/club-de-tir-amb-arc-vilanova-i-la-geltru.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3024,
+      "slug": "club-arquers-olivella",
+      "nom": "Club Arquers Olivella",
+      "municipi": "Olivella",
+      "comarca": "Garraf",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.32,
+      "lng": 1.844,
+      "logo": "img/clubs/club-arquers-olivella.png",
+      "desc": ""
+    },
+    {
+      "id": 3025,
+      "slug": "club-arquers-can-cuguls",
+      "nom": "Club Arquers Can Cuguls",
+      "municipi": "Olivella",
+      "comarca": "Garraf",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.322,
+      "lng": 1.842,
+      "logo": "img/clubs/club-arquers-can-cuguls.jpeg",
+      "desc": ""
+    },
+    {
+      "id": 3026,
+      "slug": "club-tir-amb-arc-manresa",
+      "nom": "Club Tir amb Arc Manresa",
+      "municipi": "Manresa",
+      "comarca": "Bages",
+      "adreca": "",
+      "tel": "644 747 136",
+      "email": "tirambarcmanresa@hotmail.com",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.725,
+      "lng": 1.8266,
+      "logo": "img/clubs/club-tir-amb-arc-manresa.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3027,
+      "slug": "club-tir-amb-arc-zen-del-bages",
+      "nom": "Club Tir amb Arc Zen del Bages",
+      "municipi": "Manresa",
+      "comarca": "Bages",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.726,
+      "lng": 1.827,
+      "logo": "img/clubs/club-de-tir-amb-arc-zen-del-bages.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3028,
+      "slug": "club-arquers-anoia",
+      "nom": "Club Arquers Anoia",
+      "municipi": "Igualada",
+      "comarca": "Anoia",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.5793,
+      "lng": 1.6187,
+      "logo": "img/clubs/club-arquers-anoia.png",
+      "desc": ""
+    },
+    {
+      "id": 3029,
+      "slug": "club-arquers-salt",
+      "nom": "Club Arquers Salt",
+      "municipi": "Salt",
+      "comarca": "Gironès",
+      "adreca": "",
+      "tel": "626 528 916",
+      "email": "clubarcsalt@clubarcsalt.org",
+      "web": "https://clubarcsalt.org",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.9749,
+      "lng": 2.7928,
+      "logo": "img/clubs/arquers-salt.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3030,
+      "slug": "club-esportiu-tir-arc-figueres",
+      "nom": "Club Esportiu Tir Arc Figueres",
+      "municipi": "Figueres",
+      "comarca": "Alt Empordà",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 42.2671,
+      "lng": 2.9601,
+      "logo": "img/clubs/club-esportiu-tir-arc-figueres.png",
+      "desc": ""
+    },
+    {
+      "id": 3031,
+      "slug": "club-arquers-esclanya",
+      "nom": "Club Arquers Esclanyà",
+      "municipi": "Esclanyà",
+      "comarca": "Baix Empordà",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.9614,
+      "lng": 3.147,
+      "logo": "img/clubs/club-arquers-esclanya.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3032,
+      "slug": "club-costa-brava-3d",
+      "nom": "Club Costa Brava 3D",
+      "municipi": "Girona",
+      "comarca": "Gironès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.9794,
+      "lng": 2.8214,
+      "logo": "img/clubs/club-de-tir-amb-arc-costa-brava-3d.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3033,
+      "slug": "grup-arquers-tarragona",
+      "nom": "Grup Arquers Tarragona",
+      "municipi": "Tarragona",
+      "comarca": "Tarragonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.1189,
+      "lng": 1.2445,
+      "logo": "img/clubs/grup-arquers-tarragona.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3034,
+      "slug": "club-de-tir-amb-arc-constanti",
+      "nom": "Club de Tir amb Arc Constantí",
+      "municipi": "Constantí",
+      "comarca": "Tarragonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.1564,
+      "lng": 1.2014,
+      "logo": "img/clubs/club-de-tir-amb-arc-constanti.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3035,
+      "slug": "club-de-tir-amb-arc-tau",
+      "nom": "Club de Tir amb Arc TAU",
+      "municipi": "Tarragona",
+      "comarca": "Tarragonès",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.1189,
+      "lng": 1.2445,
+      "logo": "img/clubs/club-de-tir-amb-arc-tau.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3036,
+      "slug": "club-arquers-cambrils",
+      "nom": "Club Arquers Cambrils",
+      "municipi": "Cambrils",
+      "comarca": "Baix Camp",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.0648,
+      "lng": 1.058,
+      "logo": "img/clubs/club-arquers-cambrils.png",
+      "desc": ""
+    },
+    {
+      "id": 3037,
+      "slug": "club-arquers-alforja",
+      "nom": "Club Arquers Alforja",
+      "municipi": "Alforja",
+      "comarca": "Baix Camp",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.193,
+      "lng": 1.016,
+      "logo": "img/clubs/club-arquers-alforja.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3038,
+      "slug": "club-arquers-priorat",
+      "nom": "Club Arquers Priorat",
+      "municipi": "Falset",
+      "comarca": "Priorat",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.143,
+      "lng": 0.839,
+      "logo": "img/clubs/club-arquers-priorat.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3039,
+      "slug": "club-tir-amb-arc-lleida",
+      "nom": "Club Tir amb Arc Lleida",
+      "municipi": "Lleida",
+      "comarca": "Segrià",
+      "adreca": "",
+      "tel": "647 445 161",
+      "email": "",
+      "web": "https://tirambarclleida.cat",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.6176,
+      "lng": 0.62,
+      "logo": "img/clubs/tir-amb-arc-lleida.png",
+      "desc": ""
+    },
+    {
+      "id": 3040,
+      "slug": "club-tir-amb-arc-pardinyes",
+      "nom": "Club Tir amb Arc Pardinyes",
+      "municipi": "Lleida",
+      "comarca": "Segrià",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.609,
+      "lng": 0.635,
+      "logo": "img/clubs/club-tir-amb-arc-pardinyes.png",
+      "desc": ""
+    },
+    {
+      "id": 3041,
+      "slug": "ae-cultural-puigverd-de-lleida",
+      "nom": "AE Cultural Puigverd de Lleida",
+      "municipi": "Puigverd de Lleida",
+      "comarca": "Segrià",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 41.563,
+      "lng": 0.703,
+      "logo": "img/clubs/associacio-esportiva-cultural-puigverd-de-lleida.jpg",
+      "desc": ""
+    },
+    {
+      "id": 3042,
+      "slug": "club-arquers-montsec",
+      "nom": "Club Arquers Montsec",
+      "municipi": "Àger",
+      "comarca": "Noguera",
+      "adreca": "",
+      "tel": "",
+      "email": "",
+      "web": "",
+      "facebook": "",
+      "instagram": "",
+      "disciplines": [],
+      "lat": 42.002,
+      "lng": 0.779,
+      "logo": "img/clubs/club-arquers-montsec.jpg",
+      "desc": ""
+    }
+  ],
+
+// --- DOCUMENTACIÓ: pestanyes, grups i documents (editable a Administració > Documentació) ---
+documentacio: {
+    "intro": "Accés a tota la documentació oficial de la Federació Catalana de Tir amb Arc: eleccions, actes dels comitès, estatuts, professionals de l'esport i formació.",
+    "categories": [
+      {
+        "id": 1,
+        "key": "eleccions",
+        "title": "Eleccions",
+        "icon": "users",
+        "desc": "<p>Documentació dels processos electorals de la FCTA: reglament, calendari, censos, candidatures, actes i proclamació de resultats de les <strong>eleccions 2024</strong>.</p>",
+        "groups": [
+          {
+            "id": 105,
+            "title": "Procés electoral",
+            "docs": [
+              {
+                "id": 101,
+                "title": "Reglament del règim electoral",
+                "date": "",
+                "desc": "Reglament per a les eleccions de la FCTA",
+                "url": "docs/ELECCIONS_2024_REGLAMENT_ELECTORAL.pdf"
+              },
+              {
+                "id": 102,
+                "title": "Calendari electoral – Eleccions 2024",
+                "date": "2024-10-26",
+                "desc": "Versió del 26/10/2024",
+                "url": "docs/ELECCIONS_2024_CALENDARI_ELECTORAL.pdf"
+              },
+              {
+                "id": 103,
+                "title": "Acta de l'Assemblea General Extraordinària",
+                "date": "",
+                "desc": "Procés electoral",
+                "url": "docs/ELECCIONS_2024_ACTA_ASSEMBLEA_EXTRAORDINARIA_PROCES_ELECTORAL.pdf"
+              },
+              {
+                "id": 104,
+                "title": "Acta de constitució de la Junta Electoral",
+                "date": "2024-10-31",
+                "desc": "Constitució i elecció del president de la Junta Electoral",
+                "url": "docs/ELECCIONS_2024_ACTA_CONSTITUCIO_JUNTA_ELECTORAL.pdf"
+              }
+            ]
+          },
+          {
+            "id": 109,
+            "title": "Censos i candidatures",
+            "docs": [
+              {
+                "id": 106,
+                "title": "Censos electorals definitius",
+                "date": "2024-11-11",
+                "desc": "Cens de clubs definitiu",
+                "url": "docs/ELECCIONS_2024_CENSOS_DEFINITIUS.pdf"
+              },
+              {
+                "id": 107,
+                "title": "Candidatures definitives a la Junta Directiva",
+                "date": "2024-11-27",
+                "desc": "",
+                "url": "docs/ELECCIONS_2024_CANDIDATURES_JUNTA_DIRECTIVA.pdf"
+              },
+              {
+                "id": 108,
+                "title": "Candidatures definitives a representants de l'Assemblea",
+                "date": "2024-12-18",
+                "desc": "Llistes definitives",
+                "url": "docs/ELECCIONS_2024_CANDIDATURES_ASSEMBLEA.pdf"
+              }
+            ]
+          },
+          {
+            "id": 112,
+            "title": "Resultats",
+            "docs": [
+              {
+                "id": 110,
+                "title": "Proclamació de resultats – Junta Directiva",
+                "date": "2024-12-05",
+                "desc": "Candidatura guanyadora",
+                "url": "docs/ELECCIONS_2024_PROCLAMACIO_RESULTATS_JUNTA_DIRECTIVA.pdf"
+              },
+              {
+                "id": 111,
+                "title": "Proclamació de resultats – Representants de l'Assemblea",
+                "date": "2024-12-31",
+                "desc": "Resultats definitius",
+                "url": "docs/ELECCIONS_2024_PROCLAMACIO_RESULTATS_ASSEMBLEA.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "key": "assemblees",
+        "title": "Assemblees i Estatuts",
+        "icon": "book",
+        "desc": "<p>Normativa interna de la federació i documents de l'Assemblea General.</p>",
+        "groups": [
+          {
+            "id": 114,
+            "title": "",
+            "docs": [
+              {
+                "id": 113,
+                "title": "Estatuts vigents de la FCTA",
+                "date": "",
+                "desc": "Estatuts de la Federació Catalana de Tir amb Arc",
+                "url": "docs/ESTATUTS_FCTA.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "key": "actes",
+        "title": "Actes",
+        "icon": "doc",
+        "desc": "<p>Actes de les reunions dels comitès de disciplina, publicades d'acord amb les obligacions de transparència de les federacions esportives catalanes.</p>",
+        "groups": [
+          {
+            "id": 117,
+            "title": "Comitè de Camp i 3D",
+            "docs": [
+              {
+                "id": 115,
+                "title": "Acta del Comitè de Camp i 3D – 25 de juny de 2025",
+                "date": "2025-06-25",
+                "desc": "Reunió telemàtica · Temporada 2025/2026",
+                "url": "docs/ACTES_COMITE_CAMP_3D_2025_06_25.pdf"
+              },
+              {
+                "id": 116,
+                "title": "Acta del Comitè de Camp i 3D – 11 de juny de 2025 (v3)",
+                "date": "2025-06-11",
+                "desc": "Reunió telemàtica · Temporada 2025/2026",
+                "url": "docs/ACTES_COMITE_CAMP_3D_2025_06_11.pdf"
+              }
+            ]
+          },
+          {
+            "id": 124,
+            "title": "Comitè d'Aire Lliure i Sala",
+            "docs": [
+              {
+                "id": 118,
+                "title": "Acta del Comitè d'Aire Lliure i Sala – 21 d'octubre de 2021",
+                "date": "2021-10-21",
+                "desc": "Calendari de la Lliga d'Aire Lliure 2022, campionats i sol·licitud de competicions",
+                "url": "docs/ACTES_COMITE_AL_SALA_2021_10_21.pdf"
+              },
+              {
+                "id": 119,
+                "title": "Acta del Comitè d'Aire Lliure i Sala – 8 de gener de 2021",
+                "date": "2021-01-08",
+                "desc": "Cancel·lació de la Lliga de Sala 2020-2021 i canvi de dates del Campionat de Catalunya",
+                "url": "docs/ACTES_COMITE_AL_SALA_2021_01_08.pdf"
+              },
+              {
+                "id": 120,
+                "title": "Acta del Comitè d'Aire Lliure i Sala – 13 de novembre de 2020",
+                "date": "2020-11-13",
+                "desc": "Calendari de lligues, criteris i protocol COVID-19",
+                "url": "docs/ACTES_COMITE_AL_SALA_2020_11_13.pdf"
+              },
+              {
+                "id": 121,
+                "title": "Acta del Comitè d'Aire Lliure i Sala – 31 d'octubre de 2020",
+                "date": "2020-10-31",
+                "desc": "Adaptació de distàncies i dianes a la normativa RFETA i WA",
+                "url": "docs/ACTES_COMITE_AL_SALA_2020_10_31.pdf"
+              },
+              {
+                "id": 122,
+                "title": "Acta del Comitè d'Aire Lliure i Sala – 10 d'octubre de 2020",
+                "date": "2020-10-10",
+                "desc": "Clubs que poden fer competicions i calendari de Sala",
+                "url": "docs/ACTES_COMITE_AL_SALA_2020_10_10.pdf"
+              },
+              {
+                "id": 123,
+                "title": "Acta del Comitè d'Aire Lliure i Sala – 3 de setembre de 2020",
+                "date": "2020-09-03",
+                "desc": "Presentació del president, situació dels clubs i escenaris de competició",
+                "url": "docs/ACTES_COMITE_AL_SALA_2020_09_03.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "key": "professionals",
+        "title": "Professionals de l'Esport",
+        "icon": "id",
+        "desc": "<p>Normativa i procediments sobre l'exercici de les professions de l'esport a Catalunya.</p>",
+        "groups": [
+          {
+            "id": 129,
+            "title": "",
+            "docs": [
+              {
+                "id": 125,
+                "title": "Llei 7/2015, de modificació de la Llei 3/2008, de l'exercici de les professions de l'esport",
+                "date": "2015-05-14",
+                "desc": "BOE-A-2015-6015",
+                "url": "docs/PROFESSIONS_ESPORT_LLEI_7_2015_BOE_A_2015_6015.pdf"
+              },
+              {
+                "id": 126,
+                "title": "Procediment de regulació de les professions de l'esport",
+                "date": "",
+                "desc": "Fases del procediment (disposició addicional sisena de la Llei 7/2015)",
+                "url": "docs/PROFESSIONS_ESPORT_PROCEDIMENT_REGULACIO.pdf"
+              },
+              {
+                "id": 127,
+                "title": "Programa de Tecnificació Base (PATD)",
+                "date": "",
+                "desc": "Programa Autonòmic de Tecnificació",
+                "url": "docs/PATD_Tecnificacio_Base_v4.pdf"
+              },
+              {
+                "id": 128,
+                "title": "Portal ROPE – Registre Oficial de Professionals de l'Esport",
+                "date": "",
+                "desc": "Consell Català de l'Esport",
+                "url": "https://esport.gencat.cat/ca/arees_dactuacio/professionals_i_titulacio"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "key": "cursos",
+        "title": "Cursos Formatius",
+        "icon": "grad",
+        "desc": "<p>Circulars dels cursos, tallers i seminaris de formació organitzats per la FCTA.</p>",
+        "groups": [
+          {
+            "id": 136,
+            "title": "",
+            "docs": [
+              {
+                "id": 130,
+                "title": "Seminari de Psicologia Aplicada al Tir amb Arc – CIRC-2607",
+                "date": "2026-01-29",
+                "desc": "Seminari el 28 de febrer de 2026",
+                "url": "docs/2026012915470845-CIRC_2607_Seminari_psicologia_aplicada_tir_amb_arc.pdf"
+              },
+              {
+                "id": 131,
+                "title": "Curs de Tècnic Esportiu Nivell 1 – CIRC-2504",
+                "date": "2026-01-15",
+                "desc": "Inici del curs: 27 de febrer de 2026",
+                "url": "docs/2026011516220845-CIRC_2504_Curs_Tecnic_Nivell1_2025_26.pdf"
+              },
+              {
+                "id": 132,
+                "title": "Taller Jurídic per a Clubs – CIRC-2511",
+                "date": "2025-02-13",
+                "desc": "Taller el 26 de febrer de 2025",
+                "url": "docs/2025021311182735-CIRC_2511_Taller_formacio_clubs_juridic.pdf"
+              },
+              {
+                "id": 133,
+                "title": "Laboral i Voluntariat Esportiu – CIRC-2447",
+                "date": "2024-10-24",
+                "desc": "Taller el 7 de novembre de 2024",
+                "url": "docs/2024102413581925-CIRC_2447_Taller_formacio_clubs_voluntariat.pdf"
+              },
+              {
+                "id": 134,
+                "title": "Fiscalitat dels Clubs Esportius – CIRC-2435",
+                "date": "2024-07-04",
+                "desc": "Taller el 18 de juliol de 2024",
+                "url": "docs/202407041752453-CIRC_2435_Taller_formacio_clubs_fiscal.pdf"
+              },
+              {
+                "id": 135,
+                "title": "Taller de Comptabilitat per a Clubs – CIRC-2410",
+                "date": "2024-02-29",
+                "desc": "Taller el 21 de març de 2024",
+                "url": "docs/2024022916412124-CIRC_2410_Taller_formacio_clubs_comptabilitat.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
 // --- CALENDARI ESPORTIU: temporada única i PDF (editable a Administració > Calendari) ---
 calendari: { label: 'Temporada 2026/2027', from: '2026-09-01', to: '2027-08-31', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' },
 

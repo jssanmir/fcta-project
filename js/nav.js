@@ -22,6 +22,8 @@ var _SEO_TITLES = {
   documentacio:  'Documentació | FCTA',
   reglaments:    'Reglaments | FCTA',
   inici:         'Comença al Tir amb Arc | FCTA',
+  clubs:         'Clubs federats | FCTA',
+  club:          'Fitxa de club | FCTA',
   disciplina:    'Disciplines | FCTA',
   transparencia: 'Transparència | FCTA',
   assegurances:  'Assegurances | FCTA',
@@ -45,6 +47,10 @@ function navLabelFor(sec) {
   if (sec === 'home') return 'Inici';
   if (sec === 'disciplina' && typeof _discActiva !== 'undefined' && _discActiva &&
       typeof DISC_DATA !== 'undefined' && DISC_DATA[_discActiva]) return DISC_DATA[_discActiva].nom;
+  if (sec === 'club' && typeof clubBySlug === 'function' && typeof _clubActiu !== 'undefined' && _clubActiu) {
+    var cl = clubBySlug(_clubActiu);
+    if (cl) return cl.nom;
+  }
   var f = FCTA.sections.filter(function(x) { return x.key === sec; })[0];
   return f ? f.label : sec;
 }
@@ -170,6 +176,17 @@ function _navFromHash() {
         setDiscTab(tab, tabBtn, true);
       }
     }, 80);
+    return;
+  }
+
+  if (sec === 'club') {
+    if (sub && typeof showClub === 'function') showClub(sub, true); else setS('clubs', true);
+    return;
+  }
+
+  if (sec === 'documentacio' && sub) {
+    setS(sec, true);
+    if (typeof setDocCat === 'function') setDocCat(sub, true);
     return;
   }
 

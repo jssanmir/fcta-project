@@ -196,6 +196,9 @@ function renderATab(tab){
   else if(tab==='junta')   renderAdmJunta(b);
   else if(tab==='disc')    renderAdmDisc(b);
   else if(tab==='cal')     renderAdmCal(b);
+  else if(tab==='docum')   renderAdmDocum(b);
+  else if(tab==='comenca') renderAdmComenca(b);
+  else if(tab==='clubs')   renderAdmClubs(b);
   else if(tab==='comp')    renderAdmComp(b);
   else if(tab==='form')    renderAdmForm(b);
   else if(tab==='tirades') renderAdmTirades(b);
@@ -816,6 +819,473 @@ function crudRemoveCalPdf(){
   renderCalendari();
   renderAdmCal(document.getElementById('admBody'));
   toast('PDF tret del calendari.','&#128465;');
+}
+
+// ── DOCUMENTACIÓ: pestanyes, grups i documents ─────────────
+// DB.documentacio = { intro, categories:[{ id, key, title, icon, desc, groups:[{ id, title, docs:[{ id, title, date, desc, url }] }] }] }
+// Les pestanyes sense cap document no es mostren a la web (js/documentacio.js).
+var _admDocCat = null;
+var _dcSeq = 0;
+function _dcId(){ _dcSeq++; return Date.now()*10 + (_dcSeq % 10); }
+function _dcEnsure(){
+  if(!DB.documentacio) DB.documentacio={intro:'',categories:[]};
+  if(!DB.documentacio.categories) DB.documentacio.categories=[];
+  return DB.documentacio;
+}
+function _dcCat(id){ return _dcEnsure().categories.filter(function(c){return c.id===id;})[0]; }
+function _dcGroup(c,gid){ return (c.groups||[]).filter(function(g){return g.id===gid;})[0]; }
+function _dcSlug(t){
+  var m={'à':'a','á':'a','è':'e','é':'e','í':'i','ï':'i','ò':'o','ó':'o','ú':'u','ü':'u','ç':'c','ñ':'n','·':''};
+  return String(t||'').toLowerCase().replace(/[àáèéíïòóúüçñ·]/g,function(ch){return m[ch];}).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40)||'pestanya';
+}
+function _dcUniqueKey(title,exceptId){
+  var base=_dcSlug(title), key=base, n=2;
+  var used=function(k){ return _dcEnsure().categories.some(function(c){return c.key===k&&c.id!==exceptId;}); };
+  while(used(key)){ key=base+'-'+n; n++; }
+  return key;
+}
+function _dcMoveIn(arr,id,dir){
+  var i=-1,k;
+  for(k=0;k<arr.length;k++){ if(arr[k].id===id){ i=k; break; } }
+  var j=i+dir;
+  if(i<0||j<0||j>=arr.length) return false;
+  var tmp=arr[i]; arr[i]=arr[j]; arr[j]=tmp;
+  return true;
+}
+function _dcCount(c){
+  var n=0; (c.groups||[]).forEach(function(g){ n+=(g.docs||[]).length; }); return n;
+}
+function _dcSaved(){
+  dbSave();
+  renderDocumentacio();
+  renderAdmDocum(document.getElementById('admBody'));
+}
+function _dcIconOpts(){ return DOC_ICONS.map(function(i){return {val:i.val,lbl:i.lbl};}); }
+
+function renderAdmDocum(b){
+  var D=_dcEnsure(), cats=D.categories;
+  if(!_admDocCat||!_dcCat(_admDocCat)) _admDocCat=cats.length?cats[0].id:null;
+  var cur=_dcCat(_admDocCat);
+  var h='<div class="crud-form">'
+    +'<div class="crud-form-title">&#9998; Text de la capçalera</div>'
+    +'<div class="af-g"><label>Introducció (text enriquit)</label>'+rtEditor('adc_intro',(D.intro&&!/</.test(D.intro))?'<p>'+escHtml(D.intro)+'</p>':(D.intro||''),'Text sota el títol de la pàgina')+'</div>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveDocIntro',[])+'>&#10003; Desar text</button>'
+    +'</div>'
+    +'<div class="adm-st">Pestanyes <span class="crud-count-badge">'+cats.length+'</span></div>'
+    +'<div class="adm-dc-tabs">'
+    +cats.map(function(c){
+      var n=_dcCount(c);
+      return '<button class="adm-dc-tab'+(c.id===_admDocCat?' act':'')+'"'+dataAttr('onclick','admDocSelect',[c.id])+'>'+escHtml(c.title)+'<span>'+n+(n?'':' · buida')+'</span></button>';
+    }).join('')
+    +'</div>'
+    +'<div class="crud-form">'
+    +'<div class="crud-form-title">&#10010; Nova pestanya</div>'
+    +'<div class="af-row">'+mkField('Títol *','adc_nt','text','','Ex: Assemblees')+mkField('Icona','adc_ni','select','folder','',_dcIconOpts())+'</div>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddDocCat',[])+'>&#10010; Crear pestanya</button>'
+    +'<div style="font-size:.78rem;color:var(--gray);margin-top:.5rem">Les pestanyes sense documents no es mostren a la web.</div>'
+    +'</div>';
+  if(cur) h+=_admDocCatHtml(cur);
+  b.innerHTML=h;
+}
+function _admDocCatHtml(c){
+  var h='<div class="crud-form">'
+    +'<div class="crud-form-title">&#9998; Pestanya «'+escHtml(c.title)+'»</div>'
+    +'<div class="af-row">'+mkField('Títol *','adc_t_'+c.id,'text',c.title,'')+mkField('Icona','adc_i_'+c.id,'select',c.icon||'folder','',_dcIconOpts())+'</div>'
+    +'<div class="af-g"><label>Descripció (text enriquit)</label>'+rtEditor('adc_d_'+c.id,c.desc||'','Text que es mostra sobre els documents')+'</div>'
+    +'<div style="display:flex;gap:.5rem;flex-wrap:wrap">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveDocCat',[c.id])+'>&#10003; Desar pestanya</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudMoveDocCat',[c.id,-1])+'>&#9664; Moure</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudMoveDocCat',[c.id,1])+'>Moure &#9654;</button>'
+    +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelDocCat',[c.id,c.title])+'>&#128465; Eliminar pestanya</button>'
+    +'</div></div>'
+    +'<div class="adm-st">Grups i documents</div>';
+  (c.groups||[]).forEach(function(g,gi){ h+=_admDocGroupHtml(c,g,gi); });
+  h+='<div class="crud-form">'
+    +'<div class="crud-form-title">&#10010; Nou grup</div>'
+    +mkField('Títol del grup','adc_ng_'+c.id,'text','','Ex: Actes 2025')
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddDocGroup',[c.id])+'>&#10010; Afegir grup</button>'
+    +'</div>';
+  return h;
+}
+function _admDocGroupHtml(c,g,gi){
+  var docs=g.docs||[], total=(c.groups||[]).length;
+  var h='<div class="adm-dc-group">'
+    +'<div class="adm-dc-group-head">'
+    +'<input type="text" id="adc_gt_'+g.id+'" value="'+escHtml(g.title||'')+'" placeholder="Títol del grup (opcional)">'
+    +'<button class="btn-edit-crud"'+dataAttr('onclick','crudSaveDocGroup',[c.id,g.id])+'>&#10003; Desar nom</button>'
+    +(gi>0?'<button class="btn-edit-crud" title="Pujar" aria-label="Pujar"'+dataAttr('onclick','crudMoveDocGroup',[c.id,g.id,-1])+'>&#9650;</button>':'')
+    +(gi<total-1?'<button class="btn-edit-crud" title="Baixar" aria-label="Baixar"'+dataAttr('onclick','crudMoveDocGroup',[c.id,g.id,1])+'>&#9660;</button>':'')
+    +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelDocGroup',[c.id,g.id,g.title||'(sense títol)'])+'>&#128465;</button>'
+    +'</div>'
+    +'<div class="crud-list">'
+    +(docs.length?'':'<div class="crud-item"><div class="crud-item-info"><div class="crud-item-meta">Cap document en aquest grup.</div></div></div>')
+    +docs.map(function(d,di){
+      return '<div class="crud-item" id="dcditem-'+d.id+'">'
+        +'<div class="crud-item-info">'
+        +'<div class="crud-item-title">'+escHtml(d.title)+'</div>'
+        +'<div class="crud-item-meta"><span>'+escHtml(_docFmtDate(d.date)||'Sense data')+'</span><span>'+(d.url?escHtml(d.url.split('/').pop()):'Sense fitxer')+'</span></div>'
+        +'</div>'
+        +'<div class="crud-item-acts">'
+        +(di>0?'<button class="btn-edit-crud" title="Pujar" aria-label="Pujar"'+dataAttr('onclick','crudMoveDocItem',[c.id,g.id,d.id,-1])+'>&#9650;</button>':'')
+        +(di<docs.length-1?'<button class="btn-edit-crud" title="Baixar" aria-label="Baixar"'+dataAttr('onclick','crudMoveDocItem',[c.id,g.id,d.id,1])+'>&#9660;</button>':'')
+        +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditDocItem',[c.id,g.id,d.id])+'>&#9998; Editar</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelDocItem',[c.id,g.id,d.id,(d.title||'').substring(0,30)])+'>&#128465;</button>'
+        +'</div></div>';
+    }).join('')
+    +'</div>'
+    +'<div class="crud-edit-form" style="margin-top:.7rem">'
+    +'<div class="crud-form-title">&#10010; Afegir document</div>'
+    +mkField('Títol *','adc_dt_'+g.id,'text','','')
+    +'<div class="af-row">'+mkField('Data','adc_dd_'+g.id,'date','','')+mkField('Descripció breu','adc_dx_'+g.id,'text','','')+'</div>'
+    +mkUploadField('PDF','adc_du_'+g.id,'','pdf')
+    +mkField('O enllaç extern','adc_dl_'+g.id,'text','','https://…')
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddDocItem',[c.id,g.id])+'>&#10010; Afegir document</button>'
+    +'</div></div>';
+  return h;
+}
+function admDocSelect(id){ _admDocCat=id; renderAdmDocum(document.getElementById('admBody')); }
+function crudSaveDocIntro(){
+  _dcEnsure().intro=rtGetHtml('adc_intro');
+  admLog('DOCUM_INTRO','');
+  _dcSaved();
+  toast('Text desat!','&#9989;');
+}
+function crudAddDocCat(){
+  var t=fv('adc_nt'),i=fv('adc_ni')||'folder';
+  if(!t){toast('Escriu el títol de la pestanya','&#9888;&#65039;');return;}
+  var c={id:_dcId(),key:_dcUniqueKey(t),title:t,icon:i,desc:'',groups:[{id:_dcId(),title:'',docs:[]}]};
+  _dcEnsure().categories.push(c);
+  _admDocCat=c.id;
+  admLog('DOCUM_CAT_ADD',t);
+  _dcSaved();
+  toast('Pestanya creada. Afegeix-hi documents perquè es mostri.','&#9989;');
+}
+function crudSaveDocCat(id){
+  var c=_dcCat(id); if(!c) return;
+  var t=fv('adc_t_'+id);
+  if(!t){toast('El títol no pot estar buit','&#9888;&#65039;');return;}
+  if(t!==c.title) c.key=_dcUniqueKey(t,c.id);
+  c.title=t; c.icon=fv('adc_i_'+id)||'folder'; c.desc=rtGetHtml('adc_d_'+id);
+  admLog('DOCUM_CAT_EDIT',t);
+  _dcSaved();
+  toast('Pestanya desada!','&#9989;');
+}
+function crudMoveDocCat(id,dir){
+  if(_dcMoveIn(_dcEnsure().categories,id,dir)) _dcSaved();
+}
+function crudDelDocCat(id,name){
+  confirmDel(name,function(){
+    var D=_dcEnsure();
+    D.categories=D.categories.filter(function(c){return c.id!==id;});
+    admLog('DOCUM_CAT_DEL',name);
+    _dcSaved();
+    toast('Pestanya eliminada.','&#128465;');
+  });
+}
+function crudAddDocGroup(cid){
+  var c=_dcCat(cid); if(!c) return;
+  if(!c.groups) c.groups=[];
+  c.groups.push({id:_dcId(),title:fv('adc_ng_'+cid),docs:[]});
+  _dcSaved();
+  toast('Grup afegit!','&#9989;');
+}
+function crudSaveDocGroup(cid,gid){
+  var g=_dcGroup(_dcCat(cid)||{},gid); if(!g) return;
+  g.title=fv('adc_gt_'+gid);
+  _dcSaved();
+  toast('Grup desat!','&#9989;');
+}
+function crudMoveDocGroup(cid,gid,dir){
+  var c=_dcCat(cid); if(!c) return;
+  if(_dcMoveIn(c.groups||[],gid,dir)) _dcSaved();
+}
+function crudDelDocGroup(cid,gid,name){
+  var c=_dcCat(cid); if(!c) return;
+  confirmDel(name,function(){
+    c.groups=(c.groups||[]).filter(function(g){return g.id!==gid;});
+    admLog('DOCUM_GRUP_DEL',name);
+    _dcSaved();
+    toast('Grup eliminat.','&#128465;');
+  });
+}
+function _dcUrlOk(u){ return !u||/^(https?:\/\/|docs\/|\/uploads\/)/.test(u); }
+function crudAddDocItem(cid,gid){
+  var g=_dcGroup(_dcCat(cid)||{},gid); if(!g) return;
+  var t=fv('adc_dt_'+gid),d=fv('adc_dd_'+gid),x=fv('adc_dx_'+gid),url=fv('adc_du_'+gid)||fv('adc_dl_'+gid);
+  if(!t){toast('Escriu el títol del document','&#9888;&#65039;');return;}
+  if(!url){toast('Puja un PDF o indica un enllaç','&#9888;&#65039;');return;}
+  if(!_dcUrlOk(url)){toast('Enllaç no vàlid: ha de començar per https://','&#9888;&#65039;');return;}
+  if(!g.docs) g.docs=[];
+  g.docs.push({id:_dcId(),title:t,date:d,desc:x,url:url});
+  admLog('DOCUM_DOC_ADD',t);
+  _dcSaved();
+  toast('Document afegit!','&#9989;');
+}
+function crudEditDocItem(cid,gid,did){
+  var g=_dcGroup(_dcCat(cid)||{},gid); if(!g) return;
+  var d=(g.docs||[]).filter(function(x){return x.id===did;})[0]; if(!d) return;
+  var item=document.getElementById('dcditem-'+did); if(!item) return;
+  var existing=document.getElementById('dcdedit-'+did);
+  if(existing){existing.remove();item.classList.remove('editing');return;}
+  item.classList.add('editing');
+  var local=/^(docs\/|\/uploads\/)/.test(d.url||'');
+  var isIso=/^\d{4}-\d{2}-\d{2}$/.test(d.date||'');
+  var f=document.createElement('div');
+  f.className='crud-edit-form'; f.id='dcdedit-'+did;
+  f.innerHTML=
+    mkField('Títol *','edc_t_'+did,'text',d.title,'')
+    +'<div class="af-row">'+mkField('Data','edc_d_'+did,'date',isIso?d.date:'','')+mkField('Descripció breu','edc_x_'+did,'text',d.desc||'','')+'</div>'
+    +mkUploadField('PDF','edc_u_'+did,local?d.url:'','pdf')
+    +mkField('O enllaç extern','edc_l_'+did,'text',local?'':(d.url||''),'https://…')
+    +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveDocItem',[cid,gid,did])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelDocItem',[did])+'>Cancel·lar</button>'
+    +'</div>';
+  item.appendChild(f);
+}
+function crudSaveDocItem(cid,gid,did){
+  var g=_dcGroup(_dcCat(cid)||{},gid); if(!g) return;
+  var d=(g.docs||[]).filter(function(x){return x.id===did;})[0]; if(!d) return;
+  var t=fv('edc_t_'+did),url=fv('edc_u_'+did)||fv('edc_l_'+did);
+  if(!t){toast('El títol no pot estar buit','&#9888;&#65039;');return;}
+  if(!url){toast('Puja un PDF o indica un enllaç','&#9888;&#65039;');return;}
+  if(!_dcUrlOk(url)){toast('Enllaç no vàlid: ha de començar per https://','&#9888;&#65039;');return;}
+  d.title=t; d.date=fv('edc_d_'+did); d.desc=fv('edc_x_'+did); d.url=url;
+  admLog('DOCUM_DOC_EDIT',t);
+  _dcSaved();
+  toast('Document desat!','&#9989;');
+}
+function crudCancelDocItem(did){
+  var item=document.getElementById('dcditem-'+did), f=document.getElementById('dcdedit-'+did);
+  if(item) item.classList.remove('editing');
+  if(f) f.remove();
+}
+function crudMoveDocItem(cid,gid,did,dir){
+  var g=_dcGroup(_dcCat(cid)||{},gid); if(!g) return;
+  if(_dcMoveIn(g.docs||[],did,dir)) _dcSaved();
+}
+function crudDelDocItem(cid,gid,did,name){
+  var g=_dcGroup(_dcCat(cid)||{},gid); if(!g) return;
+  confirmDel(name,function(){
+    g.docs=(g.docs||[]).filter(function(x){return x.id!==did;});
+    admLog('DOCUM_DOC_DEL',name);
+    _dcSaved();
+    toast('Document eliminat.','&#128465;');
+  });
+}
+
+// ── VOLS COMENÇAR? (textos editables) ──────────────────────
+// DB.comenca: capçalera, passos, bloc d'informació, llicència federativa, bloc de clubs i capçalera de la pàgina Clubs.
+function _cmEnsure(){
+  if(!DB.comenca) DB.comenca={};
+  var D=DB.comenca;
+  if(!D.steps) D.steps=[];
+  if(!D.license) D.license={};
+  if(!D.clubsCta) D.clubsCta={};
+  if(!D.clubs) D.clubs={};
+  return D;
+}
+function _cmRichVal(h){ return (h&&!/</.test(h))?'<p>'+escHtml(h)+'</p>':(h||''); }
+function _cmTargetOpts(){ return COMENCA_TARGETS.map(function(t){return {val:t.val,lbl:t.lbl};}); }
+function _cmSec(t){ return '<div class="adm-st" style="margin-top:1.25rem">'+t+'</div>'; }
+
+function renderAdmComenca(b){
+  var D=_cmEnsure(), L=D.license, C=D.clubsCta, K=D.clubs;
+  var h='<div class="crud-form">'
+    +'<div class="crud-form-title">&#9998; Pàgina «Vols començar?»</div>'
+    +_cmSec('Capçalera')
+    +mkField('Etiqueta superior','cm_badge','text',D.badge||'','')
+    +'<div class="af-row">'+mkField('Títol (primera part)','cm_t1','text',D.title1||'','')+mkField('Títol (part destacada)','cm_te','text',D.titleEm||'','')+'</div>'
+    +'<div class="af-g"><label>Introducció</label>'+rtEditor('cm_intro',_cmRichVal(D.intro),'Text de presentació')+'</div>'
+    +_cmSec('Passos');
+  D.steps.forEach(function(s,i){
+    h+='<div class="adm-dc-group">'
+      +'<div class="crud-form-title">Pas '+(i+1)+'</div>'
+      +mkField('Títol','cm_st_'+i,'text',s.title||'','')
+      +'<div class="af-g"><label>Text</label>'+rtEditor('cm_sx_'+i,_cmRichVal(s.text),'Text del pas')+'</div>'
+      +'<div class="af-row">'+mkField('Text del botó (opcional)','cm_sl_'+i,'text',s.linkLabel||'','Ex: Veure el directori de clubs')+mkField('Destinació del botó','cm_sg_'+i,'select',s.linkTarget||'','',_cmTargetOpts())+'</div>'
+      +'</div>';
+  });
+  h+=_cmSec('Bloc d’informació')
+    +mkField('Etiqueta','cm_il','text',D.infoLabel||'','')
+    +'<div class="af-row">'+mkField('Títol (primera part)','cm_it','text',D.infoTitle||'','')+mkField('Títol (part destacada)','cm_ie','text',D.infoTitleEm||'','')+'</div>'
+    +_cmSec('Llicència federativa (s’actualitza cada temporada)')
+    +mkField('Títol de la targeta','cm_lt','text',L.title||'','')
+    +'<div class="af-g"><label>Contingut</label>'+rtEditor('cm_lb',_cmRichVal(L.body),'Text de la llicència (temporada, tipus...)')+'</div>'
+    +'<div class="af-row">'+mkField('Text del botó','cm_lcl','text',L.ctaLabel||'','')+mkField('Destinació del botó','cm_lct','select',L.ctaTarget||'','',_cmTargetOpts())+'</div>'
+    +_cmSec('Bloc «Troba el teu club» (al final de la pàgina)')
+    +mkField('Títol','cm_ct','text',C.title||'','')
+    +'<div class="af-g"><label>Text</label>'+rtEditor('cm_cx',_cmRichVal(C.text),'Text del bloc')+'</div>'
+    +mkField('Text del botó','cm_cl','text',C.label||'','')
+    +_cmSec('Capçalera de la pàgina Clubs')
+    +mkField('Etiqueta superior','cm_kb','text',K.badge||'','')
+    +'<div class="af-row">'+mkField('Títol (primera part)','cm_kt','text',K.title||'','')+mkField('Títol (part destacada)','cm_kte','text',K.titleEm||'','')+'</div>'
+    +'<div class="af-g"><label>Introducció</label>'+rtEditor('cm_ki',_cmRichVal(K.intro),'Text de la pàgina Clubs')+'</div>'
+    +mkField('Etiqueta del directori','cm_kl','text',K.label||'','Ex: +120 clubs federats')
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveComenca',[])+' style="margin-top:.75rem">&#10003; Desar tots els textos</button>'
+    +'</div>';
+  b.innerHTML=h;
+}
+function crudSaveComenca(){
+  var D=_cmEnsure();
+  D.badge=fv('cm_badge'); D.title1=fv('cm_t1'); D.titleEm=fv('cm_te'); D.intro=rtGetHtml('cm_intro');
+  D.steps.forEach(function(s,i){
+    s.title=fv('cm_st_'+i); s.text=rtGetHtml('cm_sx_'+i); s.linkLabel=fv('cm_sl_'+i); s.linkTarget=fv('cm_sg_'+i);
+  });
+  D.infoLabel=fv('cm_il'); D.infoTitle=fv('cm_it'); D.infoTitleEm=fv('cm_ie');
+  D.license={title:fv('cm_lt'),body:rtGetHtml('cm_lb'),ctaLabel:fv('cm_lcl'),ctaTarget:fv('cm_lct')};
+  D.clubsCta={title:fv('cm_ct'),text:rtGetHtml('cm_cx'),label:fv('cm_cl')};
+  D.clubs={badge:fv('cm_kb'),title:fv('cm_kt'),titleEm:fv('cm_kte'),intro:rtGetHtml('cm_ki'),label:fv('cm_kl')};
+  dbSave();
+  admLog('COMENCA_SAVE','');
+  renderComenca(); renderClubs();
+  renderAdmComenca(document.getElementById('admBody'));
+  toast('Textos desats!','&#9989;');
+}
+
+// ── CLUBS (directori i fitxes) ─────────────────────────────
+var _admClubQ='';
+function _clEnsure(){ if(!DB.clubsDir) DB.clubsDir=[]; return DB.clubsDir; }
+function _clById(id){ return _clEnsure().filter(function(c){return c.id===id;})[0]; }
+function _clUniqueSlug(nom,exceptId){
+  var base=_dcSlug(nom); if(base==='pestanya') base='club';
+  var s=base,n=2;
+  var used=function(x){ return _clEnsure().some(function(c){return c.slug===x&&c.id!==exceptId;}); };
+  while(used(s)){ s=base+'-'+n; n++; }
+  return s;
+}
+function _clUrlOk(u){ return !u||/^https?:\/\//.test(u); }
+function _clEmailOk(e){ return !e||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+function _admClubListHtml(){
+  var q=_admClubQ.toLowerCase();
+  var list=_clEnsure().slice().sort(function(a,b){return (a.nom||'').localeCompare(b.nom||'');}).filter(function(c){
+    return !q||(c.nom||'').toLowerCase().indexOf(q)!==-1||(c.municipi||'').toLowerCase().indexOf(q)!==-1||(c.comarca||'').toLowerCase().indexOf(q)!==-1;
+  });
+  if(!list.length) return '<div class="crud-item"><div class="crud-item-info"><div class="crud-item-meta">Cap club trobat.</div></div></div>';
+  return list.map(function(c){
+    var miss=clubMissing(c);
+    var chip=miss.length
+      ?'<span style="color:#b45309">&#9888; Falta: '+escHtml(miss.join(', '))+'</span>'
+      :'<span style="color:#059669">&#10003; Fitxa completa</span>';
+    return '<div class="crud-item" id="clitem-'+c.id+'">'
+      +'<div class="crud-item-info">'
+      +'<div class="crud-item-title">'+escHtml(c.nom)+'</div>'
+      +'<div class="crud-item-meta"><span>'+escHtml(c.municipi||'')+(c.comarca?' · '+escHtml(c.comarca):'')+'</span>'+chip+'</div>'
+      +'</div>'
+      +'<div class="crud-item-acts">'
+      +'<button class="btn-edit-crud"'+dataAttr('onclick','admViewClub',[c.slug])+'>&#128065; Fitxa</button>'
+      +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditClub',[c.id])+'>&#9998; Editar</button>'
+      +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelClub',[c.id,(c.nom||'').substring(0,30)])+'>&#128465;</button>'
+      +'</div></div>';
+  }).join('');
+}
+function renderAdmClubs(b){
+  var all=_clEnsure(), inc=all.filter(function(c){return clubMissing(c).length;}).length;
+  b.innerHTML=
+    '<div class="crud-form">'
+    +'<div class="crud-form-title">&#10010; Afegir un club nou</div>'
+    +'<div class="af-row">'+mkField('Nom del club *','ncl_nom','text','','')+mkField('Municipi *','ncl_mun','text','','')+'</div>'
+    +mkField('Comarca','ncl_com','text','','')
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddClub',[])+'>&#10010; Crear club i completar la fitxa</button>'
+    +'</div>'
+    +'<div class="adm-st">Clubs <span class="crud-count-badge">'+all.length+'</span>'
+    +(inc?' <span style="font-size:.78rem;font-weight:600;color:#b45309;margin-left:.5rem">'+inc+' amb la fitxa per completar</span>':'')+'</div>'
+    +'<div class="af-g"><input type="search" id="admClubSearch" value="'+escHtml(_admClubQ)+'" placeholder="Cerca per nom, municipi o comarca…"'+dataAttr('oninput','admClubSearch',['@val'])+'></div>'
+    +'<div class="crud-list" id="admClubList">'+_admClubListHtml()+'</div>';
+}
+function admClubSearch(v){
+  _admClubQ=v||'';
+  var l=document.getElementById('admClubList'); if(l) l.innerHTML=_admClubListHtml();
+}
+function admViewClub(slug){ closeAdm(); showClub(slug); }
+function crudAddClub(){
+  var n=fv('ncl_nom'),m=fv('ncl_mun'),c=fv('ncl_com');
+  if(!n||!m){toast('Omple el nom i el municipi','&#9888;&#65039;');return;}
+  var club={id:_dcId(),slug:_clUniqueSlug(n),nom:n,municipi:m,comarca:c,adreca:'',tel:'',email:'',web:'',facebook:'',instagram:'',disciplines:[],lat:null,lng:null,logo:'',desc:''};
+  _clEnsure().push(club);
+  dbSave();
+  admLog('CLUB_ADD',n);
+  renderClubs();
+  renderAdmClubs(document.getElementById('admBody'));
+  crudEditClub(club.id);
+  toast('Club creat: completa ara la seva fitxa.','&#9989;');
+}
+function crudEditClub(id){
+  var c=_clById(id); if(!c) return;
+  var item=document.getElementById('clitem-'+id);
+  if(!item){ _admClubQ=''; renderAdmClubs(document.getElementById('admBody')); item=document.getElementById('clitem-'+id); if(!item) return; }
+  var existing=document.getElementById('cledit-'+id);
+  if(existing){existing.remove();item.classList.remove('editing');return;}
+  item.classList.add('editing');
+  var f=document.createElement('div');
+  f.className='crud-edit-form'; f.id='cledit-'+id;
+  var chk=CLUB_DISCS.map(function(d){
+    return '<label style="display:inline-flex;align-items:center;gap:.35rem;margin:0 .9rem .4rem 0;font-size:.85rem"><input type="checkbox" class="ecl-d-'+id+'" value="'+escHtml(d)+'"'+((c.disciplines||[]).indexOf(d)!==-1?' checked':'')+'> '+escHtml(d)+'</label>';
+  }).join('');
+  f.innerHTML=
+    '<div class="af-row">'+mkField('Nom *','ecl_nom_'+id,'text',c.nom,'')+mkField('Municipi *','ecl_mun_'+id,'text',c.municipi||'','')+'</div>'
+    +'<div class="af-row">'+mkField('Comarca','ecl_com_'+id,'text',c.comarca||'','')+mkField('Adreça','ecl_adr_'+id,'text',c.adreca||'','Carrer, número, codi postal')+'</div>'
+    +'<div class="af-row">'+mkField('Telèfon','ecl_tel_'+id,'text',c.tel||'','')+mkField('Correu electrònic','ecl_ema_'+id,'email',c.email||'','')+'</div>'
+    +'<div class="af-row">'+mkField('Web','ecl_web_'+id,'text',c.web||'','https://…')+mkField('Facebook','ecl_fb_'+id,'text',c.facebook||'','https://…')+'</div>'
+    +mkField('Instagram','ecl_ig_'+id,'text',c.instagram||'','https://…')
+    +'<div class="af-row">'+mkField('Latitud (per a «A prop meu»)','ecl_lat_'+id,'text',(typeof c.lat==='number')?c.lat:'','41.3851')+mkField('Longitud','ecl_lng_'+id,'text',(typeof c.lng==='number')?c.lng:'','2.1734')+'</div>'
+    +'<div class="af-g"><label>Disciplines que practica</label><div>'+chk+'</div></div>'
+    +mkUploadField('Logotip','ecl_logo_'+id,c.logo||'','image')
+    +'<div class="af-g"><label>Presentació del club (text enriquit)</label>'+rtEditor('ecl_desc_'+id,_cmRichVal(c.desc),'Història, instal·lacions, horaris, com contactar…')+'</div>'
+    +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveClub',[id])+'>&#10003; Desar fitxa</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelClub',[id])+'>Cancel·lar</button>'
+    +'</div>';
+  item.appendChild(f);
+  if(f.scrollIntoView) f.scrollIntoView({block:'nearest'});
+}
+function crudSaveClub(id){
+  var c=_clById(id); if(!c) return;
+  var nom=fv('ecl_nom_'+id),mun=fv('ecl_mun_'+id),ema=fv('ecl_ema_'+id);
+  var web=fv('ecl_web_'+id),fb=fv('ecl_fb_'+id),ig=fv('ecl_ig_'+id);
+  if(!nom||!mun){toast('El nom i el municipi no poden estar buits','&#9888;&#65039;');return;}
+  if(!_clEmailOk(ema)){toast('El correu electrònic no és vàlid','&#9888;&#65039;');return;}
+  if(!_clUrlOk(web)||!_clUrlOk(fb)||!_clUrlOk(ig)){toast('Els enllaços han de començar per https://','&#9888;&#65039;');return;}
+  var lat=fv('ecl_lat_'+id).replace(',','.'),lng=fv('ecl_lng_'+id).replace(',','.');
+  var nlat=lat===''?null:parseFloat(lat),nlng=lng===''?null:parseFloat(lng);
+  if((lat!==''&&isNaN(nlat))||(lng!==''&&isNaN(nlng))){toast('Latitud i longitud han de ser números','&#9888;&#65039;');return;}
+  c.nom=nom; c.municipi=mun; c.comarca=fv('ecl_com_'+id); c.adreca=fv('ecl_adr_'+id);
+  c.tel=fv('ecl_tel_'+id); c.email=ema; c.web=web; c.facebook=fb; c.instagram=ig;
+  c.lat=nlat; c.lng=nlng; c.logo=fv('ecl_logo_'+id); c.desc=rtGetHtml('ecl_desc_'+id);
+  c.disciplines=[].map.call(document.querySelectorAll('.ecl-d-'+id+':checked'),function(x){return x.value;});
+  dbSave();
+  admLog('CLUB_EDIT',nom);
+  renderClubs();
+  if(typeof _clubActiu!=='undefined'&&_clubActiu===c.slug) renderClubFitxa();
+  renderAdmClubs(document.getElementById('admBody'));
+  toast('Fitxa desada!','&#9989;');
+}
+function crudCancelClub(id){
+  var item=document.getElementById('clitem-'+id), f=document.getElementById('cledit-'+id);
+  if(item) item.classList.remove('editing');
+  if(f) f.remove();
+}
+function crudDelClub(id,name){
+  confirmDel(name,function(){
+    DB.clubsDir=_clEnsure().filter(function(c){return c.id!==id;});
+    dbSave();
+    admLog('CLUB_DEL',name);
+    renderClubs();
+    renderAdmClubs(document.getElementById('admBody'));
+    toast('Club eliminat.','&#128465;');
+  });
+}
+// Des de la fitxa pública (només administradors): obre l'editor d'aquest club
+function admEditClubFromFitxa(id){
+  openAdm();
+  setTimeout(function(){
+    document.querySelectorAll('.adm-tab').forEach(function(t){
+      t.classList.toggle('act', (t.getAttribute('data-onclick-args')||'').indexOf('"clubs"')!==-1);
+    });
+    _admClubQ='';
+    renderATab('clubs');
+    crudEditClub(id);
+  },60);
 }
 
 // ── COMPETICIONS CRUD ──────────────────────────────────────
@@ -1969,7 +2439,7 @@ function genPublicarCircular(){
 var _BK_FIELDS = (window.DB_FIELDS || []).slice();
 var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
   formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Sol·licituds de rècord',
-  records:'Rècords',lligues:'Lligues',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari'};
+  records:'Rècords',lligues:'Lligues',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari',documentacio:'Documentació',comenca:'Vols començar',clubsDir:'Clubs'};
 var _BK_PREFIX = 'fcta_ckpt_';
 var _BK_MAX    = 3;
 

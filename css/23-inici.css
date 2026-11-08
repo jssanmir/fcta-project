@@ -61,3 +61,56 @@
   #btnNearMe{width:100%;justify-content:center}
   .inici-steps{grid-template-columns:1fr}
 }
+
+
+/* ── «Vols començar?» editable i pàgina Clubs ── */
+.inici-hero--sm{padding:3.5rem 0 2.75rem}
+.inici-step-text p{font-size:.84rem;color:rgba(255,255,255,.62);line-height:1.65;margin:0 0 .5rem}
+.inici-step-link{display:inline-flex;align-items:center;margin-top:.9rem;padding:.45rem 1.05rem;border-radius:999px;background:var(--gold);color:var(--navy-dark);border:none;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.74rem;cursor:pointer;transition:all var(--dur-base) var(--tr)}
+.inici-step-link:hover{background:#fff;transform:translateY(-1px)}
+.inici-info-grid--single{grid-template-columns:minmax(0,820px);justify-content:center}
+.inici-card-icon{width:54px;height:54px;border-radius:14px;margin-bottom:.9rem;display:grid;place-items:center;font-size:inherit;color:var(--navy);background:linear-gradient(135deg,rgba(245,184,0,.22),rgba(245,184,0,.06));border:1px solid rgba(245,184,0,.32)}
+.inici-card-icon .hub-ico{width:30px;height:30px}
+.inici-card-body p,.inici-card-body li{font-size:.9rem;color:var(--gray);line-height:1.75}
+.inici-card-body ul{padding-left:1.15rem;margin:.5rem 0}
+.inici-card-body li{margin-bottom:.35rem}
+.inici-card-cta{display:inline-flex;align-items:center;gap:.35rem;margin-top:1rem;padding:.55rem 1.2rem;border-radius:999px;background:var(--navy);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all var(--dur-base) var(--tr)}
+.inici-card-cta:hover{background:var(--gold);color:var(--navy-dark)}
+.inici-cta-box{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:linear-gradient(135deg,var(--navy-dark),var(--navy));border-radius:var(--r-xl);padding:2rem 2.25rem;color:#fff}
+.inici-cta-box h2{font-family:'Montserrat',sans-serif;font-weight:900;text-transform:uppercase;font-size:1.25rem;margin:0 0 .5rem;color:#fff}
+.inici-cta-text{min-width:0;max-width:640px}
+.inici-cta-text p{color:rgba(255,255,255,.82);font-size:.92rem;line-height:1.65;margin:0}
+button.club-link{background:none;border:none;padding:0;cursor:pointer;font-family:inherit}
+.clubs-help{margin-top:2rem;padding:1.25rem 1.5rem;background:var(--offwhite);border-radius:10px;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.clubs-help--start{margin-top:1rem}
+
+/* ── Fitxa de club ── */
+.cf-hero{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:#fff;padding:3rem 0 2.5rem;border-bottom:4px solid var(--gold)}
+.cf-hero-in{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.cf-logo{width:96px;height:96px;border-radius:16px;background:#fff;object-fit:contain;padding:8px;box-sizing:border-box;flex-shrink:0;border:3px solid rgba(255,255,255,.25)}
+.cf-logo--initial{display:grid;place-items:center;background:var(--gold);color:var(--navy-dark);font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.6rem;padding:0}
+.cf-hero-text{min-width:0;flex:1}
+.cf-kicker{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.cf-hero h1{font-family:'Montserrat',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(1.4rem,3.4vw,2.3rem);line-height:1.1;margin:0 0 .5rem;color:#fff;overflow-wrap:anywhere}
+.cf-loc{font-size:.9rem;color:rgba(255,255,255,.78)}
+.cf-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.85rem}
+.cf-chip{background:rgba(245,184,0,.16);border:1px solid rgba(245,184,0,.5);color:var(--gold);border-radius:999px;padding:.2rem .75rem;font-size:.72rem;font-weight:700}
+.cf-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:1.5rem;align-items:start}
+.cf-card{background:#fff;border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:1.5rem;border-top:4px solid var(--navy)}
+.cf-card--pending{border-top-color:var(--gold)}
+.cf-h{font-family:'Montserrat',sans-serif;font-weight:900;font-size:.9rem;text-transform:uppercase;color:var(--navy-dark);margin:0 0 .8rem}
+.cf-body p,.cf-card p{font-size:.92rem;line-height:1.75;color:var(--gray);margin:0 0 .6rem}
+.cf-body ul{padding-left:1.15rem}
+.cf-body li{font-size:.92rem;line-height:1.7;color:var(--gray)}
+.cf-card a{color:var(--navy-light)}
+.cf-list{list-style:none;padding:0;margin:0 0 1rem;display:flex;flex-direction:column;gap:.75rem}
+.cf-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.88rem;color:var(--navy-dark);overflow-wrap:anywhere}
+.cf-list a{font-weight:600;text-decoration:none}
+.cf-list a:hover{color:var(--gold)}
+.cf-ico{flex-shrink:0;width:22px;text-align:center}
+.cf-none{color:var(--gray);font-style:italic}
+.cf-map{display:flex;justify-content:center;text-decoration:none;font-size:.85rem}
+.cf-back-clubs{margin-top:1rem;background:none;border:none;color:var(--navy-light);font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit}
+.cf-admin-note{margin-top:1rem;background:#fff7e0;border:1px dashed var(--gold);border-radius:var(--r-lg);padding:.9rem 1rem;font-size:.84rem;color:#6b4e00;line-height:1.6}
+.cf-edit-btn{margin-left:.4rem;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:.3rem .8rem;font-weight:700;font-size:.76rem;cursor:pointer}
+@media(max-width:800px){.cf-grid{grid-template-columns:1fr}.inici-cta-box{padding:1.5rem}}
