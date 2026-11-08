@@ -137,3 +137,10 @@
   .disc-evol-bar-row{grid-template-columns:60px 1fr auto}
   .disc-evol-bar-nota{display:none}
 }
+
+
+/* ── Foto de capçalera de la disciplina (editable a Administració) ── */
+.disc-hero.has-photo{background:linear-gradient(90deg,rgba(15,36,71,.93) 0%,rgba(15,36,71,.7) 52%,rgba(15,36,71,.3) 100%),var(--disc-photo) center var(--disc-photo-y,50%)/cover no-repeat;min-height:290px;display:flex;align-items:center;padding:3rem 0}
+.disc-hero.has-photo .disc-hero-inner{width:100%}
+.disc-hero-credit{position:absolute;right:1rem;bottom:.5rem;font-size:.66rem;color:rgba(255,255,255,.62);text-shadow:0 1px 3px rgba(0,0,0,.6);max-width:60%;text-align:right}
+@media(max-width:600px){.disc-hero.has-photo{min-height:230px;padding:2.5rem 0 2.25rem;background:linear-gradient(180deg,rgba(15,36,71,.78) 0%,rgba(15,36,71,.9) 100%),var(--disc-photo) center var(--disc-photo-y,50%)/cover no-repeat}}

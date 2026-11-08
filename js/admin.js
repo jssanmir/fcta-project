@@ -726,7 +726,7 @@ function renderAdmDisc(b){
       return '<div class="crud-item" id="ditem-'+k+'">'
         +'<div class="crud-item-info">'
         +'<div class="crud-item-title">'+escHtml((d.icon||'')+' '+d.nom)+'</div>'
-        +'<div class="crud-item-meta"><span>'+(edited?'Text editat':'Text original')+'</span></div>'
+        +'<div class="crud-item-meta"><span>'+(edited?'Text editat':'Text original')+'</span><span>'+((DB.discPhotos&&DB.discPhotos[k]&&DB.discPhotos[k].img)?'Amb foto':'Sense foto')+'</span></div>'
         +'</div>'
         +'<div class="crud-item-acts">'
         +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditDisc',[k])+'>&#9998; Editar</button>'
@@ -743,8 +743,14 @@ function crudEditDisc(k){
   item.classList.add('editing');
   var editDiv=document.createElement('div');
   editDiv.className='crud-edit-form'; editDiv.id='dedit-'+k;
+  var ph=(DB.discPhotos&&DB.discPhotos[k])||{};
   editDiv.innerHTML=
-    '<div class="af-g"><label>Text de la disciplina</label>'+rtEditor('ed_'+k,discDescHtml(k),'Escriu el text de la disciplina…')+'</div>'
+    '<div class="crud-form-title">&#128247; Foto de la cap\u00e7alera</div>'
+    +mkUploadField('Foto (apaisada, m\u00ednim 1200 px d\u2019ample)','edp_img_'+k,ph.img||'','image')
+    +'<div class="af-row">'+mkField('Pe de foto / cr\u00e8dit (opcional)','edp_cap_'+k,'text',ph.caption||'','Ex: Foto: Nom / Font')+mkField('Posici\u00f3 vertical del retall (0 dalt \u2013 100 baix)','edp_py_'+k,'number',(typeof ph.posY==='number')?ph.posY:50,'')+'</div>'
+    +'<div style="font-size:.78rem;color:var(--gray);margin:-.4rem 0 1rem">Deixa la foto buida per no mostrar-ne cap. La foto es retalla en format panor\u00e0mic; ajusta la posici\u00f3 vertical per centrar el que \u00e9s important.</div>'
+    +'<div class="crud-form-title">&#9998; Text de la disciplina</div>'
+    +'<div class="af-g"><label>Text de la disciplina</label>'+rtEditor('ed_'+k,discDescHtml(k),'Escriu el text de la disciplina…')+'</div>'
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap">'
     +'<button class="a-sub success"'+dataAttr('onclick','crudSaveDisc',[k])+'>&#10003; Desar</button>'
     +'<button class="a-sub" style="background:#b45309"'+dataAttr('onclick','crudResetDisc',[k])+'>Restaurar el text original</button>'
@@ -762,9 +768,13 @@ function crudSaveDisc(k){
   if(!html){toast('El text no pot estar buit','&#9888;&#65039;');return;}
   if(!DB.discTexts) DB.discTexts={};
   DB.discTexts[k]={descripcio:html};
+  var img=fv('edp_img_'+k),cap=fv('edp_cap_'+k),py=parseFloat(fv('edp_py_'+k));
+  if(!DB.discPhotos) DB.discPhotos={};
+  if(img) DB.discPhotos[k]={img:img,caption:cap,posY:isNaN(py)?50:Math.max(0,Math.min(100,py))};
+  else delete DB.discPhotos[k];
   admLog('DISC_TEXT', k);
   _admDiscDone(k);
-  toast('Text desat!','&#9989;');
+  toast('Disciplina desada!','&#9989;');
 }
 function crudResetDisc(k){
   if(DB.discTexts) delete DB.discTexts[k];
@@ -2439,7 +2449,7 @@ function genPublicarCircular(){
 var _BK_FIELDS = (window.DB_FIELDS || []).slice();
 var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
   formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Sol·licituds de rècord',
-  records:'Rècords',lligues:'Lligues',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari',documentacio:'Documentació',comenca:'Vols començar',clubsDir:'Clubs'};
+  records:'Rècords',lligues:'Lligues',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari',documentacio:'Documentació',comenca:'Vols començar',clubsDir:'Clubs',discPhotos:'Fotos disciplines'};
 var _BK_PREFIX = 'fcta_ckpt_';
 var _BK_MAX    = 3;
 

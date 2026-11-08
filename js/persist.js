@@ -9,7 +9,7 @@
   var LS_CACHE = 'fcta_db_cache';   // cache de lectura del servidor (read-only)
   var API_BASE = '';
   var FIELDS   = ['circulars', 'competitions', 'news', 'formations',
-                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel', 'junta', 'discTexts', 'calendari', 'documentacio', 'comenca', 'clubsDir'];
+                  'tirades', 'documents', 'recordsSolicituds', 'records', 'lligues', 'carousel', 'junta', 'discTexts', 'calendari', 'documentacio', 'comenca', 'clubsDir', 'discPhotos'];
 
   // Llista única d'àrees configurables: la fan servir el desat, els backups i les restauracions.
   window.DB_FIELDS = FIELDS;

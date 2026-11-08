@@ -149,6 +149,7 @@ Totes les dades viuen en l'objecte global `DB`:
 | `DB.carousel`     | Array     | Diapositives del carrusel de la portada (img, title, url) — editable a Admin > Carrusel |
 | `DB.junta`        | Objecte   | Junta Directiva: intro, mandat i members[] (grup, rol, nom, email) — editable a Admin > Junta |
 | `DB.discTexts`    | Objecte   | Text «Sobre la disciplina» editat (HTML) per clau de disciplina — Admin > Disciplines |
+| `DB.discPhotos`   | Objecte   | Foto de la capçalera de cada disciplina: img, posY (0-100) i caption — Admin > Disciplines |
 | `DB.calendari`    | Objecte   | Temporada única del Calendari Esportiu: label, from, to (ISO) i pdf — Admin > Calendari |
 | `DB.documentacio` | Objecte   | Pàgina Documentació: intro i categories[] > groups[] > docs[] (title, date, desc, url) — Admin > Documentació; les categories buides no es mostren |
 | `DB.comenca`      | Objecte   | Textos de «Vols començar?» (passos, llicència federativa…) i capçalera de Clubs — Admin > Vols començar |

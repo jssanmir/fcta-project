@@ -981,6 +981,21 @@ app.post('/api/data', verifyToken, function (req, res) {
     };
   }
 
+  // Fotos de capçalera de les disciplines: imatge local, posició vertical i crèdit
+  if (data.discPhotos !== undefined) {
+    var dpIn = (data.discPhotos && typeof data.discPhotos === 'object' && !Array.isArray(data.discPhotos)) ? data.discPhotos : {};
+    var dpOut = {};
+    ['al', 'sala', '3d', 'camp', 'run', 'aa', 'kyudo'].forEach(function (k) {
+      var ph = dpIn[k];
+      if (!ph || typeof ph !== 'object') return;
+      var img = String(ph.img || '').trim();
+      if (!/^(\/uploads\/|img\/)[^\s"'<>()]+$/.test(img)) return;
+      var py = Number(ph.posY);
+      dpOut[k] = { img: img, caption: sanitizeStr(ph.caption, 160), posY: isFinite(py) ? Math.max(0, Math.min(100, py)) : 50 };
+    });
+    data.discPhotos = dpOut;
+  }
+
   // Textos de disciplines (HTML enriquit saneat, només claus conegudes)
   if (data.discTexts !== undefined) {
     var dtIn = (data.discTexts && typeof data.discTexts === 'object' && !Array.isArray(data.discTexts)) ? data.discTexts : {};

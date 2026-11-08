@@ -1718,6 +1718,46 @@ documentacio: {
 // --- CALENDARI ESPORTIU: temporada única i PDF (editable a Administració > Calendari) ---
 calendari: { label: 'Temporada 2026/2027', from: '2026-09-01', to: '2027-08-31', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' },
 
+// --- FOTO DE CAPÇALERA DE CADA DISCIPLINA (editable a Administració > Disciplines) ---
+// { al: { img, posY (0-100, posició vertical del retall), caption (peu/crèdit) }, … }
+discPhotos: {
+    "al": {
+      "img": "img/disciplines/aire-lliure.jpg",
+      "posY": 55,
+      "caption": ""
+    },
+    "sala": {
+      "img": "img/disciplines/sala.jpg",
+      "posY": 50,
+      "caption": ""
+    },
+    "3d": {
+      "img": "img/disciplines/3d.jpg",
+      "posY": 55,
+      "caption": ""
+    },
+    "camp": {
+      "img": "img/disciplines/camp.jpg",
+      "posY": 50,
+      "caption": ""
+    },
+    "aa": {
+      "img": "img/disciplines/arc-adaptat.jpg",
+      "posY": 55,
+      "caption": ""
+    },
+    "kyudo": {
+      "img": "img/disciplines/kyudo.jpg",
+      "posY": 45,
+      "caption": ""
+    },
+    "run": {
+      "img": "img/disciplines/run-archery.jpg",
+      "posY": 30,
+      "caption": "Foto: Marco / Wikimedia Commons (CC BY-SA 3.0)"
+    }
+  },
+
 // --- TEXTS DE LES DISCIPLINES editats a Administració > Disciplines (text enriquit) ---
 // { al: { descripcio: '<p>…</p>' }, … } — sense entrada es mostra el text original de DISC_DATA
 discTexts: {},

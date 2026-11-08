@@ -298,6 +298,7 @@ function renderDisciplina() {
   document.getElementById('discNom').textContent = d.nom;
   document.getElementById('discSub').textContent = d.subtitol;
   document.getElementById('discHero').style.borderBottomColor = d.color;
+  discApplyPhoto(_discActiva);
 
   // Tabs
   var tabs = document.querySelectorAll('#discTabs .disc-tab');
@@ -350,6 +351,26 @@ var DISC_ICON_SVG = { al: 'sun', sala: 'target', '3d': 'tree', camp: 'leaf', run
 function discIconHtml(key, fallback) {
   var n = DISC_ICON_SVG[key];
   return n ? '<svg class="hub-ico" aria-hidden="true"><use href="#ic-' + n + '"/></svg>' : (fallback || '');
+}
+
+// Foto de la capçalera (DB.discPhotos): imatge local, posició vertical del retall i peu/crèdit
+function discApplyPhoto(key) {
+  var hero = document.getElementById('discHero');
+  if (!hero) return;
+  var credit = document.getElementById('discCredit');
+  var p = DB.discPhotos && DB.discPhotos[key];
+  if (p && p.img && /^(img\/|\/uploads\/)[^\s"'<>()]+$/.test(p.img)) {
+    // Les URL dins d'una variable CSS es resolen respecte al full d'estils: cal una URL absoluta
+    hero.style.setProperty('--disc-photo', 'url("' + new URL(p.img, document.baseURI).href + '")');
+    hero.style.setProperty('--disc-photo-y', (typeof p.posY === 'number' ? p.posY : 50) + '%');
+    hero.classList.add('has-photo');
+    if (credit) credit.textContent = p.caption || '';
+  } else {
+    hero.classList.remove('has-photo');
+    hero.style.removeProperty('--disc-photo');
+    hero.style.removeProperty('--disc-photo-y');
+    if (credit) credit.textContent = '';
+  }
 }
 
 // Text «Sobre la disciplina»: el text enriquit editat a Administració
