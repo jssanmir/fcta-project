@@ -1718,6 +1718,281 @@ documentacio: {
 // --- CALENDARI ESPORTIU: temporada única i PDF (editable a Administració > Calendari) ---
 calendari: { label: 'Temporada 2026/2027', from: '2026-09-01', to: '2027-08-31', pdf: 'docs/2026060812294113-CIRC_2632_Calendaris_esportius_2026_2027.pdf' },
 
+// --- PROGRAMA AUTONÒMIC DE TECNIFICACIÓ (PAT): pàgina editable a Administració > Tecnificació ---
+pat: {
+    "hero": {
+      "badge": "🎯 Alt Rendiment Juvenil · Arc Recorbat",
+      "title1": "Programa Autonòmic",
+      "titleEm": "de Tecnificació (PAT)",
+      "text": "<p>El PAT de la FCTA és l'esllaó entre la formació de base als clubs i els programes de tecnificació d'àmbit nacional. Adreçat a arquers d'<strong>arc recorbat</strong> de les categories <strong>Infantil, Cadet i Júnior</strong> amb projecció competitiva.</p>",
+      "docLabel": "📄 Descarrega el document PAT v4",
+      "docUrl": "docs/PAT_FCTA_v4.pdf"
+    },
+    "intro": {
+      "label": "Federació Catalana de Tir amb Arc",
+      "titleA": "Sobre el",
+      "titleEm": "PAT",
+      "text": "<p>La FCTA posa en marxa el Programa Autonòmic de Tecnificació (PAT) orientat a la <strong>detecció, l'acompanyament i la formació avançada</strong> de joves esportistes amb projecció competitiva.</p><p>El PAT es concep com un <strong>esllaó intermedi</strong> entre la formació de base que es desenvolupa als clubs i els programes de tecnificació i alt rendiment d'àmbit nacional. L'objectiu principal és orientar l'acció federativa cap a aquells esportistes que han destacat pel seu rendiment, actitud, compromís i motivació, i que mostren una clara predisposició a progressar cap a la competició nacional.</p><p>El programa es fonamenta en un <strong>model de desenvolupament integral de l'esportista</strong>, en què l'entrenament tècnic i tàctic es complementa amb l'entrenament físic i mental, així com amb el seguiment acadèmic i personal de l'arquer.</p>",
+      "stats": [
+        {
+          "n": "10–11",
+          "unit": "",
+          "label": "Concentracions\nmínimes per any"
+        },
+        {
+          "n": "5",
+          "unit": "h",
+          "label": "Durada\nper concentració"
+        },
+        {
+          "n": "8",
+          "unit": "h",
+          "label": "Entrenament\nsetmanal mínim"
+        },
+        {
+          "n": "3",
+          "unit": "",
+          "label": "Classes:\nInf · Cad · Jún"
+        }
+      ]
+    },
+    "objectius": {
+      "title": "🏉 Objectius generals",
+      "items": [
+        {
+          "text": "<p><strong>Identificar i acompanyar</strong> els esportistes amb més potencial, atenent resultats, actitud, compromís i capacitat de progressió.</p>"
+        },
+        {
+          "text": "<p><strong>Optimitzar l'acció federativa</strong> concentrant recursos tècnics en un programa estructurat que complementi el treball als clubs.</p>"
+        },
+        {
+          "text": "<p><strong>Preparar per a la competició nacional</strong>, dotant els esportistes dels recursos tècnics, físics, tàctics i mentals necessaris.</p>"
+        },
+        {
+          "text": "<p><strong>Establir una estructura estable</strong> de tecnificació autonòmica alineada amb els criteris de la RFETA.</p>"
+        },
+        {
+          "text": "<p><strong>Fomentar el desenvolupament integral</strong> de l'esportista, equilibrant rendiment, formació acadèmica i creixement personal.</p>"
+        },
+        {
+          "text": "<p><strong>Contribuir al nivell competitiu</strong> del tir amb arc català, enfortint la base d'esportistes tecnificats i la coordinació federació-clubs.</p>"
+        }
+      ]
+    },
+    "principis": {
+      "title": "📚 Principis metodològics",
+      "items": [
+        {
+          "icon": "🏭",
+          "title": "Centralitat del club",
+          "text": "El club és l'eix principal de formació. Les concentracions del PAT complementen i orienten el treball del club, no el substitueixen."
+        },
+        {
+          "icon": "🧠",
+          "title": "Desenvolupament integral",
+          "text": "Planificació equilibrada de tècnica, tàctica, preparació física, preparació mental i àmbit personal i acadèmic."
+        },
+        {
+          "icon": "📈",
+          "title": "Progressió i adequació",
+          "text": "Adaptació de continguts i càrregues a l'edat, nivell i maduresa. Es respecten els ritmes individuals, evitant l'especialització prematura."
+        },
+        {
+          "icon": "🧑",
+          "title": "Individualització",
+          "text": "Cada esportista disposa d'una planificació orientativa individual. L'avaluació contínua permet ajustar continguts i càrregues."
+        },
+        {
+          "icon": "👥",
+          "title": "Treball col·laboratiu",
+          "text": "Model col·laboratiu entre tècnics FCTA i tècnics de club. Criteris comuns, intercanvi de coneixements i comunicació contínua."
+        },
+        {
+          "icon": "🎯",
+          "title": "Orientació al rendiment",
+          "text": "Simulació de situacions competitives, rutines pre-competitives i estratègies de gestió de l'estrès. Foment de l'autonomia de l'esportista."
+        }
+      ]
+    },
+    "estructura": {
+      "title": "📅 Estructura del programa i concentracions",
+      "items": [
+        {
+          "title": "📅 Periodicitat",
+          "body": "<ul><li>Concentració <strong>mínima mensual</strong></li><li>Preferentment en <strong>cap de setmana</strong></li><li>Durada aproximada de <strong>5 hores</strong></li><li>Mínim <strong>10–11 concentracions</strong> per temporada</li></ul>"
+        },
+        {
+          "title": "🏭 Seus i territori",
+          "body": "<ul><li>Instal·lacions de <strong>clubs col·laboradors</strong></li><li>Distribució <strong>territorial equilibrada</strong></li><li>Rotació de seus per reduir desplaçaments</li><li>1–2 concentracions anuals amb la <strong>RFETA</strong></li></ul>"
+        },
+        {
+          "title": "🏃 Continguts per concentració",
+          "body": "<ul><li><strong>Tècnica</strong>: gest, estabilitat, alineació</li><li><strong>Tàctica</strong>: gestió de competició, simulació</li><li><strong>Física</strong>: força, mobilitat, prevenció (entrenador qualificat)</li><li><strong>Mental</strong>: rutines, gestió emocional (psicòleg qualificat)</li></ul>"
+        },
+        {
+          "title": "📋 Entre concentracions",
+          "body": "<ul><li>Proposta d'entrenament orientativa per club</li><li>Objectius tècnics, físics i mentals</li><li>Treball sota responsabilitat del <strong>tècnic del club</strong></li><li>Seguiment i comunicació contínua</li></ul>"
+        }
+      ]
+    },
+    "seleccio": {
+      "title": "✅ Criteris de selecció i accés",
+      "intro": "L'accés al PAT és regulat per criteris objectius i subjectius. La selecció es fa de forma coordinada entre l'equip tècnic del PAT i els tècnics dels clubs.",
+      "perfilTitle": "🏃 Perfil de l'esportista",
+      "perfilBody": "<ul><li>Arc <strong>recorbat</strong></li><li>Classes <strong>Infantil, Cadet i Júnior</strong></li><li>Llicència federativa FCTA en vigor</li><li>Actitud i motivació d'acord amb les exigències del programa</li></ul>",
+      "criterisTitle": "📋 Criteris de valoració",
+      "criteris": [
+        {
+          "title": "Resultats esportius",
+          "text": "puntuacions, lliga autonòmica, campionats d'Espanya, Grans Premis"
+        },
+        {
+          "title": "Disponibilitat",
+          "text": "compromís d'entrenar un mínim de 8 h/setmana (tècnic + físic + mental)"
+        },
+        {
+          "title": "Seguiment tècnic",
+          "text": "disposar d'un tècnic responsable que planifiqui, segueixi i acompanyi l'esportista"
+        },
+        {
+          "title": "Compromís",
+          "text": "disponibilitat per a totes les concentracions i acceptació de les normes del PAT"
+        },
+        {
+          "title": "Formació acadèmica",
+          "text": "bon expedient escolar, valorat individualment"
+        },
+        {
+          "title": "Valoració tècnica",
+          "text": "superar una valoració mínima tècnica, física i mental"
+        }
+      ],
+      "viesTitle": "🔗 Vies d'accés",
+      "vies": [
+        {
+          "title": "Proposta directa del PAT",
+          "text": "A partir de les puntuacions i l'observació directa pels tècnics del PAT. Es realitza a través dels pares o tutors legals."
+        },
+        {
+          "title": "Proposta del tècnic del club",
+          "text": "Els tècnics poden proposar esportistes amb justificació tècnica. Especialment clubs amb escoles de formació base."
+        },
+        {
+          "title": "Sol·licitud directa de la família",
+          "text": "Els pares o tutors legals poden presentar sol·licitud directa. Queda subjecta a la valoració tècnica del PAT."
+        }
+      ]
+    },
+    "calendari": {
+      "title": "🕑 Calendari anual orientatiu",
+      "items": [
+        {
+          "mes": "Set.",
+          "title": "Inici de temporada i selecció",
+          "text": "Obertura inscripcions · Avaluació inicial · Definició de grups · 1a concentració",
+          "tipus": "sep"
+        },
+        {
+          "mes": "Oct–Des",
+          "title": "Temporada de sala",
+          "text": "Concentracions mensuals · Tècnica bàsica · Preparació física general · Introducció entrenament mental · Lliga autonòmica de sala",
+          "tipus": "sala"
+        },
+        {
+          "mes": "Gen.",
+          "title": "Seguiment i ajust",
+          "text": "Anàlisi primer bloc competitiu · Revisió objectius · Preparació Campionats d'Espanya de sala · Possible concentració RFETA",
+          "tipus": "gen"
+        },
+        {
+          "mes": "Feb.",
+          "title": "2n període d'inscripció",
+          "text": "Obertura condicionada a places disponibles · Incorporació excepcional d'esportistes",
+          "tipus": "feb"
+        },
+        {
+          "mes": "Mar–Jun",
+          "title": "Temporada d'aire lliure",
+          "text": "Concentracions mensuals · Ajustos tècnics AL · Tàctica · Preparació física específica · Lliga AL · Grans Premis d'Espanya · Possible concentració RFETA",
+          "tipus": "al"
+        },
+        {
+          "mes": "Jul.",
+          "title": "Avaluació final i tancament",
+          "text": "Última concentració · Avaluació final (tèc/fís/men/comp/actitud) · Informe individual · Proposta continuïtat/reorientació",
+          "tipus": "jul"
+        }
+      ]
+    },
+    "avaluacio": {
+      "title": "📊 Avaluació i permanència",
+      "items": [
+        {
+          "title": "📋 Àmbits d'avaluació contínua",
+          "body": "<ul><li><strong>Tècnic</strong>: qualitat i estabilitat del gest, consistència</li><li><strong>Tàctic i competitiu</strong>: gestió de sèries, presa de decisions</li><li><strong>Físic</strong>: capacitats específiques, control postural, prevenció</li><li><strong>Mental</strong>: concentració, gestió emocional, rutines</li><li><strong>Compromís i actitud</strong>: assistència, implicació, respecte</li><li><strong>Acadèmic</strong> (edat escolar): expedient, compatibilització</li></ul>"
+        },
+        {
+          "title": "✅ Criteris de permanència",
+          "body": "<ul><li>Evolució positiva d'acord amb els objectius</li><li>Compliment mínims d'assistència, compromís i actitud</li><li>Participació regular en competicions previstes</li><li>Conducta d'acord amb les normes del programa</li><li>Seguiment continuat per part del tècnic responsable</li><li>Rendiment acadèmic adequat (en la mesura del possible)</li></ul>"
+        }
+      ]
+    },
+    "docs": {
+      "title": "📄 Documents del PAT",
+      "items": [
+        {
+          "icon": "🎯",
+          "name": "Programa Autonòmic de Tecnificació v4",
+          "desc": "Document complet PAT · FCTA · 27 pàgines",
+          "url": "docs/PAT_FCTA_v4.pdf"
+        },
+        {
+          "icon": "📋",
+          "name": "Fitxa d'Inscripció (Annex I)",
+          "desc": "Inclosa al document PAT (pàg. 24)",
+          "url": ""
+        },
+        {
+          "icon": "👥",
+          "name": "Informe del Tècnic del Club (Annex II)",
+          "desc": "Inclosa al document PAT (pàg. 25)",
+          "url": ""
+        },
+        {
+          "icon": "✍️",
+          "name": "Document de Compromís Esportista/Família (Annex III)",
+          "desc": "Inclosa al document PAT (pàg. 26)",
+          "url": ""
+        }
+      ]
+    },
+    "contacte": {
+      "items": [
+        {
+          "icon": "🎓",
+          "title": "Formació FCTA",
+          "text": "Cursos tècnics, seminaris i programa de formació de la federació",
+          "target": "formation",
+          "url": ""
+        },
+        {
+          "icon": "📄",
+          "title": "Descarrega el PAT",
+          "text": "Document complet del Programa Autonòmic de Tecnificació v4",
+          "target": "",
+          "url": "docs/PAT_FCTA_v4.pdf"
+        },
+        {
+          "icon": "📞",
+          "title": "Contacte",
+          "text": "info@fcta.cat  ·  93 308 02 65\nDl–Dv: 8:00–14:00h",
+          "target": "",
+          "url": "mailto:info@fcta.cat"
+        }
+      ]
+    }
+  },
+
 // --- FOTO DE CAPÇALERA DE CADA DISCIPLINA (editable a Administració > Disciplines) ---
 // { al: { img, posY (0-100, posició vertical del retall), caption (peu/crèdit) }, … }
 discPhotos: {

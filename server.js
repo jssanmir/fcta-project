@@ -981,6 +981,28 @@ app.post('/api/data', verifyToken, function (req, res) {
     };
   }
 
+  // Tecnificació (PAT): pàgina editable. Saneig recursiu: HTML enriquit, enllaços segurs i textos curts
+  if (data.pat !== undefined) {
+    var PAT_RICH = { text: 1, body: 1, perfilBody: 1 };
+    var PAT_URL = { docUrl: 1, url: 1 };
+    var patClean = function (v, key, depth) {
+      if (typeof v === 'string') {
+        if (PAT_RICH[key]) return sanitizeNewsBody(v).slice(0, 8000);
+        if (PAT_URL[key]) { var pu = v.trim(); return (isSafeUrl(pu) || /^mailto:[^\s<>"']+$/.test(pu)) ? pu.slice(0, 500) : ''; }
+        if (key === 'target') return /^[a-z]{2,30}$/.test(v) ? v : '';
+        if (key === 'tipus') return /^[a-z]{0,6}$/.test(v) ? v : '';
+        return sanitizeStr(v, 800);
+      }
+      if (typeof v === 'number' || typeof v === 'boolean') return v;
+      if (v === null || typeof v !== 'object' || depth > 4) return null;
+      if (Array.isArray(v)) return v.slice(0, 60).map(function (x) { return patClean(x, key, depth + 1); });
+      var out = {};
+      Object.keys(v).slice(0, 60).forEach(function (k) { if (/^[A-Za-z0-9_]{1,40}$/.test(k)) out[k] = patClean(v[k], k, depth + 1); });
+      return out;
+    };
+    data.pat = (data.pat && typeof data.pat === 'object' && !Array.isArray(data.pat)) ? (patClean(data.pat, '', 0) || {}) : {};
+  }
+
   // Fotos de capçalera de les disciplines: imatge local, posició vertical i crèdit
   if (data.discPhotos !== undefined) {
     var dpIn = (data.discPhotos && typeof data.discPhotos === 'object' && !Array.isArray(data.discPhotos)) ? data.discPhotos : {};

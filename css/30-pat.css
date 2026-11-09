@@ -293,3 +293,16 @@
   .pat-intro-stats { grid-template-columns: 1fr 1fr; }
   .pat-principis-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ── Text enriquit dins dels blocs editables ── */
+.pat-obj p,.pat-hero p:last-child{margin:0}
+.pat-estructura-card ul,.pat-aval-card ul,.pat-seleccio-perfil ul{margin-top:.4rem}
+
+/* ── Editor d'Administració > Tecnificació ── */
+.adm-pat-block{border:1px solid var(--lightgray);border-radius:10px;margin-bottom:.6rem;background:#fff;overflow:hidden}
+.adm-pat-head{display:flex;justify-content:space-between;align-items:center;width:100%;padding:.8rem 1rem;background:var(--offwhite);border:none;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.85rem;text-align:left;cursor:pointer;color:var(--navy-dark)}
+.adm-pat-head.open{background:var(--navy);color:#fff}
+.adm-pat-head span{transition:transform var(--dur-base) var(--tr)}
+.adm-pat-head.open span{transform:rotate(180deg)}
+.adm-pat-body{padding:1rem}

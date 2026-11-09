@@ -199,6 +199,7 @@ function renderATab(tab){
   else if(tab==='docum')   renderAdmDocum(b);
   else if(tab==='comenca') renderAdmComenca(b);
   else if(tab==='clubs')   renderAdmClubs(b);
+  else if(tab==='pat')     renderAdmPat(b);
   else if(tab==='comp')    renderAdmComp(b);
   else if(tab==='form')    renderAdmForm(b);
   else if(tab==='tirades') renderAdmTirades(b);
@@ -1296,6 +1297,135 @@ function admEditClubFromFitxa(id){
     renderATab('clubs');
     crudEditClub(id);
   },60);
+}
+
+// ── TECNIFICACIÓ (PAT): editor de la pàgina completa ───────
+// DB.pat (vegeu js/pat.js). L'editor es construeix a partir d'aquest esquema:
+//   fields: [clau, etiqueta, tipus(, opcions)]   tipus: text | textarea | rich | pdf | select
+//   lists:  llistes d'elements repetibles (afegir, esborrar, reordenar)
+var PAT_TIPUS=[{val:'',lbl:'Neutre'},{val:'sep',lbl:'Setembre'},{val:'sala',lbl:'Sala'},{val:'gen',lbl:'Gener'},{val:'feb',lbl:'Febrer'},{val:'al',lbl:'Aire lliure'},{val:'jul',lbl:'Juliol'}];
+var PAT_SCHEMA=[
+ {path:'hero',title:'Capçalera',fields:[['badge','Etiqueta superior','text'],['title1','Títol (primera línia)','text'],['titleEm','Títol (línia destacada)','text'],['text','Text de presentació','rich'],['docLabel','Text del botó del document','text'],['docUrl','PDF del botó','pdf']]},
+ {path:'intro',title:'Presentació i xifres',fields:[['label','Etiqueta','text'],['titleA','Títol','text'],['titleEm','Títol (part destacada)','text'],['text','Text','rich']],
+  lists:[{key:'stats',label:'Xifres destacades',item:'Xifra',fields:[['n','Valor','text'],['unit','Unitat (opcional)','text'],['label','Descripció (Intro = salt de línia)','textarea']]}]},
+ {path:'objectius',title:'Objectius generals',fields:[['title','Títol del bloc','text']],
+  lists:[{key:'items',label:'Objectius',item:'Objectiu',fields:[['text','Text','rich']]}]},
+ {path:'principis',title:'Principis metodològics',fields:[['title','Títol del bloc','text']],
+  lists:[{key:'items',label:'Principis',item:'Principi',fields:[['icon','Emoticona','text'],['title','Títol','text'],['text','Text','textarea']]}]},
+ {path:'estructura',title:'Estructura i concentracions',fields:[['title','Títol del bloc','text']],
+  lists:[{key:'items',label:'Targetes',item:'Targeta',fields:[['title','Títol','text'],['body','Contingut (llista)','rich']]}]},
+ {path:'seleccio',title:'Criteris de selecció i accés',fields:[['title','Títol del bloc','text'],['intro','Text introductori','textarea'],['perfilTitle','Títol del perfil','text'],['perfilBody','Perfil de l’esportista (llista)','rich'],['criterisTitle','Títol dels criteris','text'],['viesTitle','Títol de les vies d’accés','text']],
+  lists:[{key:'criteris',label:'Criteris de valoració',item:'Criteri',fields:[['title','Títol','text'],['text','Descripció','textarea']]},
+         {key:'vies',label:'Vies d’accés',item:'Via',fields:[['title','Títol','text'],['text','Descripció','textarea']]}]},
+ {path:'calendari',title:'Calendari anual',fields:[['title','Títol del bloc','text']],
+  lists:[{key:'items',label:'Etapes',item:'Etapa',fields:[['mes','Mes / període','text'],['title','Títol','text'],['text','Descripció','textarea'],['tipus','Color','select',PAT_TIPUS]]}]},
+ {path:'avaluacio',title:'Avaluació i permanència',fields:[['title','Títol del bloc','text']],
+  lists:[{key:'items',label:'Targetes',item:'Targeta',fields:[['title','Títol','text'],['body','Contingut (llista)','rich']]}]},
+ {path:'docs',title:'Documents',fields:[['title','Títol del bloc','text']],
+  lists:[{key:'items',label:'Documents',item:'Document',fields:[['icon','Emoticona','text'],['name','Nom','text'],['desc','Descripció','text'],['url','PDF (deixa-ho buit si no és descarregable)','pdf']]}]},
+ {path:'contacte',title:'Targetes de contacte',fields:[],
+  lists:[{key:'items',label:'Targetes',item:'Targeta',fields:[['icon','Emoticona','text'],['title','Títol','text'],['text','Text (Intro = salt de línia)','textarea'],['target','Obre una secció del portal (opcional)','select',null],['url','O enllaç (https://, mailto: o PDF)','text']]}]}
+];
+var _admPatOpen={};
+function _patEnsure(){ if(!DB.pat) DB.pat={}; return DB.pat; }
+function _patSid(path,k){ return 'pat__'+path+'__'+k; }
+function _patLid(path,lk,i,k){ return 'pat__'+path+'__'+lk+'__'+i+'__'+k; }
+function _patOpts(f){ return f[3]||COMENCA_TARGETS.map(function(t){return {val:t.val,lbl:t.lbl};}); }
+function _patFieldHtml(id,f,val){
+  val=(val===undefined||val===null)?'':val;
+  var type=f[2];
+  if(type==='rich') return '<div class="af-g"><label>'+f[1]+'</label>'+rtEditor(id,_cmRichVal(val),'')+'</div>';
+  if(type==='pdf') return mkUploadField(f[1],id,val,'pdf');
+  if(type==='select') return mkField(f[1],id,'select',val,'',_patOpts(f));
+  return mkField(f[1],id,type==='textarea'?'textarea':'text',val,'');
+}
+function _patRead(id,type){ return type==='rich'?rtGetHtml(id):fv(id); }
+function _patExists(id,type){ return !!document.getElementById(type==='rich'?'rtarea-'+id:id); }
+function _patCollect(){
+  var D=_patEnsure();
+  PAT_SCHEMA.forEach(function(blk){
+    if(!D[blk.path]) D[blk.path]={};
+    var o=D[blk.path];
+    (blk.fields||[]).forEach(function(f){
+      var id=_patSid(blk.path,f[0]); if(_patExists(id,f[2])) o[f[0]]=_patRead(id,f[2]);
+    });
+    (blk.lists||[]).forEach(function(L){
+      var arr=o[L.key]||[];
+      arr.forEach(function(it,i){ L.fields.forEach(function(f){
+        var id=_patLid(blk.path,L.key,i,f[0]); if(_patExists(id,f[2])) it[f[0]]=_patRead(id,f[2]);
+      }); });
+      o[L.key]=arr;
+    });
+  });
+}
+function renderAdmPat(b){
+  var D=_patEnsure();
+  var h='<div class="crud-form"><div class="crud-form-title">&#9998; Pàgina del Programa de Tecnificació (PAT)</div>'
+    +'<p style="font-size:.85rem;color:var(--gray);margin:0 0 1rem">Obre cada bloc per editar-lo. Pots afegir, esborrar i reordenar els elements de les llistes. Els canvis no es publiquen fins que premes «Desar».</p>';
+  PAT_SCHEMA.forEach(function(blk){
+    var data=D[blk.path]||{}, open=!!_admPatOpen[blk.path];
+    h+='<div class="adm-pat-block"><button type="button" class="adm-pat-head'+(open?' open':'')+'" id="pathead_'+blk.path+'"'+dataAttr('onclick','patToggle',[blk.path])+'>'+blk.title+'<span>&#9662;</span></button>'
+      +'<div class="adm-pat-body" id="patblk_'+blk.path+'" style="display:'+(open?'block':'none')+'">';
+    (blk.fields||[]).forEach(function(f){ h+=_patFieldHtml(_patSid(blk.path,f[0]),f,data[f[0]]); });
+    (blk.lists||[]).forEach(function(L){
+      var arr=data[L.key]||[];
+      h+='<div class="adm-st" style="margin-top:1rem">'+L.label+' <span class="crud-count-badge">'+arr.length+'</span></div>';
+      arr.forEach(function(it,i){
+        h+='<div class="adm-dc-group"><div class="adm-dc-group-head"><strong style="flex:1">'+L.item+' '+(i+1)+'</strong>'
+          +(i>0?'<button class="btn-edit-crud" title="Pujar" aria-label="Pujar"'+dataAttr('onclick','patMoveItem',[blk.path,L.key,i,-1])+'>&#9650;</button>':'')
+          +(i<arr.length-1?'<button class="btn-edit-crud" title="Baixar" aria-label="Baixar"'+dataAttr('onclick','patMoveItem',[blk.path,L.key,i,1])+'>&#9660;</button>':'')
+          +'<button class="btn-del-crud"'+dataAttr('onclick','patDelItem',[blk.path,L.key,i])+'>&#128465;</button></div>';
+        L.fields.forEach(function(f){ h+=_patFieldHtml(_patLid(blk.path,L.key,i,f[0]),f,it[f[0]]); });
+        h+='</div>';
+      });
+      h+='<button class="a-sub"'+dataAttr('onclick','patAddItem',[blk.path,L.key])+'>&#10010; Afegir '+L.item.toLowerCase()+'</button>';
+    });
+    h+='</div></div>';
+  });
+  h+='<button class="a-sub success"'+dataAttr('onclick','crudSavePat',[])+' style="margin-top:1rem">&#10003; Desar tota la pàgina</button></div>';
+  b.innerHTML=h;
+}
+function patToggle(path){
+  _admPatOpen[path]=!_admPatOpen[path];
+  var body=document.getElementById('patblk_'+path), head=document.getElementById('pathead_'+path);
+  if(body) body.style.display=_admPatOpen[path]?'block':'none';
+  if(head) head.classList.toggle('open',!!_admPatOpen[path]);
+}
+function _patListOf(path,lk){
+  var D=_patEnsure(); if(!D[path]) D[path]={}; if(!D[path][lk]) D[path][lk]=[]; return D[path][lk];
+}
+function patAddItem(path,lk){
+  _patCollect();
+  var blk=PAT_SCHEMA.filter(function(x){return x.path===path;})[0];
+  var L=blk.lists.filter(function(x){return x.key===lk;})[0];
+  var it={}; L.fields.forEach(function(f){ it[f[0]]=''; });
+  _patListOf(path,lk).push(it);
+  _admPatOpen[path]=true;
+  renderAdmPat(document.getElementById('admBody'));
+}
+function patDelItem(path,lk,i){
+  _patCollect();
+  confirmDel('aquest element',function(){
+    _patListOf(path,lk).splice(i,1);
+    _admPatOpen[path]=true;
+    renderAdmPat(document.getElementById('admBody'));
+  });
+}
+function patMoveItem(path,lk,i,dir){
+  _patCollect();
+  var arr=_patListOf(path,lk), j=i+dir;
+  if(j<0||j>=arr.length) return;
+  var t=arr[i]; arr[i]=arr[j]; arr[j]=t;
+  _admPatOpen[path]=true;
+  renderAdmPat(document.getElementById('admBody'));
+}
+function crudSavePat(){
+  _patCollect();
+  dbSave();
+  admLog('PAT_SAVE','');
+  renderPAT();
+  renderAdmPat(document.getElementById('admBody'));
+  toast('Pàgina del PAT desada!','&#9989;');
 }
 
 // ── COMPETICIONS CRUD ──────────────────────────────────────
@@ -2449,7 +2579,7 @@ function genPublicarCircular(){
 var _BK_FIELDS = (window.DB_FIELDS || []).slice();
 var _BK_LABELS = {circulars:'Circulars',competitions:'Competicions',news:'Notícies',
   formations:'Formació',tirades:'Tirades',documents:'Documents',recordsSolicituds:'Sol·licituds de rècord',
-  records:'Rècords',lligues:'Lligues',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari',documentacio:'Documentació',comenca:'Vols començar',clubsDir:'Clubs',discPhotos:'Fotos disciplines'};
+  records:'Rècords',lligues:'Lligues',carousel:'Carrusel',junta:'Junta',discTexts:'Textos disciplines',calendari:'Calendari',documentacio:'Documentació',comenca:'Vols començar',clubsDir:'Clubs',discPhotos:'Fotos disciplines',pat:'Tecnificació'};
 var _BK_PREFIX = 'fcta_ckpt_';
 var _BK_MAX    = 3;
 

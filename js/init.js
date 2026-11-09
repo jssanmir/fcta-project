@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded',function(){
   renderJunta();
   renderDocumentacio();
   renderComenca();
+  renderPAT();
   fixPuntVolat();
   // No sobreescriure la navegació per hash (enllaços directes a #competitions/stats, etc.)
   var _hashSec = (window.location.hash || '').replace('#', '').split('/')[0];
