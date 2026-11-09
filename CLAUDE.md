@@ -142,7 +142,7 @@ Totes les dades viuen en l'objecte global `DB`:
 | `DB.circulars`    | Array     | Circulars federals (type, num, title, url…)     |
 | `DB.competitions` | Array     | Competicions (type, status, dateISO, loc…)      |
 | `DB.news`         | Array     | Notícies (cat, title, date, img…)               |
-| `DB.formations`   | Array     | Cursos i formació                               |
+| `DB.formations`   | Array     | Cursos i formació (title, level, desc HTML, dates, places, estat obert/curs/tancat, circ → circular enllaçada, inscripcioLabel/Url, docs[] {title,desc,url}) — Admin > Formació (documents: PDF pujat o enllaç) |
 | `DB.tirades`      | Array     | Tirades socials (status: 'pend' o 'valid')      |
 | `DB.documents`    | Array     | Documents PDF per disciplina (disc, nom, url)   |
 | `DB.clubs`        | Array     | Noms dels clubs (per al selector de tirades)    |

@@ -1,0 +1,160 @@
+{
+ "name": "2026-11-09-formacio-documents",
+ "description": "Formació: estat dels cursos, dates corregides i documents del Curs Tècnic Nivell 1",
+ "ops": [
+  {
+   "op": "setFields",
+   "collection": "formations",
+   "id": 1,
+   "fields": {
+    "dates": [
+     "2026/2027 · Barcelona",
+     "Inici: 27 de febrer de 2026 · Barcelona"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "formations",
+   "id": 2,
+   "fields": {
+    "dates": [
+     "2026 · Per confirmar",
+     "28 de febrer de 2026"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "formations",
+   "id": 3,
+   "fields": {
+    "dates": [
+     "Setembre 2026",
+     "26 de febrer de 2025"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "formations",
+   "id": 4,
+   "fields": {
+    "dates": [
+     "Octubre 2026",
+     "21 de març de 2024"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "formations",
+   "id": 5,
+   "fields": {
+    "dates": [
+     "Novembre 2026",
+     "18 de juliol de 2024"
+    ]
+   }
+  },
+  {
+   "op": "setFields",
+   "collection": "formations",
+   "id": 6,
+   "fields": {
+    "dates": [
+     "Desembre 2026",
+     "7 de novembre de 2024"
+    ]
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "formations",
+   "id": 1,
+   "fields": {
+    "estat": "curs",
+    "docs": [
+     {
+      "id": 1001,
+      "title": "Sol·licitud d'inscripció al curs de nivell I en tir amb arc",
+      "desc": "",
+      "url": "docs/CURS_N1_2026_27_SOLICITUD_INSCRIPCIO.pdf"
+     },
+     {
+      "id": 1002,
+      "title": "Full resum dels tràmits d'inscripció al curs",
+      "desc": "",
+      "url": "docs/CURS_N1_2026_27_FULL_TRAMITS_INSCRIPCIO.pdf"
+     },
+     {
+      "id": 1003,
+      "title": "Full resum dels tràmits de preinscripció a la prova d'accés",
+      "desc": "",
+      "url": "docs/CURS_N1_2026_27_FULL_TRAMITS_PREINSCRIPCIO.pdf"
+     },
+     {
+      "id": 1004,
+      "title": "Llistat provisional d'admesos a la prova d'accés",
+      "desc": "",
+      "url": "docs/CURS_N1_2026_27_LLISTAT_PROVISIONAL_ADMESOS_PROVA_ACCES.pdf"
+     },
+     {
+      "id": 1005,
+      "title": "Llistat definitiu d'admesos a la prova d'accés",
+      "desc": "",
+      "url": "docs/CURS_N1_2026_27_LLISTAT_DEFINITIU_ADMESOS_PROVA_ACCES.pdf"
+     }
+    ]
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "formations",
+   "id": 2,
+   "fields": {
+    "estat": "tancat"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "formations",
+   "id": 3,
+   "fields": {
+    "estat": "tancat"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "formations",
+   "id": 4,
+   "fields": {
+    "estat": "tancat"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "formations",
+   "id": 5,
+   "fields": {
+    "estat": "tancat"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "formations",
+   "id": 6,
+   "fields": {
+    "estat": "tancat"
+   }
+  },
+  {
+   "op": "setIfMissing",
+   "collection": "formations",
+   "id": 7,
+   "fields": {
+    "estat": "obert"
+   }
+  }
+ ]
+}

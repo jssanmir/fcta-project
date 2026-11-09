@@ -981,6 +981,40 @@ app.post('/api/data', verifyToken, function (req, res) {
     };
   }
 
+  // Formació: cursos amb estat, circular, inscripció i documents (PDF/enllaços segurs)
+  if (data.formations !== undefined) {
+    var frmUrl = function (v, allowMail) {
+      var u = String(v || '').trim();
+      if (!u) return '';
+      if (isSafeUrl(u) || (allowMail && /^mailto:[^\s<>"']+$/.test(u))) return u.slice(0, 500);
+      return '';
+    };
+    data.formations = (Array.isArray(data.formations) ? data.formations : []).slice(0, 200).map(function (f) {
+      f = f || {};
+      return {
+        id: Number(f.id) || Date.now(),
+        icon: sanitizeStr(f.icon, 50),
+        title: sanitizeStr(f.title, 200),
+        level: sanitizeStr(f.level, 40),
+        desc: sanitizeNewsBody(String(f.desc || '')).slice(0, 4000),
+        dates: sanitizeStr(f.dates, 100),
+        places: sanitizeStr(f.places, 100),
+        estat: ['obert', 'curs', 'tancat'].indexOf(f.estat) >= 0 ? f.estat : 'obert',
+        circ: sanitizeStr(f.circ, 30),
+        inscripcioLabel: sanitizeStr(f.inscripcioLabel, 60),
+        inscripcioUrl: frmUrl(f.inscripcioUrl, true),
+        docs: (Array.isArray(f.docs) ? f.docs : []).slice(0, 60).map(function (d) {
+          d = d || {};
+          return { id: Number(d.id) || Date.now(), title: sanitizeStr(d.title, 200), desc: sanitizeStr(d.desc, 200), url: frmUrl(d.url, false) };
+        }).filter(function (d) { return d.url; }),
+        links: (Array.isArray(f.links) ? f.links : []).slice(0, 20).map(function (l) {
+          l = l || {};
+          return { txt: sanitizeStr(l.txt, 200), url: frmUrl(l.url, false) };
+        }).filter(function (l) { return l.url; })
+      };
+    });
+  }
+
   // Tecnificació (PAT): pàgina editable. Saneig recursiu: HTML enriquit, enllaços segurs i textos curts
   if (data.pat !== undefined) {
     var PAT_RICH = { text: 1, body: 1, perfilBody: 1 };

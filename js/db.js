@@ -83,7 +83,7 @@ var PDF_CONTENT = {
   },
   "CIRC-2504": {
     title: "Curs Tècnic Esportiu Nivell 1 – Convocatòria 2026/2027",
-    num: "CIRC 2604",
+    num: "CIRC 2504",
     date: "15 de gener de 2026",
     url: "#",
     sections: [
@@ -2296,13 +2296,13 @@ news: [
 
 // --- FORMACIÓ (real del web) ---
 formations: [
-  {id:1,icon:'🎓',title:'Curs Tècnic Esportiu Nivell 1',level:'Tècnics',desc:'La FCTA i el CCE convoquen un curs de tècnic esportiu de Nivell 1 en tir amb arc. Títol oficial reconegut per la Generalitat de Catalunya.',dates:'2026/2027 · Barcelona',places:'Llista admesos disponible',circ:'CIRC-2504',links:[]},
-  {id:2,icon:'🧠',title:'Seminari de Psicologia Aplicada al Tir amb Arc',level:'General',desc:'Formació sobre eines psicològiques per millorar el rendiment esportiu i la gestió de la pressió competitiva. Adreçat a tècnics i esportistes.',dates:'2026 · Per confirmar',places:'30 places',circ:'CIRC-2607',links:[]},
-  {id:3,icon:'⚖️',title:'Taller Jurídic per a Clubs',level:'Clubs',desc:'Aspectes legals clau per a la gestió de clubs esportius: estatuts, responsabilitats, contractes i marc normatiu.',dates:'Setembre 2026',places:'25 places',circ:'CIRC-2511',links:[]},
-  {id:4,icon:'📊',title:'Taller de Comptabilitat per a Clubs',level:'Clubs',desc:'Gestió econòmica i comptable d\'entitats esportives sense ànim de lucre. Eines pràctiques per a gestors de clubs.',dates:'Octubre 2026',places:'25 places',circ:'CIRC-2410',links:[]},
-  {id:5,icon:'💼',title:'Fiscalitat dels Clubs Esportius',level:'Clubs',desc:'Obligacions fiscals, declaracions i exempcions per a clubs i federacions esportives. Impartit per experts fiscalistes.',dates:'Novembre 2026',places:'25 places',circ:'CIRC-2435',links:[]},
-  {id:6,icon:'🤝',title:'Laboral i Voluntariat Esportiu',level:'Clubs',desc:'Regularització de voluntaris, relacions laborals i contractació en entitats esportives. Aspectes pràctics per a clubs.',dates:'Desembre 2026',places:'25 places',circ:'CIRC-2447',links:[]},
-  {id:7,icon:'🏹',title:'Tecnificació Base – Programa PATD',level:'Tècnics',desc:'Programa de tecnificació base de la FCTA. Formació específica per a tècnics de base i iniciació.',dates:'Temporada 2026',places:'Consultar',circ:'',links:[{txt:'📄 Descarregar programa PATD',url:'docs/PAT_FCTA_v4.pdf'}]},
+  {id:1,icon:'🎓',title:"Curs Tècnic Esportiu Nivell 1",level:'Tècnics',desc:"La FCTA i el CCE convoquen un curs de tècnic esportiu de Nivell 1 en tir amb arc. Títol oficial reconegut per la Generalitat de Catalunya.",dates:"Inici: 27 de febrer de 2026 · Barcelona",places:"Llista admesos disponible",estat:'curs',circ:'CIRC-2504',inscripcioLabel:'',inscripcioUrl:'',docs:[{"id": 1001, "title": "Sol·licitud d'inscripció al curs de nivell I en tir amb arc", "desc": "", "url": "docs/CURS_N1_2026_27_SOLICITUD_INSCRIPCIO.pdf"}, {"id": 1002, "title": "Full resum dels tràmits d'inscripció al curs", "desc": "", "url": "docs/CURS_N1_2026_27_FULL_TRAMITS_INSCRIPCIO.pdf"}, {"id": 1003, "title": "Full resum dels tràmits de preinscripció a la prova d'accés", "desc": "", "url": "docs/CURS_N1_2026_27_FULL_TRAMITS_PREINSCRIPCIO.pdf"}, {"id": 1004, "title": "Llistat provisional d'admesos a la prova d'accés", "desc": "", "url": "docs/CURS_N1_2026_27_LLISTAT_PROVISIONAL_ADMESOS_PROVA_ACCES.pdf"}, {"id": 1005, "title": "Llistat definitiu d'admesos a la prova d'accés", "desc": "", "url": "docs/CURS_N1_2026_27_LLISTAT_DEFINITIU_ADMESOS_PROVA_ACCES.pdf"}]},
+  {id:2,icon:'🧠',title:"Seminari de Psicologia Aplicada al Tir amb Arc",level:'General',desc:"Formació sobre eines psicològiques per millorar el rendiment esportiu i la gestió de la pressió competitiva. Adreçat a tècnics i esportistes.",dates:"28 de febrer de 2026",places:"30 places",estat:'tancat',circ:'CIRC-2607',inscripcioLabel:'',inscripcioUrl:'',docs:[]},
+  {id:3,icon:'⚖️',title:"Taller Jurídic per a Clubs",level:'Clubs',desc:"Aspectes legals clau per a la gestió de clubs esportius: estatuts, responsabilitats, contractes i marc normatiu.",dates:"26 de febrer de 2025",places:"25 places",estat:'tancat',circ:'CIRC-2511',inscripcioLabel:'',inscripcioUrl:'',docs:[]},
+  {id:4,icon:'📊',title:"Taller de Comptabilitat per a Clubs",level:'Clubs',desc:"Gestió econòmica i comptable d'entitats esportives sense ànim de lucre. Eines pràctiques per a gestors de clubs.",dates:"21 de març de 2024",places:"25 places",estat:'tancat',circ:'CIRC-2410',inscripcioLabel:'',inscripcioUrl:'',docs:[]},
+  {id:5,icon:'💼',title:"Fiscalitat dels Clubs Esportius",level:'Clubs',desc:"Obligacions fiscals, declaracions i exempcions per a clubs i federacions esportives. Impartit per experts fiscalistes.",dates:"18 de juliol de 2024",places:"25 places",estat:'tancat',circ:'CIRC-2435',inscripcioLabel:'',inscripcioUrl:'',docs:[]},
+  {id:6,icon:'🤝',title:"Laboral i Voluntariat Esportiu",level:'Clubs',desc:"Regularització de voluntaris, relacions laborals i contractació en entitats esportives. Aspectes pràctics per a clubs.",dates:"7 de novembre de 2024",places:"25 places",estat:'tancat',circ:'CIRC-2447',inscripcioLabel:'',inscripcioUrl:'',docs:[]},
+  {id:7,icon:'🏹',title:"Tecnificació Base – Programa PATD",level:'Tècnics',desc:"Programa de tecnificació base de la FCTA. Formació específica per a tècnics de base i iniciació.",dates:"Temporada 2026",places:"Consultar",estat:'obert',circ:'',inscripcioLabel:'',inscripcioUrl:'',docs:[{"id": 1101, "title": "Descarregar programa PATD", "desc": "", "url": "docs/PAT_FCTA_v4.pdf"}]},
 ],
 
 // --- CLUBS (per al selector de tirades socials) ---

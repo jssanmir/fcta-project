@@ -1,6 +1,6 @@
 /* FORMATION */
 .form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem}
-.form-card{background:white;border-radius:8px;padding:1.5rem;transition:all .3s;cursor:pointer;border-left:4px solid var(--navy)}
+.form-card{background:white;border-radius:8px;padding:1.5rem;transition:all .3s;border-left:4px solid var(--navy)}
 .form-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(27,58,107,.12)}
 .form-card-icon{font-size:2rem;margin-bottom:.65rem}
 .form-card h3{font-family:'Montserrat',sans-serif;font-size:.907rem;font-weight:800;text-transform:uppercase;color:var(--navy-dark);margin-bottom:.35rem}
@@ -10,3 +10,13 @@
 .form-links{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
 .form-link{font-size:.78rem;color:var(--navy-light);text-decoration:none;transition:color .2s}
 .form-link:hover{color:var(--navy-dark);text-decoration:underline}
+
+.form-card--curs{border-left-color:var(--gold)}
+.form-card--tancat{border-left-color:var(--gray);opacity:.88}
+.form-estat{margin-left:.35rem}
+.form-card-desc p{font-size:.84rem;color:var(--gray);line-height:1.6;margin:.35rem 0 .7rem}
+.form-card-desc ul,.form-card-desc ol{font-size:.84rem;color:var(--gray);line-height:1.6;margin:.2rem 0 .7rem 1.1rem}
+.form-docs-title{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--navy-dark);margin-bottom:.35rem}
+.form-link-desc{display:block;font-size:.7rem;color:var(--gray)}
+.adm-frm-doc{border:1px solid var(--lightgray);border-radius:var(--r-md);padding:.7rem;margin-bottom:.6rem;background:var(--offwhite)}
+.adm-frm-doc-acts{display:flex;gap:.4rem;align-items:center;margin-top:.3rem}

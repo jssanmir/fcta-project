@@ -100,6 +100,8 @@ function handleUpload(input, idUrl, type) {
       // Desa la URL al camp ocult
       var hiddenInput = document.getElementById(idUrl);
       if (hiddenInput) hiddenInput.value = d.url;
+      var txtInput = document.getElementById(idUrl+'_txt');
+      if (txtInput) txtInput.value = d.url;
       // Actualitza la preview
       var prev = document.getElementById('prev_'+idUrl);
       if (prev) {
@@ -1606,49 +1608,134 @@ function admExportCompCSV(){
 }
 
 // ── FORMACIÓ CRUD ──────────────────────────────────────────
+// Cada curs: dades bàsiques, estat, circular enllaçada, descripció (text enriquit),
+// botó d'inscripció opcional i llista de documents (PDF pujat o enllaç).
+function _frmLevels(){ return ['Tècnics','General','Clubs'].map(function(v){return{val:v,lbl:v};}); }
+function _frmEstatName(v){
+  var r=FORM_ESTATS.filter(function(e){return e.val===v;})[0];
+  return r?r.lbl:'Inscripció oberta';
+}
 function renderAdmForm(b){
   b.innerHTML=
     '<div class="crud-form">'
-    +'<div class="crud-form-title">&#10010; Afegir Curs / Seminari</div>'
-    +mkField('T\u00edtol *','af_t','text','','Nom del curs o seminari')
+    +'<div class="crud-form-title">&#10010; Afegir Curs / Seminari / Taller</div>'
+    +mkField('Títol *','af_t','text','','Nom del curs o seminari')
     +'<div class="af-row">'
-    +mkField('Nivell','af_lv','select','General','',
-      ['T\u00e8cnics','General','Clubs'].map(function(v){return{val:v,lbl:v};}))
-    +mkField('Places','af_pl','text','','Ex: 25 places')
+    +mkField('Nivell','af_lv','select','General','',_frmLevels())
+    +mkField('Estat','af_es','select','obert','',FORM_ESTATS)
     +'</div>'
-    +'<div class="af-row">'
-    +mkField('Dates','af_dt','text','','Ex: Setembre 2026')
-    +mkField('Icona (emoji)','af_ic','text','\ud83c\udf93','')
-    +'</div>'
-    +mkField('Descripci\u00f3 *','af_d','textarea','','Continguts, objectius i requisits')
-    +'<button class="a-sub success"'+dataAttr('onclick','crudAddForm',[])+'>&#10010; Publicar Curs</button>'
+    +'<div style="font-size:.78rem;color:var(--gray);margin-bottom:.6rem">Després de crear-lo s’obrirà l’editor per afegir descripció, dates, circular i documents.</div>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudAddForm',[])+'>&#10010; Crear Curs</button>'
     +'</div>'
     +'<div class="adm-st">Cursos <span class="crud-count-badge">'+DB.formations.length+'</span></div>'
     +'<div class="crud-list">'
-    +admSortByDateDesc(DB.formations,function(f){return admDateKey(f.dates);}).map(function(f){
+    +DB.formations.map(function(f){
+      var nd=(f.docs||[]).length+(f.links||[]).length;
       return '<div class="crud-item" id="fitem-'+f.id+'">'
         +'<div class="crud-item-info">'
-        +'<div class="crud-item-title">'+escHtml(f.icon)+' '+escHtml(f.title)+'</div>'
-        +'<div class="crud-item-meta"><span>'+escHtml(f.dates)+'</span><span>'+escHtml(f.level)+'</span><span>'+escHtml(f.places)+'</span></div>'
+        +'<div class="crud-item-title">'+escHtml(f.icon||'')+' '+escHtml(f.title)+'</div>'
+        +'<div class="crud-item-meta"><span>'+escHtml(f.dates||'')+'</span><span>'+escHtml(f.level||'')+'</span><span>'+escHtml(_frmEstatName(f.estat))+'</span>'
+        +'<span>&#128196; '+nd+' doc.</span>'+(f.circ?'<span>'+escHtml(f.circ)+'</span>':'')+'</div>'
         +'</div>'
         +'<div class="crud-item-acts">'
         +'<button class="btn-edit-crud"'+dataAttr('onclick','crudEditForm',[f.id])+'>&#9998;</button>'
-        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelForm',[f.id,f.title.substring(0,25)+'...'])+'>&#128465;</button>'
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelForm',[f.id,String(f.title||'').substring(0,25)+'...'])+'>&#128465;</button>'
         +'</div>'
         +'</div>';
     }).join('')
     +'</div>';
 }
 function crudAddForm(){
-  var t=fv('af_t'),d=fv('af_d'); if(!t||!d){toast('Omple t\u00edtol i descripci\u00f3','&#9888;&#65039;');return;}
-  DB.formations.unshift({id:Date.now(),icon:fv('af_ic')||'\ud83c\udf93',
-    title:t,level:fv('af_lv')||'General',
-    desc:d,dates:fv('af_dt'),places:fv('af_pl'),circ:'',links:[]});
+  var t=fv('af_t'); if(!t){toast('Omple el títol','&#9888;&#65039;');return;}
+  var id=_dcId();
+  DB.formations.unshift({id:id,icon:'🎓',title:t,level:fv('af_lv')||'General',
+    desc:'',dates:'',places:'',estat:fv('af_es')||'obert',circ:'',inscripcioLabel:'',inscripcioUrl:'',docs:[]});
   dbSave();
   admLog('FORM_ADD', t);
   renderForm();
   renderAdmForm(document.getElementById('admBody'));
-  toast('Curs publicat!','&#9989;');
+  crudEditForm(id);
+  toast('Curs creat. Completa’n les dades.','&#9989;');
+}
+// Esborrany del curs a partir de les dades (els enllaços antics passen a documents)
+function _frmDraftFrom(f){
+  var docs=(f.docs||[]).map(function(d){return{id:d.id||_dcId(),title:d.title||'',desc:d.desc||'',url:d.url||''};});
+  (f.links||[]).forEach(function(l){docs.push({id:_dcId(),title:l.txt||'',desc:'',url:l.url||''});});
+  return {title:f.title||'',level:f.level||'General',icon:f.icon||'',dates:f.dates||'',places:f.places||'',
+    estat:f.estat||'obert',circ:f.circ||'',desc:f.desc||'',inscripcioLabel:f.inscripcioLabel||'',
+    inscripcioUrl:f.inscripcioUrl||'',docs:docs};
+}
+// Llegeix l'editor obert i en retorna un esborrany
+function _frmCollect(id){
+  var d={title:fv('ef_t_'+id),level:fv('ef_lv_'+id),icon:fv('ef_ic_'+id),dates:fv('ef_da_'+id),places:fv('ef_pl_'+id),
+    estat:fv('ef_es_'+id),circ:fv('ef_ci_'+id),desc:rtGetHtml('ef_d_'+id),
+    inscripcioLabel:fv('ef_il_'+id),inscripcioUrl:fv('ef_iu_'+id),docs:[]};
+  var i=0;
+  while(document.getElementById('ef_dn_'+id+'_'+i)){
+    d.docs.push({id:Number(fv('ef_di_'+id+'_'+i))||_dcId(),title:fv('ef_dn_'+id+'_'+i),
+      desc:fv('ef_dd_'+id+'_'+i),url:fv('ef_du_'+id+'_'+i+'_txt')});
+    i++;
+  }
+  return d;
+}
+function _frmCircSelect(id,cur){
+  var circs=(DB.circulars||[]).slice().sort(function(a,b){return String(b.num).localeCompare(String(a.num));});
+  var found=!cur||circs.some(function(c){return c.num===cur;});
+  var o='<option value="">— Cap —</option>';
+  if(!found) o+='<option value="'+escHtml(cur)+'" selected>'+escHtml(cur)+' (no existeix)</option>';
+  circs.forEach(function(c){
+    o+='<option value="'+escHtml(c.num)+'"'+(c.num===cur?' selected':'')+'>'+escHtml(c.num+' – '+String(c.title||'').substring(0,70))+'</option>';
+  });
+  return '<div class="af-g"><label>Circular relacionada (apareix com a «Més informació»)</label><select id="ef_ci_'+id+'">'+o+'</select></div>';
+}
+function _frmRender(id,d){
+  var e=document.getElementById('fedit-'+id); if(!e) return;
+  var docs=d.docs.map(function(x,i){
+    var k=id+'_'+i;
+    return '<div class="adm-frm-doc">'
+      +'<input type="hidden" id="ef_di_'+k+'" value="'+escHtml(x.id)+'">'
+      +'<div class="af-row">'
+      +mkField('Títol del document','ef_dn_'+k,'text',x.title,'Ex: Llistat d’admesos')
+      +mkField('Descripció (opcional)','ef_dd_'+k,'text',x.desc,'Ex: actualitzat 5/11')
+      +'</div>'
+      +'<div class="af-row">'
+      +mkUploadField('Pujar PDF','ef_du_'+k,x.url,'pdf')
+      +mkField('o enllaç (URL / docs/...)','ef_du_'+k+'_txt','text',x.url,'https://... o docs/FITXER.pdf')
+      +'</div>'
+      +'<div class="adm-frm-doc-acts">'
+      +'<button class="a-sub"'+dataAttr('onclick','crudFormDocMove',[id,i,-1])+(i===0?' disabled':'')+'>&#9650;</button>'
+      +'<button class="a-sub"'+dataAttr('onclick','crudFormDocMove',[id,i,1])+(i===d.docs.length-1?' disabled':'')+'>&#9660;</button>'
+      +'<button class="btn-del-crud"'+dataAttr('onclick','crudFormDocDel',[id,i])+'>&#128465; Treure</button>'
+      +'</div></div>';
+  }).join('');
+  e.innerHTML=
+    mkField('Títol *','ef_t_'+id,'text',d.title,'')
+    +'<div class="af-row">'
+    +mkField('Nivell','ef_lv_'+id,'select',d.level,'',_frmLevels())
+    +mkField('Icona (emoji)','ef_ic_'+id,'text',d.icon,'')
+    +'</div>'
+    +'<div class="af-row">'
+    +mkField('Dates','ef_da_'+id,'text',d.dates,'Ex: Inici: 27 de febrer de 2026 · Barcelona')
+    +mkField('Places','ef_pl_'+id,'text',d.places,'Ex: 25 places')
+    +'</div>'
+    +'<div class="af-row">'
+    +mkField('Estat','ef_es_'+id,'select',d.estat,'',FORM_ESTATS)
+    +_frmCircSelect(id,d.circ)
+    +'</div>'
+    +'<div class="af-g"><label>Descripció (text enriquit)</label>'+rtEditor('ef_d_'+id,_cmRichVal(d.desc),'Continguts, objectius i requisits')+'</div>'
+    +'<div class="adm-st" style="margin-top:.8rem">Inscripció (botó opcional)</div>'
+    +'<div style="font-size:.78rem;color:var(--gray);margin-bottom:.5rem">El botó només es mostra amb estat «Inscripció oberta» i si hi ha enllaç.</div>'
+    +'<div class="af-row">'
+    +mkField('Text del botó','ef_il_'+id,'text',d.inscripcioLabel,'Inscriu-te')
+    +mkField('Enllaç (URL, docs/... o mailto:)','ef_iu_'+id,'text',d.inscripcioUrl,'https://... o mailto:fcta@fcta.cat')
+    +'</div>'
+    +'<div class="adm-st" style="margin-top:.8rem">Documentació del curs <span class="crud-count-badge">'+d.docs.length+'</span></div>'
+    +docs
+    +'<button class="a-sub"'+dataAttr('onclick','crudFormDocAdd',[id])+'>&#10010; Afegir document</button>'
+    +'<div style="display:flex;gap:.5rem;margin-top:.8rem">'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveForm',[id])+'>&#10003; Desar</button>'
+    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelForm',[id])+'>Cancel·lar</button>'
+    +'</div>';
 }
 function crudEditForm(id){
   var f=DB.formations.find(function(x){return x.id===id;});
@@ -1660,23 +1747,24 @@ function crudEditForm(id){
   item.classList.add('editing');
   var editDiv=document.createElement('div');
   editDiv.className='crud-edit-form'; editDiv.id='fedit-'+id;
-  editDiv.innerHTML=
-    mkField('T\u00edtol *','ef_t_'+id,'text',f.title,'')
-    +'<div class="af-row">'
-    +mkField('Nivell','ef_lv_'+id,'select',f.level,'',
-      ['T\u00e8cnics','General','Clubs'].map(function(v){return{val:v,lbl:v};}))
-    +mkField('Icona','ef_ic_'+id,'text',f.icon,'')
-    +'</div>'
-    +'<div class="af-row">'
-    +mkField('Dates','ef_dt_'+id,'text',f.dates,'')
-    +mkField('Places','ef_pl_'+id,'text',f.places,'')
-    +'</div>'
-    +mkField('Descripci\u00f3','ef_d_'+id,'textarea',f.desc,'')
-    +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
-    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveForm',[id])+'>&#10003; Desar</button>'
-    +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelForm',[id])+'>Cancel\u00b7lar</button>'
-    +'</div>';
   item.appendChild(editDiv);
+  _frmRender(id,_frmDraftFrom(f));
+}
+function crudFormDocAdd(id){
+  var d=_frmCollect(id);
+  d.docs.push({id:_dcId(),title:'',desc:'',url:''});
+  _frmRender(id,d);
+}
+function crudFormDocDel(id,i){
+  var d=_frmCollect(id);
+  d.docs.splice(i,1);
+  _frmRender(id,d);
+}
+function crudFormDocMove(id,i,dir){
+  var d=_frmCollect(id), j=i+dir;
+  if(j<0||j>=d.docs.length) return;
+  var t=d.docs[i]; d.docs[i]=d.docs[j]; d.docs[j]=t;
+  _frmRender(id,d);
 }
 function crudCancelForm(id){
   var e=document.getElementById('fedit-'+id); if(e) e.remove();
@@ -1685,13 +1773,27 @@ function crudCancelForm(id){
 function crudSaveForm(id){
   var f=DB.formations.find(function(x){return x.id===id;});
   if(!f) return;
-  var t=fv('ef_t_'+id); if(!t){toast('El t\u00edtol no pot estar buit','&#9888;&#65039;');return;}
-  f.title=t; f.level=fv('ef_lv_'+id)||f.level; f.icon=fv('ef_ic_'+id)||f.icon;
-  f.dates=fv('ef_dt_'+id); f.places=fv('ef_pl_'+id); f.desc=fv('ef_d_'+id);
+  var d=_frmCollect(id), i, dropped=0, docs=[];
+  if(!d.title){toast('El títol no pot estar buit','&#9888;&#65039;');return;}
+  for(i=0;i<d.docs.length;i++){
+    var x=d.docs[i];
+    if(!x.title&&!x.url) continue;
+    if(!x.url){dropped++;continue;}
+    if(!_dcUrlOk(x.url)){toast('Enllaç de document no vàlid: '+x.url,'&#9888;&#65039;');return;}
+    docs.push({id:x.id,title:x.title||'Document',desc:x.desc,url:x.url});
+  }
+  if(d.inscripcioUrl&&!_dcUrlOk(d.inscripcioUrl)&&!/^mailto:[^\s<>"']+$/.test(d.inscripcioUrl)){
+    toast('Enllaç d’inscripció no vàlid','&#9888;&#65039;');return;
+  }
+  f.title=d.title; f.level=d.level||f.level; f.icon=d.icon||f.icon;
+  f.dates=d.dates; f.places=d.places; f.estat=d.estat||'obert'; f.circ=d.circ;
+  f.desc=d.desc; f.inscripcioLabel=d.inscripcioLabel; f.inscripcioUrl=d.inscripcioUrl;
+  f.docs=docs; f.links=[];
   dbSave();
+  admLog('FORM_EDIT', d.title);
   renderForm();
   renderAdmForm(document.getElementById('admBody'));
-  toast('Curs desat!','&#9989;');
+  toast('Curs desat!'+(dropped?' ('+dropped+' document sense enllaç descartat)':''),'&#9989;');
 }
 function crudDelForm(id,name){
   confirmDel(name,function(){
