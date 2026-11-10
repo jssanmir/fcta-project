@@ -236,7 +236,7 @@ function renderAdmCirculars(b){
     +mkField('Data de publicaci\u00f3 (opcional)','ac_pub','date','','')
     +'<div style="font-size:.78rem;color:var(--gray);margin:-.6rem 0 .75rem">Deixa-ho buit per publicar-la de seguida. Si hi poses una data futura, la circular es mant\u00e9 oculta al p\u00fablic fins que arribi.</div>'
     +mkField('Data de l\u2019activitat (opcional)','ac_ev','text','','Ex: 28 de febrer de 2026 (nom\u00e9s si la circular convoca un curs, taller o esdeveniment)')
-    +mkField('Descripci\u00f3 breu','ac_d','textarea','','Resum del contingut de la circular')
+    +'<div class="af-g"><label>Descripci\u00f3 breu</label>'+rtEditor('ac_d','','Resum del contingut de la circular')+'</div>'
     +'<button class="a-sub success"'+dataAttr('onclick','crudAddCirc',[])+'>&#10010; Publicar Circular</button>'
     +'</div>'
     +'<div class="adm-st">Circulars publicades <span class="crud-count-badge">'+DB.circulars.length+'</span></div>'
@@ -262,7 +262,7 @@ function renderAdmCirculars(b){
     +'</div>';
 }
 function crudAddCirc(){
-  var t=fv('ac_t'),n=fv('ac_n'),c=fv('ac_c'),d=fv('ac_d'),u=fv('ac_u'),dt=fv('ac_dt'),pub=fv('ac_pub');
+  var t=fv('ac_t'),n=fv('ac_n'),c=fv('ac_c'),d=rtGetHtml('ac_d'),u=fv('ac_u'),dt=fv('ac_dt'),pub=fv('ac_pub');
   if(!t||!n){toast('Omple el t\u00edtol i el n\u00famero','&#9888;&#65039;');return;}
   var MONS=['GEN','FEB','MAR','ABR','MAI','JUN','JUL','AGO','SET','OCT','NOV','DES'];
   var date=dt?new Date(dt):new Date();
@@ -305,7 +305,7 @@ function crudEditCirc(id){
     +mkField('Data de publicaci\u00f3 (opcional)','ec_pub_'+id,'date',c.pubDate||'','')
     +'<div style="font-size:.78rem;color:var(--gray);margin:-.6rem 0 .75rem">Deixa-ho buit per publicar-la de seguida.</div>'
     +mkField('Data de l\u2019activitat (opcional)','ec_ev_'+id,'text',c.event||'','Ex: 28 de febrer de 2026 (nom\u00e9s si la circular convoca un curs, taller o esdeveniment)')
-    +mkField('Descripci\u00f3','ec_d_'+id,'textarea',c.desc,'')
+    +'<div class="af-g"><label>Descripci\u00f3</label>'+rtEditor('ec_d_'+id,_cmRichVal(c.desc),'Resum del contingut de la circular')+'</div>'
     +'<div style="display:flex;gap:.5rem;margin-top:.5rem">'
     +'<button class="a-sub success"'+dataAttr('onclick','crudSaveCirc',[id])+'>&#10003; Desar</button>'
     +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelCirc',[id])+'>Cancel\u00b7lar</button>'
@@ -320,7 +320,7 @@ function crudSaveCirc(id){
   c.title=t;
   c.num=fv('ec_n_'+id)||c.num;
   c.type=fv('ec_c_'+id)||c.type;
-  c.desc=fv('ec_d_'+id);
+  c.desc=rtGetHtml('ec_d_'+id);
   var u=fv('ec_u_'+id); c.url=u||'#';
   var day=parseInt(fv('ec_day_'+id)); if(!isNaN(day)&&day>0&&day<=31) c.day=day;
   var yr=parseInt(fv('ec_yr_'+id)); if(!isNaN(yr)&&yr>2000) c.year=yr;
@@ -359,7 +359,7 @@ function renderAdmNews(b){
       ['Aire Lliure','Camp','3D','Sala','Arc Adaptat','Kyudo','Universitari','Institucional'].map(function(v){return{val:v,lbl:v};}))
     +mkField('Data','an_dt','date','','')
     +'</div>'
-    +mkField('Resum *','an_d','textarea','','Text breu que es mostra a la targeta de la not\u00edcia')
+    +'<div class="af-g"><label>Resum *</label>'+rtEditor('an_d','','Text breu que es mostra a la targeta de la not\u00edcia')+'</div>'
     +'<div class="af-g"><label>Text de la not\u00edcia (negreta, llistes, enlla\u00e7os, emoticones\u2026)</label>'+rtEditor('an_body','','Escriu aqu\u00ed el text complet de la not\u00edcia\u2026')+'</div>'
     +'<div class="af-row">'
     +mkUploadField('Imatge de la not\u00edcia','an_img','','image')
@@ -384,7 +384,7 @@ function renderAdmNews(b){
     +'</div>';
 }
 function crudAddNews(){
-  var t=fv('an_t'),d=fv('an_d'),c=fv('an_c'),dt=fv('an_dt'),img=fv('an_img'),url=fv('an_url');
+  var t=fv('an_t'),d=rtGetHtml('an_d'),c=fv('an_c'),dt=fv('an_dt'),img=fv('an_img'),url=fv('an_url');
   if(!t||!d){toast('Omple el t\u00edtol i el resum','&#9888;&#65039;');return;}
   var M=['gen','feb','mar','abr','mai','jun','jul','ago','set','oct','nov','des'];
   var now=dt?new Date(dt):new Date();
@@ -416,7 +416,7 @@ function crudEditNews(id){
       ['Aire Lliure','Camp','3D','Sala','Arc Adaptat','Kyudo','Universitari','Institucional'].map(function(v){return{val:v,lbl:v};}))
     +mkField('Data','en_dt_'+id,'text',n.date,'Ex: 24 mai 2026')
     +'</div>'
-    +mkField('Resum','en_d_'+id,'textarea',n.desc,'Text breu que es mostra a la targeta')
+    +'<div class="af-g"><label>Resum</label>'+rtEditor('en_d_'+id,_cmRichVal(n.desc),'Text breu que es mostra a la targeta')+'</div>'
     +'<div class="af-g"><label>Text de la not\u00edcia (negreta, llistes, enlla\u00e7os, emoticones\u2026)</label>'+rtEditor('en_body_'+id,newsBodyHtml(n),'Escriu aqu\u00ed el text complet de la not\u00edcia\u2026')+'</div>'
     +'<div class="af-row">'
     +mkUploadField('Imatge de la not\u00edcia','en_img_'+id,n.img||'','image')
@@ -433,7 +433,7 @@ function crudSaveNews(id){
   if(!n) return;
   var t=fv('en_t_'+id); if(!t){toast('El t\u00edtol no pot estar buit','&#9888;&#65039;');return;}
   n.title=t; n.cat=fv('en_c_'+id)||n.cat; n.date=fv('en_dt_'+id)||n.date;
-  n.desc=fv('en_d_'+id); n.img=fv('en_img_'+id);
+  n.desc=rtGetHtml('en_d_'+id); n.img=fv('en_img_'+id);
   var u=fv('en_url_'+id); n.url=u||'#';
   var body=rtGetHtml('en_body_'+id);
   if(body) n.body=body; else delete n.body;
@@ -570,12 +570,15 @@ function crudDelCar(id,name){
 }
 
 // ── JUNTA DIRECTIVA CRUD ───────────────────────────────────
-// DB.junta = { intro, mandat, members:[{id,grup,rol,nom,email}] }. L'ordre de
-// la llista és l'ordre a la pàgina dins de cada grup (President, Càrrecs
-// executius, Vocals).
+// DB.junta = { intro, mandat, grups:[{id,lbl,sing,plur,layout}], members:[{id,grup,rol,nom,email}] }.
+// Els grups són les seccions de la pàgina (President, Càrrecs executius, Vocals…) i es poden
+// crear, canviar de nom, reordenar i eliminar. L'ordre de la llista de membres és l'ordre
+// dins de cada grup.
+var JUNTA_ROLS_BASE=['President','1r Vicepresident','2n Vicepresident','3r Vicepresident','Secretari','Secretària','Tresorer','Tresorera','Vocal'];
 function _admJuntaEnsure(){
   if(!DB.junta) DB.junta={intro:'',mandat:'',members:[]};
   if(!DB.junta.members) DB.junta.members=[];
+  if(!DB.junta.grups||!DB.junta.grups.length) DB.junta.grups=juntaGrups();
   return DB.junta;
 }
 function _admJuntaSave(){
@@ -584,26 +587,80 @@ function _admJuntaSave(){
   renderAdmJunta(document.getElementById('admBody'));
 }
 function _admJuntaGrupLbl(g){
-  var f=JUNTA_GRUPS.filter(function(x){return x.val===g;})[0];
+  var f=_admJuntaEnsure().grups.filter(function(x){return x.id===g;})[0];
   return f?f.lbl:g;
+}
+function _admJuntaGrupOpts(){
+  return _admJuntaEnsure().grups.map(function(g){return{val:g.id,lbl:g.lbl};});
 }
 function admJuntaEmailOk(e){
   return !e || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 }
+// Càrrecs suggerits (els ja usats + els habituals) per als camps «Càrrec»
+function _admJuntaRolsList(){
+  var seen={},out=[];
+  JUNTA_ROLS_BASE.concat(_admJuntaEnsure().members.map(function(m){return m.rol;})).forEach(function(r){
+    if(r&&!seen[r]){seen[r]=1;out.push(r);}
+  });
+  return '<datalist id="aj_rols">'+out.map(function(r){return '<option value="'+escHtml(r)+'">';}).join('')+'</datalist>';
+}
+function _admJuntaRolInput(id){
+  var e=document.getElementById(id); if(e) e.setAttribute('list','aj_rols');
+}
+// Llegeix els grups de l'editor (sense desar) i conserva els textos escrits però no desats
+function _admJuntaCollect(){
+  var J=_admJuntaEnsure(), i=0, out=[];
+  while(document.getElementById('ajg_lbl_'+i)){
+    var lbl=fv('ajg_lbl_'+i);
+    out.push({id:fv('ajg_id_'+i),lbl:lbl,
+      sing:fv('ajg_sing_'+i)||lbl,plur:fv('ajg_plur_'+i)||lbl,layout:fv('ajg_lay_'+i)||'vocal'});
+    i++;
+  }
+  if(out.length) J.grups=out;
+  if(document.getElementById('rtarea-aj_intro')) J.intro=rtGetHtml('aj_intro');
+  if(document.getElementById('aj_mandat')) J.mandat=fv('aj_mandat');
+  return J;
+}
 function renderAdmJunta(b){
   var J=_admJuntaEnsure();
-  var groups=['president','exec','vocal'];
+  var groups=J.grups;
+  var layOpts=JUNTA_LAYOUTS.map(function(g){return{val:g.val,lbl:g.lbl};});
   b.innerHTML=
     '<div class="crud-form">'
     +'<div class="crud-form-title">&#9998; Textos de la pàgina</div>'
-    +'<div class="af-g"><label>Introducció (capçalera)</label>'+rtEditor('aj_intro',(J.intro&&!/</.test(J.intro))?'<p>'+escHtml(J.intro)+'</p>':(J.intro||''),'Text sota el títol de la pàgina')+'</div>'
+    +'<div class="af-g"><label>Introducció (capçalera)</label>'+rtEditor('aj_intro',_cmRichVal(J.intro),'Text sota el títol de la pàgina')+'</div>'
     +mkField('Mandat vigent','aj_mandat','text',J.mandat||'','Ex: Desembre 2024 – Novembre 2028')
     +'<button class="a-sub success"'+dataAttr('onclick','crudSaveJuntaTexts',[])+'>&#10003; Desar textos</button>'
     +'</div>'
     +'<div class="crud-form">'
+    +'<div class="crud-form-title">&#9776; Grups i càrrecs de la pàgina</div>'
+    +'<p style="font-size:.8rem;color:var(--gray);margin:0 0 .75rem">Cada grup és una secció de la pàgina pública, en aquest ordre. Pots crear-ne de nous (p. ex. «Comissions»), canviar-los el nom, reordenar-los i triar-ne l’aspecte. Un grup només es pot eliminar si és buit.</p>'
+    +groups.map(function(g,i){
+      var n=J.members.filter(function(m){return m.grup===g.id;}).length;
+      return '<div class="adm-dc-group">'
+        +'<input type="hidden" id="ajg_id_'+i+'" value="'+escHtml(g.id)+'">'
+        +'<div class="adm-dc-group-head"><strong style="flex:1">'+escHtml(g.lbl||'Grup')+' <span class="crud-count-badge">'+n+'</span></strong>'
+        +(i>0?'<button class="btn-edit-crud" title="Pujar" aria-label="Pujar"'+dataAttr('onclick','crudMoveJuntaGrup',[i,-1])+'>&#9650;</button>':'')
+        +(i<groups.length-1?'<button class="btn-edit-crud" title="Baixar" aria-label="Baixar"'+dataAttr('onclick','crudMoveJuntaGrup',[i,1])+'>&#9660;</button>':'')
+        +'<button class="btn-del-crud"'+dataAttr('onclick','crudDelJuntaGrup',[i])+'>&#128465;</button></div>'
+        +'<div class="af-row">'
+        +mkField('Títol de la secció *','ajg_lbl_'+i,'text',g.lbl,'Ex: Vocals')
+        +mkField('Aspecte','ajg_lay_'+i,'select',g.layout,'',layOpts)
+        +'</div>'
+        +'<div class="af-row">'
+        +mkField('Nom en singular (resum)','ajg_sing_'+i,'text',g.sing||'','Ex: Vocal')
+        +mkField('Nom en plural (resum)','ajg_plur_'+i,'text',g.plur||'','Ex: Vocals')
+        +'</div></div>';
+    }).join('')
+    +'<div style="display:flex;gap:.5rem;flex-wrap:wrap">'
+    +'<button class="a-sub"'+dataAttr('onclick','crudAddJuntaGrup',[])+'>&#10010; Afegir grup</button>'
+    +'<button class="a-sub success"'+dataAttr('onclick','crudSaveJuntaGrups',[])+'>&#10003; Desar grups</button>'
+    +'</div>'
+    +'</div>'
+    +'<div class="crud-form">'
     +'<div class="crud-form-title">&#10010; Afegir membre</div>'
     +'<div class="af-row">'
-    +mkField('Grup','aj_grup','select','vocal','',JUNTA_GRUPS.map(function(g){return{val:g.val,lbl:g.lbl};}))
+    +mkField('Grup','aj_grup','select',groups[groups.length-1].id,'',_admJuntaGrupOpts())
     +mkField('Càrrec *','aj_rol','text','','Ex: Vocal, Tresorer, 1r Vicepresident')
     +'</div>'
     +'<div class="af-row">'
@@ -612,11 +669,14 @@ function renderAdmJunta(b){
     +'</div>'
     +'<button class="a-sub success"'+dataAttr('onclick','crudAddJunta',[])+'>&#10010; Afegir a la Junta</button>'
     +'</div>'
+    +_admJuntaRolsList()
     +'<div class="adm-st">Membres <span class="crud-count-badge">'+J.members.length+'</span></div>'
     +'<p style="font-size:.8rem;color:var(--gray);margin:0 0 .75rem">L’ordre és el de la pàgina pública dins de cada grup.</p>'
-    +groups.map(function(g){
-      var inG=J.members.filter(function(m){return m.grup===g;});
-      return '<div class="adm-st" style="margin-top:1rem">'+_admJuntaGrupLbl(g)+' <span class="crud-count-badge">'+inG.length+'</span></div>'
+    +groups.map(function(g,gi){
+      var inG=J.members.filter(function(m){
+        return m.grup===g.id||(gi===groups.length-1&&!groups.some(function(x){return x.id===m.grup;}));
+      });
+      return '<div class="adm-st" style="margin-top:1rem">'+escHtml(g.lbl)+' <span class="crud-count-badge">'+inG.length+'</span></div>'
         +'<div class="crud-list">'
         +inG.map(function(m,i){
           return '<div class="crud-item" id="jitem-'+m.id+'">'
@@ -634,6 +694,7 @@ function renderAdmJunta(b){
         }).join('')
         +'</div>';
     }).join('');
+  _admJuntaRolInput('aj_rol');
 }
 function crudSaveJuntaTexts(){
   var J=_admJuntaEnsure();
@@ -642,12 +703,45 @@ function crudSaveJuntaTexts(){
   _admJuntaSave();
   toast('Textos desats!','&#9989;');
 }
+function crudAddJuntaGrup(){
+  var J=_admJuntaCollect();
+  J.grups.push({id:'g'+Date.now(),lbl:'Nou grup',sing:'Membre',plur:'Membres',layout:'vocal'});
+  renderAdmJunta(document.getElementById('admBody'));
+}
+function crudMoveJuntaGrup(i,dir){
+  var J=_admJuntaCollect(), j=i+dir;
+  if(j<0||j>=J.grups.length) return;
+  var t=J.grups[i]; J.grups[i]=J.grups[j]; J.grups[j]=t;
+  renderAdmJunta(document.getElementById('admBody'));
+}
+function crudDelJuntaGrup(i){
+  var J=_admJuntaCollect(), g=J.grups[i];
+  if(!g) return;
+  if(J.grups.length<2){toast('Ha de quedar com a mínim un grup','&#9888;&#65039;');return;}
+  if(J.members.some(function(m){return m.grup===g.id;})){
+    toast('Aquest grup té membres: mou-los a un altre grup abans d’eliminar-lo','&#9888;&#65039;');return;
+  }
+  confirmDel(g.lbl||'aquest grup',function(){
+    J.grups.splice(i,1);
+    admLog('JUNTA_GRUP_DEL', g.lbl);
+    _admJuntaSave();
+    toast('Grup eliminat.','&#128465;');
+  });
+}
+function crudSaveJuntaGrups(){
+  var J=_admJuntaCollect();
+  var bad=J.grups.some(function(g){return !g.lbl;});
+  if(bad){toast('Tots els grups necessiten un títol','&#9888;&#65039;');return;}
+  admLog('JUNTA_GRUPS','');
+  _admJuntaSave();
+  toast('Grups desats!','&#9989;');
+}
 function crudAddJunta(){
   var J=_admJuntaEnsure();
   var g=fv('aj_grup'),r=fv('aj_rol'),n=fv('aj_nom'),e=fv('aj_email');
   if(!r||!n){toast('Omple el càrrec i el nom','&#9888;&#65039;');return;}
   if(!admJuntaEmailOk(e)){toast('El correu electrònic no és vàlid','&#9888;&#65039;');return;}
-  J.members.push({id:Date.now(),grup:g||'vocal',rol:r,nom:n,email:e});
+  J.members.push({id:Date.now(),grup:g||J.grups[J.grups.length-1].id,rol:r,nom:n,email:e});
   admLog('JUNTA_ADD', n);
   _admJuntaSave();
   toast('Membre afegit!','&#9989;');
@@ -664,7 +758,7 @@ function crudEditJunta(id){
   editDiv.className='crud-edit-form'; editDiv.id='jedit-'+id;
   editDiv.innerHTML=
     '<div class="af-row">'
-    +mkField('Grup','ej_grup_'+id,'select',m.grup,'',JUNTA_GRUPS.map(function(g){return{val:g.val,lbl:g.lbl};}))
+    +mkField('Grup','ej_grup_'+id,'select',m.grup,'',_admJuntaGrupOpts())
     +mkField('Càrrec *','ej_rol_'+id,'text',m.rol,'')
     +'</div>'
     +'<div class="af-row">'
@@ -676,6 +770,7 @@ function crudEditJunta(id){
     +'<button class="a-sub" style="background:#64748b"'+dataAttr('onclick','crudCancelJunta',[id])+'>Cancel·lar</button>'
     +'</div>';
   item.appendChild(editDiv);
+  _admJuntaRolInput('ej_rol_'+id);
 }
 function crudSaveJunta(id){
   var m=_admJuntaEnsure().members.find(function(x){return x.id===id;});
@@ -1098,7 +1193,7 @@ function _cmEnsure(){
   if(!D.clubs) D.clubs={};
   return D;
 }
-function _cmRichVal(h){ return (h&&!/</.test(h))?'<p>'+escHtml(h)+'</p>':(h||''); }
+function _cmRichVal(h){ return (h&&!/</.test(h))?rtPlain(h):(h||''); }
 function _cmTargetOpts(){ return COMENCA_TARGETS.map(function(t){return {val:t.val,lbl:t.lbl};}); }
 function _cmSec(t){ return '<div class="adm-st" style="margin-top:1.25rem">'+t+'</div>'; }
 
@@ -1313,20 +1408,20 @@ var PAT_SCHEMA=[
  {path:'objectius',title:'Objectius generals',fields:[['title','Títol del bloc','text']],
   lists:[{key:'items',label:'Objectius',item:'Objectiu',fields:[['text','Text','rich']]}]},
  {path:'principis',title:'Principis metodològics',fields:[['title','Títol del bloc','text']],
-  lists:[{key:'items',label:'Principis',item:'Principi',fields:[['icon','Emoticona','text'],['title','Títol','text'],['text','Text','textarea']]}]},
+  lists:[{key:'items',label:'Principis',item:'Principi',fields:[['icon','Emoticona','text'],['title','Títol','text'],['text','Text','rich']]}]},
  {path:'estructura',title:'Estructura i concentracions',fields:[['title','Títol del bloc','text']],
   lists:[{key:'items',label:'Targetes',item:'Targeta',fields:[['title','Títol','text'],['body','Contingut (llista)','rich']]}]},
- {path:'seleccio',title:'Criteris de selecció i accés',fields:[['title','Títol del bloc','text'],['intro','Text introductori','textarea'],['perfilTitle','Títol del perfil','text'],['perfilBody','Perfil de l’esportista (llista)','rich'],['criterisTitle','Títol dels criteris','text'],['viesTitle','Títol de les vies d’accés','text']],
-  lists:[{key:'criteris',label:'Criteris de valoració',item:'Criteri',fields:[['title','Títol','text'],['text','Descripció','textarea']]},
-         {key:'vies',label:'Vies d’accés',item:'Via',fields:[['title','Títol','text'],['text','Descripció','textarea']]}]},
+ {path:'seleccio',title:'Criteris de selecció i accés',fields:[['title','Títol del bloc','text'],['intro','Text introductori','rich'],['perfilTitle','Títol del perfil','text'],['perfilBody','Perfil de l’esportista (llista)','rich'],['criterisTitle','Títol dels criteris','text'],['viesTitle','Títol de les vies d’accés','text']],
+  lists:[{key:'criteris',label:'Criteris de valoració',item:'Criteri',fields:[['title','Títol','text'],['text','Descripció','rich']]},
+         {key:'vies',label:'Vies d’accés',item:'Via',fields:[['title','Títol','text'],['text','Descripció','rich']]}]},
  {path:'calendari',title:'Calendari anual',fields:[['title','Títol del bloc','text']],
-  lists:[{key:'items',label:'Etapes',item:'Etapa',fields:[['mes','Mes / període','text'],['title','Títol','text'],['text','Descripció','textarea'],['tipus','Color','select',PAT_TIPUS]]}]},
+  lists:[{key:'items',label:'Etapes',item:'Etapa',fields:[['mes','Mes / període','text'],['title','Títol','text'],['text','Descripció','rich'],['tipus','Color','select',PAT_TIPUS]]}]},
  {path:'avaluacio',title:'Avaluació i permanència',fields:[['title','Títol del bloc','text']],
   lists:[{key:'items',label:'Targetes',item:'Targeta',fields:[['title','Títol','text'],['body','Contingut (llista)','rich']]}]},
  {path:'docs',title:'Documents',fields:[['title','Títol del bloc','text']],
   lists:[{key:'items',label:'Documents',item:'Document',fields:[['icon','Emoticona','text'],['name','Nom','text'],['desc','Descripció','text'],['url','PDF (deixa-ho buit si no és descarregable)','pdf']]}]},
  {path:'contacte',title:'Targetes de contacte',fields:[],
-  lists:[{key:'items',label:'Targetes',item:'Targeta',fields:[['icon','Emoticona','text'],['title','Títol','text'],['text','Text (Intro = salt de línia)','textarea'],['target','Obre una secció del portal (opcional)','select',null],['url','O enllaç (https://, mailto: o PDF)','text']]}]}
+  lists:[{key:'items',label:'Targetes',item:'Targeta',fields:[['icon','Emoticona','text'],['title','Títol','text'],['text','Text','rich'],['target','Obre una secció del portal (opcional)','select',null],['url','O enllaç (https://, mailto: o PDF)','text']]}]}
 ];
 var _admPatOpen={};
 function _patEnsure(){ if(!DB.pat) DB.pat={}; return DB.pat; }

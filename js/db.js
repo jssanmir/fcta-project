@@ -2042,6 +2042,11 @@ discTexts: {},
 junta: {
   intro: "Composició de la Junta Directiva de la Federació Catalana de Tir amb Arc, elegida democràticament pels clubs federats el desembre de 2024 per al mandat 2024–2028.",
   mandat: "Desembre 2024 – Novembre 2028",
+  grups: [
+    {id:'president', lbl:'Presidència',       sing:'President',       plur:'Presidents',        layout:'president'},
+    {id:'exec',      lbl:'Càrrecs executius', sing:'càrrec executiu', plur:'càrrecs executius', layout:'exec'},
+    {id:'vocal',     lbl:'Vocals',            sing:'Vocal',           plur:'Vocals',            layout:'vocal'}
+  ],
   members: [
     {id:1,  grup:'president', rol:'President',        nom:'Juan Carlos Ahumada Méndez',     email:'presidencia@fcta.cat'},
     {id:2,  grup:'exec',      rol:'1r Vicepresident', nom:'Francesc Altarriba Garcia',      email:'faltarriba@fcta.cat'},

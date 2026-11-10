@@ -22,3 +22,5 @@
 .circ-dl:hover{background:var(--navy-dark)}
 
 .circ-event{margin-top:3px;font-size:.78rem;font-weight:700;color:var(--navy-light)}
+.circ-desc p{margin:0 0 .25rem}
+.circ-desc ul,.circ-desc ol{margin:.2rem 0 .3rem 1.1rem}

@@ -306,3 +306,11 @@
 .adm-pat-head span{transition:transform var(--dur-base) var(--tr)}
 .adm-pat-head.open span{transform:rotate(180deg)}
 .adm-pat-body{padding:1rem}
+
+/* ── Text enriquit dins de targetes ── */
+.pat-seccio-intro p{margin:0 0 .5rem}
+.pat-seccio-intro p:last-child{margin-bottom:0}
+.pat-criteri-text p{margin:.15rem 0 0}
+.pat-via p,.pat-cal-body p{margin:0 0 .3rem}
+.pat-via p:last-child,.pat-cal-body p:last-child{margin-bottom:0}
+.pat-principi ul,.pat-via ul,.pat-cal-body ul,.pat-criteri-text ul{margin:.2rem 0 .2rem 1.1rem;padding:0}

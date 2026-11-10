@@ -10,7 +10,7 @@ function _patUrl(u) {
 }
 function _patRich(h) {
   h = h || '';
-  return /</.test(h) ? rtSanitize(h) : (h ? '<p>' + escHtml(h) + '</p>' : '');
+  return rtAuto(h);
 }
 function _patBr(t) { return escHtml(t || '').replace(/\n/g, '<br>'); }
 function _patTitle(t, first) {
@@ -60,7 +60,7 @@ function renderPAT() {
   // Principis
   h += _patTitle((D.principis || {}).title) + '<div class="pat-principis-grid">'
     + _patList(D, 'principis').map(function(p) {
-        return '<div class="pat-principi"><div class="pat-principi-icon">' + escHtml(p.icon || '') + '</div><h5>' + escHtml(p.title || '') + '</h5><p>' + escHtml(p.text || '') + '</p></div>';
+        return '<div class="pat-principi"><div class="pat-principi-icon">' + escHtml(p.icon || '') + '</div><h5>' + escHtml(p.title || '') + '</h5>' + _patRich(p.text) + '</div>';
       }).join('') + '</div>';
 
   // Estructura
@@ -71,16 +71,16 @@ function renderPAT() {
 
   // Selecció i accés
   var S = D.seleccio || {};
-  h += _patTitle(S.title) + (S.intro ? '<div class="pat-seccio-intro">' + escHtml(S.intro) + '</div>' : '')
+  h += _patTitle(S.title) + (S.intro ? '<div class="pat-seccio-intro">' + _patRich(S.intro) + '</div>' : '')
     + '<div class="pat-seleccio-grid"><div class="pat-seleccio-perfil"><h5>' + escHtml(S.perfilTitle || '') + '</h5>' + _patRich(S.perfilBody) + '</div>'
     + '<div class="pat-seleccio-criteris"><h5>' + escHtml(S.criterisTitle || '') + '</h5>'
     + (S.criteris || []).map(function(c, i) {
         return '<div class="pat-criteri"><span class="pat-criteri-n">' + (i + 1) + '</span><div><strong>' + escHtml(c.title || '') + '</strong>'
-          + (c.text ? ' — ' + escHtml(c.text) : '') + '</div></div>';
+          + (c.text ? '<div class="pat-criteri-text">' + _patRich(c.text) + '</div>' : '') + '</div></div>';
       }).join('') + '</div></div>'
     + '<div class="pat-acces-vies"><h5>' + escHtml(S.viesTitle || '') + '</h5><div class="pat-vies-grid">'
     + (S.vies || []).map(function(v) {
-        return '<div class="pat-via"><strong>' + escHtml(v.title || '') + '</strong><p>' + escHtml(v.text || '') + '</p></div>';
+        return '<div class="pat-via"><strong>' + escHtml(v.title || '') + '</strong>' + _patRich(v.text) + '</div>';
       }).join('') + '</div></div>';
 
   // Calendari
@@ -88,7 +88,7 @@ function renderPAT() {
     + _patList(D, 'calendari').map(function(c) {
         var t = /^[a-z]{0,6}$/.test(c.tipus || '') && c.tipus ? ' pat-cal-' + c.tipus : '';
         return '<div class="pat-cal-item' + t + '"><div class="pat-cal-mes">' + escHtml(c.mes || '') + '</div>'
-          + '<div class="pat-cal-body"><strong>' + escHtml(c.title || '') + '</strong><p>' + escHtml(c.text || '') + '</p></div></div>';
+          + '<div class="pat-cal-body"><strong>' + escHtml(c.title || '') + '</strong>' + _patRich(c.text) + '</div></div>';
       }).join('') + '</div>';
 
   // Avaluació
@@ -114,8 +114,9 @@ function renderPAT() {
   var cs = _patList(D, 'contacte');
   if (cs.length) {
     h += '<div class="lic-contact-grid" style="margin-top:2rem">' + cs.map(function(c) {
-      var inner = '<div class="lcc-icon">' + escHtml(c.icon || '') + '</div><h4>' + escHtml(c.title || '') + '</h4><p>' + _patBr(c.text) + '</p>';
+      var inner = '<div class="lcc-icon">' + escHtml(c.icon || '') + '</div><h4>' + escHtml(c.title || '') + '</h4><div class="lcc-text">' + _patRich(c.text) + '</div>';
       var u = _patUrl(c.url);
+      if (c.target || u) inner = inner.replace(/<\/?a\b[^>]*>/g, ''); // la targeta ja és un enllaç
       if (c.target) return '<button type="button" class="lic-contact-card" style="text-align:center;border:none;font-family:inherit;cursor:pointer"'
         + dataAttr('onclick', 'setS', [c.target]) + '>' + inner + '</button>';
       if (u) return '<a href="' + escHtml(u) + '"' + (/^mailto:/.test(u) ? '' : ' target="_blank" rel="noopener"') + ' class="lic-contact-card">' + inner + '</a>';

@@ -199,3 +199,16 @@ document.addEventListener('paste', function (e) {
 document.addEventListener('mousedown', function (e) {
   if (e.target && e.target.closest && e.target.closest('.rt-toolbar, .rt-emojis')) e.preventDefault();
 });
+
+// Text pla (amb salts de línia) → paràgrafs HTML. Per mostrar dades antigues escrites sense format.
+function rtPlain(t) {
+  return String(t || '').split(/\n{2,}/).map(function(p) {
+    p = p.trim();
+    return p ? '<p>' + escHtml(p).replace(/\n/g, '<br>') + '</p>' : '';
+  }).join('');
+}
+// Valor de text enriquit (HTML) o antic text pla → HTML net, llest per mostrar amb innerHTML.
+function rtAuto(h) {
+  h = h || '';
+  return /</.test(h) ? rtSanitize(h) : rtPlain(h);
+}

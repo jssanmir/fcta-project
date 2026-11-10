@@ -867,6 +867,8 @@ app.post('/api/data', verifyToken, function (req, res) {
     if (!Array.isArray(data[f])) return;
     data[f].forEach(function (item) {
       if (item.url && !isSafeUrl(item.url)) item.url = '#';
+      // Resum de circulars i notícies: text enriquit saneat
+      if ((f === 'circulars' || f === 'news') && item.desc !== undefined) item.desc = sanitizeNewsBody(item.desc).slice(0, 4000);
     });
   });
   // Carrusel de la portada: només foto local (CSP img-src 'self'), títol i link segur
@@ -1017,7 +1019,7 @@ app.post('/api/data', verifyToken, function (req, res) {
 
   // Tecnificació (PAT): pàgina editable. Saneig recursiu: HTML enriquit, enllaços segurs i textos curts
   if (data.pat !== undefined) {
-    var PAT_RICH = { text: 1, body: 1, perfilBody: 1 };
+    var PAT_RICH = { text: 1, body: 1, perfilBody: 1, intro: 1 };
     var PAT_URL = { docUrl: 1, url: 1 };
     var patClean = function (v, key, depth) {
       if (typeof v === 'string') {
@@ -1066,16 +1068,36 @@ app.post('/api/data', verifyToken, function (req, res) {
   // Junta Directiva: textos curts i membres validats (grup, nom, correu)
   if (data.junta !== undefined) {
     var jun = (data.junta && typeof data.junta === 'object' && !Array.isArray(data.junta)) ? data.junta : {};
-    var JUNTA_GRUPS = ['president', 'exec', 'vocal'];
+    var JUNTA_LAYOUTS = ['president', 'exec', 'vocal'];
+    var juntaGrups = (Array.isArray(jun.grups) ? jun.grups : []).slice(0, 20).map(function (g) {
+      g = g || {};
+      var gid = String(g.id || '');
+      return {
+        id:     /^[A-Za-z0-9_-]{1,40}$/.test(gid) ? gid : '',
+        lbl:    sanitizeStr(g.lbl, 80),
+        sing:   sanitizeStr(g.sing, 60),
+        plur:   sanitizeStr(g.plur, 60),
+        layout: JUNTA_LAYOUTS.indexOf(g.layout) >= 0 ? g.layout : 'vocal'
+      };
+    }).filter(function (g) { return g.id && g.lbl; });
+    if (!juntaGrups.length) {
+      juntaGrups = [
+        { id: 'president', lbl: 'Presidència', sing: 'President', plur: 'Presidents', layout: 'president' },
+        { id: 'exec', lbl: 'Càrrecs executius', sing: 'càrrec executiu', plur: 'càrrecs executius', layout: 'exec' },
+        { id: 'vocal', lbl: 'Vocals', sing: 'Vocal', plur: 'Vocals', layout: 'vocal' }
+      ];
+    }
+    var juntaIds = juntaGrups.map(function (g) { return g.id; });
     data.junta = {
       intro:  sanitizeNewsBody(jun.intro).slice(0, 5000),
       mandat: sanitizeStr(jun.mandat, 120),
-      members: (Array.isArray(jun.members) ? jun.members : []).slice(0, 60).map(function (m) {
+      grups:  juntaGrups,
+      members: (Array.isArray(jun.members) ? jun.members : []).slice(0, 100).map(function (m) {
         m = m || {};
         var email = sanitizeStr(m.email, 120);
         return {
           id:    Number(m.id) || Date.now(),
-          grup:  JUNTA_GRUPS.indexOf(m.grup) >= 0 ? m.grup : 'vocal',
+          grup:  juntaIds.indexOf(m.grup) >= 0 ? m.grup : juntaIds[juntaIds.length - 1],
           rol:   sanitizeStr(m.rol, 80),
           nom:   sanitizeStr(m.nom, 120),
           email: EMAIL_RE.test(email) ? email : ''

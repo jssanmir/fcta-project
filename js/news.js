@@ -68,8 +68,9 @@ function _renderNewsPage() {
     dateEl.textContent = n.date || '';
     var h3 = document.createElement('h3');
     h3.textContent = n.title || '';
-    var p = document.createElement('p');
-    p.textContent = n.desc || '';
+    var p = document.createElement('div');
+    p.className = 'news-desc';
+    p.innerHTML = rtAuto(n.desc);
     body.appendChild(dateEl);
     body.appendChild(h3);
     body.appendChild(p);

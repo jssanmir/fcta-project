@@ -147,7 +147,7 @@ Totes les dades viuen en l'objecte global `DB`:
 | `DB.documents`    | Array     | Documents PDF per disciplina (disc, nom, url)   |
 | `DB.clubs`        | Array     | Noms dels clubs (per al selector de tirades)    |
 | `DB.carousel`     | Array     | Diapositives del carrusel de la portada (img, title, url) — editable a Admin > Carrusel |
-| `DB.junta`        | Objecte   | Junta Directiva: intro, mandat i members[] (grup, rol, nom, email) — editable a Admin > Junta |
+| `DB.junta`        | Objecte   | Junta Directiva: intro (RTF), mandat, grups[] (id, lbl, sing, plur, layout: seccions configurables) i members[] (grup, rol, nom, email) — editable a Admin > Junta |
 | `DB.discTexts`    | Objecte   | Text «Sobre la disciplina» editat (HTML) per clau de disciplina — Admin > Disciplines |
 | `DB.discPhotos`   | Objecte   | Foto de la capçalera de cada disciplina: img, posY (0-100) i caption — Admin > Disciplines |
 | `DB.pat`          | Objecte   | Pàgina del PAT (Tecnificació): hero, intro, objectius, principis, estructura, selecció, calendari, avaluació, docs, contacte — Admin > Tecnificació |
